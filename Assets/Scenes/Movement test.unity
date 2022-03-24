@@ -370,8 +370,10 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   speed: 10
+  jumpHeight: 3
+  maxJumps: 2
   turnSmoothTime: 0.1
-  gravity: -9.81
+  gravityMultiplier: 5
   groundDistance: 0.2
 --- !u!143 &361668476
 CharacterController:

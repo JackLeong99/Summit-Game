@@ -9,14 +9,23 @@ public class Movement3rdPerson : MonoBehaviour
     public Transform groundCheck;
     public LayerMask groundMask;
     public float speed = 6f;
-    public float jump = 3f;
+    public float jumpHeight = 3f;
+    public int maxJumps = 2;
     public float turnSmoothTime = 0.1f;
-    public float gravity = -9.81f;
+    public float gravityMultiplier = 1;
     public float groundDistance = 0.2f;
 
     private float turnSmoothVelocity;
+    private float baseGravity = -9.81f;
+    private float gravity;
+    private int currentJumps;
     private Vector3 velocity;
     private bool isGrounded;
+    
+    void Start(){
+        currentJumps = maxJumps;
+        gravity = baseGravity * gravityMultiplier;
+    }
     void Update(){
         isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
 
@@ -37,8 +46,13 @@ public class Movement3rdPerson : MonoBehaviour
             controller.Move(moveDir * speed * Time.deltaTime);
         }
 
-        if (Input.GetButtonDown("Jump") && isGrounded){
-            velocity.y = Mathf.Sqrt(jump * -2.0f * gravity);
+        if (Input.GetButtonDown("Jump") && currentJumps > 1){
+            velocity.y = Mathf.Sqrt(jumpHeight * -2.0f * gravity);
+            currentJumps -= 1;
+        }
+
+        if (isGrounded){
+            currentJumps = maxJumps;
         }
 
         velocity.y += gravity * Time.deltaTime;
