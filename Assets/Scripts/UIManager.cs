@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class UIManager : MonoBehaviour
 {
@@ -21,6 +22,10 @@ public class UIManager : MonoBehaviour
     public Slider PlayerHealthBar;
     private float FullHealth=100f;
 
+
+    public TMP_Text CharacterClass;
+    private string CharacterClassFormat= "Character Class: {0}";
+
     void Awake()
     {
         if (instance != null)
@@ -38,12 +43,17 @@ public class UIManager : MonoBehaviour
     {
         PlayerHealthBar.maxValue= 100; //can be changed
         PlayerHealthBar.value=FullHealth;
+        
+        CharacterClass.text= string.Format(CharacterClassFormat, "Archer");
+       // CharacterClass.text="hi";
+        
     }
 
     // Update is called once per frame
     void Update()
     {
        // PlayerHealthBar.fillRect.x=50.0f;
+       
     }
 
 
