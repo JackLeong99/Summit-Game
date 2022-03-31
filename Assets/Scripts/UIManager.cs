@@ -19,7 +19,7 @@ public class UIManager : MonoBehaviour
     }
 
     public Slider PlayerHealthBar;
-    private float test=100f;
+    private float FullHealth=100f;
 
     void Awake()
     {
@@ -37,13 +37,13 @@ public class UIManager : MonoBehaviour
     void Start()
     {
         PlayerHealthBar.maxValue= 100; //can be changed
-        PlayerHealthBar.value=test;
+        PlayerHealthBar.value=FullHealth;
     }
 
     // Update is called once per frame
     void Update()
     {
-        PlayerHealthBar.value=50.0f;
+       // PlayerHealthBar.fillRect.x=50.0f;
     }
 
 
