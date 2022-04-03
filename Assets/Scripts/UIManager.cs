@@ -54,7 +54,9 @@ public class UIManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-       // PlayerHealthBar.fillRect.x=50.0f;
+     //   PlayerHealthBar.value= PlayerHealthBar.value-1; for testing if gamemanger and ui worked together
+     //   HealthBarSet(PlayerHealthBar.value);
+
        
     }
 
@@ -62,6 +64,10 @@ public class UIManager : MonoBehaviour
     public void HealthBarSet(float currentHealth)
     {
         PlayerHealthBar.value = currentHealth;
+        if(currentHealth<=0)
+        {
+            GameManager.Instance.onDeath(); //to be moved to whatever is handling health
+        }
     }
 
     public void GameOverScreen() 

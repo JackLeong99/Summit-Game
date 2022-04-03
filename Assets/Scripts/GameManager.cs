@@ -4,8 +4,31 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-
-    public static GameManager instance;
+    private static GameManager instance;
+    public static GameManager Instance
+    {
+        get
+        {
+            if(instance == null)
+            {
+                Debug.LogError("No GameManager in the scene");
+            }
+            return instance;
+        }
+    }
+        
+        
+    void Awake()
+    {
+        if (instance != null)
+        {
+            Destroy(gameObject);
+        }
+        else
+        {
+            instance = this;
+        }
+    }
     // Start is called before the first frame update
     void Start()
     {
@@ -18,8 +41,7 @@ public class GameManager : MonoBehaviour
         
     }
 
-    void onDeath() {
+    public void onDeath() {
         UIManager.Instance.GameOverScreen();
-        //call ui manager to set panel to true
     }
 }
