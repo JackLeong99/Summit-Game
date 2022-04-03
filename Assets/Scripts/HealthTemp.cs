@@ -15,7 +15,13 @@ public class HealthTemp : MonoBehaviour
     }
 
     public void takeDamage(int damage){
-        currentHealth = currentHealth - damage;
+        if (currentHealth > 0){
+            currentHealth = currentHealth - damage;
+            if (currentHealth >= maxHealth){
+                currentHealth = maxHealth;
+            }
+        }
+        UIManager.Instance.HealthBarSet(currentHealth);
         System.Console.WriteLine("current health = " + currentHealth + "after taking " + damage);
     }
 }    
