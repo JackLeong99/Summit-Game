@@ -1,10 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
-using System.Windows.Forms.dll;
 using UnityEngine;
 
 public class DamageCollider : MonoBehaviour
-{
+{/*
     Collider damageCollider;
     public int currentWeaponDamage = 50;
 
@@ -37,9 +36,9 @@ public class DamageCollider : MonoBehaviour
         if(e.KeyCode == Keys.Enter){
             if (damageCollider.enabled == false){
                 EnableDamageCollider();
-                return;
+                wait 1;
             }
             DisableDamageCollider();
         }
-    }
+    }*/
 }
