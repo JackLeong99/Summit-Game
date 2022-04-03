@@ -22,6 +22,8 @@ public class UIManager : MonoBehaviour
     public Slider PlayerHealthBar;
     private float FullHealth=100f;
 
+    public GameObject PanelGameOver;
+
 
     public TMP_Text CharacterClass;
     private string CharacterClassFormat= "Character Class: {0}";
@@ -45,7 +47,7 @@ public class UIManager : MonoBehaviour
         PlayerHealthBar.value=FullHealth;
         
         CharacterClass.text= string.Format(CharacterClassFormat, "Archer");
-       // CharacterClass.text="hi";
+        PanelGameOver.SetActive(false);
         
     }
 
@@ -60,5 +62,10 @@ public class UIManager : MonoBehaviour
     public void HealthBarSet(float currentHealth)
     {
         PlayerHealthBar.value = currentHealth;
+    }
+
+    public void GameOverScreen() 
+    {
+        PanelGameOver.SetActive(true);
     }
 }

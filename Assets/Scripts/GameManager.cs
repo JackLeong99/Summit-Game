@@ -17,4 +17,9 @@ public class GameManager : MonoBehaviour
     {
         
     }
+
+    void onDeath() {
+        UIManager.Instance.GameOverScreen();
+        //call ui manager to set panel to true
+    }
 }
