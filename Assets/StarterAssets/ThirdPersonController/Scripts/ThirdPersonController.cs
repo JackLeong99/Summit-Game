@@ -2,6 +2,7 @@
 #if ENABLE_INPUT_SYSTEM && STARTER_ASSETS_PACKAGES_CHECKED
 using UnityEngine.InputSystem;
 #endif
+using System.Collections;
 
 /* Note: animations are called via the controller for both the character and capsule using animator null checks
  */
@@ -91,6 +92,18 @@ namespace StarterAssets
 
 		private bool _hasAnimator;
 
+		//Start custom code
+		//variables for dodge
+		[SerializeField] AnimationCurve dodgeCurve;
+
+		public bool _Dodging;
+
+		public float dodgeMultiplier;
+
+		private float dodgeTimer;
+
+		//End Custom
+
 		private void Awake()
 		{
 			// get a reference to our main camera
@@ -111,6 +124,10 @@ namespace StarterAssets
 			// reset our timeouts on start
 			_jumpTimeoutDelta = JumpTimeout;
 			_fallTimeoutDelta = FallTimeout;
+
+			//custom code for dodge
+			Keyframe dodge_lastFrame = dodgeCurve[dodgeCurve.length -1];
+			dodgeTimer = dodge_lastFrame.time;
 		}
 
 		private void Update()
@@ -119,7 +136,15 @@ namespace StarterAssets
 			
 			JumpAndGravity();
 			GroundedCheck();
-			Move();
+			if(!_Dodging) 
+			{
+				Move();
+			}
+
+			if(Input.GetKeyDown(KeyCode.E))
+			{
+				if(_speed != 0 && Grounded && !_Dodging) {StartCoroutine(Dodge());}
+			}
 		}
 
 		private void LateUpdate()
@@ -248,7 +273,7 @@ namespace StarterAssets
 				}
 
 				// Jump
-				if (_input.jump && _jumpTimeoutDelta <= 0.0f)
+				if (_input.jump && _jumpTimeoutDelta <= 0.0f && !_Dodging)
 				{
 					// the square root of H * -2 * G = how much velocity needed to reach desired height
 					_verticalVelocity = Mathf.Sqrt(JumpHeight * -2f * Gravity);
@@ -313,6 +338,22 @@ namespace StarterAssets
 			
 			// when selected, draw a gizmo in the position of, and matching radius of, the grounded collider
 			Gizmos.DrawSphere(new Vector3(transform.position.x, transform.position.y - GroundedOffset, transform.position.z), GroundedRadius);
+		}
+
+		IEnumerator Dodge()
+		{
+			_animator.SetTrigger("Dodge");
+			_Dodging = true;
+			float timer = 0;
+			while(timer < dodgeTimer)
+			{
+				float dSpeed = dodgeCurve.Evaluate(timer);
+				Vector3 dir = (transform.forward * dSpeed * dodgeMultiplier) + (Vector3.up * _verticalVelocity);
+				_controller.Move(dir * Time.deltaTime);
+				timer += Time.deltaTime;
+				yield return null;
+			}
+			_Dodging = false;
 		}
 	}
 }
