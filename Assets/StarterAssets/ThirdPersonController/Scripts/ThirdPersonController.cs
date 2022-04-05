@@ -347,8 +347,8 @@ namespace StarterAssets
 			float timer = 0;
 			while(timer < dodgeTimer)
 			{
-				float dSpeed = dodgeCurve.Evaluate(timer);
-				Vector3 dir = (transform.forward * dSpeed * dodgeMultiplier) + (Vector3.up * _verticalVelocity);
+				float dSpeed = dodgeCurve.Evaluate(timer) * dodgeMultiplier;
+				Vector3 dir = (transform.forward * dSpeed) + (Vector3.up * _verticalVelocity);
 				_controller.Move(dir * Time.deltaTime);
 				timer += Time.deltaTime;
 				yield return null;
