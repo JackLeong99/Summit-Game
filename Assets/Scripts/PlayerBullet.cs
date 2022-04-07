@@ -4,24 +4,23 @@ using UnityEngine;
 
 public class PlayerBullet : MonoBehaviour
 {
-    public float MaxLifetime = 100;
+    public float MaxLifetime = 1000;
+    public float CurrentLifetime = 0;
     private bool dead;
 
     void Start()
     {
-        
+
     }
 
 
     void Update()
     {
-        // for(float i = MaxLifetime; i >= 0; i++)
-        // {
-        //     if(i == 0)
-        //     {
-        //         CullProjectile();
-        //     }
-        // }
+        CurrentLifetime += Time.deltaTime;
+        if (CurrentLifetime >= MaxLifetime)
+        {
+            CullProjectile();
+        }
     }
 
     void OnCollisionEnter(Collision hit)
