@@ -238,6 +238,17 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 4416926081852918481, guid: 64dce48905ffd9b4293e595fa6941544, type: 3}
   m_PrefabInstance: {fileID: 1824828914}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &110642765 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2582755513674471274, guid: 90c1bd1fda819204985b62a4e3e9e7b5, type: 3}
+  m_PrefabInstance: {fileID: 1340508997}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &156307956
 GameObject:
   m_ObjectHideFlags: 0
@@ -748,7 +759,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 100
   currentHealth: 100
---- !u!114 &658910079
+--- !u!114 &658910087
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -762,8 +773,39 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cam: {fileID: 1508586385}
   projectile: {fileID: 5944307442520353345, guid: f6cb894fb887996448b226c17d16f0c3, type: 3}
+  CdDisplay: {fileID: 110642765}
   FirePoint: {fileID: 883725746}
+  CdBackground: {fileID: 1356398206}
   projectileSpeed: 30
+  shotTimeBuffer: 0.2
+  cooldown: 3
+  shooting: 0
+  OffCD: {r: 0.26299393, g: 0.7075472, b: 0.34555647, a: 1}
+  OnCD: {r: 0.2830189, g: 0.2830189, b: 0.2830189, a: 0.8156863}
+  shotCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!114 &822004535 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 5889049362921897999, guid: 90c1bd1fda819204985b62a4e3e9e7b5, type: 3}
@@ -1089,6 +1131,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 67db9e8f0e2ae9c40bc1e2b64352a6b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1356398206 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 9094499907307215618, guid: 90c1bd1fda819204985b62a4e3e9e7b5, type: 3}
+  m_PrefabInstance: {fileID: 1340508997}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &1390546690
@@ -1903,11 +1956,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4416926081852918490, guid: 64dce48905ffd9b4293e595fa6941544, type: 3}
       propertyPath: dodgeCurve.m_Curve.Array.data[0].tangentMode
-      value: 0
+      value: 34
       objectReference: {fileID: 0}
     - target: {fileID: 4416926081852918490, guid: 64dce48905ffd9b4293e595fa6941544, type: 3}
       propertyPath: dodgeCurve.m_Curve.Array.data[1].tangentMode
-      value: 0
+      value: 34
+      objectReference: {fileID: 0}
+    - target: {fileID: 6982812146204527121, guid: 64dce48905ffd9b4293e595fa6941544, type: 3}
+      propertyPath: m_WarningMessage
+      value: 
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 64dce48905ffd9b4293e595fa6941544, type: 3}

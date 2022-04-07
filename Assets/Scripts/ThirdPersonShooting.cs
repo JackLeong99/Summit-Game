@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using TMPro;
 
 public class ThirdPersonShooting : MonoBehaviour
 {
@@ -8,27 +10,69 @@ public class ThirdPersonShooting : MonoBehaviour
 
     public GameObject projectile;
 
+    public TextMeshProUGUI CdDisplay;
+
     public Transform FirePoint;
 
+    public Image CdBackground;
+
     public float projectileSpeed = 30;
+
+    public float shotTimeBuffer = 0f;
+
+    public float cooldown = 0;
+
+    public bool shooting = false;
+
+    private float cdTimer = 0;
     private Vector3 destination;
+
+    public Color OffCD;
+    public Color OnCD;
+
+    [SerializeField] AnimationCurve shotCurve;
     // Start is called before the first frame update
     void Start()
     {
-        
+        CdDisplay.text = "";
+        CdBackground.color = OffCD;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetButtonDown("Fire1"))
+        CooldownHandler();
+
+        if(Input.GetButtonDown("Spell1") && cdTimer <= 0)
         {
-            ShootProjectile();
+            StartCoroutine(ShootProjectile());
         }
     }
 
-    void ShootProjectile()
+    void CooldownHandler()
     {
+        cdTimer -= Time.deltaTime;
+
+        if(cdTimer <=0)
+        {
+            cdTimer = 0;
+            CdDisplay.text = "";
+            CdBackground.color = OffCD;
+        }
+        else
+        {
+            CdDisplay.text = cdTimer.ToString("0");
+            CdBackground.color = OnCD;
+        }
+    }
+
+    IEnumerator ShootProjectile()
+    {
+        //_animator.SetTrigger("Shoot");
+        shooting = true;
+
+        yield return new WaitForSeconds(shotTimeBuffer);
+
         Ray ray = cam.ViewportPointToRay(new Vector3(0.5f, 0.5f , 0));
         RaycastHit hit;
 
@@ -41,6 +85,8 @@ public class ThirdPersonShooting : MonoBehaviour
             destination = ray.GetPoint(1000);
         }
 
+        shooting = false;
+        cdTimer = cooldown;
         InstantiateProjectile();
     }
 

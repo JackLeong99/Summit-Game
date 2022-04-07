@@ -96,11 +96,13 @@ namespace StarterAssets
 		//variables for dodge
 		[SerializeField] AnimationCurve dodgeCurve;
 
-		public bool _Dodging;
+		public bool _Inactionable;
 
 		public float dodgeMultiplier;
 
 		private float dodgeTimer;
+
+		public ThirdPersonShooting TPCScript;
 
 		//End Custom
 
@@ -125,25 +127,29 @@ namespace StarterAssets
 			_jumpTimeoutDelta = JumpTimeout;
 			_fallTimeoutDelta = FallTimeout;
 
-			//custom code for dodge
+			//custom code
 			Keyframe dodge_lastFrame = dodgeCurve[dodgeCurve.length -1];
 			dodgeTimer = dodge_lastFrame.time;
+
+			//getting lockout bool from shooting script
+			TPCScript = this.gameObject.GetComponent<ThirdPersonShooting>();
 		}
 
 		private void Update()
 		{
+
 			_hasAnimator = TryGetComponent(out _animator);
 			
 			JumpAndGravity();
 			GroundedCheck();
-			if(!_Dodging) 
+			if(!_Inactionable && !TPCScript.shooting) 
 			{
 				Move();
 			}
 
-			if(Input.GetKeyDown(KeyCode.E))
+			if(Input.GetButtonDown("Spell2"))
 			{
-				if(_speed != 0 && Grounded && !_Dodging) {StartCoroutine(Dodge());}
+				if(_speed != 0 && Grounded && !_Inactionable) {StartCoroutine(Dodge());}
 			}
 		}
 
@@ -273,7 +279,7 @@ namespace StarterAssets
 				}
 
 				// Jump
-				if (_input.jump && _jumpTimeoutDelta <= 0.0f && !_Dodging)
+				if (_input.jump && _jumpTimeoutDelta <= 0.0f && !_Inactionable)
 				{
 					// the square root of H * -2 * G = how much velocity needed to reach desired height
 					_verticalVelocity = Mathf.Sqrt(JumpHeight * -2f * Gravity);
@@ -343,7 +349,7 @@ namespace StarterAssets
 		IEnumerator Dodge()
 		{
 			_animator.SetTrigger("Dodge");
-			_Dodging = true;
+			_Inactionable = true;
 			float timer = 0;
 			while(timer < dodgeTimer)
 			{
@@ -353,7 +359,7 @@ namespace StarterAssets
 				timer += Time.deltaTime;
 				yield return null;
 			}
-			_Dodging = false;
+			_Inactionable = false;
 		}
 	}
 }
