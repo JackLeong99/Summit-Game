@@ -83,10 +83,10 @@ namespace StarterAssets
 		private int _animIDFreeFall;
 		private int _animIDMotionSpeed;
 
-		private Animator _animator;
-		private CharacterController _controller;
+		public Animator _animator;
+		public CharacterController _controller;
 		private StarterAssetsInputs _input;
-		private GameObject _mainCamera;
+		public GameObject _mainCamera;
 
 		private const float _threshold = 0.01f;
 
@@ -101,8 +101,6 @@ namespace StarterAssets
 		public float dodgeMultiplier;
 
 		private float dodgeTimer;
-
-		public ThirdPersonShooting TPCScript;
 
 		//End Custom
 
@@ -130,9 +128,6 @@ namespace StarterAssets
 			//custom code
 			Keyframe dodge_lastFrame = dodgeCurve[dodgeCurve.length -1];
 			dodgeTimer = dodge_lastFrame.time;
-
-			//getting lockout bool from shooting script
-			TPCScript = this.gameObject.GetComponent<ThirdPersonShooting>();
 		}
 
 		private void Update()
@@ -142,7 +137,7 @@ namespace StarterAssets
 			
 			JumpAndGravity();
 			GroundedCheck();
-			if(!_Inactionable && !TPCScript.shooting) 
+			if(!_Inactionable) 
 			{
 				Move();
 			}

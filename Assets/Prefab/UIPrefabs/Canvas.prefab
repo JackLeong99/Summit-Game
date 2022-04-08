@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 1312121739920937}
   - component: {fileID: 5889049362921897999}
   m_Layer: 5
-  m_Name: TextClass
+  m_Name: ClassNameText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -649,7 +649,7 @@ GameObject:
   - component: {fileID: 299348376364215453}
   - component: {fileID: 5769444128660721317}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: PowerUpText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -931,7 +931,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1265610921512133526}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
+        m_MethodName: RestartGame
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &5809265320104289138
 GameObject:
   m_ObjectHideFlags: 0
@@ -1078,7 +1090,7 @@ GameObject:
   - component: {fileID: 7152370277216213913}
   - component: {fileID: 7152370277216213912}
   m_Layer: 5
-  m_Name: Slider
+  m_Name: HealthPoints
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

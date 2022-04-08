@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using StarterAssets;
 
 public class ThirdPersonShooting : MonoBehaviour
 {
@@ -20,22 +21,23 @@ public class ThirdPersonShooting : MonoBehaviour
 
     public float shotTimeBuffer = 0f;
 
+    public float shotAnimEnd = 0f;
+
     public float cooldown = 0;
-
-    public bool shooting = false;
-
     private float cdTimer = 0;
     private Vector3 destination;
+
+    private ThirdPersonController TPCScript;
 
     public Color OffCD;
     public Color OnCD;
 
-    [SerializeField] AnimationCurve shotCurve;
     // Start is called before the first frame update
     void Start()
     {
         CdDisplay.text = "";
         CdBackground.color = OffCD;
+        TPCScript = this.gameObject.GetComponent<ThirdPersonController>();
     }
 
     // Update is called once per frame
@@ -43,7 +45,7 @@ public class ThirdPersonShooting : MonoBehaviour
     {
         CooldownHandler();
 
-        if(Input.GetButtonDown("Spell1") && cdTimer <= 0)
+        if(Input.GetButtonDown("Spell1") && cdTimer <= 0 &&!TPCScript._Inactionable)
         {
             StartCoroutine(ShootProjectile());
         }
@@ -68,8 +70,10 @@ public class ThirdPersonShooting : MonoBehaviour
 
     IEnumerator ShootProjectile()
     {
-        //_animator.SetTrigger("Shoot");
-        shooting = true;
+        Quaternion originalR = TPCScript._controller.transform.rotation;
+        TPCScript._controller.transform.rotation = TPCScript._mainCamera.transform.rotation;
+        TPCScript._animator.SetTrigger("Shoot");
+        TPCScript._Inactionable = true;
 
         yield return new WaitForSeconds(shotTimeBuffer);
 
@@ -84,10 +88,14 @@ public class ThirdPersonShooting : MonoBehaviour
         {
             destination = ray.GetPoint(1000);
         }
-
-        shooting = false;
-        cdTimer = cooldown;
         InstantiateProjectile();
+        
+        yield return new WaitForSeconds(shotAnimEnd);
+        
+        TPCScript._controller.transform.rotation = originalR;
+        TPCScript._Inactionable = false;
+        cdTimer = cooldown;
+
     }
 
     void InstantiateProjectile()
