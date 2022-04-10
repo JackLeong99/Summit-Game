@@ -38,7 +38,10 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+    if(Input.GetButtonDown("Escape"))
+    {
+        Application.Quit();
+    }
     }
 
     public void onDeath() {
