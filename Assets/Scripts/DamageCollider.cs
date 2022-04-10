@@ -2,11 +2,24 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
+
 public class DamageCollider : MonoBehaviour
-{/*
+{
     Collider damageCollider;
     public int currentWeaponDamage = 50;
 
+    private bool toggled;
+
+//testing code
+
+    void Start(){
+        //temp
+        EnableDamageCollider();
+        //DisableDamageCollider();
+    }
+
+//to help deetermine if awake.
     private void Awake(){
         damageCollider = GetComponent<Collider>();
         damageCollider.gameObject.SetActive(true);
@@ -22,17 +35,36 @@ public class DamageCollider : MonoBehaviour
         damageCollider.enabled = false;
     }
 
-    private void OnTriggerEnter(Collider collision){
-        if(collision.tag == "Hittable"){
-            HealthTemp healthTemp = collision.GetComponent<HealthTemp>();
+    private void OnTriggerEnter(Collider other){
+        if(other.tag == "Hittable" || damageCollider.enabled == true){
+            HealthTemp healthTemp = other.GetComponent<HealthTemp>();
 
             if (healthTemp != null){
                 healthTemp.takeDamage(currentWeaponDamage);
             }
         }
     }
+//do last- Not yet working.
+/*
+    private void ToggleDamageCollider(){
+        toggled = damageCollider.enabled;
+        if(toggled == true){
+            DisableDamageCollider();
+            return;
+        }
+        
+        EnableDamageCollider();
+        
+    
+    }
 
-    private void ToggleDamageCollider(object sender, System.Windows.Forms.KeyEventArgs e){
+    void update(){
+        if(Input.GetMouseButtonDown(0)){
+            ToggleDamageCollider();
+        }
+    }
+
+    /*private void ToggleDamageCollider(object sender, System.Windows.Forms.KeyEventArgs e){
         if(e.KeyCode == Keys.Enter){
             if (damageCollider.enabled == false){
                 EnableDamageCollider();

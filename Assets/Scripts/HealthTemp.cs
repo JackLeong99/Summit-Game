@@ -21,7 +21,6 @@ public class HealthTemp : MonoBehaviour
                 currentHealth = maxHealth;
             }
         }
-        UIManager.Instance.HealthBarSet(currentHealth);
-        System.Console.WriteLine("current health = " + currentHealth + "after taking " + damage);
+        
     }
 }    
