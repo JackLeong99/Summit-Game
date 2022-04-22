@@ -156,6 +156,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 1811162128}
+  rockPrefab: {fileID: 4044916002379960947, guid: 09f8de4148a2a7f47bc0c3210d34aff2, type: 3}
 --- !u!65 &1578541510
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -709,7 +710,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: TempRock
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 3634583317061395284, guid: 0afbe549ebfb4d042878fc21254b82c3, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 0afbe549ebfb4d042878fc21254b82c3, type: 3}
 --- !u!1001 &9200078424580907293
 PrefabInstance:

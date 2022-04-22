@@ -15,6 +15,7 @@ public class RockMoving : MonoBehaviour
     private float trackY;
     private float trackX;
     private Vector3 localArea;
+    public GameObject rockPrefab;
     // Start is called before the first frame update
     void Start()
     {
@@ -35,6 +36,17 @@ public class RockMoving : MonoBehaviour
    void Update()
     {
         transform.Translate(translationX *(speed* Time.deltaTime), translationY *(speed* Time.deltaTime), translationZ *(speed* Time.deltaTime));
+        if(transform.position.y<=target.transform.position.y)
+        {
+            Debug.Log("hi");
+            spawnRock();
+            
+        }
+    }
 
+    public void spawnRock(){
+        GameObject breakablerock= Instantiate(rockPrefab); 
+        breakablerock.transform.position=target.position;
+        Destroy(gameObject);
     }
 }
