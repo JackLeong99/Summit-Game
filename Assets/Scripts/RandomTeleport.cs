@@ -7,6 +7,7 @@ public class RandomTeleport : MonoBehaviour
 
 
     //need to prevent the player from going outside the arena
+    //could get a function that finds this out
 
     private float newX;
     private float newY;
