@@ -6,12 +6,11 @@ public class RandomTeleport : MonoBehaviour
 {
 
 
-    //set a radius for where the player can go
     //need to prevent the player from going outside the arena
-    //scale between -10 and 10 for x and z
-    //get position of player
-    //increase y by a scale of 3-6
 
+    private float newX;
+    private float newY;
+    private float newZ;
 
     // Start is called before the first frame update
     void Start()
@@ -22,13 +21,18 @@ public class RandomTeleport : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        if(Input.GetButtonDown("Teleport"))
+    {
+        TeleportRandom();
+    }
     }
 
     public void TeleportRandom() 
     {
-        transform.position.y+=Random.Range(3f, 6f);
-        transform.position.x+=Random.Range(-10f, 10f);
-        transform.position.z+=Random.Range(-10f, 10f);
+
+        newX=Random.Range(-10f, 10f);
+        newY=Random.Range(3f, 6f);
+        newZ=Random.Range(-10f, 10f);
+        transform.Translate(newX, newY, newZ);
     }
 }
