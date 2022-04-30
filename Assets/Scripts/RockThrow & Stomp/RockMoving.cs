@@ -33,7 +33,7 @@ public class RockMoving : MonoBehaviour
         localArea.Normalize();
         //takes position and stores it for later use
         translationZ=localArea.z;
-        translationY=localArea.y; //set to what the ground is rather than the what the player is to avoid issues with player being in the air
+        translationY=localArea.y;
         translationX=localArea.x;
     }
 
