@@ -14,6 +14,7 @@ public class Stomp : MonoBehaviour
     void Start()
     {
         player=GameObject.FindWithTag("Target");
+        //player=GameObject.FindWithTag("Player");
     }
 
     // Update is called once per frame
