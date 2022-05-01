@@ -6,15 +6,17 @@ TagManager:
   tags:
   - Ground
   - camIgnore
-  - PlayerBullet
-  - CinemachineTarget
   - Target
   - Arena
+  - CinemachineTarget
+  - Hittable
+  - Weapon
+  - PlayerBullet
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Player
   - Water
   - UI
   - Ground
