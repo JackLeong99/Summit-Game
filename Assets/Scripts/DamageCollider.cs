@@ -11,13 +11,6 @@ public class DamageCollider : MonoBehaviour
 
     private bool toggled;
 
-//testing code
-
-    void Start(){
-        //temp
-        EnableDamageCollider();
-        //DisableDamageCollider();
-    }
 
 //to help deetermine if awake.
     private void Awake(){
@@ -26,7 +19,7 @@ public class DamageCollider : MonoBehaviour
         damageCollider.isTrigger = true;
         damageCollider.enabled = false;
     }
-
+//these two functions aren't really 'necessary' right now but no harm in leaving them in. Might be useful later.
     public void EnableDamageCollider(){
         damageCollider.enabled = true;
     }
@@ -36,41 +29,42 @@ public class DamageCollider : MonoBehaviour
     }
 
     private void OnTriggerEnter(Collider other){
+        //If the weapon is 'swinging' and an enemy is hit
         if(other.tag == "Hittable" || damageCollider.enabled == true){
+            //Store the gameObject that is hit in a variable
             HealthTemp healthTemp = other.GetComponent<HealthTemp>();
-
+            //Deal damage if a health script exists.
             if (healthTemp != null){
                 healthTemp.takeDamage(currentWeaponDamage);
             }
         }
     }
-//do last- Not yet working.
-/*
-    private void ToggleDamageCollider(){
-        toggled = damageCollider.enabled;
-        if(toggled == true){
-            DisableDamageCollider();
-            return;
-        }
-        
-        EnableDamageCollider();
-        
-    
-    }
 
-    void update(){
-        if(Input.GetMouseButtonDown(0)){
+    void Update(){
+        if(Input.GetButtonDown("SwingWep")){
+            Debug.Log("SwingWep!");
+
             ToggleDamageCollider();
         }
     }
 
-    /*private void ToggleDamageCollider(object sender, System.Windows.Forms.KeyEventArgs e){
-        if(e.KeyCode == Keys.Enter){
-            if (damageCollider.enabled == false){
-                EnableDamageCollider();
-                wait 1;
-            }
+    private void ToggleDamageCollider(){
+        //Temp Version Until animation exists
+        toggled = damageCollider.enabled;
+        if(toggled == false){
+            EnableDamageCollider();
+        }
+        else{
             DisableDamageCollider();
         }
-    }*/
+
+        
+        //Actual version
+        
+        //Do Animation
+        //EnableDamageCollider();
+        //if(AnimationCompleted){
+            //DisableDamage
+        //}
+    }
 }
