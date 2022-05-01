@@ -385,6 +385,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: TestArea
       objectReference: {fileID: 0}
+    - target: {fileID: 71001051173157375, guid: 09f558fcf066f414e8f61302c4bf89dd, type: 3}
+      propertyPath: m_TagString
+      value: Arena
+      objectReference: {fileID: 0}
+    - target: {fileID: 2634818218641665378, guid: 09f558fcf066f414e8f61302c4bf89dd, type: 3}
+      propertyPath: m_IsKinematic
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2795706224014447720, guid: 09f558fcf066f414e8f61302c4bf89dd, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -437,6 +445,10 @@ PrefabInstance:
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 2074702184}
+    - target: {fileID: 8484973613757922747, guid: 09f558fcf066f414e8f61302c4bf89dd, type: 3}
+      propertyPath: m_Convex
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8889926121339766561, guid: 09f558fcf066f414e8f61302c4bf89dd, type: 3}
       propertyPath: m_Mesh
       value: 

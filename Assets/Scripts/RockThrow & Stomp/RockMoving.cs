@@ -20,13 +20,15 @@ public class RockMoving : MonoBehaviour
     public GameObject rockPrefab;
 
     private GameObject player;
+    private GameObject arena;
     // Start is called before the first frame update
     void Start()
     {
-        //GameObject test=GameObject.FindWithTag("Player"); or
-       // GameObject player = GameObject.Find("Player"); //later boss script can send this value to this scripts
-        //target=player.transform;
-        GameObject player=GameObject.FindWithTag("Target");
+        arena=GameObject.FindWithTag("Arena");
+        // player=GameObject.FindWithTag("Player"); or
+       // player = GameObject.Find("Player"); //later boss script can send this value to this scripts
+         player=GameObject.FindWithTag("Target");
+         
         target=player.transform;
         //puts position into local space
         localArea= transform.InverseTransformPoint(target.position); 
@@ -41,22 +43,13 @@ public class RockMoving : MonoBehaviour
    void Update()
     {
         transform.Translate(translationX *(speed*rageMultiplier * Time.deltaTime), translationY *(speed*rageMultiplier* Time.deltaTime), translationZ *(speed*rageMultiplier * Time.deltaTime));
-       
-       
-       //if(transform.position.y<=ground level) set a ground level for it to spawn at
-        if(transform.position.y<=target.transform.position.y)
-        {
-            Debug.Log("hi");
-            spawnRock();
-            
-        }
     }
 
     //spawn ground rock and destroy itself
     public void spawnRock()
     {
         GameObject breakablerock= Instantiate(rockPrefab); 
-        breakablerock.transform.position=target.position;
+        breakablerock.transform.position=transform.position;
         Destroy(gameObject);
     }
     
@@ -70,6 +63,7 @@ public class RockMoving : MonoBehaviour
     void OnCollisionEnter(Collision collider)
     {
         GameObject other = collider.gameObject;
+        Debug.Log(other);
 
         if(other==player)
         {
@@ -77,6 +71,10 @@ public class RockMoving : MonoBehaviour
             healthTemp.takeDamage(10);
             //damage player
             //takeDamage(some value) from health temp or where ever
+        }
+        if(other==arena)
+        {
+            spawnRock();
         }
     }
 }
