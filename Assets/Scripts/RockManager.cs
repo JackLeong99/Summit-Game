@@ -7,6 +7,8 @@ public class RockManager : MonoBehaviour
 {
 
     private List <GameObject> allRocks = new List <GameObject>();
+
+    private int RockMoved;
     // Start is called before the first frame update
     void Start()
     {
@@ -23,11 +25,14 @@ public class RockManager : MonoBehaviour
         
     }
 
-    public void RockPositionUpdate(int postionInArray)
+    //update the array with the new position
+    public void RockPositionUpdate(GameObject rockMoved)
     {
-        //update the array with the new position
+        allRocks[RockMoved]=rockMoved;
+        
     }
 
+    //finds closes rock to the boss
     public GameObject FindClosesRock(Transform bossPos) //needs to give pos of boss
     {
         //only need x and z
@@ -42,7 +47,7 @@ public class RockManager : MonoBehaviour
             float tempx=allRocks[i].transform.position.x-bossPos.position.x;
             float tempz=allRocks[i].transform.position.z-bossPos.position.z;
             float distanceFromBoss=(tempx*tempx)+(tempz*tempz);
-
+        Debug.Log(distanceFromBoss);
             if(distanceFromBoss<lowestValue)
             {
                 lowestValue=distanceFromBoss;
@@ -52,6 +57,7 @@ public class RockManager : MonoBehaviour
 
             //x2 + z2 find smallest
         }
+        RockMoved=closesRock;
 
         GameObject closest=allRocks[closesRock];
         return closest;
