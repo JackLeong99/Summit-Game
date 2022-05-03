@@ -6451,7 +6451,6 @@ GameObject:
   m_Component:
   - component: {fileID: 901479528}
   - component: {fileID: 901479527}
-  - component: {fileID: 901479529}
   m_Layer: 0
   m_Name: RockManager
   m_TagString: Untagged
@@ -6486,19 +6485,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 19
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &901479529
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 901479526}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c50b5088cc7e2e7408c6ce41f3ce90c6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  rockManager: {fileID: 901479527}
 --- !u!4 &945753478 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8338988566280778637, guid: 64dce48905ffd9b4293e595fa6941544, type: 3}
@@ -6785,6 +6771,7 @@ GameObject:
   - component: {fileID: 1222135672}
   - component: {fileID: 1222135673}
   - component: {fileID: 1222135674}
+  - component: {fileID: 1222135675}
   m_Layer: 0
   m_Name: Stalker
   m_TagString: Untagged
@@ -6915,6 +6902,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 38abed2a9ecb94d16bdcac3aeebf42eb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1222135675
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1222135666}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c50b5088cc7e2e7408c6ce41f3ce90c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &1270468008 stripped
