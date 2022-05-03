@@ -5,6 +5,7 @@ using UnityEngine;
 public class Knockback : MonoBehaviour
 {
     [SerializeField] private float strength;
+    [SerializeField] private float knockup;
     [SerializeField] private float duration;
 
     private void Start(){
@@ -17,20 +18,20 @@ public class Knockback : MonoBehaviour
         Debug.Log(player);
         if(player != null)
         {
-            Knock(collision, player);
+            StartCoroutine(Knock(collision, player));
         }
     }
 
     IEnumerator Knock(Collider collision, CharacterController player)
     {
-        Vector3 dir = (-collision.transform.position - transform.position) * strength;
+        Vector3 dir = ((collision.transform.position - transform.position) * strength) + (Vector3.up * knockup);
         float timer = 0;
         while(timer < duration)
         {
             Debug.Log(timer);
-            player.Move(dir.normalized * Time.deltaTime);
+            player.Move(dir * Time.deltaTime);
             timer += Time.deltaTime;
+            yield return null;
         }
-        yield return null;
     }
 }
