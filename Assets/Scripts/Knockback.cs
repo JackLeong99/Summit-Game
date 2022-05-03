@@ -5,16 +5,32 @@ using UnityEngine;
 public class Knockback : MonoBehaviour
 {
     [SerializeField] private float strength;
+    [SerializeField] private float duration;
 
-    private void OnCollisionEnter(Collision collision){
-        Rigidbody rb = collision.collider.GetComponent<Rigidbody>();
+    private void Start(){
 
-        if(rb != null)
+    }
+
+	private void OnTriggerEnter(Collider collision)
+	{
+		CharacterController player = collision.GetComponent<CharacterController>();
+        Debug.Log(player);
+        if(player != null)
         {
-            Vector3 direction = collision.transform.position - transform.position;
-            direction.y = 0;
-
-            rb.AddForce(direction.normalized * strength, ForceMode.Impulse);
+            Knock(collision, player);
         }
+    }
+
+    IEnumerator Knock(Collider collision, CharacterController player)
+    {
+        Vector3 dir = (-collision.transform.position - transform.position) * strength;
+        float timer = 0;
+        while(timer < duration)
+        {
+            Debug.Log(timer);
+            player.Move(dir.normalized * Time.deltaTime);
+            timer += Time.deltaTime;
+        }
+        yield return null;
     }
 }
