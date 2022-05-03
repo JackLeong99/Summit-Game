@@ -6,9 +6,34 @@ using System.Linq;
 public class RockManager : MonoBehaviour
 {
 
+    private static RockManager instance;
+    public static RockManager Instance
+    {
+        get
+        {
+            if(instance == null)
+            {
+                Debug.LogError("No RockManager in the scene");
+            }
+            return instance;
+        }
+    }
+
     private List <GameObject> allRocks = new List <GameObject>();
 
     private int RockMoved;
+
+    void Awake()
+    {
+        if (instance != null)
+        {
+            Destroy(gameObject);
+        }
+        else
+        {
+            instance = this;
+        }
+    }
     // Start is called before the first frame update
     void Start()
     {
@@ -29,6 +54,7 @@ public class RockManager : MonoBehaviour
     public void RockPositionUpdate(GameObject rockMoved)
     {
         allRocks[RockMoved]=rockMoved;
+        Debug.Log(allRocks[RockMoved].transform.position);
         
     }
 
@@ -47,12 +73,12 @@ public class RockManager : MonoBehaviour
             float tempx=allRocks[i].transform.position.x-bossPos.position.x;
             float tempz=allRocks[i].transform.position.z-bossPos.position.z;
             float distanceFromBoss=(tempx*tempx)+(tempz*tempz);
-        Debug.Log(distanceFromBoss);
+      //  Debug.Log(distanceFromBoss);
             if(distanceFromBoss<lowestValue)
             {
                 lowestValue=distanceFromBoss;
                 closesRock=i;
-                Debug.Log(i);
+               // Debug.Log(i);
             }
 
 

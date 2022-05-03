@@ -23,9 +23,11 @@ public class RockMoving : MonoBehaviour
     private GameObject arena;
 
     private bool hasntHit=true;
+
     // Start is called before the first frame update
     void Start()
     {
+        
         arena=GameObject.FindWithTag("Arena");
          player=GameObject.FindWithTag("Player");
        // player = GameObject.Find("Player"); //later boss script can send this value to this scripts
@@ -52,6 +54,7 @@ public class RockMoving : MonoBehaviour
     {
         GameObject breakablerock= Instantiate(rockPrefab); 
         breakablerock.transform.position=transform.position;
+        RockManager.Instance.RockPositionUpdate(breakablerock);
         Destroy(gameObject);
     }
     
