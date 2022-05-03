@@ -5,7 +5,7 @@ using UnityEngine;
 public class RockPathFinding : MonoBehaviour
 {
     private GameObject target;
-    RockManager rockManager;
+    public RockManager rockManager;
     // Start is called before the first frame update
     void Start()
     {
@@ -15,13 +15,18 @@ public class RockPathFinding : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+                if(Input.GetButtonDown("Teleport"))
+    {
+        SetTarget();
+    }
     }
 
 
     public void SetTarget()
     {
+        Debug.Log(this.transform);
         target=rockManager.FindClosesRock(this.transform);
         RockPickedUp targeting = target.GetComponent<RockPickedUp>();
+        targeting.PickedUp();
     }
 }

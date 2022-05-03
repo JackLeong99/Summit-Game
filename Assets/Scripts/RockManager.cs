@@ -52,6 +52,7 @@ public class RockManager : MonoBehaviour
             {
                 lowestValue=distanceFromBoss;
                 closesRock=i;
+                Debug.Log(i);
             }
 
 
