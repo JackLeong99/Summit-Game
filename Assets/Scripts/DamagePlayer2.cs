@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class DamagePlayer2 : MonoBehaviour
 {
-    private int damage = 25;
+    [SerializeField] int damage = 25;
     private void OnTriggerEnter(Collider other){
         PlayerStats health = other.GetComponent<PlayerStats>();
 
