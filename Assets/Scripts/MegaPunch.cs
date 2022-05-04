@@ -9,6 +9,7 @@ public class MegaPunch : MonoBehaviour
 
     [SerializeField] public float duration;
 
+    //Update is for testing purposes without a boss script, should be removed in final use
     void Update()
     {
         if(Input.GetKeyDown("x"))
