@@ -8,6 +8,8 @@ public class PlayerBullet : MonoBehaviour
     public float CurrentLifetime = 0;
     private bool dead;
 
+    public int currentGunDamage = 25;
+
     void Start()
     {
 
@@ -27,6 +29,25 @@ public class PlayerBullet : MonoBehaviour
     {
         if (hit.gameObject.tag != "PlayerBullet" && hit.gameObject.tag != "Player" && !dead)
         {
+            CullProjectile();
+        }
+    }
+    //Check for enemy damage and deal damage to the enemy if it hits them.
+
+    private void OnTriggerEnter(Collider other){
+        Debug.Log("GunHit!");
+        //If the projectile hits an enemy:
+        if(other.tag == "Hittable"){
+            Debug.Log("EnemyHit!");
+            //Store the gameObject that is hit in a variable
+            HealthTemp healthTemp = other.GetComponent<HealthTemp>();
+
+            //Deal damage if a health script exists.
+            if (healthTemp != null){
+                healthTemp.takeDamage(currentGunDamage);
+            }
+            //Destroy the projectile if a Hittable is hit. Don't want to pass through a player
+            //intended trigger and be destroyed.
             CullProjectile();
         }
     }
