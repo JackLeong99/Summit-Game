@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657826, g: 0.49641263, b: 0.57481676, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -373,6 +373,17 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 09f8de4148a2a7f47bc0c3210d34aff2, type: 3}
+--- !u!114 &117471494 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1399244364398765765, guid: 90c1bd1fda819204985b62a4e3e9e7b5, type: 3}
+  m_PrefabInstance: {fileID: 1340508997}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 67db9e8f0e2ae9c40bc1e2b64352a6b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &156307956
 GameObject:
   m_ObjectHideFlags: 0
@@ -7426,7 +7437,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 2.1398058, y: 1}
+    m_SensorSize: {x: 2.6095345, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -7462,6 +7473,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: UIManager
       objectReference: {fileID: 0}
+    - target: {fileID: 3406367461238469038, guid: 738ab131643238a48802e411ddfd2202, type: 3}
+      propertyPath: BossName
+      value: 
+      objectReference: {fileID: 1568358484}
+    - target: {fileID: 3406367461238469038, guid: 738ab131643238a48802e411ddfd2202, type: 3}
+      propertyPath: BossHealthBar
+      value: 
+      objectReference: {fileID: 117471494}
     - target: {fileID: 3406367461238469038, guid: 738ab131643238a48802e411ddfd2202, type: 3}
       propertyPath: PanelGameOver
       value: 
@@ -7671,6 +7690,17 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 16
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1568358484 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 9185530048483782247, guid: 90c1bd1fda819204985b62a4e3e9e7b5, type: 3}
+  m_PrefabInstance: {fileID: 1340508997}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1602269000
 GameObject:
   m_ObjectHideFlags: 0
