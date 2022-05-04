@@ -27,6 +27,10 @@ public class KnockbackReciever : MonoBehaviour
     {
         dir.x = 0;
         dir.z = 0;
+        if(dir.y < 0)
+        {
+            dir.y = -dir.y;
+        }
         impact += dir.normalized * force * 10 / mass;
     }
     void Update()
