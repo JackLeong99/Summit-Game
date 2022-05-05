@@ -23,11 +23,19 @@ public class UIManager : MonoBehaviour
     public Slider PlayerHealthBar;
     private float FullHealth=100f;
 
+    public Slider BossHealthBar;
+    private float BossFullHealth=100f;
+
+
+
     public GameObject PanelGameOver;
 
 
     public TMP_Text CharacterClass;
     private string CharacterClassFormat= "Character Class: {0}";
+
+    public TMP_Text BossName;
+
 
     void Awake()
     {
@@ -46,9 +54,13 @@ public class UIManager : MonoBehaviour
     {
         PlayerHealthBar.maxValue= 100; //can be changed
         PlayerHealthBar.value=FullHealth;
+
+        BossHealthBar.maxValue= 100; //can be changed
+        BossHealthBar.value=BossFullHealth;
         
-        CharacterClass.text= string.Format(CharacterClassFormat, "Archer");
+        CharacterClass.text= string.Format(CharacterClassFormat, "Archer"); //to change archer set by a string
         PanelGameOver.SetActive(false);
+        BossName.text="Golem"; //set by game later same as archer
         
     }
 

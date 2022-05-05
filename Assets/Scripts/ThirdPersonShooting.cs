@@ -45,7 +45,7 @@ public class ThirdPersonShooting : MonoBehaviour
     {
         CooldownHandler();
 
-        if(Input.GetButtonDown("Spell1") && cdTimer <= 0 &&!TPCScript._Inactionable)
+        if(Input.GetButtonDown("Spell1") && cdTimer <= 0 &&!TPCScript._Inactionable &&TPCScript.Grounded)
         {
             StartCoroutine(ShootProjectile());
         }

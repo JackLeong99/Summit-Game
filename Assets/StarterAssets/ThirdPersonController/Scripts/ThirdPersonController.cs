@@ -102,6 +102,8 @@ namespace StarterAssets
 
 		private float dodgeTimer;
 
+		private KnockbackReciever reciever;
+
 		//End Custom
 
 		private void Awake()
@@ -128,6 +130,8 @@ namespace StarterAssets
 			//custom code
 			Keyframe dodge_lastFrame = dodgeCurve[dodgeCurve.length -1];
 			dodgeTimer = dodge_lastFrame.time;
+
+			reciever = GetComponent<KnockbackReciever>();
 		}
 
 		private void Update()
@@ -135,16 +139,19 @@ namespace StarterAssets
 
 			_hasAnimator = TryGetComponent(out _animator);
 			
-			JumpAndGravity();
 			GroundedCheck();
-			if(!_Inactionable) 
-			{
-				Move();
-			}
+			JumpAndGravity();
 
-			if(Input.GetButtonDown("Spell2"))
-			{
-				if(_speed != 0 && Grounded && !_Inactionable) {StartCoroutine(Dodge());}
+			if(reciever.impact.magnitude <= 5){
+				if(!_Inactionable) 
+				{
+					Move();
+				}
+
+				if(Input.GetButtonDown("Spell2"))
+				{
+					if(_speed != 0 && Grounded && !_Inactionable) {StartCoroutine(Dodge());}
+				}
 			}
 		}
 

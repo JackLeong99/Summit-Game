@@ -4,43 +4,36 @@ using UnityEngine;
 
 public class Shockwave : MonoBehaviour
 {
-    //[SerializeField] GameObject hitbox;
-    public GameObject Player;
-    public int damage = 5;
-    public GameObject shockwave;
-    public Vector3 sizeChange; // This has to be set for (x,y,z) in the editor
-    //public float cubeSize = 0.2f;
-    [SerializeField] float sizeMax; 
-    [SerializeField] float scaleSpeed;
+    [SerializeField] float maxSize;
+    [SerializeField] float scaleTime;
 
-    /*void OnMouseDown()
-    {
-        shockwave.transform.localScale = shockwave.transform.localScale - sizeChange;    
-    }*/
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
     void Update()
     {
-        while(shockwave.transform.localScale.x < sizeMax){
-            shockwave.transform.localScale = (shockwave.transform.localScale + sizeChange * Time.deltaTime);
-            
+        if(Input.GetKeyDown("c"))
+        {
+            scaleHitBox();
         }
-        
     }
 
-    private void OnTriggerEnter(Collider other){
-        if(other.tag == "Player"){
-            PlayerStats health = Player.GetComponent<PlayerStats>();
-            
+    public void scaleHitBox()
+    {
+        StartCoroutine(scale());
+    }
 
-            if(health != null){
-                health.takeDamage(damage);
-            }
+    IEnumerator scale()
+    {
+        float timer = 0;
+        Vector3 scale = gameObject.transform.localScale;
+
+        Vector3 toScale = scale;
+        toScale.x = toScale.x * maxSize;
+        toScale.z = toScale.z * maxSize;
+
+        while (timer < scaleTime)
+        {
+            timer += Time.deltaTime;
+            gameObject.transform.localScale = Vector3.Lerp(scale, toScale, timer / scaleTime);
+            yield return null;
         }
     }
 }

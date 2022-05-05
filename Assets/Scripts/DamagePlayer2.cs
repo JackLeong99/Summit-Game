@@ -4,9 +4,7 @@ using UnityEngine;
 
 public class DamagePlayer2 : MonoBehaviour
 {
-    //made public so it can be different for different enemy types without needing many different scripts
-    //of the same kind
-    public int damage = 25;
+    [SerializeField] int damage = 25;
     private void OnTriggerEnter(Collider other){
         if(other.tag == "Player"){
             PlayerStats health = other.GetComponent<PlayerStats>();
