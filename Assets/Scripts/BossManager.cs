@@ -4,7 +4,14 @@ using UnityEngine;
 
 public class BossManager : MonoBehaviour
 {
+    [SerializeField] float gravity;
     //store the player object
+    [SerializeField] LayerMask GroundLayers;
+
+    [SerializeField] float GroundedOffset;
+    public float GroundedRadius; 
+
+    private bool Grounded;
     public Transform Player;
 
     //speed of enemy
@@ -22,14 +29,20 @@ public class BossManager : MonoBehaviour
     public bool Rage;
     
     void Update(){
+        GroundedCheck();
         //Looks at the player
         transform.LookAt(Player);
+
+        if(!Grounded)
+        {
+            transform.Translate(Vector3.down * gravity * Time.deltaTime);
+        }
         
 
         //if not in melee
         if(Vector3.Distance(transform.position, Player.position) >= MinDist){
         
-            transform.position += transform.forward * MoveSpeed * Time.deltaTime;
+            transform.Translate(transform.forward * MoveSpeed * Time.deltaTime);
             //when doing a move pass SelectMove(Midattack1, Midattacklast);
 
                 
@@ -53,5 +66,11 @@ public class BossManager : MonoBehaviour
         //}
         
         MoveSelector = Random.Range(min, max);
+    }
+
+    private void GroundedCheck()
+    {
+        Vector3 spherePosition = new Vector3(transform.position.x, transform.position.y - GroundedOffset, transform.position.z);
+		Grounded = Physics.CheckSphere(spherePosition, GroundedRadius, GroundLayers, QueryTriggerInteraction.Ignore);
     }
 }
