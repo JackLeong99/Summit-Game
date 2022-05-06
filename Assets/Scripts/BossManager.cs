@@ -50,12 +50,14 @@ public class BossManager : MonoBehaviour
         // if in 'melee'
         if(Vector3.Distance(transform.position, Player.position) <= MinDist){
             //when doing a move pass SelectMove(Meleeattack1, Meleeattacklast); 
+            SelectMove(1, 1); //selectmove 1
 
         }
 
         //If player is 'far' do 'ranged' 
         if(Vector3.Distance(transform.position,Player.position) >= MaxDist){
             //when doing a move pass SelectMove(Rangedattack1, Rangedattacklast);
+            SelectMove(5, 5);
         } 
     }
 
@@ -64,7 +66,10 @@ public class BossManager : MonoBehaviour
             //min+= Whatever the number of moves is;
             //max+= Whatever the number of moves is;
         //}
-        
+
+        //Shockwave ==1
+        //Punch ==2
+        //Throw ==5
         MoveSelector = Random.Range(min, max);
     }
 
