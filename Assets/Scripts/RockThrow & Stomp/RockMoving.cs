@@ -30,8 +30,6 @@ public class RockMoving : MonoBehaviour
         
         arena=GameObject.FindWithTag("Arena");
          player=GameObject.FindWithTag("Player");
-       // player = GameObject.Find("Player"); //later boss script can send this value to this scripts
-        // player=GameObject.FindWithTag("Target");
          
         target=player.transform;
         //puts position into local space
