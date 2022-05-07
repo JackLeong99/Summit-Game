@@ -10,7 +10,7 @@ public class Shockwave : MonoBehaviour
     //in seconds = how long it will take to grow to maxSize (affects scale speed)
     [SerializeField] float scaleTime;
     //public static float scaleTime;
-
+//wtf
 
 //placeholder for testing. To use this comment out Start()
 /*
