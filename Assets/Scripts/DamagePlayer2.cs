@@ -14,5 +14,5 @@ public class DamagePlayer2 : MonoBehaviour
             }
         }
         
-    }
+    }//timeout / delay- anti-multi-hit to-add
 }

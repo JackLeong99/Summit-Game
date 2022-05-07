@@ -15,6 +15,8 @@ GameObject:
   - component: {fileID: 5605238902063053611}
   - component: {fileID: 5605238902063053608}
   - component: {fileID: 3736248178684664082}
+  - component: {fileID: 2191742662804885397}
+  - component: {fileID: 1852734812150063213}
   m_Layer: 0
   m_Name: ShockwaveHitbox
   m_TagString: Untagged
@@ -114,7 +116,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxSize: 100
-  scaleTime: 1
+  scaleTime: 2
 --- !u!114 &5605238902063053608
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -140,4 +142,29 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 84adc626b5566104b8eb9b7791c9a5b1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  force: 100
+  force: 10
+--- !u!114 &2191742662804885397
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4686178775174311369}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b287b778a2b35b42a29bbff0f7f606a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  force: 1
+--- !u!114 &1852734812150063213
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4686178775174311369}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 38abed2a9ecb94d16bdcac3aeebf42eb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

@@ -1088,7 +1088,6 @@ GameObject:
   - component: {fileID: 623575987}
   - component: {fileID: 623575989}
   - component: {fileID: 623575988}
-  - component: {fileID: 623575990}
   - component: {fileID: 623575991}
   m_Layer: 0
   m_Name: Particle System
@@ -5959,22 +5958,6 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 4
     vectorLabel1_3: W
---- !u!114 &623575990
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 623575986}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: de562d1da858d476b9a016013882d56d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  part: {fileID: 623575989}
-  Player: {fileID: 95236926}
-  damage: 0
-  hitCount: 0
 --- !u!114 &623575991
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6076,6 +6059,21 @@ CapsuleCollider:
   m_Height: 1
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &658910110
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 95236926}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fd70b560b1c84cd49a1f296d44acb87a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  impact: {x: 0, y: 0, z: 0}
+  gravity: 1
+  mass: 1
 --- !u!4 &697068855 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3832703582600944452, guid: bceefb2a39f6db74d9bc9d006687b7f1, type: 3}
@@ -6528,10 +6526,13 @@ MonoBehaviour:
   GroundedRadius: 0
   Player: {fileID: 658910096}
   MoveSpeed: 7
-  MaxDist: 10
+  MaxDist: 20
   MinDist: 5
   MoveSelector: 0
   Rage: 0
+  shockwaveHitbox: {fileID: 4686178775174311369, guid: c8aaaf5564c7a4a3a9f37be7ab91483e, type: 3}
+  delayBeforeNextAttack: 1
+  ShockwaveScript: {fileID: 0}
 --- !u!114 &1222135674
 MonoBehaviour:
   m_ObjectHideFlags: 0
