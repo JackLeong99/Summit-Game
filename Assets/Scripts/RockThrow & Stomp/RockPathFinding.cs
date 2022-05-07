@@ -7,11 +7,14 @@ public class RockPathFinding : MonoBehaviour
     private GameObject target;
     private RockPickedUp targeting;
     private bool currentlyTargeting=false;
-    private int MoveSpeed = 4;
+    //private int MoveSpeed = 4; //if calls work remove this and transform.pos
+
+
+    private GameObject player;
     // Start is called before the first frame update
     void Start()
     {
-      //  rockManager = rockManager.GetComponent<RockManager>();
+      player=GameObject.FindWithTag("Player");
     }
 
     // Update is called once per frame
@@ -23,12 +26,15 @@ public class RockPathFinding : MonoBehaviour
         }
         if(currentlyTargeting)
         {
-        transform.position += transform.forward * MoveSpeed * Time.deltaTime;
+       // transform.position += transform.forward * MoveSpeed * Time.deltaTime; //this needs to be a call to BossPathing
+        BossPathing boss = this.GetComponent<BossPathing>();
+        boss.ChangeTarget(target); //should hopefully work
 
             if(Mathf.Abs(this.transform.position.x-target.transform.position.x)<5 && Mathf.Abs(this.transform.position.z-target.transform.position.z)<5)
             {
                 targeting.PickedUp();
                 currentlyTargeting=false;
+                boss.ChangeTarget(player);
             }
         }
     }
@@ -41,11 +47,9 @@ public class RockPathFinding : MonoBehaviour
         Debug.Log(this.transform.position + "hi");
         target=RockManager.Instance.FindClosesRock(this.transform);
         targeting = target.GetComponent<RockPickedUp>();
-        //targeting.PickedUp(); //need to move first before pickup
         
         
-        transform.LookAt(target.transform);
+        transform.LookAt(target.transform);//probably don't need this due to boss pathing
         currentlyTargeting=true;
     }
-}//if close pick up
-//set currently targeting to false
+}

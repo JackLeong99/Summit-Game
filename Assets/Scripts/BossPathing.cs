@@ -21,4 +21,10 @@ public class BossPathing : MonoBehaviour
     {
         agent.destination = targetPos.position;
     }
+
+    public void ChangeTarget(GameObject newTarget)
+    {
+        target=newTarget;
+        targetPos=target.transform;
+    }
 }
