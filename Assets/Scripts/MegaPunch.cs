@@ -24,7 +24,7 @@ public class MegaPunch : MonoBehaviour
 
     IEnumerator punch()
     {
-        var hitbox = Instantiate(hitboxObject, parentObject.transform.position, parentObject.transform.rotation, parentObject.transform);
+        var hitbox = Instantiate(hitboxObject, parentObject.transform.position, Quaternion.identity, parentObject.transform);
         yield return new WaitForSeconds(duration);
         Destroy(hitbox);
     }
