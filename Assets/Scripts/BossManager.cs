@@ -40,7 +40,7 @@ public class BossManager : MonoBehaviour
     //to prevent other actions starting while in one still
     private bool inAttack;
 
-    public BossPathing bPathing;// = new BossPathing();
+    public BossPathing bPathing = new BossPathing();
     
 
     private void Awake(){
@@ -61,8 +61,8 @@ public class BossManager : MonoBehaviour
 
         //if not in melee
         if(Vector3.Distance(transform.position, Player.position) >= MinDist){
-            //bPathing.bossPathing();
-            bPathing.GetComponent<BossPathing>().bossPathing();
+            bPathing.bossPathing();
+            //bPathing.GetComponent<BossPathing>().bossPathing();
             //transform.Translate(transform.forward * MoveSpeed * Time.deltaTime);
             //when doing a move pass SelectMove(Midattack1, Midattacklast);
             bool isMidRange = Vector3.Distance(transform.position, Player.position) >= MinDist;
