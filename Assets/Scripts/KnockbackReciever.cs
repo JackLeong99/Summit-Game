@@ -35,7 +35,7 @@ public class KnockbackReciever : MonoBehaviour
     }
     void Update()
     {
-        Debug.Log(impact.magnitude);
+        //Debug.Log(impact.magnitude);
         if(impact.magnitude > 5)
         {
             player.Move(impact * Time.deltaTime);

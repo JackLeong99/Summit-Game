@@ -15,8 +15,8 @@ public class BossPathing : MonoBehaviour
     private NavMeshAgent agent;
     private BossManager Attacking;
 
-    public Transform rockPos;
-    private Transform backupTargetPos;
+    //public Transform rockPos;
+    //private Transform backupTargetPos;
 
     private void Awake()
     {

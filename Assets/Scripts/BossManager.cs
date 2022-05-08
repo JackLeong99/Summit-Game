@@ -31,7 +31,7 @@ public class BossManager : MonoBehaviour
     //is Rage?
     public bool Rage;
     //shockwaveattack
-    public GameObject shockwaveHitbox;
+    //public GameObject shockwaveHitbox;
     
     //time between actions
     public float delayBeforeNextAttack;
@@ -40,13 +40,15 @@ public class BossManager : MonoBehaviour
     //to prevent other actions starting while in one still
     public bool inAttack = false;
 
-    public BossPathing bPathing = new BossPathing();
+    private BossPathing bPathing;
+    private tempShockwaveCaller shockwave;
     
 
     private void Awake(){
-
+        //defining other scripts referenceds them here- this method avoids an error.
+        bPathing = GetComponent<BossPathing>();
+        shockwave = GetComponent<tempShockwaveCaller>();
     }
-
     
     void Update(){
         /*GroundedCheck();
@@ -70,11 +72,8 @@ public class BossManager : MonoBehaviour
             bool isMidRange = Vector3.Distance(transform.position, Player.position) >= MinDist;
             bool isLongRanged = Vector3.Distance(transform.position,Player.position) >= MaxDist;
             if(isMidRange && !inAttack && !isLongRanged){
-                Debug.Log("Mid Range!");
-                
-            }
-
-                
+                Debug.Log("Mid Range!");   
+            }                
         }
         // if in 'melee'
         bool isMelee = Vector3.Distance(transform.position, Player.position) <= MinDist;
@@ -85,10 +84,8 @@ public class BossManager : MonoBehaviour
                 //Instantiate(shockwaveHitbox, transform.position, transform.rotation);
                 //StartCoroutine(waitTime(2.3f, delayBeforeNextAttack));
             Debug.Log("In melee!");
-            StartCoroutine(meleeActions());
-                
+            StartCoroutine(meleeActions());    
            // }
-
         }
 
         //If player is 'far' do 'ranged' 
@@ -108,8 +105,8 @@ public class BossManager : MonoBehaviour
         if(MoveSelector == 1){
             Debug.Log("Do Shockwave!");
             //spawn the Shockwave Attack
-            //tempShockwaveCaller ();
-            Instantiate(shockwaveHitbox, transform.position, transform.rotation);
+            shockwave.instantiateShockwave();
+            //Instantiate(shockwaveHitbox, transform.position, transform.rotation);
             float animationDuration = 2;//ShockwaveScript.scaleTime;
             yield return new WaitForSeconds(animationDuration + delayBeforeNextAttack);
             
@@ -117,6 +114,18 @@ public class BossManager : MonoBehaviour
 
         //Coroutine finishes and boss is now able to select next action.
         inAttack = false;
+    }
+
+    IEnumerator midActions(){
+        inAttack = true;
+        SelectMove(3, 3);
+        yield return new WaitForSeconds(1);
+    }
+
+    IEnumerator rangedActions(){
+        inAttack = true;
+        SelectMove(5,5);
+        yield return new WaitForSeconds(1);
     }
 
     private void SelectMove(int min, int max){
