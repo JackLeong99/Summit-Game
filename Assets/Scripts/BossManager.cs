@@ -127,8 +127,8 @@ public class BossManager : MonoBehaviour
         //Mega Punch
         if(MoveSelector == 2){
             Debug.Log("Do MegaPunch!");
-            punch.megaPunch();
             animation.SetTrigger("Sweep");
+            punch.megaPunch();
             float animationDuration = 2; // Figure this out
             yield return new WaitForSeconds(animationDuration + delayBeforeNextAttack);
             
@@ -137,6 +137,7 @@ public class BossManager : MonoBehaviour
         //Ground Slam
         if(MoveSelector == 3){
             Debug.Log("Do Ground Slam!");
+            animation.SetTrigger("Slam");
             slam.groundSlam();
             float animationDuration = 2; // Figure this out
             yield return new WaitForSeconds(animationDuration + delayBeforeNextAttack);
@@ -160,6 +161,7 @@ public class BossManager : MonoBehaviour
         if(MoveSelector == 5){
             Debug.Log("Do Eruption!");
             erupt.eruption();
+            animation.SetTrigger("Eruption");
             float animationDuration = 2; // Figure this out
            // float delayBeforeCurrentAttack = 1.5f; // Figure this out
             yield return new WaitForSeconds(animationDuration + delayBeforeNextAttack);// + delayBeforeCurrentAttack
@@ -175,6 +177,7 @@ public class BossManager : MonoBehaviour
                 //bPathing.bossPathing();
                 yield return new WaitForSeconds(Time.deltaTime);
             }
+            animation.SetTrigger("Throw");
 
             attackException = false;
 
