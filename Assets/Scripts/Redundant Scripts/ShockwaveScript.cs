@@ -53,7 +53,8 @@ public class ShockwaveScript : MonoBehaviour
         int numEnter = part.GetTriggerParticles(ParticleSystemTriggerEventType.Enter, enter);
         //int numExit = ps.GetTriggerParticles(ParticleSystemTriggerEventType.Exit, exit);
 
-       // Debug.Log("Shockwave Hits!!!");
+
+        Debug.Log("Shockwave Hits!!!");
         hitCount +=1;
         // iterate through the particles which entered the trigger and make them red
         /*for (int i = 0; i < numEnter; i++)
