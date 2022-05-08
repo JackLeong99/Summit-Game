@@ -28,15 +28,28 @@ public class BossManager : MonoBehaviour
     //public Shockwave ShockwaveScript;
     //to prevent other actions starting while in one still
     public bool inAttack = false;
+    //used to prevent range self-looping
+    public bool rangedAllowed = true;
+    //the timer for rangedAllowed
+    public float delayBeforeRangedAllowed;
+    public bool attackException = false;
 
     private BossPathing bPathing;
     private tempShockwaveCaller shockwave;
+    private MegaPunch punch;
+    private GroundSlam slam;
+    private Eruption erupt;
+    private RockPathFinding rockThrow;
     
 
     private void Awake(){
         //defining other scripts referenceds them here- this method avoids an error.
         bPathing = GetComponent<BossPathing>();
         shockwave = GetComponent<tempShockwaveCaller>();
+        punch = GetComponent<MegaPunch>();
+        slam = GetComponent<GroundSlam>();
+        erupt = GetComponent<Eruption>();
+        rockThrow = GetComponent<RockPathFinding>();
     }
     
     void Update(){
@@ -78,18 +91,19 @@ public class BossManager : MonoBehaviour
         }
 
         //If player is 'far' do 'ranged' 
+        //frustration mechanic Option
         bool isRanged = Vector3.Distance(transform.position,Player.position) >= MaxDist;
-        if(isRanged && !inAttack){
+        if(isRanged && !inAttack && rangedAllowed){
             //when doing a move pass SelectMove(Rangedattack1, Rangedattacklast);
             Debug.Log("Long Range!");
-            SelectMove(5, 5);
+            StartCoroutine(rangedActions());
         } 
     }
 
     IEnumerator meleeActions(){
         //attack animation starts
         inAttack = true;
-        SelectMove(1, 1);
+        SelectMove(1, 4);
         //Shockwave
         if(MoveSelector == 1){
             Debug.Log("Do Shockwave!");
@@ -98,7 +112,22 @@ public class BossManager : MonoBehaviour
             //Instantiate(shockwaveHitbox, transform.position, transform.rotation);
             float animationDuration = 2;//ShockwaveScript.scaleTime;
             yield return new WaitForSeconds(animationDuration + delayBeforeNextAttack);
-            
+        }
+
+        //Mega Punch
+        if(MoveSelector == 2){
+            Debug.Log("Do MegaPunch!");
+            punch.megaPunch();
+            float animationDuration = 2; // Figure this out
+            yield return new WaitForSeconds(animationDuration + delayBeforeNextAttack);
+        }
+
+        //Ground Slam
+        if(MoveSelector == 3){
+            Debug.Log("Do Ground Slam!");
+            slam.groundSlam();
+            float animationDuration = 2; // Figure this out
+            yield return new WaitForSeconds(animationDuration + delayBeforeNextAttack);
         }
 
         //Coroutine finishes and boss is now able to select next action.
@@ -113,8 +142,41 @@ public class BossManager : MonoBehaviour
 
     IEnumerator rangedActions(){
         inAttack = true;
-        SelectMove(5,5);
-        yield return new WaitForSeconds(1);
+        rangedAllowed = false;
+        SelectMove(5,7);
+        //Ground Slam
+        if(MoveSelector == 5){
+            Debug.Log("Do Eruption!");
+            erupt.eruption();
+            float animationDuration = 2; // Figure this out
+           // float delayBeforeCurrentAttack = 1.5f; // Figure this out
+            yield return new WaitForSeconds(animationDuration + delayBeforeNextAttack);// + delayBeforeCurrentAttack
+        }
+        
+        //Rock Throw
+        if(MoveSelector == 6){
+            attackException = true;
+            Debug.Log("Do Rock Throw!");
+            rockThrow.SetTarget();
+            //while loop for wait for seconds- get isTargeting from RockPathFinding.
+            while(rockThrow.currentlyTargeting){
+                //bPathing.bossPathing();
+                yield return new WaitForSeconds(Time.deltaTime);
+            }
+            attackException = false;
+
+            float animationDuration = 2; // Figure this out
+           // float delayBeforeCurrentAttack = 1.5f; // Figure this out
+            //while loop for wait for seconds- get isTargeting from RockPathFinding.
+            yield return new WaitForSeconds(animationDuration + delayBeforeNextAttack);// + delayBeforeCurrentAttack
+        }
+
+         
+         //Coroutine finishes and boss is now able to select next action. (including moving)
+        inAttack = false;
+        //Prevents boss from spamming ranged attacks and locking itself into ranged animations - gives time to move forwards/advance
+        yield return new WaitForSeconds(delayBeforeRangedAllowed);
+        rangedAllowed = true;
     }
 
     private void SelectMove(int min, int max){

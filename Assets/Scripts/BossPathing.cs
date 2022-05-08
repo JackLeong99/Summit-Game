@@ -29,7 +29,9 @@ public class BossPathing : MonoBehaviour
     {
         //agent.destination = targetPos.position;
         Attacking = this.GetComponent<BossManager>();
-        if(Attacking.inAttack == true){
+        bool isAttacking = Attacking.inAttack;
+        bool isException = Attacking.attackException;
+        if(isAttacking && !isException){
             agent.isStopped = true;
         }
         else{
@@ -46,6 +48,7 @@ public class BossPathing : MonoBehaviour
     {
         target=newTarget;
         targetPos=target.transform;
+        //bossPathing();
 
     }
 }
