@@ -6,13 +6,10 @@ public class DamagePlayer2 : MonoBehaviour
 {
     [SerializeField] int damage = 25;
     private void OnTriggerEnter(Collider other){
-        if(other.tag == "Player"){
-            PlayerStats health = other.GetComponent<PlayerStats>();
+        PlayerStats health = other.GetComponent<PlayerStats>();
 
-            if(health != null){
-                health.takeDamage(damage);
-            }
+        if(health != null){
+            health.takeDamage(damage);
         }
-        
-    }//timeout / delay- anti-multi-hit to-add
+    }
 }
