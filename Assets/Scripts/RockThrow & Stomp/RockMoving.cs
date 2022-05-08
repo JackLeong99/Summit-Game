@@ -21,13 +21,15 @@ public class RockMoving : MonoBehaviour
 
     private GameObject player;
     private GameObject arena;
+
+    private bool hasntHit=true;
+
     // Start is called before the first frame update
     void Start()
     {
+        
         arena=GameObject.FindWithTag("Arena");
-        // player=GameObject.FindWithTag("Player"); or
-       // player = GameObject.Find("Player"); //later boss script can send this value to this scripts
-         player=GameObject.FindWithTag("Target");
+         player=GameObject.FindWithTag("Player");
          
         target=player.transform;
         //puts position into local space
@@ -50,6 +52,7 @@ public class RockMoving : MonoBehaviour
     {
         GameObject breakablerock= Instantiate(rockPrefab); 
         breakablerock.transform.position=transform.position;
+        RockManager.Instance.RockPositionUpdate(breakablerock);
         Destroy(gameObject);
     }
     
@@ -65,12 +68,11 @@ public class RockMoving : MonoBehaviour
         GameObject other = collider.gameObject;
         Debug.Log(other);
 
-        if(other==player)
+        if(other==player && hasntHit)
         {
-            HealthTemp healthTemp = other.GetComponent<HealthTemp>();
-            healthTemp.takeDamage(10);
-            //damage player
-            //takeDamage(some value) from health temp or where ever
+            PlayerStats health = other.GetComponent<PlayerStats>();
+            health.takeDamage(25);
+            hasntHit=false;
         }
         if(other==arena)
         {

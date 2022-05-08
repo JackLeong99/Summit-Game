@@ -5,19 +5,8 @@ using UnityEngine;
 //AI refactoring is priority over hitbox for now.
 public class BossManager : MonoBehaviour
 {
-    [SerializeField] float gravity;
-    //store the player object
-    [SerializeField] LayerMask GroundLayers;
-
-    [SerializeField] float GroundedOffset;
-    public float GroundedRadius; 
-    //is on ground?
-    private bool Grounded;
     //player's coordinates
     public Transform Player;
-
-    //speed of enemy
-    public int MoveSpeed = 4;
 
     //Some Distance before player is considered to be at 'range'
     public int MaxDist = 10;
