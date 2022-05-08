@@ -434,7 +434,7 @@ GameObject:
   - component: {fileID: 156307957}
   m_Layer: 6
   m_Name: Terrain
-  m_TagString: Arena
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -678,6 +678,8 @@ MonoBehaviour:
   inAttack: 0
   rangedAllowed: 1
   delayBeforeRangedAllowed: 5
+  attackException: 0
+  rage: 0
 --- !u!54 &311172964
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -2696,7 +2698,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.9370786, y: 1}
+    m_SensorSize: {x: 1.9686098, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -3746,7 +3748,7 @@ GameObject:
   - component: {fileID: 1988670407}
   m_Layer: 6
   m_Name: Cube (5)
-  m_TagString: Untagged
+  m_TagString: Arena
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 40
