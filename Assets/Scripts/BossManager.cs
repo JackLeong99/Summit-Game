@@ -57,7 +57,7 @@ public class BossManager : MonoBehaviour
             bool isMidRange = Vector3.Distance(transform.position, Player.position) >= MinDist;
             bool isLongRanged = Vector3.Distance(transform.position,Player.position) >= MaxDist;
             if(isMidRange && !inAttack && !isLongRanged){
-                Debug.Log("Mid Range!");
+                //Debug.Log("Mid Range!");
                 
             }
 
@@ -71,7 +71,7 @@ public class BossManager : MonoBehaviour
             //if(MoveSelector == 1){
                 //Instantiate(shockwaveHitbox, transform.position, transform.rotation);
                 //StartCoroutine(waitTime(2.3f, delayBeforeNextAttack));
-            Debug.Log("In melee!");
+            //Debug.Log("In melee!");
             StartCoroutine(meleeActions());
                 
            // }
@@ -82,7 +82,7 @@ public class BossManager : MonoBehaviour
         bool isRanged = Vector3.Distance(transform.position,Player.position) >= MaxDist;
         if(isRanged && !inAttack){
             //when doing a move pass SelectMove(Rangedattack1, Rangedattacklast);
-            Debug.Log("Long Range!");
+            //Debug.Log("Long Range!");
             SelectMove(5, 5);
         } 
     }
@@ -93,7 +93,7 @@ public class BossManager : MonoBehaviour
         SelectMove(1, 1);
         //Shockwave
         if(MoveSelector == 1){
-            Debug.Log("Do Shockwave!");
+            //Debug.Log("Do Shockwave!");
             //spawn the Shockwave Attack
             Instantiate(shockwaveHitbox, transform.position, transform.rotation);
             float animationDuration = 2;//ShockwaveScript.scaleTime;
