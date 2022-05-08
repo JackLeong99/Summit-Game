@@ -81,7 +81,7 @@ public class BossManager : MonoBehaviour
         bool isRanged = Vector3.Distance(transform.position,Player.position) >= MaxDist;
         if(isRanged && !inAttack){
             //when doing a move pass SelectMove(Rangedattack1, Rangedattacklast);
-            Debug.Log("Long Range!");
+            //Debug.Log("Long Range!");
             SelectMove(5, 5);
         } 
     }
@@ -92,7 +92,7 @@ public class BossManager : MonoBehaviour
         SelectMove(1, 1);
         //Shockwave
         if(MoveSelector == 1){
-            Debug.Log("Do Shockwave!");
+            //Debug.Log("Do Shockwave!");
             //spawn the Shockwave Attack
             shockwave.instantiateShockwave();
             //Instantiate(shockwaveHitbox, transform.position, transform.rotation);

@@ -43,7 +43,7 @@ public class KnockbackReciever : MonoBehaviour
     }
     void Update()
     {
-        Debug.Log(impact.magnitude);
+        //Debug.Log(impact.magnitude);
         if(impact.magnitude > 5 && !controllerScript.isDodging)
         {
             player.Move(impact * Time.deltaTime);
