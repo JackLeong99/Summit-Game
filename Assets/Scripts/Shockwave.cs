@@ -24,8 +24,19 @@ public class Shockwave : MonoBehaviour
 */
 
 //this script is Instantiated by the Boss Manager Script at a location. It should not exist naturally.
-    void Start(){
+    void Start()
+    {
         scaleHitBox();
+    }
+
+    private void OnTriggerEnter(Collider collision)
+    {
+        KnockbackReciever reciever = collision.gameObject.GetComponent<KnockbackReciever>();
+        if(reciever)
+        {
+            Collider collider = GetComponent<Collider>();
+            collider.enabled = false;
+        }
     }
     //called from another script
     public void scaleHitBox()
