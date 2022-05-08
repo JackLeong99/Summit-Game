@@ -33,6 +33,7 @@ public class BossManager : MonoBehaviour
     //the timer for rangedAllowed
     public float delayBeforeRangedAllowed;
     public bool attackException = false;
+    public bool rage = false;
 
     private BossPathing bPathing;
     private tempShockwaveCaller shockwave;
@@ -40,6 +41,7 @@ public class BossManager : MonoBehaviour
     private GroundSlam slam;
     private Eruption erupt;
     private RockPathFinding rockThrow;
+    private Animator animation;
     
 
     private void Awake(){
@@ -50,6 +52,7 @@ public class BossManager : MonoBehaviour
         slam = GetComponent<GroundSlam>();
         erupt = GetComponent<Eruption>();
         rockThrow = GetComponent<RockPathFinding>();
+        animation = gameObject.GetComponent<Animator>();
     }
     
     void Update(){
@@ -67,6 +70,9 @@ public class BossManager : MonoBehaviour
         if(Vector3.Distance(transform.position, Player.position) >= MinDist){
             //if(!inAttack){
             bPathing.bossPathing();
+            if(!rage){
+                animation.SetTrigger("Walk");
+            }
             //}
             //bPathing.GetComponent<BossPathing>().bossPathing();
             //transform.Translate(transform.forward * MoveSpeed * Time.deltaTime);
@@ -77,6 +83,10 @@ public class BossManager : MonoBehaviour
                 Debug.Log("Mid Range!");   
             }                
         }
+        
+        
+        
+
         // if in 'melee'
         bool isMelee = Vector3.Distance(transform.position, Player.position) <= MinDist;
         if(isMelee && !inAttack){
@@ -118,8 +128,10 @@ public class BossManager : MonoBehaviour
         if(MoveSelector == 2){
             Debug.Log("Do MegaPunch!");
             punch.megaPunch();
+            animation.SetTrigger("Sweep");
             float animationDuration = 2; // Figure this out
             yield return new WaitForSeconds(animationDuration + delayBeforeNextAttack);
+            
         }
 
         //Ground Slam
@@ -129,9 +141,9 @@ public class BossManager : MonoBehaviour
             float animationDuration = 2; // Figure this out
             yield return new WaitForSeconds(animationDuration + delayBeforeNextAttack);
         }
-
         //Coroutine finishes and boss is now able to select next action.
         inAttack = false;
+        animation.SetTrigger("Walk");
     }
 
     IEnumerator midActions(){
@@ -163,6 +175,7 @@ public class BossManager : MonoBehaviour
                 //bPathing.bossPathing();
                 yield return new WaitForSeconds(Time.deltaTime);
             }
+
             attackException = false;
 
             float animationDuration = 2; // Figure this out
@@ -174,10 +187,12 @@ public class BossManager : MonoBehaviour
          
          //Coroutine finishes and boss is now able to select next action. (including moving)
         inAttack = false;
+        animation.SetTrigger("Walk");
         //Prevents boss from spamming ranged attacks and locking itself into ranged animations - gives time to move forwards/advance
         yield return new WaitForSeconds(delayBeforeRangedAllowed);
         rangedAllowed = true;
     }
+
 
     private void SelectMove(int min, int max){
         //if (Rage == true){ 
