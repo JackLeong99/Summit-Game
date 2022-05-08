@@ -13,20 +13,31 @@ public class BossPathing : MonoBehaviour
     private Transform targetPos;
 
     private NavMeshAgent agent;
+    private BossManager Attacking;
+
+    public Transform rockPos;
+    private Transform backupTargetPos;
 
     private void Awake()
     {
         agent = GetComponent<NavMeshAgent>();
         targetPos = target.transform;
+        
     }
 
     void Update()
     {
         //agent.destination = targetPos.position;
+        Attacking = this.GetComponent<BossManager>();
+        if(Attacking.inAttack == true){
+            agent.isStopped = true;
+        }
+        else{
+            agent.isStopped = false;
+        }
     }
 
     public void bossPathing(){
         agent.destination = targetPos.position;
-
     }
 }

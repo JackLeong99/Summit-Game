@@ -38,7 +38,7 @@ public class BossManager : MonoBehaviour
     //to get variables from Shockwave
     //public Shockwave ShockwaveScript;
     //to prevent other actions starting while in one still
-    private bool inAttack;
+    public bool inAttack = false;
 
     public BossPathing bPathing = new BossPathing();
     
@@ -61,7 +61,9 @@ public class BossManager : MonoBehaviour
 
         //if not in melee
         if(Vector3.Distance(transform.position, Player.position) >= MinDist){
+            //if(!inAttack){
             bPathing.bossPathing();
+            //}
             //bPathing.GetComponent<BossPathing>().bossPathing();
             //transform.Translate(transform.forward * MoveSpeed * Time.deltaTime);
             //when doing a move pass SelectMove(Midattack1, Midattacklast);
@@ -106,6 +108,7 @@ public class BossManager : MonoBehaviour
         if(MoveSelector == 1){
             Debug.Log("Do Shockwave!");
             //spawn the Shockwave Attack
+            //tempShockwaveCaller ();
             Instantiate(shockwaveHitbox, transform.position, transform.rotation);
             float animationDuration = 2;//ShockwaveScript.scaleTime;
             yield return new WaitForSeconds(animationDuration + delayBeforeNextAttack);
