@@ -83,10 +83,16 @@ namespace StarterAssets
 		private int _animIDFreeFall;
 		private int _animIDMotionSpeed;
 
+		[HideInInspector]
 		public Animator _animator;
+
+		[HideInInspector]
 		public CharacterController _controller;
-		private StarterAssetsInputs _input;
+
+		[HideInInspector]
 		public GameObject _mainCamera;
+
+		private StarterAssetsInputs _input;
 
 		private const float _threshold = 0.01f;
 
@@ -96,6 +102,10 @@ namespace StarterAssets
 		//variables for dodge
 		[SerializeField] AnimationCurve dodgeCurve;
 
+
+		//[HideInInspector]
+		public bool isDodging = false;
+		//[HideInInspector]
 		public bool _Inactionable;
 
 		public float dodgeMultiplier;
@@ -352,6 +362,7 @@ namespace StarterAssets
 		{
 			_animator.SetTrigger("Dodge");
 			_Inactionable = true;
+			isDodging = true;
 			float timer = 0;
 			while(timer < dodgeTimer)
 			{
@@ -361,6 +372,7 @@ namespace StarterAssets
 				timer += Time.deltaTime;
 				yield return null;
 			}
+			isDodging = false;
 			_Inactionable = false;
 		}
 	}

@@ -1,9 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using StarterAssets;
 
 public class KnockbackReciever : MonoBehaviour
-{
+{   
+    private ThirdPersonController controllerScript;
     private CharacterController player;
 
     [HideInInspector]
@@ -12,6 +14,12 @@ public class KnockbackReciever : MonoBehaviour
     [SerializeField] float gravity;
 
     [SerializeField] float mass;
+
+    private void Awake()
+    {
+        controllerScript = GetComponent<ThirdPersonController>();
+    }
+
     void Start()
     {
         player = GetComponent<CharacterController>();
@@ -36,7 +44,7 @@ public class KnockbackReciever : MonoBehaviour
     void Update()
     {
         Debug.Log(impact.magnitude);
-        if(impact.magnitude > 5)
+        if(impact.magnitude > 5 && !controllerScript.isDodging)
         {
             player.Move(impact * Time.deltaTime);
             impact = Vector3.Lerp(impact, Vector3.zero, 5 * Time.deltaTime);
