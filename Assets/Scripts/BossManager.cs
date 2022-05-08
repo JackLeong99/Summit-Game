@@ -40,22 +40,30 @@ public class BossManager : MonoBehaviour
     //to prevent other actions starting while in one still
     private bool inAttack;
 
+    public BossPathing bPathing;// = new BossPathing();
+    
+
+    private void Awake(){
+
+    }
+
     
     void Update(){
-        GroundedCheck();
+        /*GroundedCheck();
         //Looks at the player
         transform.LookAt(Player);
 
         if(!Grounded)
         {
             transform.Translate(Vector3.down * gravity * Time.deltaTime);
-        }
+        }*/
         
 
         //if not in melee
         if(Vector3.Distance(transform.position, Player.position) >= MinDist){
-        
-            transform.Translate(transform.forward * MoveSpeed * Time.deltaTime);
+            //bPathing.bossPathing();
+            bPathing.GetComponent<BossPathing>().bossPathing();
+            //transform.Translate(transform.forward * MoveSpeed * Time.deltaTime);
             //when doing a move pass SelectMove(Midattack1, Midattacklast);
             bool isMidRange = Vector3.Distance(transform.position, Player.position) >= MinDist;
             bool isLongRanged = Vector3.Distance(transform.position,Player.position) >= MaxDist;
@@ -120,11 +128,11 @@ public class BossManager : MonoBehaviour
         MoveSelector = Random.Range(min, max);
     }
 
-    private void GroundedCheck()
+    /*private void GroundedCheck()
     {
         Vector3 spherePosition = new Vector3(transform.position.x, transform.position.y - GroundedOffset, transform.position.z);
 		Grounded = Physics.CheckSphere(spherePosition, GroundedRadius, GroundLayers, QueryTriggerInteraction.Ignore);
-    }
+    }*/
 /*
     IEnumerator waitTime(float animationDuration, float delay){
         yield return new WaitForSeconds(animationDuration + delay);
