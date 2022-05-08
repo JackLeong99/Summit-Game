@@ -5,8 +5,11 @@ using UnityEngine.AI;
 
 public class BossPathing : MonoBehaviour
 {
+
+    //Determine the object the boss will path to
     [SerializeField] private GameObject target;
 
+    //Determine the position object the boss will path to
     private Transform targetPos;
 
     private NavMeshAgent agent;
@@ -19,6 +22,11 @@ public class BossPathing : MonoBehaviour
 
     void Update()
     {
+        //agent.destination = targetPos.position;
+    }
+
+    public void bossPathing(){
         agent.destination = targetPos.position;
+
     }
 }
