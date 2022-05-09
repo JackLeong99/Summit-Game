@@ -42,7 +42,7 @@ public class BossManager : MonoBehaviour
     private GroundSlam slam;
     private Eruption erupt;
     private RockPathFinding rockThrow;
-    Animator animation;
+    Animator animatr;
     NavMeshAgent agent;
 
     private void Awake(){
@@ -53,7 +53,7 @@ public class BossManager : MonoBehaviour
         slam = GetComponent<GroundSlam>();
         erupt = GetComponent<Eruption>();
         rockThrow = GetComponent<RockPathFinding>();
-        animation = gameObject.GetComponent<Animator>();
+        animatr = gameObject.GetComponent<Animator>();
         agent = GetComponent<NavMeshAgent>();
     }
     
@@ -66,7 +66,7 @@ public class BossManager : MonoBehaviour
         {
             transform.Translate(Vector3.down * gravity * Time.deltaTime);
         }*/
-        animation.SetFloat("Speed", agent.velocity.magnitude);
+        animatr.SetFloat("Speed", agent.velocity.magnitude);
         //if not in melee
         if (Vector3.Distance(transform.position, Player.position) >= MinDist){
             //if(!inAttack){
@@ -111,7 +111,7 @@ public class BossManager : MonoBehaviour
     }
 
     IEnumerator meleeActions(){
-        //attack animation starts
+        //attack animatr starts
         inAttack = true;
         SelectMove(1, 4);
         //Shockwave
@@ -120,28 +120,28 @@ public class BossManager : MonoBehaviour
             //spawn the Shockwave Attack
             shockwave.instantiateShockwave();
             //Instantiate(shockwaveHitbox, transform.position, transform.rotation);
-            float animationDuration = 2;//ShockwaveScript.scaleTime;
-            yield return new WaitForSeconds(animationDuration + delayBeforeNextAttack);
+            float animatrDuration = 2;//ShockwaveScript.scaleTime;
+            yield return new WaitForSeconds(animatrDuration + delayBeforeNextAttack);
         }
 
         //Mega Punch
         if(MoveSelector == 2){
             Debug.Log("Do MegaPunch!");
-            animation.SetTrigger("Sweep");
+            animatr.SetTrigger("Sweep");
             punch.megaPunch();
-            float animationDuration = 2; // Figure this out
-            yield return new WaitForSeconds(animationDuration + delayBeforeNextAttack);
+            float animatrDuration = 2; // Figure this out
+            yield return new WaitForSeconds(animatrDuration + delayBeforeNextAttack);
             
         }
 
         //Ground Slam
         if(MoveSelector == 3){
             Debug.Log("Do Ground Slam!");
-            animation.SetTrigger("Slam");
+            animatr.SetTrigger("Slam");
             slam.groundSlam();
-            animation.SetTrigger("Slam");
-            float animationDuration = 2; // Figure this out
-            yield return new WaitForSeconds(animationDuration + delayBeforeNextAttack);
+            animatr.SetTrigger("Slam");
+            float animatrDuration = 2; // Figure this out
+            yield return new WaitForSeconds(animatrDuration + delayBeforeNextAttack);
         }
         //Coroutine finishes and boss is now able to select next action.
         inAttack = false;
@@ -161,10 +161,10 @@ public class BossManager : MonoBehaviour
         if(MoveSelector == 5){
             Debug.Log("Do Eruption!");
             erupt.eruption();
-            animation.SetTrigger("Eruption");
-            float animationDuration = 2; // Figure this out
+            animatr.SetTrigger("Eruption");
+            float animatrDuration = 2; // Figure this out
            // float delayBeforeCurrentAttack = 1.5f; // Figure this out
-            yield return new WaitForSeconds(animationDuration + delayBeforeNextAttack);// + delayBeforeCurrentAttack
+            yield return new WaitForSeconds(animatrDuration + delayBeforeNextAttack);// + delayBeforeCurrentAttack
         }
         
         //Rock Throw
@@ -177,21 +177,20 @@ public class BossManager : MonoBehaviour
                 //bPathing.bossPathing();
                 yield return new WaitForSeconds(Time.deltaTime);
             }
-            animation.SetTrigger("Throw");
+            animatr.SetTrigger("Throw");
 
             
             attackException = false;
-            animation.SetTrigger("Throw");
-            float animationDuration = 2; // Figure this out
+            animatr.SetTrigger("Throw");
+            float animatrDuration = 2; // Figure this out
            // float delayBeforeCurrentAttack = 1.5f; // Figure this out
             //while loop for wait for seconds- get isTargeting from RockPathFinding.
-            yield return new WaitForSeconds(animationDuration + delayBeforeNextAttack);// + delayBeforeCurrentAttack
+            yield return new WaitForSeconds(animatrDuration + delayBeforeNextAttack);// + delayBeforeCurrentAttack
         }
-
-         
+ 
          //Coroutine finishes and boss is now able to select next action. (including moving)
         inAttack = false;
-        //Prevents boss from spamming ranged attacks and locking itself into ranged animations - gives time to move forwards/advance
+        //Prevents boss from spamming ranged attacks and locking itself into ranged animatrs - gives time to move forwards/advance
         yield return new WaitForSeconds(delayBeforeRangedAllowed);
         rangedAllowed = true;
     }
@@ -215,7 +214,7 @@ public class BossManager : MonoBehaviour
 		Grounded = Physics.CheckSphere(spherePosition, GroundedRadius, GroundLayers, QueryTriggerInteraction.Ignore);
     }*/
 /*
-    IEnumerator waitTime(float animationDuration, float delay){
-        yield return new WaitForSeconds(animationDuration + delay);
+    IEnumerator waitTime(float animatrDuration, float delay){
+        yield return new WaitForSeconds(animatrDuration + delay);
     }*/
 }
