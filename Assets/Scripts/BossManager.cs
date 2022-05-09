@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 //remove all movement stuff when adding the improved boss pathing. Pathing is baked through window- AI.
 //AI refactoring is priority over hitbox for now.
 public class BossManager : MonoBehaviour
@@ -41,8 +42,8 @@ public class BossManager : MonoBehaviour
     private GroundSlam slam;
     private Eruption erupt;
     private RockPathFinding rockThrow;
-    private Animator animation;
-    
+    Animator animation;
+    NavMeshAgent agent;
 
     private void Awake(){
         //defining other scripts referenceds them here- this method avoids an error.
@@ -53,6 +54,7 @@ public class BossManager : MonoBehaviour
         erupt = GetComponent<Eruption>();
         rockThrow = GetComponent<RockPathFinding>();
         animation = gameObject.GetComponent<Animator>();
+        agent = GetComponent<NavMeshAgent>();
     }
     
     void Update(){
@@ -64,15 +66,11 @@ public class BossManager : MonoBehaviour
         {
             transform.Translate(Vector3.down * gravity * Time.deltaTime);
         }*/
-        
-
+        animation.SetFloat("Speed", agent.velocity.magnitude);
         //if not in melee
-        if(Vector3.Distance(transform.position, Player.position) >= MinDist){
+        if (Vector3.Distance(transform.position, Player.position) >= MinDist){
             //if(!inAttack){
             bPathing.bossPathing();
-            if(!rage){
-                animation.SetTrigger("Walk");
-            }
             //}
             //bPathing.GetComponent<BossPathing>().bossPathing();
             //transform.Translate(transform.forward * MoveSpeed * Time.deltaTime);
@@ -141,12 +139,12 @@ public class BossManager : MonoBehaviour
             Debug.Log("Do Ground Slam!");
             animation.SetTrigger("Slam");
             slam.groundSlam();
+            animation.SetTrigger("Slam");
             float animationDuration = 2; // Figure this out
             yield return new WaitForSeconds(animationDuration + delayBeforeNextAttack);
         }
         //Coroutine finishes and boss is now able to select next action.
         inAttack = false;
-        animation.SetTrigger("Walk");
     }
 
     IEnumerator midActions(){
@@ -181,8 +179,9 @@ public class BossManager : MonoBehaviour
             }
             animation.SetTrigger("Throw");
 
+            
             attackException = false;
-
+            animation.SetTrigger("Throw");
             float animationDuration = 2; // Figure this out
            // float delayBeforeCurrentAttack = 1.5f; // Figure this out
             //while loop for wait for seconds- get isTargeting from RockPathFinding.
@@ -192,7 +191,6 @@ public class BossManager : MonoBehaviour
          
          //Coroutine finishes and boss is now able to select next action. (including moving)
         inAttack = false;
-        animation.SetTrigger("Walk");
         //Prevents boss from spamming ranged attacks and locking itself into ranged animations - gives time to move forwards/advance
         yield return new WaitForSeconds(delayBeforeRangedAllowed);
         rangedAllowed = true;
