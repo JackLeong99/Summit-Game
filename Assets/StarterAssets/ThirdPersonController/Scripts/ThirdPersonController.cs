@@ -83,10 +83,16 @@ namespace StarterAssets
 		private int _animIDFreeFall;
 		private int _animIDMotionSpeed;
 
+		[HideInInspector]
 		public Animator _animator;
+
+		[HideInInspector]
 		public CharacterController _controller;
-		private StarterAssetsInputs _input;
+
+		[HideInInspector]
 		public GameObject _mainCamera;
+
+		private StarterAssetsInputs _input;
 
 		private const float _threshold = 0.01f;
 
@@ -96,11 +102,23 @@ namespace StarterAssets
 		//variables for dodge
 		[SerializeField] AnimationCurve dodgeCurve;
 
+		[SerializeField] AnimationCurve attackCurve;
+
+		[SerializeField] GameObject attackHitbox;
+
+
+		//[HideInInspector]
+		public bool isDodging = false;
+		//[HideInInspector]
+		public bool isAttacking = false;
+		//[HideInInspector]
 		public bool _Inactionable;
 
 		public float dodgeMultiplier;
 
 		private float dodgeTimer;
+
+		private float swingTimer;
 
 		private KnockbackReciever reciever;
 
@@ -131,6 +149,9 @@ namespace StarterAssets
 			Keyframe dodge_lastFrame = dodgeCurve[dodgeCurve.length -1];
 			dodgeTimer = dodge_lastFrame.time;
 
+			Keyframe swing_lastFrame = attackCurve[attackCurve.length -1];
+			swingTimer = swing_lastFrame.time;
+
 			reciever = GetComponent<KnockbackReciever>();
 		}
 
@@ -142,15 +163,17 @@ namespace StarterAssets
 			GroundedCheck();
 			JumpAndGravity();
 
-			if(reciever.impact.magnitude <= 5){
-				if(!_Inactionable) 
+			if(reciever.impact.magnitude <= 5 && !_Inactionable){
+				Move();
+
+				if(Input.GetButtonDown("Fire1"))
 				{
-					Move();
+					StartCoroutine(Attack());
 				}
 
 				if(Input.GetButtonDown("Spell2"))
 				{
-					if(_speed != 0 && Grounded && !_Inactionable) {StartCoroutine(Dodge());}
+					if(_speed != 0 && Grounded && !isAttacking) {StartCoroutine(Dodge());}
 				}
 			}
 		}
@@ -352,16 +375,40 @@ namespace StarterAssets
 		{
 			_animator.SetTrigger("Dodge");
 			_Inactionable = true;
+			isDodging = true;
 			float timer = 0;
 			while(timer < dodgeTimer)
 			{
+				Debug.Log("dodging");
 				float dSpeed = dodgeCurve.Evaluate(timer) * dodgeMultiplier;
 				Vector3 dir = (transform.forward * dSpeed) + (Vector3.up * _verticalVelocity);
 				_controller.Move(dir * Time.deltaTime);
 				timer += Time.deltaTime;
 				yield return null;
 			}
+			isDodging = false;
 			_Inactionable = false;
+		}
+
+		IEnumerator Attack()
+		{
+			Transform player = gameObject.transform;
+			_animator.SetTrigger("attack1");
+			isAttacking = true;
+			var hitbox = Instantiate(attackHitbox, player.position + new Vector3(0, 1, 0), player.rotation, player.transform);
+			hitbox.transform.localPosition += new Vector3(0, 0, 1);
+			float timer = 0;
+			while(timer < swingTimer)
+			{
+				Debug.Log("Attacking!!!");
+				timer += Time.deltaTime;
+				yield return null;
+			}
+			if(hitbox)
+			{
+				Destroy(hitbox);
+			}
+			isAttacking = false;
 		}
 	}
 }

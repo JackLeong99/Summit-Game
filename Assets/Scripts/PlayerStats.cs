@@ -1,17 +1,22 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using StarterAssets;
 
 
 
 public class PlayerStats : MonoBehaviour
 {
+    private ThirdPersonController controllerScript;
     public int maxHealth;
     public int currentHealth;
 
     //added at my own liberty- figure it'll be useful down the line.
     public int defence = 0;
-    // Start is called before the first frame update
+    private void Awake()
+    {
+        controllerScript = GetComponent<ThirdPersonController>();
+    }
     void Start()
     {
         //prevents bugs- always start with max hp- can't set to start higher than max.
@@ -21,7 +26,7 @@ public class PlayerStats : MonoBehaviour
     public void takeDamage(int damage){
         if (currentHealth > 0){
             //Not healing if defence stat bigger than potential damage taken.
-            if(damage - defence > 0){
+            if(damage - defence > 0 && !controllerScript.isDodging){
                 currentHealth = currentHealth - damage + defence;
             }
             
