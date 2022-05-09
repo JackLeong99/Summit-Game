@@ -41,7 +41,7 @@ public class BossManager : MonoBehaviour
     private GroundSlam slam;
     private Eruption erupt;
     private RockPathFinding rockThrow;
-    private Animator animation;
+    Animator animation;
     
 
     private void Awake(){
@@ -70,9 +70,7 @@ public class BossManager : MonoBehaviour
         if(Vector3.Distance(transform.position, Player.position) >= MinDist){
             //if(!inAttack){
             bPathing.bossPathing();
-            if(!rage){
-                animation.SetTrigger("Walk");
-            }
+            animation.SetTrigger("Walk");
             //}
             //bPathing.GetComponent<BossPathing>().bossPathing();
             //transform.Translate(transform.forward * MoveSpeed * Time.deltaTime);
@@ -138,12 +136,12 @@ public class BossManager : MonoBehaviour
         if(MoveSelector == 3){
             Debug.Log("Do Ground Slam!");
             slam.groundSlam();
+            animation.SetTrigger("Slam");
             float animationDuration = 2; // Figure this out
             yield return new WaitForSeconds(animationDuration + delayBeforeNextAttack);
         }
         //Coroutine finishes and boss is now able to select next action.
         inAttack = false;
-        animation.SetTrigger("Walk");
     }
 
     IEnumerator midActions(){
@@ -160,6 +158,7 @@ public class BossManager : MonoBehaviour
         if(MoveSelector == 5){
             Debug.Log("Do Eruption!");
             erupt.eruption();
+            animation.SetTrigger("Eruption");
             float animationDuration = 2; // Figure this out
            // float delayBeforeCurrentAttack = 1.5f; // Figure this out
             yield return new WaitForSeconds(animationDuration + delayBeforeNextAttack);// + delayBeforeCurrentAttack
@@ -176,8 +175,9 @@ public class BossManager : MonoBehaviour
                 yield return new WaitForSeconds(Time.deltaTime);
             }
 
+            
             attackException = false;
-
+            animation.SetTrigger("Throw");
             float animationDuration = 2; // Figure this out
            // float delayBeforeCurrentAttack = 1.5f; // Figure this out
             //while loop for wait for seconds- get isTargeting from RockPathFinding.
@@ -187,7 +187,6 @@ public class BossManager : MonoBehaviour
          
          //Coroutine finishes and boss is now able to select next action. (including moving)
         inAttack = false;
-        animation.SetTrigger("Walk");
         //Prevents boss from spamming ranged attacks and locking itself into ranged animations - gives time to move forwards/advance
         yield return new WaitForSeconds(delayBeforeRangedAllowed);
         rangedAllowed = true;
