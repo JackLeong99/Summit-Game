@@ -460,34 +460,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 36078ab0369161e49a29d349ae3e0739, type: 3}
---- !u!1 &1041768044 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 36078ab0369161e49a29d349ae3e0739, type: 3}
-  m_PrefabInstance: {fileID: 1041768043}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1041768045
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1041768044}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 233fe0ead2a86684c82a76a1223b785c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cam: {fileID: 0}
-  projectile: {fileID: 0}
-  CdDisplay: {fileID: 0}
-  FirePoint: {fileID: 0}
-  CdBackground: {fileID: 0}
-  projectileSpeed: 30
-  shotTimeBuffer: 0
-  shotAnimEnd: 0
-  cooldown: 0
-  OffCD: {r: 0, g: 0, b: 0, a: 0}
-  OnCD: {r: 0, g: 0, b: 0, a: 0}
 --- !u!1001 &1288033776
 PrefabInstance:
   m_ObjectHideFlags: 0
