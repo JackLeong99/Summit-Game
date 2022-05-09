@@ -20,15 +20,12 @@ public class RockMoving : MonoBehaviour
     public GameObject rockPrefab;
 
     private GameObject player;
-    private GameObject arena;
 
     private bool hasntHit=true;
 
     // Start is called before the first frame update
     void Start()
     {
-        
-        arena=GameObject.FindWithTag("Arena");
          player=GameObject.FindWithTag("Player");
          
         target=player.transform;
@@ -73,10 +70,19 @@ public class RockMoving : MonoBehaviour
             PlayerStats health = other.GetComponent<PlayerStats>();
             health.takeDamage(25);
             hasntHit=false;
+            translationX=0;
+            translationZ=0;
         }
-        if(other==arena)
+        
+        if(other.tag=="Arena")
         {
             spawnRock();
+        }
+
+        if(other.tag=="worldBorder")
+        {
+            translationX=0;
+            translationZ=0;
         }
     }
 }

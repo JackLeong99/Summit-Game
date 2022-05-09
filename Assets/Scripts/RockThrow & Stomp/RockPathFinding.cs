@@ -7,6 +7,7 @@ public class RockPathFinding : MonoBehaviour
     private GameObject target;
     private RockPickedUp targeting;
     public bool currentlyTargeting=false;
+    private BossPathing boss;
     //private int MoveSpeed = 4; //if calls work remove this and transform.pos
 
 
@@ -15,6 +16,7 @@ public class RockPathFinding : MonoBehaviour
     void Start()
     {
       player=GameObject.FindWithTag("Player");
+      boss = this.GetComponent<BossPathing>();
     }
 
     // Update is called once per frame
@@ -27,13 +29,10 @@ public class RockPathFinding : MonoBehaviour
         }*/
         if(currentlyTargeting)
         {
-       // transform.position += transform.forward * MoveSpeed * Time.deltaTime; //this needs to be a call to BossPathing
-        BossPathing boss = this.GetComponent<BossPathing>();
-        boss.ChangeTarget(target); //should hopefully work
-
             if(Mathf.Abs(this.transform.position.x-target.transform.position.x)<5 && Mathf.Abs(this.transform.position.z-target.transform.position.z)<5)
             {
                 targeting.PickedUp();
+                //call animation
                 currentlyTargeting=false;
                 boss.ChangeTarget(player);
             }
@@ -48,9 +47,7 @@ public class RockPathFinding : MonoBehaviour
         Debug.Log(this.transform.position + "hi");
         target=RockManager.Instance.FindClosesRock(this.transform);
         targeting = target.GetComponent<RockPickedUp>();
-        
-        
-        //transform.LookAt(target.transform);//probably don't need this due to boss pathing
         currentlyTargeting=true;
+        boss.ChangeTarget(target); //should hopefully work
     }
 }
