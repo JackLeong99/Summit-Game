@@ -11,8 +11,8 @@ public class BossPathing : MonoBehaviour
 
     //Determine the position object the boss will path to
     private Transform targetPos;
-
-    private NavMeshAgent agent;
+    [HideInInspector]
+    public NavMeshAgent agent;
     private BossManager Attacking;
 
     //public Transform rockPos;

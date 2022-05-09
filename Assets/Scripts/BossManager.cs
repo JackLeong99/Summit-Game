@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 //remove all movement stuff when adding the improved boss pathing. Pathing is baked through window- AI.
 //AI refactoring is priority over hitbox for now.
 public class BossManager : MonoBehaviour
@@ -42,7 +43,7 @@ public class BossManager : MonoBehaviour
     private Eruption erupt;
     private RockPathFinding rockThrow;
     Animator animation;
-    
+    NavMeshAgent agent;
 
     private void Awake(){
         //defining other scripts referenceds them here- this method avoids an error.
@@ -53,6 +54,7 @@ public class BossManager : MonoBehaviour
         erupt = GetComponent<Eruption>();
         rockThrow = GetComponent<RockPathFinding>();
         animation = gameObject.GetComponent<Animator>();
+        agent = GetComponent<NavMeshAgent>();
     }
     
     void Update(){
@@ -64,13 +66,11 @@ public class BossManager : MonoBehaviour
         {
             transform.Translate(Vector3.down * gravity * Time.deltaTime);
         }*/
-        
-
+        animation.SetFloat("Speed", agent.velocity.magnitude);
         //if not in melee
-        if(Vector3.Distance(transform.position, Player.position) >= MinDist){
+        if (Vector3.Distance(transform.position, Player.position) >= MinDist){
             //if(!inAttack){
             bPathing.bossPathing();
-            animation.SetTrigger("Walk");
             //}
             //bPathing.GetComponent<BossPathing>().bossPathing();
             //transform.Translate(transform.forward * MoveSpeed * Time.deltaTime);
