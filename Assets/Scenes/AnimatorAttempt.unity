@@ -754,6 +754,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 1000
   currentHealth: 0
+  deathFX: {fileID: 4040199879806120334, guid: 60492c00038ed724a95f614a2f07e65e, type: 3}
 --- !u!114 &311172971
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1104,6 +1105,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 100
   currentHealth: 100
+  deathFX: {fileID: 0}
 --- !u!136 &445916191
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -2691,7 +2693,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 2.1398058, y: 1}
+    m_SensorSize: {x: 1.7771702, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0

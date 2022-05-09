@@ -8,10 +8,17 @@ public class HealthTemp : MonoBehaviour
 {
     public int maxHealth;
     public int currentHealth;
-    // Start is called before the first frame update
+
+    [SerializeField] GameObject deathFX;
+
+    private BossManager bossManager;
+
+    private Animator animator;
     void Start()
     {
         currentHealth = maxHealth;
+        animator = GetComponent<Animator>();
+        bossManager = GetComponent<BossManager>();
     }
 
     public void takeDamage(int damage){
@@ -19,10 +26,21 @@ public class HealthTemp : MonoBehaviour
             currentHealth = currentHealth - damage;
             if (currentHealth >= maxHealth){
                 currentHealth = maxHealth;
-                
             }
-            
+            UIManager.Instance.HealthBossBarSet(currentHealth);
         }
-        UIManager.Instance.HealthBossBarSet(currentHealth);
+
+        if (currentHealth <= 0)
+        {
+            StartCoroutine(Death());
+        }
+    }
+
+    IEnumerator Death()
+    {
+        animator.SetTrigger("Death");
+        yield return new WaitForSeconds(2.2f);
+        bossManager.enabled = false;
+        //Instantiate(deathFX, gameObject.transform.position, Quaternion.identity);
     }
 }    
