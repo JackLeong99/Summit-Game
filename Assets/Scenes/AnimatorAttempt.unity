@@ -1668,10 +1668,10 @@ MonoBehaviour:
   CdDisplay: {fileID: 121791383}
   FirePoint: {fileID: 604706455}
   CdBackground: {fileID: 1341791242}
-  projectileSpeed: 30
+  projectileSpeed: 75
   shotTimeBuffer: 0.6
   shotAnimEnd: 0.85
-  cooldown: 1
+  cooldown: 3
   OffCD: {r: 0.26299393, g: 0.7075472, b: 0.34555647, a: 1}
   OnCD: {r: 0.2830189, g: 0.2830189, b: 0.2830189, a: 0.53333336}
 --- !u!114 &658910095
@@ -2675,7 +2675,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 2.1398058, y: 1}
+    m_SensorSize: {x: 1.7771702, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
