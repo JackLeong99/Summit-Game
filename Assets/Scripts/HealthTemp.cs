@@ -19,8 +19,10 @@ public class HealthTemp : MonoBehaviour
             currentHealth = currentHealth - damage;
             if (currentHealth >= maxHealth){
                 currentHealth = maxHealth;
+                
             }
+            
         }
-        
+        UIManager.Instance.HealthBossBarSet(currentHealth);
     }
 }    

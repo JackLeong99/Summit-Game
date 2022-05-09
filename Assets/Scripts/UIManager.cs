@@ -24,7 +24,7 @@ public class UIManager : MonoBehaviour
     private float FullHealth=100f;
 
     public Slider BossHealthBar;
-    private float BossFullHealth=100f;
+    public float BossFullHealth=100f;
 
 
 
@@ -55,7 +55,7 @@ public class UIManager : MonoBehaviour
         PlayerHealthBar.maxValue= 100; //can be changed
         PlayerHealthBar.value=FullHealth;
 
-        BossHealthBar.maxValue= 100; //can be changed
+        BossHealthBar.maxValue= 1000; //can be changed
         BossHealthBar.value=BossFullHealth;
         
         CharacterClass.text= string.Format(CharacterClassFormat, "Archer"); //to change archer set by a string
@@ -80,6 +80,16 @@ public class UIManager : MonoBehaviour
         if(currentHealth<=0)
         {
             GameManager.Instance.onDeath(); //to be moved to whatever is handling health
+        }
+    }
+    
+    public void HealthBossBarSet(int currentHealth)
+    {
+        BossHealthBar.value = currentHealth;
+        Debug.Log(BossHealthBar.value);
+        if(currentHealth<=0)
+        {
+           // GameManager.Instance.onDeath(); //to be moved to whatever is handling health
         }
     }
 
