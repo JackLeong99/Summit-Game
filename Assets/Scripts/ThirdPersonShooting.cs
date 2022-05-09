@@ -7,6 +7,7 @@ using StarterAssets;
 
 public class ThirdPersonShooting : MonoBehaviour
 {
+    [SerializeField] int bulletDamage;
     public Camera cam;
 
     public GameObject projectile;
@@ -101,6 +102,7 @@ public class ThirdPersonShooting : MonoBehaviour
     void InstantiateProjectile()
     {
         var projectileObj = Instantiate (projectile, FirePoint.position, Quaternion.identity) as GameObject;
+        projectileObj.GetComponent<PlayerBullet>().setDamage(bulletDamage);
         projectileObj.GetComponent<Rigidbody>().velocity = (destination - FirePoint.position).normalized * projectileSpeed;
     }
 }

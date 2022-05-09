@@ -702,8 +702,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 4, y: 4.5, z: 2.1}
-  m_Center: {x: 0, y: 2.3, z: 0.4}
+  m_Size: {x: 4, y: 9, z: 2.1}
+  m_Center: {x: 0, y: 4.5, z: 0.4}
 --- !u!114 &311172966
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -767,6 +767,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 02b76fed750f64c6e8263254b9d055a8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  maxSize: 50
+  scaleTime: 1
   shockwaveHitbox: {fileID: 4686178775174311369, guid: c8aaaf5564c7a4a3a9f37be7ab91483e, type: 3}
 --- !u!114 &311172972
 MonoBehaviour:
@@ -1681,6 +1683,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 233fe0ead2a86684c82a76a1223b785c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  bulletDamage: 500
   cam: {fileID: 1508586385}
   projectile: {fileID: 5944307442520353345, guid: f6cb894fb887996448b226c17d16f0c3, type: 3}
   CdDisplay: {fileID: 121791383}
