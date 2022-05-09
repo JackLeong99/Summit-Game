@@ -39,7 +39,7 @@ public class Eruption : MonoBehaviour
             yield return new WaitForSeconds(duration);
             Destroy(hitbox);
             Debug.DrawRay(target.transform.position, transform.TransformDirection(Vector3.down) * hit.distance, Color.yellow, 3);
-            Debug.Log("Did Hit");
+            //Debug.Log("Did Hit");
         } 
         else
         {

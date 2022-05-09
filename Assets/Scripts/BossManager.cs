@@ -103,8 +103,10 @@ public class BossManager : MonoBehaviour
         bool isRanged = Vector3.Distance(transform.position,Player.position) >= MaxDist;
         if(isRanged && !inAttack && rangedAllowed){
             //when doing a move pass SelectMove(Rangedattack1, Rangedattacklast);
+
             Debug.Log("Long Range!");
             StartCoroutine(rangedActions());
+
         } 
     }
 
@@ -114,7 +116,7 @@ public class BossManager : MonoBehaviour
         SelectMove(1, 4);
         //Shockwave
         if(MoveSelector == 1){
-            Debug.Log("Do Shockwave!");
+            //Debug.Log("Do Shockwave!");
             //spawn the Shockwave Attack
             shockwave.instantiateShockwave();
             //Instantiate(shockwaveHitbox, transform.position, transform.rotation);
@@ -125,8 +127,8 @@ public class BossManager : MonoBehaviour
         //Mega Punch
         if(MoveSelector == 2){
             Debug.Log("Do MegaPunch!");
-            punch.megaPunch();
             animation.SetTrigger("Sweep");
+            punch.megaPunch();
             float animationDuration = 2; // Figure this out
             yield return new WaitForSeconds(animationDuration + delayBeforeNextAttack);
             
@@ -135,6 +137,7 @@ public class BossManager : MonoBehaviour
         //Ground Slam
         if(MoveSelector == 3){
             Debug.Log("Do Ground Slam!");
+            animation.SetTrigger("Slam");
             slam.groundSlam();
             animation.SetTrigger("Slam");
             float animationDuration = 2; // Figure this out
@@ -174,6 +177,7 @@ public class BossManager : MonoBehaviour
                 //bPathing.bossPathing();
                 yield return new WaitForSeconds(Time.deltaTime);
             }
+            animation.SetTrigger("Throw");
 
             
             attackException = false;
