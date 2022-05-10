@@ -10,7 +10,7 @@ public class RockMoving : MonoBehaviour
     private float translationZ;
     private float translationY;
     private float translationX;
-    private float speed=80;
+    private float speed=80; //might need to edit based on distance from player //could check this before throw and set speed based on that
     private float rageMultiplier=1;
 
         private float trackZ;
