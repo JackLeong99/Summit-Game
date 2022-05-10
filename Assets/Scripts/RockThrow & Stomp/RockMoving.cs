@@ -49,6 +49,7 @@ public class RockMoving : MonoBehaviour
     {
         GameObject breakablerock= Instantiate(rockPrefab); 
         breakablerock.transform.position=transform.position;
+        breakablerock.transform.position = new Vector3(transform.position.x, transform.position.y-1 , transform.position.z);
         RockManager.Instance.RockPositionUpdate(breakablerock);
         Destroy(gameObject);
     }
