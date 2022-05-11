@@ -32,11 +32,15 @@ public class ThirdPersonShooting : MonoBehaviour
     public Color OffCD;
     public Color OnCD;
 
-    // Start is called before the first frame update
+    //Temporary code that resets player y axis rotation until we add custom player model/animations
+    private CharacterController player;
+
     void Start()
     {
         CdDisplay.text = "";
         CdBackground.color = OffCD;
+        //Temporary code that resets player y axis rotation until we add custom player model/animations
+        player = GetComponent<CharacterController>();
     }
 
     // Update is called once per frame
@@ -87,7 +91,7 @@ public class ThirdPersonShooting : MonoBehaviour
         InstantiateProjectile();
         
         yield return new WaitForSeconds(shotAnimEnd);
-        
+        player.transform.rotation = Quaternion.Euler(new Vector3(transform.rotation.x, 0f, transform.rotation.z));
         casting = false;
         cdTimer = cooldown;
 
