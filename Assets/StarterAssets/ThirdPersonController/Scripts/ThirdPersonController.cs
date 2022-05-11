@@ -83,14 +83,11 @@ namespace StarterAssets
 		private int _animIDFreeFall;
 		private int _animIDMotionSpeed;
 
-		[HideInInspector]
-		public Animator _animator;
+		private Animator _animator;
 
-		[HideInInspector]
-		public CharacterController _controller;
+		private CharacterController _controller;
 
-		[HideInInspector]
-		public GameObject _mainCamera;
+		private GameObject _mainCamera;
 
 		private StarterAssetsInputs _input;
 
@@ -100,7 +97,6 @@ namespace StarterAssets
 
 		//Start custom code
 		//variables for dodge
-		[SerializeField] AnimationCurve dodgeCurve;
 
 		[SerializeField] AnimationCurve attackCurve;
 
@@ -108,19 +104,17 @@ namespace StarterAssets
 
 
 		//[HideInInspector]
-		public bool isDodging = false;
-		//[HideInInspector]
 		public bool isAttacking = false;
 		//[HideInInspector]
 		public bool _Inactionable;
 
-		public float dodgeMultiplier;
-
-		private float dodgeTimer;
-
 		private float swingTimer;
 
 		private KnockbackReciever reciever;
+
+		private ThirdPersonShooting shooting;
+
+		private Dodge dodge;
 
 		//End Custom
 
@@ -138,6 +132,9 @@ namespace StarterAssets
 			_hasAnimator = TryGetComponent(out _animator);
 			_controller = GetComponent<CharacterController>();
 			_input = GetComponent<StarterAssetsInputs>();
+			reciever = GetComponent<KnockbackReciever>();
+			shooting = GetComponent<ThirdPersonShooting>();
+			dodge = GetComponent<Dodge>();
 
 			AssignAnimationIDs();
 
@@ -146,17 +143,13 @@ namespace StarterAssets
 			_fallTimeoutDelta = FallTimeout;
 
 			//custom code
-			Keyframe dodge_lastFrame = dodgeCurve[dodgeCurve.length -1];
-			dodgeTimer = dodge_lastFrame.time;
-
 			Keyframe swing_lastFrame = attackCurve[attackCurve.length -1];
 			swingTimer = swing_lastFrame.time;
-
-			reciever = GetComponent<KnockbackReciever>();
 		}
 
 		private void Update()
 		{
+			_Inactionable = shooting.casting;
 
 			_hasAnimator = TryGetComponent(out _animator);
 			
@@ -171,9 +164,23 @@ namespace StarterAssets
 					StartCoroutine(Attack());
 				}
 
-				if(Input.GetButtonDown("Spell2"))
+				if(Input.GetButtonDown("Spell1") && shooting.cdTimer <= 0)
 				{
-					if(_speed != 0 && Grounded && !isAttacking) {StartCoroutine(Dodge());}
+					if(!_Inactionable && Grounded && !isAttacking)
+					{
+						_controller.transform.rotation = _mainCamera.transform.rotation;
+						_animator.SetTrigger("Shoot");
+						shooting.CastShoot();
+					}
+				}
+
+				if(Input.GetButtonDown("Spell2") && dodge.cdTimer <= 0)
+				{
+					if(_speed != 0 && Grounded && !isAttacking)
+					{
+						_animator.SetTrigger("Dodge");
+						dodge.callDodge();
+					}
 				}
 			}
 		}
@@ -369,25 +376,6 @@ namespace StarterAssets
 			
 			// when selected, draw a gizmo in the position of, and matching radius of, the grounded collider
 			Gizmos.DrawSphere(new Vector3(transform.position.x, transform.position.y - GroundedOffset, transform.position.z), GroundedRadius);
-		}
-
-		IEnumerator Dodge()
-		{
-			_animator.SetTrigger("Dodge");
-			_Inactionable = true;
-			isDodging = true;
-			float timer = 0;
-			while(timer < dodgeTimer)
-			{
-				Debug.Log("dodging");
-				float dSpeed = dodgeCurve.Evaluate(timer) * dodgeMultiplier;
-				Vector3 dir = (transform.forward * dSpeed) + (Vector3.up * _verticalVelocity);
-				_controller.Move(dir * Time.deltaTime);
-				timer += Time.deltaTime;
-				yield return null;
-			}
-			isDodging = false;
-			_Inactionable = false;
 		}
 
 		IEnumerator Attack()

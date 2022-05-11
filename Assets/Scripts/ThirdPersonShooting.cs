@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
-using StarterAssets;
 
 public class ThirdPersonShooting : MonoBehaviour
 {
@@ -25,11 +24,11 @@ public class ThirdPersonShooting : MonoBehaviour
     public float shotAnimEnd = 0f;
 
     public float cooldown = 0;
-    private float cdTimer = 0;
+    [HideInInspector]
+    public float cdTimer = 0;
+    [HideInInspector]
+    public bool casting;
     private Vector3 destination;
-
-    private ThirdPersonController TPCScript;
-
     public Color OffCD;
     public Color OnCD;
 
@@ -38,18 +37,17 @@ public class ThirdPersonShooting : MonoBehaviour
     {
         CdDisplay.text = "";
         CdBackground.color = OffCD;
-        TPCScript = this.gameObject.GetComponent<ThirdPersonController>();
     }
 
     // Update is called once per frame
     void Update()
     {
         CooldownHandler();
+    }
 
-        if(Input.GetButtonDown("Spell1") && cdTimer <= 0 && !TPCScript._Inactionable &&TPCScript.Grounded && !TPCScript.isAttacking)
-        {
-            StartCoroutine(ShootProjectile());
-        }
+    public void CastShoot()
+    {
+        StartCoroutine(ShootProjectile());
     }
 
     void CooldownHandler()
@@ -71,10 +69,7 @@ public class ThirdPersonShooting : MonoBehaviour
 
     IEnumerator ShootProjectile()
     {
-        Quaternion originalR = TPCScript._controller.transform.rotation;
-        TPCScript._controller.transform.rotation = TPCScript._mainCamera.transform.rotation;
-        TPCScript._animator.SetTrigger("Shoot");
-        TPCScript._Inactionable = true;
+        casting = true;
 
         yield return new WaitForSeconds(shotTimeBuffer);
 
@@ -93,8 +88,7 @@ public class ThirdPersonShooting : MonoBehaviour
         
         yield return new WaitForSeconds(shotAnimEnd);
         
-        TPCScript._controller.transform.rotation = originalR;
-        TPCScript._Inactionable = false;
+        casting = false;
         cdTimer = cooldown;
 
     }

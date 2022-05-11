@@ -7,7 +7,7 @@ using StarterAssets;
 
 public class PlayerStats : MonoBehaviour
 {
-    private ThirdPersonController controllerScript;
+    private Dodge dodge;
     public int maxHealth;
     public int currentHealth;
 
@@ -15,7 +15,7 @@ public class PlayerStats : MonoBehaviour
     public int defence = 0;
     private void Awake()
     {
-        controllerScript = GetComponent<ThirdPersonController>();
+        dodge = GetComponent<Dodge>();
     }
     void Start()
     {
@@ -26,7 +26,7 @@ public class PlayerStats : MonoBehaviour
     public void takeDamage(int damage){
         if (currentHealth > 0){
             //Not healing if defence stat bigger than potential damage taken.
-            if(damage - defence > 0 && !controllerScript.isDodging){
+            if(damage - defence > 0 && !dodge.isDodging){
                 currentHealth = currentHealth - damage + defence;
             }
             

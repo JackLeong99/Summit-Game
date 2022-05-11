@@ -819,7 +819,7 @@ MonoBehaviour:
   target: {fileID: 95236926}
   duration: 2
   delay: 1.5
-  layer: 0
+  layer: 6
 --- !u!114 &311172975
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1393,6 +1393,10 @@ PrefabInstance:
       propertyPath: m_TagString
       value: worldBorder
       objectReference: {fileID: 0}
+    - target: {fileID: 689438873871917863, guid: fffc4c3862eef6e4f8ab710fd3ec47cc, type: 3}
+      propertyPath: m_TagString
+      value: Untagged
+      objectReference: {fileID: 0}
     - target: {fileID: 1349011833940568535, guid: fffc4c3862eef6e4f8ab710fd3ec47cc, type: 3}
       propertyPath: m_RootOrder
       value: 5
@@ -1693,6 +1697,8 @@ MonoBehaviour:
   shotTimeBuffer: 0.6
   shotAnimEnd: 0.85
   cooldown: 3
+  cdTimer: 0
+  casting: 0
   OffCD: {r: 0.26299393, g: 0.7075472, b: 0.34555647, a: 1}
   OnCD: {r: 0.2830189, g: 0.2830189, b: 0.2830189, a: 0.53333336}
 --- !u!114 &658910095
@@ -1730,6 +1736,46 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 3893294197879345259, guid: 64dce48905ffd9b4293e595fa6941544, type: 3}
   m_PrefabInstance: {fileID: 1824828914}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &658910119
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 95236926}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5c41f9d78325dcc4a831456ccde065b6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cdTimer: 0
+  dodgeMultiplier: 10
+  isDodging: 0
+  cooldown: 1
+  dodgeCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0.5
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1.2
+      value: 0.5
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!4 &697068855 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3832703582600944452, guid: bceefb2a39f6db74d9bc9d006687b7f1, type: 3}
