@@ -166,7 +166,7 @@ namespace StarterAssets
 
 				if(Input.GetButtonDown("Spell1") && shooting.cdTimer <= 0)
 				{
-					if(!_Inactionable && Grounded && !isAttacking)
+					if(!_Inactionable && Grounded && !isAttacking && !dodge.isDodging)
 					{
 						_controller.transform.rotation = _mainCamera.transform.rotation;
 						_animator.SetTrigger("Shoot");
