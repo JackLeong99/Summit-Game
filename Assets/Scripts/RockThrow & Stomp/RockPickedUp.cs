@@ -43,20 +43,28 @@ public class RockPickedUp : MonoBehaviour
         speed=10f;
     }
 
+
+    //for bullet
     void OnCollisionEnter(Collision collider)
     {
         GameObject other = collider.gameObject;
+        Debug.Log(other.tag);
          if(other.tag=="PlayerBullet")
          {
              rockHealth--;
          }
+         if(rockHealth<=0)
+         {
+             Destroy(gameObject);
+         }
+    }
+    //sword uses this instead of on collsion for some reason
+    private void OnTriggerEnter(Collider other){
         if(other.tag=="sword")
          {
-             Debug.Log("hello");
              rockHealth--;
          }
-         Debug.Log(rockHealth);
-         if(rockHealth<=0)
+        if(rockHealth<=0)
          {
              Destroy(gameObject);
          }

@@ -168,7 +168,8 @@ public class BossManager : MonoBehaviour
         }
         
         //Rock Throw
-        if(MoveSelector == 6){
+        RockManager.Instance.ClearUpList();
+        if(MoveSelector == 6 && RockManager.Instance.IsThereStillRocks()){
             attackException = true;
             Debug.Log("Do Rock Throw!");
             rockThrow.SetTarget();

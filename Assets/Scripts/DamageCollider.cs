@@ -23,7 +23,6 @@ public class DamageCollider : MonoBehaviour
         else
         {
             Debug.Log(other);
-            Debug.Log(gameObject.tag);
         }
     }
 }

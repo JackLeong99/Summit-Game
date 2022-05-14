@@ -47,7 +47,7 @@ public class RockManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
     //update the array with the new position
@@ -90,5 +90,22 @@ public class RockManager : MonoBehaviour
         GameObject closest=allRocks[closesRock];
         return closest;
         //need to return something
+    }
+
+    public bool IsThereStillRocks()
+    {
+        if(allRocks.Count<=0)
+        {
+            return false;
+        }
+        else
+        {
+            return true;
+        }
+    }
+
+    public void ClearUpList()
+    {
+        allRocks.RemoveAll(s => s == null);
     }
 }
