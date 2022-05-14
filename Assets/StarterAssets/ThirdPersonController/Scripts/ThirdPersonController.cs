@@ -96,15 +96,7 @@ namespace StarterAssets
 		private bool _hasAnimator;
 
 		//Start custom code
-		//variables for dodge
 
-		[SerializeField] AnimationCurve attackCurve;
-
-		[SerializeField] GameObject attackHitbox;
-
-
-		//[HideInInspector]
-		public bool isAttacking = false;
 		[HideInInspector]
 		public bool _Inactionable;
 
@@ -144,10 +136,6 @@ namespace StarterAssets
 			// reset our timeouts on start
 			_jumpTimeoutDelta = JumpTimeout;
 			_fallTimeoutDelta = FallTimeout;
-
-			//custom code
-			Keyframe swing_lastFrame = attackCurve[attackCurve.length -1];
-			swingTimer = swing_lastFrame.time;
 		}
 
 		private void Update()
@@ -166,13 +154,13 @@ namespace StarterAssets
 				{
 					if(!dodge.isDodging)
 					{
-						StartCoroutine(Attack());
+						attack.doAttack();
 					}
 				}
 
 				if(Input.GetButtonDown("Spell1") && shooting.cdTimer <= 0)
 				{
-					if(!_Inactionable && Grounded && !isAttacking && !dodge.isDodging)
+					if(!_Inactionable && Grounded && !attack.isAttacking && !dodge.isDodging)
 					{
 						shooting.CastShoot();
 					}
@@ -180,7 +168,7 @@ namespace StarterAssets
 
 				if(Input.GetButtonDown("Spell2") && dodge.cdTimer <= 0)
 				{
-					if(_speed != 0 && Grounded && !isAttacking)
+					if(_speed != 0 && Grounded && !attack.isAttacking)
 					{
 						dodge.callDodge();
 					}
@@ -379,27 +367,6 @@ namespace StarterAssets
 			
 			// when selected, draw a gizmo in the position of, and matching radius of, the grounded collider
 			Gizmos.DrawSphere(new Vector3(transform.position.x, transform.position.y - GroundedOffset, transform.position.z), GroundedRadius);
-		}
-
-		IEnumerator Attack()
-		{
-			Transform player = gameObject.transform;
-			_animator.SetTrigger("attack1");
-			isAttacking = true;
-			var hitbox = Instantiate(attackHitbox, player.position + new Vector3(0, 1, 0), player.rotation, player.transform);
-			hitbox.transform.localPosition += new Vector3(0, 0, 1);
-			float timer = 0;
-			while(timer < swingTimer)
-			{
-				Debug.Log("Attacking!!!");
-				timer += Time.deltaTime;
-				yield return null;
-			}
-			if(hitbox)
-			{
-				Destroy(hitbox);
-			}
-			isAttacking = false;
 		}
 	}
 }
