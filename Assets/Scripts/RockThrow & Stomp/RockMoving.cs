@@ -4,9 +4,7 @@ using UnityEngine;
 
 public class RockMoving : MonoBehaviour
 { 
-    //private Transform target;
     public Transform target;
-    //target will be converted to player
     private float translationZ;
     private float translationY;
     private float translationX;
