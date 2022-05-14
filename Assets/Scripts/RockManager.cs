@@ -61,6 +61,7 @@ public class RockManager : MonoBehaviour
     //finds closes rock to the boss
     public GameObject FindClosesRock(Transform bossPos) //needs to give pos of boss
     {
+        allRocks.RemoveAll(s => s == null);
         //only need x and z
 
         //GameObject closest;

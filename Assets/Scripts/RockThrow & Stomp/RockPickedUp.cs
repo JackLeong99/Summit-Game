@@ -6,6 +6,8 @@ public class RockPickedUp : MonoBehaviour
 {
     private float speed=0f; //set to 10 for testing purposes
     public GameObject rockPrefab; //on moving rock
+    private int rockHealth=3; //might move this into seperate script
+
     // Start is called before the first frame update
     void Start()
     {
@@ -39,5 +41,24 @@ public class RockPickedUp : MonoBehaviour
     public void PickedUp()
     {
         speed=10f;
+    }
+
+    void OnCollisionEnter(Collision collider)
+    {
+        GameObject other = collider.gameObject;
+         if(other.tag=="PlayerBullet")
+         {
+             rockHealth--;
+         }
+        if(other.tag=="sword")
+         {
+             Debug.Log("hello");
+             rockHealth--;
+         }
+         Debug.Log(rockHealth);
+         if(rockHealth<=0)
+         {
+             Destroy(gameObject);
+         }
     }
 }

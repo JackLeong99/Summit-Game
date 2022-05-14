@@ -12,10 +12,10 @@ GameObject:
   - component: {fileID: 7540847348360447810}
   - component: {fileID: 4726754427062849677}
   - component: {fileID: 9128435095843667290}
-  - component: {fileID: 998177056335830325}
+  - component: {fileID: 2480918092391908833}
   m_Layer: 0
   m_Name: pp
-  m_TagString: Untagged
+  m_TagString: sword
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -50,7 +50,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1548620108195507319}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -98,7 +98,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &998177056335830325
+--- !u!114 &2480918092391908833
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

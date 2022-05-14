@@ -78,7 +78,7 @@ public class BossManager : MonoBehaviour
             bool isMidRange = Vector3.Distance(transform.position, Player.position) >= MinDist;
             bool isLongRanged = Vector3.Distance(transform.position,Player.position) >= MaxDist;
             if(isMidRange && !inAttack && !isLongRanged){
-                Debug.Log("Mid Range!");   
+                //Debug.Log("Mid Range!");   
             }                
         }
         
@@ -93,7 +93,7 @@ public class BossManager : MonoBehaviour
             //if(MoveSelector == 1){
                 //Instantiate(shockwaveHitbox, transform.position, transform.rotation);
                 //StartCoroutine(waitTime(2.3f, delayBeforeNextAttack));
-            Debug.Log("In melee!");
+            //Debug.Log("In melee!");
             StartCoroutine(meleeActions());    
            // }
         }
