@@ -105,7 +105,7 @@ namespace StarterAssets
 
 		//[HideInInspector]
 		public bool isAttacking = false;
-		//[HideInInspector]
+		[HideInInspector]
 		public bool _Inactionable;
 
 		private float swingTimer;
@@ -115,6 +115,8 @@ namespace StarterAssets
 		private ThirdPersonShooting shooting;
 
 		private Dodge dodge;
+
+		private AutoAttack attack;
 
 		//End Custom
 
@@ -135,6 +137,7 @@ namespace StarterAssets
 			reciever = GetComponent<KnockbackReciever>();
 			shooting = GetComponent<ThirdPersonShooting>();
 			dodge = GetComponent<Dodge>();
+			attack = GetComponent<AutoAttack>();
 
 			AssignAnimationIDs();
 
@@ -161,15 +164,16 @@ namespace StarterAssets
 
 				if(Input.GetButtonDown("Fire1"))
 				{
-					StartCoroutine(Attack());
+					if(!dodge.isDodging)
+					{
+						StartCoroutine(Attack());
+					}
 				}
 
 				if(Input.GetButtonDown("Spell1") && shooting.cdTimer <= 0)
 				{
 					if(!_Inactionable && Grounded && !isAttacking && !dodge.isDodging)
 					{
-						_controller.transform.rotation = _mainCamera.transform.rotation;
-						_animator.SetTrigger("Shoot");
 						shooting.CastShoot();
 					}
 				}
@@ -178,7 +182,6 @@ namespace StarterAssets
 				{
 					if(_speed != 0 && Grounded && !isAttacking)
 					{
-						_animator.SetTrigger("Dodge");
 						dodge.callDodge();
 					}
 				}

@@ -6,6 +6,7 @@ public class Dodge : MonoBehaviour
 {
     private CharacterController controller;
     private float dodgeTimer;
+    private Animator _animator;
     
     [HideInInspector]
     public float cdTimer = 0;
@@ -23,6 +24,7 @@ public class Dodge : MonoBehaviour
         	Keyframe dodge_lastFrame = dodgeCurve[dodgeCurve.length -1];
 			dodgeTimer = dodge_lastFrame.time;
             controller = GetComponent<CharacterController>();
+            _animator = GetComponent<Animator>();
     }
 
     void Update()
@@ -52,6 +54,7 @@ public class Dodge : MonoBehaviour
     IEnumerator DoDodge()
 		{
 			isDodging = true;
+            _animator.SetTrigger("Dodge");
 			float timer = 0;
             cdTimer = 1000f;
 			while(timer < dodgeTimer)

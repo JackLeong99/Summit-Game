@@ -32,13 +32,26 @@ public class ThirdPersonShooting : MonoBehaviour
     public Color OffCD;
     public Color OnCD;
 
+    private Animator _animator;
+
+    private GameObject _mainCamera;
+
     //Temporary code that resets player y axis rotation until we add custom player model/animations
     private CharacterController player;
+
+    private void Awake()
+	{
+		if (_mainCamera == null)
+		{
+			_mainCamera = GameObject.FindGameObjectWithTag("MainCamera");
+		}
+	}
 
     void Start()
     {
         CdDisplay.text = "";
         CdBackground.color = OffCD;
+        _animator = GetComponent<Animator>();
         //Temporary code that resets player y axis rotation until we add custom player model/animations
         player = GetComponent<CharacterController>();
     }
@@ -73,7 +86,9 @@ public class ThirdPersonShooting : MonoBehaviour
 
     IEnumerator ShootProjectile()
     {
+        player.transform.rotation = _mainCamera.transform.rotation;
         casting = true;
+        _animator.SetTrigger("Shoot");
 
         yield return new WaitForSeconds(shotTimeBuffer);
 
