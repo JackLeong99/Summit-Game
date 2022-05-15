@@ -8,7 +8,6 @@ public class RockPathFinding : MonoBehaviour
     private RockPickedUp targeting;
     public bool currentlyTargeting=false;
     private BossPathing boss;
-    //private int MoveSpeed = 4; //if calls work remove this and transform.pos
 
 
     private GameObject player;
@@ -22,11 +21,6 @@ public class RockPathFinding : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        /*
-        if(Input.GetButtonDown("Teleport"))
-        {
-            SetTarget();
-        }*/
         if(currentlyTargeting)
         {
             if(Mathf.Abs(this.transform.position.x-target.transform.position.x)<5 && Mathf.Abs(this.transform.position.z-target.transform.position.z)<5)
@@ -48,6 +42,6 @@ public class RockPathFinding : MonoBehaviour
         target=RockManager.Instance.FindClosesRock(this.transform);
         targeting = target.GetComponent<RockPickedUp>();
         currentlyTargeting=true;
-        boss.ChangeTarget(target); //should hopefully work
+        boss.ChangeTarget(target);
     }
 }
