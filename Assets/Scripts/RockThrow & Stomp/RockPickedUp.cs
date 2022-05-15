@@ -6,17 +6,17 @@ public class RockPickedUp : MonoBehaviour
 {
     private float speed=0f; //set to 10 for testing purposes
     public GameObject rockPrefab; //on moving rock
+    private int rockHealth=3; //might move this into seperate script
+
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        //call pickup when it is going to be thrown in air 
-        //ie it can be damaged before it is thrown
         transform.Translate(0,speed* Time.deltaTime ,0);
 
         if(transform.position.y>=7) //y can be changed to any height
@@ -39,5 +39,32 @@ public class RockPickedUp : MonoBehaviour
     public void PickedUp()
     {
         speed=10f;
+    }
+
+
+    //for bullet
+    void OnCollisionEnter(Collision collider)
+    {
+        GameObject other = collider.gameObject;
+        Debug.Log(other.tag);
+         if(other.tag=="PlayerBullet")
+         {
+             rockHealth--;
+         }
+         if(rockHealth<=0)
+         {
+             Destroy(gameObject);
+         }
+    }
+    //sword uses this instead of on collsion for some reason
+    private void OnTriggerEnter(Collider other){
+        if(other.tag=="sword")
+         {
+             rockHealth--;
+         }
+        if(rockHealth<=0)
+         {
+             Destroy(gameObject);
+         }
     }
 }

@@ -4,13 +4,11 @@ using UnityEngine;
 
 public class RockMoving : MonoBehaviour
 { 
-    //private Transform target;
     public Transform target;
-    //target will be converted to player
     private float translationZ;
     private float translationY;
     private float translationX;
-    private float speed=20;
+    private float speed=80; //might need to edit based on distance from player //could check this before throw and set speed based on that
     private float rageMultiplier=1;
 
         private float trackZ;
@@ -29,6 +27,9 @@ public class RockMoving : MonoBehaviour
          player=GameObject.FindWithTag("Player");
          
         target=player.transform;
+        target.position=new Vector3(player.transform.position.x, player.transform.position.y+1 , player.transform.position.z);
+        //this sets the target a bit above the player so it hits more often
+
         //puts position into local space
         localArea= transform.InverseTransformPoint(target.position); 
         localArea.Normalize();
@@ -49,6 +50,7 @@ public class RockMoving : MonoBehaviour
     {
         GameObject breakablerock= Instantiate(rockPrefab); 
         breakablerock.transform.position=transform.position;
+        breakablerock.transform.position = new Vector3(transform.position.x, transform.position.y-1 , transform.position.z);
         RockManager.Instance.RockPositionUpdate(breakablerock);
         Destroy(gameObject);
     }
@@ -77,6 +79,7 @@ public class RockMoving : MonoBehaviour
         if(other.tag=="Arena")
         {
             spawnRock();
+            //particles as well //should fix issue with how it goes into ground otherwise I need to find another way
         }
 
         if(other.tag=="worldBorder")
