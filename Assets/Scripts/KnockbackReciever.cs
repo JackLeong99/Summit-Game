@@ -1,11 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using StarterAssets;
 
 public class KnockbackReciever : MonoBehaviour
 {   
-    private ThirdPersonController controllerScript;
+    private Dodge dodge;
     private CharacterController player;
 
     [HideInInspector]
@@ -17,7 +16,7 @@ public class KnockbackReciever : MonoBehaviour
 
     private void Awake()
     {
-        controllerScript = GetComponent<ThirdPersonController>();
+        dodge = GetComponent<Dodge>();
     }
 
     void Start()
@@ -44,7 +43,7 @@ public class KnockbackReciever : MonoBehaviour
     void Update()
     {
         //Debug.Log(impact.magnitude);
-        if(impact.magnitude > 5 && !controllerScript.isDodging)
+        if(impact.magnitude > 5 && !dodge.isDodging)
         {
             player.Move(impact * Time.deltaTime);
             impact = Vector3.Lerp(impact, Vector3.zero, 5 * Time.deltaTime);

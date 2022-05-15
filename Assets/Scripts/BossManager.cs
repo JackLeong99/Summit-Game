@@ -37,7 +37,7 @@ public class BossManager : MonoBehaviour
     public bool rage = false;
 
     private BossPathing bPathing;
-    private tempShockwaveCaller shockwave;
+    private Shockwave shockwave;
     private MegaPunch punch;
     private GroundSlam slam;
     private Eruption erupt;
@@ -48,7 +48,7 @@ public class BossManager : MonoBehaviour
     private void Awake(){
         //defining other scripts referenceds them here- this method avoids an error.
         bPathing = GetComponent<BossPathing>();
-        shockwave = GetComponent<tempShockwaveCaller>();
+        shockwave = GetComponent<Shockwave>();
         punch = GetComponent<MegaPunch>();
         slam = GetComponent<GroundSlam>();
         erupt = GetComponent<Eruption>();
@@ -116,7 +116,7 @@ public class BossManager : MonoBehaviour
         SelectMove(1, 4);
         //Shockwave
         if(MoveSelector == 1){
-            //Debug.Log("Do Shockwave!");
+            Debug.Log("Do Shockwave!");
             //spawn the Shockwave Attack
             shockwave.instantiateShockwave();
             //Instantiate(shockwaveHitbox, transform.position, transform.rotation);

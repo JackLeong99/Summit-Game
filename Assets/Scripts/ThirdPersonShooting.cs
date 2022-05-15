@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
-using StarterAssets;
 
 public class ThirdPersonShooting : MonoBehaviour
 {
+    [SerializeField] int bulletDamage;
     public Camera cam;
 
     public GameObject projectile;
@@ -24,31 +24,47 @@ public class ThirdPersonShooting : MonoBehaviour
     public float shotAnimEnd = 0f;
 
     public float cooldown = 0;
-    private float cdTimer = 0;
+    [HideInInspector]
+    public float cdTimer = 0;
+    [HideInInspector]
+    public bool casting;
     private Vector3 destination;
-
-    private ThirdPersonController TPCScript;
-
     public Color OffCD;
     public Color OnCD;
 
-    // Start is called before the first frame update
+    private Animator _animator;
+
+    private GameObject _mainCamera;
+
+    //Temporary code that resets player y axis rotation until we add custom player model/animations
+    private CharacterController player;
+
+    private void Awake()
+	{
+		if (_mainCamera == null)
+		{
+			_mainCamera = GameObject.FindGameObjectWithTag("MainCamera");
+		}
+	}
+
     void Start()
     {
         CdDisplay.text = "";
         CdBackground.color = OffCD;
-        TPCScript = this.gameObject.GetComponent<ThirdPersonController>();
+        _animator = GetComponent<Animator>();
+        //Temporary code that resets player y axis rotation until we add custom player model/animations
+        player = GetComponent<CharacterController>();
     }
 
     // Update is called once per frame
     void Update()
     {
         CooldownHandler();
+    }
 
-        if(Input.GetButtonDown("Spell1") && cdTimer <= 0 && !TPCScript._Inactionable &&TPCScript.Grounded && !TPCScript.isAttacking)
-        {
-            StartCoroutine(ShootProjectile());
-        }
+    public void CastShoot()
+    {
+        StartCoroutine(ShootProjectile());
     }
 
     void CooldownHandler()
@@ -70,10 +86,9 @@ public class ThirdPersonShooting : MonoBehaviour
 
     IEnumerator ShootProjectile()
     {
-        Quaternion originalR = TPCScript._controller.transform.rotation;
-        TPCScript._controller.transform.rotation = TPCScript._mainCamera.transform.rotation;
-        TPCScript._animator.SetTrigger("Shoot");
-        TPCScript._Inactionable = true;
+        player.transform.rotation = _mainCamera.transform.rotation;
+        casting = true;
+        _animator.SetTrigger("Shoot");
 
         yield return new WaitForSeconds(shotTimeBuffer);
 
@@ -91,9 +106,8 @@ public class ThirdPersonShooting : MonoBehaviour
         InstantiateProjectile();
         
         yield return new WaitForSeconds(shotAnimEnd);
-        
-        TPCScript._controller.transform.rotation = originalR;
-        TPCScript._Inactionable = false;
+        player.transform.rotation = Quaternion.Euler(new Vector3(transform.rotation.x, 0f, transform.rotation.z));
+        casting = false;
         cdTimer = cooldown;
 
     }
@@ -101,6 +115,7 @@ public class ThirdPersonShooting : MonoBehaviour
     void InstantiateProjectile()
     {
         var projectileObj = Instantiate (projectile, FirePoint.position, Quaternion.identity) as GameObject;
+        projectileObj.GetComponent<PlayerBullet>().setDamage(bulletDamage);
         projectileObj.GetComponent<Rigidbody>().velocity = (destination - FirePoint.position).normalized * projectileSpeed;
     }
 }

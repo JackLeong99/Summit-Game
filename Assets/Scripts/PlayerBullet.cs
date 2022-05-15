@@ -6,30 +6,27 @@ public class PlayerBullet : MonoBehaviour
 {
     public float MaxLifetime = 1000;
     public float CurrentLifetime = 0;
-    private bool dead;
+    private int currentGunDamage;
 
-    public int currentGunDamage = 25;
-
-    void Start()
+    public void setDamage(int dmg)
     {
-
+        currentGunDamage = dmg;
     }
-
 
     void Update()
     {
         CurrentLifetime += Time.deltaTime;
         if (CurrentLifetime >= MaxLifetime)
         {
-            CullProjectile();
+            Destroy (gameObject);
         }
     }
 
     void OnCollisionEnter(Collision hit)
     {
-        if (hit.gameObject.tag != "PlayerBullet" && hit.gameObject.tag != "Player" && !dead)
+        if (hit.gameObject.tag != "PlayerBullet" && hit.gameObject.tag != "Player")
         {
-            CullProjectile();
+            Destroy (gameObject);
         }
     }
     //Check for enemy damage and deal damage to the enemy if it hits them.
@@ -48,13 +45,7 @@ public class PlayerBullet : MonoBehaviour
             }
             //Destroy the projectile if a Hittable is hit. Don't want to pass through a player
             //intended trigger and be destroyed.
-            CullProjectile();
+            Destroy (gameObject);
         }
-    }
-
-    void CullProjectile()
-    {
-        dead = true;
-        Destroy (gameObject);
     }
 }

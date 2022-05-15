@@ -5022,6 +5022,7 @@ GameObject:
   - component: {fileID: 5927740900817486187}
   - component: {fileID: 1880447994171638655}
   - component: {fileID: 8134153897015554723}
+  - component: {fileID: -3533827240324822733}
   m_Layer: 0
   m_Name: BulletProjectile
   m_TagString: PlayerBullet
@@ -5089,4 +5090,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MaxLifetime: 10
   CurrentLifetime: 0
-  currentGunDamage: 150
+--- !u!135 &-3533827240324822733
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5944307442520353345}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 0
+  serializedVersion: 2
+  m_Radius: 0.5
+  m_Center: {x: 0, y: 0, z: 0}
