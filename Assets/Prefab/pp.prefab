@@ -51,7 +51,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1548620108195507319}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -111,7 +111,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e310b519d8ff9424a9acc3dccf7024aa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentWeaponDamage: 50
+  currentWeaponDamage: 100
 --- !u!54 &-5946609990723044737
 Rigidbody:
   m_ObjectHideFlags: 0
