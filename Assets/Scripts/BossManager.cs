@@ -36,6 +36,10 @@ public class BossManager : MonoBehaviour
     public bool attackException = false;
     public bool rage = false;
 
+    [SerializeField] float maxHP;
+    [HideInInspector]
+    public float currentHP;
+
     private BossPathing bPathing;
     private Shockwave shockwave;
     private MegaPunch punch;
@@ -44,6 +48,8 @@ public class BossManager : MonoBehaviour
     private RockPathFinding rockThrow;
     Animator animatr;
     NavMeshAgent agent;
+
+    private bool Alive = true;
 
     private void Awake(){
         //defining other scripts referenceds them here- this method avoids an error.
@@ -56,58 +62,65 @@ public class BossManager : MonoBehaviour
         animatr = gameObject.GetComponent<Animator>();
         agent = GetComponent<NavMeshAgent>();
     }
+
+    void Start()
+    {
+        currentHP = maxHP;
+    }
     
     void Update(){
-        /*GroundedCheck();
-        //Looks at the player
-        transform.LookAt(Player);
+        if(Alive){
+            /*GroundedCheck();
+            //Looks at the player
+            transform.LookAt(Player);
 
-        if(!Grounded)
-        {
+            if(!Grounded)
+            {
             transform.Translate(Vector3.down * gravity * Time.deltaTime);
-        }*/
-        animatr.SetFloat("Speed", agent.velocity.magnitude);
-        //if not in melee
-        if (Vector3.Distance(transform.position, Player.position) >= MinDist){
-            //if(!inAttack){
-            bPathing.bossPathing();
-            //}
-            //bPathing.GetComponent<BossPathing>().bossPathing();
-            //transform.Translate(transform.forward * MoveSpeed * Time.deltaTime);
-            //when doing a move pass SelectMove(Midattack1, Midattacklast);
-            bool isMidRange = Vector3.Distance(transform.position, Player.position) >= MinDist;
-            bool isLongRanged = Vector3.Distance(transform.position,Player.position) >= MaxDist;
-            if(isMidRange && !inAttack && !isLongRanged){
-                //Debug.Log("Mid Range!");   
-            }                
+            }*/
+            animatr.SetFloat("Speed", agent.velocity.magnitude);
+            //if not in melee
+            if (Vector3.Distance(transform.position, Player.position) >= MinDist){
+                //if(!inAttack){
+                bPathing.bossPathing();
+                //}
+                //bPathing.GetComponent<BossPathing>().bossPathing();
+                //transform.Translate(transform.forward * MoveSpeed * Time.deltaTime);
+                //when doing a move pass SelectMove(Midattack1, Midattacklast);
+                bool isMidRange = Vector3.Distance(transform.position, Player.position) >= MinDist;
+                bool isLongRanged = Vector3.Distance(transform.position,Player.position) >= MaxDist;
+                if(isMidRange && !inAttack && !isLongRanged){
+                    //Debug.Log("Mid Range!");   
+                }                
+            }
+        
+        
+        
+
+            // if in 'melee'
+            bool isMelee = Vector3.Distance(transform.position, Player.position) <= MinDist;
+            if(isMelee && !inAttack){
+                //when doing a move pass SelectMove(Meleeattack1, Meleeattacklast); 
+                //SelectMove(1, 1); //selectmove 1, last
+                //if(MoveSelector == 1){
+                    //Instantiate(shockwaveHitbox, transform.position, transform.rotation);
+                    //StartCoroutine(waitTime(2.3f, delayBeforeNextAttack));
+                //Debug.Log("In melee!");
+                StartCoroutine(meleeActions());    
+               // }
+            }
+
+            //If player is 'far' do 'ranged' 
+            //frustration mechanic Option
+            bool isRanged = Vector3.Distance(transform.position,Player.position) >= MaxDist;
+            if(isRanged && !inAttack && rangedAllowed){
+                //when doing a move pass SelectMove(Rangedattack1, Rangedattacklast);
+
+                Debug.Log("Long Range!");
+                StartCoroutine(rangedActions());
+
+            } 
         }
-        
-        
-        
-
-        // if in 'melee'
-        bool isMelee = Vector3.Distance(transform.position, Player.position) <= MinDist;
-        if(isMelee && !inAttack){
-            //when doing a move pass SelectMove(Meleeattack1, Meleeattacklast); 
-            //SelectMove(1, 1); //selectmove 1, last
-            //if(MoveSelector == 1){
-                //Instantiate(shockwaveHitbox, transform.position, transform.rotation);
-                //StartCoroutine(waitTime(2.3f, delayBeforeNextAttack));
-            //Debug.Log("In melee!");
-            StartCoroutine(meleeActions());    
-           // }
-        }
-
-        //If player is 'far' do 'ranged' 
-        //frustration mechanic Option
-        bool isRanged = Vector3.Distance(transform.position,Player.position) >= MaxDist;
-        if(isRanged && !inAttack && rangedAllowed){
-            //when doing a move pass SelectMove(Rangedattack1, Rangedattacklast);
-
-            Debug.Log("Long Range!");
-            StartCoroutine(rangedActions());
-
-        } 
     }
 
     IEnumerator meleeActions(){
@@ -218,4 +231,22 @@ public class BossManager : MonoBehaviour
     IEnumerator waitTime(float animatrDuration, float delay){
         yield return new WaitForSeconds(animatrDuration + delay);
     }*/
+
+    public void TakeDamage(float dmg)
+    {
+        currentHP -= dmg;
+        if (currentHP <= 0.0f)
+        {
+            StartCoroutine(Death());
+        }
+    }
+
+    IEnumerator Death()
+    {
+        animatr.SetTrigger("Death");
+        yield return new WaitForSeconds(2.2f);
+        Alive = false;
+        agent.speed = 0;
+        //Instantiate(deathFX, gameObject.transform.position, Quaternion.identity);
+    }
 }
