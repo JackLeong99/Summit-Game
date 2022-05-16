@@ -4,15 +4,21 @@ using UnityEngine;
 
 public class EnemyDamageReceiver : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    public BossManager boss;
+    
+    void Start() 
     {
-        
+        boss = GetComponentInParent<BossManager>();
     }
-
-    // Update is called once per frame
-    void Update()
+    public void OnTriggerEnter(Collider collider)
     {
-        
+        if(collider.tag == "playerHit")
+        {
+            PlayerDamage playerDamage = collider.GetComponent<PlayerDamage>();
+            if(playerDamage)
+            {
+                boss.TakeDamage(playerDamage.damage);
+            }
+        }
     }
 }

@@ -37,7 +37,7 @@ public class BossManager : MonoBehaviour
     public bool rage = false;
 
     [SerializeField] float maxHP;
-    [HideInInspector]
+    //[HideInInspector]
     public float currentHP;
 
     private BossPathing bPathing;
@@ -50,6 +50,8 @@ public class BossManager : MonoBehaviour
     NavMeshAgent agent;
 
     private bool Alive = true;
+
+    Rigidbody[] rigidBodies;
 
     private void Awake(){
         //defining other scripts referenceds them here- this method avoids an error.
@@ -66,6 +68,8 @@ public class BossManager : MonoBehaviour
     void Start()
     {
         currentHP = maxHP;
+        rigidBodies = GetComponentsInChildren<Rigidbody>();
+        setUpHitBoxes();
     }
     
     void Update(){
@@ -235,6 +239,10 @@ public class BossManager : MonoBehaviour
     public void TakeDamage(float dmg)
     {
         currentHP -= dmg;
+        if (currentHP > maxHP){
+            currentHP = maxHP;
+        }
+        UIManager.Instance.HealthBossBarSet((int)Mathf.Round(currentHP));
         if (currentHP <= 0.0f)
         {
             StartCoroutine(Death());
@@ -248,5 +256,14 @@ public class BossManager : MonoBehaviour
         Alive = false;
         agent.speed = 0;
         //Instantiate(deathFX, gameObject.transform.position, Quaternion.identity);
+    }
+
+    public void setUpHitBoxes() 
+    {
+        foreach(var Rigidbody in rigidBodies)
+        {
+            Rigidbody.isKinematic = true;
+            Rigidbody.gameObject.AddComponent<EnemyDamageReceiver>();
+        }
     }
 }
