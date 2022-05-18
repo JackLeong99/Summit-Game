@@ -30,6 +30,10 @@ public class UIManager : MonoBehaviour
 
     public GameObject PanelGameOver;
 
+    public GameObject PanelPauseMenu;
+
+    //enable certain buttons
+
 
     public TMP_Text CharacterClass;
     private string CharacterClassFormat= "Character Class: {0}";
@@ -60,6 +64,7 @@ public class UIManager : MonoBehaviour
         
         CharacterClass.text= string.Format(CharacterClassFormat, "Archer"); //to change archer set by a string
         PanelGameOver.SetActive(false);
+        PanelPauseMenu.SetActive(false);
         BossName.text="Golem"; //set by game later same as archer
         
     }
@@ -102,5 +107,15 @@ public class UIManager : MonoBehaviour
     public void RestartGame()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
+
+    public void PauseMenu()
+    {
+        PanelPauseMenu.SetActive(true);
+    }
+
+    public void ClickPlay()
+    {
+
     }
 }
