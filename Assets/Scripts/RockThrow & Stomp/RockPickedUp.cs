@@ -46,7 +46,6 @@ public class RockPickedUp : MonoBehaviour
     void OnCollisionEnter(Collision collider)
     {
         GameObject other = collider.gameObject;
-        Debug.Log(other.tag);
          if(other.tag=="PlayerBullet")
          {
              rockHealth--;

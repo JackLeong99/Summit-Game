@@ -16,6 +16,7 @@ public class RockMoving : MonoBehaviour
     private float trackX;
     private Vector3 localArea;
     public GameObject rockPrefab;
+    public ParticleSystem rockParticle;
 
     private GameObject player;
 
@@ -49,9 +50,14 @@ public class RockMoving : MonoBehaviour
     public void spawnRock()
     {
         GameObject breakablerock= Instantiate(rockPrefab); 
+        
         breakablerock.transform.position=transform.position;
         breakablerock.transform.position = new Vector3(transform.position.x, transform.position.y-1 , transform.position.z);
         RockManager.Instance.RockPositionUpdate(breakablerock);
+
+        //creates the particle effect for landing
+        ParticleSystem rockParticles= Instantiate(rockParticle);
+        rockParticles.transform.position=transform.position;
         Destroy(gameObject);
     }
     
