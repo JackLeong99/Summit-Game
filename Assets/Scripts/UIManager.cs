@@ -56,6 +56,7 @@ public class UIManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        instance = this;
         PlayerHealthBar.maxValue= 100; //can be changed
         PlayerHealthBar.value=FullHealth;
 
@@ -116,6 +117,9 @@ public class UIManager : MonoBehaviour
 
     public void ClickPlay()
     {
-
+        PanelPauseMenu.SetActive(false);
+        Debug.Log("hello?");
+        GameManager.Instance.ResumeGame();
+        
     }
 }

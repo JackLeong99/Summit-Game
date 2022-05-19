@@ -33,7 +33,7 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        instance = this;
     }
 
     // Update is called once per frame
@@ -45,8 +45,12 @@ public class GameManager : MonoBehaviour
         PauseGame();
 
             //Player.GetComponent<ThirdPersonController>().enabled = false;
-            Cursor.visible = true; //the issues is in StarterAssetsInput :(
+            //Cursor.visible = true; //the issues is in StarterAssetsInput :(
             Cursor.lockState = CursorLockMode.None;
+    }
+    if(Input.GetButtonDown("Teleport"))
+    {
+        ResumeGame (); //why doesn't the cursor work!!!!!!!!!!!!!!!!!!
     }
     }
 
@@ -59,11 +63,15 @@ public class GameManager : MonoBehaviour
        // Testing.gameObject.SetActive(false);
         Time.timeScale = 0;
          UIManager.Instance.PauseMenu();
+         Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
         //Cursor.visible = true;
     }
     public void ResumeGame ()
     {
         Time.timeScale = 1;
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
        // Testing.gameObject.SetActive(true);
     }
 }

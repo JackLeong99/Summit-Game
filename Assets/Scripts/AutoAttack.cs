@@ -46,7 +46,7 @@ public class AutoAttack : MonoBehaviour
 		float timer = 0;
 		while(timer < swingTimer)
 		{
-			Debug.Log("Attacking!!!");
+			//Debug.Log("Attacking!!!");
 			timer += Time.deltaTime;
 			yield return null;
 		}
