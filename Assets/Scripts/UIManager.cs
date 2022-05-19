@@ -118,7 +118,6 @@ public class UIManager : MonoBehaviour
     public void ClickPlay()
     {
         PanelPauseMenu.SetActive(false);
-        Debug.Log("hello?");
         GameManager.Instance.ResumeGame();
         
     }
