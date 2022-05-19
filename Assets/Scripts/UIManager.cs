@@ -119,6 +119,9 @@ public class UIManager : MonoBehaviour
     {
         PanelPauseMenu.SetActive(false);
         GameManager.Instance.ResumeGame();
-        
+    }
+    public void Quit()
+    {
+        Application.Quit();
     }
 }

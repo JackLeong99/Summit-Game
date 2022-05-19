@@ -48,10 +48,6 @@ public class GameManager : MonoBehaviour
             //Cursor.visible = true; //the issues is in StarterAssetsInput :(
             Cursor.lockState = CursorLockMode.None;
     }
-    if(Input.GetButtonDown("Teleport"))
-    {
-        ResumeGame (); //why doesn't the cursor work!!!!!!!!!!!!!!!!!!
-    }
     }
 
     public void onDeath() {
