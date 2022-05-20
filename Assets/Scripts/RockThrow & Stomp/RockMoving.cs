@@ -28,7 +28,7 @@ public class RockMoving : MonoBehaviour
          player=GameObject.FindWithTag("Player");
          
         target=player.transform;
-        target.position=new Vector3(player.transform.position.x, player.transform.position.y+1 , player.transform.position.z);
+        target.position=new Vector3(player.transform.position.x, player.transform.position.y+2 , player.transform.position.z);
         //this sets the target a bit above the player so it hits more often
 
         //puts position into local space
@@ -68,7 +68,7 @@ public class RockMoving : MonoBehaviour
         rageMultiplier=2;
     }
 
-    void OnCollisionEnter(Collision collider)
+    void OnTriggerEnter(Collider collider)
     {
         GameObject other = collider.gameObject;
         Debug.Log(other);
