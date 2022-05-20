@@ -77,6 +77,9 @@ public class RockManager : MonoBehaviour
         RockMoved=closesRock;
 
         GameObject closest=allRocks[closesRock];
+        //update closest health
+        RockPickedUp closesttesting = closest.GetComponent<RockPickedUp>();
+        closesttesting.MakeRockInv();
         return closest;
     }
 

@@ -66,4 +66,9 @@ public class RockPickedUp : MonoBehaviour
              Destroy(gameObject);
          }
     }
+
+    public void MakeRockInv()
+    {
+        rockHealth=1000000000;
+    }
 }
