@@ -30,6 +30,11 @@ public class UIManager : MonoBehaviour
 
     public GameObject PanelGameOver;
 
+    public GameObject PanelPauseMenu;
+    public GameObject PowerUpMenu;
+
+    //enable certain buttons
+
 
     public TMP_Text CharacterClass;
     private string CharacterClassFormat= "Character Class: {0}";
@@ -52,6 +57,7 @@ public class UIManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        instance = this;
         PlayerHealthBar.maxValue= 100; //can be changed
         PlayerHealthBar.value=FullHealth;
 
@@ -60,6 +66,8 @@ public class UIManager : MonoBehaviour
         
         CharacterClass.text= string.Format(CharacterClassFormat, "Archer"); //to change archer set by a string
         PanelGameOver.SetActive(false);
+        PanelPauseMenu.SetActive(false);
+        PowerUpMenu.SetActive(false);
         BossName.text="Golem"; //set by game later same as archer
         
     }
@@ -102,5 +110,31 @@ public class UIManager : MonoBehaviour
     public void RestartGame()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
+
+    //make pause menu visable
+    public void PauseMenu()
+    {
+        PanelPauseMenu.SetActive(true);
+        PowerUpMenu.SetActive(false);
+    }
+
+    //take game out of pause
+    public void ClickPlay()
+    {
+        PanelPauseMenu.SetActive(false);
+        GameManager.Instance.ResumeGame();
+    }
+
+    public void PowerMenu()
+    {
+        PowerUpMenu.SetActive(true);
+        PanelPauseMenu.SetActive(false);
+        
+    }
+
+    public void Quit()
+    {
+        Application.Quit();
     }
 }
