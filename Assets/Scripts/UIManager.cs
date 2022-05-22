@@ -97,14 +97,16 @@ public class UIManager : MonoBehaviour
         Debug.Log(BossHealthBar.value);
         if(currentHealth<=0)
         {
-           // GameManager.Instance.onDeath(); //to be moved to whatever is handling health
+            GameManager.Instance.onDeath(); //to be moved to whatever is handling health
         }
     }
 
     public void GameOverScreen() 
     {
         PanelGameOver.SetActive(true);
-        RestartGame();
+        Time.timeScale = 0;
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
     }
 
     public void RestartGame()

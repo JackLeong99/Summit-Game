@@ -16,6 +16,7 @@ public class DamageCollider : MonoBehaviour
             HealthTemp healthTemp = other.GetComponent<HealthTemp>();
             //Deal damage if a health script exists.
             if (healthTemp != null){
+                GameManager.Instance.SwordDamge(currentWeaponDamage);
                 healthTemp.takeDamage(currentWeaponDamage);
             }
             Destroy(gameObject);

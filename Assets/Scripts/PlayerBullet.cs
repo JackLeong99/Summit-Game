@@ -41,6 +41,7 @@ public class PlayerBullet : MonoBehaviour
 
             //Deal damage if a health script exists.
             if (healthTemp != null){
+                GameManager.Instance.GunDamge(currentGunDamage);
                 healthTemp.takeDamage(currentGunDamage);
             }
             //Destroy the projectile if a Hittable is hit. Don't want to pass through a player
