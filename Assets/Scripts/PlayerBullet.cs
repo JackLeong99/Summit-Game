@@ -6,9 +6,9 @@ public class PlayerBullet : MonoBehaviour
 {
     public float MaxLifetime = 1000;
     public float CurrentLifetime = 0;
-    private int currentGunDamage;
+    private float currentGunDamage;
 
-    public void setDamage(int dmg)
+    public void setDamage(float dmg)
     {
         currentGunDamage = dmg;
     }
@@ -31,21 +31,16 @@ public class PlayerBullet : MonoBehaviour
     }
     //Check for enemy damage and deal damage to the enemy if it hits them.
 
-    private void OnTriggerEnter(Collider other){
-        Debug.Log("GunHit!");
-        //If the projectile hits an enemy:
-        if(other.tag == "Hittable"){
-            Debug.Log("EnemyHit!");
-            //Store the gameObject that is hit in a variable
-            HealthTemp healthTemp = other.GetComponent<HealthTemp>();
-
-            //Deal damage if a health script exists.
-            if (healthTemp != null){
-                healthTemp.takeDamage(currentGunDamage);
+    public void OnTriggerEnter(Collider other)
+    {
+        if (other.tag == "enemyHitbox")
+        {
+            EnemyDamageReceiver receiver = other.GetComponent<EnemyDamageReceiver>();
+            if (receiver)
+            {
+                receiver.PassDamage(currentGunDamage);
+                Destroy(gameObject);
             }
-            //Destroy the projectile if a Hittable is hit. Don't want to pass through a player
-            //intended trigger and be destroyed.
-            Destroy (gameObject);
         }
     }
 }

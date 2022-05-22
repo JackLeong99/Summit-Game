@@ -9,16 +9,10 @@ public class EnemyDamageReceiver : MonoBehaviour
     void Start() 
     {
         boss = GetComponentInParent<BossManager>();
+        gameObject.tag = "enemyHitbox";
     }
-    public void OnTriggerEnter(Collider collider)
+    public void PassDamage(float dmg) 
     {
-        if(collider.tag == "playerHit")
-        {
-            PlayerDamage playerDamage = collider.GetComponent<PlayerDamage>();
-            if(playerDamage)
-            {
-                boss.TakeDamage(playerDamage.damage);
-            }
-        }
+        boss.TakeDamage(dmg);
     }
 }

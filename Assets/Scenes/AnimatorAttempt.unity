@@ -832,11 +832,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b8e999dbd590a5a48b5419fb5ddefaef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  warning: {fileID: 4685280454140290361, guid: cfb1f20a68ad78142b4b523f090bfbe7, type: 3}
+  warning: {fileID: 2426766889380116794, guid: a3616555df304cd49b0bc9041200f852, type: 3}
   hitboxObject: {fileID: 4040199879806120334, guid: 60492c00038ed724a95f614a2f07e65e, type: 3}
   target: {fileID: 4416926083275089699}
-  duration: 2
-  delay: 1.5
+  duration: 1
+  delay: 0.5
   layer: 6
 --- !u!114 &311172975
 MonoBehaviour:
@@ -2948,7 +2948,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.7771702, y: 1}
+    m_SensorSize: {x: 2.010267, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -4872,6 +4872,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isAttacking: 0
+  attackDamage: 250
   attackHitbox: {fileID: 1548620108195507319, guid: 1ffb75d4023a5164495d05dcfb564217, type: 3}
   attackCurve:
     serializedVersion: 2

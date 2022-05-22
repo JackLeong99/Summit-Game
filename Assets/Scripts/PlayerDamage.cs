@@ -4,6 +4,23 @@ using UnityEngine;
 
 public class PlayerDamage : MonoBehaviour
 {
-    public float damage;
-    
+    private float damage;
+
+    public void setDamage(float dmg) 
+    {
+        damage = dmg;
+    }
+
+    public void OnTriggerEnter(Collider other)
+    {
+        if (other.tag == "enemyHitbox") 
+        {
+            EnemyDamageReceiver receiver = other.GetComponent<EnemyDamageReceiver>();
+            if (receiver)
+            {
+                receiver.PassDamage(damage);
+                Destroy(gameObject);
+            }
+        }
+    }
 }
