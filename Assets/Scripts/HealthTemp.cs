@@ -9,6 +9,9 @@ public class HealthTemp : MonoBehaviour
     public int maxHealth;
     public int currentHealth;
 
+    //used by IncreasePlayerAttack
+    private bool increaseDamage=false;
+
     [SerializeField] GameObject deathFX;
 
     private BossManager bossManager;
@@ -22,6 +25,10 @@ public class HealthTemp : MonoBehaviour
     }
 
     public void takeDamage(int damage){
+        if(increaseDamage)
+        {
+            damage+=2; //we can change this increase to anything
+        }
         if (currentHealth > 0){
             currentHealth = currentHealth - damage;
             if (currentHealth >= maxHealth){
@@ -33,6 +40,19 @@ public class HealthTemp : MonoBehaviour
         if (currentHealth <= 0)
         {
             StartCoroutine(Death());
+        }
+    }
+
+
+    public void DamageIncrease()
+    {
+        if(increaseDamage==true)
+        {
+            increaseDamage=false;
+        }
+        else
+        {
+           increaseDamage=true; 
         }
     }
 
