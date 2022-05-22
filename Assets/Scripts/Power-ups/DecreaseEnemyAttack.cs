@@ -4,16 +4,16 @@ using UnityEngine;
 
 public class DecreaseEnemyAttack : MonoBehaviour
 {
+    private PlayerStats damage;
     // Start is called before the first frame update
     void Start()
     {
-        
+        damage=this.GetComponent<PlayerStats>();
     }
 
-    // Update is called once per frame
-    void Update()
+    //call this function on enable and disable in the power-up manager
+    public void DecreaseAttack()
     {
-        
+        damage.DecreaseDamage();
     }
-    public void 
 }
