@@ -59,7 +59,7 @@ public class Dodge : MonoBehaviour
             cdTimer = 1000f;
 			while(timer < dodgeTimer)
 			{
-				Debug.Log("dodging");
+				//Debug.Log("dodging");
 				float dSpeed = dodgeCurve.Evaluate(timer) * dodgeMultiplier;
 				Vector3 dir = (transform.forward * dSpeed); 
 				controller.Move(dir * Time.deltaTime);

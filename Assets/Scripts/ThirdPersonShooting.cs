@@ -6,7 +6,7 @@ using TMPro;
 
 public class ThirdPersonShooting : MonoBehaviour
 {
-    [SerializeField] int bulletDamage;
+    [SerializeField] float bulletDamage;
     public Camera cam;
 
     public GameObject projectile;

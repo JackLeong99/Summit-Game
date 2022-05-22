@@ -11,6 +11,8 @@ public class AutoAttack : MonoBehaviour
 
     private float swingTimer;
 
+    [SerializeField] float attackDamage;
+
     [SerializeField] GameObject attackHitbox;
 
     [SerializeField] AnimationCurve attackCurve;
@@ -43,6 +45,7 @@ public class AutoAttack : MonoBehaviour
 		isAttacking = true;
 		var hitbox = Instantiate(attackHitbox, player.position + new Vector3(0, 1, 0), player.rotation, player.transform);
 		hitbox.transform.localPosition += new Vector3(0, 0, 1);
+        hitbox.GetComponent<PlayerDamage>().setDamage(attackDamage);
 		float timer = 0;
 		while(timer < swingTimer)
 		{
