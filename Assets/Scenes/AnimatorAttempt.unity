@@ -1136,6 +1136,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e1f7d246b4241bf47bc8230f1ed1bc7e, type: 3}
+--- !u!1 &440475869 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8644674388897844590, guid: 90c1bd1fda819204985b62a4e3e9e7b5, type: 3}
+  m_PrefabInstance: {fileID: 604690343}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &445916188
 GameObject:
   m_ObjectHideFlags: 0
@@ -1567,7 +1572,7 @@ PrefabInstance:
     - target: {fileID: 1309836548364246815, guid: 90c1bd1fda819204985b62a4e3e9e7b5, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 1223814785}
+      objectReference: {fileID: 0}
     - target: {fileID: 1309836548364246815, guid: 90c1bd1fda819204985b62a4e3e9e7b5, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
       value: 2
@@ -1611,7 +1616,7 @@ PrefabInstance:
     - target: {fileID: 3496021868197713730, guid: 90c1bd1fda819204985b62a4e3e9e7b5, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 1223814785}
+      objectReference: {fileID: 0}
     - target: {fileID: 3496021868197713730, guid: 90c1bd1fda819204985b62a4e3e9e7b5, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
       value: 2
@@ -1643,7 +1648,7 @@ PrefabInstance:
     - target: {fileID: 6349150968980738510, guid: 90c1bd1fda819204985b62a4e3e9e7b5, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 1223814785}
+      objectReference: {fileID: 0}
     - target: {fileID: 6349150968980738510, guid: 90c1bd1fda819204985b62a4e3e9e7b5, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
       value: 2
@@ -1683,7 +1688,7 @@ PrefabInstance:
     - target: {fileID: 6838246440928322941, guid: 90c1bd1fda819204985b62a4e3e9e7b5, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 1223814785}
+      objectReference: {fileID: 0}
     - target: {fileID: 6838246440928322941, guid: 90c1bd1fda819204985b62a4e3e9e7b5, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
       value: 2
@@ -3205,7 +3210,7 @@ PrefabInstance:
     - target: {fileID: 3406367461238469038, guid: 738ab131643238a48802e411ddfd2202, type: 3}
       propertyPath: PowerUpMenu
       value: 
-      objectReference: {fileID: 1176099995}
+      objectReference: {fileID: 440475869}
     - target: {fileID: 3406367461238469038, guid: 738ab131643238a48802e411ddfd2202, type: 3}
       propertyPath: BossHealthBar
       value: 
