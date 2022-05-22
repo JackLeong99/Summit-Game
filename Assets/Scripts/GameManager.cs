@@ -16,8 +16,6 @@ public class GameManager : MonoBehaviour
             return instance;
         }
     }
-    public Camera Testing;
-    public GameObject Player;
         
     void Awake()
     {
@@ -41,12 +39,7 @@ public class GameManager : MonoBehaviour
     {
     if(Input.GetButtonDown("Escape"))
     {
-        // Application.Quit();
         PauseGame();
-
-            //Player.GetComponent<ThirdPersonController>().enabled = false;
-            //Cursor.visible = true; //the issues is in StarterAssetsInput :(
-            Cursor.lockState = CursorLockMode.None;
     }
     }
 
@@ -56,18 +49,15 @@ public class GameManager : MonoBehaviour
 
     public void PauseGame ()
     {
-       // Testing.gameObject.SetActive(false);
         Time.timeScale = 0;
          UIManager.Instance.PauseMenu();
          Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
-        //Cursor.visible = true;
     }
     public void ResumeGame ()
     {
         Time.timeScale = 1;
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
-       // Testing.gameObject.SetActive(true);
     }
 }
