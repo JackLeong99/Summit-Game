@@ -17,13 +17,13 @@ public class GroundSlam : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
-    {
-        if(Input.GetKeyDown("y"))
-        {
-            groundSlam();
-        } 
-    }
+    // void Update()
+    // {
+    //     if(Input.GetKeyDown("y"))
+    //     {
+    //         groundSlam();
+    //     } 
+    // }
 
     public void groundSlam()
     {

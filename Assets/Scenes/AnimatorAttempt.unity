@@ -695,12 +695,16 @@ MonoBehaviour:
   MinDist: 10
   MoveSelector: 0
   Rage: 0
-  delayBeforeNextAttack: 1
+  delayBeforeNextAttack: 0.75
   inAttack: 0
   rangedAllowed: 1
-  delayBeforeRangedAllowed: 5
+  delayBeforeRangedAllowed: 3
+  patience: 0.4
+  currentPatience: 0
   attackException: 0
   rage: 0
+  lastMove: 
+  lastMoveRepeated: 0
 --- !u!54 &311172964
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -2181,6 +2185,18 @@ PrefabInstance:
       value: 11
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: de4c2bfe46e49014a9e7bc63251e601e, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: de4c2bfe46e49014a9e7bc63251e601e, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: de4c2bfe46e49014a9e7bc63251e601e, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: de4c2bfe46e49014a9e7bc63251e601e, type: 3}
       propertyPath: m_LocalPosition.x
       value: -15.884951
       objectReference: {fileID: 0}
@@ -2557,7 +2573,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.7771702, y: 1}
+    m_SensorSize: {x: 1.9686098, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -4056,6 +4072,10 @@ PrefabInstance:
     - target: {fileID: 3153736642314676760, guid: 52d236d26bf343741996d51ef539192f, type: 3}
       propertyPath: bulletDamage
       value: 200
+      objectReference: {fileID: 0}
+    - target: {fileID: 3153736642314676792, guid: 52d236d26bf343741996d51ef539192f, type: 3}
+      propertyPath: cooldown
+      value: 0.5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 52d236d26bf343741996d51ef539192f, type: 3}
