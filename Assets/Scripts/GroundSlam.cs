@@ -10,6 +10,13 @@ public class GroundSlam : MonoBehaviour
     [SerializeField] public GameObject parentObject2;
 
     [SerializeField] public float duration;
+    private Shockwave shockwave;
+    private bool groundSlamming = false;
+    
+    private void Awake(){
+        shockwave = GetComponent<Shockwave>();
+    }
+
     // Start is called before the first frame update
     void Start()
     {
@@ -28,7 +35,9 @@ public class GroundSlam : MonoBehaviour
     public void groundSlam()
     {
         StartCoroutine(slam());
+        StartCoroutine(scuffedTimer());
     }
+
 
     IEnumerator slam()
     {
@@ -37,5 +46,25 @@ public class GroundSlam : MonoBehaviour
         yield return new WaitForSeconds(duration);
         Destroy(hitbox);
         Destroy(hitbox2);
+    }
+    IEnumerator scuffedTimer()
+    {
+        Debug.Log("Start Timer");
+        yield return new WaitForSeconds(.5f);
+
+        groundSlamming = true;
+        Debug.Log("Done Timer");
+    }
+
+    void OnTriggerEnter(Collider other)
+    {
+        //GameObject other = collider.gameObject;
+        Debug.Log(other);
+        
+        if(other.tag=="Arena" && groundSlamming)
+        {
+            shockwave.instantiateShockwave();
+            groundSlamming = false;
+        }
     }
 }

@@ -11,6 +11,8 @@ public class Shockwave : MonoBehaviour
     
     [SerializeField] GameObject shockwaveHitbox;
     [SerializeField] GameObject shockwaveFX;
+    [SerializeField] GameObject parentObject;
+    [SerializeField] Vector3 handVector;
    
     // void Update()
     // {
@@ -21,8 +23,12 @@ public class Shockwave : MonoBehaviour
     // }
 
     public void instantiateShockwave(){
-        var wave = Instantiate(shockwaveHitbox, transform.position, transform.rotation) as GameObject;
+        var handPos = parentObject.transform.position;
+        var temp = handPos.x;
+        var temp2 = handPos.z;
+        handVector = new Vector3(temp, .5f, temp2);
+        var wave = Instantiate(shockwaveHitbox, handVector, transform.rotation) as GameObject;
         wave.GetComponent<ShockwaveHandler>().scaleHitBox(maxSize, scaleTime);
-        var fx = Instantiate(shockwaveFX, transform.position, Quaternion.identity) as GameObject;
+        var fx = Instantiate(shockwaveFX, handVector, transform.rotation) as GameObject;
     }
 }

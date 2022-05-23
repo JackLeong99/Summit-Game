@@ -797,9 +797,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 02b76fed750f64c6e8263254b9d055a8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxSize: 50
+  maxSize: 40
   scaleTime: 1
   shockwaveHitbox: {fileID: 4686178775174311369, guid: c8aaaf5564c7a4a3a9f37be7ab91483e, type: 3}
+  shockwaveFX: {fileID: 3520696819567259417, guid: 2497e87fcbbd94b8ba312e0f831a4298, type: 3}
+  parentObject: {fileID: 969358801}
+  handVector: {x: 0, y: 0, z: 0}
 --- !u!114 &311172972
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2099,6 +2102,40 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ce8e84b0a33ef4e4080cbdc1232e3d6d, type: 3}
+--- !u!1 &969358801 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: -8778818569385250773, guid: de4c2bfe46e49014a9e7bc63251e601e, type: 3}
+  m_PrefabInstance: {fileID: 1071067814}
+  m_PrefabAsset: {fileID: 0}
+--- !u!54 &969358803
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 969358801}
+  serializedVersion: 2
+  m_Mass: 0.5
+  m_Drag: 0
+  m_AngularDrag: 0
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 1
+--- !u!65 &969358804
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 969358801}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.03, y: 0.03, z: 0.03}
+  m_Center: {x: 0, y: -0.01, z: 0}
 --- !u!1 &972345291 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7929440554059668587, guid: de4c2bfe46e49014a9e7bc63251e601e, type: 3}

@@ -125,7 +125,7 @@ public class BossManager : MonoBehaviour
             //bPathing.GetComponent<BossPathing>().bossPathing();
             //transform.Translate(transform.forward * MoveSpeed * Time.deltaTime);
             //when doing a move pass SelectMove(Midattack1, Midattacklast);
-            if(isMidRange && !inAttack && !isRanged){
+            if(isMidRange && !inAttack && !isRanged && rangedAllowed){
                 //Debug.Log("Mid Range!");
                 if(currentPatience >= patience){
                     StartCoroutine(rangedActions());
@@ -240,7 +240,6 @@ public class BossManager : MonoBehaviour
             animatr.SetTrigger("Slam");
             float animatrDuration = 2.875f; // Figure this out
             yield return new WaitForSeconds(animatrDuration);
-            shockwave.instantiateShockwave();
            //possible to double slam
            //would be nice to have different animation - particle effect on the fists before first slam
            //less drawback on second slam
@@ -251,7 +250,9 @@ public class BossManager : MonoBehaviour
                 slam.groundSlam();
                 animatr.SetTrigger("Slam");
                 yield return new WaitForSeconds(animatrDuration);
-                shockwave.instantiateShockwave();
+                // yield return new WaitForSeconds(2f * Time.deltaTime);
+                // shockwave.instantiateShockwave();
+                // yield return new WaitForSeconds(animatrDuration - 2 * Time.deltaTime);
             }
             lastMove = "Slam";
             lastMoveRepeated ++;
