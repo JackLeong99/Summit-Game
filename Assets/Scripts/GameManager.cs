@@ -24,7 +24,7 @@ public class GameManager : MonoBehaviour
 
     private int totalGunDamage;
     private int totalSwordDamage;
-    //private GameObject boss; //discuss with Jack how hitboxes work
+    private GameObject boss; //discuss with Jack how hitboxes work
 
     private float timer;
         
@@ -45,7 +45,7 @@ public class GameManager : MonoBehaviour
         instance = this;
         Time.timeScale = 1;
         player=GameObject.FindWithTag("Player");
-        //boss=GameObject.FindWithTag("Hittable");
+        boss=GameObject.FindWithTag("Hittable");
     }
 
     // Update is called once per frame
@@ -61,13 +61,14 @@ public class GameManager : MonoBehaviour
     public void onDeath() 
     {
         UIManager.Instance.GameOverScreen();
+        BossManager bossHealth= boss.GetComponent<BossManager>();
+        bossHealth.getCurrentBossHealth();
             
-            
-        //  Analytics.CustomEvent("Death", new Dictionary<string, object>
-        // {
-        //     {"Player Death time: ", timer},
-        //     {"Total dealt damage: ", boss.BossHealth()}
-        // });
+         Analytics.CustomEvent("Player Death", new Dictionary<string, object>
+        {
+            {"Player Death time: ", timer},
+            {"Total dealt damage: ", bossHealth.getCurrentBossHealth()}
+        });
     }
 
     public void onBossDeath()
@@ -87,11 +88,11 @@ public class GameManager : MonoBehaviour
 
     public void onPlayerHit(string attack)
     {
-         Analytics.CustomEvent("Boss Death Time", new Dictionary<string, object>
+         /*Analytics.CustomEvent("Player hit time", new Dictionary<string, object>
         {
             {"Time of enemy hit: ", timer},
             {"Name of attack: ", attack}
-        });
+        });*/
     }
 
     public void SwordDamge(int sDamage)

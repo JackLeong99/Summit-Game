@@ -458,6 +458,11 @@ public class BossManager : MonoBehaviour
         }
     }
 
+    public float getCurrentBossHealth()
+    {
+        return currentHP;
+    }
+
     IEnumerator Death()
     {
         animatr.SetTrigger("Death");
