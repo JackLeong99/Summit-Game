@@ -64,7 +64,7 @@ public class UIManager : MonoBehaviour
         BossHealthBar.maxValue= 1000; //can be changed
         BossHealthBar.value=BossFullHealth;
         
-        CharacterClass.text= string.Format(CharacterClassFormat, "Archer"); //to change archer set by a string
+        CharacterClass.text= string.Format(CharacterClassFormat, "Hero"); //to change archer set by a string
         PanelGameOver.SetActive(false);
         PanelPauseMenu.SetActive(false);
         PowerUpMenu.SetActive(false);
