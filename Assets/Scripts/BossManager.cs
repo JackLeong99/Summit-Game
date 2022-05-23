@@ -46,6 +46,7 @@ public class BossManager : MonoBehaviour
     public string lastMove;
     public int lastMoveRepeated = 0;
 
+    public float scuffedShockTimer;
     [SerializeField] float maxHP;
     //[HideInInspector]
     public float currentHP;
@@ -92,83 +93,84 @@ public class BossManager : MonoBehaviour
             if(!Grounded)
             {
             transform.Translate(Vector3.down * gravity * Time.deltaTime);
-        }*/
-        animatr.SetFloat("Speed", agent.velocity.magnitude);
-         // if in 'melee'
-        bool isMelee = Vector3.Distance(transform.position, Player.position) <= MinDist;
-        //if 'mid ranged'
-        bool isMidRange = Vector3.Distance(transform.position, Player.position) >= MinDist;
-        //If player is 'far' do 'ranged' 
-        //frustration mechanic Option
-        bool isRanged = Vector3.Distance(transform.position, Player.position) >= MaxDist;
-        // if(inRockThrow){
+            }*/
+            animatr.SetFloat("Speed", agent.velocity.magnitude);
+            // if in 'melee'
+            bool isMelee = Vector3.Distance(transform.position, Player.position) <= MinDist;
+            //if 'mid ranged'
+            bool isMidRange = Vector3.Distance(transform.position, Player.position) >= MinDist;
+            //If player is 'far' do 'ranged' 
+            //frustration mechanic Option
+            bool isRanged = Vector3.Distance(transform.position, Player.position) >= MaxDist;
+            // if(inRockThrow){
 
-        //     if(isMelee && currentPatience >= patience){
-                
-        //             rockThrowException = true;
-        //             Debug.Log("Impatient");
-        //             //rockThrow.SetPlayer();
-        //             StartCoroutine(meleeActions());
-        //             //rockThrow.SetTarget();
-        //             rockPatienceCheck = true;
-        //             StartCoroutine(rangedActions());
-        //             currentPatience = 0;
-        //             rockThrowException = false;
-        //     }
-        //     else if(currentPatience >= patience && (isMidRange || isRanged)){
-                
-        //             rockThrowException = true;
-        //             Debug.Log("Impatient");
-        //             //rockThrow.SetPlayer();
-        //             rockPatienceCheck = false;
-        //             StartCoroutine(rangedActions());
-        //             //rockThrow.SetTarget();
-        //             rockPatienceCheck = true;
-        //             StartCoroutine(rangedActions());
-        //             currentPatience = 0;
-        //             rockThrowException = false;
-                
-        //     }
-        //     else if (!inAttack && !rockThrowException){
-        //         currentPatience = currentPatience + (fullRandomiser(0.05f, 0.1f)) * Time.deltaTime;
-        //     }
-        // }
-        //if 'mid range'
-        if (isMidRange){
-            //if(!inAttack){
-            bPathing.bossPathing();
-            //}
-            //bPathing.GetComponent<BossPathing>().bossPathing();
-            //transform.Translate(transform.forward * MoveSpeed * Time.deltaTime);
-            //when doing a move pass SelectMove(Midattack1, Midattacklast);
-            if(isMidRange && !inAttack && !isRanged && rangedAllowed){
-                //Debug.Log("Mid Range!");
-                if(currentPatience >= patience){
+            //     if(isMelee && currentPatience >= patience){
+                    
+            //             rockThrowException = true;
+            //             Debug.Log("Impatient");
+            //             //rockThrow.SetPlayer();
+            //             StartCoroutine(meleeActions());
+            //             //rockThrow.SetTarget();
+            //             rockPatienceCheck = true;
+            //             StartCoroutine(rangedActions());
+            //             currentPatience = 0;
+            //             rockThrowException = false;
+            //     }
+            //     else if(currentPatience >= patience && (isMidRange || isRanged)){
+                    
+            //             rockThrowException = true;
+            //             Debug.Log("Impatient");
+            //             //rockThrow.SetPlayer();
+            //             rockPatienceCheck = false;
+            //             StartCoroutine(rangedActions());
+            //             //rockThrow.SetTarget();
+            //             rockPatienceCheck = true;
+            //             StartCoroutine(rangedActions());
+            //             currentPatience = 0;
+            //             rockThrowException = false;
+                    
+            //     }
+            //     else if (!inAttack && !rockThrowException){
+            //         currentPatience = currentPatience + (fullRandomiser(0.05f, 0.1f)) * Time.deltaTime;
+            //     }
+            // }
+            //if 'mid range'
+            if (isMidRange){
+                //if(!inAttack){
+                bPathing.bossPathing();
+                //}
+                //bPathing.GetComponent<BossPathing>().bossPathing();
+                //transform.Translate(transform.forward * MoveSpeed * Time.deltaTime);
+                //when doing a move pass SelectMove(Midattack1, Midattacklast);
+                if(isMidRange && !inAttack && !isRanged && rangedAllowed){
+                    //Debug.Log("Mid Range!");
+                    if(currentPatience >= patience){
+                        StartCoroutine(rangedActions());
+                        currentPatience = 0;
+                    }
+                    else if(!inRockThrow){
+                        currentPatience = currentPatience + (fullRandomiser(0.1f, 0.2f) * Time.deltaTime);
+                    }
+
+                }                
+            }
+        
+            else if(isMelee && !inAttack){
+                //when doing a move pass SelectMove(Meleeattack1, Meleeattacklast); 
+                //SelectMove(1, 1); //selectmove 1, last
+                //if(MoveSelector == 1){
+                    //Instantiate(shockwaveHitbox, transform.position, transform.rotation);
+                    //StartCoroutine(waitTime(2.3f, delayBeforeNextAttack));
+                //Debug.Log("In melee!");
+                StartCoroutine(meleeActions());    
+            // }
+            }
+
+            else if(isRanged && !inAttack && rangedAllowed){
+                //when doing a move pass SelectMove(Rangedattack1, Rangedattacklast);
+                    Debug.Log("Long Range!");
                     StartCoroutine(rangedActions());
-                    currentPatience = 0;
-                }
-                else if(!inRockThrow){
-                    currentPatience = currentPatience + (fullRandomiser(0.1f, 0.2f) * Time.deltaTime);
-                }
-
-            }                
-        }
-       
-        else if(isMelee && !inAttack){
-            //when doing a move pass SelectMove(Meleeattack1, Meleeattacklast); 
-            //SelectMove(1, 1); //selectmove 1, last
-            //if(MoveSelector == 1){
-                //Instantiate(shockwaveHitbox, transform.position, transform.rotation);
-                //StartCoroutine(waitTime(2.3f, delayBeforeNextAttack));
-            //Debug.Log("In melee!");
-            StartCoroutine(meleeActions());    
-           // }
-        }
-
-        else if(isRanged && !inAttack && rangedAllowed){
-            //when doing a move pass SelectMove(Rangedattack1, Rangedattacklast);
-                Debug.Log("Long Range!");
-                StartCoroutine(rangedActions());
+            }
         }
     }
 
@@ -251,8 +253,10 @@ public class BossManager : MonoBehaviour
             slam.groundSlam();
             transform.LookAt(Player);
             animatr.SetTrigger("Slam");
+            yield return new WaitForSeconds(scuffedShockTimer);
+            shockwave.instantiateShockwave();
             float animatrDuration = 2.875f; // Figure this out
-            yield return new WaitForSeconds(animatrDuration);
+            yield return new WaitForSeconds(animatrDuration - scuffedShockTimer);
            //possible to double slam
            //would be nice to have different animation - particle effect on the fists before first slam
            //less drawback on second slam
@@ -262,7 +266,9 @@ public class BossManager : MonoBehaviour
                 Debug.Log("Double slam!");
                 slam.groundSlam();
                 animatr.SetTrigger("Slam");
-                yield return new WaitForSeconds(animatrDuration);
+                yield return new WaitForSeconds(scuffedShockTimer);
+                shockwave.instantiateShockwave();
+                yield return new WaitForSeconds(animatrDuration - scuffedShockTimer);
                 // yield return new WaitForSeconds(2f * Time.deltaTime);
                 // shockwave.instantiateShockwave();
                 // yield return new WaitForSeconds(animatrDuration - 2 * Time.deltaTime);

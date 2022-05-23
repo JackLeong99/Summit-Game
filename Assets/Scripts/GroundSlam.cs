@@ -35,7 +35,7 @@ public class GroundSlam : MonoBehaviour
     public void groundSlam()
     {
         StartCoroutine(slam());
-        StartCoroutine(scuffedTimer());
+        //StartCoroutine(scuffedTimer());
     }
 
 
@@ -47,24 +47,26 @@ public class GroundSlam : MonoBehaviour
         Destroy(hitbox);
         Destroy(hitbox2);
     }
-    IEnumerator scuffedTimer()
-    {
-        Debug.Log("Start Timer");
-        yield return new WaitForSeconds(.5f);
+    // IEnumerator scuffedTimer()
+    // {
+    //     Debug.Log("Start Timer");
+    //     yield return new WaitForSeconds(.2f);
 
-        groundSlamming = true;
-        Debug.Log("Done Timer");
-    }
+    //     groundSlamming = true;
+    //     Debug.Log("Done Timer");
+    // }
 
-    void OnTriggerEnter(Collider other)
-    {
-        //GameObject other = collider.gameObject;
-        Debug.Log(other);
-        
-        if(other.tag=="Arena" && groundSlamming)
-        {
-            shockwave.instantiateShockwave();
-            groundSlamming = false;
-        }
-    }
+    // void OnTriggerEnter(Collider other)
+    // {
+    //     //GameObject other = collider.gameObject;
+    //     Debug.Log(other.tag);
+    //     Debug.Log(other);
+    //     Debug.Log(groundSlamming);
+    //     if(other.tag=="Arena" && groundSlamming)
+    //     {
+            
+    //         shockwave.instantiateShockwave();
+    //         groundSlamming = false;
+    //     }
+    
 }
