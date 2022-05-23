@@ -461,9 +461,12 @@ public class BossManager : MonoBehaviour
     IEnumerator Death()
     {
         animatr.SetTrigger("Death");
+        GameManager.Instance.onBossDeath();
         yield return new WaitForSeconds(2.2f);
         Alive = false;
         agent.speed = 0;
+        yield return new WaitForSeconds(8f);
+        UIManager.Instance.WinScreen();
         //Instantiate(deathFX, gameObject.transform.position, Quaternion.identity);
     }
 

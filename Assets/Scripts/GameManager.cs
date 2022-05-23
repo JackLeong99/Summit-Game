@@ -20,6 +20,8 @@ public class GameManager : MonoBehaviour
 
     private GameObject player;
 
+    private bool noPause=true;
+
     private int totalGunDamage;
     private int totalSwordDamage;
     //private GameObject boss; //discuss with Jack how hitboxes work
@@ -70,7 +72,6 @@ public class GameManager : MonoBehaviour
 
     public void onBossDeath()
     {
-        UIManager.Instance.GameOverScreen();
         PlayerStats health = player.GetComponent<PlayerStats>();
          Analytics.CustomEvent("Boss Death Time", new Dictionary<string, object>
         {
@@ -104,15 +105,23 @@ public class GameManager : MonoBehaviour
 
     public void PauseGame ()
     {
+        if(noPause)
+        {
         Time.timeScale = 0;
          UIManager.Instance.PauseMenu();
          Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
+        }
     }
     public void ResumeGame ()
     {
         Time.timeScale = 1;
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
+    }
+
+    public void DisallowPause()
+    {
+        noPause=false;
     }
 }
