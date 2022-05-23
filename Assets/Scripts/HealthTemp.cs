@@ -59,8 +59,14 @@ public class HealthTemp : MonoBehaviour
     IEnumerator Death()
     {
         animator.SetTrigger("Death");
-        yield return new WaitForSeconds(2.2f);
+        yield return new WaitForSeconds(3f);
+        GameManager.Instance.onBossDeath();
         bossManager.enabled = false;
         //Instantiate(deathFX, gameObject.transform.position, Quaternion.identity);
+    }
+
+    public int BossHealth()
+    {
+    return currentHealth;
     }
 }    

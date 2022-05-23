@@ -67,6 +67,12 @@ public class PlayerStats : MonoBehaviour
         {
            lowerdamage=true; 
         }
-        
+    }
+
+    //used by gamemanger
+    public int GetPlayerHealth()
+    {
+        return currentHealth;
+
     }
 }    
