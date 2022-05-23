@@ -169,34 +169,34 @@ public class BossManager : MonoBehaviour
     IEnumerator meleeActions(){
         //attack animatr starts
         inAttack = true;
-        MoveSelector = SelectMove(1, 4);
+        MoveSelector = SelectMove(1, 3);
         //Shockwave
-        if(MoveSelector == 1){
-            if(lastMove == "Shockwave"){
-                if(lastMoveRepeated == 2){
-                    Debug.Log("Break!");
-                    inAttack = false;
-                    yield break;
-                }
-            }
-            else{
-                lastMoveRepeated = 0;
-            }
-            Debug.Log("Do Shockwave!");
-            //spawn the Shockwave Attack
-            shockwave.instantiateShockwave();
-            //Instantiate(shockwaveHitbox, transform.position, transform.rotation);
-            float animatrDuration = 2;//ShockwaveScript.scaleTime;
-            lastMove = "Shockwave";
-            lastMoveRepeated ++;
-            yield return new WaitForSeconds(animatrDuration);
-            if(!inRockThrow){
-                yield return new WaitForSeconds(delayBeforeNextAttack);
-            }
-        }
+        // if(MoveSelector == 1){
+        //     if(lastMove == "Shockwave"){
+        //         if(lastMoveRepeated == 2){
+        //             Debug.Log("Break!");
+        //             inAttack = false;
+        //             yield break;
+        //         }
+        //     }
+        //     else{
+        //         lastMoveRepeated = 0;
+        //     }
+        //     Debug.Log("Do Shockwave!");
+        //     //spawn the Shockwave Attack
+        //     shockwave.instantiateShockwave();
+        //     //Instantiate(shockwaveHitbox, transform.position, transform.rotation);
+        //     float animatrDuration = 2;//ShockwaveScript.scaleTime;
+        //     lastMove = "Shockwave";
+        //     lastMoveRepeated ++;
+        //     yield return new WaitForSeconds(animatrDuration);
+        //     if(!inRockThrow){
+        //         yield return new WaitForSeconds(delayBeforeNextAttack);
+        //     }
+        // }
 
         //Sweep
-        if(MoveSelector == 2){
+        if(MoveSelector == 1){
             if(lastMove == "Sweep"){
                 if(lastMoveRepeated == 2){
                     Debug.Log("Break!");
@@ -222,7 +222,7 @@ public class BossManager : MonoBehaviour
         }
 
         //Ground Slam
-        if(MoveSelector == 3){
+        if(MoveSelector == 2){
             if(lastMove == "Slam"){
                 if(lastMoveRepeated == 2){
                     Debug.Log("Break!");
@@ -240,6 +240,7 @@ public class BossManager : MonoBehaviour
             animatr.SetTrigger("Slam");
             float animatrDuration = 2.875f; // Figure this out
             yield return new WaitForSeconds(animatrDuration);
+            shockwave.instantiateShockwave();
            //possible to double slam
            //would be nice to have different animation - particle effect on the fists before first slam
            //less drawback on second slam
@@ -250,6 +251,7 @@ public class BossManager : MonoBehaviour
                 slam.groundSlam();
                 animatr.SetTrigger("Slam");
                 yield return new WaitForSeconds(animatrDuration);
+                shockwave.instantiateShockwave();
             }
             lastMove = "Slam";
             lastMoveRepeated ++;

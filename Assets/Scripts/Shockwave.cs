@@ -10,17 +10,19 @@ public class Shockwave : MonoBehaviour
     [SerializeField] float scaleTime;
     
     [SerializeField] GameObject shockwaveHitbox;
+    [SerializeField] GameObject shockwaveFX;
    
-    void Update()
-    {
-        if(Input.GetKeyDown("x"))
-        {
-            instantiateShockwave();
-        }
-    }
+    // void Update()
+    // {
+    //     if(Input.GetKeyDown("x"))
+    //     {
+    //         instantiateShockwave();
+    //     }
+    // }
 
     public void instantiateShockwave(){
         var wave = Instantiate(shockwaveHitbox, transform.position, transform.rotation) as GameObject;
         wave.GetComponent<ShockwaveHandler>().scaleHitBox(maxSize, scaleTime);
+        var fx = Instantiate(shockwaveFX, transform.position, Quaternion.identity) as GameObject;
     }
 }
