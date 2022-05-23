@@ -325,7 +325,7 @@ public class BossManager : MonoBehaviour
             
             rockThrow.SetTarget();
             //while loop for wait for seconds- get isTargeting from RockPathFinding.
-
+            
             //I probably shouldn't be using inAttack for this - it causes clashes 
             while(rockThrow.currentlyTargeting){
                 bPathing.bossPathing();
@@ -334,21 +334,22 @@ public class BossManager : MonoBehaviour
                 
                 bool isMelee = Vector3.Distance(transform.position, Player.position) <= MinDist;
                 if(isMelee && currentPatience >= patience){
-                    rockThrowException = false;
+                    attackException = false;
                     //inAttack = true;
                     Debug.Log("Impatient");
                     //rockThrow.SetPlayer();
                     StartCoroutine(meleeActions());
                     //rockThrow.SetTarget();
-                    rockPatienceCheck = true;
+                    //rockPatienceCheck = true;
                     currentPatience = 0;
-                    rockThrowException = true;
+                    yield return new WaitForSeconds(2.875f);
+                    //attackException = true;
                     //inAttack = false;
                 }
                 else{
                     Debug.Log("Increase currentPatience");
-                    rockThrowException = true;
-                    currentPatience = currentPatience + (fullRandomiser(0.05f, 0.1f)) * Time.deltaTime;
+                    attackException = true;
+                    currentPatience = currentPatience + (fullRandomiser(0.1f, 0.2f)) * Time.deltaTime;
                 }
                 
                 yield return new WaitForSeconds(Time.deltaTime);
