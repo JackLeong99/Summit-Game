@@ -73,5 +73,6 @@ public class PlayerStats : MonoBehaviour
     public int GetPlayerHealth()
     {
         return currentHealth;
+
     }
 }    

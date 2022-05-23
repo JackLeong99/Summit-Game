@@ -177,7 +177,8 @@ GameObject:
   - component: {fileID: 3700407268510739252}
   - component: {fileID: 4094189618196501448}
   - component: {fileID: 6722136681196670631}
-  - component: {fileID: -3533553372998360504}
+  - component: {fileID: 1526076553451169458}
+  - component: {fileID: -8877234154901794792}
   m_Layer: 0
   m_Name: EruptionPrefab
   m_TagString: Untagged
@@ -194,7 +195,7 @@ Transform:
   m_GameObject: {fileID: 4040199879806120334}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -11.550731, y: 13.617237, z: -13.00643}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.5, y: 1, z: 1.5}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 3058672058657897697}
@@ -218,7 +219,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9b287b778a2b35b42a29bbff0f7f606a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  force: 20
+  force: 25
 --- !u!114 &6722136681196670631
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -231,10 +232,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4309036dd87b64402a0f2c171852a4e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackName: Eruption
-  damage: 25
---- !u!65 &-3533553372998360504
-BoxCollider:
+
+  damage: 50
+--- !u!136 &1526076553451169458
+CapsuleCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -243,9 +244,23 @@ BoxCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Radius: 1.7572422
+  m_Height: 3.8717098
+  m_Direction: 1
+  m_Center: {x: -0.0747242, y: 1.179492, z: -0.19108391}
+--- !u!114 &-8877234154901794792
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4040199879806120334}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 84adc626b5566104b8eb9b7791c9a5b1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  force: 5
 --- !u!1 &4105243508525933517
 GameObject:
   m_ObjectHideFlags: 0
