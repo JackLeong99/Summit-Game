@@ -31,6 +31,7 @@ public class BossPathing : MonoBehaviour
         Attacking = this.GetComponent<BossManager>();
         bool isAttacking = Attacking.inAttack;
         bool isException = Attacking.attackException;
+        //bool isRockThrow = Attacking.inRockThrow;
         if(isAttacking && !isException){
             agent.isStopped = true;
         }

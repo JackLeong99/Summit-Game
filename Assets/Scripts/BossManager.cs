@@ -33,8 +33,18 @@ public class BossManager : MonoBehaviour
     public bool rangedAllowed = true;
     //the timer for rangedAllowed
     public float delayBeforeRangedAllowed;
+    //Special bool for special rockthrow behaviours in update()
+    private bool inRockThrow = false;
+    //patience value
+    public float patience;
+    //temporarily public for testing
+    public float currentPatience;
+    private bool rockPatienceCheck = false;
     public bool attackException = false;
+    private bool rockThrowException = false;
     public bool rage = false;
+    public string lastMove;
+    public int lastMoveRepeated = 0;
 
     [SerializeField] float maxHP;
     //[HideInInspector]
@@ -63,6 +73,7 @@ public class BossManager : MonoBehaviour
         rockThrow = GetComponent<RockPathFinding>();
         animatr = gameObject.GetComponent<Animator>();
         agent = GetComponent<NavMeshAgent>();
+        StartCoroutine(fightStart());
     }
 
     void Start()
@@ -81,132 +92,300 @@ public class BossManager : MonoBehaviour
             if(!Grounded)
             {
             transform.Translate(Vector3.down * gravity * Time.deltaTime);
-            }*/
-            animatr.SetFloat("Speed", agent.velocity.magnitude);
-            //if not in melee
-            if (Vector3.Distance(transform.position, Player.position) >= MinDist){
-                //if(!inAttack){
-                bPathing.bossPathing();
-                //}
-                //bPathing.GetComponent<BossPathing>().bossPathing();
-                //transform.Translate(transform.forward * MoveSpeed * Time.deltaTime);
-                //when doing a move pass SelectMove(Midattack1, Midattacklast);
-                bool isMidRange = Vector3.Distance(transform.position, Player.position) >= MinDist;
-                bool isLongRanged = Vector3.Distance(transform.position,Player.position) >= MaxDist;
-                if(isMidRange && !inAttack && !isLongRanged){
-                    //Debug.Log("Mid Range!");   
-                }                
-            }
-        
-        
-        
+        }*/
+        animatr.SetFloat("Speed", agent.velocity.magnitude);
+         // if in 'melee'
+        bool isMelee = Vector3.Distance(transform.position, Player.position) <= MinDist;
+        //if 'mid ranged'
+        bool isMidRange = Vector3.Distance(transform.position, Player.position) >= MinDist;
+        //If player is 'far' do 'ranged' 
+        //frustration mechanic Option
+        bool isRanged = Vector3.Distance(transform.position, Player.position) >= MaxDist;
+        // if(inRockThrow){
 
-            // if in 'melee'
-            bool isMelee = Vector3.Distance(transform.position, Player.position) <= MinDist;
-            if(isMelee && !inAttack){
-                //when doing a move pass SelectMove(Meleeattack1, Meleeattacklast); 
-                //SelectMove(1, 1); //selectmove 1, last
-                //if(MoveSelector == 1){
-                    //Instantiate(shockwaveHitbox, transform.position, transform.rotation);
-                    //StartCoroutine(waitTime(2.3f, delayBeforeNextAttack));
-                //Debug.Log("In melee!");
-                StartCoroutine(meleeActions());    
-               // }
-            }
+        //     if(isMelee && currentPatience >= patience){
+                
+        //             rockThrowException = true;
+        //             Debug.Log("Impatient");
+        //             //rockThrow.SetPlayer();
+        //             StartCoroutine(meleeActions());
+        //             //rockThrow.SetTarget();
+        //             rockPatienceCheck = true;
+        //             StartCoroutine(rangedActions());
+        //             currentPatience = 0;
+        //             rockThrowException = false;
+        //     }
+        //     else if(currentPatience >= patience && (isMidRange || isRanged)){
+                
+        //             rockThrowException = true;
+        //             Debug.Log("Impatient");
+        //             //rockThrow.SetPlayer();
+        //             rockPatienceCheck = false;
+        //             StartCoroutine(rangedActions());
+        //             //rockThrow.SetTarget();
+        //             rockPatienceCheck = true;
+        //             StartCoroutine(rangedActions());
+        //             currentPatience = 0;
+        //             rockThrowException = false;
+                
+        //     }
+        //     else if (!inAttack && !rockThrowException){
+        //         currentPatience = currentPatience + (fullRandomiser(0.05f, 0.1f)) * Time.deltaTime;
+        //     }
+        // }
+        //if 'mid range'
+        if (isMidRange){
+            //if(!inAttack){
+            bPathing.bossPathing();
+            //}
+            //bPathing.GetComponent<BossPathing>().bossPathing();
+            //transform.Translate(transform.forward * MoveSpeed * Time.deltaTime);
+            //when doing a move pass SelectMove(Midattack1, Midattacklast);
+            if(isMidRange && !inAttack && !isRanged && rangedAllowed){
+                //Debug.Log("Mid Range!");
+                if(currentPatience >= patience){
+                    StartCoroutine(rangedActions());
+                    currentPatience = 0;
+                }
+                else if(!inRockThrow){
+                    currentPatience = currentPatience + (fullRandomiser(0.1f, 0.2f) * Time.deltaTime);
+                }
 
-            //If player is 'far' do 'ranged' 
-            //frustration mechanic Option
-            bool isRanged = Vector3.Distance(transform.position,Player.position) >= MaxDist;
-            if(isRanged && !inAttack && rangedAllowed){
-                //when doing a move pass SelectMove(Rangedattack1, Rangedattacklast);
+            }                
+        }
+       
+        else if(isMelee && !inAttack){
+            //when doing a move pass SelectMove(Meleeattack1, Meleeattacklast); 
+            //SelectMove(1, 1); //selectmove 1, last
+            //if(MoveSelector == 1){
+                //Instantiate(shockwaveHitbox, transform.position, transform.rotation);
+                //StartCoroutine(waitTime(2.3f, delayBeforeNextAttack));
+            //Debug.Log("In melee!");
+            StartCoroutine(meleeActions());    
+           // }
+        }
 
+        else if(isRanged && !inAttack && rangedAllowed){
+            //when doing a move pass SelectMove(Rangedattack1, Rangedattacklast);
                 Debug.Log("Long Range!");
                 StartCoroutine(rangedActions());
-
-            } 
         }
+    }
+
+    //Do any opening animations or behaviours here.
+    IEnumerator fightStart(){
+        inAttack = true;
+        yield return new WaitForSeconds(3);
+        inAttack = false;
     }
 
     IEnumerator meleeActions(){
         //attack animatr starts
         inAttack = true;
-        SelectMove(1, 4);
+        MoveSelector = SelectMove(1, 3);
         //Shockwave
-        if(MoveSelector == 1){
-            Debug.Log("Do Shockwave!");
-            //spawn the Shockwave Attack
-            shockwave.instantiateShockwave();
-            //Instantiate(shockwaveHitbox, transform.position, transform.rotation);
-            float animatrDuration = 2;//ShockwaveScript.scaleTime;
-            yield return new WaitForSeconds(animatrDuration + delayBeforeNextAttack);
-        }
+        // if(MoveSelector == 1){
+        //     if(lastMove == "Shockwave"){
+        //         if(lastMoveRepeated == 2){
+        //             Debug.Log("Break!");
+        //             inAttack = false;
+        //             yield break;
+        //         }
+        //     }
+        //     else{
+        //         lastMoveRepeated = 0;
+        //     }
+        //     Debug.Log("Do Shockwave!");
+        //     //spawn the Shockwave Attack
+        //     shockwave.instantiateShockwave();
+        //     //Instantiate(shockwaveHitbox, transform.position, transform.rotation);
+        //     float animatrDuration = 2;//ShockwaveScript.scaleTime;
+        //     lastMove = "Shockwave";
+        //     lastMoveRepeated ++;
+        //     yield return new WaitForSeconds(animatrDuration);
+        //     if(!inRockThrow){
+        //         yield return new WaitForSeconds(delayBeforeNextAttack);
+        //     }
+        // }
 
-        //Mega Punch
-        if(MoveSelector == 2){
+        //Sweep
+        if(MoveSelector == 1){
+            if(lastMove == "Sweep"){
+                if(lastMoveRepeated == 2){
+                    Debug.Log("Break!");
+                    inAttack = false;
+                    yield break;
+                }
+            }
+            else{
+                lastMoveRepeated = 0;
+            }
             Debug.Log("Do MegaPunch!");
+            transform.LookAt(Player);
             animatr.SetTrigger("Sweep");
             punch.megaPunch();
-            float animatrDuration = 2; // Figure this out
-            yield return new WaitForSeconds(animatrDuration + delayBeforeNextAttack);
+            float animatrDuration = 2.875f; // Figure this out
+            lastMove = "Sweep";
+            lastMoveRepeated ++;
+            yield return new WaitForSeconds(animatrDuration);
+            if(!inRockThrow){
+                yield return new WaitForSeconds(delayBeforeNextAttack);
+            }
             
         }
 
         //Ground Slam
-        if(MoveSelector == 3){
+        if(MoveSelector == 2){
+            if(lastMove == "Slam"){
+                if(lastMoveRepeated == 2){
+                    Debug.Log("Break!");
+                    inAttack = false;
+                    yield break;
+                }
+            }
+            else{
+                lastMoveRepeated = 0;
+            }
             Debug.Log("Do Ground Slam!");
             animatr.SetTrigger("Slam");
             slam.groundSlam();
+            transform.LookAt(Player);
             animatr.SetTrigger("Slam");
-            float animatrDuration = 2; // Figure this out
-            yield return new WaitForSeconds(animatrDuration + delayBeforeNextAttack);
+            float animatrDuration = 2.875f; // Figure this out
+            yield return new WaitForSeconds(animatrDuration);
+           //possible to double slam
+           //would be nice to have different animation - particle effect on the fists before first slam
+           //less drawback on second slam
+            if(SelectMove(1, 4) == 3){
+                //animatr.SetFloat("Speed", agent.velocity.magnitude);
+                transform.LookAt(Player);
+                Debug.Log("Double slam!");
+                slam.groundSlam();
+                animatr.SetTrigger("Slam");
+                yield return new WaitForSeconds(animatrDuration);
+                // yield return new WaitForSeconds(2f * Time.deltaTime);
+                // shockwave.instantiateShockwave();
+                // yield return new WaitForSeconds(animatrDuration - 2 * Time.deltaTime);
+            }
+            lastMove = "Slam";
+            lastMoveRepeated ++;
+            if(!inRockThrow){
+                yield return new WaitForSeconds(delayBeforeNextAttack);
+            }
         }
         //Coroutine finishes and boss is now able to select next action.
-        inAttack = false;
+        if(!inRockThrow){
+            inAttack = false;
+        }
     }
 
-    IEnumerator midActions(){
-        inAttack = true;
-        SelectMove(3, 3);
-        yield return new WaitForSeconds(1);
-    }
+    // IEnumerator midActions(){
+    //     inAttack = true;
+    //     SelectMove(3, 3);
+    //     yield return new WaitForSeconds(1);
+    // }
 
     IEnumerator rangedActions(){
         inAttack = true;
         rangedAllowed = false;
-        SelectMove(5,7);
-        //Ground Slam
-        if(MoveSelector == 5){
+        if(!inRockThrow){
+            MoveSelector = SelectMove(5,7);
+        }
+        //prep rock throw
+        //RockManager.Instance.ClearUpList();
+        //Eruption
+        if(!rockPatienceCheck && (inRockThrow || MoveSelector == 5)){
+            if(!inRockThrow && lastMove == "Eruption" && RockManager.Instance.IsThereStillRocks()){
+                if(lastMoveRepeated == 2){
+                    Debug.Log("Break!");
+                    inAttack = false;
+                    rangedAllowed = true;
+                    yield break;
+                }
+            }
+            else{
+                lastMoveRepeated = 0;
+            }
             Debug.Log("Do Eruption!");
             erupt.eruption();
+            transform.LookAt(Player);
             animatr.SetTrigger("Eruption");
-            float animatrDuration = 2; // Figure this out
+            float animatrDuration = 3.292f; // Figure this out
            // float delayBeforeCurrentAttack = 1.5f; // Figure this out
-            yield return new WaitForSeconds(animatrDuration + delayBeforeNextAttack);// + delayBeforeCurrentAttack
+            lastMove = "Eruption";
+            lastMoveRepeated ++;
+            yield return new WaitForSeconds(animatrDuration);// + delayBeforeCurrentAttack
+            if(!inRockThrow){
+                yield return new WaitForSeconds(delayBeforeNextAttack);
+            }
         }
         
-        //Rock Throw
-        RockManager.Instance.ClearUpList();
-        if(MoveSelector == 6 && RockManager.Instance.IsThereStillRocks()){
+        //Rock Throw 
+        if((rockPatienceCheck || MoveSelector == 6) && RockManager.Instance.IsThereStillRocks()){
+            if(lastMove == "Rock Throw"){
+                if(lastMoveRepeated == 2){
+                    Debug.Log("Break!");
+                    inAttack = false;
+                    rangedAllowed = true;
+                    yield break;
+                }
+            }
+            else{
+                lastMoveRepeated = 0;
+            }
             attackException = true;
+            // inAttack = false;
+            // attackException = true;
             Debug.Log("Do Rock Throw!");
+            //No longer needed for Rock Throw as we want new options to be possible.
+            
             rockThrow.SetTarget();
             //while loop for wait for seconds- get isTargeting from RockPathFinding.
+            
+            //I probably shouldn't be using inAttack for this - it causes clashes 
             while(rockThrow.currentlyTargeting){
-                //bPathing.bossPathing();
+                bPathing.bossPathing();
+                //inRockThrow = true;
+                //inAttack = true;
+                
+                bool isMelee = Vector3.Distance(transform.position, Player.position) <= MinDist;
+                if(isMelee && currentPatience >= patience){
+                    attackException = false;
+                    //inAttack = true;
+                    Debug.Log("Impatient");
+                    //rockThrow.SetPlayer();
+                    StartCoroutine(meleeActions());
+                    //rockThrow.SetTarget();
+                    //rockPatienceCheck = true;
+                    currentPatience = 0;
+                    yield return new WaitForSeconds(2.875f);
+                    //attackException = true;
+                    //inAttack = false;
+                }
+                else{
+                    Debug.Log("Increase currentPatience");
+                    attackException = true;
+                    currentPatience = currentPatience + (fullRandomiser(0.1f, 0.2f)) * Time.deltaTime;
+                }
+                
                 yield return new WaitForSeconds(Time.deltaTime);
             }
+            inRockThrow = false;
+            transform.LookAt(Player);
             animatr.SetTrigger("Throw");
-
-            
             attackException = false;
-            animatr.SetTrigger("Throw");
-            float animatrDuration = 2; // Figure this out
+            float animatrDuration = 2.875f; // Figure this out
            // float delayBeforeCurrentAttack = 1.5f; // Figure this out
             //while loop for wait for seconds- get isTargeting from RockPathFinding.
             yield return new WaitForSeconds(animatrDuration + delayBeforeNextAttack);// + delayBeforeCurrentAttack
+            lastMove = "Rock Throw";
+            lastMoveRepeated ++;
+            rockPatienceCheck = false;
         }
- 
-         //Coroutine finishes and boss is now able to select next action. (including moving)
+        
+        //for all ranged:
+        
+        //Coroutine finishes and boss is now able to select next action. (including moving)
         inAttack = false;
         //Prevents boss from spamming ranged attacks and locking itself into ranged animatrs - gives time to move forwards/advance
         yield return new WaitForSeconds(delayBeforeRangedAllowed);
@@ -214,7 +393,7 @@ public class BossManager : MonoBehaviour
     }
 
 
-    private void SelectMove(int min, int max){
+    private int SelectMove(int min, int max){
         //if (Rage == true){ 
             //min+= Whatever the number of moves is;
             //max+= Whatever the number of moves is;
@@ -223,7 +402,11 @@ public class BossManager : MonoBehaviour
         //Shockwave ==1
         //Punch ==2
         //Throw ==5
-        MoveSelector = Random.Range(min, max);
+        return Random.Range(min, max);
+    }
+
+    private float fullRandomiser(float min, float max){
+        return Random.Range(min, max);
     }
 
     /*private void GroundedCheck()

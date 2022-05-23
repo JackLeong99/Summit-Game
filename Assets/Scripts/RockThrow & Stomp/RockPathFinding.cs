@@ -29,6 +29,7 @@ public class RockPathFinding : MonoBehaviour
                 //call animation
                 currentlyTargeting=false;
                 boss.ChangeTarget(player);
+                Debug.Log("Targeting Player!");
             }
         }
     }
@@ -43,5 +44,11 @@ public class RockPathFinding : MonoBehaviour
         targeting = target.GetComponent<RockPickedUp>();
         currentlyTargeting=true;
         boss.ChangeTarget(target);
+        Debug.Log("Changing Target to " + target);
+    }
+
+    public void SetPlayer()
+    {
+        boss.ChangeTarget(player);
     }
 }
