@@ -30,6 +30,11 @@ public class UIManager : MonoBehaviour
 
     public GameObject PanelGameOver;
 
+    public GameObject PanelPauseMenu;
+    public GameObject PowerUpMenu;
+
+    //enable certain buttons
+
 
     public TMP_Text CharacterClass;
     private string CharacterClassFormat= "Character Class: {0}";
@@ -52,14 +57,17 @@ public class UIManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        instance = this;
         PlayerHealthBar.maxValue= 100; //can be changed
         PlayerHealthBar.value=FullHealth;
 
         BossHealthBar.maxValue= 1000; //can be changed
         BossHealthBar.value=BossFullHealth;
         
-        CharacterClass.text= string.Format(CharacterClassFormat, "Archer"); //to change archer set by a string
+        CharacterClass.text= string.Format(CharacterClassFormat, "Hero"); //to change archer set by a string
         PanelGameOver.SetActive(false);
+        PanelPauseMenu.SetActive(false);
+        PowerUpMenu.SetActive(false);
         BossName.text="Golem"; //set by game later same as archer
         
     }
@@ -89,18 +97,46 @@ public class UIManager : MonoBehaviour
         Debug.Log(BossHealthBar.value);
         if(currentHealth<=0)
         {
-           // GameManager.Instance.onDeath(); //to be moved to whatever is handling health
+            GameManager.Instance.onDeath(); //to be moved to whatever is handling health
         }
     }
 
     public void GameOverScreen() 
     {
         PanelGameOver.SetActive(true);
-        RestartGame();
+        Time.timeScale = 0;
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
     }
 
     public void RestartGame()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
+
+    //make pause menu visable
+    public void PauseMenu()
+    {
+        PanelPauseMenu.SetActive(true);
+        PowerUpMenu.SetActive(false);
+    }
+
+    //take game out of pause
+    public void ClickPlay()
+    {
+        PanelPauseMenu.SetActive(false);
+        GameManager.Instance.ResumeGame();
+    }
+
+    public void PowerMenu()
+    {
+        PowerUpMenu.SetActive(true);
+        PanelPauseMenu.SetActive(false);
+        
+    }
+
+    public void Quit()
+    {
+        Application.Quit();
     }
 }

@@ -46,7 +46,6 @@ public class RockPickedUp : MonoBehaviour
     void OnCollisionEnter(Collision collider)
     {
         GameObject other = collider.gameObject;
-        Debug.Log(other.tag);
          if(other.tag=="PlayerBullet")
          {
              rockHealth--;
@@ -66,5 +65,10 @@ public class RockPickedUp : MonoBehaviour
          {
              Destroy(gameObject);
          }
+    }
+
+    public void MakeRockInv()
+    {
+        rockHealth=1000000000;
     }
 }

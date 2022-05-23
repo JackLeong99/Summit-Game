@@ -13,6 +13,11 @@ public class PlayerStats : MonoBehaviour
 
     //added at my own liberty- figure it'll be useful down the line.
     public int defence = 0;
+
+    //Used by DecreaseEnemyAttack power-up
+    private bool lowerdamage=false;
+
+
     private void Awake()
     {
         dodge = GetComponent<Dodge>();
@@ -25,6 +30,10 @@ public class PlayerStats : MonoBehaviour
 
     public void takeDamage(int damage){
         if (currentHealth > 0){
+            if(lowerdamage)
+            {
+                damage-=5; //we can change this. I was not sure how much to decrease by
+            }
             //Not healing if defence stat bigger than potential damage taken.
             if(damage - defence > 0 && !dodge.isDodging){
                 currentHealth = currentHealth - damage + defence;
@@ -46,5 +55,24 @@ public class PlayerStats : MonoBehaviour
         }
         UIManager.Instance.HealthBarSet(currentHealth);
         System.Console.WriteLine("current health = " + currentHealth + "after taking " + healing);
+    }
+
+    public void DecreaseDamage()
+    {
+        if(lowerdamage==true)
+        {
+            lowerdamage=false;
+        }
+        else
+        {
+           lowerdamage=true; 
+        }
+    }
+
+    //used by gamemanger
+    public int GetPlayerHealth()
+    {
+        return currentHealth;
+
     }
 }    

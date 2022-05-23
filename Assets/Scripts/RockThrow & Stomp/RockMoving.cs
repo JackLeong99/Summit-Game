@@ -8,7 +8,7 @@ public class RockMoving : MonoBehaviour
     private float translationZ;
     private float translationY;
     private float translationX;
-    private float speed=80; //might need to edit based on distance from player //could check this before throw and set speed based on that
+    private float speed=120; //might need to edit based on distance from player //could check this before throw and set speed based on that
     private float rageMultiplier=1;
 
         private float trackZ;
@@ -16,6 +16,7 @@ public class RockMoving : MonoBehaviour
     private float trackX;
     private Vector3 localArea;
     public GameObject rockPrefab;
+    public ParticleSystem rockParticle;
 
     private GameObject player;
 
@@ -27,7 +28,7 @@ public class RockMoving : MonoBehaviour
          player=GameObject.FindWithTag("Player");
          
         target=player.transform;
-        target.position=new Vector3(player.transform.position.x, player.transform.position.y+1 , player.transform.position.z);
+        target.position=new Vector3(player.transform.position.x, player.transform.position.y+2 , player.transform.position.z);
         //this sets the target a bit above the player so it hits more often
 
         //puts position into local space
@@ -49,9 +50,14 @@ public class RockMoving : MonoBehaviour
     public void spawnRock()
     {
         GameObject breakablerock= Instantiate(rockPrefab); 
+        
         breakablerock.transform.position=transform.position;
         breakablerock.transform.position = new Vector3(transform.position.x, transform.position.y-1 , transform.position.z);
         RockManager.Instance.RockPositionUpdate(breakablerock);
+
+        //creates the particle effect for landing
+        ParticleSystem rockParticles= Instantiate(rockParticle);
+        rockParticles.transform.position=transform.position;
         Destroy(gameObject);
     }
     
@@ -62,7 +68,7 @@ public class RockMoving : MonoBehaviour
         rageMultiplier=2;
     }
 
-    void OnCollisionEnter(Collision collider)
+    void OnTriggerEnter(Collider collider)
     {
         GameObject other = collider.gameObject;
         Debug.Log(other);
@@ -74,6 +80,7 @@ public class RockMoving : MonoBehaviour
             hasntHit=false;
             translationX=0;
             translationZ=0;
+            GameManager.Instance.onPlayerHit("rock throw");
         }
         
         if(other.tag=="Arena")

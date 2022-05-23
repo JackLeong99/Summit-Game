@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Analytics;
 
 public class GameManager : MonoBehaviour
 {
@@ -16,7 +17,14 @@ public class GameManager : MonoBehaviour
             return instance;
         }
     }
-        
+
+    private GameObject player;
+
+    private int totalGunDamage;
+    private int totalSwordDamage;
+    //private GameObject boss; //discuss with Jack how hitboxes work
+
+    private float timer;
         
     void Awake()
     {
@@ -32,7 +40,10 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        instance = this;
+        Time.timeScale = 1;
+        player=GameObject.FindWithTag("Player");
+        boss=GameObject.FindWithTag("Hittable");
     }
 
     // Update is called once per frame
@@ -40,11 +51,68 @@ public class GameManager : MonoBehaviour
     {
     if(Input.GetButtonDown("Escape"))
     {
-        Application.Quit();
+        PauseGame();
     }
+    timer+=Time.deltaTime;
     }
 
-    public void onDeath() {
+    public void onDeath() 
+    {
         UIManager.Instance.GameOverScreen();
+            
+            
+         Analytics.CustomEvent("Death", new Dictionary<string, object>
+        {
+            {"Player Death time: ", timer},
+            {"Total dealt damage: ",boss.BossHealth()}
+        });
+    }
+
+    public void onBossDeath()
+    {
+        UIManager.Instance.GameOverScreen();
+        PlayerStats health = player.GetComponent<PlayerStats>();
+         Analytics.CustomEvent("Boss Death Time", new Dictionary<string, object>
+        {
+            {"Boss death time: ", timer},
+            {"Player's health: ",health.GetPlayerHealth()}
+        });
+        Analytics.CustomEvent("Player types of damage", new Dictionary<string, object>
+        {
+            {"Total damage by sword: ", totalSwordDamage},
+            {"Total damage by gun: ",totalGunDamage}
+        });
+    }
+
+    public void onPlayerHit(string attack)
+    {
+         Analytics.CustomEvent("Boss Death Time", new Dictionary<string, object>
+        {
+            {"Time of enemy hit: ", timer},
+            {"Name of attack: ", attack}
+        });
+    }
+
+    public void SwordDamge(int sDamage)
+    {
+        totalSwordDamage+=sDamage;
+    }
+    public void GunDamge(int gDamage)
+    {
+        totalGunDamage+=gDamage;
+    }
+
+    public void PauseGame ()
+    {
+        Time.timeScale = 0;
+         UIManager.Instance.PauseMenu();
+         Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
+    }
+    public void ResumeGame ()
+    {
+        Time.timeScale = 1;
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
     }
 }

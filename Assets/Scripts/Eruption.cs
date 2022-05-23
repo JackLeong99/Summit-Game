@@ -33,8 +33,10 @@ public class Eruption : MonoBehaviour
         {
             Vector3 targetPoint = hit.point;
             var prehit = Instantiate(warning, hit.point, Quaternion.identity);
+            prehit.transform.localPosition += new Vector3(0, -0.3f, 0);
             yield return new WaitForSeconds(delay);
             var hitbox = Instantiate(hitboxObject, prehit.transform.position, Quaternion.identity);
+            hitbox.transform.localPosition += new Vector3(0, -0.05f, 0);
             Destroy(prehit);
             yield return new WaitForSeconds(duration);
             Destroy(hitbox);
@@ -43,9 +45,11 @@ public class Eruption : MonoBehaviour
         } 
         else
         {
-            var prehit = Instantiate(warning, target.transform.position + new Vector3(0, -0.01f, 0), Quaternion.identity);
+            var prehit = Instantiate(warning, target.transform.position, Quaternion.identity);
+            prehit.transform.localPosition += new Vector3(0, -0.3f, 0);
             yield return new WaitForSeconds(delay);
             var hitbox = Instantiate(hitboxObject, prehit.transform.position, Quaternion.identity);
+            hitbox.transform.localPosition += new Vector3(0, -0.05f, 0);
             Destroy(prehit);
             yield return new WaitForSeconds(duration);
             Destroy(hitbox);

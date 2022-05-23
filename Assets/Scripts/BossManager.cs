@@ -46,6 +46,10 @@ public class BossManager : MonoBehaviour
     public string lastMove;
     public int lastMoveRepeated = 0;
 
+    [SerializeField] float maxHP;
+    //[HideInInspector]
+    public float currentHP;
+
     private BossPathing bPathing;
     private Shockwave shockwave;
     private MegaPunch punch;
@@ -54,6 +58,10 @@ public class BossManager : MonoBehaviour
     private RockPathFinding rockThrow;
     Animator animatr;
     NavMeshAgent agent;
+
+    private bool Alive = true;
+
+    Rigidbody[] rigidBodies;
 
     private void Awake(){
         //defining other scripts referenceds them here- this method avoids an error.
@@ -67,14 +75,22 @@ public class BossManager : MonoBehaviour
         agent = GetComponent<NavMeshAgent>();
         StartCoroutine(fightStart());
     }
+
+    void Start()
+    {
+        currentHP = maxHP;
+        rigidBodies = GetComponentsInChildren<Rigidbody>();
+        setUpHitBoxes();
+    }
     
     void Update(){
-        /*GroundedCheck();
-        //Looks at the player
-        transform.LookAt(Player);
+        if(Alive){
+            /*GroundedCheck();
+            //Looks at the player
+            transform.LookAt(Player);
 
-        if(!Grounded)
-        {
+            if(!Grounded)
+            {
             transform.Translate(Vector3.down * gravity * Time.deltaTime);
         }*/
         animatr.SetFloat("Speed", agent.velocity.magnitude);
@@ -151,10 +167,8 @@ public class BossManager : MonoBehaviour
 
         else if(isRanged && !inAttack && rangedAllowed){
             //when doing a move pass SelectMove(Rangedattack1, Rangedattacklast);
-
-            Debug.Log("Long Range!");
-            StartCoroutine(rangedActions());
-
+                Debug.Log("Long Range!");
+                StartCoroutine(rangedActions());
         }
     }
 
@@ -163,7 +177,6 @@ public class BossManager : MonoBehaviour
         inAttack = true;
         yield return new WaitForSeconds(3);
         inAttack = false;
-
     }
 
     IEnumerator meleeActions(){
@@ -405,4 +418,35 @@ public class BossManager : MonoBehaviour
     IEnumerator waitTime(float animatrDuration, float delay){
         yield return new WaitForSeconds(animatrDuration + delay);
     }*/
+
+    public void TakeDamage(float dmg)
+    {
+        currentHP -= dmg;
+        if (currentHP > maxHP){
+            currentHP = maxHP;
+        }
+        UIManager.Instance.HealthBossBarSet((int)Mathf.Round(currentHP));
+        if (currentHP <= 0.0f)
+        {
+            StartCoroutine(Death());
+        }
+    }
+
+    IEnumerator Death()
+    {
+        animatr.SetTrigger("Death");
+        yield return new WaitForSeconds(2.2f);
+        Alive = false;
+        agent.speed = 0;
+        //Instantiate(deathFX, gameObject.transform.position, Quaternion.identity);
+    }
+
+    public void setUpHitBoxes() 
+    {
+        foreach(var Rigidbody in rigidBodies)
+        {
+            Rigidbody.isKinematic = true;
+            Rigidbody.gameObject.AddComponent<EnemyDamageReceiver>();
+        }
+    }
 }
