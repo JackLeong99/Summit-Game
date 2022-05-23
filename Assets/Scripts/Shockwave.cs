@@ -11,7 +11,13 @@ public class Shockwave : MonoBehaviour
     
     [SerializeField] GameObject shockwaveHitbox;
    
-
+    void Update()
+    {
+        if(Input.GetKeyDown("x"))
+        {
+            instantiateShockwave();
+        }
+    }
 
     public void instantiateShockwave(){
         var wave = Instantiate(shockwaveHitbox, transform.position, transform.rotation) as GameObject;
