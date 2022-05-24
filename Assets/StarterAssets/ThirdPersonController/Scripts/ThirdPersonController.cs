@@ -368,5 +368,17 @@ namespace StarterAssets
 			// when selected, draw a gizmo in the position of, and matching radius of, the grounded collider
 			Gizmos.DrawSphere(new Vector3(transform.position.x, transform.position.y - GroundedOffset, transform.position.z), GroundedRadius);
 		}
+
+		public void IncreaseSpeed()
+		{
+			MoveSpeed*=2;
+			SprintSpeed*=2;
+
+		}
+		public void DecreaseSpeed()
+		{
+			MoveSpeed/=2;
+			SprintSpeed/=2;
+		}
 	}
 }

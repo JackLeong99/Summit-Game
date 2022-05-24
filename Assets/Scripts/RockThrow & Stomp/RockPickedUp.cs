@@ -50,6 +50,10 @@ public class RockPickedUp : MonoBehaviour
          {
              rockHealth--;
          }
+        if(other.tag=="sword")
+         {
+             rockHealth--;
+         }
          if(rockHealth<=0)
          {
              Destroy(gameObject);
