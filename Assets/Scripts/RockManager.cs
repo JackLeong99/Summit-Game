@@ -23,6 +23,8 @@ public class RockManager : MonoBehaviour
 
     private int RockMoved;
 
+    public int amountToSpawnNew;
+
     void Awake()
     {
         if (instance != null)
@@ -42,6 +44,14 @@ public class RockManager : MonoBehaviour
         //             Debug.Log(allRocks[i]);
         // }
        // Debug.Log(allRocks[0].transform.position); //how to find position for rock
+    }
+
+    void Update()
+    {
+        if(amountToSpawnNew<=allRocks.Count)
+        {
+            //call boss manager which will call SpawnNewRocks()
+        }
     }
 
 
@@ -94,6 +104,15 @@ public class RockManager : MonoBehaviour
         {
             return true;
         }
+    }
+
+    public void SpawnNewRocks()
+    {
+        //set some positions and spawn rocks
+        //use radius to make it random each time
+        //spawn with some particle effects
+        //spawn 4 different rocks into different quadrants //should dicuss this
+
     }
 
     //needed for boss manager
