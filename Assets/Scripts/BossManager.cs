@@ -39,7 +39,7 @@ public class BossManager : MonoBehaviour
     public float patience;
     //temporarily public for testing
     public float currentPatience;
-    private bool rockPatienceCheck = false;
+    //private bool rockPatienceCheck = false;
     public bool attackException = false;
     //private bool rockThrowException = false;
     //rage mode
@@ -162,11 +162,14 @@ public class BossManager : MonoBehaviour
                 StartCoroutine(meleeActions());
             }
 
-            //if long range and not in attack delay or ranged edelay
-            else if(isRanged && !inAttack && rangedAllowed){
+            //if long range and not in attack delay
+            else if(isRanged && !inAttack){
                     //Debug.Log("Long Range!");
                     bPathing.bossPathing();
-                    StartCoroutine(rangedActions());
+                    //ranged delay only matters for attack actions. Should not affect movement.
+                    if(rangedAllowed){
+                        StartCoroutine(rangedActions());
+                    }
             }
         }
     }
@@ -406,17 +409,20 @@ public class BossManager : MonoBehaviour
                 
                 yield return new WaitForSeconds(Time.deltaTime);
             }
-            inRockThrow = false;
-            transform.LookAt(Player);
             animatr.SetTrigger("Throw");
+            transform.LookAt(Player);
+            //If this is before the wait the boss turns around after the throw animation and walks away for a bit after it.
+            //If this is after the wait the boss turns around during the throw animation.
             attackException = false;
             float animatrDuration = 2.875f; // Figure this out
            // float delayBeforeCurrentAttack = 1.5f; // Figure this out
             //while loop for wait for seconds- get isTargeting from RockPathFinding.
             yield return new WaitForSeconds(animatrDuration + delayBeforeNextAttack);// + delayBeforeCurrentAttack
+            
+            inRockThrow = false;
             lastMove = "Rock Throw";
             lastMoveRepeated ++;
-            rockPatienceCheck = false;
+            //rockPatienceCheck = false;
         }
         
         //for all ranged:
