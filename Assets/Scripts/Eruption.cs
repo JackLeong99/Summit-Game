@@ -11,14 +11,6 @@ public class Eruption : MonoBehaviour
     [SerializeField] public float delay;
     [SerializeField] public int layer;
 
-    //Update is for testing purposes without a boss script, should be removed in final use
-    void Update()
-    {
-        if(Input.GetKeyDown("z"))
-        {
-            eruption();
-        }
-    }
     public void eruption()
     {
         StartCoroutine(erupt());
@@ -27,7 +19,7 @@ public class Eruption : MonoBehaviour
     IEnumerator erupt()
     {
         int layerMask = 1 << layer;
-        Debug.Log(layerMask);
+        //Debug.Log(layerMask);
         RaycastHit hit;
         if (Physics.Raycast(target.transform.position, transform.TransformDirection(Vector3.down), out hit, Mathf.Infinity, layerMask))
         {
