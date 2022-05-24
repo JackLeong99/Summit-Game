@@ -14,6 +14,8 @@ GameObject:
   - component: {fileID: 3547321503605324062}
   - component: {fileID: 2204732663724004518}
   - component: {fileID: -6245365779598199871}
+  - component: {fileID: 4786583455833019286}
+  - component: {fileID: 1461328738411535231}
   m_Layer: 0
   m_Name: ThrownRock 1
   m_TagString: Untagged
@@ -130,3 +132,29 @@ MonoBehaviour:
   target: {fileID: 0}
   rockPrefab: {fileID: 8370376826668548662, guid: ce8e84b0a33ef4e4080cbdc1232e3d6d, type: 3}
   rockParticle: {fileID: 5149579749701935478, guid: 45567d36120607141bab3d9fd41f5b8c, type: 3}
+--- !u!114 &4786583455833019286
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8358722399614396407}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 84adc626b5566104b8eb9b7791c9a5b1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  force: 7
+--- !u!114 &1461328738411535231
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8358722399614396407}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b287b778a2b35b42a29bbff0f7f606a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  force: 1
