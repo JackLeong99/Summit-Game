@@ -78,8 +78,6 @@ public class RockMoving : MonoBehaviour
             PlayerStats health = other.GetComponent<PlayerStats>();
             health.takeDamage(25);
             hasntHit=false;
-            translationX=0;
-            translationZ=0;
             GameManager.Instance.onPlayerHit("rock throw");
         }
         

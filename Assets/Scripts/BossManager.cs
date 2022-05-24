@@ -64,6 +64,9 @@ public class BossManager : MonoBehaviour
 
     Rigidbody[] rigidBodies;
 
+    //used by IncreasePlayerAttack power-up
+    private bool increaseDamage=false;
+
     private void Awake(){
         //defining other scripts referenceds them here- this method avoids an error.
         bPathing = GetComponent<BossPathing>();
@@ -428,6 +431,10 @@ public class BossManager : MonoBehaviour
 
     public void TakeDamage(float dmg)
     {
+        if(increaseDamage)
+        {
+            dmg=dmg/2;
+        }
         currentHP -= dmg;
         if (currentHP > maxHP){
             currentHP = maxHP;
@@ -439,12 +446,33 @@ public class BossManager : MonoBehaviour
         }
     }
 
+    //used by Power-up IncreasePlayerAttack
+    public void DamageIncrease()
+    {
+        if(increaseDamage==true)
+        {
+            increaseDamage=false;
+        }
+        else
+        {
+           increaseDamage=true; 
+        }
+    }
+
+    public float getCurrentBossHealth()
+    {
+        return currentHP;
+    }
+
     IEnumerator Death()
     {
         animatr.SetTrigger("Death");
+        GameManager.Instance.onBossDeath();
         yield return new WaitForSeconds(2.2f);
         Alive = false;
         agent.speed = 0;
+        yield return new WaitForSeconds(8f);
+        UIManager.Instance.WinScreen();
         //Instantiate(deathFX, gameObject.transform.position, Quaternion.identity);
     }
 

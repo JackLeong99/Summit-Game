@@ -29,9 +29,12 @@ public class UIManager : MonoBehaviour
 
 
     public GameObject PanelGameOver;
+    public GameObject PanelWin;
 
     public GameObject PanelPauseMenu;
     public GameObject PowerUpMenu;
+
+    private bool gameOver=true;
 
     //enable certain buttons
 
@@ -68,6 +71,7 @@ public class UIManager : MonoBehaviour
         PanelGameOver.SetActive(false);
         PanelPauseMenu.SetActive(false);
         PowerUpMenu.SetActive(false);
+        PanelWin.SetActive(false);
         BossName.text="Golem"; //set by game later same as archer
         
     }
@@ -95,15 +99,22 @@ public class UIManager : MonoBehaviour
     {
         BossHealthBar.value = currentHealth;
         Debug.Log(BossHealthBar.value);
-        if(currentHealth<=0)
-        {
-            GameManager.Instance.onDeath(); //to be moved to whatever is handling health
-        }
     }
 
     public void GameOverScreen() 
     {
+        gameOver=false;
+        GameManager.Instance.DisallowPause();
         PanelGameOver.SetActive(true);
+        Time.timeScale = 0;
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
+    }
+    public void WinScreen() 
+    {
+        gameOver=false;
+        GameManager.Instance.DisallowPause();
+        PanelWin.SetActive(true);
         Time.timeScale = 0;
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
@@ -117,8 +128,11 @@ public class UIManager : MonoBehaviour
     //make pause menu visable
     public void PauseMenu()
     {
+        if(gameOver)
+        {
         PanelPauseMenu.SetActive(true);
         PowerUpMenu.SetActive(false);
+        }
     }
 
     //take game out of pause

@@ -5,11 +5,11 @@ using UnityEngine;
 public class IncreasePlayerAttack : MonoBehaviour
 {
     //this script is set onto the boss
-    private HealthTemp damage;
+    private BossManager damage;
     // Start is called before the first frame update
     void Start()
     {
-        damage=this.GetComponent<HealthTemp>();
+        damage=this.GetComponent<BossManager>();
     }
 
     public void attackIncrease()
