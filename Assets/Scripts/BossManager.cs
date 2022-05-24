@@ -135,7 +135,7 @@ public class BossManager : MonoBehaviour
             //     }
             // }
             //if 'mid range'
-            if (isMidRange){
+            if (isMidRange && !isRanged){
                 //if(!inAttack){
                 bPathing.bossPathing();
                 //}
@@ -169,6 +169,7 @@ public class BossManager : MonoBehaviour
             else if(isRanged && !inAttack && rangedAllowed){
                 //when doing a move pass SelectMove(Rangedattack1, Rangedattacklast);
                     Debug.Log("Long Range!");
+                    bPathing.bossPathing();
                     StartCoroutine(rangedActions());
             }
         }
