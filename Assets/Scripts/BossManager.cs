@@ -41,7 +41,7 @@ public class BossManager : MonoBehaviour
     public float currentPatience;
     private bool rockPatienceCheck = false;
     public bool attackException = false;
-    private bool rockThrowException = false;
+    //private bool rockThrowException = false;
     public bool rage = false;
     public string lastMove;
     public int lastMoveRepeated = 0;
