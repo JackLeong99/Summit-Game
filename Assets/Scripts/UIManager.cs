@@ -36,6 +36,8 @@ public class UIManager : MonoBehaviour
 
     private bool gameOver=true;
 
+    public float BossHealth=1000;
+
     //enable certain buttons
 
 
@@ -64,7 +66,7 @@ public class UIManager : MonoBehaviour
         PlayerHealthBar.maxValue= 100; //can be changed
         PlayerHealthBar.value=FullHealth;
 
-        BossHealthBar.maxValue= 1000; //can be changed
+        BossHealthBar.maxValue= BossHealth; //can be changed
         BossHealthBar.value=BossFullHealth;
         
         CharacterClass.text= string.Format(CharacterClassFormat, "Hero"); //to change archer set by a string
