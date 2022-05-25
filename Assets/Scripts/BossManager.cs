@@ -44,6 +44,7 @@ public class BossManager : MonoBehaviour
     //private bool rockThrowException = false;
     //rage mode
     public bool rage = false;
+    public float rageSpeed = 7f;
     //the last action taken by the boss- used to prevent long repetition
     public string lastMove;
     //how many times the last move has been used in a row
@@ -64,6 +65,7 @@ public class BossManager : MonoBehaviour
     private Eruption erupt;
     private RockPathFinding rockThrow;
     private RockManager rocks;
+    private DamagePlayer2 damagePlayer;
     Animator animatr;
     NavMeshAgent agent;
     private bool Alive = true;
@@ -80,6 +82,7 @@ public class BossManager : MonoBehaviour
         erupt = GetComponent<Eruption>();
         rocks = GetComponent<RockManager>();
         rockThrow = GetComponent<RockPathFinding>();
+        damagePlayer = GetComponent<DamagePlayer2>();
         animatr = gameObject.GetComponent<Animator>();
         agent = GetComponent<NavMeshAgent>();
         StartCoroutine(fightStart());
@@ -94,10 +97,10 @@ public class BossManager : MonoBehaviour
     
     void Update(){
         if(Alive){
-            if(rocks.allRocks.Count <= spawnRocksNumber){
-                StartCoroutine(summonRocks());
-            }
-            else{
+            // if(rocks.allRocks.Count <= spawnRocksNumber){
+            //     StartCoroutine(summonRocks());
+            // }
+            // else{
                 /*GroundedCheck();
                 //Looks at the player
                 transform.LookAt(Player);
@@ -178,7 +181,7 @@ public class BossManager : MonoBehaviour
                             StartCoroutine(rangedActions());
                         }
                 }   
-            }
+            // }
         }
     }
 
@@ -444,10 +447,10 @@ public class BossManager : MonoBehaviour
 
 
     private int SelectMove(int min, int max){
-        //if (Rage == true){ 
-            //min+= Whatever the number of moves is;
-            //max+= Whatever the number of moves is;
-        //}
+        if (Rage == true){ 
+            min+= 4;
+            max+= 4;
+        }
 
         //Shockwave ==1
         //Punch ==2
@@ -457,9 +460,11 @@ public class BossManager : MonoBehaviour
 
     IEnumerator summonRocks(){
         attackException = true;
+        inAttack = true;
         rocks.SpawnNewRocks();
         yield return new WaitForSeconds(spawnNewRocksTime);
         attackException = false;
+        inAttack = false;
     }
 
     private float fullRandomiser(float min, float max){
@@ -486,7 +491,12 @@ public class BossManager : MonoBehaviour
         if (currentHP > maxHP){
             currentHP = maxHP;
         }
+
         UIManager.Instance.HealthBossBarSet((int)Mathf.Round(currentHP));
+
+        if(rage == false && (currentHP <= (maxHP/2))){
+            StartCoroutine(triggerRage());
+        }
         if (currentHP <= 0.0f)
         {
             StartCoroutine(Death());
@@ -521,6 +531,25 @@ public class BossManager : MonoBehaviour
         yield return new WaitForSeconds(8f);
         UIManager.Instance.WinScreen();
         //Instantiate(deathFX, gameObject.transform.position, Quaternion.identity);
+    }
+
+    IEnumerator triggerRage(){
+        rage = true;
+        agent.speed = rageSpeed;
+        //stun boss for animation triggers
+
+        //this method could cause issues- coroutine runs simultaneously so if this triggers mid-attack it's possible for the attack script to then
+        //call inAttack = false and cause havoc
+        inAttack = true;
+        attackException = true;
+        
+        //potentially rage animation here.
+        //switch over animationshere
+        yield return new WaitForSeconds(3);
+        //be unleashed
+        //damagePlayer.rageAttackModifier();
+        attackException = false;
+        inAttack = false; // probs borked
     }
 
     public void setUpHitBoxes() 

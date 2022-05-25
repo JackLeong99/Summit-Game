@@ -8,11 +8,11 @@ using StarterAssets;
 public class PlayerStats : MonoBehaviour
 {
     private Dodge dodge;
-    public int maxHealth;
-    public int currentHealth;
+    public float maxHealth;
+    public float currentHealth;
 
     //added at my own liberty- figure it'll be useful down the line.
-    public int defence = 0;
+    public float defence = 0f;
 
     //Used by DecreaseEnemyAttack power-up
     private bool lowerdamage=false;
@@ -28,7 +28,7 @@ public class PlayerStats : MonoBehaviour
         currentHealth = maxHealth;
     }
 
-    public void takeDamage(int damage){
+    public void takeDamage(float damage){
         if (currentHealth > 0){
             if(lowerdamage)
             {
@@ -46,7 +46,7 @@ public class PlayerStats : MonoBehaviour
 
 
 //Doesn't work for some reason- revisit.
-    public void healDamage(int healing){
+    public void healDamage(float healing){
 
         currentHealth = currentHealth + healing;
         //Prevents Overhealing
@@ -70,7 +70,7 @@ public class PlayerStats : MonoBehaviour
     }
 
     //used by gamemanger
-    public int GetPlayerHealth()
+    public float GetPlayerHealth()
     {
         return currentHealth;
 
