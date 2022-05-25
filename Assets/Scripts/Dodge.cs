@@ -75,7 +75,7 @@ public class Dodge : MonoBehaviour
 			isDodging = true;
             _animator.SetTrigger("Dodge");
 			float timer = 0;
-            cdTimer = 0.5f;//was 1000
+            //cdTimer = 0.5f;//was 1000
 			while(timer < dodgeTimer)
 			{
 				//Debug.Log("dodging");
