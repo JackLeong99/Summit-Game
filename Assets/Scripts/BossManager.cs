@@ -55,12 +55,15 @@ public class BossManager : MonoBehaviour
     //[HideInInspector]
     //the current HP of the boss
     public float currentHP;
+    public int spawnRocksNumber;
+    public float spawnNewRocksTime;
     private BossPathing bPathing;
     private Shockwave shockwave;
     private MegaPunch punch;
     private GroundSlam slam;
     private Eruption erupt;
     private RockPathFinding rockThrow;
+    private RockManager rocks;
     Animator animatr;
     NavMeshAgent agent;
     private bool Alive = true;
@@ -75,6 +78,7 @@ public class BossManager : MonoBehaviour
         punch = GetComponent<MegaPunch>();
         slam = GetComponent<GroundSlam>();
         erupt = GetComponent<Eruption>();
+        rocks = GetComponent<RockManager>();
         rockThrow = GetComponent<RockPathFinding>();
         animatr = gameObject.GetComponent<Animator>();
         agent = GetComponent<NavMeshAgent>();
@@ -90,86 +94,90 @@ public class BossManager : MonoBehaviour
     
     void Update(){
         if(Alive){
-            /*GroundedCheck();
-            //Looks at the player
-            transform.LookAt(Player);
-
-            if(!Grounded)
-            {
-            transform.Translate(Vector3.down * gravity * Time.deltaTime);
-            }*/
-            animatr.SetFloat("Speed", agent.velocity.magnitude);
-            // if in 'melee'
-            bool isMelee = Vector3.Distance(transform.position, Player.position) <= MinDist;
-            //if 'mid ranged'
-            bool isMidRange = Vector3.Distance(transform.position, Player.position) >= MinDist;
-            //If player is 'far' do 'ranged' 
-            //frustration mechanic Option
-            bool isRanged = Vector3.Distance(transform.position, Player.position) >= MaxDist;
-            // if(inRockThrow){
-
-            //     if(isMelee && currentPatience >= patience){
-                    
-            //             rockThrowException = true;
-            //             Debug.Log("Impatient");
-            //             //rockThrow.SetPlayer();
-            //             StartCoroutine(meleeActions());
-            //             //rockThrow.SetTarget();
-            //             rockPatienceCheck = true;
-            //             StartCoroutine(rangedActions());
-            //             currentPatience = 0;
-            //             rockThrowException = false;
-            //     }
-            //     else if(currentPatience >= patience && (isMidRange || isRanged)){
-                    
-            //             rockThrowException = true;
-            //             Debug.Log("Impatient");
-            //             //rockThrow.SetPlayer();
-            //             rockPatienceCheck = false;
-            //             StartCoroutine(rangedActions());
-            //             //rockThrow.SetTarget();
-            //             rockPatienceCheck = true;
-            //             StartCoroutine(rangedActions());
-            //             currentPatience = 0;
-            //             rockThrowException = false;
-                    
-            //     }
-            //     else if (!inAttack && !rockThrowException){
-            //         currentPatience = currentPatience + (fullRandomiser(0.05f, 0.1f)) * Time.deltaTime;
-            //     }
-            // }
-
-            //if 'mid range'
-            if (isMidRange && !isRanged){
-                bPathing.bossPathing();
-                //when doing a move pass SelectMove(Midattack1, Midattacklast);
-                if(isMidRange && !inAttack && !isRanged && rangedAllowed){
-                    //Debug.Log("Mid Range!");
-                    if(currentPatience >= patience){
-                        StartCoroutine(rangedActions());
-                        currentPatience = 0;
-                    }
-                    //If moving because of this don't increase patience from here.
-                    else if(!inRockThrow){
-                        currentPatience = currentPatience + (fullRandomiser(0.1f, 0.2f) * Time.deltaTime);
-                    }
-
-                }                
+            if(rocks.allRocks.Count <= spawnRocksNumber){
+                StartCoroutine(summonRocks());
             }
+            else{
+                /*GroundedCheck();
+                //Looks at the player
+                transform.LookAt(Player);
 
-            //if melee range and not in attack delay
-            else if(isMelee && !inAttack){
-                StartCoroutine(meleeActions());
-            }
+                if(!Grounded)
+                {
+                transform.Translate(Vector3.down * gravity * Time.deltaTime);
+                }*/
+                animatr.SetFloat("Speed", agent.velocity.magnitude);
+                // if in 'melee'
+                bool isMelee = Vector3.Distance(transform.position, Player.position) <= MinDist;
+                //if 'mid ranged'
+                bool isMidRange = Vector3.Distance(transform.position, Player.position) >= MinDist;
+                //If player is 'far' do 'ranged' 
+                //frustration mechanic Option
+                bool isRanged = Vector3.Distance(transform.position, Player.position) >= MaxDist;
+                // if(inRockThrow){
 
-            //if long range and not in attack delay
-            else if(isRanged && !inAttack){
-                    //Debug.Log("Long Range!");
+                //     if(isMelee && currentPatience >= patience){
+                        
+                //             rockThrowException = true;
+                //             Debug.Log("Impatient");
+                //             //rockThrow.SetPlayer();
+                //             StartCoroutine(meleeActions());
+                //             //rockThrow.SetTarget();
+                //             rockPatienceCheck = true;
+                //             StartCoroutine(rangedActions());
+                //             currentPatience = 0;
+                //             rockThrowException = false;
+                //     }
+                //     else if(currentPatience >= patience && (isMidRange || isRanged)){
+                        
+                //             rockThrowException = true;
+                //             Debug.Log("Impatient");
+                //             //rockThrow.SetPlayer();
+                //             rockPatienceCheck = false;
+                //             StartCoroutine(rangedActions());
+                //             //rockThrow.SetTarget();
+                //             rockPatienceCheck = true;
+                //             StartCoroutine(rangedActions());
+                //             currentPatience = 0;
+                //             rockThrowException = false;
+                        
+                //     }
+                //     else if (!inAttack && !rockThrowException){
+                //         currentPatience = currentPatience + (fullRandomiser(0.05f, 0.1f)) * Time.deltaTime;
+                //     }
+                // }
+
+                //if 'mid range'
+                if (isMidRange && !isRanged){
                     bPathing.bossPathing();
-                    //ranged delay only matters for attack actions. Should not affect movement.
-                    if(rangedAllowed){
-                        StartCoroutine(rangedActions());
-                    }
+                    //when doing a move pass SelectMove(Midattack1, Midattacklast);
+                    if(isMidRange && !inAttack && !isRanged && rangedAllowed){
+                        //Debug.Log("Mid Range!");
+                        if(currentPatience >= patience){
+                            StartCoroutine(rangedActions());
+                            currentPatience = 0;
+                        }
+                        //If moving because of this don't increase patience from here.
+                        else if(!inRockThrow){
+                            currentPatience = currentPatience + (fullRandomiser(0.1f, 0.2f) * Time.deltaTime);
+                        }
+                    }   
+                }
+
+                //if melee range and not in attack delay
+                else if(isMelee && !inAttack){
+                    StartCoroutine(meleeActions());
+                }
+
+                //if long range and not in attack delay
+                else if(isRanged && !inAttack){
+                        //Debug.Log("Long Range!");
+                        bPathing.bossPathing();
+                        //ranged delay only matters for attack actions. Should not affect movement.
+                        if(rangedAllowed){
+                            StartCoroutine(rangedActions());
+                        }
+                }   
             }
         }
     }
@@ -445,6 +453,13 @@ public class BossManager : MonoBehaviour
         //Punch ==2
         //Throw ==5
         return Random.Range(min, max);
+    }
+
+    IEnumerator summonRocks(){
+        attackException = true;
+        rocks.SpawnNewRocks();
+        yield return new WaitForSeconds(spawnNewRocksTime);
+        attackException = false;
     }
 
     private float fullRandomiser(float min, float max){
