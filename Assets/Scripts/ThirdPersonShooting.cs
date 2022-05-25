@@ -79,7 +79,7 @@ public class ThirdPersonShooting : MonoBehaviour
         }
         else
         {
-            CdDisplay.text = cdTimer.ToString("0");
+            CdDisplay.text = (cdTimer+1).ToString("0");
             CdBackground.color = OnCD;
         }
     }

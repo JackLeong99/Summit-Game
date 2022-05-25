@@ -29,8 +29,8 @@ public class Eruption : MonoBehaviour
             yield return new WaitForSeconds(delay);
             var hitbox = Instantiate(hitboxObject, prehit.transform.position, Quaternion.identity);
             hitbox.transform.localPosition += new Vector3(0, -0.05f, 0);
-            Destroy(prehit);
             yield return new WaitForSeconds(duration);
+            Destroy(prehit);
             Destroy(hitbox);
             Debug.DrawRay(target.transform.position, transform.TransformDirection(Vector3.down) * hit.distance, Color.yellow, 3);
             //Debug.Log("Did Hit");
@@ -42,8 +42,8 @@ public class Eruption : MonoBehaviour
             yield return new WaitForSeconds(delay);
             var hitbox = Instantiate(hitboxObject, prehit.transform.position, Quaternion.identity);
             hitbox.transform.localPosition += new Vector3(0, -0.05f, 0);
-            Destroy(prehit);
             yield return new WaitForSeconds(duration);
+            Destroy(prehit);
             Destroy(hitbox);
         }
     }
