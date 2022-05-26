@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using StarterAssets;
 
 public class ThirdPersonShooting : MonoBehaviour
 {
@@ -32,6 +33,8 @@ public class ThirdPersonShooting : MonoBehaviour
     public Color OffCD;
     public Color OnCD;
 
+    private ThirdPersonController controller;
+
     private Animator _animator;
 
     private GameObject _mainCamera;
@@ -54,6 +57,7 @@ public class ThirdPersonShooting : MonoBehaviour
         _animator = GetComponent<Animator>();
         //Temporary code that resets player y axis rotation until we add custom player model/animations
         player = GetComponent<CharacterController>();
+        controller = GetComponent<ThirdPersonController>();
     }
 
     // Update is called once per frame
@@ -89,7 +93,7 @@ public class ThirdPersonShooting : MonoBehaviour
         player.transform.rotation = _mainCamera.transform.rotation;
         casting = true;
         _animator.SetTrigger("Shoot");
-
+        controller.LockCameraPosition = true;
         yield return new WaitForSeconds(shotTimeBuffer);
 
         Ray ray = cam.ViewportPointToRay(new Vector3(0.5f, 0.5f , 0));
@@ -106,7 +110,7 @@ public class ThirdPersonShooting : MonoBehaviour
         InstantiateProjectile();
         
         yield return new WaitForSeconds(shotAnimEnd);
-        player.transform.rotation = Quaternion.Euler(new Vector3(transform.rotation.x, 0f, transform.rotation.z));
+        controller.LockCameraPosition = false;
         casting = false;
         cdTimer = cooldown;
 
