@@ -18,8 +18,6 @@ public class BossManager : MonoBehaviour
     //Do a random number and give to MoveSelector- this chooses what 'attack' is chosen.
     public int MoveSelector;
 
-    //is Rage?
-    public bool Rage;
     //shockwaveattack
     //public GameObject shockwaveHitbox;
     
@@ -44,7 +42,8 @@ public class BossManager : MonoBehaviour
     //private bool rockThrowException = false;
     //rage mode
     public bool rage = false;
-    public float rageSpeed = 7f;
+    public float rageSpeed;
+    public float rageAttackMultiplier;
     //the last action taken by the boss- used to prevent long repetition
     public string lastMove;
     //how many times the last move has been used in a row
@@ -97,7 +96,7 @@ public class BossManager : MonoBehaviour
     
     void Update(){
         if(Alive){
-            // if(rocks.allRocks.Count <= spawnRocksNumber){
+            // if(rocks.countUnderWantedRocks){
             //     StartCoroutine(summonRocks());
             // }
             // else{
@@ -174,12 +173,12 @@ public class BossManager : MonoBehaviour
 
                 //if long range and not in attack delay
                 else if(isRanged && !inAttack){
-                        //Debug.Log("Long Range!");
-                        bPathing.bossPathing();
-                        //ranged delay only matters for attack actions. Should not affect movement.
-                        if(rangedAllowed){
-                            StartCoroutine(rangedActions());
-                        }
+                    //Debug.Log("Long Range!");
+                    bPathing.bossPathing();
+                    //ranged delay only matters for attack actions. Should not affect movement.
+                    if(rangedAllowed){
+                        StartCoroutine(rangedActions());
+                    }
                 }   
             // }
         }
@@ -199,6 +198,7 @@ public class BossManager : MonoBehaviour
         inAttack = true;
         //determine which attack to use
         MoveSelector = SelectMove(1, 3);
+
         //Shockwave
         // if(MoveSelector == 1){
         //     if(lastMove == "Shockwave"){
@@ -447,10 +447,10 @@ public class BossManager : MonoBehaviour
 
 
     private int SelectMove(int min, int max){
-        if (Rage == true){ 
-            min+= 4;
-            max+= 4;
-        }
+        // if (rage == true){ 
+        //     min+= 4;
+        //     max+= 4;
+        // }
 
         //Shockwave ==1
         //Punch ==2
@@ -461,9 +461,11 @@ public class BossManager : MonoBehaviour
     IEnumerator summonRocks(){
         attackException = true;
         inAttack = true;
+        rocks.countUnderWantedRocks = false;
         rocks.SpawnNewRocks();
         yield return new WaitForSeconds(spawnNewRocksTime);
         //would suggest putting rocks.SpawnNewRocks() instead then have a small delay after to give the apperance of it taking out the rocks then a brief pause like it is catching its breath
+
         attackException = false;
         inAttack = false;
     }
@@ -537,20 +539,21 @@ public class BossManager : MonoBehaviour
     IEnumerator triggerRage(){
         rage = true;
         agent.speed = rageSpeed;
+        yield break;
         //stun boss for animation triggers
 
-        //this method could cause issues- coroutine runs simultaneously so if this triggers mid-attack it's possible for the attack script to then
-        //call inAttack = false and cause havoc
-        inAttack = true;
-        attackException = true;
+        // //this method could cause issues- coroutine runs simultaneously so if this triggers mid-attack it's possible for the attack script to then
+        // //call inAttack = false and cause havoc
+        // inAttack = true;
+        // attackException = true;
         
-        //potentially rage animation here.
-        //switch over animationshere
-        yield return new WaitForSeconds(3);
-        //be unleashed
-        //damagePlayer.rageAttackModifier();
-        attackException = false;
-        inAttack = false; // probs borked
+        // //potentially rage animation here.
+        // //switch over animationshere
+        // yield return new WaitForSeconds(3);
+        // //be unleashed
+        // //damagePlayer.rageAttackModifier(); //Now handled inside damagePlayer2
+        // attackException = false;
+        // inAttack = false; // probs borked
     }
 
     public void setUpHitBoxes() 
