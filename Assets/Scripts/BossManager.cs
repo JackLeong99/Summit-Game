@@ -536,7 +536,7 @@ public class BossManager : MonoBehaviour
     IEnumerator triggerRage(){
         rage = true;
         agent.speed = rageSpeed;
-        yield return;
+        yield break;
         //stun boss for animation triggers
 
         // //this method could cause issues- coroutine runs simultaneously so if this triggers mid-attack it's possible for the attack script to then
