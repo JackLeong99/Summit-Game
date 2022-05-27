@@ -96,7 +96,7 @@ public class BossManager : MonoBehaviour
     
     void Update(){
         if(Alive){
-            // if(rocks.allRocks.Count <= spawnRocksNumber){
+            // if(rocks.countUnderWantedRocks){
             //     StartCoroutine(summonRocks());
             // }
             // else{
@@ -461,8 +461,10 @@ public class BossManager : MonoBehaviour
     IEnumerator summonRocks(){
         attackException = true;
         inAttack = true;
+        rocks.countUnderWantedRocks = false;
         rocks.SpawnNewRocks();
         yield return new WaitForSeconds(spawnNewRocksTime);
+        
         attackException = false;
         inAttack = false;
     }

@@ -752,12 +752,13 @@ MonoBehaviour:
   attackException: 0
   rage: 0
   rageSpeed: 0
+  rageAttackMultiplier: 0
   lastMove: 
   lastMoveRepeated: 0
   scuffedShockTimer: 0.7
   maxHP: 1000
   currentHP: 0
-  spawnRocksNumber: 3
+  spawnRocksNumber: 5
   spawnNewRocksTime: 5
 --- !u!54 &311172964
 Rigidbody:
@@ -840,8 +841,8 @@ MonoBehaviour:
   scaleTime: 1
   shockwaveHitbox: {fileID: 4686178775174311369, guid: c8aaaf5564c7a4a3a9f37be7ab91483e, type: 3}
   shockwaveFX: {fileID: 3520696819567259417, guid: 2497e87fcbbd94b8ba312e0f831a4298, type: 3}
-  parentObject: {fileID: 969358801}
-  handVector: {x: 0, y: 0, z: 0}
+  rightHand: {fileID: 969358801}
+  leftHand: {fileID: 1723090702}
 --- !u!114 &311172972
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4562,6 +4563,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ce8e84b0a33ef4e4080cbdc1232e3d6d, type: 3}
+--- !u!1 &1723090702 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4849346952993290505, guid: de4c2bfe46e49014a9e7bc63251e601e, type: 3}
+  m_PrefabInstance: {fileID: 1071067814}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1724657640
 GameObject:
   m_ObjectHideFlags: 0
