@@ -39,18 +39,22 @@ public class BossManager : MonoBehaviour
     public float patience;
     //temporarily public for testing
     public float currentPatience;
-    private bool rockPatienceCheck = false;
+    //private bool rockPatienceCheck = false;
     public bool attackException = false;
-    private bool rockThrowException = false;
+    //private bool rockThrowException = false;
+    //rage mode
     public bool rage = false;
+    //the last action taken by the boss- used to prevent long repetition
     public string lastMove;
+    //how many times the last move has been used in a row
     public int lastMoveRepeated = 0;
-
+    //Dodgy slider method to match the timing with slam- determines when the shockwave is done
     public float scuffedShockTimer;
+    //Health for the boss
     [SerializeField] float maxHP;
     //[HideInInspector]
+    //the current HP of the boss
     public float currentHP;
-
     private BossPathing bPathing;
     private Shockwave shockwave;
     private MegaPunch punch;
@@ -59,11 +63,8 @@ public class BossManager : MonoBehaviour
     private RockPathFinding rockThrow;
     Animator animatr;
     NavMeshAgent agent;
-
     private bool Alive = true;
-
     Rigidbody[] rigidBodies;
-
     //used by IncreasePlayerAttack power-up
     private bool increaseDamage=false;
 
@@ -137,13 +138,10 @@ public class BossManager : MonoBehaviour
             //         currentPatience = currentPatience + (fullRandomiser(0.05f, 0.1f)) * Time.deltaTime;
             //     }
             // }
+
             //if 'mid range'
-            if (isMidRange){
-                //if(!inAttack){
+            if (isMidRange && !isRanged){
                 bPathing.bossPathing();
-                //}
-                //bPathing.GetComponent<BossPathing>().bossPathing();
-                //transform.Translate(transform.forward * MoveSpeed * Time.deltaTime);
                 //when doing a move pass SelectMove(Midattack1, Midattacklast);
                 if(isMidRange && !inAttack && !isRanged && rangedAllowed){
                     //Debug.Log("Mid Range!");
@@ -151,28 +149,27 @@ public class BossManager : MonoBehaviour
                         StartCoroutine(rangedActions());
                         currentPatience = 0;
                     }
+                    //If moving because of this don't increase patience from here.
                     else if(!inRockThrow){
                         currentPatience = currentPatience + (fullRandomiser(0.1f, 0.2f) * Time.deltaTime);
                     }
 
                 }                
             }
-        
+
+            //if melee range and not in attack delay
             else if(isMelee && !inAttack){
-                //when doing a move pass SelectMove(Meleeattack1, Meleeattacklast); 
-                //SelectMove(1, 1); //selectmove 1, last
-                //if(MoveSelector == 1){
-                    //Instantiate(shockwaveHitbox, transform.position, transform.rotation);
-                    //StartCoroutine(waitTime(2.3f, delayBeforeNextAttack));
-                //Debug.Log("In melee!");
-                StartCoroutine(meleeActions());    
-            // }
+                StartCoroutine(meleeActions());
             }
 
-            else if(isRanged && !inAttack && rangedAllowed){
-                //when doing a move pass SelectMove(Rangedattack1, Rangedattacklast);
-                    Debug.Log("Long Range!");
-                    StartCoroutine(rangedActions());
+            //if long range and not in attack delay
+            else if(isRanged && !inAttack){
+                    //Debug.Log("Long Range!");
+                    bPathing.bossPathing();
+                    //ranged delay only matters for attack actions. Should not affect movement.
+                    if(rangedAllowed){
+                        StartCoroutine(rangedActions());
+                    }
             }
         }
     }
@@ -184,9 +181,12 @@ public class BossManager : MonoBehaviour
         inAttack = false;
     }
 
+    //All 'melee' actions/attacks
     IEnumerator meleeActions(){
         //attack animatr starts
+        //The boss is in attack and now won't trigger other attacks until this finishes
         inAttack = true;
+        //determine which attack to use
         MoveSelector = SelectMove(1, 3);
         //Shockwave
         // if(MoveSelector == 1){
@@ -215,6 +215,7 @@ public class BossManager : MonoBehaviour
 
         //Sweep
         if(MoveSelector == 1){
+            //Check if repeated too many times
             if(lastMove == "Sweep"){
                 if(lastMoveRepeated == 2){
                     Debug.Log("Break!");
@@ -225,14 +226,20 @@ public class BossManager : MonoBehaviour
             else{
                 lastMoveRepeated = 0;
             }
-            Debug.Log("Do MegaPunch!");
+            //Debug.Log("Do MegaPunch!");
+            //Face player to aim- smoother method could be used
             transform.LookAt(Player);
+            //Do the animation
             animatr.SetTrigger("Sweep");
+            //Do the sweep attack
             punch.megaPunch();
+            //Hard-coded animation duration.
             float animatrDuration = 2.875f; // Figure this out
+            //Sweep has been done 1 more time in a row
             lastMove = "Sweep";
             lastMoveRepeated ++;
             yield return new WaitForSeconds(animatrDuration);
+            //Don't do delayBeforeNextAttack if triggering as part of rock throw pathing
             if(!inRockThrow){
                 yield return new WaitForSeconds(delayBeforeNextAttack);
             }
@@ -241,6 +248,7 @@ public class BossManager : MonoBehaviour
 
         //Ground Slam
         if(MoveSelector == 2){
+            //Check if repeated too many times
             if(lastMove == "Slam"){
                 if(lastMoveRepeated == 2){
                     Debug.Log("Break!");
@@ -251,38 +259,53 @@ public class BossManager : MonoBehaviour
             else{
                 lastMoveRepeated = 0;
             }
-            Debug.Log("Do Ground Slam!");
+            //Debug.Log("Do Ground Slam!");
+            //Do the animation
             animatr.SetTrigger("Slam");
+            //Do the slam attack
             slam.groundSlam();
+            //Face player to aim- smoother method could be used
             transform.LookAt(Player);
-            animatr.SetTrigger("Slam");
+            //Wait for the set delay before running shockwave, should be timed to match fists hitting ground
             yield return new WaitForSeconds(scuffedShockTimer);
+            //Do the shockwave attack
             shockwave.instantiateShockwave();
+            //Hard-coded animation duration.
             float animatrDuration = 2.875f; // Figure this out
+            //Wait has already been done before timer which is a part of the animation duration
             yield return new WaitForSeconds(animatrDuration - scuffedShockTimer);
            //possible to double slam
            //would be nice to have different animation - particle effect on the fists before first slam
            //less drawback on second slam
             if(SelectMove(1, 4) == 3){
                 //animatr.SetFloat("Speed", agent.velocity.magnitude);
+                //Face player to aim- smoother method could be used
                 transform.LookAt(Player);
-                Debug.Log("Double slam!");
+                //Debug.Log("Double slam!");
+                //Do the second slam attack
                 slam.groundSlam();
+                //Do the animation
                 animatr.SetTrigger("Slam");
+                //Wait for the set delay before running shockwave, should be timed to match fists hitting ground
                 yield return new WaitForSeconds(scuffedShockTimer);
+                //Do the shockwave attack
                 shockwave.instantiateShockwave();
+                //Wait has already been done before timer which is a part of the animation duration
                 yield return new WaitForSeconds(animatrDuration - scuffedShockTimer);
                 // yield return new WaitForSeconds(2f * Time.deltaTime);
                 // shockwave.instantiateShockwave();
                 // yield return new WaitForSeconds(animatrDuration - 2 * Time.deltaTime);
             }
+            //Slam has been done 1 more time in a row
             lastMove = "Slam";
             lastMoveRepeated ++;
+            //Don't do delayBeforeNextAttack if triggering as part of rock throw pathing
             if(!inRockThrow){
                 yield return new WaitForSeconds(delayBeforeNextAttack);
             }
         }
         //Coroutine finishes and boss is now able to select next action.
+        //if the boss did meleeActions() as a part of rockThrow then they are still in that attack.
         if(!inRockThrow){
             inAttack = false;
         }
@@ -294,16 +317,22 @@ public class BossManager : MonoBehaviour
     //     yield return new WaitForSeconds(1);
     // }
 
+    //All 'ranged' actions/attacks
     IEnumerator rangedActions(){
+        //The boss is in attack and now won't trigger other attacks until this finishes
         inAttack = true;
+        //The boss does not have permission to trigger a new ranged attack until true
         rangedAllowed = false;
+        //determine which attack to use
+        //If the boss is in rock throw it should not do rock throw again
         if(!inRockThrow){
             MoveSelector = SelectMove(5,7);
         }
         //prep rock throw
         //RockManager.Instance.ClearUpList();
         //Eruption
-        if(!rockPatienceCheck && (inRockThrow || MoveSelector == 5)){
+        //if(!rockPatienceCheck && (inRockThrow || MoveSelector == 5)){
+        if(inRockThrow || MoveSelector == 5){
             if(!inRockThrow && lastMove == "Eruption" && RockManager.Instance.IsThereStillRocks()){
                 if(lastMoveRepeated == 2){
                     Debug.Log("Break!");
@@ -330,7 +359,8 @@ public class BossManager : MonoBehaviour
         }
         
         //Rock Throw 
-        if((rockPatienceCheck || MoveSelector == 6) && RockManager.Instance.IsThereStillRocks()){
+        // if((rockPatienceCheck || MoveSelector == 6) && RockManager.Instance.IsThereStillRocks()){
+        if((MoveSelector == 6) && RockManager.Instance.IsThereStillRocks()){
             if(lastMove == "Rock Throw"){
                 if(lastMoveRepeated == 2){
                     Debug.Log("Break!");
@@ -379,17 +409,20 @@ public class BossManager : MonoBehaviour
                 
                 yield return new WaitForSeconds(Time.deltaTime);
             }
-            inRockThrow = false;
-            transform.LookAt(Player);
             animatr.SetTrigger("Throw");
+            transform.LookAt(Player);
+            //If this is before the wait the boss turns around after the throw animation and walks away for a bit after it.
+            //If this is after the wait the boss turns around during the throw animation.
             attackException = false;
             float animatrDuration = 2.875f; // Figure this out
            // float delayBeforeCurrentAttack = 1.5f; // Figure this out
             //while loop for wait for seconds- get isTargeting from RockPathFinding.
             yield return new WaitForSeconds(animatrDuration + delayBeforeNextAttack);// + delayBeforeCurrentAttack
+            
+            inRockThrow = false;
             lastMove = "Rock Throw";
             lastMoveRepeated ++;
-            rockPatienceCheck = false;
+            //rockPatienceCheck = false;
         }
         
         //for all ranged:

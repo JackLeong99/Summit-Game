@@ -11,7 +11,7 @@ public class GroundSlam : MonoBehaviour
 
     [SerializeField] public float duration;
     private Shockwave shockwave;
-    private bool groundSlamming = false;
+    //private bool groundSlamming = false;
     
     private void Awake(){
         shockwave = GetComponent<Shockwave>();
