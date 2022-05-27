@@ -159,7 +159,7 @@ namespace StarterAssets
 
 				if(Input.GetButtonDown("Fire1"))
 				{
-					if(!dodge.isDodging)
+					if(!dodge.isDodging && Grounded)
 					{
 						attack.doAttack();
 					}

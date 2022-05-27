@@ -69,16 +69,9 @@ public class AutoAttack : MonoBehaviour
         isAttacking = true;
         yield return new WaitForSeconds(0.2f);
 		var hitbox = Instantiate(attackHitbox, player.position + new Vector3(0, 1.3f, 0), player.rotation, player.transform);
-		hitbox.transform.localPosition += new Vector3(0, 0, 1);
+		hitbox.transform.localPosition += new Vector3(0, 0, 1.5f);
         hitbox.GetComponent<PlayerDamage>().setDamage(attackDamage);
-        yield return new WaitForSeconds(swingTimer - 0.2f);
-        //float timer = 0;
-		//while(timer < swingTimer)
-		//{
-		//	//Debug.Log("Attacking!!!");
-		//	timer += Time.deltaTime;
-		//	yield return null;
-		//}
+        yield return new WaitForSeconds(swingTimer - 0.5f);
 		if(hitbox)
 		{
 			Destroy(hitbox);
