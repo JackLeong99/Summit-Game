@@ -417,7 +417,6 @@ public class BossManager : MonoBehaviour
                     attackException = true;
                     currentPatience = currentPatience + (fullRandomiser(0.1f, 0.2f)) * Time.deltaTime;
                 }
-                
                 yield return new WaitForSeconds(Time.deltaTime);
             }
             animatr.SetTrigger("Throw");
@@ -444,7 +443,6 @@ public class BossManager : MonoBehaviour
         yield return new WaitForSeconds(delayBeforeRangedAllowed);
         rangedAllowed = true;
     }
-
 
     private int SelectMove(int min, int max){
         // if (rage == true){ 
