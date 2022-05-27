@@ -25,6 +25,7 @@ public class RockManager : MonoBehaviour
     private int initialRockCount;
     private float rockX;
     private float rockZ;
+    private int rockNumberMin;
     public GameObject rockPrefab;
     public bool countUnderWantedRocks;
     private BossManager bManager;
@@ -32,7 +33,7 @@ public class RockManager : MonoBehaviour
 
     void Awake()
     {
-        bManager = GetComponent<BossManager>();
+
         if (instance != null)
         {
             Destroy(gameObject);
@@ -47,19 +48,21 @@ public class RockManager : MonoBehaviour
     {
         allRocks = GameObject.FindGameObjectsWithTag("rocks").ToList();
         initialRockCount = allRocks.Count;
+        bManager = GetComponent<BossManager>();
+        rockNumberMin = bManager.rockNumberMinimum();
         // for(int i=0; i<allRocks.Count; i++){ //testing that the objects were adding
         //             Debug.Log(allRocks[i]);
         // }
        // Debug.Log(allRocks[0].transform.position); //how to find position for rock
     }
 
-    // void Update()
-    // {
-    //     if(allRocks.Count <= bManager.spawnRocksNumber)
-    //     {
-    //         countUnderWantedRocks = true;
-    //     }
-    // }
+    void Update()
+    {
+        if(allRocks != null && allRocks.Count <= rockNumberMin)
+        {
+            countUnderWantedRocks = true;
+        }
+    }
 
 
     //update the array with the new position

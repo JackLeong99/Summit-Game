@@ -63,7 +63,7 @@ public class BossManager : MonoBehaviour
     private GroundSlam slam;
     private Eruption erupt;
     private RockPathFinding rockThrow;
-    private RockManager rocks;
+    //private RockManager rocks;
     private DamagePlayer2 damagePlayer;
     Animator animatr;
     NavMeshAgent agent;
@@ -79,7 +79,7 @@ public class BossManager : MonoBehaviour
         punch = GetComponent<MegaPunch>();
         slam = GetComponent<GroundSlam>();
         erupt = GetComponent<Eruption>();
-        rocks = GetComponent<RockManager>();
+        //rocks = GetComponent<RockManager>();
         rockThrow = GetComponent<RockPathFinding>();
         damagePlayer = GetComponent<DamagePlayer2>();
         animatr = gameObject.GetComponent<Animator>();
@@ -96,10 +96,10 @@ public class BossManager : MonoBehaviour
     
     void Update(){
         if(Alive){
-            // if(rocks.countUnderWantedRocks){
-            //     StartCoroutine(summonRocks());
-            // }
-            // else{
+            if(RockManager.Instance.countUnderWantedRocks){
+                StartCoroutine(summonRocks());
+            }
+            else{
                 /*GroundedCheck();
                 //Looks at the player
                 transform.LookAt(Player);
@@ -180,7 +180,7 @@ public class BossManager : MonoBehaviour
                         StartCoroutine(rangedActions());
                     }
                 }   
-            // }
+            }
         }
     }
 
@@ -461,8 +461,8 @@ public class BossManager : MonoBehaviour
     IEnumerator summonRocks(){
         attackException = true;
         inAttack = true;
-        rocks.countUnderWantedRocks = false;
-        rocks.SpawnNewRocks();
+        RockManager.Instance.countUnderWantedRocks = false;
+        RockManager.Instance.SpawnNewRocks();
         yield return new WaitForSeconds(spawnNewRocksTime);
         
         attackException = false;
@@ -562,5 +562,9 @@ public class BossManager : MonoBehaviour
             Rigidbody.isKinematic = true;
             Rigidbody.gameObject.AddComponent<EnemyDamageReceiver>();
         }
+    }
+
+    public int rockNumberMinimum(){
+        return spawnRocksNumber;
     }
 }
