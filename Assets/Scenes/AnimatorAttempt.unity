@@ -715,17 +715,15 @@ MonoBehaviour:
   currentPatience: 0
   attackException: 0
   rage: 0
-
   rageSpeed: 0
   rageAttackMultiplier: 0
   lastMove: 
   lastMoveRepeated: 0
-  scuffedShockTimer: 0.7
+  scuffedShockTimer: 0
   maxHP: 1000
-  currentHP: 0
-
-  spawnRocksNumber: 5
-  spawnNewRocksTime: 5
+  currentHP: 1000
+  spawnRocksNumber: 0
+  spawnNewRocksTime: 0
 --- !u!54 &311172964
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1895,11 +1893,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7152370277713681251, guid: 90c1bd1fda819204985b62a4e3e9e7b5, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7152370277713681251, guid: 90c1bd1fda819204985b62a4e3e9e7b5, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7152370277917233113, guid: 90c1bd1fda819204985b62a4e3e9e7b5, type: 3}
       propertyPath: m_Name
@@ -1907,7 +1905,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7152370277917233113, guid: 90c1bd1fda819204985b62a4e3e9e7b5, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7152370277917233117, guid: 90c1bd1fda819204985b62a4e3e9e7b5, type: 3}
       propertyPath: m_Pivot.x
@@ -3363,7 +3361,6 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-
     m_SensorSize: {x: 1.814631, y: 1}
   m_Transitions:
     m_BlendHint: 0
@@ -5421,6 +5418,50 @@ PrefabInstance:
       propertyPath: CdBackground
       value: 
       objectReference: {fileID: 438099809}
+    - target: {fileID: 2372693050024908207, guid: 385a344a9476dc5418e0c3f8526d51a6, type: 3}
+      propertyPath: attackCurve.m_Curve.Array.data[1].time
+      value: 0.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 2372693050024908207, guid: 385a344a9476dc5418e0c3f8526d51a6, type: 3}
+      propertyPath: attackCurve.m_Curve.Array.data[0].value
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2372693050024908207, guid: 385a344a9476dc5418e0c3f8526d51a6, type: 3}
+      propertyPath: attackCurve.m_Curve.Array.data[1].value
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2372693050024908207, guid: 385a344a9476dc5418e0c3f8526d51a6, type: 3}
+      propertyPath: attackCurve.m_Curve.Array.data[0].inSlope
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2372693050024908207, guid: 385a344a9476dc5418e0c3f8526d51a6, type: 3}
+      propertyPath: attackCurve.m_Curve.Array.data[1].inSlope
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2372693050024908207, guid: 385a344a9476dc5418e0c3f8526d51a6, type: 3}
+      propertyPath: attackCurve.m_Curve.Array.data[0].outSlope
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2372693050024908207, guid: 385a344a9476dc5418e0c3f8526d51a6, type: 3}
+      propertyPath: attackCurve.m_Curve.Array.data[1].inWeight
+      value: 0.33333334
+      objectReference: {fileID: 0}
+    - target: {fileID: 2372693050024908207, guid: 385a344a9476dc5418e0c3f8526d51a6, type: 3}
+      propertyPath: attackCurve.m_Curve.Array.data[1].outSlope
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2372693050024908207, guid: 385a344a9476dc5418e0c3f8526d51a6, type: 3}
+      propertyPath: attackCurve.m_Curve.Array.data[0].outWeight
+      value: 0.33333334
+      objectReference: {fileID: 0}
+    - target: {fileID: 2372693050024908207, guid: 385a344a9476dc5418e0c3f8526d51a6, type: 3}
+      propertyPath: attackCurve.m_Curve.Array.data[0].tangentMode
+      value: 34
+      objectReference: {fileID: 0}
+    - target: {fileID: 2372693050024908207, guid: 385a344a9476dc5418e0c3f8526d51a6, type: 3}
+      propertyPath: attackCurve.m_Curve.Array.data[1].tangentMode
+      value: 34
+      objectReference: {fileID: 0}
     - target: {fileID: 3145394279387860758, guid: 385a344a9476dc5418e0c3f8526d51a6, type: 3}
       propertyPath: m_Name
       value: LowPolyCharacter

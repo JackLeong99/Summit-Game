@@ -140,7 +140,14 @@ namespace StarterAssets
 
 		private void Update()
 		{
-			_Inactionable = shooting.casting;
+			if (shooting.casting || attack.isAttacking)
+			{
+				_Inactionable = true;
+			}
+			else 
+			{
+				_Inactionable = false;
+			}
 
 			_hasAnimator = TryGetComponent(out _animator);
 			

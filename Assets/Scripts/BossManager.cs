@@ -413,7 +413,7 @@ public class BossManager : MonoBehaviour
                     //inAttack = false;
                 }
                 else{
-                    Debug.Log("Increase currentPatience");
+                    //Debug.Log("Increase currentPatience");
                     attackException = true;
                     currentPatience = currentPatience + (fullRandomiser(0.1f, 0.2f)) * Time.deltaTime;
                 }
