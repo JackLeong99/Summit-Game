@@ -25,6 +25,8 @@ public class RockManager : MonoBehaviour
     private int initialRockCount;
     private float rockX;
     private float rockZ;
+    public GameObject rockPrefab;
+
 
     void Awake()
     {

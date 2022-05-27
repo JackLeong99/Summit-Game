@@ -96,10 +96,10 @@ public class BossManager : MonoBehaviour
     
     void Update(){
         if(Alive){
-            if(rocks.allRocks.Count <= spawnRocksNumber){
-                StartCoroutine(summonRocks());
-            }
-            else{
+            // if(rocks.allRocks.Count <= spawnRocksNumber){
+            //     StartCoroutine(summonRocks());
+            // }
+            // else{
                 /*GroundedCheck();
                 //Looks at the player
                 transform.LookAt(Player);
@@ -180,7 +180,7 @@ public class BossManager : MonoBehaviour
                         StartCoroutine(rangedActions());
                     }
                 }   
-            }
+            // }
         }
     }
 
