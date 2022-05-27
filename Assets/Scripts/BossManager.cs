@@ -463,6 +463,7 @@ public class BossManager : MonoBehaviour
         inAttack = true;
         rocks.SpawnNewRocks();
         yield return new WaitForSeconds(spawnNewRocksTime);
+        //would suggest putting rocks.SpawnNewRocks() instead then have a small delay after to give the apperance of it taking out the rocks then a brief pause like it is catching its breath
         attackException = false;
         inAttack = false;
     }
