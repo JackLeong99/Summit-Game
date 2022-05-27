@@ -32,8 +32,6 @@ public class RockManager : MonoBehaviour
 
     public int amountToSpawnNew;
 
-    public GameObject rockPrefab;
-
     void Awake()
     {
         bManager = GetComponent<BossManager>();
@@ -157,11 +155,6 @@ public class RockManager : MonoBehaviour
         GameObject newRock8= Instantiate(rockPrefab);
         newRock8.transform.position= new Vector3(Random.Range(25f, 50f), 0, Random.Range(0f, 50f));
         allRocks.Add(newRock8);
-        //set some positions and spawn rocks
-        //use radius to make it random each time
-        //spawn with some particle effects
-        //spawn 4 different rocks into different quadrants //should dicuss this
-
     }
 
     //needed for boss manager
@@ -179,38 +172,6 @@ public class RockManager : MonoBehaviour
     //         newRock.transfrom.position = newVector3(Random.Range)
     //     }
     // }
-    public void SpawnNewRocks()
-    {
-        GameObject newRock1= Instantiate(rockPrefab);
-        newRock1.transform.position= new Vector3(Random.Range(-50.0f, -25.0f), 0, Random.Range(-50.0f, 0f));
-        allRocks.Add(newRock1);
-        GameObject newRock2= Instantiate(rockPrefab);
-        newRock2.transform.position= new Vector3(Random.Range(-50.0f, -25.0f), 0, Random.Range(0f, 50f));
-        allRocks.Add(newRock2);
-        GameObject newRock3= Instantiate(rockPrefab);
-        newRock3.transform.position= new Vector3(Random.Range(-25.0f, 0f), 0, Random.Range(-50f, 0f));
-        allRocks.Add(newRock3);
-        GameObject newRock4= Instantiate(rockPrefab);
-        newRock4.transform.position= new Vector3(Random.Range(-25.0f, 0f), 0, Random.Range(0f, 50f));
-        allRocks.Add(newRock4);
-        GameObject newRock5= Instantiate(rockPrefab);
-        newRock5.transform.position= new Vector3(Random.Range(0f, 25f), 0, Random.Range(-50f, 0f));
-        allRocks.Add(newRock5);
-        GameObject newRock6= Instantiate(rockPrefab);
-        newRock6.transform.position= new Vector3(Random.Range(0f, 25f), 0, Random.Range(0f, 50f));
-        allRocks.Add(newRock6);
-        GameObject newRock7= Instantiate(rockPrefab);
-        newRock7.transform.position= new Vector3(Random.Range(25f, 50f), 0, Random.Range(-50f, 0f));
-        allRocks.Add(newRock7);
-        GameObject newRock8= Instantiate(rockPrefab);
-        newRock8.transform.position= new Vector3(Random.Range(25f, 50f), 0, Random.Range(0f, 50f));
-        allRocks.Add(newRock8);
-        //set some positions and spawn rocks
-        //use radius to make it random each time
-        //spawn with some particle effects
-        //spawn 4 different rocks into different quadrants //should dicuss this
-
-    }
     private void randomRockPos()
     {
         //whatevertheArenalimits are should determine what to input into random here
