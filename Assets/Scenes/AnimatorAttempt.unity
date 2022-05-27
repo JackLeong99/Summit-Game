@@ -5418,6 +5418,10 @@ PrefabInstance:
       propertyPath: CdBackground
       value: 
       objectReference: {fileID: 438099809}
+    - target: {fileID: 2372693050024908206, guid: 385a344a9476dc5418e0c3f8526d51a6, type: 3}
+      propertyPath: dodgeMultiplier
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 2372693050024908207, guid: 385a344a9476dc5418e0c3f8526d51a6, type: 3}
       propertyPath: attackCurve.m_Curve.Array.data[1].time
       value: 0.8
