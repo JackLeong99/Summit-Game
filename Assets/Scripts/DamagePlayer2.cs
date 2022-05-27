@@ -5,7 +5,7 @@ using UnityEngine;
 public class DamagePlayer2 : MonoBehaviour
 {
     public string attackName;
-    [SerializeField] int damage = 25;
+    [SerializeField] float damage = 25f;
     private void OnTriggerEnter(Collider other){
         if(other.tag == "Player"){
             PlayerStats health = other.GetComponent<PlayerStats>();
@@ -17,4 +17,8 @@ public class DamagePlayer2 : MonoBehaviour
         }
         
     }//timeout / delay- anti-multi-hit to-add
+
+    public void rageAttackModifier(){
+        damage = damage * 1.25f;
+    }
 }

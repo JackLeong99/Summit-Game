@@ -19,9 +19,12 @@ public class RockManager : MonoBehaviour
         }
     }
 
-    private List <GameObject> allRocks = new List <GameObject>();
+    public List <GameObject> allRocks = new List <GameObject>();
 
     private int RockMoved;
+    private int initialRockCount;
+    private float rockX;
+    private float rockZ;
 
     public int amountToSpawnNew;
 
@@ -39,7 +42,8 @@ public class RockManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        allRocks=GameObject.FindGameObjectsWithTag ("rocks").ToList();
+        allRocks=GameObject.FindGameObjectsWithTag("rocks").ToList();
+        initialRockCount = allRocks.Count;
         // for(int i=0; i<allRocks.Count; i++){ //testing that the objects were adding
         //             Debug.Log(allRocks[i]);
         // }
@@ -119,5 +123,25 @@ public class RockManager : MonoBehaviour
     public void ClearUpList()
     {
         allRocks.RemoveAll(s => s == null);
+    }
+
+    public void SpawnNewRocks()
+    {
+        for(int i = 0; i < initialRockCount; i++)
+        {
+            if(allRocks[i] == null || !allRocks[i])
+            {
+                randomRockPos();
+                //do instantiate at the coordinates
+                //allRocks[i] = Instantiate the Rock at(rockX, YVal (probs 0), rockZ)
+            }
+        }
+    }
+
+    private void randomRockPos()
+    {
+        //whatevertheArenalimits are should determine what to input into random here
+        rockX = Random.Range(0, 10); //values are placeholder
+        rockZ = Random.Range(0, 10);
     }
 }

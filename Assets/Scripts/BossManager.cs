@@ -44,6 +44,7 @@ public class BossManager : MonoBehaviour
     //private bool rockThrowException = false;
     //rage mode
     public bool rage = false;
+    public float rageSpeed = 7f;
     //the last action taken by the boss- used to prevent long repetition
     public string lastMove;
     //how many times the last move has been used in a row
@@ -55,12 +56,16 @@ public class BossManager : MonoBehaviour
     //[HideInInspector]
     //the current HP of the boss
     public float currentHP;
+    public int spawnRocksNumber;
+    public float spawnNewRocksTime;
     private BossPathing bPathing;
     private Shockwave shockwave;
     private MegaPunch punch;
     private GroundSlam slam;
     private Eruption erupt;
     private RockPathFinding rockThrow;
+    private RockManager rocks;
+    private DamagePlayer2 damagePlayer;
     Animator animatr;
     NavMeshAgent agent;
     private bool Alive = true;
@@ -75,7 +80,9 @@ public class BossManager : MonoBehaviour
         punch = GetComponent<MegaPunch>();
         slam = GetComponent<GroundSlam>();
         erupt = GetComponent<Eruption>();
+        rocks = GetComponent<RockManager>();
         rockThrow = GetComponent<RockPathFinding>();
+        damagePlayer = GetComponent<DamagePlayer2>();
         animatr = gameObject.GetComponent<Animator>();
         agent = GetComponent<NavMeshAgent>();
         StartCoroutine(fightStart());
@@ -90,87 +97,91 @@ public class BossManager : MonoBehaviour
     
     void Update(){
         if(Alive){
-            /*GroundedCheck();
-            //Looks at the player
-            transform.LookAt(Player);
-
-            if(!Grounded)
-            {
-            transform.Translate(Vector3.down * gravity * Time.deltaTime);
-            }*/
-            animatr.SetFloat("Speed", agent.velocity.magnitude);
-            // if in 'melee'
-            bool isMelee = Vector3.Distance(transform.position, Player.position) <= MinDist;
-            //if 'mid ranged'
-            bool isMidRange = Vector3.Distance(transform.position, Player.position) >= MinDist;
-            //If player is 'far' do 'ranged' 
-            //frustration mechanic Option
-            bool isRanged = Vector3.Distance(transform.position, Player.position) >= MaxDist;
-            // if(inRockThrow){
-
-            //     if(isMelee && currentPatience >= patience){
-                    
-            //             rockThrowException = true;
-            //             Debug.Log("Impatient");
-            //             //rockThrow.SetPlayer();
-            //             StartCoroutine(meleeActions());
-            //             //rockThrow.SetTarget();
-            //             rockPatienceCheck = true;
-            //             StartCoroutine(rangedActions());
-            //             currentPatience = 0;
-            //             rockThrowException = false;
-            //     }
-            //     else if(currentPatience >= patience && (isMidRange || isRanged)){
-                    
-            //             rockThrowException = true;
-            //             Debug.Log("Impatient");
-            //             //rockThrow.SetPlayer();
-            //             rockPatienceCheck = false;
-            //             StartCoroutine(rangedActions());
-            //             //rockThrow.SetTarget();
-            //             rockPatienceCheck = true;
-            //             StartCoroutine(rangedActions());
-            //             currentPatience = 0;
-            //             rockThrowException = false;
-                    
-            //     }
-            //     else if (!inAttack && !rockThrowException){
-            //         currentPatience = currentPatience + (fullRandomiser(0.05f, 0.1f)) * Time.deltaTime;
-            //     }
+            // if(rocks.allRocks.Count <= spawnRocksNumber){
+            //     StartCoroutine(summonRocks());
             // }
+            // else{
+                /*GroundedCheck();
+                //Looks at the player
+                transform.LookAt(Player);
 
-            //if 'mid range'
-            if (isMidRange && !isRanged){
-                bPathing.bossPathing();
-                //when doing a move pass SelectMove(Midattack1, Midattacklast);
-                if(isMidRange && !inAttack && !isRanged && rangedAllowed){
-                    //Debug.Log("Mid Range!");
-                    if(currentPatience >= patience){
-                        StartCoroutine(rangedActions());
-                        currentPatience = 0;
-                    }
-                    //If moving because of this don't increase patience from here.
-                    else if(!inRockThrow){
-                        currentPatience = currentPatience + (fullRandomiser(0.1f, 0.2f) * Time.deltaTime);
-                    }
+                if(!Grounded)
+                {
+                transform.Translate(Vector3.down * gravity * Time.deltaTime);
+                }*/
+                animatr.SetFloat("Speed", agent.velocity.magnitude);
+                // if in 'melee'
+                bool isMelee = Vector3.Distance(transform.position, Player.position) <= MinDist;
+                //if 'mid ranged'
+                bool isMidRange = Vector3.Distance(transform.position, Player.position) >= MinDist;
+                //If player is 'far' do 'ranged' 
+                //frustration mechanic Option
+                bool isRanged = Vector3.Distance(transform.position, Player.position) >= MaxDist;
+                // if(inRockThrow){
 
-                }                
-            }
+                //     if(isMelee && currentPatience >= patience){
+                        
+                //             rockThrowException = true;
+                //             Debug.Log("Impatient");
+                //             //rockThrow.SetPlayer();
+                //             StartCoroutine(meleeActions());
+                //             //rockThrow.SetTarget();
+                //             rockPatienceCheck = true;
+                //             StartCoroutine(rangedActions());
+                //             currentPatience = 0;
+                //             rockThrowException = false;
+                //     }
+                //     else if(currentPatience >= patience && (isMidRange || isRanged)){
+                        
+                //             rockThrowException = true;
+                //             Debug.Log("Impatient");
+                //             //rockThrow.SetPlayer();
+                //             rockPatienceCheck = false;
+                //             StartCoroutine(rangedActions());
+                //             //rockThrow.SetTarget();
+                //             rockPatienceCheck = true;
+                //             StartCoroutine(rangedActions());
+                //             currentPatience = 0;
+                //             rockThrowException = false;
+                        
+                //     }
+                //     else if (!inAttack && !rockThrowException){
+                //         currentPatience = currentPatience + (fullRandomiser(0.05f, 0.1f)) * Time.deltaTime;
+                //     }
+                // }
 
-            //if melee range and not in attack delay
-            else if(isMelee && !inAttack){
-                StartCoroutine(meleeActions());
-            }
-
-            //if long range and not in attack delay
-            else if(isRanged && !inAttack){
-                    //Debug.Log("Long Range!");
+                //if 'mid range'
+                if (isMidRange && !isRanged){
                     bPathing.bossPathing();
-                    //ranged delay only matters for attack actions. Should not affect movement.
-                    if(rangedAllowed){
-                        StartCoroutine(rangedActions());
-                    }
-            }
+                    //when doing a move pass SelectMove(Midattack1, Midattacklast);
+                    if(isMidRange && !inAttack && !isRanged && rangedAllowed){
+                        //Debug.Log("Mid Range!");
+                        if(currentPatience >= patience){
+                            StartCoroutine(rangedActions());
+                            currentPatience = 0;
+                        }
+                        //If moving because of this don't increase patience from here.
+                        else if(!inRockThrow){
+                            currentPatience = currentPatience + (fullRandomiser(0.1f, 0.2f) * Time.deltaTime);
+                        }
+                    }   
+                }
+
+                //if melee range and not in attack delay
+                else if(isMelee && !inAttack){
+                    StartCoroutine(meleeActions());
+                }
+
+                //if long range and not in attack delay
+                else if(isRanged && !inAttack){
+                        //Debug.Log("Long Range!");
+                        bPathing.bossPathing();
+                        //ranged delay only matters for attack actions. Should not affect movement.
+                        if(rangedAllowed){
+                            StartCoroutine(rangedActions());
+                        }
+                }   
+            // }
         }
     }
 
@@ -436,15 +447,24 @@ public class BossManager : MonoBehaviour
 
 
     private int SelectMove(int min, int max){
-        //if (Rage == true){ 
-            //min+= Whatever the number of moves is;
-            //max+= Whatever the number of moves is;
-        //}
+        if (Rage == true){ 
+            min+= 4;
+            max+= 4;
+        }
 
         //Shockwave ==1
         //Punch ==2
         //Throw ==5
         return Random.Range(min, max);
+    }
+
+    IEnumerator summonRocks(){
+        attackException = true;
+        inAttack = true;
+        rocks.SpawnNewRocks();
+        yield return new WaitForSeconds(spawnNewRocksTime);
+        attackException = false;
+        inAttack = false;
     }
 
     private float fullRandomiser(float min, float max){
@@ -471,7 +491,12 @@ public class BossManager : MonoBehaviour
         if (currentHP > maxHP){
             currentHP = maxHP;
         }
+
         UIManager.Instance.HealthBossBarSet((int)Mathf.Round(currentHP));
+
+        if(rage == false && (currentHP <= (maxHP/2))){
+            StartCoroutine(triggerRage());
+        }
         if (currentHP <= 0.0f)
         {
             StartCoroutine(Death());
@@ -506,6 +531,25 @@ public class BossManager : MonoBehaviour
         yield return new WaitForSeconds(8f);
         UIManager.Instance.WinScreen();
         //Instantiate(deathFX, gameObject.transform.position, Quaternion.identity);
+    }
+
+    IEnumerator triggerRage(){
+        rage = true;
+        agent.speed = rageSpeed;
+        //stun boss for animation triggers
+
+        //this method could cause issues- coroutine runs simultaneously so if this triggers mid-attack it's possible for the attack script to then
+        //call inAttack = false and cause havoc
+        inAttack = true;
+        attackException = true;
+        
+        //potentially rage animation here.
+        //switch over animationshere
+        yield return new WaitForSeconds(3);
+        //be unleashed
+        //damagePlayer.rageAttackModifier();
+        attackException = false;
+        inAttack = false; // probs borked
     }
 
     public void setUpHitBoxes() 

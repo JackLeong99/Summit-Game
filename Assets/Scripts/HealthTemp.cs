@@ -65,7 +65,7 @@ public class HealthTemp : MonoBehaviour
         //Instantiate(deathFX, gameObject.transform.position, Quaternion.identity);
     }
 
-    public int BossHealth()
+    public float BossHealth()
     {
     return currentHealth;
     }
