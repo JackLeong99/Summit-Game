@@ -49,6 +49,7 @@ public class RockMoving : MonoBehaviour
     //spawn ground rock and destroy itself
     public void spawnRock()
     {
+        //needs to instantiate at ground position
         GameObject breakablerock= Instantiate(rockPrefab); 
         
         breakablerock.transform.position=transform.position;
