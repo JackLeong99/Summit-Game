@@ -19,12 +19,20 @@ public class RockManager : MonoBehaviour
         }
     }
 
-    private List <GameObject> allRocks = new List <GameObject>();
+    public List <GameObject> allRocks = new List <GameObject>();
 
     private int RockMoved;
+    private int initialRockCount;
+    private float rockX;
+    private float rockZ;
+    public GameObject rockPrefab;
+    public bool countUnderWantedRocks;
+    private BossManager bManager;
+
 
     void Awake()
     {
+        bManager = GetComponent<BossManager>();
         if (instance != null)
         {
             Destroy(gameObject);
@@ -37,12 +45,21 @@ public class RockManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        allRocks=GameObject.FindGameObjectsWithTag ("rocks").ToList();
+        allRocks = GameObject.FindGameObjectsWithTag("rocks").ToList();
+        initialRockCount = allRocks.Count;
         // for(int i=0; i<allRocks.Count; i++){ //testing that the objects were adding
         //             Debug.Log(allRocks[i]);
         // }
        // Debug.Log(allRocks[0].transform.position); //how to find position for rock
     }
+
+    // void Update()
+    // {
+    //     if(allRocks.Count <= bManager.spawnRocksNumber)
+    //     {
+    //         countUnderWantedRocks = true;
+    //     }
+    // }
 
 
     //update the array with the new position
@@ -50,7 +67,6 @@ public class RockManager : MonoBehaviour
     {
         allRocks[RockMoved]=rockMoved;
         Debug.Log(allRocks[RockMoved].transform.position);
-        
     }
 
     //finds closes rock to the boss
@@ -100,5 +116,52 @@ public class RockManager : MonoBehaviour
     public void ClearUpList()
     {
         allRocks.RemoveAll(s => s == null);
+    }
+
+    // public void SpawnNewRocks()
+    // {
+    //     for(int i = 0; i < initialRockCount; i++)
+    //     {
+    //         GameObject respawnedRock = Instantiate(rockPrefab);
+    //         newRock.transfrom.position = newVector3(Random.Range)
+    //     }
+    // }
+    public void SpawnNewRocks()
+    {
+        GameObject newRock1= Instantiate(rockPrefab);
+        newRock1.transform.position= new Vector3(Random.Range(-50.0f, -25.0f), 0, Random.Range(-50.0f, 0f));
+        allRocks.Add(newRock1);
+        GameObject newRock2= Instantiate(rockPrefab);
+        newRock2.transform.position= new Vector3(Random.Range(-50.0f, -25.0f), 0, Random.Range(0f, 50f));
+        allRocks.Add(newRock2);
+        GameObject newRock3= Instantiate(rockPrefab);
+        newRock3.transform.position= new Vector3(Random.Range(-25.0f, 0f), 0, Random.Range(-50f, 0f));
+        allRocks.Add(newRock3);
+        GameObject newRock4= Instantiate(rockPrefab);
+        newRock4.transform.position= new Vector3(Random.Range(-25.0f, 0f), 0, Random.Range(0f, 50f));
+        allRocks.Add(newRock4);
+        GameObject newRock5= Instantiate(rockPrefab);
+        newRock5.transform.position= new Vector3(Random.Range(0f, 25f), 0, Random.Range(-50f, 0f));
+        allRocks.Add(newRock5);
+        GameObject newRock6= Instantiate(rockPrefab);
+        newRock6.transform.position= new Vector3(Random.Range(0f, 25f), 0, Random.Range(0f, 50f));
+        allRocks.Add(newRock6);
+        GameObject newRock7= Instantiate(rockPrefab);
+        newRock7.transform.position= new Vector3(Random.Range(25f, 50f), 0, Random.Range(-50f, 0f));
+        allRocks.Add(newRock7);
+        GameObject newRock8= Instantiate(rockPrefab);
+        newRock8.transform.position= new Vector3(Random.Range(25f, 50f), 0, Random.Range(0f, 50f));
+        allRocks.Add(newRock8);
+        //set some positions and spawn rocks
+        //use radius to make it random each time
+        //spawn with some particle effects
+        //spawn 4 different rocks into different quadrants //should dicuss this
+
+    }
+    private void randomRockPos()
+    {
+        //whatevertheArenalimits are should determine what to input into random here
+        rockX = Random.Range(0, 10); //values are placeholder
+        rockZ = Random.Range(0, 10);
     }
 }

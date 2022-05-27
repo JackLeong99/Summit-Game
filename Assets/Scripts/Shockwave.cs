@@ -11,8 +11,11 @@ public class Shockwave : MonoBehaviour
     
     [SerializeField] GameObject shockwaveHitbox;
     [SerializeField] GameObject shockwaveFX;
-    [SerializeField] GameObject parentObject;
-    [SerializeField] Vector3 handVector;
+    [SerializeField] GameObject rightHand;
+    [SerializeField] GameObject leftHand;
+    private Vector3 rightHandVector;
+    private Vector3 leftHandVector;
+    private Vector3 spawnVector;
    
     // void Update()
     // {
@@ -23,12 +26,17 @@ public class Shockwave : MonoBehaviour
     // }
 
     public void instantiateShockwave(){
-        var handPos = parentObject.transform.position;
-        var temp = handPos.x;
-        var temp2 = handPos.z;
-        handVector = new Vector3(temp, .5f, temp2);
-        var wave = Instantiate(shockwaveHitbox, handVector, transform.rotation) as GameObject;
+        var hand1Pos = rightHand.transform.position;
+        var rightTemp = hand1Pos.x;
+        var rightTemp2 = hand1Pos.z;
+        var hand2Pos = leftHand.transform.position;
+        var leftTemp = hand2Pos.x;
+        var leftTemp2 = hand2Pos.z;
+        rightHandVector = new Vector3(rightTemp, .5f, rightTemp2);
+        leftHandVector = new  Vector3(leftTemp, .5f, leftTemp2);
+        spawnVector = Vector3.Lerp(rightHandVector, leftHandVector, 0.5f);
+        var wave = Instantiate(shockwaveHitbox, spawnVector, transform.rotation) as GameObject;
         wave.GetComponent<ShockwaveHandler>().scaleHitBox(maxSize, scaleTime);
-        var fx = Instantiate(shockwaveFX, handVector, transform.rotation) as GameObject;
+        var fx = Instantiate(shockwaveFX, spawnVector, transform.rotation) as GameObject;
     }
 }
