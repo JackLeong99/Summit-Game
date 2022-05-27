@@ -7,6 +7,7 @@ public class RockPickedUp : MonoBehaviour
     private float speed=0f; //set to 10 for testing purposes
     public GameObject rockPrefab; //on moving rock
     private int rockHealth=3; //might move this into seperate script
+    public GameObject sparksPrefab;
 
     // Start is called before the first frame update
     void Start()
@@ -29,7 +30,7 @@ public class RockPickedUp : MonoBehaviour
     public void ReachedTop()
     {
         //spawns rock for throwing
-        GameObject thrownRock= Instantiate(rockPrefab); 
+        GameObject thrownRock = Instantiate(rockPrefab); 
         thrownRock.transform.position=transform.position;
         Destroy(gameObject);
 
@@ -42,28 +43,13 @@ public class RockPickedUp : MonoBehaviour
     }
 
 
-    //for bullet
-    void OnCollisionEnter(Collision collider)
-    {
-        GameObject other = collider.gameObject;
-         if(other.tag=="PlayerBullet")
-         {
-             rockHealth--;
-         }
-        if(other.tag=="sword")
-         {
-             rockHealth--;
-         }
-         if(rockHealth<=0)
-         {
-             Destroy(gameObject);
-         }
-    }
-    //sword uses this instead of on collsion for some reason
+    //detects hits on rock
     private void OnTriggerEnter(Collider other){
-        if(other.tag=="sword")
+        if(other.tag=="sword" || other.tag == "PlayerBullet")
          {
-             rockHealth--;
+            rockHealth--;
+            Instantiate(sparksPrefab, gameObject.transform.position, Quaternion.Euler(-90, 0, 0));
+            //TODO add hit particles
          }
         if(rockHealth<=0)
          {
