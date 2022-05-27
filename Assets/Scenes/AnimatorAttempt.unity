@@ -715,6 +715,7 @@ MonoBehaviour:
   currentPatience: 0
   attackException: 0
   rage: 0
+
   rageSpeed: 0
   rageAttackMultiplier: 0
   lastMove: 
@@ -722,6 +723,7 @@ MonoBehaviour:
   scuffedShockTimer: 0.7
   maxHP: 1000
   currentHP: 0
+
   spawnRocksNumber: 5
   spawnNewRocksTime: 5
 --- !u!54 &311172964
@@ -2669,6 +2671,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -8778818569385250773, guid: de4c2bfe46e49014a9e7bc63251e601e, type: 3}
+      propertyPath: m_TagString
+      value: rockHold
+      objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: de4c2bfe46e49014a9e7bc63251e601e, type: 3}
       propertyPath: m_RootOrder
       value: 14
@@ -2788,6 +2794,10 @@ PrefabInstance:
     - target: {fileID: 2878253128101704460, guid: de4c2bfe46e49014a9e7bc63251e601e, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: -90
+      objectReference: {fileID: 0}
+    - target: {fileID: 7929440554059668587, guid: de4c2bfe46e49014a9e7bc63251e601e, type: 3}
+      propertyPath: m_TagString
+      value: Untagged
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: de4c2bfe46e49014a9e7bc63251e601e, type: 3}
@@ -3353,6 +3363,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
+
     m_SensorSize: {x: 1.814631, y: 1}
   m_Transitions:
     m_BlendHint: 0
