@@ -60,6 +60,7 @@ public class BossManager : MonoBehaviour
     public int spawnRocksNumber;
     public float spawnNewRocksTime;
     public bool stunned = false;
+    public float gunStunDuration;
     private float stunTimer;
     private BossPathing bPathing;
     private Shockwave shockwave;
@@ -558,7 +559,7 @@ public class BossManager : MonoBehaviour
     }
 
     public void gunStun(){
-        stunTimer = 5;
+        stunTimer = gunStunDuration;
         StartCoroutine(bossStunned());
     }
 
