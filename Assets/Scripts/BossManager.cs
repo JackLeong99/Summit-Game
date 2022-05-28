@@ -191,6 +191,7 @@ public class BossManager : MonoBehaviour
 
     //Do any opening animations or behaviours here.
     IEnumerator fightStart(){
+        //potentially should be changed to stunned after testing that this doesn't break anything.
         inAttack = true;
         yield return new WaitForSeconds(3);
         inAttack = false;
