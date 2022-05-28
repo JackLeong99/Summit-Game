@@ -101,7 +101,7 @@ public class BossManager : MonoBehaviour
     
     void Update(){
         if(Alive && !stunned){
-            if(RockManager.Instance.countUnderWantedRocks){
+            if(!inAttack && RockManager.Instance.countUnderWantedRocks){
                 StartCoroutine(summonRocks());
             }
             else{
