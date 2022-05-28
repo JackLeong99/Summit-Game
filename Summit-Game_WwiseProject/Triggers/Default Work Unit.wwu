@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <WwiseDocument Type="WorkUnit" ID="{49035381-AF0F-472C-B726-7AD9B5CDDA3A}" SchemaVersion="103">
 	<Triggers>
-		<WorkUnit Name="Default Work Unit" ID="{49035381-AF0F-472C-B726-7AD9B5CDDA3A}" PersistMode="Standalone"/>
+		<WorkUnit Name="Default Work Unit" ID="{49035381-AF0F-472C-B726-7AD9B5CDDA3A}" PersistMode="Standalone">
+			<ChildrenList>
+				<Trigger Name="Music_Victory_Stinger" ID="{2DACCBDF-17AA-4B7D-9881-C4237A54621E}"/>
+				<Trigger Name="Music_Defeat_Stinger" ID="{9B5A6D32-FA5E-4520-9F4B-DF624F859B40}"/>
+			</ChildrenList>
+		</WorkUnit>
 	</Triggers>
 </WwiseDocument>

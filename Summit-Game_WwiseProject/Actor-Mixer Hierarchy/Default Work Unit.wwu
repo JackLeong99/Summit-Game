@@ -1,6 +1,499 @@
 <?xml version="1.0" encoding="utf-8"?>
 <WwiseDocument Type="WorkUnit" ID="{E04425B8-B8A4-408A-8BD1-4D908BCEE44F}" SchemaVersion="103">
 	<AudioObjects>
-		<WorkUnit Name="Default Work Unit" ID="{E04425B8-B8A4-408A-8BD1-4D908BCEE44F}" PersistMode="Standalone"/>
+		<WorkUnit Name="Default Work Unit" ID="{E04425B8-B8A4-408A-8BD1-4D908BCEE44F}" PersistMode="Standalone">
+			<ChildrenList>
+				<ActorMixer Name="Master_SFX" ID="{8DFC3A34-4969-4EA5-8913-97804B9C83A3}" ShortID="414702890">
+					<ReferenceList>
+						<Reference Name="Conversion">
+							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{E8C30435-E2EC-40B4-A911-30D289ECE001}"/>
+						</Reference>
+						<Reference Name="OutputBus">
+							<ObjectRef Name="Master SFX" ID="{32027980-225E-4B4E-A8E4-62C028B927F5}" WorkUnitID="{5FE25012-E08F-420E-BE49-3B0109DF68E3}"/>
+						</Reference>
+					</ReferenceList>
+					<ChildrenList>
+						<ActorMixer Name="SFX_Player" ID="{25C22E44-C695-45B3-B7CC-9C541106349A}" ShortID="455242557">
+							<PropertyList>
+								<Property Name="OverrideOutput" Type="bool" Value="True"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{E8C30435-E2EC-40B4-A911-30D289ECE001}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="SFX_Player" ID="{C7E4D03D-6342-44D2-8DA1-146F0F0CEBC5}" WorkUnitID="{5FE25012-E08F-420E-BE49-3B0109DF68E3}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<ActorMixer Name="Player_Damage" ID="{87A0B951-B2DF-477E-AB46-4BC0913BFFD5}" ShortID="369641258">
+									<PropertyList>
+										<Property Name="OverrideOutput" Type="bool" Value="True"/>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{E8C30435-E2EC-40B4-A911-30D289ECE001}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Player_Damage" ID="{1404BD47-4CE6-4C90-96C0-1586B3706911}" WorkUnitID="{5FE25012-E08F-420E-BE49-3B0109DF68E3}"/>
+										</Reference>
+									</ReferenceList>
+									<ObjectLists/>
+								</ActorMixer>
+								<ActorMixer Name="Player_Dodge" ID="{B28DABBB-22FF-449E-85D9-420A01BAFF70}" ShortID="504800575">
+									<PropertyList>
+										<Property Name="OverrideOutput" Type="bool" Value="True"/>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{E8C30435-E2EC-40B4-A911-30D289ECE001}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Player_Dodge" ID="{5BAEE47E-57A1-4B8D-8BB2-20B08697E308}" WorkUnitID="{5FE25012-E08F-420E-BE49-3B0109DF68E3}"/>
+										</Reference>
+									</ReferenceList>
+									<ObjectLists/>
+								</ActorMixer>
+								<ActorMixer Name="Player_Shoot_Cast" ID="{580735E5-9D70-4638-9AD2-099F23C7A1A5}" ShortID="87363728">
+									<PropertyList>
+										<Property Name="OverrideOutput" Type="bool" Value="True"/>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{E8C30435-E2EC-40B4-A911-30D289ECE001}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Player_Shoot_Cast" ID="{52857780-40B8-480B-BD5C-C4539B412208}" WorkUnitID="{5FE25012-E08F-420E-BE49-3B0109DF68E3}"/>
+										</Reference>
+									</ReferenceList>
+									<ObjectLists/>
+								</ActorMixer>
+								<ActorMixer Name="Player_Footsteps" ID="{2BAD7226-FCC7-4FB3-8E70-0CDFB772F267}" ShortID="329019070">
+									<PropertyList>
+										<Property Name="OverrideOutput" Type="bool" Value="True"/>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{E8C30435-E2EC-40B4-A911-30D289ECE001}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Player_Footsteps" ID="{D48FA979-A6FF-4F51-ADFA-22BF2F442022}" WorkUnitID="{5FE25012-E08F-420E-BE49-3B0109DF68E3}"/>
+										</Reference>
+									</ReferenceList>
+									<ObjectLists/>
+								</ActorMixer>
+								<ActorMixer Name="Player_Jump" ID="{46A8B738-6035-4E53-A4DB-3C10B8904BD7}" ShortID="902593753">
+									<PropertyList>
+										<Property Name="OverrideOutput" Type="bool" Value="True"/>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{E8C30435-E2EC-40B4-A911-30D289ECE001}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Player_Jump" ID="{369C237D-D6D2-4FC5-9311-2419593D2C1F}" WorkUnitID="{5FE25012-E08F-420E-BE49-3B0109DF68E3}"/>
+										</Reference>
+									</ReferenceList>
+									<ObjectLists/>
+								</ActorMixer>
+								<ActorMixer Name="Player_Shoot_Impact" ID="{4989FC53-8D04-4FE9-9382-8D2091084C8F}" ShortID="603981495">
+									<PropertyList>
+										<Property Name="OverrideOutput" Type="bool" Value="True"/>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{E8C30435-E2EC-40B4-A911-30D289ECE001}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Player_Shoot_Cast" ID="{52857780-40B8-480B-BD5C-C4539B412208}" WorkUnitID="{5FE25012-E08F-420E-BE49-3B0109DF68E3}"/>
+										</Reference>
+									</ReferenceList>
+									<ObjectLists/>
+								</ActorMixer>
+								<ActorMixer Name="Player_Attack_LtR" ID="{A106C35A-A0FD-468B-B851-46968DFDA3CB}" ShortID="7419821">
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{E8C30435-E2EC-40B4-A911-30D289ECE001}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{5FE25012-E08F-420E-BE49-3B0109DF68E3}"/>
+										</Reference>
+									</ReferenceList>
+									<ObjectLists/>
+								</ActorMixer>
+								<ActorMixer Name="Player_Attack_RtL" ID="{3D51B212-68D3-46A1-8E80-FB331692D7CE}" ShortID="315209708">
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{E8C30435-E2EC-40B4-A911-30D289ECE001}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="SFX_Player" ID="{C7E4D03D-6342-44D2-8DA1-146F0F0CEBC5}" WorkUnitID="{5FE25012-E08F-420E-BE49-3B0109DF68E3}"/>
+										</Reference>
+									</ReferenceList>
+									<ObjectLists/>
+								</ActorMixer>
+							</ChildrenList>
+							<ObjectLists/>
+						</ActorMixer>
+						<ActorMixer Name="SFX_UI" ID="{1A50DD42-4811-4948-B7AE-788BA83365A0}" ShortID="918853927">
+							<PropertyList>
+								<Property Name="OverrideOutput" Type="bool" Value="True"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{E8C30435-E2EC-40B4-A911-30D289ECE001}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="SFX_UI" ID="{A7A184CE-C0C2-4733-AADA-5716F603C6E6}" WorkUnitID="{5FE25012-E08F-420E-BE49-3B0109DF68E3}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<ActorMixer Name="UI_Hit_Indicator" ID="{3F3B4074-4682-450A-A74C-83C5059C8E5C}" ShortID="882233105">
+									<PropertyList>
+										<Property Name="OverrideOutput" Type="bool" Value="True"/>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{E8C30435-E2EC-40B4-A911-30D289ECE001}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="UI_Hit_Indicator" ID="{2BCAC49C-E0D6-4A9B-8C97-33322A0FFEA3}" WorkUnitID="{5FE25012-E08F-420E-BE49-3B0109DF68E3}"/>
+										</Reference>
+									</ReferenceList>
+									<ObjectLists/>
+								</ActorMixer>
+								<ActorMixer Name="UI_Click" ID="{EBF13383-0CE5-450E-9349-F06379BBD00A}" ShortID="531639677">
+									<PropertyList>
+										<Property Name="OverrideOutput" Type="bool" Value="True"/>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{E8C30435-E2EC-40B4-A911-30D289ECE001}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="UI_Click" ID="{377E7D19-8C22-4414-9FE6-9E24A8D3F557}" WorkUnitID="{5FE25012-E08F-420E-BE49-3B0109DF68E3}"/>
+										</Reference>
+									</ReferenceList>
+									<ObjectLists/>
+								</ActorMixer>
+								<ActorMixer Name="UI_Menu_Open" ID="{8AD2CF4E-58F8-47B1-8DA8-6FD0252C898B}" ShortID="639476280">
+									<PropertyList>
+										<Property Name="OverrideOutput" Type="bool" Value="True"/>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{E8C30435-E2EC-40B4-A911-30D289ECE001}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="UI_Menu_Open" ID="{E8C56DB8-CC86-465A-B1F2-B9CE42712AA2}" WorkUnitID="{5FE25012-E08F-420E-BE49-3B0109DF68E3}"/>
+										</Reference>
+									</ReferenceList>
+									<ObjectLists/>
+								</ActorMixer>
+								<ActorMixer Name="UI_Menu_Close" ID="{2FB2A49D-6819-4CDB-9156-C2EFD3B07BCF}" ShortID="976869105">
+									<PropertyList>
+										<Property Name="OverrideOutput" Type="bool" Value="True"/>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{E8C30435-E2EC-40B4-A911-30D289ECE001}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="UI_Menu_Close" ID="{0CA0B844-27F3-440A-8419-41A30CFAD25F}" WorkUnitID="{5FE25012-E08F-420E-BE49-3B0109DF68E3}"/>
+										</Reference>
+									</ReferenceList>
+									<ObjectLists/>
+								</ActorMixer>
+							</ChildrenList>
+							<ObjectLists/>
+						</ActorMixer>
+						<ActorMixer Name="SFX_Enemy" ID="{EC351072-5C45-4DCE-990E-11C7EA9808F3}" ShortID="512230626">
+							<PropertyList>
+								<Property Name="OverrideOutput" Type="bool" Value="True"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{E8C30435-E2EC-40B4-A911-30D289ECE001}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="SFX_Enemy" ID="{D04A2011-8F37-4E06-8D7A-B8BC7B4286B7}" WorkUnitID="{5FE25012-E08F-420E-BE49-3B0109DF68E3}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<ActorMixer Name="Enemy_Eruption_Burst" ID="{68D66851-B2A0-40B9-87D6-97A00808907B}" ShortID="552385583">
+									<PropertyList>
+										<Property Name="OverrideOutput" Type="bool" Value="True"/>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{E8C30435-E2EC-40B4-A911-30D289ECE001}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Enemy_Eruption_Burst" ID="{DDAB691D-2E2C-4F17-9650-6D2038DCFD24}" WorkUnitID="{5FE25012-E08F-420E-BE49-3B0109DF68E3}"/>
+										</Reference>
+									</ReferenceList>
+									<ObjectLists/>
+								</ActorMixer>
+								<ActorMixer Name="Enemy_Eruption_Slam" ID="{16F6DB3A-2B20-4660-85FA-7CCE3682F369}" ShortID="29307539">
+									<PropertyList>
+										<Property Name="OverrideOutput" Type="bool" Value="True"/>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{E8C30435-E2EC-40B4-A911-30D289ECE001}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Enemy_Eruption_Slam" ID="{63B3A5DD-3BBC-4988-A061-CDE4051C555A}" WorkUnitID="{5FE25012-E08F-420E-BE49-3B0109DF68E3}"/>
+										</Reference>
+									</ReferenceList>
+									<ObjectLists/>
+								</ActorMixer>
+								<ActorMixer Name="Enemy_Boulder_Impact" ID="{BB35D5B2-CD3F-4BA0-ABFF-20ADF060D935}" ShortID="270114604">
+									<PropertyList>
+										<Property Name="OverrideOutput" Type="bool" Value="True"/>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{E8C30435-E2EC-40B4-A911-30D289ECE001}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Enemy_Boulder_Impact" ID="{3D716E35-7853-4DD4-A4AF-1BEF658FDB8B}" WorkUnitID="{5FE25012-E08F-420E-BE49-3B0109DF68E3}"/>
+										</Reference>
+									</ReferenceList>
+									<ObjectLists/>
+								</ActorMixer>
+								<ActorMixer Name="Enemy_Boulder_Throw" ID="{8197ADDA-1098-46A2-853D-2182692B0D80}" ShortID="1037344928">
+									<PropertyList>
+										<Property Name="OverrideOutput" Type="bool" Value="True"/>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{E8C30435-E2EC-40B4-A911-30D289ECE001}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Enemy_Boulder_Throw" ID="{74260371-841D-44C5-AE54-27ED43319B04}" WorkUnitID="{5FE25012-E08F-420E-BE49-3B0109DF68E3}"/>
+										</Reference>
+									</ReferenceList>
+									<ObjectLists/>
+								</ActorMixer>
+								<ActorMixer Name="Enemy_Death" ID="{8E9DC874-2D05-45A9-87AB-798AD0CCEF04}" ShortID="424320132">
+									<PropertyList>
+										<Property Name="OverrideOutput" Type="bool" Value="True"/>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{E8C30435-E2EC-40B4-A911-30D289ECE001}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Enemy_Death" ID="{EDAF8610-D408-4B4D-A2C3-99DE0F45482A}" WorkUnitID="{5FE25012-E08F-420E-BE49-3B0109DF68E3}"/>
+										</Reference>
+									</ReferenceList>
+									<ObjectLists/>
+								</ActorMixer>
+								<ActorMixer Name="Enemy_Footsteps" ID="{E4A20B4A-227C-4974-A338-DC6FBAF9263F}" ShortID="304412194">
+									<PropertyList>
+										<Property Name="OverrideOutput" Type="bool" Value="True"/>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{E8C30435-E2EC-40B4-A911-30D289ECE001}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Enemy_Footsteps" ID="{D06C39D1-6A4A-4F4A-BFCA-DF5FB1082C5B}" WorkUnitID="{5FE25012-E08F-420E-BE49-3B0109DF68E3}"/>
+										</Reference>
+									</ReferenceList>
+									<ObjectLists/>
+								</ActorMixer>
+								<ActorMixer Name="Enemy_Melee_Overhead_Slam" ID="{0CA534F7-752A-45B4-A24B-CE0553CD0814}" ShortID="791887233">
+									<PropertyList>
+										<Property Name="OverrideOutput" Type="bool" Value="True"/>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{E8C30435-E2EC-40B4-A911-30D289ECE001}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Enemy_Melee_Overhead_Slam" ID="{40284CC0-593F-4A55-97EA-A02361BE059F}" WorkUnitID="{5FE25012-E08F-420E-BE49-3B0109DF68E3}"/>
+										</Reference>
+									</ReferenceList>
+									<ObjectLists/>
+								</ActorMixer>
+								<ActorMixer Name="Enemy_Melee_Right_Hook" ID="{91DE7D7F-8867-4E38-93F4-D56AC2697AE9}" ShortID="620207186">
+									<PropertyList>
+										<Property Name="OverrideOutput" Type="bool" Value="True"/>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{E8C30435-E2EC-40B4-A911-30D289ECE001}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Enemy_Melee_Right_Hook" ID="{E92CC4DD-6F0A-49F3-9638-65115C74A586}" WorkUnitID="{5FE25012-E08F-420E-BE49-3B0109DF68E3}"/>
+										</Reference>
+									</ReferenceList>
+									<ObjectLists/>
+								</ActorMixer>
+							</ChildrenList>
+							<ObjectLists/>
+						</ActorMixer>
+					</ChildrenList>
+					<ObjectLists/>
+				</ActorMixer>
+				<ActorMixer Name="Master_VO" ID="{F3AB83E3-BCFE-45CD-AB62-4B7228A302B1}" ShortID="1062618770">
+					<ReferenceList>
+						<Reference Name="Conversion">
+							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{E8C30435-E2EC-40B4-A911-30D289ECE001}"/>
+						</Reference>
+						<Reference Name="OutputBus">
+							<ObjectRef Name="Master VO" ID="{67A24B7D-E714-4C2D-A3AC-142EF4E22A46}" WorkUnitID="{5FE25012-E08F-420E-BE49-3B0109DF68E3}"/>
+						</Reference>
+					</ReferenceList>
+					<ChildrenList>
+						<ActorMixer Name="VO_Player" ID="{BBCF55DB-3397-4C6E-ABBB-D27099699EA7}" ShortID="861662417">
+							<PropertyList>
+								<Property Name="OverrideOutput" Type="bool" Value="True"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{E8C30435-E2EC-40B4-A911-30D289ECE001}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="VO_Player" ID="{D0ECB003-D7E0-4A27-B390-025DE8247F12}" WorkUnitID="{5FE25012-E08F-420E-BE49-3B0109DF68E3}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<RandomSequenceContainer Name="VO_Player_Idle" ID="{5252DF64-6BFA-4898-B858-CEB24029970C}" ShortID="135296861">
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{E8C30435-E2EC-40B4-A911-30D289ECE001}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{5FE25012-E08F-420E-BE49-3B0109DF68E3}"/>
+										</Reference>
+									</ReferenceList>
+									<ObjectLists/>
+								</RandomSequenceContainer>
+								<RandomSequenceContainer Name="VO_Player_Victory" ID="{D66FB909-0410-43C6-AAD5-2567107A2383}" ShortID="548325971">
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{E8C30435-E2EC-40B4-A911-30D289ECE001}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{5FE25012-E08F-420E-BE49-3B0109DF68E3}"/>
+										</Reference>
+									</ReferenceList>
+									<ObjectLists/>
+								</RandomSequenceContainer>
+								<RandomSequenceContainer Name="VO_Player_Damage" ID="{89963CAC-AFBC-4323-8C7F-4BD5837E6FD3}" ShortID="968964385">
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{E8C30435-E2EC-40B4-A911-30D289ECE001}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{5FE25012-E08F-420E-BE49-3B0109DF68E3}"/>
+										</Reference>
+									</ReferenceList>
+									<ObjectLists/>
+								</RandomSequenceContainer>
+								<RandomSequenceContainer Name="VO_Player_Spawn" ID="{839DE0A7-61CE-40D6-AC5F-EEE712CED4F3}" ShortID="577774372">
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{E8C30435-E2EC-40B4-A911-30D289ECE001}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{5FE25012-E08F-420E-BE49-3B0109DF68E3}"/>
+										</Reference>
+									</ReferenceList>
+									<ObjectLists/>
+								</RandomSequenceContainer>
+							</ChildrenList>
+							<ObjectLists/>
+						</ActorMixer>
+						<ActorMixer Name="VO_Enemy" ID="{33878A91-48F5-4869-9281-7C96C1A8181F}" ShortID="131762065">
+							<PropertyList>
+								<Property Name="OverrideOutput" Type="bool" Value="True"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{E8C30435-E2EC-40B4-A911-30D289ECE001}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="VO_Enemy" ID="{F4776E74-36D3-43BE-BC0F-5F7C9C9A3A0E}" WorkUnitID="{5FE25012-E08F-420E-BE49-3B0109DF68E3}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<RandomSequenceContainer Name="VO_Enemy_Melee_Right_Hook" ID="{DBCF20B9-5213-4893-AB55-33CFA6620BC6}" ShortID="69002624">
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{E8C30435-E2EC-40B4-A911-30D289ECE001}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{5FE25012-E08F-420E-BE49-3B0109DF68E3}"/>
+										</Reference>
+									</ReferenceList>
+									<ObjectLists/>
+								</RandomSequenceContainer>
+								<RandomSequenceContainer Name="VO_Enemy_Melee_Overhead_Slam" ID="{0EA7741B-8970-448B-9AB7-956B0A1800D3}" ShortID="44249857">
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{E8C30435-E2EC-40B4-A911-30D289ECE001}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{5FE25012-E08F-420E-BE49-3B0109DF68E3}"/>
+										</Reference>
+									</ReferenceList>
+									<ObjectLists/>
+								</RandomSequenceContainer>
+								<RandomSequenceContainer Name="VO_Enemy_Death" ID="{AD762D65-01CE-416B-8E4C-134740D9DCA4}" ShortID="937057466">
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{E8C30435-E2EC-40B4-A911-30D289ECE001}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{5FE25012-E08F-420E-BE49-3B0109DF68E3}"/>
+										</Reference>
+									</ReferenceList>
+									<ObjectLists/>
+								</RandomSequenceContainer>
+								<RandomSequenceContainer Name="VO_Enemy_Idle" ID="{67AD5FEB-9EA6-4919-9BF3-1C6DB596A0E3}" ShortID="63883308">
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{E8C30435-E2EC-40B4-A911-30D289ECE001}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{5FE25012-E08F-420E-BE49-3B0109DF68E3}"/>
+										</Reference>
+									</ReferenceList>
+									<ObjectLists/>
+								</RandomSequenceContainer>
+								<RandomSequenceContainer Name="VO_Enemy_Boulder_Throw" ID="{1B084ED3-BA02-40B6-93EC-5F68396F2757}" ShortID="42156140">
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{E8C30435-E2EC-40B4-A911-30D289ECE001}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master VO" ID="{67A24B7D-E714-4C2D-A3AC-142EF4E22A46}" WorkUnitID="{5FE25012-E08F-420E-BE49-3B0109DF68E3}"/>
+										</Reference>
+									</ReferenceList>
+									<ObjectLists/>
+								</RandomSequenceContainer>
+								<RandomSequenceContainer Name="VO_Enemy_Eruption_Slam" ID="{2DD9A5CF-82C5-4987-9449-E08754801E72}" ShortID="445020781">
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{E8C30435-E2EC-40B4-A911-30D289ECE001}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{5FE25012-E08F-420E-BE49-3B0109DF68E3}"/>
+										</Reference>
+									</ReferenceList>
+									<ObjectLists/>
+								</RandomSequenceContainer>
+							</ChildrenList>
+							<ObjectLists/>
+						</ActorMixer>
+					</ChildrenList>
+					<ObjectLists/>
+				</ActorMixer>
+			</ChildrenList>
+		</WorkUnit>
 	</AudioObjects>
 </WwiseDocument>

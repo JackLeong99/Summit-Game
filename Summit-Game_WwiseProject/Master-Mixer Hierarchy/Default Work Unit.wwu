@@ -4,11 +4,443 @@
 		<WorkUnit Name="Default Work Unit" ID="{5FE25012-E08F-420E-BE49-3B0109DF68E3}" PersistMode="Standalone">
 			<ChildrenList>
 				<Bus Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}">
+					<PropertyList>
+						<Property Name="BusVolume" Type="Real64">
+							<RTPCList>
+								<RTPC Name="" ID="{E9743C86-DF2D-4877-AD34-77964DC48007}" ShortID="745670337">
+									<ReferenceList>
+										<Reference Name="ControlInput">
+											<ObjectRef Name="Volume_Master" ID="{69B4E27F-AE3C-4497-8377-1F7E94AAC6DF}" WorkUnitID="{32AE5A4D-16DF-49F3-A117-4472F3B36DF9}"/>
+										</Reference>
+									</ReferenceList>
+									<Curve Name="" ID="{025AE29C-0B4C-41C1-8515-746CD6071C67}">
+										<PropertyList>
+											<Property Name="Flags" Type="int32" Value="3"/>
+										</PropertyList>
+										<PointList>
+											<Point>
+												<XPos>0</XPos>
+												<YPos>-200</YPos>
+												<Flags>5</Flags>
+											</Point>
+											<Point>
+												<XPos>100</XPos>
+												<YPos>0</YPos>
+												<Flags>37</Flags>
+											</Point>
+										</PointList>
+									</Curve>
+								</RTPC>
+							</RTPCList>
+						</Property>
+					</PropertyList>
 					<ReferenceList>
 						<Reference Name="AudioDevice">
 							<ObjectRef Name="System" ID="{7766980B-22C8-45F1-BB63-A9C61781AD6D}" WorkUnitID="{7B94251E-6928-4B2D-BB02-0B54D3E898A4}"/>
 						</Reference>
 					</ReferenceList>
+					<ChildrenList>
+						<Bus Name="Master SFX" ID="{32027980-225E-4B4E-A8E4-62C028B927F5}">
+							<PropertyList>
+								<Property Name="OutputBusVolume" Type="Real64">
+									<RTPCList>
+										<RTPC Name="" ID="{E7A9EA75-CA0F-4F89-AE5F-BF5FA82DF941}" ShortID="98956694">
+											<ReferenceList>
+												<Reference Name="ControlInput">
+													<ObjectRef Name="Volume_SFX" ID="{54C00A3C-6D1C-4A53-8403-4A1FCF6513A4}" WorkUnitID="{32AE5A4D-16DF-49F3-A117-4472F3B36DF9}"/>
+												</Reference>
+											</ReferenceList>
+											<Curve Name="" ID="{E563581D-6936-4BD3-BE92-81C68C83303C}">
+												<PropertyList>
+													<Property Name="Flags" Type="int32" Value="3"/>
+												</PropertyList>
+												<PointList>
+													<Point>
+														<XPos>0</XPos>
+														<YPos>-200</YPos>
+														<Flags>5</Flags>
+													</Point>
+													<Point>
+														<XPos>100</XPos>
+														<YPos>0</YPos>
+														<Flags>37</Flags>
+													</Point>
+												</PointList>
+											</Curve>
+										</RTPC>
+									</RTPCList>
+								</Property>
+							</PropertyList>
+							<ChildrenList>
+								<Bus Name="SFX_Player" ID="{C7E4D03D-6342-44D2-8DA1-146F0F0CEBC5}">
+									<ChildrenList>
+										<Bus Name="Player_Dodge" ID="{5BAEE47E-57A1-4B8D-8BB2-20B08697E308}">
+											<ObjectLists/>
+										</Bus>
+										<Bus Name="Player_Jump" ID="{369C237D-D6D2-4FC5-9311-2419593D2C1F}">
+											<ObjectLists/>
+										</Bus>
+										<Bus Name="Player_Damage" ID="{1404BD47-4CE6-4C90-96C0-1586B3706911}">
+											<ReferenceList>
+												<Reference Name="Effect0" PluginName="Wwise Meter" CompanyID="0" PluginID="129" PluginType="3">
+													<ObjectRef Name="Wwise_Meter_SFX_Sidechain" ID="{F703D923-283A-45F3-A276-670CC07CB003}" WorkUnitID="{B0EB1BF1-35D5-48DA-95BE-B0BBE3A101E3}"/>
+												</Reference>
+											</ReferenceList>
+											<ObjectLists/>
+										</Bus>
+										<Bus Name="Player_Shoot_Cast" ID="{52857780-40B8-480B-BD5C-C4539B412208}">
+											<ObjectLists/>
+										</Bus>
+										<Bus Name="Player_Footsteps" ID="{D48FA979-A6FF-4F51-ADFA-22BF2F442022}">
+											<ObjectLists/>
+										</Bus>
+										<Bus Name="Player_Attack_LtR" ID="{4FE55A1B-0BC4-4D83-822E-285EBC2584C2}">
+											<ObjectLists/>
+										</Bus>
+										<Bus Name="Player_Shoot_Impact" ID="{6126A72E-6067-45EC-AFD0-CA1D64861632}">
+											<ReferenceList>
+												<Reference Name="Effect0" PluginName="Wwise Meter" CompanyID="0" PluginID="129" PluginType="3">
+													<ObjectRef Name="Wwise_Meter_SFX_Sidechain" ID="{F703D923-283A-45F3-A276-670CC07CB003}" WorkUnitID="{B0EB1BF1-35D5-48DA-95BE-B0BBE3A101E3}"/>
+												</Reference>
+											</ReferenceList>
+											<ObjectLists/>
+										</Bus>
+										<Bus Name="Player_Attack_RtL" ID="{C14E2D8D-32CC-4DF2-BA54-3BD6BEB16535}">
+											<ObjectLists/>
+										</Bus>
+									</ChildrenList>
+									<ObjectLists/>
+								</Bus>
+								<Bus Name="SFX_UI" ID="{A7A184CE-C0C2-4733-AADA-5716F603C6E6}">
+									<ChildrenList>
+										<Bus Name="UI_Menu_Close" ID="{0CA0B844-27F3-440A-8419-41A30CFAD25F}">
+											<ObjectLists/>
+										</Bus>
+										<Bus Name="UI_Menu_Open" ID="{E8C56DB8-CC86-465A-B1F2-B9CE42712AA2}">
+											<ObjectLists/>
+										</Bus>
+										<Bus Name="UI_Click" ID="{377E7D19-8C22-4414-9FE6-9E24A8D3F557}">
+											<ObjectLists/>
+										</Bus>
+										<Bus Name="UI_Hit_Indicator" ID="{2BCAC49C-E0D6-4A9B-8C97-33322A0FFEA3}">
+											<ReferenceList>
+												<Reference Name="Effect0" PluginName="Wwise Meter" CompanyID="0" PluginID="129" PluginType="3">
+													<ObjectRef Name="Wwise_Meter_SFX_Sidechain" ID="{F703D923-283A-45F3-A276-670CC07CB003}" WorkUnitID="{B0EB1BF1-35D5-48DA-95BE-B0BBE3A101E3}"/>
+												</Reference>
+											</ReferenceList>
+											<ObjectLists/>
+										</Bus>
+									</ChildrenList>
+									<ObjectLists/>
+								</Bus>
+								<Bus Name="SFX_Enemy" ID="{D04A2011-8F37-4E06-8D7A-B8BC7B4286B7}">
+									<ChildrenList>
+										<Bus Name="Enemy_Eruption_Burst" ID="{DDAB691D-2E2C-4F17-9650-6D2038DCFD24}">
+											<ReferenceList>
+												<Reference Name="Effect0" PluginName="Wwise Meter" CompanyID="0" PluginID="129" PluginType="3">
+													<ObjectRef Name="Wwise_Meter_SFX_Sidechain" ID="{F703D923-283A-45F3-A276-670CC07CB003}" WorkUnitID="{B0EB1BF1-35D5-48DA-95BE-B0BBE3A101E3}"/>
+												</Reference>
+											</ReferenceList>
+											<ObjectLists/>
+										</Bus>
+										<Bus Name="Enemy_Eruption_Slam" ID="{63B3A5DD-3BBC-4988-A061-CDE4051C555A}">
+											<ReferenceList>
+												<Reference Name="Effect0" PluginName="Wwise Meter" CompanyID="0" PluginID="129" PluginType="3">
+													<ObjectRef Name="Wwise_Meter_SFX_Sidechain" ID="{F703D923-283A-45F3-A276-670CC07CB003}" WorkUnitID="{B0EB1BF1-35D5-48DA-95BE-B0BBE3A101E3}"/>
+												</Reference>
+											</ReferenceList>
+											<ObjectLists/>
+										</Bus>
+										<Bus Name="Enemy_Footsteps" ID="{D06C39D1-6A4A-4F4A-BFCA-DF5FB1082C5B}">
+											<ObjectLists/>
+										</Bus>
+										<Bus Name="Enemy_Boulder_Throw" ID="{74260371-841D-44C5-AE54-27ED43319B04}">
+											<ObjectLists/>
+										</Bus>
+										<Bus Name="Enemy_Boulder_Impact" ID="{3D716E35-7853-4DD4-A4AF-1BEF658FDB8B}">
+											<ReferenceList>
+												<Reference Name="Effect0" PluginName="Wwise Meter" CompanyID="0" PluginID="129" PluginType="3">
+													<ObjectRef Name="Wwise_Meter_SFX_Sidechain" ID="{F703D923-283A-45F3-A276-670CC07CB003}" WorkUnitID="{B0EB1BF1-35D5-48DA-95BE-B0BBE3A101E3}"/>
+												</Reference>
+											</ReferenceList>
+											<ObjectLists/>
+										</Bus>
+										<Bus Name="Enemy_Melee_Overhead_Slam" ID="{40284CC0-593F-4A55-97EA-A02361BE059F}">
+											<ReferenceList>
+												<Reference Name="Effect0" PluginName="Wwise Meter" CompanyID="0" PluginID="129" PluginType="3">
+													<ObjectRef Name="Wwise_Meter_SFX_Sidechain" ID="{F703D923-283A-45F3-A276-670CC07CB003}" WorkUnitID="{B0EB1BF1-35D5-48DA-95BE-B0BBE3A101E3}"/>
+												</Reference>
+											</ReferenceList>
+											<ObjectLists/>
+										</Bus>
+										<Bus Name="Enemy_Melee_Right_Hook" ID="{E92CC4DD-6F0A-49F3-9638-65115C74A586}">
+											<ObjectLists/>
+										</Bus>
+										<Bus Name="Enemy_Death" ID="{EDAF8610-D408-4B4D-A2C3-99DE0F45482A}">
+											<ObjectLists/>
+										</Bus>
+									</ChildrenList>
+									<ObjectLists/>
+								</Bus>
+							</ChildrenList>
+							<ObjectLists/>
+						</Bus>
+						<Bus Name="Master Ambience" ID="{DCF58933-BBBE-4C0E-81CF-6204849089D4}">
+							<PropertyList>
+								<Property Name="OutputBusLowpass" Type="int16">
+									<RTPCList>
+										<RTPC Name="" ID="{4C192090-6CFC-4075-A01E-BFFE36F895E6}" ShortID="178326442">
+											<ReferenceList>
+												<Reference Name="ControlInput">
+													<ObjectRef Name="SFX_Sidechain" ID="{45C328E2-1B4A-4C91-93FE-F4FBFBE35408}" WorkUnitID="{32AE5A4D-16DF-49F3-A117-4472F3B36DF9}"/>
+												</Reference>
+											</ReferenceList>
+											<Curve Name="" ID="{37D686C1-D7B1-43B0-80DE-95C9A314C712}">
+												<PropertyList>
+													<Property Name="Flags" Type="int32" Value="65537"/>
+												</PropertyList>
+												<PointList>
+													<Point>
+														<XPos>-48</XPos>
+														<YPos>-50</YPos>
+														<Flags>5</Flags>
+													</Point>
+													<Point>
+														<XPos>0</XPos>
+														<YPos>0</YPos>
+														<Flags>37</Flags>
+													</Point>
+												</PointList>
+											</Curve>
+										</RTPC>
+									</RTPCList>
+								</Property>
+								<Property Name="OutputBusVolume" Type="Real64">
+									<RTPCList>
+										<RTPC Name="" ID="{2830A746-197F-49C9-A167-1A357B3E2984}" ShortID="93655861">
+											<ReferenceList>
+												<Reference Name="ControlInput">
+													<ObjectRef Name="Volume_SFX" ID="{54C00A3C-6D1C-4A53-8403-4A1FCF6513A4}" WorkUnitID="{32AE5A4D-16DF-49F3-A117-4472F3B36DF9}"/>
+												</Reference>
+											</ReferenceList>
+											<Curve Name="" ID="{93434AB6-1918-49A2-8FF7-1A9BA9E45076}">
+												<PropertyList>
+													<Property Name="Flags" Type="int32" Value="3"/>
+												</PropertyList>
+												<PointList>
+													<Point>
+														<XPos>0</XPos>
+														<YPos>-200</YPos>
+														<Flags>5</Flags>
+													</Point>
+													<Point>
+														<XPos>100</XPos>
+														<YPos>0</YPos>
+														<Flags>37</Flags>
+													</Point>
+												</PointList>
+											</Curve>
+										</RTPC>
+										<RTPC Name="" ID="{2D9F9E81-760D-4BA0-BEAB-9620AC89260E}" ShortID="720646658">
+											<ReferenceList>
+												<Reference Name="ControlInput">
+													<ObjectRef Name="SFX_Sidechain" ID="{45C328E2-1B4A-4C91-93FE-F4FBFBE35408}" WorkUnitID="{32AE5A4D-16DF-49F3-A117-4472F3B36DF9}"/>
+												</Reference>
+											</ReferenceList>
+											<Curve Name="" ID="{8F052586-C3FF-4F1A-9F6C-E356BD28DAAB}">
+												<PropertyList>
+													<Property Name="Flags" Type="int32" Value="3"/>
+												</PropertyList>
+												<PointList>
+													<Point>
+														<XPos>-48</XPos>
+														<YPos>-12</YPos>
+														<Flags>5</Flags>
+													</Point>
+													<Point>
+														<XPos>0</XPos>
+														<YPos>0</YPos>
+														<Flags>37</Flags>
+													</Point>
+												</PointList>
+											</Curve>
+										</RTPC>
+									</RTPCList>
+								</Property>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Effect0" PluginName="Wwise Parametric EQ" CompanyID="0" PluginID="105" PluginType="3">
+									<ObjectRef Name="EQ_VO_Sidechain" ID="{36D88552-292A-47AA-B6B8-7F75E2CD2C2D}" WorkUnitID="{B0EB1BF1-35D5-48DA-95BE-B0BBE3A101E3}"/>
+								</Reference>
+								<Reference Name="Effect1" PluginName="Wwise Parametric EQ" CompanyID="0" PluginID="105" PluginType="3">
+									<ObjectRef Name="EQ_Music_Sidechain" ID="{F6D423E4-942A-4B23-A88A-E80F23A15B7F}" WorkUnitID="{B0EB1BF1-35D5-48DA-95BE-B0BBE3A101E3}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<Bus Name="AMB_Gameplay_Loop" ID="{540F6CAE-9D7E-4A88-8A16-E7118638AB53}">
+									<ObjectLists/>
+								</Bus>
+							</ChildrenList>
+							<ObjectLists/>
+						</Bus>
+						<Bus Name="Master Music" ID="{B40597AD-D396-4B8A-89AC-F91F7844DC95}">
+							<PropertyList>
+								<Property Name="OutputBusLowpass" Type="int16">
+									<RTPCList>
+										<RTPC Name="" ID="{094535FA-4DC2-4A1C-9425-6A2743B89298}" ShortID="72226953">
+											<ReferenceList>
+												<Reference Name="ControlInput">
+													<ObjectRef Name="SFX_Sidechain" ID="{45C328E2-1B4A-4C91-93FE-F4FBFBE35408}" WorkUnitID="{32AE5A4D-16DF-49F3-A117-4472F3B36DF9}"/>
+												</Reference>
+											</ReferenceList>
+											<Curve Name="" ID="{6050C0B9-8BCD-45F6-948C-79E5936E1E77}">
+												<PropertyList>
+													<Property Name="Flags" Type="int32" Value="65537"/>
+												</PropertyList>
+												<PointList>
+													<Point>
+														<XPos>-48</XPos>
+														<YPos>-50</YPos>
+														<Flags>5</Flags>
+													</Point>
+													<Point>
+														<XPos>0</XPos>
+														<YPos>0</YPos>
+														<Flags>37</Flags>
+													</Point>
+												</PointList>
+											</Curve>
+										</RTPC>
+									</RTPCList>
+								</Property>
+								<Property Name="OutputBusVolume" Type="Real64">
+									<RTPCList>
+										<RTPC Name="" ID="{A7D14C75-B9D0-4B02-BC93-F84037ED3769}" ShortID="79835192">
+											<ReferenceList>
+												<Reference Name="ControlInput">
+													<ObjectRef Name="SFX_Sidechain" ID="{45C328E2-1B4A-4C91-93FE-F4FBFBE35408}" WorkUnitID="{32AE5A4D-16DF-49F3-A117-4472F3B36DF9}"/>
+												</Reference>
+											</ReferenceList>
+											<Curve Name="" ID="{DC3ABE73-0695-44D6-BC01-022DD94E0B8A}">
+												<PropertyList>
+													<Property Name="Flags" Type="int32" Value="3"/>
+												</PropertyList>
+												<PointList>
+													<Point>
+														<XPos>-48</XPos>
+														<YPos>-12</YPos>
+														<Flags>5</Flags>
+													</Point>
+													<Point>
+														<XPos>0</XPos>
+														<YPos>0</YPos>
+														<Flags>37</Flags>
+													</Point>
+												</PointList>
+											</Curve>
+										</RTPC>
+										<RTPC Name="" ID="{C7EAD5AF-7431-4E1A-AE56-4C482CD22A21}" ShortID="812462376">
+											<ReferenceList>
+												<Reference Name="ControlInput">
+													<ObjectRef Name="Volume_Music" ID="{BE13AEE3-2D3B-47BE-A2DA-AF60CDB082E4}" WorkUnitID="{32AE5A4D-16DF-49F3-A117-4472F3B36DF9}"/>
+												</Reference>
+											</ReferenceList>
+											<Curve Name="" ID="{6858B152-D5B4-42F1-B692-423F1D1CAAD4}">
+												<PropertyList>
+													<Property Name="Flags" Type="int32" Value="3"/>
+												</PropertyList>
+												<PointList>
+													<Point>
+														<XPos>0</XPos>
+														<YPos>-200</YPos>
+														<Flags>5</Flags>
+													</Point>
+													<Point>
+														<XPos>100</XPos>
+														<YPos>0</YPos>
+														<Flags>37</Flags>
+													</Point>
+												</PointList>
+											</Curve>
+										</RTPC>
+									</RTPCList>
+								</Property>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Effect0" PluginName="Wwise Meter" CompanyID="0" PluginID="129" PluginType="3">
+									<ObjectRef Name="Wwise_Meter_Music_Sidechain" ID="{16CCA855-6656-4DB7-A047-66E9CE5581EF}" WorkUnitID="{B0EB1BF1-35D5-48DA-95BE-B0BBE3A101E3}"/>
+								</Reference>
+								<Reference Name="Effect1" PluginName="Wwise Parametric EQ" CompanyID="0" PluginID="105" PluginType="3">
+									<ObjectRef Name="EQ_VO_Sidechain" ID="{36D88552-292A-47AA-B6B8-7F75E2CD2C2D}" WorkUnitID="{B0EB1BF1-35D5-48DA-95BE-B0BBE3A101E3}"/>
+								</Reference>
+							</ReferenceList>
+							<ChildrenList>
+								<Bus Name="Music_Gameplay_Loop" ID="{95499C03-B4E7-43C1-8F29-9A33A98C5991}">
+									<PropertyList>
+										<Property Name="BusVolume" Type="Real64">
+											<ValueList>
+												<Value>-12</Value>
+											</ValueList>
+										</Property>
+									</PropertyList>
+									<ObjectLists/>
+								</Bus>
+								<Bus Name="Music_Victory_Stinger" ID="{82EAC79F-FD69-4029-A888-04BC8C299176}">
+									<ObjectLists/>
+								</Bus>
+								<Bus Name="Music_Defeat_Stinger" ID="{20B090EB-0CBA-4EA1-925D-A313FB3AA344}">
+									<ObjectLists/>
+								</Bus>
+							</ChildrenList>
+							<ObjectLists/>
+						</Bus>
+						<Bus Name="Master VO" ID="{67A24B7D-E714-4C2D-A3AC-142EF4E22A46}">
+							<PropertyList>
+								<Property Name="OutputBusVolume" Type="Real64">
+									<RTPCList>
+										<RTPC Name="" ID="{2B733BF0-29C8-4187-AB8C-0AC8DB072599}" ShortID="862477385">
+											<ReferenceList>
+												<Reference Name="ControlInput">
+													<ObjectRef Name="Volume_Voice" ID="{895B8373-E2A3-48B3-A912-705AB525A319}" WorkUnitID="{32AE5A4D-16DF-49F3-A117-4472F3B36DF9}"/>
+												</Reference>
+											</ReferenceList>
+											<Curve Name="" ID="{0105925E-E8DB-425C-B6AC-20B5E5AFA2F5}">
+												<PropertyList>
+													<Property Name="Flags" Type="int32" Value="3"/>
+												</PropertyList>
+												<PointList>
+													<Point>
+														<XPos>0</XPos>
+														<YPos>-200</YPos>
+														<Flags>5</Flags>
+													</Point>
+													<Point>
+														<XPos>100</XPos>
+														<YPos>0</YPos>
+														<Flags>37</Flags>
+													</Point>
+												</PointList>
+											</Curve>
+										</RTPC>
+									</RTPCList>
+								</Property>
+							</PropertyList>
+							<ChildrenList>
+								<Bus Name="VO_Player" ID="{D0ECB003-D7E0-4A27-B390-025DE8247F12}">
+									<ReferenceList>
+										<Reference Name="Effect0" PluginName="Wwise Meter" CompanyID="0" PluginID="129" PluginType="3">
+											<ObjectRef Name="Wwise_Meter_VO_Sidechain" ID="{C4BCFB8C-3FFF-483C-8157-1E7E2A2CCD55}" WorkUnitID="{B0EB1BF1-35D5-48DA-95BE-B0BBE3A101E3}"/>
+										</Reference>
+									</ReferenceList>
+									<ObjectLists/>
+								</Bus>
+								<Bus Name="VO_Enemy" ID="{F4776E74-36D3-43BE-BC0F-5F7C9C9A3A0E}">
+									<ObjectLists/>
+								</Bus>
+							</ChildrenList>
+							<ObjectLists/>
+						</Bus>
+					</ChildrenList>
 					<ObjectLists/>
 				</Bus>
 			</ChildrenList>

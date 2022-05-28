@@ -1,6 +1,226 @@
 <?xml version="1.0" encoding="utf-8"?>
 <WwiseDocument Type="WorkUnit" ID="{D766E073-EB63-4307-880C-934EBF9C0137}" SchemaVersion="103">
 	<Events>
-		<WorkUnit Name="Default Work Unit" ID="{D766E073-EB63-4307-880C-934EBF9C0137}" PersistMode="Standalone"/>
+		<WorkUnit Name="Default Work Unit" ID="{D766E073-EB63-4307-880C-934EBF9C0137}" PersistMode="Standalone">
+			<ChildrenList>
+				<Folder Name="VO_Enemy" ID="{AA5CA605-952D-4DF3-901A-8A4E0B5ED499}" ShortID="148805256">
+					<ChildrenList>
+						<Event Name="VO_Enemy_Death" ID="{5545E8DE-6905-4E79-ABAD-489D3D84472C}"/>
+						<Event Name="VO_Enemy_Boulder_Throw" ID="{6F908CD5-6C6A-4027-802C-D3181F970A8D}"/>
+						<Event Name="VO_Enemy_Melee_Right_Hook" ID="{F38E0B92-7800-43E3-A5DC-DA5EB5C07B50}"/>
+						<Event Name="VO_Enemy_Idle" ID="{DE37619B-7FA1-4CA7-9399-B0147A6F5A58}"/>
+						<Event Name="VO_Enemy_Eruption_Slam" ID="{DE0E287E-92F1-42B0-8D7C-9F4A804270E2}"/>
+						<Event Name="VO_Enemy_Melee_Overhead_Slam" ID="{75DA5CAA-F646-4FB9-9102-F64926F11412}"/>
+					</ChildrenList>
+				</Folder>
+				<Folder Name="VO_Player" ID="{B00AF8A8-EE6B-4A78-8626-19C8E828163B}" ShortID="627037024">
+					<ChildrenList>
+						<Event Name="VO_Player_Damage" ID="{E47D2D46-261C-45CC-97AA-05118F92FE97}"/>
+						<Event Name="VO_Player_Idle" ID="{93584338-9DF7-4D29-B962-EE0887E30DFA}"/>
+						<Event Name="VO_Player_Spawn" ID="{017E0712-A8DC-4FF9-ABE1-39CF38C6E1DE}"/>
+						<Event Name="VO_Player_Victory" ID="{5CECBB74-A96C-4D48-8EE3-F24D4BD15BF2}"/>
+					</ChildrenList>
+				</Folder>
+				<Folder Name="SFX_UI" ID="{7D05547F-3CEE-4268-A84C-13DC832E46F9}" ShortID="956731399">
+					<ChildrenList>
+						<Event Name="UI_Menu_Off" ID="{6077A618-A5B8-4211-95D6-B6EDC7982395}">
+							<ChildrenList>
+								<Action Name="" ID="{A9B2E221-5472-44B2-81F3-5B62BF2517BA}" ShortID="330707541">
+									<PropertyList>
+										<Property Name="ActionType" Type="int16" Value="22"/>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="UI_Menu_Off" ID="{830DA50C-0EFC-4588-A47C-13A295CCE340}" WorkUnitID="{D1CD545D-2539-4537-A8BA-166C2E5BE70D}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
+						<Event Name="UI_Menu_On" ID="{21031615-38E0-47C0-A4C6-9A600E28BD16}">
+							<ChildrenList>
+								<Action Name="" ID="{29D561AD-D731-4235-9364-36A573DA4F7B}" ShortID="268191132">
+									<PropertyList>
+										<Property Name="ActionType" Type="int16" Value="22"/>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="UI_Menu_On" ID="{1B4C6DD3-E9FA-4FB4-A5A0-2EA261C8D9BB}" WorkUnitID="{D1CD545D-2539-4537-A8BA-166C2E5BE70D}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
+						<Event Name="UI_Hit_Indicator" ID="{CF91874F-9898-4F2E-BE0A-531807E1E403}"/>
+						<Event Name="UI_Click" ID="{9E161395-8B50-4544-A695-44EC954168B9}"/>
+					</ChildrenList>
+				</Folder>
+				<Folder Name="SFX_Player" ID="{F28B6564-A4D4-456C-9D10-BCD081CF05DB}" ShortID="1024021338">
+					<ChildrenList>
+						<Event Name="Player_Footsteps" ID="{F6222E35-7A44-44AA-A557-31DFD827D345}"/>
+						<Event Name="Player_Dodge" ID="{D6A5B9C9-875B-4E34-BDC2-7A9ABE8C3A90}"/>
+						<Event Name="Player_Damage" ID="{B24454FD-26A8-4840-9189-A632AA46BB45}"/>
+						<Event Name="Player_Jump" ID="{DB11DEDF-8300-4048-9912-7255ABB4B6F0}"/>
+						<Event Name="Player_Shoot_Cast" ID="{D075F07B-C26F-45FF-AEAD-421FCF7C0CD3}"/>
+						<Event Name="Player_Shoot_Impact" ID="{A5772FBD-021A-4FBF-B045-776F004E54FA}"/>
+					</ChildrenList>
+				</Folder>
+				<Folder Name="SFX_Enemy" ID="{82E91237-E03B-4E3C-A6FB-975481C3429E}" ShortID="319366450">
+					<ChildrenList>
+						<Event Name="Enemy_Boulder_Impact" ID="{F54A276F-B8CB-4F23-8672-E94496DBD8DB}"/>
+						<Event Name="Enemy_Boulder_Throw" ID="{8654BD1E-4638-4177-8B1E-7F02664907B0}"/>
+						<Event Name="Enemy_Death" ID="{F13368C8-FD77-4B37-ABE3-85A8F84E1F1C}"/>
+						<Event Name="Enemy_Eruption_Burst" ID="{ACC6B2C0-3861-488F-AD29-AEF1B081158D}"/>
+						<Event Name="Enemy_Eruption_Slam" ID="{7DC18506-63C0-4A28-9E16-AFE01CBABCC4}"/>
+						<Event Name="Enemy_Footsteps" ID="{A586E71B-DCE7-4DB0-BD95-FE5B3566D715}"/>
+						<Event Name="Enemy_Melee_Overhead_Slam" ID="{5F2950B8-3D2C-46C1-AD72-9D1419691931}"/>
+						<Event Name="Enemy_Melee_Right_Hook" ID="{560B1CFC-1AA9-4643-9019-AC94799A9634}"/>
+					</ChildrenList>
+				</Folder>
+				<Folder Name="Music" ID="{BDA7C5CC-EC62-4F5A-A205-2EADC017DDA1}" ShortID="168306223">
+					<ChildrenList>
+						<Event Name="Music_Play" ID="{8D7A0E39-2237-4F81-A0E3-88B5B03CEAE0}">
+							<ChildrenList>
+								<Action Name="" ID="{9D752F8D-BBFA-48FE-AE38-8DFFEB019421}" ShortID="998047666">
+									<PropertyList>
+										<Property Name="FadeInCurve" Type="int16" Value="1"/>
+										<Property Name="FadeTime" Type="Real64" Value="0.5"/>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="Music_Gameplay_Loop" ID="{C06F6519-EC81-4BED-A561-0969734B7357}" WorkUnitID="{F5B80185-C71F-4083-A801-1876F71A6DE5}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
+						<Event Name="Music_Stop" ID="{CA63EA6B-D6E3-4613-A082-B5BD14F4F86D}">
+							<ChildrenList>
+								<Action Name="" ID="{AB31D1FA-86B6-4F50-9B32-DB990F7F473A}" ShortID="862890487">
+									<PropertyList>
+										<Property Name="ActionType" Type="int16" Value="2"/>
+										<Property Name="FadeOutCurve" Type="int16" Value="8"/>
+										<Property Name="FadeTime" Type="Real64" Value="2"/>
+										<Property Name="Scope" Type="int16" Value="1"/>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="Music_Gameplay_Loop" ID="{C06F6519-EC81-4BED-A561-0969734B7357}" WorkUnitID="{F5B80185-C71F-4083-A801-1876F71A6DE5}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
+						<Event Name="Music_Victory" ID="{DE8AA511-1211-481E-9D05-03C21BCCC17A}">
+							<ChildrenList>
+								<Action Name="" ID="{B8343A7A-7D44-4B82-86F6-F7776184E7F9}" ShortID="776741436">
+									<PropertyList>
+										<Property Name="ActionType" Type="int16" Value="35"/>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="Music_Victory_Stinger" ID="{2DACCBDF-17AA-4B7D-9881-C4237A54621E}" WorkUnitID="{49035381-AF0F-472C-B726-7AD9B5CDDA3A}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
+						<Event Name="Music_Defeat" ID="{029BC194-9134-4C89-91B9-B93C7AE645F9}">
+							<ChildrenList>
+								<Action Name="" ID="{8E1C0F67-9EA1-4676-AF19-BC63F5F5DD21}" ShortID="173637250">
+									<PropertyList>
+										<Property Name="ActionType" Type="int16" Value="35"/>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="Music_Defeat_Stinger" ID="{9B5A6D32-FA5E-4520-9F4B-DF624F859B40}" WorkUnitID="{49035381-AF0F-472C-B726-7AD9B5CDDA3A}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
+					</ChildrenList>
+				</Folder>
+				<Folder Name="Ambience" ID="{041DBBEE-9819-48DD-95E6-900C4743945A}" ShortID="335882148">
+					<ChildrenList>
+						<Event Name="Ambience_Stop" ID="{13FBB1CE-79FA-4433-B297-2E18F66653EF}">
+							<ChildrenList>
+								<Action Name="" ID="{46C85BE4-5BC6-4A9C-89E7-9042D47383EF}" ShortID="469070937">
+									<PropertyList>
+										<Property Name="ActionType" Type="int16" Value="2"/>
+										<Property Name="FadeOutCurve" Type="int16" Value="8"/>
+										<Property Name="FadeTime" Type="Real64" Value="2"/>
+										<Property Name="Scope" Type="int16" Value="1"/>
+									</PropertyList>
+									<ReferenceList/>
+								</Action>
+							</ChildrenList>
+						</Event>
+						<Event Name="Ambience_Play" ID="{8AF593ED-934B-4BF9-AAB8-7D512B5923A2}">
+							<ChildrenList>
+								<Action Name="" ID="{B6E4A5AE-9061-495B-BDB7-23649043FAB0}" ShortID="1025510392">
+									<PropertyList>
+										<Property Name="FadeInCurve" Type="int16" Value="1"/>
+										<Property Name="FadeTime" Type="Real64" Value="0.5"/>
+									</PropertyList>
+								</Action>
+							</ChildrenList>
+						</Event>
+					</ChildrenList>
+				</Folder>
+				<Folder Name="Utility" ID="{1A77EA44-9413-440A-BEC8-9054393EFD60}" ShortID="6354414">
+					<ChildrenList>
+						<Event Name="Game_Start" ID="{C3F98802-DBAB-4F6F-9B3D-50B713F7AFA1}">
+							<ChildrenList>
+								<Action Name="" ID="{EF871C18-C525-41FC-BF09-BFB0F724D3DC}" ShortID="729405650">
+									<PropertyList>
+										<Property Name="ActionType" Type="int16" Value="41"/>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="Music_Play" ID="{8D7A0E39-2237-4F81-A0E3-88B5B03CEAE0}" WorkUnitID="{D766E073-EB63-4307-880C-934EBF9C0137}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+								<Action Name="" ID="{B3A47C46-27D2-4CDB-8080-6A9009543D2F}" ShortID="33123407">
+									<PropertyList>
+										<Property Name="ActionType" Type="int16" Value="41"/>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="Ambience_Play" ID="{8AF593ED-934B-4BF9-AAB8-7D512B5923A2}" WorkUnitID="{D766E073-EB63-4307-880C-934EBF9C0137}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
+						<Event Name="Game_Quit" ID="{B5FC5855-3560-4C1E-BA54-FB97F67D7B11}">
+							<ChildrenList>
+								<Action Name="" ID="{94D97F6A-244F-42B4-B2EB-FE1BF87E7D5F}" ShortID="274338790">
+									<PropertyList>
+										<Property Name="ActionType" Type="int16" Value="41"/>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="Music_Stop" ID="{CA63EA6B-D6E3-4613-A082-B5BD14F4F86D}" WorkUnitID="{D766E073-EB63-4307-880C-934EBF9C0137}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+								<Action Name="" ID="{94EFA569-27A9-441C-8226-795B15098850}" ShortID="779219814">
+									<PropertyList>
+										<Property Name="ActionType" Type="int16" Value="41"/>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="Ambience_Stop" ID="{13FBB1CE-79FA-4433-B297-2E18F66653EF}" WorkUnitID="{D766E073-EB63-4307-880C-934EBF9C0137}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
+					</ChildrenList>
+				</Folder>
+			</ChildrenList>
+		</WorkUnit>
 	</Events>
 </WwiseDocument>

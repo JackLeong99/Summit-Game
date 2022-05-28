@@ -1,6 +1,59 @@
 <?xml version="1.0" encoding="utf-8"?>
 <WwiseDocument Type="WorkUnit" ID="{32AE5A4D-16DF-49F3-A117-4472F3B36DF9}" SchemaVersion="103">
 	<GameParameters>
-		<WorkUnit Name="Default Work Unit" ID="{32AE5A4D-16DF-49F3-A117-4472F3B36DF9}" PersistMode="Standalone"/>
+		<WorkUnit Name="Default Work Unit" ID="{32AE5A4D-16DF-49F3-A117-4472F3B36DF9}" PersistMode="Standalone">
+			<ChildrenList>
+				<GameParameter Name="SFX_Sidechain" ID="{45C328E2-1B4A-4C91-93FE-F4FBFBE35408}">
+					<PropertyList>
+						<Property Name="FilterTimeDown" Type="Real64" Value="0.5"/>
+						<Property Name="FilterTimeUp" Type="Real64" Value="0.1"/>
+						<Property Name="InitialValue" Type="Real64" Value="-48"/>
+						<Property Name="Max" Type="Real64" Value="0"/>
+						<Property Name="Min" Type="Real64" Value="-48"/>
+						<Property Name="RTPCRamping" Type="int16" Value="2"/>
+					</PropertyList>
+				</GameParameter>
+				<GameParameter Name="Volume_Music" ID="{BE13AEE3-2D3B-47BE-A2DA-AF60CDB082E4}">
+					<PropertyList>
+						<Property Name="InitialValue" Type="Real64" Value="100"/>
+					</PropertyList>
+				</GameParameter>
+				<GameParameter Name="Volume_Master" ID="{69B4E27F-AE3C-4497-8377-1F7E94AAC6DF}">
+					<PropertyList>
+						<Property Name="InitialValue" Type="Real64" Value="100"/>
+					</PropertyList>
+				</GameParameter>
+				<GameParameter Name="Volume_Voice" ID="{895B8373-E2A3-48B3-A912-705AB525A319}">
+					<PropertyList>
+						<Property Name="InitialValue" Type="Real64" Value="100"/>
+					</PropertyList>
+				</GameParameter>
+				<GameParameter Name="Volume_SFX" ID="{54C00A3C-6D1C-4A53-8403-4A1FCF6513A4}">
+					<PropertyList>
+						<Property Name="InitialValue" Type="Real64" Value="100"/>
+					</PropertyList>
+				</GameParameter>
+				<GameParameter Name="VO_Sidechain" ID="{97944447-E1BA-410F-A359-6C9FE04CFCF4}">
+					<PropertyList>
+						<Property Name="FilterTimeDown" Type="Real64" Value="0.5"/>
+						<Property Name="FilterTimeUp" Type="Real64" Value="0.1"/>
+						<Property Name="InitialValue" Type="Real64" Value="-48"/>
+						<Property Name="Max" Type="Real64" Value="0"/>
+						<Property Name="Min" Type="Real64" Value="-48"/>
+						<Property Name="RTPCRamping" Type="int16" Value="2"/>
+					</PropertyList>
+				</GameParameter>
+				<GameParameter Name="Music_Sidechain" ID="{B387F8B5-CBD9-41B4-97D8-5F424CC520B1}">
+					<PropertyList>
+						<Property Name="FilterTimeDown" Type="Real64" Value="0.5"/>
+						<Property Name="FilterTimeUp" Type="Real64" Value="0.1"/>
+						<Property Name="InitialValue" Type="Real64" Value="-48"/>
+						<Property Name="Max" Type="Real64" Value="0"/>
+						<Property Name="Min" Type="Real64" Value="-48"/>
+						<Property Name="RTPCRamping" Type="int16" Value="2"/>
+					</PropertyList>
+				</GameParameter>
+			</ChildrenList>
+		</WorkUnit>
 	</GameParameters>
 </WwiseDocument>

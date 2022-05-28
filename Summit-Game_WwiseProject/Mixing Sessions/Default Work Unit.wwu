@@ -1,6 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <WwiseDocument Type="WorkUnit" ID="{A85BE978-3431-430F-803A-0550DC02E4D2}" SchemaVersion="103">
 	<MixingSessions>
-		<WorkUnit Name="Default Work Unit" ID="{A85BE978-3431-430F-803A-0550DC02E4D2}" PersistMode="Standalone"/>
+		<WorkUnit Name="Default Work Unit" ID="{A85BE978-3431-430F-803A-0550DC02E4D2}" PersistMode="Standalone">
+			<ChildrenList>
+				<MixingSession Name="Masters" ID="{24153DAF-3EF7-4FEC-B77D-DA0FEAAC315D}">
+					<ObjectList>
+						<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{5FE25012-E08F-420E-BE49-3B0109DF68E3}"/>
+						<ObjectRef Name="Master SFX" ID="{32027980-225E-4B4E-A8E4-62C028B927F5}" WorkUnitID="{5FE25012-E08F-420E-BE49-3B0109DF68E3}"/>
+						<ObjectRef Name="Master Music" ID="{B40597AD-D396-4B8A-89AC-F91F7844DC95}" WorkUnitID="{5FE25012-E08F-420E-BE49-3B0109DF68E3}"/>
+						<ObjectRef Name="Master Ambience" ID="{DCF58933-BBBE-4C0E-81CF-6204849089D4}" WorkUnitID="{5FE25012-E08F-420E-BE49-3B0109DF68E3}"/>
+						<ObjectRef Name="Master VO" ID="{67A24B7D-E714-4C2D-A3AC-142EF4E22A46}" WorkUnitID="{5FE25012-E08F-420E-BE49-3B0109DF68E3}"/>
+					</ObjectList>
+				</MixingSession>
+			</ChildrenList>
+		</WorkUnit>
 	</MixingSessions>
 </WwiseDocument>
