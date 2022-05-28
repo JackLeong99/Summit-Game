@@ -4,21 +4,30 @@ using UnityEngine;
 
 public class WeaponIndicator : MonoBehaviour
 {
-    [SerializeField] Material charged;
+    [SerializeField] Color charged;
 
-    [SerializeField] Material charging;
+    [SerializeField] Color charging;
 
-    private Renderer rende;
+    [SerializeField] int matNumber;
+
+    private Material mat;
 
     private ThirdPersonShooting gun;
 
     void Start()
     {
         gun = GetComponentInParent<ThirdPersonShooting>();
-        rende = GetComponent<Renderer>();
+        mat = GetComponent<Renderer>().materials[matNumber];
     }
     void Update()
     {
-        Debug.Log(rende.materials[3]);
+        if (gun.onCooldown == true)
+        {
+            mat.SetColor("_EmissionColor", charging * 6);
+        }
+        else 
+        {
+            mat.SetColor("_EmissionColor", charged * 6);
+        }
     }
 }
