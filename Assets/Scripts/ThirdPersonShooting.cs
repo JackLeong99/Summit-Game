@@ -11,7 +11,9 @@ public class ThirdPersonShooting : MonoBehaviour
 
     [SerializeField] float chargeTime;
 
-    [SerializeField] GameObject chargeParticles;
+    [SerializeField] float succTime;
+
+    [SerializeField] ParticleSystem succ;
 
     public Camera cam;
 
@@ -49,6 +51,8 @@ public class ThirdPersonShooting : MonoBehaviour
     //Temporary code that resets player y axis rotation until we add custom player model/animations
     private CharacterController player;
 
+    private ParticleSystem.EmissionModule pp;
+
     private void Awake()
 	{
 		if (_mainCamera == null)
@@ -65,6 +69,8 @@ public class ThirdPersonShooting : MonoBehaviour
         //Temporary code that resets player y axis rotation until we add custom player model/animations
         player = GetComponent<CharacterController>();
         controller = GetComponent<ThirdPersonController>();
+        pp = succ.emission;
+        pp.enabled = false;
     }
 
     // Update is called once per frame
@@ -103,9 +109,10 @@ public class ThirdPersonShooting : MonoBehaviour
         controller.LockCameraPosition = true;
         casting = true;
         _animator.SetTrigger("Charge");
-        var chargin = Instantiate(chargeParticles, FirePoint.position, Quaternion.identity, FirePoint.transform) as GameObject;
+        yield return new WaitForSeconds(succTime);
+        pp.enabled = true;
         yield return new WaitForSeconds(chargeTime);
-        Destroy(chargin);
+        pp.enabled = false;
         _animator.SetTrigger("Shoot");
         Ray ray = cam.ViewportPointToRay(new Vector3(0.5f, 0.5f , 0));
         RaycastHit hit;
