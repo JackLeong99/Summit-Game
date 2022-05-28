@@ -7,6 +7,7 @@ public class PlayerBullet : MonoBehaviour
     public float MaxLifetime = 1000;
     public float CurrentLifetime = 0;
     private float currentGunDamage;
+    [SerializeField] GameObject boom;
 
     public void setDamage(float dmg)
     {
@@ -26,6 +27,7 @@ public class PlayerBullet : MonoBehaviour
     {
         if (hit.gameObject.tag != "PlayerBullet" && hit.gameObject.tag != "Player")
         {
+            boomFX();
             Destroy (gameObject);
         }
     }
@@ -39,8 +41,19 @@ public class PlayerBullet : MonoBehaviour
             if (receiver)
             {
                 receiver.PassDamage(currentGunDamage);
+                boomFX();
                 Destroy(gameObject);
             }
         }
+        else 
+        {
+            boomFX();
+            Destroy(gameObject);
+        }
+    }
+
+    void boomFX() 
+    {
+        Instantiate(boom, gameObject.transform.position, Quaternion.identity);
     }
 }
