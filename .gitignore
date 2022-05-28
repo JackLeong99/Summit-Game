@@ -69,3 +69,27 @@ crashlytics-build.properties
 # Temporary auto-generated Android Assets
 /[Aa]ssets/[Ss]treamingAssets/aa.meta
 /[Aa]ssets/[Ss]treamingAssets/aa/*
+
+# Wwise
+/Summit-Game_WwiseProject/.cache/*
+/Summit-Game_WwiseProject/*.akd
+/Summit-Game_WwiseProject/*.validationcache
+/Summit-Game_WwiseProject/*.wem
+/Summit-Game_WwiseProject/*.prof
+/Assets/Wwise/Deployment/Plugins/Android
+/Assets/Wwise/Deployment/Plugins/Android.meta
+/Assets/Wwise/Deployment/Plugins/iOS
+/Assets/Wwise/Deployment/Plugins/iOS.meta
+/Assets/Wwise/Editor/ProjectData
+/Assets/Wwise/Editor/ProjectData/AkWwiseProjectData.asset
+/Assets/Wwise/Editor/ProjectData/AkWwiseProjectData.asset.meta
+Assets/Wwise.meta
+Assets/Wwise/API.meta
+Assets/Wwise/Editor.meta
+Assets/Wwise/API/Runtime.meta
+Assets/Wwise/API/Runtime/Plugins.meta
+Assets/Wwise/API/Runtime/Plugins/Windows.meta
+Assets/Wwise/API/Runtime/Plugins/Windows/x86_64.meta
+Assets/Wwise/API/Runtime/Plugins/Windows/x86_64/Profile.meta
+Assets/Wwise/API/Runtime/Plugins/Windows/x86_64/Profile/AkSoundEngine.dll.meta
+Assets/Wwise/Editor/ProjectData.meta
