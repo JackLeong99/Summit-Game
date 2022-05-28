@@ -557,6 +557,11 @@ public class BossManager : MonoBehaviour
         // inAttack = false; // probs borked
     }
 
+    public void gunStun(){
+        stunTimer = 5;
+        StartCoroutine(bossStunned());
+    }
+
     IEnumerator bossStunned(){
         stunned = true;
         if(mActions != null){
