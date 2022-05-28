@@ -17,6 +17,7 @@ namespace AK
         static const AkUniqueID AMBIENCE_GAMEPLAY_LOOP_STOP = 579264924U;
         static const AkUniqueID ENEMY_BOULDER_CAST = 2854117449U;
         static const AkUniqueID ENEMY_BOULDER_IMPACT = 2372917442U;
+        static const AkUniqueID ENEMY_DAMAGE = 555067025U;
         static const AkUniqueID ENEMY_DEATH = 1205999388U;
         static const AkUniqueID ENEMY_ERUPTION_CAST = 1789255036U;
         static const AkUniqueID ENEMY_ERUPTION_LAVA = 22559231U;
@@ -97,6 +98,7 @@ namespace AK
         static const AkUniqueID AMB_GAMEPLAY_LOOP = 2134809883U;
         static const AkUniqueID ENEMY_BOULDER_IMPACT = 2372917442U;
         static const AkUniqueID ENEMY_BOULDER_THROW = 2364205524U;
+        static const AkUniqueID ENEMY_DAMAGE = 555067025U;
         static const AkUniqueID ENEMY_DEATH = 1205999388U;
         static const AkUniqueID ENEMY_ERUPTION_BURST = 608829557U;
         static const AkUniqueID ENEMY_ERUPTION_SLAM = 3010160010U;

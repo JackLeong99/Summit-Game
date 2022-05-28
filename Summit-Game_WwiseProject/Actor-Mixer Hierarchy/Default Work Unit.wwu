@@ -332,6 +332,20 @@
 									</ReferenceList>
 									<ObjectLists/>
 								</ActorMixer>
+								<ActorMixer Name="Enemy_Damage" ID="{2BF7C233-101B-4154-A0A0-7C087D9E50CC}" ShortID="504440995">
+									<PropertyList>
+										<Property Name="OverrideOutput" Type="bool" Value="True"/>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{E8C30435-E2EC-40B4-A911-30D289ECE001}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Enemy_Damage" ID="{FC236D90-F0AE-488C-BBFD-D60BEC03A875}" WorkUnitID="{5FE25012-E08F-420E-BE49-3B0109DF68E3}"/>
+										</Reference>
+									</ReferenceList>
+									<ObjectLists/>
+								</ActorMixer>
 							</ChildrenList>
 							<ObjectLists/>
 						</ActorMixer>

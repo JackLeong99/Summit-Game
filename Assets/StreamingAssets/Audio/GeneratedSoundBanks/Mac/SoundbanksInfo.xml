@@ -11,7 +11,7 @@
 	<StreamedFiles/>
 	<MediaFilesNotInAnyBank/>
 	<SoundBanks>
-		<SoundBank Id="822237696" Language="SFX" Hash="3605730541">
+		<SoundBank Id="822237696" Language="SFX" Hash="2760816256">
 			<ObjectPath>\SoundBanks\Default Work Unit\SB_Default</ObjectPath>
 			<ShortName>SB_Default</ShortName>
 			<Path>SB_Default.bnk</Path>
@@ -20,6 +20,7 @@
 				<Event Id="579264924" Name="Ambience_Gameplay_Loop_Stop" ObjectPath="\Events\Default Work Unit\Ambience\Ambience_Gameplay_Loop_Stop" MaxAttenuation="0." DurationType="OneShot" DurationMin="0." DurationMax="0."/>
 				<Event Id="2854117449" Name="Enemy_Boulder_Cast" ObjectPath="\Events\Default Work Unit\SFX_Enemy\Enemy_Boulder_Cast" MaxAttenuation="0." DurationType="OneShot" DurationMin="0." DurationMax="0."/>
 				<Event Id="2372917442" Name="Enemy_Boulder_Impact" ObjectPath="\Events\Default Work Unit\SFX_Enemy\Enemy_Boulder_Impact" MaxAttenuation="0." DurationType="OneShot" DurationMin="0." DurationMax="0."/>
+				<Event Id="555067025" Name="Enemy_Damage" ObjectPath="\Events\Default Work Unit\SFX_Enemy\Enemy_Damage" MaxAttenuation="0." DurationType="OneShot" DurationMin="0." DurationMax="0."/>
 				<Event Id="1205999388" Name="Enemy_Death" ObjectPath="\Events\Default Work Unit\SFX_Enemy\Enemy_Death" MaxAttenuation="0." DurationType="OneShot" DurationMin="0." DurationMax="0."/>
 				<Event Id="1789255036" Name="Enemy_Eruption_Cast" ObjectPath="\Events\Default Work Unit\SFX_Enemy\Enemy_Eruption_Cast" MaxAttenuation="0." DurationType="OneShot" DurationMin="0." DurationMax="0."/>
 				<Event Id="22559231" Name="Enemy_Eruption_Lava" ObjectPath="\Events\Default Work Unit\SFX_Enemy\Enemy_Eruption_Lava" MaxAttenuation="0." DurationType="OneShot" DurationMin="0." DurationMax="0."/>
@@ -101,7 +102,7 @@
 				<Trigger Id="2515303183" Name="Music_Defeat_Stinger" ObjectPath="\Triggers\Default Work Unit\Music_Defeat_Stinger"/>
 			</Triggers>
 		</SoundBank>
-		<SoundBank Id="1355168291" Language="SFX" Hash="3059906690">
+		<SoundBank Id="1355168291" Language="SFX" Hash="2936416288">
 			<ObjectPath>Init</ObjectPath>
 			<ShortName>Init</ShortName>
 			<Path>Init.bnk</Path>
