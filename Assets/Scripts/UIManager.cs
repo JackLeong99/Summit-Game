@@ -74,7 +74,7 @@ public class UIManager : MonoBehaviour
         PanelPauseMenu.SetActive(false);
         PowerUpMenu.SetActive(false);
         PanelWin.SetActive(false);
-        BossName.text="Golem"; //set by game later same as archer
+        BossName.text="Iwazaru: Guardian of the mountain"; //set by game later same as archer
         
     }
 
