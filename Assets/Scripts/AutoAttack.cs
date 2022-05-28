@@ -32,8 +32,6 @@ public class AutoAttack : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log("chainTimer: " + chainTimer);
-        Debug.Log("AttackAnim: " + attackAnim);
         if (chainTimer > 0)
         {
             attackAnim = 1;

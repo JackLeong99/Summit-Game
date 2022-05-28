@@ -29,6 +29,8 @@ public class ThirdPersonShooting : MonoBehaviour
     public float cdTimer = 0;
     [HideInInspector]
     public bool casting;
+    [HideInInspector]
+    public bool onCooldown;
     private Vector3 destination;
     public Color OffCD;
     public Color OnCD;
@@ -78,6 +80,7 @@ public class ThirdPersonShooting : MonoBehaviour
         if(cdTimer <=0)
         {
             cdTimer = 0;
+            onCooldown = false;
             CdDisplay.text = "";
             CdBackground.color = OffCD;
         }
@@ -85,6 +88,7 @@ public class ThirdPersonShooting : MonoBehaviour
         {
             CdDisplay.text = (cdTimer+1).ToString("0");
             CdBackground.color = OnCD;
+            onCooldown = true;
         }
     }
 
