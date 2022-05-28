@@ -613,6 +613,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Canvas
       objectReference: {fileID: 0}
+    - target: {fileID: 7152370277917233113, guid: 90c1bd1fda819204985b62a4e3e9e7b5, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7152370277917233116, guid: 90c1bd1fda819204985b62a4e3e9e7b5, type: 3}
       propertyPath: m_AdditionalShaderChannelsFlag
       value: 25
@@ -1951,8 +1955,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 33b8373c05441da49aaf8cad3b1e96e1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  charged: {fileID: 0}
-  charging: {fileID: 0}
+  charged: {r: 0, g: 0.02745098, b: 0.7490196, a: 1}
+  charging: {r: 0.7490196, g: 0, b: 0, a: 1}
+  matNumber: 3
 --- !u!114 &733659446 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 9185530048483782247, guid: 90c1bd1fda819204985b62a4e3e9e7b5, type: 3}
@@ -3257,7 +3262,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.9125853, y: 1}
+    m_SensorSize: {x: 1.7104774, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -4931,6 +4936,26 @@ CapsuleCollider:
   m_Height: 0.019653665
   m_Direction: 2
   m_Center: {x: -0.0073763398, y: -0.001025261, z: -0.012592879}
+--- !u!1 &1822725167 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5353914476448818973, guid: 385a344a9476dc5418e0c3f8526d51a6, type: 3}
+  m_PrefabInstance: {fileID: 5568644311073797621}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1822725170
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1822725167}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 33b8373c05441da49aaf8cad3b1e96e1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  charged: {r: 0, g: 0.02745098, b: 0.7490196, a: 1}
+  charging: {r: 0.7490196, g: 0, b: 0, a: 1}
+  matNumber: 1
 --- !u!1 &1866648410 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -4935329105952669424, guid: de4c2bfe46e49014a9e7bc63251e601e, type: 3}
@@ -5270,9 +5295,17 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1460568150}
     - target: {fileID: 2372693050024908203, guid: 385a344a9476dc5418e0c3f8526d51a6, type: 3}
+      propertyPath: chargeTime
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2372693050024908203, guid: 385a344a9476dc5418e0c3f8526d51a6, type: 3}
       propertyPath: CdBackground
       value: 
       objectReference: {fileID: 981408569}
+    - target: {fileID: 2372693050024908203, guid: 385a344a9476dc5418e0c3f8526d51a6, type: 3}
+      propertyPath: chargeParticles
+      value: 
+      objectReference: {fileID: 4773410873201984527, guid: da4f23491b58a20439487c9e932d3045, type: 3}
     - target: {fileID: 2372693050024908203, guid: 385a344a9476dc5418e0c3f8526d51a6, type: 3}
       propertyPath: projectileSpeed
       value: 150

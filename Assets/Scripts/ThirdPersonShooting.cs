@@ -8,6 +8,11 @@ using StarterAssets;
 public class ThirdPersonShooting : MonoBehaviour
 {
     [SerializeField] float bulletDamage;
+
+    [SerializeField] float chargeTime;
+
+    [SerializeField] GameObject chargeParticles;
+
     public Camera cam;
 
     public GameObject projectile;
@@ -95,11 +100,13 @@ public class ThirdPersonShooting : MonoBehaviour
     IEnumerator ShootProjectile()
     {
         player.transform.rotation = _mainCamera.transform.rotation;
-        casting = true;
-        _animator.SetTrigger("Shoot");
         controller.LockCameraPosition = true;
-        yield return new WaitForSeconds(shotTimeBuffer);
-
+        casting = true;
+        _animator.SetTrigger("Charge");
+        var chargin = Instantiate(chargeParticles, FirePoint.position, Quaternion.identity, FirePoint.transform) as GameObject;
+        yield return new WaitForSeconds(chargeTime);
+        Destroy(chargin);
+        _animator.SetTrigger("Shoot");
         Ray ray = cam.ViewportPointToRay(new Vector3(0.5f, 0.5f , 0));
         RaycastHit hit;
 
