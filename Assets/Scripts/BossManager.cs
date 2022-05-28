@@ -50,6 +50,8 @@ public class BossManager : MonoBehaviour
     public int lastMoveRepeated = 0;
     //Dodgy slider method to match the timing with slam- determines when the shockwave is done
     public float scuffedShockTimer;
+    private Coroutine mActions;
+    private Coroutine rActions; 
     //Health for the boss
     [SerializeField] float maxHP;
     //[HideInInspector]
@@ -57,6 +59,8 @@ public class BossManager : MonoBehaviour
     public float currentHP;
     public int spawnRocksNumber;
     public float spawnNewRocksTime;
+    public bool stunned = false;
+    private float stunTimer;
     private BossPathing bPathing;
     private Shockwave shockwave;
     private MegaPunch punch;
@@ -95,7 +99,7 @@ public class BossManager : MonoBehaviour
     }
     
     void Update(){
-        if(Alive){
+        if(Alive && !stunned){
             if(RockManager.Instance.countUnderWantedRocks){
                 StartCoroutine(summonRocks());
             }
@@ -156,7 +160,7 @@ public class BossManager : MonoBehaviour
                     if(isMidRange && !inAttack && !isRanged && rangedAllowed){
                         //Debug.Log("Mid Range!");
                         if(currentPatience >= patience){
-                            StartCoroutine(rangedActions());
+                            Coroutine rActions = StartCoroutine(rangedActions());
                             currentPatience = 0;
                         }
                         //If moving because of this don't increase patience from here.
@@ -168,7 +172,7 @@ public class BossManager : MonoBehaviour
 
                 //if melee range and not in attack delay
                 else if(isMelee && !inAttack){
-                    StartCoroutine(meleeActions());
+                    Coroutine mActions = StartCoroutine(meleeActions());
                 }
 
                 //if long range and not in attack delay
@@ -177,7 +181,7 @@ public class BossManager : MonoBehaviour
                     bPathing.bossPathing();
                     //ranged delay only matters for attack actions. Should not affect movement.
                     if(rangedAllowed){
-                        StartCoroutine(rangedActions());
+                        Coroutine rActions = StartCoroutine(rangedActions());
                     }
                 }   
             }
@@ -394,6 +398,9 @@ public class BossManager : MonoBehaviour
             
             //I probably shouldn't be using inAttack for this - it causes clashes 
             while(rockThrow.currentlyTargeting){
+                if(stunned){
+                    yield break;
+                }
                 bPathing.bossPathing();
                 //inRockThrow = true;
                 //inAttack = true;
@@ -457,14 +464,11 @@ public class BossManager : MonoBehaviour
     }
 
     IEnumerator summonRocks(){
-        attackException = true;
-        inAttack = true;
+        stunTimer = spawnNewRocksTime;
+        StartCoroutine(bossStunned());
+        yield return new WaitForSeconds(spawnNewRocksTime);
         RockManager.Instance.countUnderWantedRocks = false;
         RockManager.Instance.SpawnNewRocks();
-        yield return new WaitForSeconds(spawnNewRocksTime);
-        
-        attackException = false;
-        inAttack = false;
     }
 
     private float fullRandomiser(float min, float max){
@@ -551,6 +555,18 @@ public class BossManager : MonoBehaviour
         // //damagePlayer.rageAttackModifier(); //Now handled inside damagePlayer2
         // attackException = false;
         // inAttack = false; // probs borked
+    }
+
+    IEnumerator bossStunned(){
+        stunned = true;
+        if(mActions != null){
+            StopCoroutine(mActions);
+        }
+        if(rActions != null){
+            StopCoroutine(rActions);
+        }
+        yield return new WaitForSeconds(stunTimer);
+        stunned = false;
     }
 
     public void setUpHitBoxes() 
