@@ -11,39 +11,39 @@
 	<StreamedFiles/>
 	<MediaFilesNotInAnyBank/>
 	<SoundBanks>
-		<SoundBank Id="822237696" Language="SFX" Hash="4150618684">
+		<SoundBank Id="822237696" Language="SFX" Hash="3605730541">
 			<ObjectPath>\SoundBanks\Default Work Unit\SB_Default</ObjectPath>
 			<ShortName>SB_Default</ShortName>
 			<Path>SB_Default.bnk</Path>
 			<IncludedEvents>
-				<Event Id="1496310610" Name="Ambience_Play" ObjectPath="\Events\Default Work Unit\Ambience\Ambience_Play" MaxAttenuation="0." DurationType="OneShot" DurationMin="0." DurationMax="0."/>
-				<Event Id="3166394572" Name="Ambience_Stop" ObjectPath="\Events\Default Work Unit\Ambience\Ambience_Stop" MaxAttenuation="0." DurationType="OneShot" DurationMin="0." DurationMax="0."/>
+				<Event Id="4272693058" Name="Ambience_Gameplay_Loop_Play" ObjectPath="\Events\Default Work Unit\Ambience\Ambience_Gameplay_Loop_Play" MaxAttenuation="0." DurationType="OneShot" DurationMin="0." DurationMax="0."/>
+				<Event Id="579264924" Name="Ambience_Gameplay_Loop_Stop" ObjectPath="\Events\Default Work Unit\Ambience\Ambience_Gameplay_Loop_Stop" MaxAttenuation="0." DurationType="OneShot" DurationMin="0." DurationMax="0."/>
+				<Event Id="2854117449" Name="Enemy_Boulder_Cast" ObjectPath="\Events\Default Work Unit\SFX_Enemy\Enemy_Boulder_Cast" MaxAttenuation="0." DurationType="OneShot" DurationMin="0." DurationMax="0."/>
 				<Event Id="2372917442" Name="Enemy_Boulder_Impact" ObjectPath="\Events\Default Work Unit\SFX_Enemy\Enemy_Boulder_Impact" MaxAttenuation="0." DurationType="OneShot" DurationMin="0." DurationMax="0."/>
-				<Event Id="2364205524" Name="Enemy_Boulder_Throw" ObjectPath="\Events\Default Work Unit\SFX_Enemy\Enemy_Boulder_Throw" MaxAttenuation="0." DurationType="OneShot" DurationMin="0." DurationMax="0."/>
 				<Event Id="1205999388" Name="Enemy_Death" ObjectPath="\Events\Default Work Unit\SFX_Enemy\Enemy_Death" MaxAttenuation="0." DurationType="OneShot" DurationMin="0." DurationMax="0."/>
-				<Event Id="608829557" Name="Enemy_Eruption_Burst" ObjectPath="\Events\Default Work Unit\SFX_Enemy\Enemy_Eruption_Burst" MaxAttenuation="0." DurationType="OneShot" DurationMin="0." DurationMax="0."/>
-				<Event Id="3010160010" Name="Enemy_Eruption_Slam" ObjectPath="\Events\Default Work Unit\SFX_Enemy\Enemy_Eruption_Slam" MaxAttenuation="0." DurationType="OneShot" DurationMin="0." DurationMax="0."/>
+				<Event Id="1789255036" Name="Enemy_Eruption_Cast" ObjectPath="\Events\Default Work Unit\SFX_Enemy\Enemy_Eruption_Cast" MaxAttenuation="0." DurationType="OneShot" DurationMin="0." DurationMax="0."/>
+				<Event Id="22559231" Name="Enemy_Eruption_Lava" ObjectPath="\Events\Default Work Unit\SFX_Enemy\Enemy_Eruption_Lava" MaxAttenuation="0." DurationType="OneShot" DurationMin="0." DurationMax="0."/>
 				<Event Id="3217092839" Name="Enemy_Footsteps" ObjectPath="\Events\Default Work Unit\SFX_Enemy\Enemy_Footsteps" MaxAttenuation="0." DurationType="OneShot" DurationMin="0." DurationMax="0."/>
 				<Event Id="3324595863" Name="Enemy_Melee_Overhead_Slam" ObjectPath="\Events\Default Work Unit\SFX_Enemy\Enemy_Melee_Overhead_Slam" MaxAttenuation="0." DurationType="OneShot" DurationMin="0." DurationMax="0."/>
 				<Event Id="1491778125" Name="Enemy_Melee_Right_Hook" ObjectPath="\Events\Default Work Unit\SFX_Enemy\Enemy_Melee_Right_Hook" MaxAttenuation="0." DurationType="OneShot" DurationMin="0." DurationMax="0."/>
 				<Event Id="2356404183" Name="Game_Quit" ObjectPath="\Events\Default Work Unit\Utility\Game_Quit" MaxAttenuation="0." DurationType="OneShot" DurationMin="0." DurationMax="0.">
 					<ActionPostEvent>
-						<ActionPostEventEntry Id="3166394572" Name="Ambience_Stop" ObjectPath="\Events\Default Work Unit\Ambience\Ambience_Stop"/>
-						<ActionPostEventEntry Id="3227181061" Name="Music_Stop" ObjectPath="\Events\Default Work Unit\Music\Music_Stop"/>
+						<ActionPostEventEntry Id="579264924" Name="Ambience_Gameplay_Loop_Stop" ObjectPath="\Events\Default Work Unit\Ambience\Ambience_Gameplay_Loop_Stop"/>
+						<ActionPostEventEntry Id="3114429925" Name="Music_Gameplay_Loop_Stop" ObjectPath="\Events\Default Work Unit\Music\Music_Gameplay_Loop_Stop"/>
 					</ActionPostEvent>
 				</Event>
 				<Event Id="733168346" Name="Game_Start" ObjectPath="\Events\Default Work Unit\Utility\Game_Start" MaxAttenuation="0." DurationType="OneShot" DurationMin="0." DurationMax="0.">
 					<ActionPostEvent>
-						<ActionPostEventEntry Id="202194903" Name="Music_Play" ObjectPath="\Events\Default Work Unit\Music\Music_Play"/>
-						<ActionPostEventEntry Id="1496310610" Name="Ambience_Play" ObjectPath="\Events\Default Work Unit\Ambience\Ambience_Play"/>
+						<ActionPostEventEntry Id="89443511" Name="Music_Gameplay_Loop_Play" ObjectPath="\Events\Default Work Unit\Music\Music_Gameplay_Loop_Play"/>
+						<ActionPostEventEntry Id="4272693058" Name="Ambience_Gameplay_Loop_Play" ObjectPath="\Events\Default Work Unit\Ambience\Ambience_Gameplay_Loop_Play"/>
 					</ActionPostEvent>
 				</Event>
-				<Event Id="3125733004" Name="Music_Defeat" ObjectPath="\Events\Default Work Unit\Music\Music_Defeat" MaxAttenuation="0." DurationType="OneShot" DurationMin="0." DurationMax="0.">
+				<Event Id="2515303183" Name="Music_Defeat_Stinger" ObjectPath="\Events\Default Work Unit\Music\Music_Defeat_Stinger" MaxAttenuation="0." DurationType="OneShot" DurationMin="0." DurationMax="0.">
 					<ActionTrigger>
 						<ActionTriggerEntry Id="2515303183" Name="Music_Defeat_Stinger" ObjectPath="\Triggers\Default Work Unit\Music_Defeat_Stinger"/>
 					</ActionTrigger>
 				</Event>
-				<Event Id="202194903" Name="Music_Play" ObjectPath="\Events\Default Work Unit\Music\Music_Play" DurationType="Infinite">
+				<Event Id="89443511" Name="Music_Gameplay_Loop_Play" ObjectPath="\Events\Default Work Unit\Music\Music_Gameplay_Loop_Play" DurationType="Infinite">
 					<IncludedMemoryFiles>
 						<File Id="733726628" Language="SFX">
 							<ShortName>Music_Gameplay_Loop.wav</ShortName>
@@ -51,12 +51,14 @@
 						</File>
 					</IncludedMemoryFiles>
 				</Event>
-				<Event Id="3227181061" Name="Music_Stop" ObjectPath="\Events\Default Work Unit\Music\Music_Stop" MaxAttenuation="0." DurationType="OneShot" DurationMin="0." DurationMax="0."/>
-				<Event Id="2637400697" Name="Music_Victory" ObjectPath="\Events\Default Work Unit\Music\Music_Victory" MaxAttenuation="0." DurationType="OneShot" DurationMin="0." DurationMax="0.">
+				<Event Id="3114429925" Name="Music_Gameplay_Loop_Stop" ObjectPath="\Events\Default Work Unit\Music\Music_Gameplay_Loop_Stop" MaxAttenuation="0." DurationType="OneShot" DurationMin="0." DurationMax="0."/>
+				<Event Id="2143444826" Name="Music_Victory_Stinger" ObjectPath="\Events\Default Work Unit\Music\Music_Victory_Stinger" MaxAttenuation="0." DurationType="OneShot" DurationMin="0." DurationMax="0.">
 					<ActionTrigger>
 						<ActionTriggerEntry Id="2143444826" Name="Music_Victory_Stinger" ObjectPath="\Triggers\Default Work Unit\Music_Victory_Stinger"/>
 					</ActionTrigger>
 				</Event>
+				<Event Id="2800935486" Name="Player_Attack_LtR" ObjectPath="\Events\Default Work Unit\SFX_Player\Player_Attack_LtR" MaxAttenuation="0." DurationType="OneShot" DurationMin="0." DurationMax="0."/>
+				<Event Id="3136193782" Name="Player_Attack_RtL" ObjectPath="\Events\Default Work Unit\SFX_Player\Player_Attack_RtL" MaxAttenuation="0." DurationType="OneShot" DurationMin="0." DurationMax="0."/>
 				<Event Id="2074073782" Name="Player_Damage" ObjectPath="\Events\Default Work Unit\SFX_Player\Player_Damage" MaxAttenuation="0." DurationType="OneShot" DurationMin="0." DurationMax="0."/>
 				<Event Id="385316062" Name="Player_Dodge" ObjectPath="\Events\Default Work Unit\SFX_Player\Player_Dodge" MaxAttenuation="0." DurationType="OneShot" DurationMin="0." DurationMax="0."/>
 				<Event Id="1730208058" Name="Player_Footsteps" ObjectPath="\Events\Default Work Unit\SFX_Player\Player_Footsteps" MaxAttenuation="0." DurationType="OneShot" DurationMin="0." DurationMax="0."/>
@@ -75,7 +77,7 @@
 						<ActionSetStateEntry Id="1702827601" Name="UI_Menu_On" ObjectPath="\States\Default Work Unit\UI_Menu\UI_Menu_On"/>
 					</ActionSetState>
 				</Event>
-				<Event Id="3845949122" Name="VO_Enemy_Boulder_Throw" ObjectPath="\Events\Default Work Unit\VO_Enemy\VO_Enemy_Boulder_Throw" MaxAttenuation="0." DurationType="OneShot" DurationMin="0." DurationMax="0."/>
+				<Event Id="3891019135" Name="VO_Enemy_Boulder_Cast" ObjectPath="\Events\Default Work Unit\VO_Enemy\VO_Enemy_Boulder_Cast" MaxAttenuation="0." DurationType="OneShot" DurationMin="0." DurationMax="0."/>
 				<Event Id="529689934" Name="VO_Enemy_Death" ObjectPath="\Events\Default Work Unit\VO_Enemy\VO_Enemy_Death" MaxAttenuation="0." DurationType="OneShot" DurationMin="0." DurationMax="0."/>
 				<Event Id="526936832" Name="VO_Enemy_Eruption_Slam" ObjectPath="\Events\Default Work Unit\VO_Enemy\VO_Enemy_Eruption_Slam" MaxAttenuation="0." DurationType="OneShot" DurationMin="0." DurationMax="0."/>
 				<Event Id="3234914398" Name="VO_Enemy_Idle" ObjectPath="\Events\Default Work Unit\VO_Enemy\VO_Enemy_Idle" MaxAttenuation="0." DurationType="OneShot" DurationMin="0." DurationMax="0."/>

@@ -220,7 +220,7 @@
 								</Reference>
 							</ReferenceList>
 							<ChildrenList>
-								<ActorMixer Name="Enemy_Eruption_Burst" ID="{68D66851-B2A0-40B9-87D6-97A00808907B}" ShortID="552385583">
+								<ActorMixer Name="Enemy_Eruption_Lava" ID="{68D66851-B2A0-40B9-87D6-97A00808907B}" ShortID="552385583">
 									<PropertyList>
 										<Property Name="OverrideOutput" Type="bool" Value="True"/>
 									</PropertyList>
@@ -234,7 +234,7 @@
 									</ReferenceList>
 									<ObjectLists/>
 								</ActorMixer>
-								<ActorMixer Name="Enemy_Eruption_Slam" ID="{16F6DB3A-2B20-4660-85FA-7CCE3682F369}" ShortID="29307539">
+								<ActorMixer Name="Enemy_Eruption_Cast" ID="{16F6DB3A-2B20-4660-85FA-7CCE3682F369}" ShortID="29307539">
 									<PropertyList>
 										<Property Name="OverrideOutput" Type="bool" Value="True"/>
 									</PropertyList>
@@ -262,7 +262,7 @@
 									</ReferenceList>
 									<ObjectLists/>
 								</ActorMixer>
-								<ActorMixer Name="Enemy_Boulder_Throw" ID="{8197ADDA-1098-46A2-853D-2182692B0D80}" ShortID="1037344928">
+								<ActorMixer Name="Enemy_Boulder_Cast" ID="{8197ADDA-1098-46A2-853D-2182692B0D80}" ShortID="1037344928">
 									<PropertyList>
 										<Property Name="OverrideOutput" Type="bool" Value="True"/>
 									</PropertyList>
@@ -465,7 +465,7 @@
 									</ReferenceList>
 									<ObjectLists/>
 								</RandomSequenceContainer>
-								<RandomSequenceContainer Name="VO_Enemy_Boulder_Throw" ID="{1B084ED3-BA02-40B6-93EC-5F68396F2757}" ShortID="42156140">
+								<RandomSequenceContainer Name="VO_Enemy_Boulder_Cast" ID="{1B084ED3-BA02-40B6-93EC-5F68396F2757}" ShortID="42156140">
 									<ReferenceList>
 										<Reference Name="Conversion">
 											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{E8C30435-E2EC-40B4-A911-30D289ECE001}"/>
@@ -476,7 +476,7 @@
 									</ReferenceList>
 									<ObjectLists/>
 								</RandomSequenceContainer>
-								<RandomSequenceContainer Name="VO_Enemy_Eruption_Slam" ID="{2DD9A5CF-82C5-4987-9449-E08754801E72}" ShortID="445020781">
+								<RandomSequenceContainer Name="VO_Enemy_Eruption_Cast" ID="{2DD9A5CF-82C5-4987-9449-E08754801E72}" ShortID="445020781">
 									<ReferenceList>
 										<Reference Name="Conversion">
 											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{E8C30435-E2EC-40B4-A911-30D289ECE001}"/>

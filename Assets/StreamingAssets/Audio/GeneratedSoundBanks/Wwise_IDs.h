@@ -13,22 +13,24 @@ namespace AK
 {
     namespace EVENTS
     {
-        static const AkUniqueID AMBIENCE_PLAY = 1496310610U;
-        static const AkUniqueID AMBIENCE_STOP = 3166394572U;
+        static const AkUniqueID AMBIENCE_GAMEPLAY_LOOP_PLAY = 4272693058U;
+        static const AkUniqueID AMBIENCE_GAMEPLAY_LOOP_STOP = 579264924U;
+        static const AkUniqueID ENEMY_BOULDER_CAST = 2854117449U;
         static const AkUniqueID ENEMY_BOULDER_IMPACT = 2372917442U;
-        static const AkUniqueID ENEMY_BOULDER_THROW = 2364205524U;
         static const AkUniqueID ENEMY_DEATH = 1205999388U;
-        static const AkUniqueID ENEMY_ERUPTION_BURST = 608829557U;
-        static const AkUniqueID ENEMY_ERUPTION_SLAM = 3010160010U;
+        static const AkUniqueID ENEMY_ERUPTION_CAST = 1789255036U;
+        static const AkUniqueID ENEMY_ERUPTION_LAVA = 22559231U;
         static const AkUniqueID ENEMY_FOOTSTEPS = 3217092839U;
         static const AkUniqueID ENEMY_MELEE_OVERHEAD_SLAM = 3324595863U;
         static const AkUniqueID ENEMY_MELEE_RIGHT_HOOK = 1491778125U;
         static const AkUniqueID GAME_QUIT = 2356404183U;
         static const AkUniqueID GAME_START = 733168346U;
-        static const AkUniqueID MUSIC_DEFEAT = 3125733004U;
-        static const AkUniqueID MUSIC_PLAY = 202194903U;
-        static const AkUniqueID MUSIC_STOP = 3227181061U;
-        static const AkUniqueID MUSIC_VICTORY = 2637400697U;
+        static const AkUniqueID MUSIC_DEFEAT_STINGER = 2515303183U;
+        static const AkUniqueID MUSIC_GAMEPLAY_LOOP_PLAY = 89443511U;
+        static const AkUniqueID MUSIC_GAMEPLAY_LOOP_STOP = 3114429925U;
+        static const AkUniqueID MUSIC_VICTORY_STINGER = 2143444826U;
+        static const AkUniqueID PLAYER_ATTACK_LTR = 2800935486U;
+        static const AkUniqueID PLAYER_ATTACK_RTL = 3136193782U;
         static const AkUniqueID PLAYER_DAMAGE = 2074073782U;
         static const AkUniqueID PLAYER_DODGE = 385316062U;
         static const AkUniqueID PLAYER_FOOTSTEPS = 1730208058U;
@@ -39,7 +41,7 @@ namespace AK
         static const AkUniqueID UI_HIT_INDICATOR = 396309115U;
         static const AkUniqueID UI_MENU_OFF = 537931389U;
         static const AkUniqueID UI_MENU_ON = 1702827601U;
-        static const AkUniqueID VO_ENEMY_BOULDER_THROW = 3845949122U;
+        static const AkUniqueID VO_ENEMY_BOULDER_CAST = 3891019135U;
         static const AkUniqueID VO_ENEMY_DEATH = 529689934U;
         static const AkUniqueID VO_ENEMY_ERUPTION_SLAM = 526936832U;
         static const AkUniqueID VO_ENEMY_IDLE = 3234914398U;

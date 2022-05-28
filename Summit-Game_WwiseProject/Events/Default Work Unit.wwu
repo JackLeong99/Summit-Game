@@ -6,7 +6,7 @@
 				<Folder Name="VO_Enemy" ID="{AA5CA605-952D-4DF3-901A-8A4E0B5ED499}" ShortID="148805256">
 					<ChildrenList>
 						<Event Name="VO_Enemy_Death" ID="{5545E8DE-6905-4E79-ABAD-489D3D84472C}"/>
-						<Event Name="VO_Enemy_Boulder_Throw" ID="{6F908CD5-6C6A-4027-802C-D3181F970A8D}"/>
+						<Event Name="VO_Enemy_Boulder_Cast" ID="{6F908CD5-6C6A-4027-802C-D3181F970A8D}"/>
 						<Event Name="VO_Enemy_Melee_Right_Hook" ID="{F38E0B92-7800-43E3-A5DC-DA5EB5C07B50}"/>
 						<Event Name="VO_Enemy_Idle" ID="{DE37619B-7FA1-4CA7-9399-B0147A6F5A58}"/>
 						<Event Name="VO_Enemy_Eruption_Slam" ID="{DE0E287E-92F1-42B0-8D7C-9F4A804270E2}"/>
@@ -63,15 +63,17 @@
 						<Event Name="Player_Jump" ID="{DB11DEDF-8300-4048-9912-7255ABB4B6F0}"/>
 						<Event Name="Player_Shoot_Cast" ID="{D075F07B-C26F-45FF-AEAD-421FCF7C0CD3}"/>
 						<Event Name="Player_Shoot_Impact" ID="{A5772FBD-021A-4FBF-B045-776F004E54FA}"/>
+						<Event Name="Player_Attack_LtR" ID="{0A74CC40-C8B8-489F-B710-9466EBE8E460}"/>
+						<Event Name="Player_Attack_RtL" ID="{F976F387-3AA7-4C1C-9504-18403D46F657}"/>
 					</ChildrenList>
 				</Folder>
 				<Folder Name="SFX_Enemy" ID="{82E91237-E03B-4E3C-A6FB-975481C3429E}" ShortID="319366450">
 					<ChildrenList>
 						<Event Name="Enemy_Boulder_Impact" ID="{F54A276F-B8CB-4F23-8672-E94496DBD8DB}"/>
-						<Event Name="Enemy_Boulder_Throw" ID="{8654BD1E-4638-4177-8B1E-7F02664907B0}"/>
+						<Event Name="Enemy_Boulder_Cast" ID="{8654BD1E-4638-4177-8B1E-7F02664907B0}"/>
 						<Event Name="Enemy_Death" ID="{F13368C8-FD77-4B37-ABE3-85A8F84E1F1C}"/>
-						<Event Name="Enemy_Eruption_Burst" ID="{ACC6B2C0-3861-488F-AD29-AEF1B081158D}"/>
-						<Event Name="Enemy_Eruption_Slam" ID="{7DC18506-63C0-4A28-9E16-AFE01CBABCC4}"/>
+						<Event Name="Enemy_Eruption_Lava" ID="{ACC6B2C0-3861-488F-AD29-AEF1B081158D}"/>
+						<Event Name="Enemy_Eruption_Cast" ID="{7DC18506-63C0-4A28-9E16-AFE01CBABCC4}"/>
 						<Event Name="Enemy_Footsteps" ID="{A586E71B-DCE7-4DB0-BD95-FE5B3566D715}"/>
 						<Event Name="Enemy_Melee_Overhead_Slam" ID="{5F2950B8-3D2C-46C1-AD72-9D1419691931}"/>
 						<Event Name="Enemy_Melee_Right_Hook" ID="{560B1CFC-1AA9-4643-9019-AC94799A9634}"/>
@@ -79,7 +81,7 @@
 				</Folder>
 				<Folder Name="Music" ID="{BDA7C5CC-EC62-4F5A-A205-2EADC017DDA1}" ShortID="168306223">
 					<ChildrenList>
-						<Event Name="Music_Play" ID="{8D7A0E39-2237-4F81-A0E3-88B5B03CEAE0}">
+						<Event Name="Music_Gameplay_Loop_Play" ID="{8D7A0E39-2237-4F81-A0E3-88B5B03CEAE0}">
 							<ChildrenList>
 								<Action Name="" ID="{9D752F8D-BBFA-48FE-AE38-8DFFEB019421}" ShortID="998047666">
 									<PropertyList>
@@ -94,7 +96,7 @@
 								</Action>
 							</ChildrenList>
 						</Event>
-						<Event Name="Music_Stop" ID="{CA63EA6B-D6E3-4613-A082-B5BD14F4F86D}">
+						<Event Name="Music_Gameplay_Loop_Stop" ID="{CA63EA6B-D6E3-4613-A082-B5BD14F4F86D}">
 							<ChildrenList>
 								<Action Name="" ID="{AB31D1FA-86B6-4F50-9B32-DB990F7F473A}" ShortID="862890487">
 									<PropertyList>
@@ -111,7 +113,7 @@
 								</Action>
 							</ChildrenList>
 						</Event>
-						<Event Name="Music_Victory" ID="{DE8AA511-1211-481E-9D05-03C21BCCC17A}">
+						<Event Name="Music_Victory_Stinger" ID="{DE8AA511-1211-481E-9D05-03C21BCCC17A}">
 							<ChildrenList>
 								<Action Name="" ID="{B8343A7A-7D44-4B82-86F6-F7776184E7F9}" ShortID="776741436">
 									<PropertyList>
@@ -125,7 +127,7 @@
 								</Action>
 							</ChildrenList>
 						</Event>
-						<Event Name="Music_Defeat" ID="{029BC194-9134-4C89-91B9-B93C7AE645F9}">
+						<Event Name="Music_Defeat_Stinger" ID="{029BC194-9134-4C89-91B9-B93C7AE645F9}">
 							<ChildrenList>
 								<Action Name="" ID="{8E1C0F67-9EA1-4676-AF19-BC63F5F5DD21}" ShortID="173637250">
 									<PropertyList>
@@ -143,7 +145,7 @@
 				</Folder>
 				<Folder Name="Ambience" ID="{041DBBEE-9819-48DD-95E6-900C4743945A}" ShortID="335882148">
 					<ChildrenList>
-						<Event Name="Ambience_Stop" ID="{13FBB1CE-79FA-4433-B297-2E18F66653EF}">
+						<Event Name="Ambience_Gameplay_Loop_Stop" ID="{13FBB1CE-79FA-4433-B297-2E18F66653EF}">
 							<ChildrenList>
 								<Action Name="" ID="{46C85BE4-5BC6-4A9C-89E7-9042D47383EF}" ShortID="469070937">
 									<PropertyList>
@@ -156,7 +158,7 @@
 								</Action>
 							</ChildrenList>
 						</Event>
-						<Event Name="Ambience_Play" ID="{8AF593ED-934B-4BF9-AAB8-7D512B5923A2}">
+						<Event Name="Ambience_Gameplay_Loop_Play" ID="{8AF593ED-934B-4BF9-AAB8-7D512B5923A2}">
 							<ChildrenList>
 								<Action Name="" ID="{B6E4A5AE-9061-495B-BDB7-23649043FAB0}" ShortID="1025510392">
 									<PropertyList>
@@ -178,7 +180,7 @@
 									</PropertyList>
 									<ReferenceList>
 										<Reference Name="Target">
-											<ObjectRef Name="Music_Play" ID="{8D7A0E39-2237-4F81-A0E3-88B5B03CEAE0}" WorkUnitID="{D766E073-EB63-4307-880C-934EBF9C0137}"/>
+											<ObjectRef Name="Music_Gameplay_Loop_Play" ID="{8D7A0E39-2237-4F81-A0E3-88B5B03CEAE0}" WorkUnitID="{D766E073-EB63-4307-880C-934EBF9C0137}"/>
 										</Reference>
 									</ReferenceList>
 								</Action>
@@ -188,7 +190,7 @@
 									</PropertyList>
 									<ReferenceList>
 										<Reference Name="Target">
-											<ObjectRef Name="Ambience_Play" ID="{8AF593ED-934B-4BF9-AAB8-7D512B5923A2}" WorkUnitID="{D766E073-EB63-4307-880C-934EBF9C0137}"/>
+											<ObjectRef Name="Ambience_Gameplay_Loop_Play" ID="{8AF593ED-934B-4BF9-AAB8-7D512B5923A2}" WorkUnitID="{D766E073-EB63-4307-880C-934EBF9C0137}"/>
 										</Reference>
 									</ReferenceList>
 								</Action>
@@ -202,7 +204,7 @@
 									</PropertyList>
 									<ReferenceList>
 										<Reference Name="Target">
-											<ObjectRef Name="Music_Stop" ID="{CA63EA6B-D6E3-4613-A082-B5BD14F4F86D}" WorkUnitID="{D766E073-EB63-4307-880C-934EBF9C0137}"/>
+											<ObjectRef Name="Music_Gameplay_Loop_Stop" ID="{CA63EA6B-D6E3-4613-A082-B5BD14F4F86D}" WorkUnitID="{D766E073-EB63-4307-880C-934EBF9C0137}"/>
 										</Reference>
 									</ReferenceList>
 								</Action>
@@ -212,7 +214,7 @@
 									</PropertyList>
 									<ReferenceList>
 										<Reference Name="Target">
-											<ObjectRef Name="Ambience_Stop" ID="{13FBB1CE-79FA-4433-B297-2E18F66653EF}" WorkUnitID="{D766E073-EB63-4307-880C-934EBF9C0137}"/>
+											<ObjectRef Name="Ambience_Gameplay_Loop_Stop" ID="{13FBB1CE-79FA-4433-B297-2E18F66653EF}" WorkUnitID="{D766E073-EB63-4307-880C-934EBF9C0137}"/>
 										</Reference>
 									</ReferenceList>
 								</Action>
