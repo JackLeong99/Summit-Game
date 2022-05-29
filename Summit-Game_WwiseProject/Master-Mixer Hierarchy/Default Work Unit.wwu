@@ -111,7 +111,7 @@
 											<PropertyList>
 												<Property Name="BusVolume" Type="Real64">
 													<ValueList>
-														<Value>-18</Value>
+														<Value>-24</Value>
 													</ValueList>
 												</Property>
 											</PropertyList>
@@ -207,6 +207,8 @@
 														<Value>-9</Value>
 													</ValueList>
 												</Property>
+												<Property Name="Color" Type="int16" Value="10"/>
+												<Property Name="OverrideColor" Type="bool" Value="True"/>
 												<Property Name="UserAuxSendVolume0" Type="Real64">
 													<ValueList>
 														<Value>-6</Value>
@@ -231,7 +233,6 @@
 													</ValueList>
 												</Property>
 												<Property Name="Color" Type="int16" Value="10"/>
-												<Property Name="OverrideColor" Type="bool" Value="True"/>
 											</PropertyList>
 											<ReferenceList>
 												<Reference Name="UserAuxSend0">
@@ -263,7 +264,6 @@
 													</ValueList>
 												</Property>
 											</PropertyList>
-											<ReferenceList/>
 											<ObjectLists/>
 										</Bus>
 										<Bus Name="UI_Hit_Indicator" ID="{2BCAC49C-E0D6-4A9B-8C97-33322A0FFEA3}">
@@ -308,12 +308,15 @@
 											<ObjectLists/>
 										</Bus>
 										<Bus Name="Enemy_Eruption_Cast" ID="{63B3A5DD-3BBC-4988-A061-CDE4051C555A}">
+											<Comment>-6</Comment>
 											<PropertyList>
 												<Property Name="BusVolume" Type="Real64">
 													<ValueList>
-														<Value>-6</Value>
+														<Value>12</Value>
 													</ValueList>
 												</Property>
+												<Property Name="Color" Type="int16" Value="10"/>
+												<Property Name="OverrideColor" Type="bool" Value="True"/>
 											</PropertyList>
 											<ReferenceList>
 												<Reference Name="UserAuxSend0">
@@ -323,10 +326,11 @@
 											<ObjectLists/>
 										</Bus>
 										<Bus Name="Enemy_Boulder_Cast" ID="{74260371-841D-44C5-AE54-27ED43319B04}">
+											<Comment>7.5</Comment>
 											<PropertyList>
 												<Property Name="BusVolume" Type="Real64">
 													<ValueList>
-														<Value>-7.5</Value>
+														<Value>-9</Value>
 													</ValueList>
 												</Property>
 											</PropertyList>

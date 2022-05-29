@@ -11,7 +11,7 @@
 	<StreamedFiles/>
 	<MediaFilesNotInAnyBank/>
 	<SoundBanks>
-		<SoundBank Id="822237696" Language="SFX" Hash="1989194630">
+		<SoundBank Id="822237696" Language="SFX" Hash="1898661968">
 			<ObjectPath>\SoundBanks\Default Work Unit\SB_Default</ObjectPath>
 			<ShortName>SB_Default</ShortName>
 			<Path>SB_Default.bnk</Path>
@@ -29,7 +29,7 @@
 					</IncludedMemoryFiles>
 				</Event>
 				<Event Id="4072408949" Name="Ambience_Loop_Stop" ObjectPath="\Events\Default Work Unit\Ambience\Ambience_Loop_Stop" MaxAttenuation="0." DurationType="OneShot" DurationMin="0." DurationMax="0."/>
-				<Event Id="2854117449" Name="Enemy_Boulder_Cast" ObjectPath="\Events\Default Work Unit\SFX_Enemy\Enemy_Boulder_Cast" MaxAttenuation="100." DurationType="OneShot" DurationMin="3.5" DurationMax="3.5">
+				<Event Id="2854117449" Name="Enemy_Boulder_Cast" ObjectPath="\Events\Default Work Unit\SFX_Enemy\Enemy_Boulder_Cast" MaxAttenuation="200." DurationType="OneShot" DurationMin="3.400362" DurationMax="3.602558">
 					<IncludedMemoryFiles>
 						<File Id="233223795" Language="SFX">
 							<ShortName>Enemy_Boulder_Cast.wav</ShortName>
@@ -37,7 +37,7 @@
 						</File>
 					</IncludedMemoryFiles>
 				</Event>
-				<Event Id="2372917442" Name="Enemy_Boulder_Impact" ObjectPath="\Events\Default Work Unit\SFX_Enemy\Enemy_Boulder_Impact" MaxAttenuation="100." DurationType="OneShot" DurationMin="2." DurationMax="2.">
+				<Event Id="2372917442" Name="Enemy_Boulder_Impact" ObjectPath="\Events\Default Work Unit\SFX_Enemy\Enemy_Boulder_Impact" MaxAttenuation="200." DurationType="OneShot" DurationMin="1.943064" DurationMax="2.058604">
 					<IncludedMemoryFiles>
 						<File Id="498824251" Language="SFX">
 							<ShortName>Enemy_Boulder_Impact.wav</ShortName>
@@ -45,7 +45,7 @@
 						</File>
 					</IncludedMemoryFiles>
 				</Event>
-				<Event Id="555067025" Name="Enemy_Damage" ObjectPath="\Events\Default Work Unit\SFX_Enemy\Enemy_Damage" MaxAttenuation="100." DurationType="OneShot" DurationMin="1.5" DurationMax="1.5">
+				<Event Id="555067025" Name="Enemy_Damage" ObjectPath="\Events\Default Work Unit\SFX_Enemy\Enemy_Damage" MaxAttenuation="200." DurationType="OneShot" DurationMin="1.457298" DurationMax="1.543953">
 					<IncludedMemoryFiles>
 						<File Id="479541808" Language="SFX">
 							<ShortName>Enemy_Damage-003.wav</ShortName>
@@ -81,7 +81,7 @@
 						</File>
 					</IncludedMemoryFiles>
 				</Event>
-				<Event Id="22559231" Name="Enemy_Eruption_Lava" ObjectPath="\Events\Default Work Unit\SFX_Enemy\Enemy_Eruption_Lava" MaxAttenuation="100." DurationType="OneShot" DurationMin="2.5" DurationMax="2.5">
+				<Event Id="22559231" Name="Enemy_Eruption_Lava" ObjectPath="\Events\Default Work Unit\SFX_Enemy\Enemy_Eruption_Lava" MaxAttenuation="200." DurationType="OneShot" DurationMin="2.42883" DurationMax="2.573256">
 					<IncludedMemoryFiles>
 						<File Id="80263160" Language="SFX">
 							<ShortName>Enemy_Eruption_Lava.wav</ShortName>
@@ -89,7 +89,7 @@
 						</File>
 					</IncludedMemoryFiles>
 				</Event>
-				<Event Id="3324595863" Name="Enemy_Melee_Overhead_Slam" ObjectPath="\Events\Default Work Unit\SFX_Enemy\Enemy_Melee_Overhead_Slam" MaxAttenuation="100." DurationType="OneShot" DurationMin="3." DurationMax="3.">
+				<Event Id="3324595863" Name="Enemy_Melee_Overhead_Slam" ObjectPath="\Events\Default Work Unit\SFX_Enemy\Enemy_Melee_Overhead_Slam" MaxAttenuation="200." DurationType="OneShot" DurationMin="2.914596" DurationMax="3.087907">
 					<IncludedMemoryFiles>
 						<File Id="873577496" Language="SFX">
 							<ShortName>Enemy_Melee_Overhead_Slam.wav</ShortName>
@@ -97,7 +97,7 @@
 						</File>
 					</IncludedMemoryFiles>
 				</Event>
-				<Event Id="1491778125" Name="Enemy_Melee_Right_Hook" ObjectPath="\Events\Default Work Unit\SFX_Enemy\Enemy_Melee_Right_Hook" MaxAttenuation="100." DurationType="OneShot" DurationMin="3." DurationMax="3.">
+				<Event Id="1491778125" Name="Enemy_Melee_Right_Hook" ObjectPath="\Events\Default Work Unit\SFX_Enemy\Enemy_Melee_Right_Hook" MaxAttenuation="200." DurationType="OneShot" DurationMin="2.914596" DurationMax="3.087907">
 					<IncludedMemoryFiles>
 						<File Id="185763027" Language="SFX">
 							<ShortName>Enemy_Melee_Right_Hook.wav</ShortName>
@@ -145,7 +145,7 @@
 						</File>
 					</IncludedMemoryFiles>
 				</Event>
-				<Event Id="2824512041" Name="Player_Attack" ObjectPath="\Events\Default Work Unit\SFX_Player\Player_Attack" DurationType="OneShot" DurationMin="1.141" DurationMax="1.141">
+				<Event Id="2824512041" Name="Player_Attack" ObjectPath="\Events\Default Work Unit\SFX_Player\Player_Attack" DurationType="OneShot" DurationMin="1.108518" DurationMax="1.174434">
 					<IncludedMemoryFiles>
 						<File Id="112315733" Language="SFX">
 							<ShortName>Player_Attack-001.wav</ShortName>
@@ -161,7 +161,7 @@
 						</File>
 					</IncludedMemoryFiles>
 				</Event>
-				<Event Id="2074073782" Name="Player_Damage" ObjectPath="\Events\Default Work Unit\SFX_Player\Player_Damage" DurationType="OneShot" DurationMin="1." DurationMax="1.">
+				<Event Id="2074073782" Name="Player_Damage" ObjectPath="\Events\Default Work Unit\SFX_Player\Player_Damage" DurationType="OneShot" DurationMin="0.971532" DurationMax="1.029302">
 					<IncludedMemoryFiles>
 						<File Id="93931633" Language="SFX">
 							<ShortName>Player_Damage.wav</ShortName>
@@ -169,15 +169,8 @@
 						</File>
 					</IncludedMemoryFiles>
 				</Event>
-				<Event Id="3083087645" Name="Player_Death" ObjectPath="\Events\Default Work Unit\SFX_Player\Player_Death" DurationType="OneShot" DurationMin="3." DurationMax="3.">
-					<IncludedMemoryFiles>
-						<File Id="766948895" Language="SFX">
-							<ShortName>Player_Death.wav</ShortName>
-							<Path>SFX\Player_Death_10C4C929.wem</Path>
-						</File>
-					</IncludedMemoryFiles>
-				</Event>
-				<Event Id="385316062" Name="Player_Dodge" ObjectPath="\Events\Default Work Unit\SFX_Player\Player_Dodge" DurationType="OneShot" DurationMin="2." DurationMax="2.">
+				<Event Id="3083087645" Name="Player_Death" ObjectPath="\Events\Default Work Unit\SFX_Player\Player_Death" MaxAttenuation="0." DurationType="OneShot" DurationMin="0." DurationMax="0."/>
+				<Event Id="385316062" Name="Player_Dodge" ObjectPath="\Events\Default Work Unit\SFX_Player\Player_Dodge" DurationType="OneShot" DurationMin="1.971326" DurationMax="2.029091">
 					<IncludedMemoryFiles>
 						<File Id="644564255" Language="SFX">
 							<ShortName>Player_Dodge.wav</ShortName>
@@ -185,7 +178,7 @@
 						</File>
 					</IncludedMemoryFiles>
 				</Event>
-				<Event Id="1305133589" Name="Player_Jump" ObjectPath="\Events\Default Work Unit\SFX_Player\Player_Jump" DurationType="OneShot" DurationMin="0.5" DurationMax="0.5">
+				<Event Id="1305133589" Name="Player_Jump" ObjectPath="\Events\Default Work Unit\SFX_Player\Player_Jump" DurationType="OneShot" DurationMin="0.492832" DurationMax="0.507273">
 					<IncludedMemoryFiles>
 						<File Id="681125824" Language="SFX">
 							<ShortName>Player_Jump-002.wav</ShortName>
@@ -205,7 +198,7 @@
 						</File>
 					</IncludedMemoryFiles>
 				</Event>
-				<Event Id="3629196698" Name="Player_Land" ObjectPath="\Events\Default Work Unit\SFX_Player\Player_Land" DurationType="OneShot" DurationMin="0.5" DurationMax="0.5">
+				<Event Id="3629196698" Name="Player_Land" ObjectPath="\Events\Default Work Unit\SFX_Player\Player_Land" DurationType="OneShot" DurationMin="0.492832" DurationMax="0.507273">
 					<IncludedMemoryFiles>
 						<File Id="280217797" Language="SFX">
 							<ShortName>Player_Land-003.wav</ShortName>
@@ -225,7 +218,7 @@
 						</File>
 					</IncludedMemoryFiles>
 				</Event>
-				<Event Id="3192392001" Name="Player_Shoot_Charge" ObjectPath="\Events\Default Work Unit\SFX_Player\Player_Shoot_Charge" DurationType="OneShot" DurationMin="0.809708" DurationMax="0.809708">
+				<Event Id="3192392001" Name="Player_Shoot_Charge" ObjectPath="\Events\Default Work Unit\SFX_Player\Player_Shoot_Charge" DurationType="OneShot" DurationMin="0.786658" DurationMax="0.833435">
 					<IncludedMemoryFiles>
 						<File Id="445846783" Language="SFX">
 							<ShortName>Player_Shoot_Charge.wav</ShortName>
@@ -233,7 +226,7 @@
 						</File>
 					</IncludedMemoryFiles>
 				</Event>
-				<Event Id="190633557" Name="Player_Shoot_Fire" ObjectPath="\Events\Default Work Unit\SFX_Player\Player_Shoot_Fire" DurationType="OneShot" DurationMin="1.725" DurationMax="1.725">
+				<Event Id="190633557" Name="Player_Shoot_Fire" ObjectPath="\Events\Default Work Unit\SFX_Player\Player_Shoot_Fire" DurationType="OneShot" DurationMin="1.675893" DurationMax="1.775546">
 					<IncludedMemoryFiles>
 						<File Id="720235996" Language="SFX">
 							<ShortName>Player_Shoot_Fire.wav</ShortName>
@@ -241,7 +234,7 @@
 						</File>
 					</IncludedMemoryFiles>
 				</Event>
-				<Event Id="1650805379" Name="Player_Shoot_Impact" ObjectPath="\Events\Default Work Unit\SFX_Player\Player_Shoot_Impact" MaxAttenuation="100." DurationType="OneShot" DurationMin="1." DurationMax="1.">
+				<Event Id="1650805379" Name="Player_Shoot_Impact" ObjectPath="\Events\Default Work Unit\SFX_Player\Player_Shoot_Impact" MaxAttenuation="200." DurationType="OneShot" DurationMin="0.985663" DurationMax="1.014545">
 					<IncludedMemoryFiles>
 						<File Id="18236720" Language="SFX">
 							<ShortName>Player_Shoot_Impact.wav</ShortName>
@@ -257,7 +250,7 @@
 						</File>
 					</IncludedMemoryFiles>
 				</Event>
-				<Event Id="396309115" Name="UI_Hit_Indicator" ObjectPath="\Events\Default Work Unit\SFX_UI\UI_Hit_Indicator" DurationType="OneShot" DurationMin="1." DurationMax="1.">
+				<Event Id="396309115" Name="UI_Hit_Indicator" ObjectPath="\Events\Default Work Unit\SFX_UI\UI_Hit_Indicator" DurationType="OneShot" DurationMin="0.985663" DurationMax="1.014545">
 					<IncludedMemoryFiles>
 						<File Id="295245601" Language="SFX">
 							<ShortName>UI_Hit_Indicator.wav</ShortName>
@@ -291,7 +284,7 @@
 				</StateGroup>
 			</StateGroups>
 		</SoundBank>
-		<SoundBank Id="1355168291" Language="SFX" Hash="1109293306">
+		<SoundBank Id="1355168291" Language="SFX" Hash="809267429">
 			<ObjectPath>Init</ObjectPath>
 			<ShortName>Init</ShortName>
 			<Path>Init.bnk</Path>

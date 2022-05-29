@@ -144,8 +144,19 @@
 							</ChildrenList>
 						</Event>
 						<Event Name="Player_Death" ID="{956331FC-CA7D-422F-B239-D4736CF6F6B3}">
+							<PropertyList>
+								<Property Name="Color" Type="int16" Value="10"/>
+								<Property Name="OverrideColor" Type="bool" Value="True"/>
+							</PropertyList>
 							<ChildrenList>
 								<Action Name="" ID="{AC04DA14-C295-49C8-A9BA-A392430F3528}" ShortID="214404936">
+									<PropertyList>
+										<Property Name="Inclusion" Type="bool">
+											<ValueList>
+												<Value>False</Value>
+											</ValueList>
+										</Property>
+									</PropertyList>
 									<ReferenceList>
 										<Reference Name="Target">
 											<ObjectRef Name="Player_Death" ID="{87F75F6E-92B0-49DD-B6E4-FDF5EADCC708}" WorkUnitID="{E04425B8-B8A4-408A-8BD1-4D908BCEE44F}"/>
@@ -214,6 +225,10 @@
 							</ChildrenList>
 						</Event>
 						<Event Name="Enemy_Eruption_Cast" ID="{7DC18506-63C0-4A28-9E16-AFE01CBABCC4}">
+							<PropertyList>
+								<Property Name="Color" Type="int16" Value="10"/>
+								<Property Name="OverrideColor" Type="bool" Value="True"/>
+							</PropertyList>
 							<ChildrenList>
 								<Action Name="" ID="{9FFA0B1F-1328-4F31-9B48-93F927138ED6}" ShortID="948139597">
 									<ReferenceList>
