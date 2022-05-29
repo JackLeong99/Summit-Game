@@ -1019,16 +1019,17 @@ MonoBehaviour:
   currentPatience: 0
   attackException: 0
   rage: 0
-  rageSpeed: 0
+  rageSpeed: 10
   rageAttackMultiplier: 0
   lastMove: 
   lastMoveRepeated: 0
-  scuffedShockTimer: 0
+  scuffedShockTimer: 0.75
   maxHP: 1000
   currentHP: 0
-  spawnRocksNumber: 5
-  spawnNewRocksTime: 5
+  spawnRocksNumber: 3
+  spawnNewRocksTime: 7
   stunned: 0
+  gunStunDuration: 3
 --- !u!54 &311172964
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -3847,7 +3848,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.7786885, y: 1}
+    m_SensorSize: {x: 1.9686098, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
