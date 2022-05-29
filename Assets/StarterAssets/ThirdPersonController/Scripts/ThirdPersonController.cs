@@ -113,6 +113,8 @@ namespace StarterAssets
 
 		private AutoAttack attack;
 
+		private bool isAirborn;
+
 		//End Custom
 
 		private void Awake()
@@ -143,6 +145,22 @@ namespace StarterAssets
 
 		private void Update()
 		{
+			//https://forum.unity.com/threads/checking-if-character-landed-after-jumping-tutorial.605275/
+			//The people on the internet have big brain
+			if (!Grounded)
+			{
+				if (!isAirborn) isAirborn = !isAirborn;
+				// stuff
+			}
+			else
+			{
+				if (isAirborn)
+				{
+					AkSoundEngine.PostEvent("Player_Land", gameObject);
+					isAirborn = false;
+				}
+			}
+
 			if (shooting.casting || attack.isAttacking)
 			{
 				_Inactionable = true;
