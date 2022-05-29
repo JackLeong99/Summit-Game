@@ -103,17 +103,11 @@
 											</PropertyList>
 											<ObjectLists/>
 										</Bus>
-										<Bus Name="Player_Footsteps" ID="{D48FA979-A6FF-4F51-ADFA-22BF2F442022}">
-											<ObjectLists/>
-										</Bus>
-										<Bus Name="Player_Attack_LtR" ID="{4FE55A1B-0BC4-4D83-822E-285EBC2584C2}">
+										<Bus Name="Player_Attack" ID="{4FE55A1B-0BC4-4D83-822E-285EBC2584C2}">
 											<ObjectLists/>
 										</Bus>
 										<Bus Name="Player_Shoot_Impact" ID="{6126A72E-6067-45EC-AFD0-CA1D64861632}">
 											<ReferenceList/>
-											<ObjectLists/>
-										</Bus>
-										<Bus Name="Player_Attack_RtL" ID="{C14E2D8D-32CC-4DF2-BA54-3BD6BEB16535}">
 											<ObjectLists/>
 										</Bus>
 										<Bus Name="Player_Shoot_Fire" ID="{1826B061-0024-4BD0-875D-D0C39243A09F}">
@@ -126,14 +120,22 @@
 											</PropertyList>
 											<ObjectLists/>
 										</Bus>
+										<Bus Name="Player_Death" ID="{4B2D6252-E140-489A-978A-C0BD5E09C53C}">
+											<ReferenceList>
+												<Reference Name="Effect0" PluginName="Wwise Meter" CompanyID="0" PluginID="129" PluginType="3">
+													<ObjectRef Name="Wwise_Meter_SFX_Sidechain" ID="{F703D923-283A-45F3-A276-670CC07CB003}" WorkUnitID="{B0EB1BF1-35D5-48DA-95BE-B0BBE3A101E3}"/>
+												</Reference>
+											</ReferenceList>
+											<ObjectLists/>
+										</Bus>
+										<Bus Name="Player_Land" ID="{94586DE8-60AF-43C7-82A4-7D9D0F510BCE}">
+											<ObjectLists/>
+										</Bus>
 									</ChildrenList>
 									<ObjectLists/>
 								</Bus>
 								<Bus Name="SFX_UI" ID="{A7A184CE-C0C2-4733-AADA-5716F603C6E6}">
 									<ChildrenList>
-										<Bus Name="UI_Menu_Close" ID="{0CA0B844-27F3-440A-8419-41A30CFAD25F}">
-											<ObjectLists/>
-										</Bus>
 										<Bus Name="UI_Menu_Open" ID="{E8C56DB8-CC86-465A-B1F2-B9CE42712AA2}">
 											<ObjectLists/>
 										</Bus>
@@ -169,9 +171,6 @@
 											</ReferenceList>
 											<ObjectLists/>
 										</Bus>
-										<Bus Name="Enemy_Footsteps" ID="{D06C39D1-6A4A-4F4A-BFCA-DF5FB1082C5B}">
-											<ObjectLists/>
-										</Bus>
 										<Bus Name="Enemy_Boulder_Throw" ID="{74260371-841D-44C5-AE54-27ED43319B04}">
 											<ObjectLists/>
 										</Bus>
@@ -198,6 +197,9 @@
 											<ObjectLists/>
 										</Bus>
 										<Bus Name="Enemy_Damage" ID="{FC236D90-F0AE-488C-BBFD-D60BEC03A875}">
+											<ObjectLists/>
+										</Bus>
+										<Bus Name="Enemy_Dash" ID="{206802AC-796B-4525-B059-0427851E8061}">
 											<ObjectLists/>
 										</Bus>
 									</ChildrenList>
@@ -306,9 +308,6 @@
 									<ReferenceList>
 										<Reference Name="Effect0" PluginName="Wwise Parametric EQ" CompanyID="0" PluginID="105" PluginType="3">
 											<ObjectRef Name="EQ_Music_Sidechain" ID="{F6D423E4-942A-4B23-A88A-E80F23A15B7F}" WorkUnitID="{B0EB1BF1-35D5-48DA-95BE-B0BBE3A101E3}"/>
-										</Reference>
-										<Reference Name="Effect1" PluginName="Wwise Parametric EQ" CompanyID="0" PluginID="105" PluginType="3">
-											<ObjectRef Name="EQ_VO_Sidechain" ID="{36D88552-292A-47AA-B6B8-7F75E2CD2C2D}" WorkUnitID="{B0EB1BF1-35D5-48DA-95BE-B0BBE3A101E3}"/>
 										</Reference>
 									</ReferenceList>
 									<StateInfo>
@@ -508,9 +507,6 @@
 										</Property>
 									</PropertyList>
 									<ReferenceList>
-										<Reference Name="Effect0" PluginName="Wwise Parametric EQ" CompanyID="0" PluginID="105" PluginType="3">
-											<ObjectRef Name="EQ_VO_Sidechain" ID="{36D88552-292A-47AA-B6B8-7F75E2CD2C2D}" WorkUnitID="{B0EB1BF1-35D5-48DA-95BE-B0BBE3A101E3}"/>
-										</Reference>
 										<Reference Name="Effect1" PluginName="Wwise Meter" CompanyID="0" PluginID="129" PluginType="3">
 											<ObjectRef Name="Wwise_Meter_Music_Sidechain" ID="{16CCA855-6656-4DB7-A047-66E9CE5581EF}" WorkUnitID="{B0EB1BF1-35D5-48DA-95BE-B0BBE3A101E3}"/>
 										</Reference>
@@ -560,52 +556,6 @@
 									</CustomState>
 								</CustomStateList>
 							</StateInfo>
-							<ObjectLists/>
-						</Bus>
-						<Bus Name="Master VO" ID="{67A24B7D-E714-4C2D-A3AC-142EF4E22A46}">
-							<PropertyList>
-								<Property Name="OutputBusVolume" Type="Real64">
-									<RTPCList>
-										<RTPC Name="" ID="{2B733BF0-29C8-4187-AB8C-0AC8DB072599}" ShortID="862477385">
-											<ReferenceList>
-												<Reference Name="ControlInput">
-													<ObjectRef Name="Volume_Voice" ID="{895B8373-E2A3-48B3-A912-705AB525A319}" WorkUnitID="{32AE5A4D-16DF-49F3-A117-4472F3B36DF9}"/>
-												</Reference>
-											</ReferenceList>
-											<Curve Name="" ID="{0105925E-E8DB-425C-B6AC-20B5E5AFA2F5}">
-												<PropertyList>
-													<Property Name="Flags" Type="int32" Value="3"/>
-												</PropertyList>
-												<PointList>
-													<Point>
-														<XPos>0</XPos>
-														<YPos>-200</YPos>
-														<Flags>5</Flags>
-													</Point>
-													<Point>
-														<XPos>100</XPos>
-														<YPos>0</YPos>
-														<Flags>37</Flags>
-													</Point>
-												</PointList>
-											</Curve>
-										</RTPC>
-									</RTPCList>
-								</Property>
-							</PropertyList>
-							<ChildrenList>
-								<Bus Name="VO_Player" ID="{D0ECB003-D7E0-4A27-B390-025DE8247F12}">
-									<ReferenceList>
-										<Reference Name="Effect0" PluginName="Wwise Meter" CompanyID="0" PluginID="129" PluginType="3">
-											<ObjectRef Name="Wwise_Meter_VO_Sidechain" ID="{C4BCFB8C-3FFF-483C-8157-1E7E2A2CCD55}" WorkUnitID="{B0EB1BF1-35D5-48DA-95BE-B0BBE3A101E3}"/>
-										</Reference>
-									</ReferenceList>
-									<ObjectLists/>
-								</Bus>
-								<Bus Name="VO_Enemy" ID="{F4776E74-36D3-43BE-BC0F-5F7C9C9A3A0E}">
-									<ObjectLists/>
-								</Bus>
-							</ChildrenList>
 							<ObjectLists/>
 						</Bus>
 					</ChildrenList>

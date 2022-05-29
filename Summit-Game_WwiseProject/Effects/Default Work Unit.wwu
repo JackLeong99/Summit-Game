@@ -13,52 +13,6 @@
 	<GameParameter Name="SFX_Sidechain" ID="{45C328E2-1B4A-4C91-93FE-F4FBFBE35408}"/>
 </PluginData>
 				</Effect>
-				<Effect Name="Wwise_Meter_VO_Sidechain" ID="{C4BCFB8C-3FFF-483C-8157-1E7E2A2CCD55}" PluginName="Wwise Meter" CompanyID="0" PluginID="129" PluginType="3">
-					<PropertyList>
-						<Property Name="AttackTime" Type="Real32" Value="0.1"/>
-						<Property Name="MeterMode" Type="int32" Value="1"/>
-						<Property Name="ReleaseTime" Type="Real32" Value="0.5"/>
-					</PropertyList>
-					<PluginData>
-	<GameParameter Name="VO_Sidechain" ID="{97944447-E1BA-410F-A359-6C9FE04CFCF4}"/>
-</PluginData>
-				</Effect>
-				<Effect Name="EQ_VO_Sidechain" ID="{36D88552-292A-47AA-B6B8-7F75E2CD2C2D}" PluginName="Wwise Parametric EQ" CompanyID="0" PluginID="105" PluginType="3">
-					<PropertyList>
-						<Property Name="GainBand2" Type="Real32">
-							<RTPCList>
-								<RTPC Name="" ID="{8AFD6B67-6EAF-4E82-850B-0C51F481F847}" ShortID="753221361">
-									<ReferenceList>
-										<Reference Name="ControlInput">
-											<ObjectRef Name="VO_Sidechain" ID="{97944447-E1BA-410F-A359-6C9FE04CFCF4}" WorkUnitID="{32AE5A4D-16DF-49F3-A117-4472F3B36DF9}"/>
-										</Reference>
-									</ReferenceList>
-									<Curve Name="" ID="{5DF905DD-A1A5-40C2-8F3A-C5C99FC6DDA5}">
-										<PropertyList>
-											<Property Name="Flags" Type="int32" Value="3"/>
-										</PropertyList>
-										<PointList>
-											<Point>
-												<XPos>-48</XPos>
-												<YPos>0</YPos>
-												<Flags>5</Flags>
-												<SegmentShape>Log1</SegmentShape>
-											</Point>
-											<Point>
-												<XPos>0</XPos>
-												<YPos>-12</YPos>
-												<Flags>37</Flags>
-											</Point>
-										</PointList>
-									</Curve>
-								</RTPC>
-							</RTPCList>
-						</Property>
-						<Property Name="OnOffBand1" Type="bool" Value="False"/>
-						<Property Name="OnOffBand3" Type="bool" Value="False"/>
-						<Property Name="QFactorBand2" Type="Real32" Value="0.5"/>
-					</PropertyList>
-				</Effect>
 				<Effect Name="Wwise_Meter_Music_Sidechain" ID="{16CCA855-6656-4DB7-A047-66E9CE5581EF}" PluginName="Wwise Meter" CompanyID="0" PluginID="129" PluginType="3">
 					<PropertyList>
 						<Property Name="AttackTime" Type="Real32" Value="0.1"/>

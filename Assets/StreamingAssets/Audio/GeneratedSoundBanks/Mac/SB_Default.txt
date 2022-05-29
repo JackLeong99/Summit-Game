@@ -4,8 +4,6 @@ Event	ID	Name			Wwise Object Path	Notes
 	190633557	Player_Shoot_Fire			\Default Work Unit\SFX_Player\Player_Shoot_Fire	
 	385316062	Player_Dodge			\Default Work Unit\SFX_Player\Player_Dodge	
 	396309115	UI_Hit_Indicator			\Default Work Unit\SFX_UI\UI_Hit_Indicator	
-	526936832	VO_Enemy_Eruption_Slam			\Default Work Unit\VO_Enemy\VO_Enemy_Eruption_Slam	
-	529689934	VO_Enemy_Death			\Default Work Unit\VO_Enemy\VO_Enemy_Death	
 	537931389	UI_Menu_Off			\Default Work Unit\SFX_UI\UI_Menu_Off	
 	555067025	Enemy_Damage			\Default Work Unit\SFX_Enemy\Enemy_Damage	
 	733168346	Game_Start			\Default Work Unit\Utility\Game_Start	
@@ -13,43 +11,62 @@ Event	ID	Name			Wwise Object Path	Notes
 	1205999388	Enemy_Death			\Default Work Unit\SFX_Enemy\Enemy_Death	
 	1305133589	Player_Jump			\Default Work Unit\SFX_Player\Player_Jump	
 	1491778125	Enemy_Melee_Right_Hook			\Default Work Unit\SFX_Enemy\Enemy_Melee_Right_Hook	
-	1650187161	VO_Enemy_Melee_Overhead_Slam			\Default Work Unit\VO_Enemy\VO_Enemy_Melee_Overhead_Slam	
 	1650805379	Player_Shoot_Impact			\Default Work Unit\SFX_Player\Player_Shoot_Impact	
 	1702827601	UI_Menu_On			\Default Work Unit\SFX_UI\UI_Menu_On	
-	1730208058	Player_Footsteps			\Default Work Unit\SFX_Player\Player_Footsteps	
 	1789255036	Enemy_Eruption_Cast			\Default Work Unit\SFX_Enemy\Enemy_Eruption_Cast	
+	2013137580	Enemy_Dash_Loop_Play			\Default Work Unit\SFX_Enemy\Enemy_Dash_Loop_Play	
 	2074073782	Player_Damage			\Default Work Unit\SFX_Player\Player_Damage	
 	2143444826	Music_Victory_Stinger			\Default Work Unit\Music\Music_Victory_Stinger	
 	2249769530	UI_Click			\Default Work Unit\SFX_UI\UI_Click	
 	2356404183	Game_Quit			\Default Work Unit\Utility\Game_Quit	
 	2372917442	Enemy_Boulder_Impact			\Default Work Unit\SFX_Enemy\Enemy_Boulder_Impact	
 	2515303183	Music_Defeat_Stinger			\Default Work Unit\Music\Music_Defeat_Stinger	
-	2800935486	Player_Attack_LtR			\Default Work Unit\SFX_Player\Player_Attack_LtR	
+	2824512041	Player_Attack			\Default Work Unit\SFX_Player\Player_Attack	
 	2854117449	Enemy_Boulder_Cast			\Default Work Unit\SFX_Enemy\Enemy_Boulder_Cast	
-	2922112884	VO_Player_Damage			\Default Work Unit\VO_Player\VO_Player_Damage	
-	3051830799	VO_Enemy_Melee_Right_Hook			\Default Work Unit\VO_Enemy\VO_Enemy_Melee_Right_Hook	
+	3083087645	Player_Death			\Default Work Unit\SFX_Player\Player_Death	
 	3114429925	Music_Gameplay_Loop_Stop			\Default Work Unit\Music\Music_Gameplay_Loop_Stop	
-	3136193782	Player_Attack_RtL			\Default Work Unit\SFX_Player\Player_Attack_RtL	
 	3192392001	Player_Shoot_Charge			\Default Work Unit\SFX_Player\Player_Shoot_Charge	
-	3195722788	VO_Player_Spawn			\Default Work Unit\VO_Player\VO_Player_Spawn	
-	3217092839	Enemy_Footsteps			\Default Work Unit\SFX_Enemy\Enemy_Footsteps	
-	3234914398	VO_Enemy_Idle			\Default Work Unit\VO_Enemy\VO_Enemy_Idle	
 	3324595863	Enemy_Melee_Overhead_Slam			\Default Work Unit\SFX_Enemy\Enemy_Melee_Overhead_Slam	
-	3891019135	VO_Enemy_Boulder_Cast			\Default Work Unit\VO_Enemy\VO_Enemy_Boulder_Cast	
-	3893789469	VO_Player_Idle			\Default Work Unit\VO_Player\VO_Player_Idle	
-	4007178299	VO_Player_Victory			\Default Work Unit\VO_Player\VO_Player_Victory	
+	3629196698	Player_Land			\Default Work Unit\SFX_Player\Player_Land	
+	3982922166	Enemy_Dash_Loop_Stop			\Default Work Unit\SFX_Enemy\Enemy_Dash_Loop_Stop	
 	4072408949	Ambience_Loop_Stop			\Default Work Unit\Ambience\Ambience_Loop_Stop	
 
 In Memory Audio	ID	Name	Audio source file		Wwise Object Path	Notes	Data Size
-	42101168	Ambience_Gameplay_Loop	D:\Project Folders\Summit\Summit-Game\Summit-Game_WwiseProject\.cache\Mac\SFX\Export\Ambience_Gameplay_Loop_D79FB2B7.wem		\Actor-Mixer Hierarchy\Default Work Unit\Master_Ambience\Ambience_Gameplay_Loop\Ambience_Gameplay_Loop		8160064
-	46960940	Player_Shoot_Fire	D:\Project Folders\Summit\Summit-Game\Summit-Game_WwiseProject\.cache\Mac\SFX\Export\Player_Shoot_Fire_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\Master_SFX\SFX_Player\Player_Shoot_Fire\Player_Shoot_Fire		331264
-	180869050	UI_Hit_Indicator	D:\Project Folders\Summit\Summit-Game\Summit-Game_WwiseProject\.cache\Mac\SFX\Export\UI_Hit_Indicator_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\Master_SFX\SFX_UI\UI_Hit_Indicator\UI_Hit_Indicator		192064
-	385855648	Player_Shoot_Impact	D:\Project Folders\Summit\Summit-Game\Summit-Game_WwiseProject\.cache\Mac\SFX\Export\Player_Shoot_Impact_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\Master_SFX\SFX_Player\Player_Shoot_Impact\Player_Shoot_Impact		192064
-	525246437	Music_Victory_Stinger	D:\Project Folders\Summit\Summit-Game\Summit-Game_WwiseProject\.cache\Mac\SFX\Export\Music_Victory_Stinger_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\Master_SFX\SFX_Stingers\Music_Victory_Stinger		1536064
+	18236720	Player_Shoot_Impact	D:\Project Folders\Summit\Summit-Game\Summit-Game_WwiseProject\.cache\Mac\SFX\Player_Shoot_Impact_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\Master_SFX\SFX_Player\Player_Shoot_Impact\Player_Shoot_Impact		192064
+	80263160	Enemy_Eruption_Lava	D:\Project Folders\Summit\Summit-Game\Summit-Game_WwiseProject\.cache\Mac\SFX\Enemy_Eruption_Lava_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\Master_SFX\SFX_Enemy\Enemy_Eruption_Lava\Enemy_Eruption_Lava		480064
+	93931633	Player_Damage	D:\Project Folders\Summit\Summit-Game\Summit-Game_WwiseProject\.cache\Mac\SFX\Player_Damage_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\Master_SFX\SFX_Player\Player_Damage\Player_Damage		192064
+	112315733	Player_Attack-001	D:\Project Folders\Summit\Summit-Game\Summit-Game_WwiseProject\.cache\Mac\SFX\Player_Attack-001_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\Master_SFX\SFX_Player\Player_Attack\Player_Attack\Player_Attack-001		219136
+	185763027	Enemy_Melee_Right_Hook	D:\Project Folders\Summit\Summit-Game\Summit-Game_WwiseProject\.cache\Mac\SFX\Enemy_Melee_Right_Hook_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\Master_SFX\SFX_Enemy\Enemy_Melee_Right_Hook\Enemy_Melee_Right_Hook		576064
+	186219504	Music_Defeat_Stinger	D:\Project Folders\Summit\Summit-Game\Summit-Game_WwiseProject\.cache\Mac\SFX\Music_Defeat_Stinger_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\Master_SFX\SFX_Stingers\Music_Defeat_Stinger		1440064
+	224378899	Ambience_Menu_Loop	D:\Project Folders\Summit\Summit-Game\Summit-Game_WwiseProject\.cache\Mac\SFX\Ambience_Menu_Loop_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\Master_Ambience\Ambience_Menu_Loop\Ambience_Menu_Loop		11136064
+	225300288	Enemy_Death	D:\Project Folders\Summit\Summit-Game\Summit-Game_WwiseProject\.cache\Mac\SFX\Enemy_Death_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\Master_SFX\SFX_Enemy\Enemy_Death\Enemy_Death		960064
+	233223795	Enemy_Boulder_Cast	D:\Project Folders\Summit\Summit-Game\Summit-Game_WwiseProject\.cache\Mac\SFX\Enemy_Boulder_Cast_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\Master_SFX\SFX_Enemy\Enemy_Boulder_Cast\Enemy_Boulder_Cast		672064
+	280217797	Player_Land-003	D:\Project Folders\Summit\Summit-Game\Summit-Game_WwiseProject\.cache\Mac\SFX\Player_Land-003_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\Master_SFX\SFX_Player\Player_Land\Player_Land\Player_Land-003		96064
+	295245601	UI_Hit_Indicator	D:\Project Folders\Summit\Summit-Game\Summit-Game_WwiseProject\.cache\Mac\SFX\UI_Hit_Indicator_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\Master_SFX\SFX_UI\UI_Hit_Indicator\UI_Hit_Indicator		192064
+	351774746	Player_Land-002	D:\Project Folders\Summit\Summit-Game\Summit-Game_WwiseProject\.cache\Mac\SFX\Player_Land-002_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\Master_SFX\SFX_Player\Player_Land\Player_Land\Player_Land-002		96064
+	401075165	Music_Victory_Stinger	D:\Project Folders\Summit\Summit-Game\Summit-Game_WwiseProject\.cache\Mac\SFX\Music_Victory_Stinger_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\Master_SFX\SFX_Stingers\Music_Victory_Stinger		1536064
+	445846783	Player_Shoot_Charge	D:\Project Folders\Summit\Summit-Game\Summit-Game_WwiseProject\.cache\Mac\SFX\Player_Shoot_Charge_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\Master_SFX\SFX_Player\Player_Shoot_Charge\Player_Shoot_Charge		155528
+	472729176	Enemy_Eruption_Cast	D:\Project Folders\Summit\Summit-Game\Summit-Game_WwiseProject\.cache\Mac\SFX\Enemy_Eruption_Cast_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\Master_SFX\SFX_Enemy\Enemy_Eruption_Cast\Enemy_Eruption_Cast		384064
+	479541808	Enemy_Damage-003	D:\Project Folders\Summit\Summit-Game\Summit-Game_WwiseProject\.cache\Mac\SFX\Enemy_Damage-003_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\Master_SFX\SFX_Enemy\Enemy_Damage\Enemy_Damage\Enemy_Damage-003		288064
+	492972338	Ambience_Gameplay_Loop	D:\Project Folders\Summit\Summit-Game\Summit-Game_WwiseProject\.cache\Mac\SFX\Ambience_Gameplay_Loop_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\Master_Ambience\Ambience_Gameplay_Loop\Ambience_Gameplay_Loop		8160064
+	498824251	Enemy_Boulder_Impact	D:\Project Folders\Summit\Summit-Game\Summit-Game_WwiseProject\.cache\Mac\SFX\Enemy_Boulder_Impact_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\Master_SFX\SFX_Enemy\Enemy_Boulder_Impact\Enemy_Boulder_Impact		384064
+	644564255	Player_Dodge	D:\Project Folders\Summit\Summit-Game\Summit-Game_WwiseProject\.cache\Mac\SFX\Player_Dodge_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\Master_SFX\SFX_Player\Player_Dodge\Player_Dodge		384064
+	681125824	Player_Jump-002	D:\Project Folders\Summit\Summit-Game\Summit-Game_WwiseProject\.cache\Mac\SFX\Player_Jump-002_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\Master_SFX\SFX_Player\Player_Jump\Player_Jump\Player_Jump-002		96064
+	682423987	Enemy_Damage-001	D:\Project Folders\Summit\Summit-Game\Summit-Game_WwiseProject\.cache\Mac\SFX\Enemy_Damage-001_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\Master_SFX\SFX_Enemy\Enemy_Damage\Enemy_Damage\Enemy_Damage-001		288064
+	684436988	Enemy_Damage-004	D:\Project Folders\Summit\Summit-Game\Summit-Game_WwiseProject\.cache\Mac\SFX\Enemy_Damage-004_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\Master_SFX\SFX_Enemy\Enemy_Damage\Enemy_Damage\Enemy_Damage-004		288064
+	720235996	Player_Shoot_Fire	D:\Project Folders\Summit\Summit-Game\Summit-Game_WwiseProject\.cache\Mac\SFX\Player_Shoot_Fire_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\Master_SFX\SFX_Player\Player_Shoot_Fire\Player_Shoot_Fire		331264
 	733726628	Music_Gameplay_Loop	D:\Project Folders\Summit\Summit-Game\Summit-Game_WwiseProject\.cache\Mac\SFX\Music_Gameplay_Loop_D79FB2B7.wem		\Interactive Music Hierarchy\Default Work Unit\Music_Gameplay_Loop\Music_Gameplay_Loop\Music_Gameplay_Loop		29721664
-	760724642	Ambience_Menu_Loop	D:\Project Folders\Summit\Summit-Game\Summit-Game_WwiseProject\.cache\Mac\SFX\Export\Ambience_Menu_Loop_D79FB2B7.wem		\Actor-Mixer Hierarchy\Default Work Unit\Master_Ambience\Ambience_Menu_Loop\Ambience_Menu_Loop		11136064
-	857194291	Player_Shoot_Charge	D:\Project Folders\Summit\Summit-Game\Summit-Game_WwiseProject\.cache\Mac\SFX\Export\Player_Shoot_Charge_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\Master_SFX\SFX_Player\Player_Shoot_Charge\Player_Shoot_Charge		155528
-	946007828	Music_Defeat_Stinger	D:\Project Folders\Summit\Summit-Game\Summit-Game_WwiseProject\.cache\Mac\SFX\Export\Music_Defeat_Stinger_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\Master_SFX\SFX_Stingers\Music_Defeat_Stinger		1440064
-	1023758567	UI_Menu_On	D:\Project Folders\Summit\Summit-Game\Summit-Game_WwiseProject\.cache\Mac\SFX\Export\UI_Menu_On_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\Master_SFX\SFX_UI\UI_Menu_Open\UI_Menu_On		192064
-	1030216620	UI_Click	D:\Project Folders\Summit\Summit-Game\Summit-Game_WwiseProject\.cache\Mac\SFX\Export\UI_Click_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\Master_SFX\SFX_UI\UI_Click\UI_Click		96064
+	766948895	Player_Death	D:\Project Folders\Summit\Summit-Game\Summit-Game_WwiseProject\.cache\Mac\SFX\Player_Death_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\Master_SFX\SFX_Player\Player_Death\Player_Death		576064
+	793976825	UI_Click	D:\Project Folders\Summit\Summit-Game\Summit-Game_WwiseProject\.cache\Mac\SFX\UI_Click_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\Master_SFX\SFX_UI\UI_Click\UI_Click		96064
+	795042235	Player_Land-001	D:\Project Folders\Summit\Summit-Game\Summit-Game_WwiseProject\.cache\Mac\SFX\Player_Land-001_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\Master_SFX\SFX_Player\Player_Land\Player_Land\Player_Land-001		96064
+	819015250	Player_Jump-003	D:\Project Folders\Summit\Summit-Game\Summit-Game_WwiseProject\.cache\Mac\SFX\Player_Jump-003_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\Master_SFX\SFX_Player\Player_Jump\Player_Jump\Player_Jump-003		96064
+	873577496	Enemy_Melee_Overhead_Slam	D:\Project Folders\Summit\Summit-Game\Summit-Game_WwiseProject\.cache\Mac\SFX\Enemy_Melee_Overhead_Slam_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\Master_SFX\SFX_Enemy\Enemy_Melee_Overhead_Slam\Enemy_Melee_Overhead_Slam		576064
+	881559721	Enemy_Dash	D:\Project Folders\Summit\Summit-Game\Summit-Game_WwiseProject\.cache\Mac\SFX\Enemy_Dash_D79FB2B7.wem		\Actor-Mixer Hierarchy\Default Work Unit\Master_SFX\SFX_Enemy\Enemy_Dash\Enemy_Dash		350160
+	889605441	Player_Attack-002	D:\Project Folders\Summit\Summit-Game\Summit-Game_WwiseProject\.cache\Mac\SFX\Player_Attack-002_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\Master_SFX\SFX_Player\Player_Attack\Player_Attack\Player_Attack-002		219136
+	893676639	Enemy_Damage-002	D:\Project Folders\Summit\Summit-Game\Summit-Game_WwiseProject\.cache\Mac\SFX\Enemy_Damage-002_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\Master_SFX\SFX_Enemy\Enemy_Damage\Enemy_Damage\Enemy_Damage-002		288064
+	933076075	Player_Jump-004	D:\Project Folders\Summit\Summit-Game\Summit-Game_WwiseProject\.cache\Mac\SFX\Player_Jump-004_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\Master_SFX\SFX_Player\Player_Jump\Player_Jump\Player_Jump-004		96064
+	971467339	UI_Menu_On	D:\Project Folders\Summit\Summit-Game\Summit-Game_WwiseProject\.cache\Mac\SFX\UI_Menu_On_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\Master_SFX\SFX_UI\UI_Menu_Open\UI_Menu_On		192064
+	990168136	Player_Attack-003	D:\Project Folders\Summit\Summit-Game\Summit-Game_WwiseProject\.cache\Mac\SFX\Player_Attack-003_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\Master_SFX\SFX_Player\Player_Attack\Player_Attack\Player_Attack-003		219136
+	1005013128	Player_Jump-001	D:\Project Folders\Summit\Summit-Game\Summit-Game_WwiseProject\.cache\Mac\SFX\Player_Jump-001_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\Master_SFX\SFX_Player\Player_Jump\Player_Jump\Player_Jump-001		96064
+	1067672117	Player_Land-004	D:\Project Folders\Summit\Summit-Game\Summit-Game_WwiseProject\.cache\Mac\SFX\Player_Land-004_10C4C929.wem		\Actor-Mixer Hierarchy\Default Work Unit\Master_SFX\SFX_Player\Player_Land\Player_Land\Player_Land-004		96064
 

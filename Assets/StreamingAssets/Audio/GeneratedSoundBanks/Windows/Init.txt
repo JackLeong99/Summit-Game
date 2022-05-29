@@ -14,10 +14,8 @@ Custom State	ID	Name	State Group	Owner		Notes
 Game Parameter	ID	Name			Wwise Object Path	Notes
 	266555239	Music_Sidechain			\Default Work Unit\Music_Sidechain	
 	622329408	Victory_Defeat_Sidechain			\Default Work Unit\Victory_Defeat_Sidechain	
-	2837652549	VO_Sidechain			\Default Work Unit\VO_Sidechain	
 	2862064063	SFX_Sidechain			\Default Work Unit\SFX_Sidechain	
 	3673881719	Volume_SFX			\Default Work Unit\Volume_SFX	
-	3676256460	Volume_Voice			\Default Work Unit\Volume_Voice	
 	3695994288	Volume_Master			\Default Work Unit\Volume_Master	
 	3891337659	Volume_Music			\Default Work Unit\Volume_Music	
 
@@ -29,13 +27,10 @@ Audio Bus	ID	Name			Wwise Object Path	Notes
 	555067025	Enemy_Damage			\Default Work Unit\Master Audio Bus\Master SFX\SFX_Enemy\Enemy_Damage	
 	608829557	Enemy_Eruption_Burst			\Default Work Unit\Master Audio Bus\Master SFX\SFX_Enemy\Enemy_Eruption_Burst	
 	1078167454	Master SFX			\Default Work Unit\Master Audio Bus\Master SFX	
-	1143233284	Master VO			\Default Work Unit\Master Audio Bus\Master VO	
 	1205999388	Enemy_Death			\Default Work Unit\Master Audio Bus\Master SFX\SFX_Enemy\Enemy_Death	
 	1305133589	Player_Jump			\Default Work Unit\Master Audio Bus\Master SFX\SFX_Player\Player_Jump	
 	1491778125	Enemy_Melee_Right_Hook			\Default Work Unit\Master Audio Bus\Master SFX\SFX_Enemy\Enemy_Melee_Right_Hook	
 	1650805379	Player_Shoot_Impact			\Default Work Unit\Master Audio Bus\Master SFX\SFX_Player\Player_Shoot_Impact	
-	1730208058	Player_Footsteps			\Default Work Unit\Master Audio Bus\Master SFX\SFX_Player\Player_Footsteps	
-	1837826845	VO_Enemy			\Default Work Unit\Master Audio Bus\Master VO\VO_Enemy	
 	1993100918	Music_Gameplay_Loop			\Default Work Unit\Master Audio Bus\Master Music\Music_Gameplay_Loop	
 	2074073782	Player_Damage			\Default Work Unit\Master Audio Bus\Master SFX\SFX_Player\Player_Damage	
 	2134809883	AMB_Gameplay_Loop			\Default Work Unit\Master Audio Bus\Master Ambience\AMB_Gameplay_Loop	
@@ -46,14 +41,13 @@ Audio Bus	ID	Name			Wwise Object Path	Notes
 	2364205524	Enemy_Boulder_Throw			\Default Work Unit\Master Audio Bus\Master SFX\SFX_Enemy\Enemy_Boulder_Throw	
 	2372917442	Enemy_Boulder_Impact			\Default Work Unit\Master Audio Bus\Master SFX\SFX_Enemy\Enemy_Boulder_Impact	
 	2515303183	Music_Defeat_Stinger			\Default Work Unit\Master Audio Bus\Master Music\Music_Defeat_Stinger	
-	2800935486	Player_Attack_LtR			\Default Work Unit\Master Audio Bus\Master SFX\SFX_Player\Player_Attack_LtR	
-	2966352764	VO_Player			\Default Work Unit\Master Audio Bus\Master VO\VO_Player	
+	2824512041	Player_Attack			\Default Work Unit\Master Audio Bus\Master SFX\SFX_Player\Player_Attack	
 	3010160010	Enemy_Eruption_Slam			\Default Work Unit\Master Audio Bus\Master SFX\SFX_Enemy\Enemy_Eruption_Slam	
-	3136193782	Player_Attack_RtL			\Default Work Unit\Master Audio Bus\Master SFX\SFX_Player\Player_Attack_RtL	
+	3083087645	Player_Death			\Default Work Unit\Master Audio Bus\Master SFX\SFX_Player\Player_Death	
 	3192392001	Player_Shoot_Charge			\Default Work Unit\Master Audio Bus\Master SFX\SFX_Player\Player_Shoot_Charge	
-	3217092839	Enemy_Footsteps			\Default Work Unit\Master Audio Bus\Master SFX\SFX_Enemy\Enemy_Footsteps	
-	3226991506	UI_Menu_Close			\Default Work Unit\Master Audio Bus\Master SFX\SFX_UI\UI_Menu_Close	
 	3324595863	Enemy_Melee_Overhead_Slam			\Default Work Unit\Master Audio Bus\Master SFX\SFX_Enemy\Enemy_Melee_Overhead_Slam	
+	3436801642	Enemy_Dash			\Default Work Unit\Master Audio Bus\Master SFX\SFX_Enemy\Enemy_Dash	
+	3629196698	Player_Land			\Default Work Unit\Master Audio Bus\Master SFX\SFX_Player\Player_Land	
 	3762643080	AMB_Menu_Loop			\Default Work Unit\Master Audio Bus\Master Ambience\AMB_Menu_Loop	
 	3803692087	Master Audio Bus			\Default Work Unit\Master Audio Bus	
 	3862737079	SFX_UI			\Default Work Unit\Master Audio Bus\Master SFX\SFX_UI	
@@ -64,9 +58,7 @@ Effect plug-ins	ID	Name	Type				Notes
 	317120248	Wwise_Meter_Victory_Defeat_Sidechain	Wwise Meter			
 	1089225090	EQ_Music_Sidechain	Wwise Parametric EQ			
 	1149658127	Wwise_Meter_Music_Sidechain	Wwise Meter			
-	1998125837	Wwise_Meter_VO_Sidechain	Wwise Meter			
 	2580700503	Wwise_Meter_SFX_Sidechain	Wwise Meter			
-	3456883154	EQ_VO_Sidechain	Wwise Parametric EQ			
 
 Audio Devices	ID	Name	Type				Notes
 	2317455096	No_Output	No Output			
