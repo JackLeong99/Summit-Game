@@ -18,7 +18,7 @@ public class PlayerDamage : MonoBehaviour
             EnemyDamageReceiver receiver = other.GetComponent<EnemyDamageReceiver>();
             if (receiver)
             {
-                receiver.PassDamage(damage);
+                receiver.PassDamage(damage, transform.position);
                 Destroy(gameObject);
             }
         }

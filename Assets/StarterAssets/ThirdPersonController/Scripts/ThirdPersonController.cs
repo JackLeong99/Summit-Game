@@ -60,6 +60,9 @@ namespace StarterAssets
 		[Tooltip("For locking the camera position on all axis")]
 		public bool LockCameraPosition = false;
 
+		[SerializeField] private Transform leftFoot;		
+		[SerializeField] private Transform rightFoot;		
+
 		// cinemachine
 		private float _cinemachineTargetYaw;
 		private float _cinemachineTargetPitch;
@@ -386,6 +389,13 @@ namespace StarterAssets
 		{
 			MoveSpeed/=2;
 			SprintSpeed/=2;
-		}
-	}
+        }
+
+        public void OnFootstep (int footIndex)
+        {
+            Transform footTransform = footIndex == 0 ? leftFoot : rightFoot;
+
+			// TODO: Chris add SFX and VFX???
+        }
+    }
 }

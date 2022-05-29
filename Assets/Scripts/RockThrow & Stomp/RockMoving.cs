@@ -22,6 +22,8 @@ public class RockMoving : MonoBehaviour
 
     private bool hasntHit=true;
 
+    private float timer=20f;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -38,27 +40,29 @@ public class RockMoving : MonoBehaviour
         translationZ=localArea.z;
         translationY=localArea.y;
         translationX=localArea.x;
+        RockManager.Instance.ClearUpList();
     }
 
     // Update is called once per frame
    void Update()
     {
         transform.Translate(translationX *(speed*rageMultiplier * Time.deltaTime), translationY *(speed*rageMultiplier* Time.deltaTime), translationZ *(speed*rageMultiplier * Time.deltaTime));
+        timer-=Time.deltaTime;
+        if(timer<=0)
+        {
+            Destroy(gameObject);
+        }
     }
 
     //spawn ground rock and destroy itself
     public void spawnRock()
     {
-        //needs to instantiate at ground position
-        GameObject breakablerock= Instantiate(rockPrefab); 
-        
-        breakablerock.transform.position=transform.position;
-        breakablerock.transform.position = new Vector3(transform.position.x, transform.position.y-1 , transform.position.z);
+        //Instantiate at the position all in one line
+        GameObject breakablerock= Instantiate(rockPrefab,new Vector3(transform.position.x, transform.position.y-1 , transform.position.z), Quaternion.identity);
         RockManager.Instance.RockPositionUpdate(breakablerock);
 
         //creates the particle effect for landing
-        ParticleSystem rockParticles= Instantiate(rockParticle);
-        rockParticles.transform.position=transform.position;
+        ParticleSystem rockParticles= Instantiate(rockParticle,transform.position,Quaternion.identity);
         Destroy(gameObject);
     }
     
@@ -77,7 +81,7 @@ public class RockMoving : MonoBehaviour
         if(other==player && hasntHit)
         {
             PlayerStats health = other.GetComponent<PlayerStats>();
-            health.takeDamage(25);
+            health.takeDamage(30);
             hasntHit=false;
             GameManager.Instance.onPlayerHit("rock throw");
         }
@@ -85,7 +89,6 @@ public class RockMoving : MonoBehaviour
         if(other.tag=="Arena")
         {
             spawnRock();
-            //particles as well //should fix issue with how it goes into ground otherwise I need to find another way
         }
 
         if(other.tag=="worldBorder")

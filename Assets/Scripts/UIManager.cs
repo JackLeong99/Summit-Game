@@ -38,6 +38,8 @@ public class UIManager : MonoBehaviour
 
     public float BossHealth=1000;
 
+    public DamageTextPool DamageTextPool;
+
     //enable certain buttons
 
 
