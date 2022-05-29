@@ -42,6 +42,11 @@
 					<ChildrenList>
 						<Bus Name="Master SFX" ID="{32027980-225E-4B4E-A8E4-62C028B927F5}">
 							<PropertyList>
+								<Property Name="BusVolume" Type="Real64">
+									<ValueList>
+										<Value>-6</Value>
+									</ValueList>
+								</Property>
 								<Property Name="OutputBusVolume" Type="Real64">
 									<RTPCList>
 										<RTPC Name="" ID="{E7A9EA75-CA0F-4F89-AE5F-BF5FA82DF941}" ShortID="98956694">
@@ -88,7 +93,14 @@
 											</ReferenceList>
 											<ObjectLists/>
 										</Bus>
-										<Bus Name="Player_Shoot_Cast" ID="{52857780-40B8-480B-BD5C-C4539B412208}">
+										<Bus Name="Player_Shoot_Charge" ID="{52857780-40B8-480B-BD5C-C4539B412208}">
+											<PropertyList>
+												<Property Name="BusVolume" Type="Real64">
+													<ValueList>
+														<Value>-12</Value>
+													</ValueList>
+												</Property>
+											</PropertyList>
 											<ObjectLists/>
 										</Bus>
 										<Bus Name="Player_Footsteps" ID="{D48FA979-A6FF-4F51-ADFA-22BF2F442022}">
@@ -98,14 +110,20 @@
 											<ObjectLists/>
 										</Bus>
 										<Bus Name="Player_Shoot_Impact" ID="{6126A72E-6067-45EC-AFD0-CA1D64861632}">
-											<ReferenceList>
-												<Reference Name="Effect0" PluginName="Wwise Meter" CompanyID="0" PluginID="129" PluginType="3">
-													<ObjectRef Name="Wwise_Meter_SFX_Sidechain" ID="{F703D923-283A-45F3-A276-670CC07CB003}" WorkUnitID="{B0EB1BF1-35D5-48DA-95BE-B0BBE3A101E3}"/>
-												</Reference>
-											</ReferenceList>
+											<ReferenceList/>
 											<ObjectLists/>
 										</Bus>
 										<Bus Name="Player_Attack_RtL" ID="{C14E2D8D-32CC-4DF2-BA54-3BD6BEB16535}">
+											<ObjectLists/>
+										</Bus>
+										<Bus Name="Player_Shoot_Fire" ID="{1826B061-0024-4BD0-875D-D0C39243A09F}">
+											<PropertyList>
+												<Property Name="BusVolume" Type="Real64">
+													<ValueList>
+														<Value>-9</Value>
+													</ValueList>
+												</Property>
+											</PropertyList>
 											<ObjectLists/>
 										</Bus>
 									</ChildrenList>
@@ -190,43 +208,20 @@
 						</Bus>
 						<Bus Name="Master Ambience" ID="{DCF58933-BBBE-4C0E-81CF-6204849089D4}">
 							<PropertyList>
-								<Property Name="OutputBusLowpass" Type="int16">
-									<RTPCList>
-										<RTPC Name="" ID="{4C192090-6CFC-4075-A01E-BFFE36F895E6}" ShortID="178326442">
-											<ReferenceList>
-												<Reference Name="ControlInput">
-													<ObjectRef Name="SFX_Sidechain" ID="{45C328E2-1B4A-4C91-93FE-F4FBFBE35408}" WorkUnitID="{32AE5A4D-16DF-49F3-A117-4472F3B36DF9}"/>
-												</Reference>
-											</ReferenceList>
-											<Curve Name="" ID="{37D686C1-D7B1-43B0-80DE-95C9A314C712}">
-												<PropertyList>
-													<Property Name="Flags" Type="int32" Value="65537"/>
-												</PropertyList>
-												<PointList>
-													<Point>
-														<XPos>-48</XPos>
-														<YPos>-50</YPos>
-														<Flags>5</Flags>
-													</Point>
-													<Point>
-														<XPos>0</XPos>
-														<YPos>0</YPos>
-														<Flags>37</Flags>
-													</Point>
-												</PointList>
-											</Curve>
-										</RTPC>
-									</RTPCList>
+								<Property Name="BusVolume" Type="Real64">
+									<ValueList>
+										<Value>-18</Value>
+									</ValueList>
 								</Property>
 								<Property Name="OutputBusVolume" Type="Real64">
 									<RTPCList>
-										<RTPC Name="" ID="{2830A746-197F-49C9-A167-1A357B3E2984}" ShortID="93655861">
+										<RTPC Name="" ID="{4D414A15-DFCF-4408-9ABB-509B85929772}" ShortID="368180934">
 											<ReferenceList>
 												<Reference Name="ControlInput">
 													<ObjectRef Name="Volume_SFX" ID="{54C00A3C-6D1C-4A53-8403-4A1FCF6513A4}" WorkUnitID="{32AE5A4D-16DF-49F3-A117-4472F3B36DF9}"/>
 												</Reference>
 											</ReferenceList>
-											<Curve Name="" ID="{93434AB6-1918-49A2-8FF7-1A9BA9E45076}">
+											<Curve Name="" ID="{2A836C29-5429-46B8-9C6B-3F2EC9EEF5A7}">
 												<PropertyList>
 													<Property Name="Flags" Type="int32" Value="3"/>
 												</PropertyList>
@@ -244,43 +239,136 @@
 												</PointList>
 											</Curve>
 										</RTPC>
-										<RTPC Name="" ID="{2D9F9E81-760D-4BA0-BEAB-9620AC89260E}" ShortID="720646658">
-											<ReferenceList>
-												<Reference Name="ControlInput">
-													<ObjectRef Name="SFX_Sidechain" ID="{45C328E2-1B4A-4C91-93FE-F4FBFBE35408}" WorkUnitID="{32AE5A4D-16DF-49F3-A117-4472F3B36DF9}"/>
-												</Reference>
-											</ReferenceList>
-											<Curve Name="" ID="{8F052586-C3FF-4F1A-9F6C-E356BD28DAAB}">
-												<PropertyList>
-													<Property Name="Flags" Type="int32" Value="3"/>
-												</PropertyList>
-												<PointList>
-													<Point>
-														<XPos>-48</XPos>
-														<YPos>-12</YPos>
-														<Flags>5</Flags>
-													</Point>
-													<Point>
-														<XPos>0</XPos>
-														<YPos>0</YPos>
-														<Flags>37</Flags>
-													</Point>
-												</PointList>
-											</Curve>
-										</RTPC>
 									</RTPCList>
 								</Property>
 							</PropertyList>
-							<ReferenceList>
-								<Reference Name="Effect0" PluginName="Wwise Parametric EQ" CompanyID="0" PluginID="105" PluginType="3">
-									<ObjectRef Name="EQ_VO_Sidechain" ID="{36D88552-292A-47AA-B6B8-7F75E2CD2C2D}" WorkUnitID="{B0EB1BF1-35D5-48DA-95BE-B0BBE3A101E3}"/>
-								</Reference>
-								<Reference Name="Effect1" PluginName="Wwise Parametric EQ" CompanyID="0" PluginID="105" PluginType="3">
-									<ObjectRef Name="EQ_Music_Sidechain" ID="{F6D423E4-942A-4B23-A88A-E80F23A15B7F}" WorkUnitID="{B0EB1BF1-35D5-48DA-95BE-B0BBE3A101E3}"/>
-								</Reference>
-							</ReferenceList>
+							<ReferenceList/>
 							<ChildrenList>
 								<Bus Name="AMB_Gameplay_Loop" ID="{540F6CAE-9D7E-4A88-8A16-E7118638AB53}">
+									<PropertyList>
+										<Property Name="OutputBusLowpass" Type="int16">
+											<RTPCList>
+												<RTPC Name="" ID="{B80DE8E6-468C-4163-B713-79D06E7FE3B2}" ShortID="450255836">
+													<ReferenceList>
+														<Reference Name="ControlInput">
+															<ObjectRef Name="SFX_Sidechain" ID="{45C328E2-1B4A-4C91-93FE-F4FBFBE35408}" WorkUnitID="{32AE5A4D-16DF-49F3-A117-4472F3B36DF9}"/>
+														</Reference>
+													</ReferenceList>
+													<Curve Name="" ID="{45109496-9C8B-416B-9D91-BD0865542170}">
+														<PropertyList>
+															<Property Name="Flags" Type="int32" Value="65537"/>
+														</PropertyList>
+														<PointList>
+															<Point>
+																<XPos>-48</XPos>
+																<YPos>-50</YPos>
+																<Flags>5</Flags>
+															</Point>
+															<Point>
+																<XPos>0</XPos>
+																<YPos>0</YPos>
+																<Flags>37</Flags>
+															</Point>
+														</PointList>
+													</Curve>
+												</RTPC>
+											</RTPCList>
+										</Property>
+										<Property Name="OutputBusVolume" Type="Real64">
+											<RTPCList>
+												<RTPC Name="" ID="{F7A86AF7-C077-4680-8E2F-466B4FA38CC1}" ShortID="612686313">
+													<ReferenceList>
+														<Reference Name="ControlInput">
+															<ObjectRef Name="SFX_Sidechain" ID="{45C328E2-1B4A-4C91-93FE-F4FBFBE35408}" WorkUnitID="{32AE5A4D-16DF-49F3-A117-4472F3B36DF9}"/>
+														</Reference>
+													</ReferenceList>
+													<Curve Name="" ID="{BC98ABB9-F767-49EB-988E-B42AB28E3955}">
+														<PropertyList>
+															<Property Name="Flags" Type="int32" Value="3"/>
+														</PropertyList>
+														<PointList>
+															<Point>
+																<XPos>-48</XPos>
+																<YPos>-12</YPos>
+																<Flags>5</Flags>
+															</Point>
+															<Point>
+																<XPos>0</XPos>
+																<YPos>0</YPos>
+																<Flags>37</Flags>
+															</Point>
+														</PointList>
+													</Curve>
+												</RTPC>
+											</RTPCList>
+										</Property>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Effect0" PluginName="Wwise Parametric EQ" CompanyID="0" PluginID="105" PluginType="3">
+											<ObjectRef Name="EQ_Music_Sidechain" ID="{F6D423E4-942A-4B23-A88A-E80F23A15B7F}" WorkUnitID="{B0EB1BF1-35D5-48DA-95BE-B0BBE3A101E3}"/>
+										</Reference>
+										<Reference Name="Effect1" PluginName="Wwise Parametric EQ" CompanyID="0" PluginID="105" PluginType="3">
+											<ObjectRef Name="EQ_VO_Sidechain" ID="{36D88552-292A-47AA-B6B8-7F75E2CD2C2D}" WorkUnitID="{B0EB1BF1-35D5-48DA-95BE-B0BBE3A101E3}"/>
+										</Reference>
+									</ReferenceList>
+									<StateInfo>
+										<StatePropertyList>
+											<Property Name="OutputBusVolume"/>
+										</StatePropertyList>
+										<StateGroupList>
+											<StateGroupInfo>
+												<StateGroupRef Name="UI_Menu" ID="{32E9F128-EB3E-42D7-A36A-671B0F05BA90}"/>
+											</StateGroupInfo>
+										</StateGroupList>
+										<CustomStateList>
+											<CustomState>
+												<StateRef Name="UI_Menu_Off" ID="{830DA50C-0EFC-4588-A47C-13A295CCE340}"/>
+												<CustomState Name="" ID="{1662C3A6-9455-4B2D-82A0-D30D0F62F71E}" ShortID="115203816"/>
+											</CustomState>
+											<CustomState>
+												<StateRef Name="UI_Menu_On" ID="{1B4C6DD3-E9FA-4FB4-A5A0-2EA261C8D9BB}"/>
+												<CustomState Name="" ID="{1AEA2BAB-3516-464A-B2A9-FBDA9588463E}" ShortID="254688353">
+													<PropertyList>
+														<Property Name="OutputBusVolume" Type="Real64" Value="-108"/>
+													</PropertyList>
+												</CustomState>
+											</CustomState>
+										</CustomStateList>
+									</StateInfo>
+									<ObjectLists/>
+								</Bus>
+								<Bus Name="AMB_Menu_Loop" ID="{AFBA4C4D-211E-42EF-9EB0-625BFA09E7D6}">
+									<PropertyList>
+										<Property Name="BusVolume" Type="Real64">
+											<ValueList>
+												<Value>-108</Value>
+											</ValueList>
+										</Property>
+									</PropertyList>
+									<StateInfo>
+										<StatePropertyList>
+											<Property Name="OutputBusVolume"/>
+										</StatePropertyList>
+										<StateGroupList>
+											<StateGroupInfo>
+												<StateGroupRef Name="UI_Menu" ID="{32E9F128-EB3E-42D7-A36A-671B0F05BA90}"/>
+											</StateGroupInfo>
+										</StateGroupList>
+										<CustomStateList>
+											<CustomState>
+												<StateRef Name="UI_Menu_Off" ID="{830DA50C-0EFC-4588-A47C-13A295CCE340}"/>
+												<CustomState Name="" ID="{A3704CCB-E228-4693-88D1-5209DC9EE9EA}" ShortID="258210288">
+													<PropertyList>
+														<Property Name="OutputBusVolume" Type="Real64" Value="-108"/>
+													</PropertyList>
+												</CustomState>
+											</CustomState>
+											<CustomState>
+												<StateRef Name="UI_Menu_On" ID="{1B4C6DD3-E9FA-4FB4-A5A0-2EA261C8D9BB}"/>
+												<CustomState Name="" ID="{DEFC4DAF-41EB-43B5-A596-6945F4C03855}" ShortID="638396724"/>
+											</CustomState>
+										</CustomStateList>
+									</StateInfo>
 									<ObjectLists/>
 								</Bus>
 							</ChildrenList>
@@ -288,67 +376,20 @@
 						</Bus>
 						<Bus Name="Master Music" ID="{B40597AD-D396-4B8A-89AC-F91F7844DC95}">
 							<PropertyList>
-								<Property Name="OutputBusLowpass" Type="int16">
-									<RTPCList>
-										<RTPC Name="" ID="{094535FA-4DC2-4A1C-9425-6A2743B89298}" ShortID="72226953">
-											<ReferenceList>
-												<Reference Name="ControlInput">
-													<ObjectRef Name="SFX_Sidechain" ID="{45C328E2-1B4A-4C91-93FE-F4FBFBE35408}" WorkUnitID="{32AE5A4D-16DF-49F3-A117-4472F3B36DF9}"/>
-												</Reference>
-											</ReferenceList>
-											<Curve Name="" ID="{6050C0B9-8BCD-45F6-948C-79E5936E1E77}">
-												<PropertyList>
-													<Property Name="Flags" Type="int32" Value="65537"/>
-												</PropertyList>
-												<PointList>
-													<Point>
-														<XPos>-48</XPos>
-														<YPos>-50</YPos>
-														<Flags>5</Flags>
-													</Point>
-													<Point>
-														<XPos>0</XPos>
-														<YPos>0</YPos>
-														<Flags>37</Flags>
-													</Point>
-												</PointList>
-											</Curve>
-										</RTPC>
-									</RTPCList>
+								<Property Name="BusVolume" Type="Real64">
+									<ValueList>
+										<Value>-6</Value>
+									</ValueList>
 								</Property>
 								<Property Name="OutputBusVolume" Type="Real64">
 									<RTPCList>
-										<RTPC Name="" ID="{A7D14C75-B9D0-4B02-BC93-F84037ED3769}" ShortID="79835192">
-											<ReferenceList>
-												<Reference Name="ControlInput">
-													<ObjectRef Name="SFX_Sidechain" ID="{45C328E2-1B4A-4C91-93FE-F4FBFBE35408}" WorkUnitID="{32AE5A4D-16DF-49F3-A117-4472F3B36DF9}"/>
-												</Reference>
-											</ReferenceList>
-											<Curve Name="" ID="{DC3ABE73-0695-44D6-BC01-022DD94E0B8A}">
-												<PropertyList>
-													<Property Name="Flags" Type="int32" Value="3"/>
-												</PropertyList>
-												<PointList>
-													<Point>
-														<XPos>-48</XPos>
-														<YPos>-12</YPos>
-														<Flags>5</Flags>
-													</Point>
-													<Point>
-														<XPos>0</XPos>
-														<YPos>0</YPos>
-														<Flags>37</Flags>
-													</Point>
-												</PointList>
-											</Curve>
-										</RTPC>
-										<RTPC Name="" ID="{C7EAD5AF-7431-4E1A-AE56-4C482CD22A21}" ShortID="812462376">
+										<RTPC Name="" ID="{A0E8FF21-BF29-4F00-8BA2-DBB7EB9213FE}" ShortID="432182034">
 											<ReferenceList>
 												<Reference Name="ControlInput">
 													<ObjectRef Name="Volume_Music" ID="{BE13AEE3-2D3B-47BE-A2DA-AF60CDB082E4}" WorkUnitID="{32AE5A4D-16DF-49F3-A117-4472F3B36DF9}"/>
 												</Reference>
 											</ReferenceList>
-											<Curve Name="" ID="{6858B152-D5B4-42F1-B692-423F1D1CAAD4}">
+											<Curve Name="" ID="{EA70F082-EFD7-4268-8732-70555930C8DB}">
 												<PropertyList>
 													<Property Name="Flags" Type="int32" Value="3"/>
 												</PropertyList>
@@ -369,14 +410,7 @@
 									</RTPCList>
 								</Property>
 							</PropertyList>
-							<ReferenceList>
-								<Reference Name="Effect0" PluginName="Wwise Meter" CompanyID="0" PluginID="129" PluginType="3">
-									<ObjectRef Name="Wwise_Meter_Music_Sidechain" ID="{16CCA855-6656-4DB7-A047-66E9CE5581EF}" WorkUnitID="{B0EB1BF1-35D5-48DA-95BE-B0BBE3A101E3}"/>
-								</Reference>
-								<Reference Name="Effect1" PluginName="Wwise Parametric EQ" CompanyID="0" PluginID="105" PluginType="3">
-									<ObjectRef Name="EQ_VO_Sidechain" ID="{36D88552-292A-47AA-B6B8-7F75E2CD2C2D}" WorkUnitID="{B0EB1BF1-35D5-48DA-95BE-B0BBE3A101E3}"/>
-								</Reference>
-							</ReferenceList>
+							<ReferenceList/>
 							<ChildrenList>
 								<Bus Name="Music_Gameplay_Loop" ID="{95499C03-B4E7-43C1-8F29-9A33A98C5991}">
 									<PropertyList>
@@ -385,16 +419,147 @@
 												<Value>-12</Value>
 											</ValueList>
 										</Property>
+										<Property Name="OutputBusLowpass" Type="int16">
+											<RTPCList>
+												<RTPC Name="" ID="{041FAC23-6821-4658-BA78-8DDA03273774}" ShortID="752835471">
+													<ReferenceList>
+														<Reference Name="ControlInput">
+															<ObjectRef Name="SFX_Sidechain" ID="{45C328E2-1B4A-4C91-93FE-F4FBFBE35408}" WorkUnitID="{32AE5A4D-16DF-49F3-A117-4472F3B36DF9}"/>
+														</Reference>
+													</ReferenceList>
+													<Curve Name="" ID="{0CDF9D0A-4DB1-474E-B25E-38EA5DAF4C3C}">
+														<PropertyList>
+															<Property Name="Flags" Type="int32" Value="65537"/>
+														</PropertyList>
+														<PointList>
+															<Point>
+																<XPos>-48</XPos>
+																<YPos>-50</YPos>
+																<Flags>5</Flags>
+															</Point>
+															<Point>
+																<XPos>0</XPos>
+																<YPos>0</YPos>
+																<Flags>37</Flags>
+															</Point>
+														</PointList>
+													</Curve>
+												</RTPC>
+											</RTPCList>
+										</Property>
+										<Property Name="OutputBusVolume" Type="Real64">
+											<RTPCList>
+												<RTPC Name="" ID="{91A6E16D-B868-44A9-95A2-1E498773828E}" ShortID="636525920">
+													<ReferenceList>
+														<Reference Name="ControlInput">
+															<ObjectRef Name="Victory_Defeat_Sidechain" ID="{9CFE5460-5774-4409-B426-E6F69D8D658E}" WorkUnitID="{32AE5A4D-16DF-49F3-A117-4472F3B36DF9}"/>
+														</Reference>
+													</ReferenceList>
+													<Curve Name="" ID="{446631B6-D17A-48AC-A63C-9C78F74E56ED}">
+														<PropertyList>
+															<Property Name="Flags" Type="int32" Value="3"/>
+														</PropertyList>
+														<PointList>
+															<Point>
+																<XPos>-48</XPos>
+																<YPos>-0</YPos>
+																<Flags>5</Flags>
+																<SegmentShape>Log3</SegmentShape>
+															</Point>
+															<Point>
+																<XPos>-24</XPos>
+																<YPos>-200</YPos>
+																<Flags>0</Flags>
+																<SegmentShape>Exp3</SegmentShape>
+															</Point>
+															<Point>
+																<XPos>0</XPos>
+																<YPos>-200</YPos>
+																<Flags>37</Flags>
+															</Point>
+														</PointList>
+													</Curve>
+												</RTPC>
+												<RTPC Name="" ID="{3794D2B3-4ACC-4B92-BE11-84C51A32A531}" ShortID="979035505">
+													<ReferenceList>
+														<Reference Name="ControlInput">
+															<ObjectRef Name="SFX_Sidechain" ID="{45C328E2-1B4A-4C91-93FE-F4FBFBE35408}" WorkUnitID="{32AE5A4D-16DF-49F3-A117-4472F3B36DF9}"/>
+														</Reference>
+													</ReferenceList>
+													<Curve Name="" ID="{A39099F2-36B6-46CD-B82C-CB143128DA07}">
+														<PropertyList>
+															<Property Name="Flags" Type="int32" Value="3"/>
+														</PropertyList>
+														<PointList>
+															<Point>
+																<XPos>-48</XPos>
+																<YPos>-12</YPos>
+																<Flags>5</Flags>
+															</Point>
+															<Point>
+																<XPos>0</XPos>
+																<YPos>0</YPos>
+																<Flags>37</Flags>
+															</Point>
+														</PointList>
+													</Curve>
+												</RTPC>
+											</RTPCList>
+										</Property>
 									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Effect0" PluginName="Wwise Parametric EQ" CompanyID="0" PluginID="105" PluginType="3">
+											<ObjectRef Name="EQ_VO_Sidechain" ID="{36D88552-292A-47AA-B6B8-7F75E2CD2C2D}" WorkUnitID="{B0EB1BF1-35D5-48DA-95BE-B0BBE3A101E3}"/>
+										</Reference>
+										<Reference Name="Effect1" PluginName="Wwise Meter" CompanyID="0" PluginID="129" PluginType="3">
+											<ObjectRef Name="Wwise_Meter_Music_Sidechain" ID="{16CCA855-6656-4DB7-A047-66E9CE5581EF}" WorkUnitID="{B0EB1BF1-35D5-48DA-95BE-B0BBE3A101E3}"/>
+										</Reference>
+									</ReferenceList>
 									<ObjectLists/>
 								</Bus>
 								<Bus Name="Music_Victory_Stinger" ID="{82EAC79F-FD69-4029-A888-04BC8C299176}">
+									<ReferenceList>
+										<Reference Name="Effect0" PluginName="Wwise Meter" CompanyID="0" PluginID="129" PluginType="3">
+											<ObjectRef Name="Wwise_Meter_Victory_Defeat_Sidechain" ID="{30994D1B-69F8-4655-858B-9529BF23F69C}" WorkUnitID="{B0EB1BF1-35D5-48DA-95BE-B0BBE3A101E3}"/>
+										</Reference>
+									</ReferenceList>
 									<ObjectLists/>
 								</Bus>
 								<Bus Name="Music_Defeat_Stinger" ID="{20B090EB-0CBA-4EA1-925D-A313FB3AA344}">
+									<ReferenceList>
+										<Reference Name="Effect0" PluginName="Wwise Meter" CompanyID="0" PluginID="129" PluginType="3">
+											<ObjectRef Name="Wwise_Meter_Victory_Defeat_Sidechain" ID="{30994D1B-69F8-4655-858B-9529BF23F69C}" WorkUnitID="{B0EB1BF1-35D5-48DA-95BE-B0BBE3A101E3}"/>
+										</Reference>
+									</ReferenceList>
 									<ObjectLists/>
 								</Bus>
 							</ChildrenList>
+							<StateInfo>
+								<StatePropertyList>
+									<Property Name="OutputBusLowpass"/>
+									<Property Name="OutputBusVolume"/>
+								</StatePropertyList>
+								<StateGroupList>
+									<StateGroupInfo>
+										<StateGroupRef Name="UI_Menu" ID="{32E9F128-EB3E-42D7-A36A-671B0F05BA90}"/>
+									</StateGroupInfo>
+								</StateGroupList>
+								<CustomStateList>
+									<CustomState>
+										<StateRef Name="UI_Menu_Off" ID="{830DA50C-0EFC-4588-A47C-13A295CCE340}"/>
+										<CustomState Name="" ID="{FC32E1DC-AD3B-4332-90E8-67B6A0344AD5}" ShortID="615414774"/>
+									</CustomState>
+									<CustomState>
+										<StateRef Name="UI_Menu_On" ID="{1B4C6DD3-E9FA-4FB4-A5A0-2EA261C8D9BB}"/>
+										<CustomState Name="" ID="{BD47E636-9C9B-42C3-A68C-5340B19BFEA2}" ShortID="470877008">
+											<PropertyList>
+												<Property Name="OutputBusLowpass" Type="int16" Value="50"/>
+												<Property Name="OutputBusVolume" Type="Real64" Value="-12"/>
+											</PropertyList>
+										</CustomState>
+									</CustomState>
+								</CustomStateList>
+							</StateInfo>
 							<ObjectLists/>
 						</Bus>
 						<Bus Name="Master VO" ID="{67A24B7D-E714-4C2D-A3AC-142EF4E22A46}">

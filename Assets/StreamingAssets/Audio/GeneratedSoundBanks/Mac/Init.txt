@@ -6,8 +6,14 @@ State	ID	Name	State Group			Notes
 	748895195	None	UI_Menu			
 	1702827601	UI_Menu_On	UI_Menu			
 
+Custom State	ID	Name	State Group	Owner		Notes
+	254688353	UI_Menu_On	UI_Menu	\Master-Mixer Hierarchy\Default Work Unit\Master Audio Bus\Master Ambience\AMB_Gameplay_Loop		
+	258210288	UI_Menu_Off	UI_Menu	\Master-Mixer Hierarchy\Default Work Unit\Master Audio Bus\Master Ambience\AMB_Menu_Loop		
+	470877008	UI_Menu_On	UI_Menu	\Master-Mixer Hierarchy\Default Work Unit\Master Audio Bus\Master Music		
+
 Game Parameter	ID	Name			Wwise Object Path	Notes
 	266555239	Music_Sidechain			\Default Work Unit\Music_Sidechain	
+	622329408	Victory_Defeat_Sidechain			\Default Work Unit\Victory_Defeat_Sidechain	
 	2837652549	VO_Sidechain			\Default Work Unit\VO_Sidechain	
 	2862064063	SFX_Sidechain			\Default Work Unit\SFX_Sidechain	
 	3673881719	Volume_SFX			\Default Work Unit\Volume_SFX	
@@ -16,6 +22,7 @@ Game Parameter	ID	Name			Wwise Object Path	Notes
 	3891337659	Volume_Music			\Default Work Unit\Volume_Music	
 
 Audio Bus	ID	Name			Wwise Object Path	Notes
+	190633557	Player_Shoot_Fire			\Default Work Unit\Master Audio Bus\Master SFX\SFX_Player\Player_Shoot_Fire	
 	217780010	SFX_Player			\Default Work Unit\Master Audio Bus\Master SFX\SFX_Player	
 	385316062	Player_Dodge			\Default Work Unit\Master Audio Bus\Master SFX\SFX_Player\Player_Dodge	
 	396309115	UI_Hit_Indicator			\Default Work Unit\Master Audio Bus\Master SFX\SFX_UI\UI_Hit_Indicator	
@@ -43,16 +50,18 @@ Audio Bus	ID	Name			Wwise Object Path	Notes
 	2966352764	VO_Player			\Default Work Unit\Master Audio Bus\Master VO\VO_Player	
 	3010160010	Enemy_Eruption_Slam			\Default Work Unit\Master Audio Bus\Master SFX\SFX_Enemy\Enemy_Eruption_Slam	
 	3136193782	Player_Attack_RtL			\Default Work Unit\Master Audio Bus\Master SFX\SFX_Player\Player_Attack_RtL	
+	3192392001	Player_Shoot_Charge			\Default Work Unit\Master Audio Bus\Master SFX\SFX_Player\Player_Shoot_Charge	
 	3217092839	Enemy_Footsteps			\Default Work Unit\Master Audio Bus\Master SFX\SFX_Enemy\Enemy_Footsteps	
 	3226991506	UI_Menu_Close			\Default Work Unit\Master Audio Bus\Master SFX\SFX_UI\UI_Menu_Close	
 	3324595863	Enemy_Melee_Overhead_Slam			\Default Work Unit\Master Audio Bus\Master SFX\SFX_Enemy\Enemy_Melee_Overhead_Slam	
+	3762643080	AMB_Menu_Loop			\Default Work Unit\Master Audio Bus\Master Ambience\AMB_Menu_Loop	
 	3803692087	Master Audio Bus			\Default Work Unit\Master Audio Bus	
 	3862737079	SFX_UI			\Default Work Unit\Master Audio Bus\Master SFX\SFX_UI	
-	3937919956	Player_Shoot_Cast			\Default Work Unit\Master Audio Bus\Master SFX\SFX_Player\Player_Shoot_Cast	
 	4083126854	UI_Menu_Open			\Default Work Unit\Master Audio Bus\Master SFX\SFX_UI\UI_Menu_Open	
 	4104709401	Master Ambience			\Default Work Unit\Master Audio Bus\Master Ambience	
 
 Effect plug-ins	ID	Name	Type				Notes
+	317120248	Wwise_Meter_Victory_Defeat_Sidechain	Wwise Meter			
 	1089225090	EQ_Music_Sidechain	Wwise Parametric EQ			
 	1149658127	Wwise_Meter_Music_Sidechain	Wwise Meter			
 	1998125837	Wwise_Meter_VO_Sidechain	Wwise Meter			

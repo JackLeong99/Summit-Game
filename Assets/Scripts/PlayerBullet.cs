@@ -26,6 +26,7 @@ public class PlayerBullet : MonoBehaviour
     {
         if (hit.gameObject.tag != "PlayerBullet" && hit.gameObject.tag != "Player")
         {
+            AkSoundEngine.PostEvent("Player_Shoot_Impact", gameObject);
             Destroy (gameObject);
         }
     }

@@ -105,6 +105,18 @@
 						<Property Name="QFactorBand2" Type="Real32" Value="0.5"/>
 					</PropertyList>
 				</Effect>
+				<Effect Name="Wwise_Meter_Victory_Defeat_Sidechain" ID="{30994D1B-69F8-4655-858B-9529BF23F69C}" PluginName="Wwise Meter" CompanyID="0" PluginID="129" PluginType="3">
+					<PropertyList>
+						<Property Name="AttackTime" Type="Real32" Value="0.5"/>
+						<Property Name="Hold" Type="Real32" Value="0.5"/>
+						<Property Name="MeterMode" Type="int32" Value="1"/>
+						<Property Name="MeterScope" Type="int32" Value="1"/>
+						<Property Name="ReleaseTime" Type="Real32" Value="2"/>
+					</PropertyList>
+					<PluginData>
+	<GameParameter Name="Victory_Defeat_Sidechain" ID="{9CFE5460-5774-4409-B426-E6F69D8D658E}"/>
+</PluginData>
+				</Effect>
 			</ChildrenList>
 		</WorkUnit>
 	</Effects>

@@ -39,6 +39,13 @@
 						</Event>
 						<Event Name="UI_Menu_On" ID="{21031615-38E0-47C0-A4C6-9A600E28BD16}">
 							<ChildrenList>
+								<Action Name="" ID="{95D75218-B452-4DC1-B1A8-4BADE5364BA3}" ShortID="770313162">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="UI_Menu_On" ID="{E600E97C-3F6E-4BB1-AF1E-C78371A63923}" WorkUnitID="{E04425B8-B8A4-408A-8BD1-4D908BCEE44F}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
 								<Action Name="" ID="{29D561AD-D731-4235-9364-36A573DA4F7B}" ShortID="268191132">
 									<PropertyList>
 										<Property Name="ActionType" Type="int16" Value="22"/>
@@ -51,8 +58,28 @@
 								</Action>
 							</ChildrenList>
 						</Event>
-						<Event Name="UI_Hit_Indicator" ID="{CF91874F-9898-4F2E-BE0A-531807E1E403}"/>
-						<Event Name="UI_Click" ID="{9E161395-8B50-4544-A695-44EC954168B9}"/>
+						<Event Name="UI_Hit_Indicator" ID="{CF91874F-9898-4F2E-BE0A-531807E1E403}">
+							<ChildrenList>
+								<Action Name="" ID="{A9C9692C-43AC-49DA-AAAD-414AC0F71886}" ShortID="585679339">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="UI_Hit_Indicator" ID="{F3186CC7-9AEC-4006-86BD-A67741DFE0E9}" WorkUnitID="{E04425B8-B8A4-408A-8BD1-4D908BCEE44F}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
+						<Event Name="UI_Click" ID="{9E161395-8B50-4544-A695-44EC954168B9}">
+							<ChildrenList>
+								<Action Name="" ID="{A50AC652-B103-4CA9-8742-A8517DF8BC59}" ShortID="731086486">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="UI_Click" ID="{2CA52B9A-D03A-42A7-BC9A-D3626E7A3E11}" WorkUnitID="{E04425B8-B8A4-408A-8BD1-4D908BCEE44F}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
 					</ChildrenList>
 				</Folder>
 				<Folder Name="SFX_Player" ID="{F28B6564-A4D4-456C-9D10-BCD081CF05DB}" ShortID="1024021338">
@@ -61,10 +88,41 @@
 						<Event Name="Player_Dodge" ID="{D6A5B9C9-875B-4E34-BDC2-7A9ABE8C3A90}"/>
 						<Event Name="Player_Damage" ID="{B24454FD-26A8-4840-9189-A632AA46BB45}"/>
 						<Event Name="Player_Jump" ID="{DB11DEDF-8300-4048-9912-7255ABB4B6F0}"/>
-						<Event Name="Player_Shoot_Cast" ID="{D075F07B-C26F-45FF-AEAD-421FCF7C0CD3}"/>
-						<Event Name="Player_Shoot_Impact" ID="{A5772FBD-021A-4FBF-B045-776F004E54FA}"/>
+						<Event Name="Player_Shoot_Charge" ID="{D075F07B-C26F-45FF-AEAD-421FCF7C0CD3}">
+							<ChildrenList>
+								<Action Name="" ID="{572AB4AE-4FD7-417C-93B9-A7EA608B30CC}" ShortID="520636240">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="Player_Shoot_Charge" ID="{E5155457-300B-4B4E-AD74-6780089E3954}" WorkUnitID="{E04425B8-B8A4-408A-8BD1-4D908BCEE44F}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
+						<Event Name="Player_Shoot_Impact" ID="{A5772FBD-021A-4FBF-B045-776F004E54FA}">
+							<ChildrenList>
+								<Action Name="" ID="{7911ABDF-768C-4DA4-9C82-96A8AA910E88}" ShortID="520147942">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="Player_Shoot_Impact" ID="{543715C1-2D80-4D47-8655-4F70102B625B}" WorkUnitID="{E04425B8-B8A4-408A-8BD1-4D908BCEE44F}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
 						<Event Name="Player_Attack_LtR" ID="{0A74CC40-C8B8-489F-B710-9466EBE8E460}"/>
 						<Event Name="Player_Attack_RtL" ID="{F976F387-3AA7-4C1C-9504-18403D46F657}"/>
+						<Event Name="Player_Shoot_Fire" ID="{7BB37772-2340-41B5-9A36-BE1FA427E9EA}">
+							<ChildrenList>
+								<Action Name="" ID="{542796F4-2330-43F7-A794-BDF357B4A853}" ShortID="698783309">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="Player_Shoot_Fire" ID="{3AE098B7-EE40-478F-94CF-38A6C9AA1E28}" WorkUnitID="{E04425B8-B8A4-408A-8BD1-4D908BCEE44F}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
 					</ChildrenList>
 				</Folder>
 				<Folder Name="SFX_Enemy" ID="{82E91237-E03B-4E3C-A6FB-975481C3429E}" ShortID="319366450">
@@ -116,13 +174,10 @@
 						</Event>
 						<Event Name="Music_Victory_Stinger" ID="{DE8AA511-1211-481E-9D05-03C21BCCC17A}">
 							<ChildrenList>
-								<Action Name="" ID="{B8343A7A-7D44-4B82-86F6-F7776184E7F9}" ShortID="776741436">
-									<PropertyList>
-										<Property Name="ActionType" Type="int16" Value="35"/>
-									</PropertyList>
+								<Action Name="" ID="{F5B2D8A8-D374-415F-AE5F-EBDA24660582}" ShortID="308088443">
 									<ReferenceList>
 										<Reference Name="Target">
-											<ObjectRef Name="Music_Victory_Stinger" ID="{2DACCBDF-17AA-4B7D-9881-C4237A54621E}" WorkUnitID="{49035381-AF0F-472C-B726-7AD9B5CDDA3A}"/>
+											<ObjectRef Name="Music_Victory_Stinger" ID="{7BEBBCCA-07D2-413B-BD38-ED048A3EAFE9}" WorkUnitID="{E04425B8-B8A4-408A-8BD1-4D908BCEE44F}"/>
 										</Reference>
 									</ReferenceList>
 								</Action>
@@ -130,13 +185,10 @@
 						</Event>
 						<Event Name="Music_Defeat_Stinger" ID="{029BC194-9134-4C89-91B9-B93C7AE645F9}">
 							<ChildrenList>
-								<Action Name="" ID="{8E1C0F67-9EA1-4676-AF19-BC63F5F5DD21}" ShortID="173637250">
-									<PropertyList>
-										<Property Name="ActionType" Type="int16" Value="35"/>
-									</PropertyList>
+								<Action Name="" ID="{52F641BD-D182-4367-9414-16ED37C916A9}" ShortID="654621147">
 									<ReferenceList>
 										<Reference Name="Target">
-											<ObjectRef Name="Music_Defeat_Stinger" ID="{9B5A6D32-FA5E-4520-9F4B-DF624F859B40}" WorkUnitID="{49035381-AF0F-472C-B726-7AD9B5CDDA3A}"/>
+											<ObjectRef Name="Music_Defeat_Stinger" ID="{3F9DAC01-6242-4D79-BC3D-D155990711DE}" WorkUnitID="{E04425B8-B8A4-408A-8BD1-4D908BCEE44F}"/>
 										</Reference>
 									</ReferenceList>
 								</Action>
@@ -146,7 +198,7 @@
 				</Folder>
 				<Folder Name="Ambience" ID="{041DBBEE-9819-48DD-95E6-900C4743945A}" ShortID="335882148">
 					<ChildrenList>
-						<Event Name="Ambience_Gameplay_Loop_Stop" ID="{13FBB1CE-79FA-4433-B297-2E18F66653EF}">
+						<Event Name="Ambience_Loop_Stop" ID="{13FBB1CE-79FA-4433-B297-2E18F66653EF}">
 							<ChildrenList>
 								<Action Name="" ID="{46C85BE4-5BC6-4A9C-89E7-9042D47383EF}" ShortID="469070937">
 									<PropertyList>
@@ -155,17 +207,50 @@
 										<Property Name="FadeTime" Type="Real64" Value="2"/>
 										<Property Name="Scope" Type="int16" Value="1"/>
 									</PropertyList>
-									<ReferenceList/>
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="Ambience_Gameplay_Loop" ID="{F932E1A5-715E-4217-94B4-AFB7DF2E1D51}" WorkUnitID="{E04425B8-B8A4-408A-8BD1-4D908BCEE44F}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+								<Action Name="" ID="{D7675CAF-A403-425B-A63E-3EBF5ECC2471}" ShortID="1006982668">
+									<PropertyList>
+										<Property Name="ActionType" Type="int16" Value="2"/>
+										<Property Name="FadeOutCurve" Type="int16" Value="8"/>
+										<Property Name="FadeTime" Type="Real64" Value="2"/>
+										<Property Name="Scope" Type="int16" Value="1"/>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="Ambience_Menu_Loop" ID="{86E08537-069C-434A-94CE-CA4CA2F3AA95}" WorkUnitID="{E04425B8-B8A4-408A-8BD1-4D908BCEE44F}"/>
+										</Reference>
+									</ReferenceList>
 								</Action>
 							</ChildrenList>
 						</Event>
-						<Event Name="Ambience_Gameplay_Loop_Play" ID="{8AF593ED-934B-4BF9-AAB8-7D512B5923A2}">
+						<Event Name="Ambience_Loop_Play" ID="{8AF593ED-934B-4BF9-AAB8-7D512B5923A2}">
 							<ChildrenList>
 								<Action Name="" ID="{B6E4A5AE-9061-495B-BDB7-23649043FAB0}" ShortID="1025510392">
 									<PropertyList>
 										<Property Name="FadeInCurve" Type="int16" Value="1"/>
 										<Property Name="FadeTime" Type="Real64" Value="0.5"/>
 									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="Ambience_Gameplay_Loop" ID="{F932E1A5-715E-4217-94B4-AFB7DF2E1D51}" WorkUnitID="{E04425B8-B8A4-408A-8BD1-4D908BCEE44F}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+								<Action Name="" ID="{971F812A-7B1F-433D-AE9B-A13A108D93EF}" ShortID="825406976">
+									<PropertyList>
+										<Property Name="FadeInCurve" Type="int16" Value="1"/>
+										<Property Name="FadeTime" Type="Real64" Value="0.5"/>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="Ambience_Menu_Loop" ID="{86E08537-069C-434A-94CE-CA4CA2F3AA95}" WorkUnitID="{E04425B8-B8A4-408A-8BD1-4D908BCEE44F}"/>
+										</Reference>
+									</ReferenceList>
 								</Action>
 							</ChildrenList>
 						</Event>
@@ -191,7 +276,17 @@
 									</PropertyList>
 									<ReferenceList>
 										<Reference Name="Target">
-											<ObjectRef Name="Ambience_Gameplay_Loop_Play" ID="{8AF593ED-934B-4BF9-AAB8-7D512B5923A2}" WorkUnitID="{D766E073-EB63-4307-880C-934EBF9C0137}"/>
+											<ObjectRef Name="Ambience_Loop_Play" ID="{8AF593ED-934B-4BF9-AAB8-7D512B5923A2}" WorkUnitID="{D766E073-EB63-4307-880C-934EBF9C0137}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+								<Action Name="" ID="{638D715B-F245-41F7-9BAA-E47F185479D5}" ShortID="475877922">
+									<PropertyList>
+										<Property Name="ActionType" Type="int16" Value="22"/>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="UI_Menu_Off" ID="{830DA50C-0EFC-4588-A47C-13A295CCE340}" WorkUnitID="{D1CD545D-2539-4537-A8BA-166C2E5BE70D}"/>
 										</Reference>
 									</ReferenceList>
 								</Action>
@@ -215,7 +310,7 @@
 									</PropertyList>
 									<ReferenceList>
 										<Reference Name="Target">
-											<ObjectRef Name="Ambience_Gameplay_Loop_Stop" ID="{13FBB1CE-79FA-4433-B297-2E18F66653EF}" WorkUnitID="{D766E073-EB63-4307-880C-934EBF9C0137}"/>
+											<ObjectRef Name="Ambience_Loop_Stop" ID="{13FBB1CE-79FA-4433-B297-2E18F66653EF}" WorkUnitID="{D766E073-EB63-4307-880C-934EBF9C0137}"/>
 										</Reference>
 									</ReferenceList>
 								</Action>

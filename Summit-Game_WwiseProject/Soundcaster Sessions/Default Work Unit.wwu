@@ -6,12 +6,20 @@
 				<SoundcasterSession Name="Test Area" ID="{3C788DF1-0F81-4DB8-A065-010EAA46B4A6}">
 					<ModuleList>
 						<Module>
-							<ObjectRef Name="Music_Gameplay_Loop_Play" ID="{8D7A0E39-2237-4F81-A0E3-88B5B03CEAE0}" WorkUnitID="{D766E073-EB63-4307-880C-934EBF9C0137}"/>
+							<ObjectRef Name="Game_Start" ID="{C3F98802-DBAB-4F6F-9B3D-50B713F7AFA1}" WorkUnitID="{D766E073-EB63-4307-880C-934EBF9C0137}"/>
 							<Position X="0" Y="0"/>
 						</Module>
 						<Module>
-							<ObjectRef Name="Music_Gameplay_Loop_Stop" ID="{CA63EA6B-D6E3-4613-A082-B5BD14F4F86D}" WorkUnitID="{D766E073-EB63-4307-880C-934EBF9C0137}"/>
-							<Position X="1" Y="0"/>
+							<ObjectRef Name="Player_Shoot_Charge" ID="{D075F07B-C26F-45FF-AEAD-421FCF7C0CD3}" WorkUnitID="{D766E073-EB63-4307-880C-934EBF9C0137}"/>
+							<Position X="0" Y="1"/>
+						</Module>
+						<Module>
+							<ObjectRef Name="Player_Shoot_Fire" ID="{7BB37772-2340-41B5-9A36-BE1FA427E9EA}" WorkUnitID="{D766E073-EB63-4307-880C-934EBF9C0137}"/>
+							<Position X="1" Y="1"/>
+						</Module>
+						<Module>
+							<ObjectRef Name="Player_Shoot_Impact" ID="{A5772FBD-021A-4FBF-B045-776F004E54FA}" WorkUnitID="{D766E073-EB63-4307-880C-934EBF9C0137}"/>
+							<Position X="2" Y="1"/>
 						</Module>
 					</ModuleList>
 					<RTPCValueList ShowAll="true">
@@ -21,7 +29,11 @@
 						</RTPCValue>
 						<RTPCValue>
 							<GameParameterRef Name="Music_Sidechain" ID="{B387F8B5-CBD9-41B4-97D8-5F424CC520B1}"/>
-							<Value>0</Value>
+							<Value>-48</Value>
+						</RTPCValue>
+						<RTPCValue>
+							<GameParameterRef Name="Victory_Defeat_Sidechain" ID="{9CFE5460-5774-4409-B426-E6F69D8D658E}"/>
+							<Value>-48</Value>
 						</RTPCValue>
 						<RTPCValue>
 							<GameParameterRef Name="Volume_Master" ID="{69B4E27F-AE3C-4497-8377-1F7E94AAC6DF}"/>
@@ -44,7 +56,9 @@
 							<Value>-48</Value>
 						</RTPCValue>
 					</RTPCValueList>
-					<CurrentStateList ShowAll="true"/>
+					<CurrentStateList ShowAll="true">
+						<CurrentStateRef Name="None" ID="{3A5F934C-3BD6-46F1-AE14-5468C16261BD}"/>
+					</CurrentStateList>
 					<CurrentSwitchList ShowAll="true"/>
 				</SoundcasterSession>
 			</ChildrenList>

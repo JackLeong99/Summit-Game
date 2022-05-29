@@ -31,14 +31,14 @@
 								</Reference>
 							</ReferenceList>
 							<ChildrenList>
-								<MusicTrack Name="Music_Gameplay_Loop" ID="{AAE1E923-3615-4D26-B671-1ED42EDEA9A6}" ShortID="675016734">
+								<MusicTrack Name="Music_Gameplay_Loop" ID="{41E9DA94-C13E-466B-B7E8-CBC321C08D1D}" ShortID="641112249">
 									<ReferenceList>
 										<Reference Name="OutputBus">
 											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{5FE25012-E08F-420E-BE49-3B0109DF68E3}"/>
 										</Reference>
 									</ReferenceList>
 									<ChildrenList>
-										<AudioFileSource Name="Music_Gameplay_Loop" ID="{B2ACB1AD-8AC0-4716-8DF8-9CAE4D80D23C}">
+										<AudioFileSource Name="Music_Gameplay_Loop" ID="{CAAB3FDB-A570-4E85-A958-BEAA3045CB4C}">
 											<Language>SFX</Language>
 											<AudioFile>Music_Gameplay_Loop.wav</AudioFile>
 											<MediaIDList>
@@ -47,7 +47,7 @@
 										</AudioFileSource>
 									</ChildrenList>
 									<TransitionList>
-										<MusicTransition Name="Root" ID="{DC057777-CC24-4079-9268-36548B840FA7}">
+										<MusicTransition Name="Root" ID="{3518D52C-BFEF-4DA4-9EE6-F8E88121D872}">
 											<PropertyList>
 												<Property Name="IsFolder" Type="bool" Value="True"/>
 											</PropertyList>
@@ -58,18 +58,18 @@
 										<ObjectList Name="Sequences">
 											<Reference>
 												<Local>
-													<MusicTrackSequence Name="" ID="{642C7F39-2732-4815-8B95-7788B06EAA41}">
+													<MusicTrackSequence Name="" ID="{2EF0AC95-B6FC-4D1F-85EC-BE0FF04FB398}">
 														<ObjectLists>
 															<ObjectList Name="Clips">
 																<Reference>
 																	<Local>
-																		<MusicClip Name="Music_Gameplay_Loop" ID="{C3D1E2BA-F698-4E97-AEC3-62F99368E823}">
+																		<MusicClip Name="Music_Gameplay_Loop" ID="{55375707-65B5-424B-8337-23396021BACD}">
 																			<PropertyList>
 																				<Property Name="EndTrimOffset" Type="Real64" Value="154800"/>
 																				<Property Name="FadeInMode" Type="int16" Value="0"/>
 																				<Property Name="FadeOutMode" Type="int16" Value="0"/>
 																			</PropertyList>
-																			<AudioSourceRef Name="Music_Gameplay_Loop" ID="{B2ACB1AD-8AC0-4716-8DF8-9CAE4D80D23C}"/>
+																			<AudioSourceRef Name="Music_Gameplay_Loop" ID="{CAAB3FDB-A570-4E85-A958-BEAA3045CB4C}"/>
 																		</MusicClip>
 																	</Local>
 																</Reference>
