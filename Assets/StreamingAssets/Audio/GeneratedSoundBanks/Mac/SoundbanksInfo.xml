@@ -11,7 +11,7 @@
 	<StreamedFiles/>
 	<MediaFilesNotInAnyBank/>
 	<SoundBanks>
-		<SoundBank Id="822237696" Language="SFX" Hash="3159914943">
+		<SoundBank Id="822237696" Language="SFX" Hash="477504075">
 			<ObjectPath>\SoundBanks\Default Work Unit\SB_Default</ObjectPath>
 			<ShortName>SB_Default</ShortName>
 			<Path>SB_Default.bnk</Path>
@@ -29,7 +29,7 @@
 					</IncludedMemoryFiles>
 				</Event>
 				<Event Id="4072408949" Name="Ambience_Loop_Stop" ObjectPath="\Events\Default Work Unit\Ambience\Ambience_Loop_Stop" MaxAttenuation="0." DurationType="OneShot" DurationMin="0." DurationMax="0."/>
-				<Event Id="2854117449" Name="Enemy_Boulder_Cast" ObjectPath="\Events\Default Work Unit\SFX_Enemy\Enemy_Boulder_Cast" DurationType="OneShot" DurationMin="3.5" DurationMax="3.5">
+				<Event Id="2854117449" Name="Enemy_Boulder_Cast" ObjectPath="\Events\Default Work Unit\SFX_Enemy\Enemy_Boulder_Cast" MaxAttenuation="20." DurationType="OneShot" DurationMin="3.5" DurationMax="3.5">
 					<IncludedMemoryFiles>
 						<File Id="233223795" Language="SFX">
 							<ShortName>Enemy_Boulder_Cast.wav</ShortName>
@@ -37,7 +37,7 @@
 						</File>
 					</IncludedMemoryFiles>
 				</Event>
-				<Event Id="2372917442" Name="Enemy_Boulder_Impact" ObjectPath="\Events\Default Work Unit\SFX_Enemy\Enemy_Boulder_Impact" DurationType="OneShot" DurationMin="2." DurationMax="2.">
+				<Event Id="2372917442" Name="Enemy_Boulder_Impact" ObjectPath="\Events\Default Work Unit\SFX_Enemy\Enemy_Boulder_Impact" MaxAttenuation="20." DurationType="OneShot" DurationMin="2." DurationMax="2.">
 					<IncludedMemoryFiles>
 						<File Id="498824251" Language="SFX">
 							<ShortName>Enemy_Boulder_Impact.wav</ShortName>
@@ -45,7 +45,7 @@
 						</File>
 					</IncludedMemoryFiles>
 				</Event>
-				<Event Id="555067025" Name="Enemy_Damage" ObjectPath="\Events\Default Work Unit\SFX_Enemy\Enemy_Damage" DurationType="OneShot" DurationMin="1.5" DurationMax="1.5">
+				<Event Id="555067025" Name="Enemy_Damage" ObjectPath="\Events\Default Work Unit\SFX_Enemy\Enemy_Damage" MaxAttenuation="20." DurationType="OneShot" DurationMin="1.5" DurationMax="1.5">
 					<IncludedMemoryFiles>
 						<File Id="479541808" Language="SFX">
 							<ShortName>Enemy_Damage-003.wav</ShortName>
@@ -65,7 +65,7 @@
 						</File>
 					</IncludedMemoryFiles>
 				</Event>
-				<Event Id="2013137580" Name="Enemy_Dash_Loop_Play" ObjectPath="\Events\Default Work Unit\SFX_Enemy\Enemy_Dash_Loop_Play" DurationType="Infinite">
+				<Event Id="2013137580" Name="Enemy_Dash_Loop_Play" ObjectPath="\Events\Default Work Unit\SFX_Enemy\Enemy_Dash_Loop_Play" MaxAttenuation="20." DurationType="Infinite">
 					<IncludedMemoryFiles>
 						<File Id="881559721" Language="SFX">
 							<ShortName>Enemy_Dash.wav</ShortName>
@@ -74,7 +74,7 @@
 					</IncludedMemoryFiles>
 				</Event>
 				<Event Id="3982922166" Name="Enemy_Dash_Loop_Stop" ObjectPath="\Events\Default Work Unit\SFX_Enemy\Enemy_Dash_Loop_Stop" MaxAttenuation="0." DurationType="OneShot" DurationMin="0." DurationMax="0."/>
-				<Event Id="1205999388" Name="Enemy_Death" ObjectPath="\Events\Default Work Unit\SFX_Enemy\Enemy_Death" DurationType="OneShot" DurationMin="5." DurationMax="5.">
+				<Event Id="1205999388" Name="Enemy_Death" ObjectPath="\Events\Default Work Unit\SFX_Enemy\Enemy_Death" MaxAttenuation="20." DurationType="OneShot" DurationMin="5." DurationMax="5.">
 					<IncludedMemoryFiles>
 						<File Id="225300288" Language="SFX">
 							<ShortName>Enemy_Death.wav</ShortName>
@@ -82,7 +82,7 @@
 						</File>
 					</IncludedMemoryFiles>
 				</Event>
-				<Event Id="1789255036" Name="Enemy_Eruption_Cast" ObjectPath="\Events\Default Work Unit\SFX_Enemy\Enemy_Eruption_Cast" DurationType="OneShot" DurationMin="2.868542" DurationMax="2.868542">
+				<Event Id="1789255036" Name="Enemy_Eruption_Cast" ObjectPath="\Events\Default Work Unit\SFX_Enemy\Enemy_Eruption_Cast" MaxAttenuation="20." DurationType="OneShot" DurationMin="2.868542" DurationMax="2.868542">
 					<IncludedMemoryFiles>
 						<File Id="472729176" Language="SFX">
 							<ShortName>Enemy_Eruption_Cast.wav</ShortName>
@@ -90,7 +90,7 @@
 						</File>
 					</IncludedMemoryFiles>
 				</Event>
-				<Event Id="22559231" Name="Enemy_Eruption_Lava" ObjectPath="\Events\Default Work Unit\SFX_Enemy\Enemy_Eruption_Lava" DurationType="OneShot" DurationMin="2.5" DurationMax="2.5">
+				<Event Id="22559231" Name="Enemy_Eruption_Lava" ObjectPath="\Events\Default Work Unit\SFX_Enemy\Enemy_Eruption_Lava" MaxAttenuation="20." DurationType="OneShot" DurationMin="2.5" DurationMax="2.5">
 					<IncludedMemoryFiles>
 						<File Id="80263160" Language="SFX">
 							<ShortName>Enemy_Eruption_Lava.wav</ShortName>
@@ -98,7 +98,7 @@
 						</File>
 					</IncludedMemoryFiles>
 				</Event>
-				<Event Id="3324595863" Name="Enemy_Melee_Overhead_Slam" ObjectPath="\Events\Default Work Unit\SFX_Enemy\Enemy_Melee_Overhead_Slam" DurationType="OneShot" DurationMin="3." DurationMax="3.">
+				<Event Id="3324595863" Name="Enemy_Melee_Overhead_Slam" ObjectPath="\Events\Default Work Unit\SFX_Enemy\Enemy_Melee_Overhead_Slam" MaxAttenuation="20." DurationType="OneShot" DurationMin="3." DurationMax="3.">
 					<IncludedMemoryFiles>
 						<File Id="873577496" Language="SFX">
 							<ShortName>Enemy_Melee_Overhead_Slam.wav</ShortName>
@@ -106,7 +106,7 @@
 						</File>
 					</IncludedMemoryFiles>
 				</Event>
-				<Event Id="1491778125" Name="Enemy_Melee_Right_Hook" ObjectPath="\Events\Default Work Unit\SFX_Enemy\Enemy_Melee_Right_Hook" DurationType="OneShot" DurationMin="3." DurationMax="3.">
+				<Event Id="1491778125" Name="Enemy_Melee_Right_Hook" ObjectPath="\Events\Default Work Unit\SFX_Enemy\Enemy_Melee_Right_Hook" MaxAttenuation="20." DurationType="OneShot" DurationMin="3." DurationMax="3.">
 					<IncludedMemoryFiles>
 						<File Id="185763027" Language="SFX">
 							<ShortName>Enemy_Melee_Right_Hook.wav</ShortName>
@@ -250,7 +250,7 @@
 						</File>
 					</IncludedMemoryFiles>
 				</Event>
-				<Event Id="1650805379" Name="Player_Shoot_Impact" ObjectPath="\Events\Default Work Unit\SFX_Player\Player_Shoot_Impact" DurationType="OneShot" DurationMin="1." DurationMax="1.">
+				<Event Id="1650805379" Name="Player_Shoot_Impact" ObjectPath="\Events\Default Work Unit\SFX_Player\Player_Shoot_Impact" MaxAttenuation="20." DurationType="OneShot" DurationMin="1." DurationMax="1.">
 					<IncludedMemoryFiles>
 						<File Id="18236720" Language="SFX">
 							<ShortName>Player_Shoot_Impact.wav</ShortName>
