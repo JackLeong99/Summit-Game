@@ -12,10 +12,13 @@ public class RockPickedUp : MonoBehaviour
     private bool timerActive=false;
     public GameObject sparksPrefab;
 
+    private GameObject player;
+
     // Start is called before the first frame update
     void Start()
     {
         rockHand = GameObject.FindWithTag("rockHold");
+        player = GameObject.FindWithTag("Player"); 
     }
 
     // Update is called once per frame
@@ -59,7 +62,8 @@ public class RockPickedUp : MonoBehaviour
          }
         if(rockHealth<=0)
          {
-             Destroy(gameObject);
+            Destroy(gameObject);
+            player.GetComponent<PlayerStats>().healDamage(5.0f);
          }
     }
 

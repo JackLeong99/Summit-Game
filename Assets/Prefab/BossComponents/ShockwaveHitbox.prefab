@@ -127,7 +127,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attackName: ShockWave
-  damage: 25
+  damage: 10
 --- !u!114 &3736248178684664082
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -153,4 +153,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9b287b778a2b35b42a29bbff0f7f606a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  force: 1
+  force: 3
