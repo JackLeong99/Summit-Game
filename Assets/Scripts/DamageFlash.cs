@@ -5,7 +5,7 @@ using DG.Tweening;
 
 public class DamageFlash : MonoBehaviour
 {
-    [SerializeField] Renderer renderer;
+    [SerializeField] Renderer targetRenderer;
     [SerializeField][ColorUsage(false, true)] Color color;
     [SerializeField] float duration = 0.5f;
 
@@ -13,8 +13,8 @@ public class DamageFlash : MonoBehaviour
 
     void Awake ()
     {
-        renderer.material = new Material(renderer.sharedMaterial);
-        renderer.material.EnableKeyword("_EMISSION");
+        targetRenderer.material = new Material(targetRenderer.sharedMaterial);
+        targetRenderer.material.EnableKeyword("_EMISSION");
     }
 
     public void Flash ()
@@ -23,7 +23,7 @@ public class DamageFlash : MonoBehaviour
         {
             tween = DOVirtual.Color(color, default, duration, (color) =>
             {
-                renderer.sharedMaterial.SetColor("_EmissionColor", color);
+                targetRenderer.sharedMaterial.SetColor("_EmissionColor", color);
             }).SetRecyclable(true).SetAutoKill(false).SetEase(Ease.OutQuad);
         }
         else

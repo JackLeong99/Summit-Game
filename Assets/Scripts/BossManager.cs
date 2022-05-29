@@ -508,7 +508,7 @@ public class BossManager : MonoBehaviour
         }
 
         UIManager.Instance.HealthBossBarSet((int)Mathf.Round(currentHP));
-        UIManager.Instance.DamageTextPool.Spawn(position, dmg.ToString(), Color.white, dmg > 40f ? 12f : 4f);
+        UIManager.Instance.DamageTextPool.Spawn(position, dmg.ToString(), Color.white, dmg > 15f ? 12f : 4f);
 
         damageFlash.Flash();
 
