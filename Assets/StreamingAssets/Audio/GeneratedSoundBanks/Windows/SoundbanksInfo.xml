@@ -11,20 +11,20 @@
 	<StreamedFiles/>
 	<MediaFilesNotInAnyBank/>
 	<SoundBanks>
-		<SoundBank Id="822237696" Language="SFX" Hash="3695259190">
+		<SoundBank Id="822237696" Language="SFX" Hash="3159914943">
 			<ObjectPath>\SoundBanks\Default Work Unit\SB_Default</ObjectPath>
 			<ShortName>SB_Default</ShortName>
 			<Path>SB_Default.bnk</Path>
 			<IncludedEvents>
-				<Event Id="1042302759" Name="Ambience_Loop_Play" ObjectPath="\Events\Default Work Unit\Ambience\Ambience_Loop_Play" DurationType="OneShot" DurationMin="58." DurationMax="58.">
+				<Event Id="1042302759" Name="Ambience_Loop_Play" ObjectPath="\Events\Default Work Unit\Ambience\Ambience_Loop_Play" DurationType="Infinite">
 					<IncludedMemoryFiles>
 						<File Id="224378899" Language="SFX">
 							<ShortName>Ambience_Menu_Loop.wav</ShortName>
-							<Path>SFX\Ambience_Menu_Loop_10C4C929.wem</Path>
+							<Path>SFX\Ambience_Menu_Loop_D79FB2B7.wem</Path>
 						</File>
 						<File Id="492972338" Language="SFX">
 							<ShortName>Ambience_Gameplay_Loop.wav</ShortName>
-							<Path>SFX\Ambience_Gameplay_Loop_10C4C929.wem</Path>
+							<Path>SFX\Ambience_Gameplay_Loop_D79FB2B7.wem</Path>
 						</File>
 					</IncludedMemoryFiles>
 				</Event>
@@ -82,7 +82,7 @@
 						</File>
 					</IncludedMemoryFiles>
 				</Event>
-				<Event Id="1789255036" Name="Enemy_Eruption_Cast" ObjectPath="\Events\Default Work Unit\SFX_Enemy\Enemy_Eruption_Cast" DurationType="OneShot" DurationMin="2." DurationMax="2.">
+				<Event Id="1789255036" Name="Enemy_Eruption_Cast" ObjectPath="\Events\Default Work Unit\SFX_Enemy\Enemy_Eruption_Cast" DurationType="OneShot" DurationMin="2.868542" DurationMax="2.868542">
 					<IncludedMemoryFiles>
 						<File Id="472729176" Language="SFX">
 							<ShortName>Enemy_Eruption_Cast.wav</ShortName>
@@ -300,7 +300,7 @@
 				</StateGroup>
 			</StateGroups>
 		</SoundBank>
-		<SoundBank Id="1355168291" Language="SFX" Hash="2097428029">
+		<SoundBank Id="1355168291" Language="SFX" Hash="3236191724">
 			<ObjectPath>Init</ObjectPath>
 			<ShortName>Init</ShortName>
 			<Path>Init.bnk</Path>

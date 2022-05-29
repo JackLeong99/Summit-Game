@@ -266,9 +266,14 @@
 								</ActorMixer>
 								<ActorMixer Name="Player_Shoot_Impact" ID="{4989FC53-8D04-4FE9-9382-8D2091084C8F}" ShortID="603981495">
 									<PropertyList>
+										<Property Name="3DSpatialization" Type="int16" Value="1"/>
 										<Property Name="OverrideOutput" Type="bool" Value="True"/>
+										<Property Name="OverridePositioning" Type="bool" Value="True"/>
 									</PropertyList>
 									<ReferenceList>
+										<Reference Name="Attenuation">
+											<ObjectRef Name="Stage_20m" ID="{B0D4A199-1443-4648-AB38-3014F7E77842}" WorkUnitID="{08BB8B25-D568-4D5B-8D2D-EE1E5F63128C}"/>
+										</Reference>
 										<Reference Name="Conversion">
 											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{E8C30435-E2EC-40B4-A911-30D289ECE001}"/>
 										</Reference>
@@ -449,7 +454,7 @@
 											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{E8C30435-E2EC-40B4-A911-30D289ECE001}"/>
 										</Reference>
 										<Reference Name="OutputBus">
-											<ObjectRef Name="Player_Damage" ID="{1404BD47-4CE6-4C90-96C0-1586B3706911}" WorkUnitID="{5FE25012-E08F-420E-BE49-3B0109DF68E3}"/>
+											<ObjectRef Name="Player_Death" ID="{4B2D6252-E140-489A-978A-C0BD5E09C53C}" WorkUnitID="{5FE25012-E08F-420E-BE49-3B0109DF68E3}"/>
 										</Reference>
 									</ReferenceList>
 									<ChildrenList>
@@ -751,14 +756,19 @@
 							<ChildrenList>
 								<ActorMixer Name="Enemy_Eruption_Lava" ID="{68D66851-B2A0-40B9-87D6-97A00808907B}" ShortID="552385583">
 									<PropertyList>
+										<Property Name="3DSpatialization" Type="int16" Value="1"/>
 										<Property Name="OverrideOutput" Type="bool" Value="True"/>
+										<Property Name="OverridePositioning" Type="bool" Value="True"/>
 									</PropertyList>
 									<ReferenceList>
+										<Reference Name="Attenuation">
+											<ObjectRef Name="Stage_20m" ID="{B0D4A199-1443-4648-AB38-3014F7E77842}" WorkUnitID="{08BB8B25-D568-4D5B-8D2D-EE1E5F63128C}"/>
+										</Reference>
 										<Reference Name="Conversion">
 											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{E8C30435-E2EC-40B4-A911-30D289ECE001}"/>
 										</Reference>
 										<Reference Name="OutputBus">
-											<ObjectRef Name="Enemy_Eruption_Burst" ID="{DDAB691D-2E2C-4F17-9650-6D2038DCFD24}" WorkUnitID="{5FE25012-E08F-420E-BE49-3B0109DF68E3}"/>
+											<ObjectRef Name="Enemy_Eruption_Lava" ID="{DDAB691D-2E2C-4F17-9650-6D2038DCFD24}" WorkUnitID="{5FE25012-E08F-420E-BE49-3B0109DF68E3}"/>
 										</Reference>
 									</ReferenceList>
 									<ChildrenList>
@@ -790,14 +800,135 @@
 								</ActorMixer>
 								<ActorMixer Name="Enemy_Eruption_Cast" ID="{16F6DB3A-2B20-4660-85FA-7CCE3682F369}" ShortID="29307539">
 									<PropertyList>
+										<Property Name="3DSpatialization" Type="int16" Value="1"/>
 										<Property Name="OverrideOutput" Type="bool" Value="True"/>
+										<Property Name="OverridePositioning" Type="bool" Value="True"/>
 									</PropertyList>
 									<ReferenceList>
+										<Reference Name="Attenuation">
+											<Custom CreatedFrom="{B0D4A199-1443-4648-AB38-3014F7E77842}">
+												<Attenuation Name="Stage_20m (Custom)" ID="{F159CEFF-2013-43AD-98BC-6E050297771A}" ShortID="772855692">
+													<PropertyList>
+														<Property Name="RadiusMax" Type="Real64" Value="20"/>
+													</PropertyList>
+													<CurveUsageInfoList>
+														<VolumeDryUsage>
+															<CurveUsageInfo Platform="Linked" CurveToUse="Custom">
+																<Curve Name="VolumeDry" ID="{C74FEDFE-A58C-44CC-99A6-F140466F741D}">
+																	<PropertyList>
+																		<Property Name="Flags" Type="int32" Value="3"/>
+																	</PropertyList>
+																	<PointList>
+																		<Point>
+																			<XPos>0</XPos>
+																			<YPos>0</YPos>
+																			<Flags>5</Flags>
+																		</Point>
+																		<Point>
+																			<XPos>1</XPos>
+																			<YPos>-0</YPos>
+																			<Flags>0</Flags>
+																			<SegmentShape>Exp2</SegmentShape>
+																		</Point>
+																		<Point>
+																			<XPos>15</XPos>
+																			<YPos>-24</YPos>
+																			<Flags>0</Flags>
+																		</Point>
+																		<Point>
+																			<XPos>20</XPos>
+																			<YPos>-24</YPos>
+																			<Flags>37</Flags>
+																		</Point>
+																	</PointList>
+																</Curve>
+															</CurveUsageInfo>
+														</VolumeDryUsage>
+														<VolumeWetGameUsage>
+															<CurveUsageInfo Platform="Linked" CurveToUse="UseVolumeDry"/>
+														</VolumeWetGameUsage>
+														<VolumeWetUserUsage>
+															<CurveUsageInfo Platform="Linked" CurveToUse="UseVolumeDry"/>
+														</VolumeWetUserUsage>
+														<LowPassFilterUsage>
+															<CurveUsageInfo Platform="Linked" CurveToUse="Custom">
+																<Curve Name="LowPassFilter" ID="{FB22D58E-0448-4088-A501-D1C1ED1EB647}">
+																	<PropertyList>
+																		<Property Name="Flags" Type="int32" Value="65537"/>
+																	</PropertyList>
+																	<PointList>
+																		<Point>
+																			<XPos>0</XPos>
+																			<YPos>0</YPos>
+																			<Flags>5</Flags>
+																		</Point>
+																		<Point>
+																			<XPos>1</XPos>
+																			<YPos>0</YPos>
+																			<Flags>0</Flags>
+																			<SegmentShape>Exp2</SegmentShape>
+																		</Point>
+																		<Point>
+																			<XPos>15</XPos>
+																			<YPos>75</YPos>
+																			<Flags>0</Flags>
+																			<SegmentShape>Log2</SegmentShape>
+																		</Point>
+																		<Point>
+																			<XPos>20</XPos>
+																			<YPos>75</YPos>
+																			<Flags>37</Flags>
+																		</Point>
+																	</PointList>
+																</Curve>
+															</CurveUsageInfo>
+														</LowPassFilterUsage>
+														<HighPassFilterUsage>
+															<CurveUsageInfo Platform="Linked" CurveToUse="None"/>
+														</HighPassFilterUsage>
+														<SpreadUsage>
+															<CurveUsageInfo Platform="Linked" CurveToUse="Custom">
+																<Curve Name="Spread" ID="{1EC7E960-E1EB-44F8-AABD-F8347C3F4684}">
+																	<PropertyList>
+																		<Property Name="Flags" Type="int32" Value="1"/>
+																	</PropertyList>
+																	<PointList>
+																		<Point>
+																			<XPos>0</XPos>
+																			<YPos>100</YPos>
+																			<Flags>5</Flags>
+																		</Point>
+																		<Point>
+																			<XPos>1</XPos>
+																			<YPos>100</YPos>
+																			<Flags>0</Flags>
+																		</Point>
+																		<Point>
+																			<XPos>10</XPos>
+																			<YPos>0</YPos>
+																			<Flags>0</Flags>
+																		</Point>
+																		<Point>
+																			<XPos>20</XPos>
+																			<YPos>0</YPos>
+																			<Flags>37</Flags>
+																		</Point>
+																	</PointList>
+																</Curve>
+															</CurveUsageInfo>
+														</SpreadUsage>
+														<FocusUsage>
+															<CurveUsageInfo Platform="Linked" CurveToUse="None"/>
+														</FocusUsage>
+													</CurveUsageInfoList>
+												</Attenuation>
+											</Custom>
+										</Reference>
 										<Reference Name="Conversion">
 											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{E8C30435-E2EC-40B4-A911-30D289ECE001}"/>
 										</Reference>
 										<Reference Name="OutputBus">
-											<ObjectRef Name="Enemy_Eruption_Slam" ID="{63B3A5DD-3BBC-4988-A061-CDE4051C555A}" WorkUnitID="{5FE25012-E08F-420E-BE49-3B0109DF68E3}"/>
+											<ObjectRef Name="Enemy_Eruption_Cast" ID="{63B3A5DD-3BBC-4988-A061-CDE4051C555A}" WorkUnitID="{5FE25012-E08F-420E-BE49-3B0109DF68E3}"/>
 										</Reference>
 									</ReferenceList>
 									<ChildrenList>
@@ -829,9 +960,14 @@
 								</ActorMixer>
 								<ActorMixer Name="Enemy_Boulder_Impact" ID="{BB35D5B2-CD3F-4BA0-ABFF-20ADF060D935}" ShortID="270114604">
 									<PropertyList>
+										<Property Name="3DSpatialization" Type="int16" Value="1"/>
 										<Property Name="OverrideOutput" Type="bool" Value="True"/>
+										<Property Name="OverridePositioning" Type="bool" Value="True"/>
 									</PropertyList>
 									<ReferenceList>
+										<Reference Name="Attenuation">
+											<ObjectRef Name="Stage_20m" ID="{B0D4A199-1443-4648-AB38-3014F7E77842}" WorkUnitID="{08BB8B25-D568-4D5B-8D2D-EE1E5F63128C}"/>
+										</Reference>
 										<Reference Name="Conversion">
 											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{E8C30435-E2EC-40B4-A911-30D289ECE001}"/>
 										</Reference>
@@ -868,14 +1004,19 @@
 								</ActorMixer>
 								<ActorMixer Name="Enemy_Boulder_Cast" ID="{8197ADDA-1098-46A2-853D-2182692B0D80}" ShortID="1037344928">
 									<PropertyList>
+										<Property Name="3DSpatialization" Type="int16" Value="1"/>
 										<Property Name="OverrideOutput" Type="bool" Value="True"/>
+										<Property Name="OverridePositioning" Type="bool" Value="True"/>
 									</PropertyList>
 									<ReferenceList>
+										<Reference Name="Attenuation">
+											<ObjectRef Name="Stage_20m" ID="{B0D4A199-1443-4648-AB38-3014F7E77842}" WorkUnitID="{08BB8B25-D568-4D5B-8D2D-EE1E5F63128C}"/>
+										</Reference>
 										<Reference Name="Conversion">
 											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{E8C30435-E2EC-40B4-A911-30D289ECE001}"/>
 										</Reference>
 										<Reference Name="OutputBus">
-											<ObjectRef Name="Enemy_Boulder_Throw" ID="{74260371-841D-44C5-AE54-27ED43319B04}" WorkUnitID="{5FE25012-E08F-420E-BE49-3B0109DF68E3}"/>
+											<ObjectRef Name="Enemy_Boulder_Cast" ID="{74260371-841D-44C5-AE54-27ED43319B04}" WorkUnitID="{5FE25012-E08F-420E-BE49-3B0109DF68E3}"/>
 										</Reference>
 									</ReferenceList>
 									<ChildrenList>
@@ -907,9 +1048,130 @@
 								</ActorMixer>
 								<ActorMixer Name="Enemy_Death" ID="{8E9DC874-2D05-45A9-87AB-798AD0CCEF04}" ShortID="424320132">
 									<PropertyList>
+										<Property Name="3DSpatialization" Type="int16" Value="1"/>
 										<Property Name="OverrideOutput" Type="bool" Value="True"/>
+										<Property Name="OverridePositioning" Type="bool" Value="True"/>
 									</PropertyList>
 									<ReferenceList>
+										<Reference Name="Attenuation">
+											<Custom CreatedFrom="{B0D4A199-1443-4648-AB38-3014F7E77842}">
+												<Attenuation Name="Stage_20m (Custom)" ID="{5E3AFB4B-4496-4C4A-9195-2500A31930E6}" ShortID="271691681">
+													<PropertyList>
+														<Property Name="RadiusMax" Type="Real64" Value="20"/>
+													</PropertyList>
+													<CurveUsageInfoList>
+														<VolumeDryUsage>
+															<CurveUsageInfo Platform="Linked" CurveToUse="Custom">
+																<Curve Name="VolumeDry" ID="{7A8CB16D-E356-403E-8ED5-001AED13759C}">
+																	<PropertyList>
+																		<Property Name="Flags" Type="int32" Value="3"/>
+																	</PropertyList>
+																	<PointList>
+																		<Point>
+																			<XPos>0</XPos>
+																			<YPos>0</YPos>
+																			<Flags>5</Flags>
+																		</Point>
+																		<Point>
+																			<XPos>1</XPos>
+																			<YPos>-0</YPos>
+																			<Flags>0</Flags>
+																			<SegmentShape>Exp2</SegmentShape>
+																		</Point>
+																		<Point>
+																			<XPos>15</XPos>
+																			<YPos>-24</YPos>
+																			<Flags>0</Flags>
+																		</Point>
+																		<Point>
+																			<XPos>20</XPos>
+																			<YPos>-24</YPos>
+																			<Flags>37</Flags>
+																		</Point>
+																	</PointList>
+																</Curve>
+															</CurveUsageInfo>
+														</VolumeDryUsage>
+														<VolumeWetGameUsage>
+															<CurveUsageInfo Platform="Linked" CurveToUse="UseVolumeDry"/>
+														</VolumeWetGameUsage>
+														<VolumeWetUserUsage>
+															<CurveUsageInfo Platform="Linked" CurveToUse="UseVolumeDry"/>
+														</VolumeWetUserUsage>
+														<LowPassFilterUsage>
+															<CurveUsageInfo Platform="Linked" CurveToUse="Custom">
+																<Curve Name="LowPassFilter" ID="{A3CD09D8-3015-4882-992B-3ED892537719}">
+																	<PropertyList>
+																		<Property Name="Flags" Type="int32" Value="65537"/>
+																	</PropertyList>
+																	<PointList>
+																		<Point>
+																			<XPos>0</XPos>
+																			<YPos>0</YPos>
+																			<Flags>5</Flags>
+																		</Point>
+																		<Point>
+																			<XPos>1</XPos>
+																			<YPos>0</YPos>
+																			<Flags>0</Flags>
+																			<SegmentShape>Exp2</SegmentShape>
+																		</Point>
+																		<Point>
+																			<XPos>15</XPos>
+																			<YPos>75</YPos>
+																			<Flags>0</Flags>
+																			<SegmentShape>Log2</SegmentShape>
+																		</Point>
+																		<Point>
+																			<XPos>20</XPos>
+																			<YPos>75</YPos>
+																			<Flags>37</Flags>
+																		</Point>
+																	</PointList>
+																</Curve>
+															</CurveUsageInfo>
+														</LowPassFilterUsage>
+														<HighPassFilterUsage>
+															<CurveUsageInfo Platform="Linked" CurveToUse="None"/>
+														</HighPassFilterUsage>
+														<SpreadUsage>
+															<CurveUsageInfo Platform="Linked" CurveToUse="Custom">
+																<Curve Name="Spread" ID="{E4C90BCE-762D-4FBB-B896-6F51F85795A9}">
+																	<PropertyList>
+																		<Property Name="Flags" Type="int32" Value="1"/>
+																	</PropertyList>
+																	<PointList>
+																		<Point>
+																			<XPos>0</XPos>
+																			<YPos>100</YPos>
+																			<Flags>5</Flags>
+																		</Point>
+																		<Point>
+																			<XPos>1</XPos>
+																			<YPos>100</YPos>
+																			<Flags>0</Flags>
+																		</Point>
+																		<Point>
+																			<XPos>10</XPos>
+																			<YPos>0</YPos>
+																			<Flags>0</Flags>
+																		</Point>
+																		<Point>
+																			<XPos>20</XPos>
+																			<YPos>0</YPos>
+																			<Flags>37</Flags>
+																		</Point>
+																	</PointList>
+																</Curve>
+															</CurveUsageInfo>
+														</SpreadUsage>
+														<FocusUsage>
+															<CurveUsageInfo Platform="Linked" CurveToUse="None"/>
+														</FocusUsage>
+													</CurveUsageInfoList>
+												</Attenuation>
+											</Custom>
+										</Reference>
 										<Reference Name="Conversion">
 											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{E8C30435-E2EC-40B4-A911-30D289ECE001}"/>
 										</Reference>
@@ -946,9 +1208,14 @@
 								</ActorMixer>
 								<ActorMixer Name="Enemy_Melee_Overhead_Slam" ID="{0CA534F7-752A-45B4-A24B-CE0553CD0814}" ShortID="791887233">
 									<PropertyList>
+										<Property Name="3DSpatialization" Type="int16" Value="1"/>
 										<Property Name="OverrideOutput" Type="bool" Value="True"/>
+										<Property Name="OverridePositioning" Type="bool" Value="True"/>
 									</PropertyList>
 									<ReferenceList>
+										<Reference Name="Attenuation">
+											<ObjectRef Name="Stage_20m" ID="{B0D4A199-1443-4648-AB38-3014F7E77842}" WorkUnitID="{08BB8B25-D568-4D5B-8D2D-EE1E5F63128C}"/>
+										</Reference>
 										<Reference Name="Conversion">
 											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{E8C30435-E2EC-40B4-A911-30D289ECE001}"/>
 										</Reference>
@@ -985,9 +1252,14 @@
 								</ActorMixer>
 								<ActorMixer Name="Enemy_Melee_Right_Hook" ID="{91DE7D7F-8867-4E38-93F4-D56AC2697AE9}" ShortID="620207186">
 									<PropertyList>
+										<Property Name="3DSpatialization" Type="int16" Value="1"/>
 										<Property Name="OverrideOutput" Type="bool" Value="True"/>
+										<Property Name="OverridePositioning" Type="bool" Value="True"/>
 									</PropertyList>
 									<ReferenceList>
+										<Reference Name="Attenuation">
+											<ObjectRef Name="Stage_20m" ID="{B0D4A199-1443-4648-AB38-3014F7E77842}" WorkUnitID="{08BB8B25-D568-4D5B-8D2D-EE1E5F63128C}"/>
+										</Reference>
 										<Reference Name="Conversion">
 											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{E8C30435-E2EC-40B4-A911-30D289ECE001}"/>
 										</Reference>
@@ -1024,9 +1296,14 @@
 								</ActorMixer>
 								<ActorMixer Name="Enemy_Damage" ID="{2BF7C233-101B-4154-A0A0-7C087D9E50CC}" ShortID="504440995">
 									<PropertyList>
+										<Property Name="3DSpatialization" Type="int16" Value="1"/>
 										<Property Name="OverrideOutput" Type="bool" Value="True"/>
+										<Property Name="OverridePositioning" Type="bool" Value="True"/>
 									</PropertyList>
 									<ReferenceList>
+										<Reference Name="Attenuation">
+											<ObjectRef Name="Stage_20m" ID="{B0D4A199-1443-4648-AB38-3014F7E77842}" WorkUnitID="{08BB8B25-D568-4D5B-8D2D-EE1E5F63128C}"/>
+										</Reference>
 										<Reference Name="Conversion">
 											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{E8C30435-E2EC-40B4-A911-30D289ECE001}"/>
 										</Reference>
@@ -1145,14 +1422,135 @@
 								</ActorMixer>
 								<ActorMixer Name="Enemy_Dash" ID="{0C707452-C15C-420A-925F-229AC28606AB}" ShortID="86138559">
 									<PropertyList>
+										<Property Name="3DSpatialization" Type="int16" Value="1"/>
 										<Property Name="OverrideOutput" Type="bool" Value="True"/>
+										<Property Name="OverridePositioning" Type="bool" Value="True"/>
 									</PropertyList>
 									<ReferenceList>
+										<Reference Name="Attenuation">
+											<Custom CreatedFrom="{B0D4A199-1443-4648-AB38-3014F7E77842}">
+												<Attenuation Name="Stage_20m (Custom)" ID="{5FEFE958-C34D-4C68-842A-C3E4A9BCB782}" ShortID="662004785">
+													<PropertyList>
+														<Property Name="RadiusMax" Type="Real64" Value="20"/>
+													</PropertyList>
+													<CurveUsageInfoList>
+														<VolumeDryUsage>
+															<CurveUsageInfo Platform="Linked" CurveToUse="Custom">
+																<Curve Name="VolumeDry" ID="{9C84FB9D-5B6E-4AED-BC6F-D5DEF0716F3A}">
+																	<PropertyList>
+																		<Property Name="Flags" Type="int32" Value="3"/>
+																	</PropertyList>
+																	<PointList>
+																		<Point>
+																			<XPos>0</XPos>
+																			<YPos>0</YPos>
+																			<Flags>5</Flags>
+																		</Point>
+																		<Point>
+																			<XPos>1</XPos>
+																			<YPos>-0</YPos>
+																			<Flags>0</Flags>
+																			<SegmentShape>Exp2</SegmentShape>
+																		</Point>
+																		<Point>
+																			<XPos>15</XPos>
+																			<YPos>-24</YPos>
+																			<Flags>0</Flags>
+																		</Point>
+																		<Point>
+																			<XPos>20</XPos>
+																			<YPos>-24</YPos>
+																			<Flags>37</Flags>
+																		</Point>
+																	</PointList>
+																</Curve>
+															</CurveUsageInfo>
+														</VolumeDryUsage>
+														<VolumeWetGameUsage>
+															<CurveUsageInfo Platform="Linked" CurveToUse="UseVolumeDry"/>
+														</VolumeWetGameUsage>
+														<VolumeWetUserUsage>
+															<CurveUsageInfo Platform="Linked" CurveToUse="UseVolumeDry"/>
+														</VolumeWetUserUsage>
+														<LowPassFilterUsage>
+															<CurveUsageInfo Platform="Linked" CurveToUse="Custom">
+																<Curve Name="LowPassFilter" ID="{6F700952-9FCC-4ABF-933F-C1F4ACF45F5D}">
+																	<PropertyList>
+																		<Property Name="Flags" Type="int32" Value="65537"/>
+																	</PropertyList>
+																	<PointList>
+																		<Point>
+																			<XPos>0</XPos>
+																			<YPos>0</YPos>
+																			<Flags>5</Flags>
+																		</Point>
+																		<Point>
+																			<XPos>1</XPos>
+																			<YPos>0</YPos>
+																			<Flags>0</Flags>
+																			<SegmentShape>Exp2</SegmentShape>
+																		</Point>
+																		<Point>
+																			<XPos>15</XPos>
+																			<YPos>75</YPos>
+																			<Flags>0</Flags>
+																			<SegmentShape>Log2</SegmentShape>
+																		</Point>
+																		<Point>
+																			<XPos>20</XPos>
+																			<YPos>75</YPos>
+																			<Flags>37</Flags>
+																		</Point>
+																	</PointList>
+																</Curve>
+															</CurveUsageInfo>
+														</LowPassFilterUsage>
+														<HighPassFilterUsage>
+															<CurveUsageInfo Platform="Linked" CurveToUse="None"/>
+														</HighPassFilterUsage>
+														<SpreadUsage>
+															<CurveUsageInfo Platform="Linked" CurveToUse="Custom">
+																<Curve Name="Spread" ID="{660A2627-D0BF-4922-B29B-A87A80F8110D}">
+																	<PropertyList>
+																		<Property Name="Flags" Type="int32" Value="1"/>
+																	</PropertyList>
+																	<PointList>
+																		<Point>
+																			<XPos>0</XPos>
+																			<YPos>100</YPos>
+																			<Flags>5</Flags>
+																		</Point>
+																		<Point>
+																			<XPos>1</XPos>
+																			<YPos>100</YPos>
+																			<Flags>0</Flags>
+																		</Point>
+																		<Point>
+																			<XPos>10</XPos>
+																			<YPos>0</YPos>
+																			<Flags>0</Flags>
+																		</Point>
+																		<Point>
+																			<XPos>20</XPos>
+																			<YPos>0</YPos>
+																			<Flags>37</Flags>
+																		</Point>
+																	</PointList>
+																</Curve>
+															</CurveUsageInfo>
+														</SpreadUsage>
+														<FocusUsage>
+															<CurveUsageInfo Platform="Linked" CurveToUse="None"/>
+														</FocusUsage>
+													</CurveUsageInfoList>
+												</Attenuation>
+											</Custom>
+										</Reference>
 										<Reference Name="Conversion">
 											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{E8C30435-E2EC-40B4-A911-30D289ECE001}"/>
 										</Reference>
 										<Reference Name="OutputBus">
-											<ObjectRef Name="Enemy_Boulder_Throw" ID="{74260371-841D-44C5-AE54-27ED43319B04}" WorkUnitID="{5FE25012-E08F-420E-BE49-3B0109DF68E3}"/>
+											<ObjectRef Name="Enemy_Dash" ID="{206802AC-796B-4525-B059-0427851E8061}" WorkUnitID="{5FE25012-E08F-420E-BE49-3B0109DF68E3}"/>
 										</Reference>
 									</ReferenceList>
 									<ChildrenList>
@@ -1189,22 +1587,28 @@
 							<ObjectLists/>
 						</ActorMixer>
 						<ActorMixer Name="SFX_Stingers" ID="{70F73076-E154-4D57-80F9-C8C1CB033005}" ShortID="9116777">
+							<PropertyList>
+								<Property Name="OverrideOutput" Type="bool" Value="True"/>
+							</PropertyList>
 							<ReferenceList>
 								<Reference Name="Conversion">
 									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{E8C30435-E2EC-40B4-A911-30D289ECE001}"/>
 								</Reference>
 								<Reference Name="OutputBus">
-									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{5FE25012-E08F-420E-BE49-3B0109DF68E3}"/>
+									<ObjectRef Name="Master Music" ID="{B40597AD-D396-4B8A-89AC-F91F7844DC95}" WorkUnitID="{5FE25012-E08F-420E-BE49-3B0109DF68E3}"/>
 								</Reference>
 							</ReferenceList>
 							<ChildrenList>
 								<Sound Name="Music_Defeat_Stinger" ID="{A1485739-D8B8-4BBD-8FF9-E1AD50ADFE00}" ShortID="537491801">
+									<PropertyList>
+										<Property Name="OverrideOutput" Type="bool" Value="True"/>
+									</PropertyList>
 									<ReferenceList>
 										<Reference Name="Conversion">
 											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{E8C30435-E2EC-40B4-A911-30D289ECE001}"/>
 										</Reference>
 										<Reference Name="OutputBus">
-											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{5FE25012-E08F-420E-BE49-3B0109DF68E3}"/>
+											<ObjectRef Name="Music_Defeat_Stinger" ID="{20B090EB-0CBA-4EA1-925D-A313FB3AA344}" WorkUnitID="{5FE25012-E08F-420E-BE49-3B0109DF68E3}"/>
 										</Reference>
 									</ReferenceList>
 									<ChildrenList>
@@ -1222,12 +1626,15 @@
 									</ActiveSourceList>
 								</Sound>
 								<Sound Name="Music_Victory_Stinger" ID="{49B8B500-D81A-4027-9E80-2C83A8A966B3}" ShortID="953321149">
+									<PropertyList>
+										<Property Name="OverrideOutput" Type="bool" Value="True"/>
+									</PropertyList>
 									<ReferenceList>
 										<Reference Name="Conversion">
 											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{E8C30435-E2EC-40B4-A911-30D289ECE001}"/>
 										</Reference>
 										<Reference Name="OutputBus">
-											<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{5FE25012-E08F-420E-BE49-3B0109DF68E3}"/>
+											<ObjectRef Name="Music_Victory_Stinger" ID="{82EAC79F-FD69-4029-A888-04BC8C299176}" WorkUnitID="{5FE25012-E08F-420E-BE49-3B0109DF68E3}"/>
 										</Reference>
 									</ReferenceList>
 									<ChildrenList>
@@ -1274,6 +1681,9 @@
 							</ReferenceList>
 							<ChildrenList>
 								<Sound Name="Ambience_Gameplay_Loop" ID="{B57CFF16-BF2B-4AFC-A0DF-BE5333CBD0FD}" ShortID="703558072">
+									<PropertyList>
+										<Property Name="IsLoopingEnabled" Type="bool" Value="True"/>
+									</PropertyList>
 									<ReferenceList>
 										<Reference Name="Conversion">
 											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{E8C30435-E2EC-40B4-A911-30D289ECE001}"/>
@@ -1313,6 +1723,9 @@
 							</ReferenceList>
 							<ChildrenList>
 								<Sound Name="Ambience_Menu_Loop" ID="{607D3071-46F1-4FBE-B4A6-6CD06A4D9CA5}" ShortID="546471525">
+									<PropertyList>
+										<Property Name="IsLoopingEnabled" Type="bool" Value="True"/>
+									</PropertyList>
 									<ReferenceList>
 										<Reference Name="Conversion">
 											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{E8C30435-E2EC-40B4-A911-30D289ECE001}"/>

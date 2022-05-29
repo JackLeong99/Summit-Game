@@ -10,16 +10,104 @@
 							<Position X="0" Y="0"/>
 						</Module>
 						<Module>
-							<ObjectRef Name="Player_Shoot_Charge" ID="{D075F07B-C26F-45FF-AEAD-421FCF7C0CD3}" WorkUnitID="{D766E073-EB63-4307-880C-934EBF9C0137}"/>
+							<ObjectRef Name="UI_Click" ID="{9E161395-8B50-4544-A695-44EC954168B9}" WorkUnitID="{D766E073-EB63-4307-880C-934EBF9C0137}"/>
 							<Position X="0" Y="1"/>
 						</Module>
 						<Module>
-							<ObjectRef Name="Player_Shoot_Fire" ID="{7BB37772-2340-41B5-9A36-BE1FA427E9EA}" WorkUnitID="{D766E073-EB63-4307-880C-934EBF9C0137}"/>
+							<ObjectRef Name="Player_Jump" ID="{DB11DEDF-8300-4048-9912-7255ABB4B6F0}" WorkUnitID="{D766E073-EB63-4307-880C-934EBF9C0137}"/>
+							<Position X="0" Y="2"/>
+						</Module>
+						<Module>
+							<ObjectRef Name="Player_Attack" ID="{0A74CC40-C8B8-489F-B710-9466EBE8E460}" WorkUnitID="{D766E073-EB63-4307-880C-934EBF9C0137}"/>
+							<Position X="0" Y="3"/>
+						</Module>
+						<Module>
+							<ObjectRef Name="Player_Shoot_Charge" ID="{D075F07B-C26F-45FF-AEAD-421FCF7C0CD3}" WorkUnitID="{D766E073-EB63-4307-880C-934EBF9C0137}"/>
+							<Position X="0" Y="4"/>
+						</Module>
+						<Module>
+							<ObjectRef Name="Enemy_Damage" ID="{E78636A3-8020-4948-82DE-F4CAB7E25AB0}" WorkUnitID="{D766E073-EB63-4307-880C-934EBF9C0137}"/>
+							<Position X="0" Y="5"/>
+						</Module>
+						<Module>
+							<ObjectRef Name="Enemy_Melee_Right_Hook" ID="{560B1CFC-1AA9-4643-9019-AC94799A9634}" WorkUnitID="{D766E073-EB63-4307-880C-934EBF9C0137}"/>
+							<Position X="0" Y="6"/>
+						</Module>
+						<Module>
+							<ObjectRef Name="Music_Victory_Stinger" ID="{DE8AA511-1211-481E-9D05-03C21BCCC17A}" WorkUnitID="{D766E073-EB63-4307-880C-934EBF9C0137}"/>
+							<Position X="1" Y="0"/>
+						</Module>
+						<Module>
+							<ObjectRef Name="UI_Menu_Off" ID="{6077A618-A5B8-4211-95D6-B6EDC7982395}" WorkUnitID="{D766E073-EB63-4307-880C-934EBF9C0137}"/>
 							<Position X="1" Y="1"/>
 						</Module>
 						<Module>
-							<ObjectRef Name="Player_Shoot_Impact" ID="{A5772FBD-021A-4FBF-B045-776F004E54FA}" WorkUnitID="{D766E073-EB63-4307-880C-934EBF9C0137}"/>
+							<ObjectRef Name="Player_Land" ID="{7B830597-8E09-4474-9CB7-467C2F9CC19E}" WorkUnitID="{D766E073-EB63-4307-880C-934EBF9C0137}"/>
+							<Position X="1" Y="2"/>
+						</Module>
+						<Module>
+							<ObjectRef Name="UI_Hit_Indicator" ID="{CF91874F-9898-4F2E-BE0A-531807E1E403}" WorkUnitID="{D766E073-EB63-4307-880C-934EBF9C0137}"/>
+							<Position X="1" Y="3"/>
+						</Module>
+						<Module>
+							<ObjectRef Name="Player_Shoot_Fire" ID="{7BB37772-2340-41B5-9A36-BE1FA427E9EA}" WorkUnitID="{D766E073-EB63-4307-880C-934EBF9C0137}"/>
+							<Position X="1" Y="4"/>
+						</Module>
+						<Module>
+							<ObjectRef Name="Enemy_Death" ID="{F13368C8-FD77-4B37-ABE3-85A8F84E1F1C}" WorkUnitID="{D766E073-EB63-4307-880C-934EBF9C0137}"/>
+							<Position X="1" Y="5"/>
+						</Module>
+						<Module>
+							<ObjectRef Name="Enemy_Melee_Overhead_Slam" ID="{5F2950B8-3D2C-46C1-AD72-9D1419691931}" WorkUnitID="{D766E073-EB63-4307-880C-934EBF9C0137}"/>
+							<Position X="1" Y="6"/>
+						</Module>
+						<Module>
+							<ObjectRef Name="Music_Defeat_Stinger" ID="{029BC194-9134-4C89-91B9-B93C7AE645F9}" WorkUnitID="{D766E073-EB63-4307-880C-934EBF9C0137}"/>
+							<Position X="2" Y="0"/>
+						</Module>
+						<Module>
+							<ObjectRef Name="UI_Menu_On" ID="{21031615-38E0-47C0-A4C6-9A600E28BD16}" WorkUnitID="{D766E073-EB63-4307-880C-934EBF9C0137}"/>
 							<Position X="2" Y="1"/>
+						</Module>
+						<Module>
+							<ObjectRef Name="Player_Dodge" ID="{D6A5B9C9-875B-4E34-BDC2-7A9ABE8C3A90}" WorkUnitID="{D766E073-EB63-4307-880C-934EBF9C0137}"/>
+							<Position X="2" Y="2"/>
+						</Module>
+						<Module>
+							<ObjectRef Name="Player_Shoot_Impact" ID="{A5772FBD-021A-4FBF-B045-776F004E54FA}" WorkUnitID="{D766E073-EB63-4307-880C-934EBF9C0137}"/>
+							<Position X="2" Y="4"/>
+						</Module>
+						<Module>
+							<ObjectRef Name="Enemy_Dash_Loop_Play" ID="{D38E375B-1744-4688-905B-8E50A7942957}" WorkUnitID="{D766E073-EB63-4307-880C-934EBF9C0137}"/>
+							<Position X="2" Y="5"/>
+						</Module>
+						<Module>
+							<ObjectRef Name="Enemy_Boulder_Cast" ID="{8654BD1E-4638-4177-8B1E-7F02664907B0}" WorkUnitID="{D766E073-EB63-4307-880C-934EBF9C0137}"/>
+							<Position X="2" Y="6"/>
+						</Module>
+						<Module>
+							<ObjectRef Name="Player_Damage" ID="{B24454FD-26A8-4840-9189-A632AA46BB45}" WorkUnitID="{D766E073-EB63-4307-880C-934EBF9C0137}"/>
+							<Position X="3" Y="2"/>
+						</Module>
+						<Module>
+							<ObjectRef Name="Enemy_Dash_Loop_Stop" ID="{B18D1578-AB99-48A4-81B7-B8A534D05315}" WorkUnitID="{D766E073-EB63-4307-880C-934EBF9C0137}"/>
+							<Position X="3" Y="5"/>
+						</Module>
+						<Module>
+							<ObjectRef Name="Enemy_Boulder_Impact" ID="{F54A276F-B8CB-4F23-8672-E94496DBD8DB}" WorkUnitID="{D766E073-EB63-4307-880C-934EBF9C0137}"/>
+							<Position X="3" Y="6"/>
+						</Module>
+						<Module>
+							<ObjectRef Name="Player_Death" ID="{956331FC-CA7D-422F-B239-D4736CF6F6B3}" WorkUnitID="{D766E073-EB63-4307-880C-934EBF9C0137}"/>
+							<Position X="4" Y="2"/>
+						</Module>
+						<Module>
+							<ObjectRef Name="Enemy_Eruption_Cast" ID="{7DC18506-63C0-4A28-9E16-AFE01CBABCC4}" WorkUnitID="{D766E073-EB63-4307-880C-934EBF9C0137}"/>
+							<Position X="4" Y="6"/>
+						</Module>
+						<Module>
+							<ObjectRef Name="Enemy_Eruption_Lava" ID="{ACC6B2C0-3861-488F-AD29-AEF1B081158D}" WorkUnitID="{D766E073-EB63-4307-880C-934EBF9C0137}"/>
+							<Position X="5" Y="6"/>
 						</Module>
 					</ModuleList>
 					<RTPCValueList ShowAll="true">
@@ -49,7 +137,7 @@
 						</RTPCValue>
 					</RTPCValueList>
 					<CurrentStateList ShowAll="true">
-						<CurrentStateRef Name="None" ID="{3A5F934C-3BD6-46F1-AE14-5468C16261BD}"/>
+						<CurrentStateRef Name="UI_Menu_Off" ID="{830DA50C-0EFC-4588-A47C-13A295CCE340}"/>
 					</CurrentStateList>
 					<CurrentSwitchList ShowAll="true"/>
 				</SoundcasterSession>

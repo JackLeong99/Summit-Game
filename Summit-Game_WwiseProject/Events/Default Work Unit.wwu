@@ -276,6 +276,7 @@
 								<Action Name="" ID="{33F6FEEB-D64A-4CDF-8399-612B774FF298}" ShortID="459394097">
 									<PropertyList>
 										<Property Name="ActionType" Type="int16" Value="2"/>
+										<Property Name="FadeOutCurve" Type="int16" Value="8"/>
 										<Property Name="FadeTime" Type="Real64" Value="0.5"/>
 									</PropertyList>
 									<ReferenceList>
@@ -413,6 +414,7 @@
 								<Action Name="" ID="{EF871C18-C525-41FC-BF09-BFB0F724D3DC}" ShortID="729405650">
 									<PropertyList>
 										<Property Name="ActionType" Type="int16" Value="41"/>
+										<Property Name="Delay" Type="Real64" Value="1"/>
 									</PropertyList>
 									<ReferenceList>
 										<Reference Name="Target">
@@ -423,6 +425,7 @@
 								<Action Name="" ID="{B3A47C46-27D2-4CDB-8080-6A9009543D2F}" ShortID="33123407">
 									<PropertyList>
 										<Property Name="ActionType" Type="int16" Value="41"/>
+										<Property Name="Delay" Type="Real64" Value="0.9"/>
 									</PropertyList>
 									<ReferenceList>
 										<Reference Name="Target">
