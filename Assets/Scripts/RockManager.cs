@@ -25,16 +25,18 @@ public class RockManager : MonoBehaviour
     private int initialRockCount;
     private float rockX;
     private float rockZ;
+    private int rockNumberMin;
     public GameObject rockPrefab;
     public bool countUnderWantedRocks;
     private BossManager bManager;
+    private GameObject boss; //create a gameobject reference
 
 
     public int amountToSpawnNew;
 
     void Awake()
     {
-        bManager = GetComponent<BossManager>();
+
         if (instance != null)
         {
             Destroy(gameObject);
@@ -49,33 +51,22 @@ public class RockManager : MonoBehaviour
     {
         allRocks = GameObject.FindGameObjectsWithTag("rocks").ToList();
         initialRockCount = allRocks.Count;
+        boss = GameObject.FindWithTag("Hittable"); //find the tag of the object you want ie the boss's tag in this case
+        bManager = boss.GetComponent<BossManager>(); //same as before except added boss the gameObject before getComponent
+        rockNumberMin = bManager.rockNumberMinimum();
         // for(int i=0; i<allRocks.Count; i++){ //testing that the objects were adding
         //             Debug.Log(allRocks[i]);
         // }
        // Debug.Log(allRocks[0].transform.position); //how to find position for rock
     }
 
-
-  //  void Update()
-  //  {
-     //   if(amountToSpawnNew<=allRocks.Count)
-     //   {
-            //call boss manager which will call SpawnNewRocks()
-            //maybe something that changes a bool or something which then gets checked by the boss manager
-    //    }
-    //    if (Input.GetButtonDown("Teleport"))
-    //    {
-       //     SpawnNewRocks();
-     //   }
- //   }
-
-    // void Update()
-    // {
-    //     if(allRocks.Count <= bManager.spawnRocksNumber)
-    //     {
-    //         countUnderWantedRocks = true;
-    //     }
-    // }
+    void Update()
+    {
+        if(allRocks != null && allRocks.Count <= rockNumberMin)
+        {
+            countUnderWantedRocks = true;
+        }
+    }
 
 
 

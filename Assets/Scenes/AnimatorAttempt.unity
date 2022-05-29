@@ -1013,9 +1013,10 @@ MonoBehaviour:
   lastMoveRepeated: 0
   scuffedShockTimer: 0
   maxHP: 1000
-  currentHP: 1000
-  spawnRocksNumber: 0
-  spawnNewRocksTime: 0
+  currentHP: 0
+  spawnRocksNumber: 5
+  spawnNewRocksTime: 5
+  stunned: 0
 --- !u!54 &311172964
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -3004,6 +3005,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6317786590619067594, guid: 7db3c873ca7dabd4c8a28a005c8f6fd2, type: 3}
+      propertyPath: rockPrefab
+      value: 
+      objectReference: {fileID: 8370376826668548662, guid: ce8e84b0a33ef4e4080cbdc1232e3d6d, type: 3}
     - target: {fileID: 6317786590619067595, guid: 7db3c873ca7dabd4c8a28a005c8f6fd2, type: 3}
       propertyPath: m_Name
       value: RockManager
@@ -3262,7 +3267,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 2.0483272, y: 1}
+    m_SensorSize: {x: 1.7786885, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
