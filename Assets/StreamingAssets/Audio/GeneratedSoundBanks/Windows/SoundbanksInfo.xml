@@ -11,7 +11,7 @@
 	<StreamedFiles/>
 	<MediaFilesNotInAnyBank/>
 	<SoundBanks>
-		<SoundBank Id="822237696" Language="SFX" Hash="1898661968">
+		<SoundBank Id="822237696" Language="SFX" Hash="3252677575">
 			<ObjectPath>\SoundBanks\Default Work Unit\SB_Default</ObjectPath>
 			<ShortName>SB_Default</ShortName>
 			<Path>SB_Default.bnk</Path>
@@ -273,6 +273,17 @@
 					<ActionSetState>
 						<ActionSetStateEntry Id="1702827601" Name="UI_Menu_On" ObjectPath="\States\Default Work Unit\UI_Menu\UI_Menu_On"/>
 					</ActionSetState>
+				</Event>
+				<Event Id="1469916938" Name="VO_Morbin_Time" ObjectPath="\Events\Default Work Unit\Utility\VO_Morbin_Time" DurationType="OneShot" DurationMin="1.254917" DurationMax="1.254917">
+					<IncludedMemoryFiles>
+						<File Id="928787054" Language="SFX">
+							<ShortName>VO_Morbin_Time.wav</ShortName>
+							<Path>SFX\VO_Morbin_Time_10C4C929.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+					<AuxBusSends>
+						<AuxBus Id="3792279061" Name="SFX_Reverb" ObjectPath="\Master-Mixer Hierarchy\Default Work Unit\Master Audio Bus\Master SFX\SFX_Reverb"/>
+					</AuxBusSends>
 				</Event>
 			</IncludedEvents>
 			<StateGroups>

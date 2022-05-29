@@ -42,6 +42,7 @@ namespace AK
         static const AkUniqueID UI_HIT_INDICATOR = 396309115U;
         static const AkUniqueID UI_MENU_OFF = 537931389U;
         static const AkUniqueID UI_MENU_ON = 1702827601U;
+        static const AkUniqueID VO_MORBIN_TIME = 1469916938U;
     } // namespace EVENTS
 
     namespace STATES
