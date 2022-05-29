@@ -22,6 +22,8 @@ public class RockMoving : MonoBehaviour
 
     private bool hasntHit=true;
 
+    private float timer=20f;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -38,12 +40,18 @@ public class RockMoving : MonoBehaviour
         translationZ=localArea.z;
         translationY=localArea.y;
         translationX=localArea.x;
+        RockManager.Instance.ClearUpList();
     }
 
     // Update is called once per frame
    void Update()
     {
         transform.Translate(translationX *(speed*rageMultiplier * Time.deltaTime), translationY *(speed*rageMultiplier* Time.deltaTime), translationZ *(speed*rageMultiplier * Time.deltaTime));
+        timer-=Time.deltaTime;
+        if(timer<=0)
+        {
+            Destroy(gameObject);
+        }
     }
 
     //spawn ground rock and destroy itself
