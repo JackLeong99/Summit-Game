@@ -102,7 +102,8 @@ public class BossManager : MonoBehaviour
     }
     
     void Update(){
-        if(Alive && !stunned){
+        animatr.SetFloat("Speed", agent.velocity.magnitude);
+        if (Alive && !stunned){
             if(!inAttack && RockManager.Instance.countUnderWantedRocks){
                 StartCoroutine(summonRocks());
             }
@@ -115,7 +116,7 @@ public class BossManager : MonoBehaviour
                 {
                 transform.Translate(Vector3.down * gravity * Time.deltaTime);
                 }*/
-                animatr.SetFloat("Speed", agent.velocity.magnitude);
+                //animatr.SetFloat("Speed", agent.velocity.magnitude);
                 // if in 'melee'
                 bool isMelee = Vector3.Distance(transform.position, Player.position) <= MinDist;
                 //if 'mid ranged'
