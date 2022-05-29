@@ -45,7 +45,7 @@ public class GameManager : MonoBehaviour
         instance = this;
         Time.timeScale = 1;
         player=GameObject.FindWithTag("Player");
-        boss=GameObject.FindWithTag("Hittable");
+        boss=GameObject.FindWithTag("Boss");
     }
 
     // Update is called once per frame

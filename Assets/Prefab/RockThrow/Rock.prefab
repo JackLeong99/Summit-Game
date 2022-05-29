@@ -113,7 +113,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rockPrefab: {fileID: 8358722399614396407, guid: 6761bec4156a89349bd0643744e29a8c, type: 3}
+  rockHand: {fileID: 0}
   sparksPrefab: {fileID: 360004003803245523, guid: c606c23f84508824cbb5988fa2f1e3cc, type: 3}
+  healBurst: {fileID: 5276895342409573505, guid: e878a52606cf912418ee0f20d6af297d, type: 3}
 --- !u!54 &4950186718092724158
 Rigidbody:
   m_ObjectHideFlags: 0
