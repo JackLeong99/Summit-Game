@@ -46,7 +46,6 @@ Audio Bus	ID	Name			Wwise Object Path	Notes
 	3083087645	Player_Death			\Default Work Unit\Master Audio Bus\Master SFX\SFX_Player\Player_Death	
 	3192392001	Player_Shoot_Charge			\Default Work Unit\Master Audio Bus\Master SFX\SFX_Player\Player_Shoot_Charge	
 	3324595863	Enemy_Melee_Overhead_Slam			\Default Work Unit\Master Audio Bus\Master SFX\SFX_Enemy\Enemy_Melee_Overhead_Slam	
-	3436801642	Enemy_Dash			\Default Work Unit\Master Audio Bus\Master SFX\SFX_Enemy\Enemy_Dash	
 	3629196698	Player_Land			\Default Work Unit\Master Audio Bus\Master SFX\SFX_Player\Player_Land	
 	3762643080	AMB_Menu_Loop			\Default Work Unit\Master Audio Bus\Master Ambience\AMB_Menu_Loop	
 	3803692087	Master Audio Bus			\Default Work Unit\Master Audio Bus	
@@ -59,6 +58,7 @@ Auxiliary Bus	ID	Name			Wwise Object Path	Notes
 
 Effect plug-ins	ID	Name	Type				Notes
 	317120248	Wwise_Meter_Victory_Defeat_Sidechain	Wwise Meter			
+	415841907	Space_Garage	Wwise RoomVerb			
 	1089225090	EQ_Music_Sidechain	Wwise Parametric EQ			
 	1149658127	Wwise_Meter_Music_Sidechain	Wwise Meter			
 	1459522457	Brick_Wall_Minus_1dB_Peak_Fast_Release	Wwise Peak Limiter			

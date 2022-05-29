@@ -4,9 +4,6 @@
 		<WorkUnit Name="Default Work Unit" ID="{08BB8B25-D568-4D5B-8D2D-EE1E5F63128C}" PersistMode="Standalone">
 			<ChildrenList>
 				<Attenuation Name="Stage_20m" ID="{B0D4A199-1443-4648-AB38-3014F7E77842}" ShortID="719239461">
-					<PropertyList>
-						<Property Name="RadiusMax" Type="Real64" Value="20"/>
-					</PropertyList>
 					<CurveUsageInfoList>
 						<VolumeDryUsage>
 							<CurveUsageInfo Platform="Linked" CurveToUse="Custom">
@@ -21,18 +18,18 @@
 											<Flags>5</Flags>
 										</Point>
 										<Point>
-											<XPos>1</XPos>
-											<YPos>-0</YPos>
+											<XPos>5</XPos>
+											<YPos>0</YPos>
 											<Flags>0</Flags>
 											<SegmentShape>Exp2</SegmentShape>
 										</Point>
 										<Point>
-											<XPos>15</XPos>
+											<XPos>75</XPos>
 											<YPos>-24</YPos>
 											<Flags>0</Flags>
 										</Point>
 										<Point>
-											<XPos>20</XPos>
+											<XPos>100</XPos>
 											<YPos>-24</YPos>
 											<Flags>37</Flags>
 										</Point>
@@ -44,7 +41,25 @@
 							<CurveUsageInfo Platform="Linked" CurveToUse="UseVolumeDry"/>
 						</VolumeWetGameUsage>
 						<VolumeWetUserUsage>
-							<CurveUsageInfo Platform="Linked" CurveToUse="UseVolumeDry"/>
+							<CurveUsageInfo Platform="Linked" CurveToUse="UseVolumeDry">
+								<Curve Name="VolumeWetUser" ID="{3FCC432D-E0A1-49B7-8A75-EFFDFE0C302B}">
+									<PropertyList>
+										<Property Name="Flags" Type="int32" Value="3"/>
+									</PropertyList>
+									<PointList>
+										<Point>
+											<XPos>0</XPos>
+											<YPos>0</YPos>
+											<Flags>5</Flags>
+										</Point>
+										<Point>
+											<XPos>100</XPos>
+											<YPos>0</YPos>
+											<Flags>37</Flags>
+										</Point>
+									</PointList>
+								</Curve>
+							</CurveUsageInfo>
 						</VolumeWetUserUsage>
 						<LowPassFilterUsage>
 							<CurveUsageInfo Platform="Linked" CurveToUse="Custom">
@@ -59,19 +74,19 @@
 											<Flags>5</Flags>
 										</Point>
 										<Point>
-											<XPos>1</XPos>
+											<XPos>5</XPos>
 											<YPos>0</YPos>
 											<Flags>0</Flags>
 											<SegmentShape>Exp2</SegmentShape>
 										</Point>
 										<Point>
-											<XPos>15</XPos>
+											<XPos>75</XPos>
 											<YPos>75</YPos>
 											<Flags>0</Flags>
 											<SegmentShape>Log2</SegmentShape>
 										</Point>
 										<Point>
-											<XPos>20</XPos>
+											<XPos>100</XPos>
 											<YPos>75</YPos>
 											<Flags>37</Flags>
 										</Point>
@@ -95,17 +110,17 @@
 											<Flags>5</Flags>
 										</Point>
 										<Point>
-											<XPos>1</XPos>
+											<XPos>5</XPos>
 											<YPos>100</YPos>
 											<Flags>0</Flags>
 										</Point>
 										<Point>
-											<XPos>10</XPos>
+											<XPos>50</XPos>
 											<YPos>0</YPos>
 											<Flags>0</Flags>
 										</Point>
 										<Point>
-											<XPos>20</XPos>
+											<XPos>100</XPos>
 											<YPos>0</YPos>
 											<Flags>37</Flags>
 										</Point>
