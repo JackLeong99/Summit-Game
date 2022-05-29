@@ -77,9 +77,12 @@ public class BossManager : MonoBehaviour
     NavMeshAgent agent;
     private bool Alive = true;
     Rigidbody[] rigidBodies;
-
+    [SerializeField] float attackTurnSpeed;
+    [SerializeField] float turnFor = 1.0f;
+    private bool canTurn = false;
     //used by IncreasePlayerAttack power-up
     private bool increaseDamage=false;
+    //private float step;
 
     private void Awake(){
         //defining other scripts referenceds them here- this method avoids an error.
@@ -107,6 +110,8 @@ public class BossManager : MonoBehaviour
     
     void Update(){
         animatr.SetFloat("Speed", agent.velocity.magnitude);
+        smoothLookAt(Player);
+        //step = attackTurnSpeed * Time.deltaTime;
         if (Alive && !stunned){
             if(!inAttack && RockManager.Instance.countUnderWantedRocks){
                 StartCoroutine(summonRocks());
@@ -252,7 +257,10 @@ public class BossManager : MonoBehaviour
             }
             //Debug.Log("Do MegaPunch!");
             //Face player to aim- smoother method could be used
-            transform.LookAt(Player);
+            //transform.LookAt(Player);
+            canTurn = true;
+            yield return new WaitForSeconds(turnFor);
+            canTurn = false;
             //Do the animation
             animatr.SetTrigger("Sweep");
             //Do the sweep attack
@@ -284,12 +292,15 @@ public class BossManager : MonoBehaviour
                 lastMoveRepeated = 0;
             }
             //Debug.Log("Do Ground Slam!");
+            canTurn = true;
+            yield return new WaitForSeconds(turnFor);
+            canTurn = false;
             //Do the animation
             animatr.SetTrigger("Slam");
             //Do the slam attack
             slam.groundSlam();
             //Face player to aim- smoother method could be used
-            transform.LookAt(Player);
+            //transform.LookAt(Player);
             //Wait for the set delay before running shockwave, should be timed to match fists hitting ground
             //yield return new WaitForSeconds(scuffedShockTimer);
             //Do the shockwave attack
@@ -304,7 +315,10 @@ public class BossManager : MonoBehaviour
             if(SelectMove(1, 4) == 3){
                 //animatr.SetFloat("Speed", agent.velocity.magnitude);
                 //Face player to aim- smoother method could be used
-                transform.LookAt(Player);
+                //transform.LookAt(Player);
+                canTurn = true;
+                yield return new WaitForSeconds(turnFor);
+                canTurn = false;
                 //Debug.Log("Double slam!");
                 //Do the second slam attack
                 slam.groundSlam();
@@ -369,9 +383,12 @@ public class BossManager : MonoBehaviour
                 lastMoveRepeated = 0;
             }
             Debug.Log("Do Eruption!");
-            erupt.eruption();
-            transform.LookAt(Player);
             animatr.SetTrigger("Eruption");
+            canTurn = true;
+            yield return new WaitForSeconds(turnFor);
+            canTurn = false;
+            erupt.eruption();
+            //transform.LookAt(Player);
             float animatrDuration = 3.292f; // Figure this out
            // float delayBeforeCurrentAttack = 1.5f; // Figure this out
             lastMove = "Eruption";
@@ -639,5 +656,15 @@ public class BossManager : MonoBehaviour
 
     public int rockNumberMinimum(){
         return spawnRocksNumber;
+    }
+
+    public void smoothLookAt(Transform target) 
+    {
+        if (canTurn)
+        {
+            var targetRot = Quaternion.LookRotation(target.position - transform.position);
+            var adjustedRot = Quaternion.Euler(0.0f, targetRot.eulerAngles.y, targetRot.eulerAngles.z);
+            transform.rotation = Quaternion.RotateTowards(transform.rotation, adjustedRot, attackTurnSpeed * Time.deltaTime);
+        }
     }
 }
