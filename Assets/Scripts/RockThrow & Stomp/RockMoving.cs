@@ -49,16 +49,12 @@ public class RockMoving : MonoBehaviour
     //spawn ground rock and destroy itself
     public void spawnRock()
     {
-        //needs to instantiate at ground position
-        GameObject breakablerock= Instantiate(rockPrefab); 
-        
-        breakablerock.transform.position=transform.position;
-        breakablerock.transform.position = new Vector3(transform.position.x, transform.position.y-1 , transform.position.z);
+        //Instantiate at the position all in one line
+        GameObject breakablerock= Instantiate(rockPrefab,new Vector3(transform.position.x, transform.position.y-1 , transform.position.z), Quaternion.identity);
         RockManager.Instance.RockPositionUpdate(breakablerock);
 
         //creates the particle effect for landing
-        ParticleSystem rockParticles= Instantiate(rockParticle);
-        rockParticles.transform.position=transform.position;
+        ParticleSystem rockParticles= Instantiate(rockParticle,transform.position,Quaternion.identity);
         Destroy(gameObject);
     }
     
@@ -85,7 +81,6 @@ public class RockMoving : MonoBehaviour
         if(other.tag=="Arena")
         {
             spawnRock();
-            //particles as well //should fix issue with how it goes into ground otherwise I need to find another way
         }
 
         if(other.tag=="worldBorder")
