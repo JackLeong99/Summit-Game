@@ -1114,6 +1114,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hitboxObject: {fileID: 3661587751898508818, guid: 1a54bd1eeecf95c4ea566e46f6b9b85c, type: 3}
   parentObject: {fileID: 972345291}
+  hitboxObjectB: {fileID: 3661587751898508818, guid: 1a54bd1eeecf95c4ea566e46f6b9b85c, type: 3}
+  parentObjectB: {fileID: 1439850236}
   duration: 2
 --- !u!114 &311172973
 MonoBehaviour:
@@ -2394,6 +2396,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hitboxObject: {fileID: 7945757392061321376, guid: 5d959ee0d2ed36b45990b5eaebb2a4c2, type: 3}
   parentObject: {fileID: 864483237}
+  hitboxObjectB: {fileID: 0}
+  parentObjectB: {fileID: 0}
   duration: 5
 --- !u!135 &864483239
 SphereCollider:

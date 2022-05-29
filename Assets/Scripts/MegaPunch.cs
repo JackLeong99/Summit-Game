@@ -6,17 +6,11 @@ public class MegaPunch : MonoBehaviour
 {
     [SerializeField] public GameObject hitboxObject;
     [SerializeField] public GameObject parentObject;
+    [SerializeField] public GameObject hitboxObjectB;
+    [SerializeField] public GameObject parentObjectB;
 
     [SerializeField] public float duration;
 
-    //Update is for testing purposes without a boss script, should be removed in final use
-    void Update()
-    {
-        if(Input.GetKeyDown("x"))
-        {
-            megaPunch();
-        }
-    }
     public void megaPunch()
     {
         StartCoroutine(punch());
@@ -25,7 +19,9 @@ public class MegaPunch : MonoBehaviour
     IEnumerator punch()
     {
         var hitbox = Instantiate(hitboxObject, parentObject.transform.position, parentObject.transform.rotation, parentObject.transform);
+        var hitboxB = Instantiate(hitboxObjectB, parentObjectB.transform.position, parentObjectB.transform.rotation, parentObjectB.transform);
         yield return new WaitForSeconds(duration);
         Destroy(hitbox);
+        Destroy(hitboxB);
     }
 }
