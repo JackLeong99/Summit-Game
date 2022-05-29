@@ -470,6 +470,7 @@ public class BossManager : MonoBehaviour
     }
 
     IEnumerator summonRocks(){
+        animatr.SetTrigger("Summoning");
         stunTimer = spawnNewRocksTime;
         StartCoroutine(bossStunned());
         yield return new WaitForSeconds(spawnNewRocksTime);

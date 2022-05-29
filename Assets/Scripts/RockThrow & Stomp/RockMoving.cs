@@ -73,7 +73,7 @@ public class RockMoving : MonoBehaviour
         if(other==player && hasntHit)
         {
             PlayerStats health = other.GetComponent<PlayerStats>();
-            health.takeDamage(25);
+            health.takeDamage(30);
             hasntHit=false;
             GameManager.Instance.onPlayerHit("rock throw");
         }

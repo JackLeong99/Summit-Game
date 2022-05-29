@@ -41,20 +41,20 @@ public class PlayerStats : MonoBehaviour
             
         }
         UIManager.Instance.HealthBarSet(currentHealth);
-        System.Console.WriteLine("current health = " + currentHealth + "after taking " + damage);
+        //System.Console.WriteLine("current health = " + currentHealth + "after taking " + damage);
     }
 
 
 //Doesn't work for some reason- revisit.
     public void healDamage(float healing){
 
-        currentHealth = currentHealth + healing;
+        currentHealth += healing;
         //Prevents Overhealing
         if (currentHealth >= maxHealth){
             currentHealth = maxHealth;
         }
         UIManager.Instance.HealthBarSet(currentHealth);
-        System.Console.WriteLine("current health = " + currentHealth + "after taking " + healing);
+        //System.Console.WriteLine("current health = " + currentHealth + "after taking " + healing);
     }
 
     public void DecreaseDamage()
