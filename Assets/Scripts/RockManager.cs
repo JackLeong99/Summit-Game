@@ -73,8 +73,9 @@ public class RockManager : MonoBehaviour
     //update the array with the new position
     public void RockPositionUpdate(GameObject rockMoved)
     {
-        allRocks[RockMoved]=rockMoved;
-        Debug.Log(allRocks[RockMoved].transform.position);
+        //allRocks[RockMoved]=rockMoved;
+       // Debug.Log(allRocks[RockMoved].transform.position);
+        allRocks.Add(rockMoved);
     }
 
     //finds closes rock to the boss
