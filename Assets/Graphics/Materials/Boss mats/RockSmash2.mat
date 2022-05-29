@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: RockSmashParticles
+  m_Name: RockSmash2
   m_Shader: {fileID: 4800000, guid: 933532a4fcc9baf4fa0491de14d08ed7, type: 3}
   m_ShaderKeywords: _EMISSION
   m_LightmapFlags: 2
@@ -105,12 +105,12 @@ Material:
     - _WorkflowMode: 1
     - _ZWrite: 1
     m_Colors:
-    - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
-    - _Color: {r: 1, g: 1, b: 1, a: 1}
-    - _EmissionColor: {r: 3.6827025, g: 3.0078619, b: 0, a: 1}
+    - _BaseColor: {r: 0.3679245, g: 0.16300768, b: 0.10898895, a: 1}
+    - _Color: {r: 0.3679245, g: 0.16300768, b: 0.10898895, a: 1}
+    - _EmissionColor: {r: 1.6627451, g: 0.047058824, b: 0, a: 1}
     - _SpecColor: {r: 0.2, g: 0.2, b: 0.2, a: 1}
   m_BuildTextureStacks: []
---- !u!114 &1137872777028017823
+--- !u!114 &3641398276955805899
 MonoBehaviour:
   m_ObjectHideFlags: 11
   m_CorrespondingSourceObject: {fileID: 0}

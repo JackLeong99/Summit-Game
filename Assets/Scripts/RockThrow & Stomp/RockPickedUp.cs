@@ -12,10 +12,13 @@ public class RockPickedUp : MonoBehaviour
     private bool timerActive=false;
     public GameObject sparksPrefab;
 
+    private GameObject player;
+
     // Start is called before the first frame update
     void Start()
     {
         rockHand = GameObject.FindWithTag("rockHold");
+        player = GameObject.FindWithTag("Player"); 
     }
 
     // Update is called once per frame
@@ -35,8 +38,7 @@ public class RockPickedUp : MonoBehaviour
     public void ReachedTop()
     {
         //spawns rock for throwing
-        GameObject thrownRock = Instantiate(rockPrefab); 
-        thrownRock.transform.position=transform.position;
+         GameObject thrownRock = Instantiate(rockPrefab,transform.position,Quaternion.identity); 
         Destroy(gameObject);
 
     }
@@ -44,7 +46,6 @@ public class RockPickedUp : MonoBehaviour
     //code for the rock moving up for when it is "picked up"
     public void PickedUp()
     {
-        //rockHand = GameObject.FindWithTag("rockHold");
         this.transform.SetParent(rockHand.transform);
         transform.localPosition = new Vector3(0, 0, 0);
         timerActive=true;
@@ -61,7 +62,8 @@ public class RockPickedUp : MonoBehaviour
          }
         if(rockHealth<=0)
          {
-             Destroy(gameObject);
+            Destroy(gameObject);
+            player.GetComponent<PlayerStats>().healDamage(5.0f);
          }
     }
 

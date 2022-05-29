@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: -5583602049226634763}
   - component: {fileID: -2108820817933278734}
   m_Layer: 0
-  m_Name: Sweep Attack Collider
+  m_Name: GroundSlamHitbox
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -113,7 +113,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attackName: Sweep
-  damage: 15
+  damage: 12.5
 --- !u!114 &-5583602049226634763
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -126,7 +126,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 84adc626b5566104b8eb9b7791c9a5b1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  force: 7
+  force: 10
 --- !u!114 &-2108820817933278734
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -139,4 +139,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9b287b778a2b35b42a29bbff0f7f606a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  force: 3
+  force: 2
