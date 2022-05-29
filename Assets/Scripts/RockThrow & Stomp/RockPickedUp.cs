@@ -35,8 +35,7 @@ public class RockPickedUp : MonoBehaviour
     public void ReachedTop()
     {
         //spawns rock for throwing
-        GameObject thrownRock = Instantiate(rockPrefab); 
-        thrownRock.transform.position=transform.position;
+         GameObject thrownRock = Instantiate(rockPrefab,transform.position,Quaternion.identity); 
         Destroy(gameObject);
 
     }
@@ -44,7 +43,6 @@ public class RockPickedUp : MonoBehaviour
     //code for the rock moving up for when it is "picked up"
     public void PickedUp()
     {
-        //rockHand = GameObject.FindWithTag("rockHold");
         this.transform.SetParent(rockHand.transform);
         transform.localPosition = new Vector3(0, 0, 0);
         timerActive=true;

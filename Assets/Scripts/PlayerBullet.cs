@@ -8,6 +8,13 @@ public class PlayerBullet : MonoBehaviour
     public float CurrentLifetime = 0;
     private float currentGunDamage;
     [SerializeField] GameObject boom;
+    private GameObject boss;
+    private BossManager bManager;
+
+    void Awake(){
+        boss = GameObject.FindWithTag("enemyHitbox"); //find the tag of the object you want ie the boss's tag in this case
+        bManager = boss.GetComponent<BossManager>(); //same as before except added boss the gameObject before getComponent
+    }
 
     public void setDamage(float dmg)
     {
@@ -37,6 +44,7 @@ public class PlayerBullet : MonoBehaviour
     {
         if (other.tag == "enemyHitbox")
         {
+            bManager.gunStun();
             EnemyDamageReceiver receiver = other.GetComponent<EnemyDamageReceiver>();
             if (receiver)
             {

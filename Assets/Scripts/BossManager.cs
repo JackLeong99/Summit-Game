@@ -50,6 +50,8 @@ public class BossManager : MonoBehaviour
     public int lastMoveRepeated = 0;
     //Dodgy slider method to match the timing with slam- determines when the shockwave is done
     public float scuffedShockTimer;
+    private Coroutine mActions;
+    private Coroutine rActions; 
     //Health for the boss
     [SerializeField] float maxHP;
     //[HideInInspector]
@@ -57,13 +59,16 @@ public class BossManager : MonoBehaviour
     public float currentHP;
     public int spawnRocksNumber;
     public float spawnNewRocksTime;
+    public bool stunned = false;
+    public float gunStunDuration;
+    private float stunTimer;
     private BossPathing bPathing;
     private Shockwave shockwave;
     private MegaPunch punch;
     private GroundSlam slam;
     private Eruption erupt;
     private RockPathFinding rockThrow;
-    private RockManager rocks;
+    //private RockManager rocks;
     private DamagePlayer2 damagePlayer;
     Animator animatr;
     NavMeshAgent agent;
@@ -79,7 +84,7 @@ public class BossManager : MonoBehaviour
         punch = GetComponent<MegaPunch>();
         slam = GetComponent<GroundSlam>();
         erupt = GetComponent<Eruption>();
-        rocks = GetComponent<RockManager>();
+        //rocks = GetComponent<RockManager>();
         rockThrow = GetComponent<RockPathFinding>();
         damagePlayer = GetComponent<DamagePlayer2>();
         animatr = gameObject.GetComponent<Animator>();
@@ -95,11 +100,11 @@ public class BossManager : MonoBehaviour
     }
     
     void Update(){
-        if(Alive){
-            // if(rocks.countUnderWantedRocks){
-            //     StartCoroutine(summonRocks());
-            // }
-            // else{
+        if(Alive && !stunned){
+            if(!inAttack && RockManager.Instance.countUnderWantedRocks){
+                StartCoroutine(summonRocks());
+            }
+            else{
                 /*GroundedCheck();
                 //Looks at the player
                 transform.LookAt(Player);
@@ -156,7 +161,7 @@ public class BossManager : MonoBehaviour
                     if(isMidRange && !inAttack && !isRanged && rangedAllowed){
                         //Debug.Log("Mid Range!");
                         if(currentPatience >= patience){
-                            StartCoroutine(rangedActions());
+                            Coroutine rActions = StartCoroutine(rangedActions());
                             currentPatience = 0;
                         }
                         //If moving because of this don't increase patience from here.
@@ -168,7 +173,7 @@ public class BossManager : MonoBehaviour
 
                 //if melee range and not in attack delay
                 else if(isMelee && !inAttack){
-                    StartCoroutine(meleeActions());
+                    Coroutine mActions = StartCoroutine(meleeActions());
                 }
 
                 //if long range and not in attack delay
@@ -177,15 +182,16 @@ public class BossManager : MonoBehaviour
                     bPathing.bossPathing();
                     //ranged delay only matters for attack actions. Should not affect movement.
                     if(rangedAllowed){
-                        StartCoroutine(rangedActions());
+                        Coroutine rActions = StartCoroutine(rangedActions());
                     }
                 }   
-            // }
+            }
         }
     }
 
     //Do any opening animations or behaviours here.
     IEnumerator fightStart(){
+        //potentially should be changed to stunned after testing that this doesn't break anything.
         inAttack = true;
         yield return new WaitForSeconds(3);
         inAttack = false;
@@ -394,6 +400,9 @@ public class BossManager : MonoBehaviour
             
             //I probably shouldn't be using inAttack for this - it causes clashes 
             while(rockThrow.currentlyTargeting){
+                if(stunned){
+                    yield break;
+                }
                 bPathing.bossPathing();
                 //inRockThrow = true;
                 //inAttack = true;
@@ -417,7 +426,6 @@ public class BossManager : MonoBehaviour
                     attackException = true;
                     currentPatience = currentPatience + (fullRandomiser(0.1f, 0.2f)) * Time.deltaTime;
                 }
-                
                 yield return new WaitForSeconds(Time.deltaTime);
             }
             animatr.SetTrigger("Throw");
@@ -445,7 +453,6 @@ public class BossManager : MonoBehaviour
         rangedAllowed = true;
     }
 
-
     private int SelectMove(int min, int max){
         // if (rage == true){ 
         //     min+= 4;
@@ -459,15 +466,11 @@ public class BossManager : MonoBehaviour
     }
 
     IEnumerator summonRocks(){
-        attackException = true;
-        inAttack = true;
-        rocks.countUnderWantedRocks = false;
-        rocks.SpawnNewRocks();
+        stunTimer = spawnNewRocksTime;
+        StartCoroutine(bossStunned());
         yield return new WaitForSeconds(spawnNewRocksTime);
-        //would suggest putting rocks.SpawnNewRocks() instead then have a small delay after to give the apperance of it taking out the rocks then a brief pause like it is catching its breath
-
-        attackException = false;
-        inAttack = false;
+        RockManager.Instance.countUnderWantedRocks = false;
+        RockManager.Instance.SpawnNewRocks();
     }
 
     private float fullRandomiser(float min, float max){
@@ -556,6 +559,23 @@ public class BossManager : MonoBehaviour
         // inAttack = false; // probs borked
     }
 
+    public void gunStun(){
+        stunTimer = gunStunDuration;
+        StartCoroutine(bossStunned());
+    }
+
+    IEnumerator bossStunned(){
+        stunned = true;
+        if(mActions != null){
+            StopCoroutine(mActions);
+        }
+        if(rActions != null){
+            StopCoroutine(rActions);
+        }
+        yield return new WaitForSeconds(stunTimer);
+        stunned = false;
+    }
+
     public void setUpHitBoxes() 
     {
         foreach(var Rigidbody in rigidBodies)
@@ -563,5 +583,9 @@ public class BossManager : MonoBehaviour
             Rigidbody.isKinematic = true;
             Rigidbody.gameObject.AddComponent<EnemyDamageReceiver>();
         }
+    }
+
+    public int rockNumberMinimum(){
+        return spawnRocksNumber;
     }
 }
