@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using DG.Tweening;
 //remove all movement stuff when adding the improved boss pathing. Pathing is baked through window- AI.
 //AI refactoring is priority over hitbox for now.
 public class BossManager : MonoBehaviour
@@ -65,10 +66,12 @@ public class BossManager : MonoBehaviour
     private RockPathFinding rockThrow;
     private RockManager rocks;
     private DamagePlayer2 damagePlayer;
+    private DamageFlash damageFlash;
     Animator animatr;
     NavMeshAgent agent;
     private bool Alive = true;
     Rigidbody[] rigidBodies;
+
     //used by IncreasePlayerAttack power-up
     private bool increaseDamage=false;
 
@@ -83,6 +86,7 @@ public class BossManager : MonoBehaviour
         rockThrow = GetComponent<RockPathFinding>();
         damagePlayer = GetComponent<DamagePlayer2>();
         animatr = gameObject.GetComponent<Animator>();
+        damageFlash = GetComponent<DamageFlash>();
         agent = GetComponent<NavMeshAgent>();
         StartCoroutine(fightStart());
     }
@@ -484,7 +488,7 @@ public class BossManager : MonoBehaviour
         yield return new WaitForSeconds(animatrDuration + delay);
     }*/
 
-    public void TakeDamage(float dmg)
+    public void TakeDamage(float dmg, Vector3 position)
     {
         if(increaseDamage)
         {
@@ -496,8 +500,11 @@ public class BossManager : MonoBehaviour
         }
 
         UIManager.Instance.HealthBossBarSet((int)Mathf.Round(currentHP));
+        UIManager.Instance.DamageTextPool.Spawn(position, dmg.ToString(), Color.white, dmg > 40f ? 12f : 4f);
 
-        if(rage == false && (currentHP <= (maxHP/2))){
+        damageFlash.Flash();
+
+        if (rage == false && (currentHP <= (maxHP/2))){
             StartCoroutine(triggerRage());
         }
         if (currentHP <= 0.0f)

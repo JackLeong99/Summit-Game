@@ -38,7 +38,7 @@ public class PlayerBullet : MonoBehaviour
             EnemyDamageReceiver receiver = other.GetComponent<EnemyDamageReceiver>();
             if (receiver)
             {
-                receiver.PassDamage(currentGunDamage);
+                receiver.PassDamage(currentGunDamage, transform.position);
                 Destroy(gameObject);
             }
         }
