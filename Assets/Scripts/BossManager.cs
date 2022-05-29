@@ -510,7 +510,8 @@ public class BossManager : MonoBehaviour
         UIManager.Instance.HealthBossBarSet((int)Mathf.Round(currentHP));
         UIManager.Instance.DamageTextPool.Spawn(position, dmg.ToString(), Color.white, dmg > 15f ? 12f : 4f);
 
-        damageFlash.Flash();
+        if (damageFlash != null)
+            damageFlash.Flash();
 
         if (rage == false && (currentHP <= (maxHP/2))){
             StartCoroutine(triggerRage());
