@@ -32,6 +32,8 @@ public class RockManager : MonoBehaviour
     private GameObject boss; //create a gameobject reference
 
 
+    public int amountToSpawnNew;
+
     void Awake()
     {
 
@@ -65,6 +67,7 @@ public class RockManager : MonoBehaviour
             countUnderWantedRocks = true;
         }
     }
+
 
 
     //update the array with the new position
@@ -117,20 +120,6 @@ public class RockManager : MonoBehaviour
         }
     }
 
-    //needed for boss manager
-    public void ClearUpList()
-    {
-        allRocks.RemoveAll(s => s == null);
-    }
-
-    // public void SpawnNewRocks()
-    // {
-    //     for(int i = 0; i < initialRockCount; i++)
-    //     {
-    //         GameObject respawnedRock = Instantiate(rockPrefab);
-    //         newRock.transfrom.position = newVector3(Random.Range)
-    //     }
-    // }
     public void SpawnNewRocks()
     {
         GameObject newRock1= Instantiate(rockPrefab);
@@ -157,12 +146,23 @@ public class RockManager : MonoBehaviour
         GameObject newRock8= Instantiate(rockPrefab);
         newRock8.transform.position= new Vector3(Random.Range(25f, 50f), 0, Random.Range(0f, 50f));
         allRocks.Add(newRock8);
-        //set some positions and spawn rocks
-        //use radius to make it random each time
-        //spawn with some particle effects
-        //spawn 4 different rocks into different quadrants //should dicuss this
-
     }
+
+    //needed for boss manager
+    public void ClearUpList()
+    {
+        allRocks.RemoveAll(s => s == null);
+    }
+
+
+    // public void SpawnNewRocks()
+    // {
+    //     for(int i = 0; i < initialRockCount; i++)
+    //     {
+    //         GameObject respawnedRock = Instantiate(rockPrefab);
+    //         newRock.transfrom.position = newVector3(Random.Range)
+    //     }
+    // }
     private void randomRockPos()
     {
         //whatevertheArenalimits are should determine what to input into random here

@@ -4,22 +4,28 @@ using UnityEngine;
 
 public class RockPickedUp : MonoBehaviour
 {
-    private float speed=0f; //set to 10 for testing purposes
     public GameObject rockPrefab; //on moving rock
     private int rockHealth=3; //might move this into seperate script
+    public GameObject rockHand;
+    
+    private float timer=1.2f; //modify this to get it release better
+    private bool timerActive=false;
+    public GameObject sparksPrefab;
 
     // Start is called before the first frame update
     void Start()
     {
-
+        rockHand = GameObject.FindWithTag("rockHold");
     }
 
     // Update is called once per frame
     void Update()
     {
-        transform.Translate(0,speed* Time.deltaTime ,0);
-
-        if(transform.position.y>=7) //y can be changed to any height
+        if(timerActive)
+        {
+            timer-=Time.deltaTime;
+        }
+        if(timer<=0)
         {
             ReachedTop();
         }
@@ -29,8 +35,7 @@ public class RockPickedUp : MonoBehaviour
     public void ReachedTop()
     {
         //spawns rock for throwing
-        GameObject thrownRock= Instantiate(rockPrefab); 
-        thrownRock.transform.position=transform.position;
+         GameObject thrownRock = Instantiate(rockPrefab,transform.position,Quaternion.identity); 
         Destroy(gameObject);
 
     }
@@ -38,32 +43,19 @@ public class RockPickedUp : MonoBehaviour
     //code for the rock moving up for when it is "picked up"
     public void PickedUp()
     {
-        speed=10f;
+        this.transform.SetParent(rockHand.transform);
+        transform.localPosition = new Vector3(0, 0, 0);
+        timerActive=true;
     }
 
 
-    //for bullet
-    void OnCollisionEnter(Collision collider)
-    {
-        GameObject other = collider.gameObject;
-         if(other.tag=="PlayerBullet")
-         {
-             rockHealth--;
-         }
-        if(other.tag=="sword")
-         {
-             rockHealth--;
-         }
-         if(rockHealth<=0)
-         {
-             Destroy(gameObject);
-         }
-    }
-    //sword uses this instead of on collsion for some reason
+    //detects hits on rock
     private void OnTriggerEnter(Collider other){
-        if(other.tag=="sword")
+        if(other.tag=="sword" || other.tag == "PlayerBullet")
          {
-             rockHealth--;
+            rockHealth--;
+            Instantiate(sparksPrefab, gameObject.transform.position, Quaternion.Euler(-90, 0, 0));
+            //TODO add hit particles
          }
         if(rockHealth<=0)
          {

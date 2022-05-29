@@ -64,7 +64,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -6478536213147159724, guid: de5cc48f845ebd14fa561f94eb0aeab9, type: 3}
+  - {fileID: 2100000, guid: 68be0df15f358714391099278d4ecf98, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -113,6 +113,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rockPrefab: {fileID: 8358722399614396407, guid: 6761bec4156a89349bd0643744e29a8c, type: 3}
+  sparksPrefab: {fileID: 360004003803245523, guid: c606c23f84508824cbb5988fa2f1e3cc, type: 3}
 --- !u!54 &4950186718092724158
 Rigidbody:
   m_ObjectHideFlags: 0

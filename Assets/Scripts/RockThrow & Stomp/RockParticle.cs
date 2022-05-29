@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class RockParticle : MonoBehaviour
 {
-    private float timer=1;
+    [SerializeField] float timer;
     // Start is called before the first frame update
     void Start()
     {

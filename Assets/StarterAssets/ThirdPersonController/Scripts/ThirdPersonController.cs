@@ -140,7 +140,14 @@ namespace StarterAssets
 
 		private void Update()
 		{
-			_Inactionable = shooting.casting;
+			if (shooting.casting || attack.isAttacking)
+			{
+				_Inactionable = true;
+			}
+			else 
+			{
+				_Inactionable = false;
+			}
 
 			_hasAnimator = TryGetComponent(out _animator);
 			
@@ -152,7 +159,7 @@ namespace StarterAssets
 
 				if(Input.GetButtonDown("Fire1"))
 				{
-					if(!dodge.isDodging)
+					if(!dodge.isDodging && Grounded)
 					{
 						attack.doAttack();
 					}

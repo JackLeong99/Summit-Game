@@ -3,10 +3,16 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using StarterAssets;
 
 public class ThirdPersonShooting : MonoBehaviour
 {
     [SerializeField] float bulletDamage;
+
+    [SerializeField] float chargeTime;
+
+    [SerializeField] GameObject chargeParticles;
+
     public Camera cam;
 
     public GameObject projectile;
@@ -28,9 +34,13 @@ public class ThirdPersonShooting : MonoBehaviour
     public float cdTimer = 0;
     [HideInInspector]
     public bool casting;
+    [HideInInspector]
+    public bool onCooldown;
     private Vector3 destination;
     public Color OffCD;
     public Color OnCD;
+
+    private ThirdPersonController controller;
 
     private Animator _animator;
 
@@ -54,6 +64,7 @@ public class ThirdPersonShooting : MonoBehaviour
         _animator = GetComponent<Animator>();
         //Temporary code that resets player y axis rotation until we add custom player model/animations
         player = GetComponent<CharacterController>();
+        controller = GetComponent<ThirdPersonController>();
     }
 
     // Update is called once per frame
@@ -74,24 +85,28 @@ public class ThirdPersonShooting : MonoBehaviour
         if(cdTimer <=0)
         {
             cdTimer = 0;
+            onCooldown = false;
             CdDisplay.text = "";
             CdBackground.color = OffCD;
         }
         else
         {
-            CdDisplay.text = cdTimer.ToString("0");
+            CdDisplay.text = (cdTimer+1).ToString("0");
             CdBackground.color = OnCD;
+            onCooldown = true;
         }
     }
 
     IEnumerator ShootProjectile()
     {
         player.transform.rotation = _mainCamera.transform.rotation;
+        controller.LockCameraPosition = true;
         casting = true;
+        _animator.SetTrigger("Charge");
+        var chargin = Instantiate(chargeParticles, FirePoint.position, Quaternion.identity, FirePoint.transform) as GameObject;
+        yield return new WaitForSeconds(chargeTime);
+        Destroy(chargin);
         _animator.SetTrigger("Shoot");
-
-        yield return new WaitForSeconds(shotTimeBuffer);
-
         Ray ray = cam.ViewportPointToRay(new Vector3(0.5f, 0.5f , 0));
         RaycastHit hit;
 
@@ -106,7 +121,7 @@ public class ThirdPersonShooting : MonoBehaviour
         InstantiateProjectile();
         
         yield return new WaitForSeconds(shotAnimEnd);
-        player.transform.rotation = Quaternion.Euler(new Vector3(transform.rotation.x, 0f, transform.rotation.z));
+        controller.LockCameraPosition = false;
         casting = false;
         cdTimer = cooldown;
 
