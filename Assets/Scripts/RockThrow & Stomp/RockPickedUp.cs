@@ -11,6 +11,7 @@ public class RockPickedUp : MonoBehaviour
     private float timer=1.2f; //modify this to get it release better
     private bool timerActive=false;
     public GameObject sparksPrefab;
+    public GameObject healBurst;
 
     private GameObject player;
 
@@ -64,7 +65,8 @@ public class RockPickedUp : MonoBehaviour
          {
             Destroy(gameObject);
             player.GetComponent<PlayerStats>().healDamage(5.0f);
-         }
+            Instantiate(healBurst, gameObject.transform.position, Quaternion.Euler(0, 0, 0));
+        }
     }
 
     public void MakeRockInv()

@@ -100,8 +100,8 @@ public class BossManager : MonoBehaviour
     void Start()
     {
         currentHP = maxHP;
-        rigidBodies = GetComponentsInChildren<Rigidbody>();
-        setUpHitBoxes();
+        //rigidBodies = GetComponentsInChildren<Rigidbody>();
+        //setUpHitBoxes();
         startSpeed = agent.speed;
     }
     
@@ -291,13 +291,13 @@ public class BossManager : MonoBehaviour
             //Face player to aim- smoother method could be used
             transform.LookAt(Player);
             //Wait for the set delay before running shockwave, should be timed to match fists hitting ground
-            yield return new WaitForSeconds(scuffedShockTimer);
+            //yield return new WaitForSeconds(scuffedShockTimer);
             //Do the shockwave attack
-            shockwave.instantiateShockwave();
+            //shockwave.instantiateShockwave();
             //Hard-coded animation duration.
             float animatrDuration = 2.875f; // Figure this out
             //Wait has already been done before timer which is a part of the animation duration
-            yield return new WaitForSeconds(animatrDuration - scuffedShockTimer);
+            yield return new WaitForSeconds(animatrDuration);
            //possible to double slam
            //would be nice to have different animation - particle effect on the fists before first slam
            //less drawback on second slam
@@ -311,11 +311,11 @@ public class BossManager : MonoBehaviour
                 //Do the animation
                 animatr.SetTrigger("Slam");
                 //Wait for the set delay before running shockwave, should be timed to match fists hitting ground
-                yield return new WaitForSeconds(scuffedShockTimer);
+                //yield return new WaitForSeconds(scuffedShockTimer);
                 //Do the shockwave attack
-                shockwave.instantiateShockwave();
+                //shockwave.instantiateShockwave();
                 //Wait has already been done before timer which is a part of the animation duration
-                yield return new WaitForSeconds(animatrDuration - scuffedShockTimer);
+                yield return new WaitForSeconds(animatrDuration);
                 // yield return new WaitForSeconds(2f * Time.deltaTime);
                 // shockwave.instantiateShockwave();
                 // yield return new WaitForSeconds(animatrDuration - 2 * Time.deltaTime);
@@ -476,7 +476,7 @@ public class BossManager : MonoBehaviour
     IEnumerator summonRocks(){
         animatr.SetTrigger("Summoning");
         stunTimer = spawnNewRocksTime;
-        StartCoroutine(bossStunned());
+        StartCoroutine(summoningRocks());
         yield return new WaitForSeconds(spawnNewRocksTime);
         RockManager.Instance.countUnderWantedRocks = false;
         RockManager.Instance.SpawnNewRocks();
@@ -581,6 +581,8 @@ public class BossManager : MonoBehaviour
         stunned = true;
         agent.speed = 0;
 
+        animatr.SetTrigger("Stunned");
+
         if(mActions != null){
             StopCoroutine(mActions);
         }
@@ -589,6 +591,7 @@ public class BossManager : MonoBehaviour
         }
         yield return new WaitForSeconds(stunTimer);
         stunned = false;
+        animatr.SetTrigger("StunEnd");
         if(rage){
             agent.speed = rageSpeed;
         }
@@ -598,14 +601,41 @@ public class BossManager : MonoBehaviour
 
     }
 
-    public void setUpHitBoxes() 
+    //this is a very bandiad solution to needing the boss to have the properties of being stunned but not calling the stun with animation trigger while summoning rocks
+    IEnumerator summoningRocks()
     {
-        foreach(var Rigidbody in rigidBodies)
+        stunned = true;
+        agent.speed = 0;
+
+        if (mActions != null)
         {
-            Rigidbody.isKinematic = true;
-            Rigidbody.gameObject.AddComponent<EnemyDamageReceiver>();
+            StopCoroutine(mActions);
         }
+        if (rActions != null)
+        {
+            StopCoroutine(rActions);
+        }
+        yield return new WaitForSeconds(stunTimer);
+        stunned = false;
+        if (rage)
+        {
+            agent.speed = rageSpeed;
+        }
+        else
+        {
+            agent.speed = startSpeed;
+        }
+
     }
+
+    //public void setUpHitBoxes() 
+    //{
+    //    foreach(var Rigidbody in rigidBodies)
+    //    {
+    //        Rigidbody.isKinematic = true;
+    //        Rigidbody.gameObject.AddComponent<EnemyDamageReceiver>();
+    //    }
+    //}
 
     public int rockNumberMinimum(){
         return spawnRocksNumber;
