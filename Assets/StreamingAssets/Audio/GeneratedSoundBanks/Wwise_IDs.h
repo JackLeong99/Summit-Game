@@ -18,8 +18,6 @@ namespace AK
         static const AkUniqueID ENEMY_BOULDER_CAST = 2854117449U;
         static const AkUniqueID ENEMY_BOULDER_IMPACT = 2372917442U;
         static const AkUniqueID ENEMY_DAMAGE = 555067025U;
-        static const AkUniqueID ENEMY_DASH_LOOP_PLAY = 2013137580U;
-        static const AkUniqueID ENEMY_DASH_LOOP_STOP = 3982922166U;
         static const AkUniqueID ENEMY_DEATH = 1205999388U;
         static const AkUniqueID ENEMY_ERUPTION_CAST = 1789255036U;
         static const AkUniqueID ENEMY_ERUPTION_LAVA = 22559231U;
@@ -85,7 +83,6 @@ namespace AK
         static const AkUniqueID ENEMY_BOULDER_CAST = 2854117449U;
         static const AkUniqueID ENEMY_BOULDER_IMPACT = 2372917442U;
         static const AkUniqueID ENEMY_DAMAGE = 555067025U;
-        static const AkUniqueID ENEMY_DASH = 3436801642U;
         static const AkUniqueID ENEMY_DEATH = 1205999388U;
         static const AkUniqueID ENEMY_ERUPTION_CAST = 1789255036U;
         static const AkUniqueID ENEMY_ERUPTION_LAVA = 22559231U;

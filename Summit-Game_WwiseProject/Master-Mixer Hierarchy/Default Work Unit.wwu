@@ -85,6 +85,11 @@
 													</ValueList>
 												</Property>
 											</PropertyList>
+											<ReferenceList>
+												<Reference Name="UserAuxSend0">
+													<ObjectRef Name="SFX_Reverb" ID="{FD34F8CD-0E17-4876-B51E-7D6BC0FD4983}" WorkUnitID="{5FE25012-E08F-420E-BE49-3B0109DF68E3}"/>
+												</Reference>
+											</ReferenceList>
 											<ObjectLists/>
 										</Bus>
 										<Bus Name="Player_Jump" ID="{369C237D-D6D2-4FC5-9311-2419593D2C1F}">
@@ -95,19 +100,27 @@
 													</ValueList>
 												</Property>
 											</PropertyList>
+											<ReferenceList>
+												<Reference Name="UserAuxSend0">
+													<ObjectRef Name="SFX_Reverb" ID="{FD34F8CD-0E17-4876-B51E-7D6BC0FD4983}" WorkUnitID="{5FE25012-E08F-420E-BE49-3B0109DF68E3}"/>
+												</Reference>
+											</ReferenceList>
 											<ObjectLists/>
 										</Bus>
 										<Bus Name="Player_Damage" ID="{1404BD47-4CE6-4C90-96C0-1586B3706911}">
 											<PropertyList>
 												<Property Name="BusVolume" Type="Real64">
 													<ValueList>
-														<Value>-15</Value>
+														<Value>-18</Value>
 													</ValueList>
 												</Property>
 											</PropertyList>
 											<ReferenceList>
 												<Reference Name="Effect0" PluginName="Wwise Meter" CompanyID="0" PluginID="129" PluginType="3">
 													<ObjectRef Name="Wwise_Meter_SFX_Sidechain" ID="{F703D923-283A-45F3-A276-670CC07CB003}" WorkUnitID="{B0EB1BF1-35D5-48DA-95BE-B0BBE3A101E3}"/>
+												</Reference>
+												<Reference Name="UserAuxSend0">
+													<ObjectRef Name="SFX_Reverb" ID="{FD34F8CD-0E17-4876-B51E-7D6BC0FD4983}" WorkUnitID="{5FE25012-E08F-420E-BE49-3B0109DF68E3}"/>
 												</Reference>
 											</ReferenceList>
 											<ObjectLists/>
@@ -119,7 +132,17 @@
 														<Value>-9</Value>
 													</ValueList>
 												</Property>
+												<Property Name="UserAuxSendVolume0" Type="Real64">
+													<ValueList>
+														<Value>-6</Value>
+													</ValueList>
+												</Property>
 											</PropertyList>
+											<ReferenceList>
+												<Reference Name="UserAuxSend0">
+													<ObjectRef Name="SFX_Reverb" ID="{FD34F8CD-0E17-4876-B51E-7D6BC0FD4983}" WorkUnitID="{5FE25012-E08F-420E-BE49-3B0109DF68E3}"/>
+												</Reference>
+											</ReferenceList>
 											<ObjectLists/>
 										</Bus>
 										<Bus Name="Player_Attack" ID="{4FE55A1B-0BC4-4D83-822E-285EBC2584C2}">
@@ -129,7 +152,17 @@
 														<Value>-9</Value>
 													</ValueList>
 												</Property>
+												<Property Name="UserAuxSendVolume0" Type="Real64">
+													<ValueList>
+														<Value>3</Value>
+													</ValueList>
+												</Property>
 											</PropertyList>
+											<ReferenceList>
+												<Reference Name="UserAuxSend0">
+													<ObjectRef Name="SFX_Reverb" ID="{FD34F8CD-0E17-4876-B51E-7D6BC0FD4983}" WorkUnitID="{5FE25012-E08F-420E-BE49-3B0109DF68E3}"/>
+												</Reference>
+											</ReferenceList>
 											<ObjectLists/>
 										</Bus>
 										<Bus Name="Player_Shoot_Impact" ID="{6126A72E-6067-45EC-AFD0-CA1D64861632}">
@@ -140,6 +173,11 @@
 													</ValueList>
 												</Property>
 											</PropertyList>
+											<ReferenceList>
+												<Reference Name="UserAuxSend0">
+													<ObjectRef Name="SFX_Reverb" ID="{FD34F8CD-0E17-4876-B51E-7D6BC0FD4983}" WorkUnitID="{5FE25012-E08F-420E-BE49-3B0109DF68E3}"/>
+												</Reference>
+											</ReferenceList>
 											<ObjectLists/>
 										</Bus>
 										<Bus Name="Player_Shoot_Fire" ID="{1826B061-0024-4BD0-875D-D0C39243A09F}">
@@ -149,7 +187,17 @@
 														<Value>-10</Value>
 													</ValueList>
 												</Property>
+												<Property Name="UserAuxSendVolume0" Type="Real64">
+													<ValueList>
+														<Value>-3</Value>
+													</ValueList>
+												</Property>
 											</PropertyList>
+											<ReferenceList>
+												<Reference Name="UserAuxSend0">
+													<ObjectRef Name="SFX_Reverb" ID="{FD34F8CD-0E17-4876-B51E-7D6BC0FD4983}" WorkUnitID="{5FE25012-E08F-420E-BE49-3B0109DF68E3}"/>
+												</Reference>
+											</ReferenceList>
 											<ObjectLists/>
 										</Bus>
 										<Bus Name="Player_Death" ID="{4B2D6252-E140-489A-978A-C0BD5E09C53C}">
@@ -159,10 +207,18 @@
 														<Value>-9</Value>
 													</ValueList>
 												</Property>
+												<Property Name="UserAuxSendVolume0" Type="Real64">
+													<ValueList>
+														<Value>-6</Value>
+													</ValueList>
+												</Property>
 											</PropertyList>
 											<ReferenceList>
 												<Reference Name="Effect0" PluginName="Wwise Meter" CompanyID="0" PluginID="129" PluginType="3">
 													<ObjectRef Name="Wwise_Meter_SFX_Sidechain" ID="{F703D923-283A-45F3-A276-670CC07CB003}" WorkUnitID="{B0EB1BF1-35D5-48DA-95BE-B0BBE3A101E3}"/>
+												</Reference>
+												<Reference Name="UserAuxSend0">
+													<ObjectRef Name="SFX_Reverb" ID="{FD34F8CD-0E17-4876-B51E-7D6BC0FD4983}" WorkUnitID="{5FE25012-E08F-420E-BE49-3B0109DF68E3}"/>
 												</Reference>
 											</ReferenceList>
 											<ObjectLists/>
@@ -174,7 +230,14 @@
 														<Value>-4</Value>
 													</ValueList>
 												</Property>
+												<Property Name="Color" Type="int16" Value="10"/>
+												<Property Name="OverrideColor" Type="bool" Value="True"/>
 											</PropertyList>
+											<ReferenceList>
+												<Reference Name="UserAuxSend0">
+													<ObjectRef Name="SFX_Reverb" ID="{FD34F8CD-0E17-4876-B51E-7D6BC0FD4983}" WorkUnitID="{5FE25012-E08F-420E-BE49-3B0109DF68E3}"/>
+												</Reference>
+											</ReferenceList>
 											<ObjectLists/>
 										</Bus>
 									</ChildrenList>
@@ -200,6 +263,7 @@
 													</ValueList>
 												</Property>
 											</PropertyList>
+											<ReferenceList/>
 											<ObjectLists/>
 										</Bus>
 										<Bus Name="UI_Hit_Indicator" ID="{2BCAC49C-E0D6-4A9B-8C97-33322A0FFEA3}">
@@ -209,6 +273,7 @@
 														<Value>-9</Value>
 													</ValueList>
 												</Property>
+												<Property Name="Color" Type="int16" Value="10"/>
 											</PropertyList>
 											<ReferenceList>
 												<Reference Name="Effect0" PluginName="Wwise Meter" CompanyID="0" PluginID="129" PluginType="3">
@@ -229,7 +294,17 @@
 														<Value>-7</Value>
 													</ValueList>
 												</Property>
+												<Property Name="UserAuxSendVolume0" Type="Real64">
+													<ValueList>
+														<Value>-3</Value>
+													</ValueList>
+												</Property>
 											</PropertyList>
+											<ReferenceList>
+												<Reference Name="UserAuxSend0">
+													<ObjectRef Name="SFX_Reverb" ID="{FD34F8CD-0E17-4876-B51E-7D6BC0FD4983}" WorkUnitID="{5FE25012-E08F-420E-BE49-3B0109DF68E3}"/>
+												</Reference>
+											</ReferenceList>
 											<ObjectLists/>
 										</Bus>
 										<Bus Name="Enemy_Eruption_Cast" ID="{63B3A5DD-3BBC-4988-A061-CDE4051C555A}">
@@ -240,6 +315,11 @@
 													</ValueList>
 												</Property>
 											</PropertyList>
+											<ReferenceList>
+												<Reference Name="UserAuxSend0">
+													<ObjectRef Name="SFX_Reverb" ID="{FD34F8CD-0E17-4876-B51E-7D6BC0FD4983}" WorkUnitID="{5FE25012-E08F-420E-BE49-3B0109DF68E3}"/>
+												</Reference>
+											</ReferenceList>
 											<ObjectLists/>
 										</Bus>
 										<Bus Name="Enemy_Boulder_Cast" ID="{74260371-841D-44C5-AE54-27ED43319B04}">
@@ -250,6 +330,11 @@
 													</ValueList>
 												</Property>
 											</PropertyList>
+											<ReferenceList>
+												<Reference Name="UserAuxSend0">
+													<ObjectRef Name="SFX_Reverb" ID="{FD34F8CD-0E17-4876-B51E-7D6BC0FD4983}" WorkUnitID="{5FE25012-E08F-420E-BE49-3B0109DF68E3}"/>
+												</Reference>
+											</ReferenceList>
 											<ObjectLists/>
 										</Bus>
 										<Bus Name="Enemy_Boulder_Impact" ID="{3D716E35-7853-4DD4-A4AF-1BEF658FDB8B}">
@@ -264,6 +349,9 @@
 												<Reference Name="Effect0" PluginName="Wwise Meter" CompanyID="0" PluginID="129" PluginType="3">
 													<ObjectRef Name="Wwise_Meter_SFX_Sidechain" ID="{F703D923-283A-45F3-A276-670CC07CB003}" WorkUnitID="{B0EB1BF1-35D5-48DA-95BE-B0BBE3A101E3}"/>
 												</Reference>
+												<Reference Name="UserAuxSend0">
+													<ObjectRef Name="SFX_Reverb" ID="{FD34F8CD-0E17-4876-B51E-7D6BC0FD4983}" WorkUnitID="{5FE25012-E08F-420E-BE49-3B0109DF68E3}"/>
+												</Reference>
 											</ReferenceList>
 											<ObjectLists/>
 										</Bus>
@@ -275,6 +363,11 @@
 													</ValueList>
 												</Property>
 											</PropertyList>
+											<ReferenceList>
+												<Reference Name="UserAuxSend0">
+													<ObjectRef Name="SFX_Reverb" ID="{FD34F8CD-0E17-4876-B51E-7D6BC0FD4983}" WorkUnitID="{5FE25012-E08F-420E-BE49-3B0109DF68E3}"/>
+												</Reference>
+											</ReferenceList>
 											<ObjectLists/>
 										</Bus>
 										<Bus Name="Enemy_Melee_Right_Hook" ID="{E92CC4DD-6F0A-49F3-9638-65115C74A586}">
@@ -285,6 +378,11 @@
 													</ValueList>
 												</Property>
 											</PropertyList>
+											<ReferenceList>
+												<Reference Name="UserAuxSend0">
+													<ObjectRef Name="SFX_Reverb" ID="{FD34F8CD-0E17-4876-B51E-7D6BC0FD4983}" WorkUnitID="{5FE25012-E08F-420E-BE49-3B0109DF68E3}"/>
+												</Reference>
+											</ReferenceList>
 											<ObjectLists/>
 										</Bus>
 										<Bus Name="Enemy_Death" ID="{EDAF8610-D408-4B4D-A2C3-99DE0F45482A}">
@@ -299,6 +397,9 @@
 												<Reference Name="Effect0" PluginName="Wwise Meter" CompanyID="0" PluginID="129" PluginType="3">
 													<ObjectRef Name="Wwise_Meter_SFX_Sidechain" ID="{F703D923-283A-45F3-A276-670CC07CB003}" WorkUnitID="{B0EB1BF1-35D5-48DA-95BE-B0BBE3A101E3}"/>
 												</Reference>
+												<Reference Name="UserAuxSend0">
+													<ObjectRef Name="SFX_Reverb" ID="{FD34F8CD-0E17-4876-B51E-7D6BC0FD4983}" WorkUnitID="{5FE25012-E08F-420E-BE49-3B0109DF68E3}"/>
+												</Reference>
 											</ReferenceList>
 											<ObjectLists/>
 										</Bus>
@@ -309,23 +410,41 @@
 														<Value>-9</Value>
 													</ValueList>
 												</Property>
-											</PropertyList>
-											<ObjectLists/>
-										</Bus>
-										<Bus Name="Enemy_Dash" ID="{206802AC-796B-4525-B059-0427851E8061}">
-											<PropertyList>
-												<Property Name="BusVolume" Type="Real64">
+												<Property Name="IgnoreParentMaxSoundInstance" Type="bool" Value="True"/>
+												<Property Name="MaxSoundPerInstance" Type="int16">
 													<ValueList>
-														<Value>-6</Value>
+														<Value>1</Value>
+													</ValueList>
+												</Property>
+												<Property Name="UseMaxSoundPerInstance" Type="bool">
+													<ValueList>
+														<Value>True</Value>
 													</ValueList>
 												</Property>
 											</PropertyList>
+											<ReferenceList>
+												<Reference Name="UserAuxSend0">
+													<ObjectRef Name="SFX_Reverb" ID="{FD34F8CD-0E17-4876-B51E-7D6BC0FD4983}" WorkUnitID="{5FE25012-E08F-420E-BE49-3B0109DF68E3}"/>
+												</Reference>
+											</ReferenceList>
 											<ObjectLists/>
 										</Bus>
 									</ChildrenList>
 									<ObjectLists/>
 								</Bus>
 								<AuxBus Name="SFX_Reverb" ID="{FD34F8CD-0E17-4876-B51E-7D6BC0FD4983}">
+									<PropertyList>
+										<Property Name="BusVolume" Type="Real64">
+											<ValueList>
+												<Value>-15</Value>
+											</ValueList>
+										</Property>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Effect0" PluginName="Wwise RoomVerb" CompanyID="0" PluginID="118" PluginType="3">
+											<ObjectRef Name="Space_Garage" ID="{1AF92D84-49DD-4BBC-8F29-6C6D10082B6E}" WorkUnitID="{E8613F7D-BAD3-45CD-A3ED-505576F31277}"/>
+										</Reference>
+									</ReferenceList>
 									<ObjectLists/>
 								</AuxBus>
 							</ChildrenList>

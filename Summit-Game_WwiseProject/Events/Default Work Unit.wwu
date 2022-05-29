@@ -257,36 +257,6 @@
 								</Action>
 							</ChildrenList>
 						</Event>
-						<Event Name="Enemy_Dash_Loop_Play" ID="{D38E375B-1744-4688-905B-8E50A7942957}">
-							<ChildrenList>
-								<Action Name="" ID="{634BD5AF-AE9D-40D8-BB25-BF6A2D177872}" ShortID="947445921">
-									<PropertyList>
-										<Property Name="FadeTime" Type="Real64" Value="0.5"/>
-									</PropertyList>
-									<ReferenceList>
-										<Reference Name="Target">
-											<ObjectRef Name="Enemy_Dash" ID="{219C641A-CC57-407D-ACC8-6A64C042D045}" WorkUnitID="{E04425B8-B8A4-408A-8BD1-4D908BCEE44F}"/>
-										</Reference>
-									</ReferenceList>
-								</Action>
-							</ChildrenList>
-						</Event>
-						<Event Name="Enemy_Dash_Loop_Stop" ID="{B18D1578-AB99-48A4-81B7-B8A534D05315}">
-							<ChildrenList>
-								<Action Name="" ID="{33F6FEEB-D64A-4CDF-8399-612B774FF298}" ShortID="459394097">
-									<PropertyList>
-										<Property Name="ActionType" Type="int16" Value="2"/>
-										<Property Name="FadeOutCurve" Type="int16" Value="8"/>
-										<Property Name="FadeTime" Type="Real64" Value="0.5"/>
-									</PropertyList>
-									<ReferenceList>
-										<Reference Name="Target">
-											<ObjectRef Name="Enemy_Dash" ID="{219C641A-CC57-407D-ACC8-6A64C042D045}" WorkUnitID="{E04425B8-B8A4-408A-8BD1-4D908BCEE44F}"/>
-										</Reference>
-									</ReferenceList>
-								</Action>
-							</ChildrenList>
-						</Event>
 					</ChildrenList>
 				</Folder>
 				<Folder Name="Music" ID="{BDA7C5CC-EC62-4F5A-A205-2EADC017DDA1}" ShortID="168306223">
