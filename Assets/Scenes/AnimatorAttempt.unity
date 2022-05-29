@@ -1497,7 +1497,7 @@ MonoBehaviour:
   data:
     idInternal: 0
     valueGuidInternal: 
-    WwiseObjectReference: {fileID: 0}
+    WwiseObjectReference: {fileID: 11400000, guid: 70377294c5f494140930ca54ac26a775, type: 2}
   decodeBank: 0
   loadAsynchronous: 0
   saveDecodedBank: 0
@@ -2350,6 +2350,7 @@ GameObject:
   - component: {fileID: 1259990620}
   - component: {fileID: 1259990619}
   - component: {fileID: 1259990618}
+  - component: {fileID: 1259990621}
   m_Layer: 0
   m_Name: WwiseEvents
   m_TagString: Untagged
@@ -2392,7 +2393,7 @@ MonoBehaviour:
   data:
     idInternal: 0
     valueGuidInternal: 
-    WwiseObjectReference: {fileID: 0}
+    WwiseObjectReference: {fileID: 11400000, guid: faa4d3020104d3c4ebc7807f13192003, type: 2}
   useCallbacks: 0
   Callbacks: []
   playingId: 0
@@ -2421,7 +2422,7 @@ MonoBehaviour:
   data:
     idInternal: 0
     valueGuidInternal: 
-    WwiseObjectReference: {fileID: 0}
+    WwiseObjectReference: {fileID: 11400000, guid: 69bb5b5648894f64b952aec387d2cd62, type: 2}
   useCallbacks: 0
   Callbacks: []
   playingId: 0
@@ -2452,6 +2453,35 @@ MonoBehaviour:
     positionOffset: {x: 0, y: 0, z: 0}
   m_posOffsetData: {fileID: 0}
   listenerMask: 1
+--- !u!114 &1259990621
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1259990616}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dd7dcd0a3baa0c24da6d892b2433e402, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  triggerList: f7e1664c
+  useOtherObject: 0
+  actionOnEventType: 0
+  curveInterpolation: 4
+  enableActionOnEvent: 0
+  data:
+    idInternal: 0
+    valueGuidInternal: 
+    WwiseObjectReference: {fileID: 11400000, guid: 9ff246652455981489d8fed0cca8d8fe, type: 2}
+  useCallbacks: 0
+  Callbacks: []
+  playingId: 0
+  soundEmitterObject: {fileID: 0}
+  transitionDuration: 0
+  eventIdInternal: 0
+  valueGuidInternal: 
+  m_callbackDataInternal: {fileID: 0}
 --- !u!4 &1294976133 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1477584343287395935, guid: e1f7d246b4241bf47bc8230f1ed1bc7e, type: 3}
@@ -2769,7 +2799,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.7777433, y: 1}
+    m_SensorSize: {x: 2.0616071, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0

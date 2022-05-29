@@ -21,6 +21,18 @@
 						<MusicSegment Name="Music_Gameplay_Loop" ID="{A427C131-3BA7-4424-9DAC-79F804FD084B}" ShortID="79386308">
 							<PropertyList>
 								<Property Name="EndPosition" Type="Real64" Value="154800"/>
+								<Property Name="IsGlobalLimit" Type="int16" Value="1"/>
+								<Property Name="MaxReachedBehavior" Type="int16" Value="1"/>
+								<Property Name="MaxSoundPerInstance" Type="int16">
+									<ValueList>
+										<Value>1</Value>
+									</ValueList>
+								</Property>
+								<Property Name="UseMaxSoundPerInstance" Type="bool">
+									<ValueList>
+										<Value>True</Value>
+									</ValueList>
+								</Property>
 							</PropertyList>
 							<ReferenceList>
 								<Reference Name="Conversion">

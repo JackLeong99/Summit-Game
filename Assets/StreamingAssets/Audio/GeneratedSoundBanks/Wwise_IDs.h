@@ -115,6 +115,11 @@ namespace AK
         static const AkUniqueID UI_MENU_OPEN = 4083126854U;
     } // namespace BUSSES
 
+    namespace AUX_BUSSES
+    {
+        static const AkUniqueID SFX_REVERB = 3792279061U;
+    } // namespace AUX_BUSSES
+
     namespace AUDIO_DEVICES
     {
         static const AkUniqueID NO_OUTPUT = 2317455096U;

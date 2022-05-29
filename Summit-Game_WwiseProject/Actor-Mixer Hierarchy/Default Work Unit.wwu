@@ -826,7 +826,7 @@
 																		</Point>
 																		<Point>
 																			<XPos>1</XPos>
-																			<YPos>-0</YPos>
+																			<YPos>0</YPos>
 																			<Flags>0</Flags>
 																			<SegmentShape>Exp2</SegmentShape>
 																		</Point>
@@ -1074,7 +1074,7 @@
 																		</Point>
 																		<Point>
 																			<XPos>1</XPos>
-																			<YPos>-0</YPos>
+																			<YPos>0</YPos>
 																			<Flags>0</Flags>
 																			<SegmentShape>Exp2</SegmentShape>
 																		</Point>
@@ -1448,7 +1448,7 @@
 																		</Point>
 																		<Point>
 																			<XPos>1</XPos>
-																			<YPos>-0</YPos>
+																			<YPos>0</YPos>
 																			<Flags>0</Flags>
 																			<SegmentShape>Exp2</SegmentShape>
 																		</Point>
@@ -1669,7 +1669,20 @@
 					<ChildrenList>
 						<ActorMixer Name="Ambience_Gameplay_Loop" ID="{BB091B09-3453-4677-BC02-F5C290D315A3}" ShortID="506376409">
 							<PropertyList>
+								<Property Name="IgnoreParentMaxSoundInstance" Type="bool" Value="True"/>
+								<Property Name="IsGlobalLimit" Type="int16" Value="1"/>
+								<Property Name="MaxReachedBehavior" Type="int16" Value="1"/>
+								<Property Name="MaxSoundPerInstance" Type="int16">
+									<ValueList>
+										<Value>1</Value>
+									</ValueList>
+								</Property>
 								<Property Name="OverrideOutput" Type="bool" Value="True"/>
+								<Property Name="UseMaxSoundPerInstance" Type="bool">
+									<ValueList>
+										<Value>True</Value>
+									</ValueList>
+								</Property>
 							</PropertyList>
 							<ReferenceList>
 								<Reference Name="Conversion">
@@ -1711,7 +1724,20 @@
 						</ActorMixer>
 						<ActorMixer Name="Ambience_Menu_Loop" ID="{07A86E64-9FFC-457D-969B-0726C09878F4}" ShortID="1070463562">
 							<PropertyList>
+								<Property Name="IgnoreParentMaxSoundInstance" Type="bool" Value="True"/>
+								<Property Name="IsGlobalLimit" Type="int16" Value="1"/>
+								<Property Name="MaxReachedBehavior" Type="int16" Value="1"/>
+								<Property Name="MaxSoundPerInstance" Type="int16">
+									<ValueList>
+										<Value>1</Value>
+									</ValueList>
+								</Property>
 								<Property Name="OverrideOutput" Type="bool" Value="True"/>
+								<Property Name="UseMaxSoundPerInstance" Type="bool">
+									<ValueList>
+										<Value>True</Value>
+									</ValueList>
+								</Property>
 							</PropertyList>
 							<ReferenceList>
 								<Reference Name="Conversion">

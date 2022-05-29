@@ -11,7 +11,7 @@
 	<StreamedFiles/>
 	<MediaFilesNotInAnyBank/>
 	<SoundBanks>
-		<SoundBank Id="822237696" Language="SFX" Hash="477504075">
+		<SoundBank Id="822237696" Language="SFX" Hash="1133181796">
 			<ObjectPath>\SoundBanks\Default Work Unit\SB_Default</ObjectPath>
 			<ShortName>SB_Default</ShortName>
 			<Path>SB_Default.bnk</Path>
@@ -300,10 +300,13 @@
 				</StateGroup>
 			</StateGroups>
 		</SoundBank>
-		<SoundBank Id="1355168291" Language="SFX" Hash="2212243406">
+		<SoundBank Id="1355168291" Language="SFX" Hash="1672580170">
 			<ObjectPath>Init</ObjectPath>
 			<ShortName>Init</ShortName>
 			<Path>Init.bnk</Path>
+			<IncludedAuxBusses>
+				<AuxBus Id="3792279061" Name="SFX_Reverb" ObjectPath="\Master-Mixer Hierarchy\Default Work Unit\Master Audio Bus\Master SFX\SFX_Reverb"/>
+			</IncludedAuxBusses>
 			<GameParameters>
 				<GameParameter Id="266555239" Name="Music_Sidechain" ObjectPath="\Game Parameters\Default Work Unit\Music_Sidechain"/>
 				<GameParameter Id="622329408" Name="Victory_Defeat_Sidechain" ObjectPath="\Game Parameters\Default Work Unit\Victory_Defeat_Sidechain"/>

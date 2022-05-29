@@ -230,7 +230,6 @@
 													</ValueList>
 												</Property>
 											</PropertyList>
-											<ReferenceList/>
 											<ObjectLists/>
 										</Bus>
 										<Bus Name="Enemy_Eruption_Cast" ID="{63B3A5DD-3BBC-4988-A061-CDE4051C555A}">
@@ -241,7 +240,6 @@
 													</ValueList>
 												</Property>
 											</PropertyList>
-											<ReferenceList/>
 											<ObjectLists/>
 										</Bus>
 										<Bus Name="Enemy_Boulder_Cast" ID="{74260371-841D-44C5-AE54-27ED43319B04}">
@@ -277,7 +275,6 @@
 													</ValueList>
 												</Property>
 											</PropertyList>
-											<ReferenceList/>
 											<ObjectLists/>
 										</Bus>
 										<Bus Name="Enemy_Melee_Right_Hook" ID="{E92CC4DD-6F0A-49F3-9638-65115C74A586}">
@@ -313,7 +310,6 @@
 													</ValueList>
 												</Property>
 											</PropertyList>
-											<ReferenceList/>
 											<ObjectLists/>
 										</Bus>
 										<Bus Name="Enemy_Dash" ID="{206802AC-796B-4525-B059-0427851E8061}">
@@ -329,6 +325,9 @@
 									</ChildrenList>
 									<ObjectLists/>
 								</Bus>
+								<AuxBus Name="SFX_Reverb" ID="{FD34F8CD-0E17-4876-B51E-7D6BC0FD4983}">
+									<ObjectLists/>
+								</AuxBus>
 							</ChildrenList>
 							<ObjectLists/>
 						</Bus>
@@ -369,6 +368,12 @@
 										<Property Name="BusVolume" Type="Real64">
 											<ValueList>
 												<Value>-15</Value>
+											</ValueList>
+										</Property>
+										<Property Name="MaxReachedBehavior" Type="int16" Value="1"/>
+										<Property Name="MaxSoundPerInstance" Type="int16">
+											<ValueList>
+												<Value>1</Value>
 											</ValueList>
 										</Property>
 										<Property Name="OutputBusLowpass" Type="int16">
