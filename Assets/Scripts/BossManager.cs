@@ -44,6 +44,7 @@ public class BossManager : MonoBehaviour
     public bool rage = false;
     public float rageSpeed;
     public float rageAttackMultiplier;
+    private float startSpeed;
     //the last action taken by the boss- used to prevent long repetition
     public string lastMove;
     //how many times the last move has been used in a row
@@ -97,6 +98,7 @@ public class BossManager : MonoBehaviour
         currentHP = maxHP;
         rigidBodies = GetComponentsInChildren<Rigidbody>();
         setUpHitBoxes();
+        startSpeed = agent.speed;
     }
     
     void Update(){
@@ -418,6 +420,7 @@ public class BossManager : MonoBehaviour
                     //rockPatienceCheck = true;
                     currentPatience = 0;
                     yield return new WaitForSeconds(2.875f);
+                    currentPatience = 0;
                     //attackException = true;
                     //inAttack = false;
                 }
@@ -566,6 +569,8 @@ public class BossManager : MonoBehaviour
 
     IEnumerator bossStunned(){
         stunned = true;
+        agent.speed = 0;
+
         if(mActions != null){
             StopCoroutine(mActions);
         }
@@ -574,6 +579,13 @@ public class BossManager : MonoBehaviour
         }
         yield return new WaitForSeconds(stunTimer);
         stunned = false;
+        if(rage){
+            agent.speed = rageSpeed;
+        }
+        else{
+            agent.speed = startSpeed;
+        }
+
     }
 
     public void setUpHitBoxes() 
