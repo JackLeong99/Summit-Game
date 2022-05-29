@@ -60,6 +60,7 @@ public class GameManager : MonoBehaviour
 
     public void onDeath() 
     {
+        AkSoundEngine.PostEvent("Player_Death", player);
         UIManager.Instance.GameOverScreen();
         BossManager bossHealth= boss.GetComponent<BossManager>();
         bossHealth.getCurrentBossHealth();

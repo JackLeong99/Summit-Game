@@ -40,6 +40,7 @@ public class PlayerStats : MonoBehaviour
             }
             
         }
+        AkSoundEngine.PostEvent("Player_Damage", gameObject);
         UIManager.Instance.HealthBarSet(currentHealth);
         //System.Console.WriteLine("current health = " + currentHealth + "after taking " + damage);
     }

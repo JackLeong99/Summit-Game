@@ -83,6 +83,7 @@ public class BossManager : MonoBehaviour
     //used by IncreasePlayerAttack power-up
     private bool increaseDamage=false;
     //private float step;
+    private GameObject _mainCamera;
 
     private void Awake(){
         //defining other scripts referenceds them here- this method avoids an error.
@@ -98,6 +99,10 @@ public class BossManager : MonoBehaviour
         damageFlash = GetComponent<DamageFlash>();
         agent = GetComponent<NavMeshAgent>();
         StartCoroutine(fightStart());
+        if (_mainCamera == null)
+        {
+            _mainCamera = GameObject.FindGameObjectWithTag("MainCamera");
+        }
     }
 
     void Start()
@@ -265,6 +270,7 @@ public class BossManager : MonoBehaviour
             animatr.SetTrigger("Sweep");
             //Do the sweep attack
             punch.megaPunch();
+            AkSoundEngine.PostEvent("Enemy_Melee_Right_Hook", gameObject);
             //Hard-coded animation duration.
             float animatrDuration = 2.875f; // Figure this out
             //Sweep has been done 1 more time in a row
@@ -299,6 +305,7 @@ public class BossManager : MonoBehaviour
             animatr.SetTrigger("Slam");
             //Do the slam attack
             slam.groundSlam();
+            AkSoundEngine.PostEvent("Enemy_Melee_Overhead_Slam", gameObject);
             //Face player to aim- smoother method could be used
             //transform.LookAt(Player);
             //Wait for the set delay before running shockwave, should be timed to match fists hitting ground
@@ -384,6 +391,7 @@ public class BossManager : MonoBehaviour
             }
             Debug.Log("Do Eruption!");
             animatr.SetTrigger("Eruption");
+            AkSoundEngine.PostEvent("Enemy_Eruption_Cast", gameObject);
             canTurn = true;
             yield return new WaitForSeconds(turnFor);
             canTurn = false;
@@ -454,6 +462,7 @@ public class BossManager : MonoBehaviour
                 yield return new WaitForSeconds(Time.deltaTime);
             }
             animatr.SetTrigger("Throw");
+            AkSoundEngine.PostEvent("Enemy_Boulder_Cast", gameObject);
             transform.LookAt(Player);
             //If this is before the wait the boss turns around after the throw animation and walks away for a bit after it.
             //If this is after the wait the boss turns around during the throw animation.
@@ -524,6 +533,8 @@ public class BossManager : MonoBehaviour
             currentHP = maxHP;
         }
 
+        AkSoundEngine.PostEvent("Enemy_Damage", gameObject);
+        AkSoundEngine.PostEvent("UI_Hit_Indicator", _mainCamera);
         UIManager.Instance.HealthBossBarSet((int)Mathf.Round(currentHP));
         UIManager.Instance.DamageTextPool.Spawn(position, dmg.ToString(), Color.white, dmg > 15f ? 12f : 4f);
 
@@ -560,11 +571,12 @@ public class BossManager : MonoBehaviour
     IEnumerator Death()
     {
         animatr.SetTrigger("Death");
+        AkSoundEngine.PostEvent("Enemy_Death", gameObject);
         GameManager.Instance.onBossDeath();
         yield return new WaitForSeconds(2.2f);
         Alive = false;
         agent.speed = 0;
-        yield return new WaitForSeconds(8f);
+        yield return new WaitForSeconds(6f);
         UIManager.Instance.WinScreen();
         //Instantiate(deathFX, gameObject.transform.position, Quaternion.identity);
     }

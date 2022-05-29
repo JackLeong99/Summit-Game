@@ -88,6 +88,7 @@ public class RockMoving : MonoBehaviour
         
         if(other.tag=="Arena")
         {
+            AkSoundEngine.PostEvent("Enemy_Boulder_Impact", gameObject);
             spawnRock();
         }
 

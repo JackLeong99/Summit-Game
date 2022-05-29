@@ -47,7 +47,7 @@ public class UIManager : MonoBehaviour
     private string CharacterClassFormat= "Character Class: {0}";
 
     public TMP_Text BossName;
-
+    private GameObject _mainCamera;
 
     void Awake()
     {
@@ -58,6 +58,10 @@ public class UIManager : MonoBehaviour
         else
         {
             instance = this;
+        }
+        if (_mainCamera == null)
+        {
+            _mainCamera = GameObject.FindGameObjectWithTag("MainCamera");
         }
     }
 
@@ -107,7 +111,8 @@ public class UIManager : MonoBehaviour
 
     public void GameOverScreen() 
     {
-        gameOver=false;
+        AkSoundEngine.PostEvent("Music_Defeat_Stinger", _mainCamera);
+        gameOver =false;
         GameManager.Instance.DisallowPause();
         PanelGameOver.SetActive(true);
         Time.timeScale = 0;
@@ -116,6 +121,7 @@ public class UIManager : MonoBehaviour
     }
     public void WinScreen() 
     {
+        AkSoundEngine.PostEvent("Music_Victory_Stinger", _mainCamera);
         gameOver=false;
         GameManager.Instance.DisallowPause();
         PanelWin.SetActive(true);
@@ -134,8 +140,10 @@ public class UIManager : MonoBehaviour
     {
         if(gameOver)
         {
-        PanelPauseMenu.SetActive(true);
-        PowerUpMenu.SetActive(false);
+            PanelPauseMenu.SetActive(true);
+            AkSoundEngine.PostEvent("UI_Click", _mainCamera);
+            AkSoundEngine.PostEvent("UI_Menu_On", _mainCamera);
+            PowerUpMenu.SetActive(false);
         }
     }
 
@@ -144,6 +152,8 @@ public class UIManager : MonoBehaviour
     {
         PanelPauseMenu.SetActive(false);
         GameManager.Instance.ResumeGame();
+        AkSoundEngine.PostEvent("UI_Click", _mainCamera);
+        AkSoundEngine.PostEvent("UI_Menu_Off", _mainCamera);
     }
 
     public void PowerMenu()
@@ -155,6 +165,8 @@ public class UIManager : MonoBehaviour
 
     public void Quit()
     {
+        AkSoundEngine.PostEvent("UI_Click", _mainCamera);
+        AkSoundEngine.PostEvent("Game_Quit", _mainCamera);
         Application.Quit();
     }
 }

@@ -72,7 +72,8 @@ public class Dodge : MonoBehaviour
 
     IEnumerator DoDodge()
 		{
-			isDodging = true;
+            AkSoundEngine.PostEvent("Player_Dodge", gameObject);
+            isDodging = true;
             _animator.SetTrigger("Dodge");
 			float timer = 0;
             //cdTimer = 0.5f;//was 1000

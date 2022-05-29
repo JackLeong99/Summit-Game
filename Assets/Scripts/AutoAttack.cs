@@ -53,7 +53,8 @@ public class AutoAttack : MonoBehaviour
 
     IEnumerator Attack()
 	{
-		Transform player = gameObject.transform;
+        AkSoundEngine.PostEvent("Player_Attack", gameObject);
+        Transform player = gameObject.transform;
         if (attackAnim == 0) 
         {
             _animator.SetTrigger("attack0");

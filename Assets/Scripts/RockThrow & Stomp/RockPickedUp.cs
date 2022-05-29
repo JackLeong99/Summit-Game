@@ -59,13 +59,15 @@ public class RockPickedUp : MonoBehaviour
          {
             rockHealth--;
             Instantiate(sparksPrefab, gameObject.transform.position, Quaternion.Euler(-90, 0, 0));
+            AkSoundEngine.PostEvent("Enemy_Damage", gameObject);
             //TODO add hit particles
-         }
+        }
         if(rockHealth<=0)
          {
             Destroy(gameObject);
             player.GetComponent<PlayerStats>().healDamage(5.0f);
             Instantiate(healBurst, gameObject.transform.position, Quaternion.Euler(0, 0, 0));
+            AkSoundEngine.PostEvent("Enemy_Damage", gameObject);
         }
     }
 

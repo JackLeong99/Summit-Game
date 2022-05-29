@@ -50,7 +50,6 @@ public class PlayerBullet : MonoBehaviour
             {
                 receiver.PassDamage(currentGunDamage, transform.position);
                 boomFX();
-
                 Destroy(gameObject);
             }
         }
@@ -64,5 +63,6 @@ public class PlayerBullet : MonoBehaviour
     void boomFX() 
     {
         Instantiate(boom, gameObject.transform.position, Quaternion.identity);
+        AkSoundEngine.PostEvent("Player_Shoot_Impact", gameObject);
     }
 }

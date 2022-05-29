@@ -109,11 +109,13 @@ public class ThirdPersonShooting : MonoBehaviour
         controller.LockCameraPosition = true;
         casting = true;
         _animator.SetTrigger("Charge");
+        AkSoundEngine.PostEvent("Player_Shoot_Charge", gameObject);
         yield return new WaitForSeconds(succTime);
         pp.enabled = true;
         yield return new WaitForSeconds(chargeTime);
         pp.enabled = false;
         _animator.SetTrigger("Shoot");
+        AkSoundEngine.PostEvent("Player_Shoot_Fire", gameObject);
         //AkSoundEngine.PostEvent("Player_Shoot_Cast", gameObject);
         Ray ray = cam.ViewportPointToRay(new Vector3(0.5f, 0.5f , 0));
         RaycastHit hit;
