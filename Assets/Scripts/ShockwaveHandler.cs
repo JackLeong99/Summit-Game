@@ -6,29 +6,22 @@ public class ShockwaveHandler : MonoBehaviour
 {
     //NOTE: maxSize is multiplied by whatever the prefab's base scale/size is. If base is at (1, 1, 1) then maxSize = 20 will change the scale to (20, 1, 20).
     //However if, for example, base is at (0.1, 1, 0.1) then maxSize at 20 = (2, 1, 2), or maxSize = 100 = (10, 1, 10)
-    private float maxSize;
+    [SerializeField] float maxSize;
     //in seconds = how long it will take to grow to maxSize (affects scale speed)
-    private float scaleTime;
+    [SerializeField] float scaleTime;
     //is set to float scaleTime;
-//wtf
+    //this script is Instantiated by the Boss Manager Script at a location. It should not exist naturally.
 
-//placeholder for testing. To use this comment out Start()
-/*
-    void Update()
+    //private void Update()
+    //{
+    //    if (Input.GetKeyDown("x")) 
+    //    {
+    //        StartCoroutine(scale());
+    //    }
+    //}
+
+    private void Awake()
     {
-        if(Input.GetKeyDown("c"))
-        {
-            scaleHitBox();
-        }
-    }
-*/
-
-//this script is Instantiated by the Boss Manager Script at a location. It should not exist naturally.
-
-    public void scaleHitBox(float size, float time)
-    {
-        maxSize = size;
-        scaleTime = time;
         StartCoroutine(scale());
     }
     private void OnTriggerEnter(Collider collision)
@@ -58,7 +51,7 @@ public class ShockwaveHandler : MonoBehaviour
         //scaling by scaletime speed formula
         while (timer < scaleTime)
         {
-            gameObject.transform.localScale = Vector3.Lerp(scale, toScale, timer);
+            gameObject.transform.localScale = Vector3.Lerp(scale, toScale, timer/scaleTime);
             timer += Time.deltaTime;
             //yield return inside the loop so that each cycle of the while loop is enacted individually rather than instantly after the whole loop has completed.
             yield return null;
