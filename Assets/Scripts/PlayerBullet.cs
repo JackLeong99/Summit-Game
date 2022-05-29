@@ -12,7 +12,7 @@ public class PlayerBullet : MonoBehaviour
     private BossManager bManager;
 
     void Awake(){
-        boss = GameObject.FindWithTag("enemyHitbox"); //find the tag of the object you want ie the boss's tag in this case
+        boss = GameObject.FindWithTag("Boss"); //find the tag of the object you want ie the boss's tag in this case
         bManager = boss.GetComponent<BossManager>(); //same as before except added boss the gameObject before getComponent
     }
 

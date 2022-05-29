@@ -51,7 +51,7 @@ public class RockManager : MonoBehaviour
     {
         allRocks = GameObject.FindGameObjectsWithTag("rocks").ToList();
         initialRockCount = allRocks.Count;
-        boss = GameObject.FindWithTag("Hittable"); //find the tag of the object you want ie the boss's tag in this case
+        boss = GameObject.FindWithTag("Boss"); //find the tag of the object you want ie the boss's tag in this case
         bManager = boss.GetComponent<BossManager>(); //same as before except added boss the gameObject before getComponent
         rockNumberMin = bManager.rockNumberMinimum();
         // for(int i=0; i<allRocks.Count; i++){ //testing that the objects were adding

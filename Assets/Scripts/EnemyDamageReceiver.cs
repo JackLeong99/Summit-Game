@@ -5,6 +5,7 @@ using UnityEngine;
 public class EnemyDamageReceiver : MonoBehaviour
 {
     public BossManager boss;
+    public GameObject onHitParticles;
     
     void Start() 
     {
@@ -13,6 +14,7 @@ public class EnemyDamageReceiver : MonoBehaviour
     }
     public void PassDamage(float dmg) 
     {
+        Instantiate(onHitParticles, gameObject.transform.position, Quaternion.identity);
         boss.TakeDamage(dmg);
     }
 }

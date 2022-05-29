@@ -96,8 +96,8 @@ public class BossManager : MonoBehaviour
     void Start()
     {
         currentHP = maxHP;
-        rigidBodies = GetComponentsInChildren<Rigidbody>();
-        setUpHitBoxes();
+        //rigidBodies = GetComponentsInChildren<Rigidbody>();
+        //setUpHitBoxes();
         startSpeed = agent.speed;
     }
     
@@ -590,14 +590,14 @@ public class BossManager : MonoBehaviour
 
     }
 
-    public void setUpHitBoxes() 
-    {
-        foreach(var Rigidbody in rigidBodies)
-        {
-            Rigidbody.isKinematic = true;
-            Rigidbody.gameObject.AddComponent<EnemyDamageReceiver>();
-        }
-    }
+    //public void setUpHitBoxes() 
+    //{
+    //    foreach(var Rigidbody in rigidBodies)
+    //    {
+    //        Rigidbody.isKinematic = true;
+    //        Rigidbody.gameObject.AddComponent<EnemyDamageReceiver>();
+    //    }
+    //}
 
     public int rockNumberMinimum(){
         return spawnRocksNumber;
