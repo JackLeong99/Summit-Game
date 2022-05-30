@@ -53,7 +53,7 @@ public class BossManager : MonoBehaviour
     //Dodgy slider method to match the timing with slam- determines when the shockwave is done
     public float scuffedShockTimer;
     private Coroutine mActions;
-    private Coroutine rActions; 
+    private Coroutine rActions;
     //Health for the boss
     [SerializeField] float maxHP;
     //[HideInInspector]
@@ -84,6 +84,7 @@ public class BossManager : MonoBehaviour
     private bool increaseDamage=false;
     //private float step;
     private GameObject _mainCamera;
+    private bool canBeStunned = true;
 
     private void Awake(){
         //defining other scripts referenceds them here- this method avoids an error.
@@ -584,6 +585,8 @@ public class BossManager : MonoBehaviour
     IEnumerator triggerRage(){
         rage = true;
         agent.speed = rageSpeed;
+        attackTurnSpeed = 120.0f;
+        turnFor = 0.9f;
         yield break;
         //stun boss for animation triggers
 
@@ -602,8 +605,11 @@ public class BossManager : MonoBehaviour
     }
 
     public void gunStun(){
-        stunTimer = gunStunDuration;
-        StartCoroutine(bossStunned());
+        if (canBeStunned)
+        {
+            stunTimer = gunStunDuration;
+            StartCoroutine(bossStunned());
+        }
     }
 
     IEnumerator bossStunned(){
@@ -633,6 +639,7 @@ public class BossManager : MonoBehaviour
     //this is a very bandiad solution to needing the boss to have the properties of being stunned but not calling the stun with animation trigger while summoning rocks
     IEnumerator summoningRocks()
     {
+        canBeStunned = false;
         stunned = true;
         agent.speed = 0;
 
@@ -654,7 +661,7 @@ public class BossManager : MonoBehaviour
         {
             agent.speed = startSpeed;
         }
-
+        canBeStunned = true;
     }
 
     //public void setUpHitBoxes() 
