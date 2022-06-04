@@ -20,6 +20,8 @@ public class RockMoving : MonoBehaviour
 
     private GameObject player;
 
+    private Vector3 target2;
+
     private bool hasntHit=true;
 
     private float timer=20f;
@@ -27,26 +29,19 @@ public class RockMoving : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-         player=GameObject.FindWithTag("Player");
-         
+        player=GameObject.FindWithTag("Player");
         target=player.transform;
-        target.position=new Vector3(player.transform.position.x, player.transform.position.y+2 , player.transform.position.z);
         //this sets the target a bit above the player so it hits more often
-
-        //puts position into local space
-        localArea= transform.InverseTransformPoint(target.position); 
-        localArea.Normalize();
-        //takes position and stores it for later use
-        translationZ=localArea.z;
-        translationY=localArea.y;
-        translationX=localArea.x;
+        target2 = new Vector3(player.transform.position.x, player.transform.position.y+2 , player.transform.position.z);
+        //Adds velocity towards the player on spawn
+        GetComponent<Rigidbody>().velocity = (target2 - transform.position).normalized * speed;
         RockManager.Instance.ClearUpList();
     }
 
     // Update is called once per frame
    void Update()
     {
-        transform.Translate(translationX *(speed*rageMultiplier * Time.deltaTime), translationY *(speed*rageMultiplier* Time.deltaTime), translationZ *(speed*rageMultiplier * Time.deltaTime));
+        //transform.Translate(translationX *(speed*rageMultiplier * Time.deltaTime), translationY *(speed*rageMultiplier* Time.deltaTime), translationZ *(speed*rageMultiplier * Time.deltaTime));
         timer-=Time.deltaTime;
         if(timer<=0)
         {
@@ -58,7 +53,7 @@ public class RockMoving : MonoBehaviour
     public void spawnRock()
     {
         //Instantiate at the position all in one line
-        GameObject breakablerock= Instantiate(rockPrefab,new Vector3(transform.position.x, transform.position.y-1 , transform.position.z), Quaternion.identity);
+        GameObject breakablerock = Instantiate(rockPrefab,new Vector3(transform.position.x, transform.position.y-1 , transform.position.z), Quaternion.identity);
         RockManager.Instance.RockPositionUpdate(breakablerock);
 
         //creates the particle effect for landing
