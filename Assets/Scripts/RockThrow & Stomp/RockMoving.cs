@@ -53,7 +53,7 @@ public class RockMoving : MonoBehaviour
     public void spawnRock()
     {
         //Instantiate at the position all in one line
-        GameObject breakablerock = Instantiate(rockPrefab,new Vector3(transform.position.x, transform.position.y-1 , transform.position.z), Quaternion.identity);
+        GameObject breakablerock = Instantiate(rockPrefab,new Vector3(transform.position.x, -0.5f, transform.position.z), Quaternion.identity);
         RockManager.Instance.RockPositionUpdate(breakablerock);
 
         //creates the particle effect for landing
