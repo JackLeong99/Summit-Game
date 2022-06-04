@@ -433,9 +433,13 @@ public class BossManager : MonoBehaviour
             
             //I probably shouldn't be using inAttack for this - it causes clashes 
             while(rockThrow.currentlyTargeting){
-                // if(stunned){
-                //     yield break;
-                // }
+                if(stunned){
+                    inRockThrow = false;
+                    lastMove = "Rock Throw";
+                    lastMoveRepeated ++;
+                    currentPatience = 0;
+                    attackException = false;
+                }
                 bPathing.bossPathing();
                 //inRockThrow = true;
                 //inAttack = true;
