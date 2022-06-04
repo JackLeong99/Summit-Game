@@ -15,6 +15,8 @@ public class RockPickedUp : MonoBehaviour
 
     private GameObject player;
 
+    public bool spawnUp=false;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -32,6 +34,14 @@ public class RockPickedUp : MonoBehaviour
         if(timer<=0)
         {
             ReachedTop();
+        }
+        if(spawnUp)
+        {
+            transform.Translate(0,1*Time.deltaTime,0);
+            if(transform.position.y>=-0.07)
+            {
+                spawnUp=false;
+            }
         }
     }
 
@@ -74,5 +84,10 @@ public class RockPickedUp : MonoBehaviour
     public void MakeRockInv()
     {
         rockHealth=1000000000;
+    }
+
+    public void SpawnUp()
+    {
+        spawnUp=true;
     }
 }
