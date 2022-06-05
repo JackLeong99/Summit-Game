@@ -4563,6 +4563,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1075394428}
     - target: {fileID: 4246193514816548870, guid: 118aa6fa841507a41abd8e079e760746, type: 3}
+      propertyPath: invulnTime
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4246193514816548870, guid: 118aa6fa841507a41abd8e079e760746, type: 3}
       propertyPath: CdBackground
       value: 
       objectReference: {fileID: 1800635539}
@@ -4620,16 +4624,20 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 7413315389103815395}
     - target: {fileID: 6353329374851288171, guid: 15cb9288e8231f9419be19f0ae9ecad5, type: 3}
+      propertyPath: maxHP
+      value: 1000
+      objectReference: {fileID: 0}
+    - target: {fileID: 6353329374851288171, guid: 15cb9288e8231f9419be19f0ae9ecad5, type: 3}
       propertyPath: Player
       value: 
       objectReference: {fileID: 7902326121541689433}
     - target: {fileID: 6353329374851288171, guid: 15cb9288e8231f9419be19f0ae9ecad5, type: 3}
       propertyPath: turnFor
-      value: 0.3
+      value: 0.2
       objectReference: {fileID: 0}
     - target: {fileID: 6353329374851288171, guid: 15cb9288e8231f9419be19f0ae9ecad5, type: 3}
       propertyPath: attackTurnSpeed
-      value: 120
+      value: 700
       objectReference: {fileID: 0}
     - target: {fileID: 6353329374851288175, guid: 15cb9288e8231f9419be19f0ae9ecad5, type: 3}
       propertyPath: target
