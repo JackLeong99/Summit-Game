@@ -337,6 +337,7 @@ public class BossManager : MonoBehaviour
                 slam.groundSlam();
                 //Do the animation
                 animatr.SetTrigger("Slam");
+                AkSoundEngine.PostEvent("Enemy_Melee_Overhead_Slam", gameObject);
                 //Wait for the set delay before running shockwave, should be timed to match fists hitting ground
                 //yield return new WaitForSeconds(scuffedShockTimer);
                 //Do the shockwave attack
