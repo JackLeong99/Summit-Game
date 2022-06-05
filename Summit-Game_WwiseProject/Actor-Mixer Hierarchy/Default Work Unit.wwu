@@ -42,6 +42,17 @@
 												</ModifierInfo>
 											</ModifierList>
 										</Property>
+										<Property Name="Volume" Type="Real64">
+											<ModifierList>
+												<ModifierInfo>
+													<Modifier Name="" ID="{C59888B8-8D4F-4493-B09B-7A547DA0F420}">
+														<PropertyList>
+															<Property Name="Enabled" Type="bool" Value="True"/>
+														</PropertyList>
+													</Modifier>
+												</ModifierInfo>
+											</ModifierList>
+										</Property>
 									</PropertyList>
 									<ReferenceList>
 										<Reference Name="Conversion">
@@ -89,6 +100,19 @@
 															<Property Name="Enabled" Type="bool" Value="True"/>
 															<Property Name="Max" Type="Real64" Value="25"/>
 															<Property Name="Min" Type="Real64" Value="-25"/>
+														</PropertyList>
+													</Modifier>
+												</ModifierInfo>
+											</ModifierList>
+										</Property>
+										<Property Name="Volume" Type="Real64">
+											<ModifierList>
+												<ModifierInfo>
+													<Modifier Name="" ID="{382128B5-0337-4AE2-A4F0-F131305F6820}">
+														<PropertyList>
+															<Property Name="Enabled" Type="bool" Value="True"/>
+															<Property Name="Max" Type="Real64" Value="1"/>
+															<Property Name="Min" Type="Real64" Value="-1"/>
 														</PropertyList>
 													</Modifier>
 												</ModifierInfo>
@@ -193,6 +217,19 @@
 															<Property Name="Enabled" Type="bool" Value="True"/>
 															<Property Name="Max" Type="Real64" Value="25"/>
 															<Property Name="Min" Type="Real64" Value="-25"/>
+														</PropertyList>
+													</Modifier>
+												</ModifierInfo>
+											</ModifierList>
+										</Property>
+										<Property Name="Volume" Type="Real64">
+											<ModifierList>
+												<ModifierInfo>
+													<Modifier Name="" ID="{6D46A455-8EE2-4F5B-92EC-EC14E6BBE31F}">
+														<PropertyList>
+															<Property Name="Enabled" Type="bool" Value="True"/>
+															<Property Name="Max" Type="Real64" Value="1"/>
+															<Property Name="Min" Type="Real64" Value="-1"/>
 														</PropertyList>
 													</Modifier>
 												</ModifierInfo>
@@ -389,6 +426,19 @@
 												</ModifierInfo>
 											</ModifierList>
 										</Property>
+										<Property Name="Volume" Type="Real64">
+											<ModifierList>
+												<ModifierInfo>
+													<Modifier Name="" ID="{FA48DEA2-C4AE-4561-9DCF-3C48BD0FDB9C}">
+														<PropertyList>
+															<Property Name="Enabled" Type="bool" Value="True"/>
+															<Property Name="Max" Type="Real64" Value="1"/>
+															<Property Name="Min" Type="Real64" Value="-1"/>
+														</PropertyList>
+													</Modifier>
+												</ModifierInfo>
+											</ModifierList>
+										</Property>
 									</PropertyList>
 									<ReferenceList>
 										<Reference Name="Conversion">
@@ -541,6 +591,13 @@
 										<Property Name="Color" Type="int16" Value="10"/>
 										<Property Name="OverrideColor" Type="bool" Value="True"/>
 										<Property Name="OverrideOutput" Type="bool" Value="True"/>
+										<Property Name="Pitch" Type="int32">
+											<ModifierList>
+												<ModifierInfo>
+													<Modifier Name="" ID="{DA13D0E2-AF8F-482B-A09F-AFF53512DA50}"/>
+												</ModifierInfo>
+											</ModifierList>
+										</Property>
 									</PropertyList>
 									<ReferenceList>
 										<Reference Name="Conversion">
@@ -588,6 +645,19 @@
 															<Property Name="Enabled" Type="bool" Value="True"/>
 															<Property Name="Max" Type="Real64" Value="25"/>
 															<Property Name="Min" Type="Real64" Value="-25"/>
+														</PropertyList>
+													</Modifier>
+												</ModifierInfo>
+											</ModifierList>
+										</Property>
+										<Property Name="Volume" Type="Real64">
+											<ModifierList>
+												<ModifierInfo>
+													<Modifier Name="" ID="{5545C4A8-F8F2-4DD7-8805-3A08872DB071}">
+														<PropertyList>
+															<Property Name="Enabled" Type="bool" Value="True"/>
+															<Property Name="Max" Type="Real64" Value="1"/>
+															<Property Name="Min" Type="Real64" Value="-1"/>
 														</PropertyList>
 													</Modifier>
 												</ModifierInfo>
@@ -703,6 +773,204 @@
 													<ObjectLists/>
 													<ActiveSourceList>
 														<ActiveSource Name="Player_Land-004" ID="{0A580A39-3A1A-4647-AC1A-B81723BCFD4B}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+											</ChildrenList>
+											<ObjectLists/>
+										</RandomSequenceContainer>
+									</ChildrenList>
+									<ObjectLists/>
+								</ActorMixer>
+								<ActorMixer Name="Player_Footsteps" ID="{4A109B9D-14F3-48ED-87D2-1A8CD8DB9715}" ShortID="754879653">
+									<PropertyList>
+										<Property Name="IgnoreParentMaxSoundInstance" Type="bool" Value="True"/>
+										<Property Name="IsGlobalLimit" Type="int16" Value="1"/>
+										<Property Name="MaxSoundPerInstance" Type="int16">
+											<ValueList>
+												<Value>3</Value>
+											</ValueList>
+										</Property>
+										<Property Name="OverrideOutput" Type="bool" Value="True"/>
+										<Property Name="Pitch" Type="int32">
+											<ModifierList>
+												<ModifierInfo>
+													<Modifier Name="" ID="{071E6818-D81A-484F-B233-91F4E6AECC26}">
+														<PropertyList>
+															<Property Name="Enabled" Type="bool" Value="True"/>
+															<Property Name="Max" Type="Real64" Value="50"/>
+															<Property Name="Min" Type="Real64" Value="-50"/>
+														</PropertyList>
+													</Modifier>
+												</ModifierInfo>
+											</ModifierList>
+										</Property>
+										<Property Name="UseMaxSoundPerInstance" Type="bool">
+											<ValueList>
+												<Value>True</Value>
+											</ValueList>
+										</Property>
+										<Property Name="Volume" Type="Real64">
+											<ModifierList>
+												<ModifierInfo>
+													<Modifier Name="" ID="{CF0034FE-89AD-43D1-B952-5006CC202F04}">
+														<PropertyList>
+															<Property Name="Max" Type="Real64" Value="2"/>
+															<Property Name="Min" Type="Real64" Value="-2"/>
+														</PropertyList>
+													</Modifier>
+												</ModifierInfo>
+											</ModifierList>
+										</Property>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Attenuation">
+											<ObjectRef Name="Stage_20m" ID="{B0D4A199-1443-4648-AB38-3014F7E77842}" WorkUnitID="{08BB8B25-D568-4D5B-8D2D-EE1E5F63128C}"/>
+										</Reference>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{E8C30435-E2EC-40B4-A911-30D289ECE001}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Player_Footsteps" ID="{D0636EBF-6DE1-4B04-BCCC-F257345020E2}" WorkUnitID="{5FE25012-E08F-420E-BE49-3B0109DF68E3}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<RandomSequenceContainer Name="Player_Footsteps" ID="{69FA973C-8F47-42AE-B234-E9FB1E64CE71}" ShortID="270887608">
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{E8C30435-E2EC-40B4-A911-30D289ECE001}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Player_Attack" ID="{4FE55A1B-0BC4-4D83-822E-285EBC2584C2}" WorkUnitID="{5FE25012-E08F-420E-BE49-3B0109DF68E3}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<Sound Name="Player_Footsteps-001" ID="{DFE00BB0-C980-482C-8AE0-CA4463A8C3C7}" ShortID="852344005">
+													<PropertyList>
+														<Property Name="Inclusion" Type="bool">
+															<ValueList>
+																<Value>False</Value>
+															</ValueList>
+														</Property>
+													</PropertyList>
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{E8C30435-E2EC-40B4-A911-30D289ECE001}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{5FE25012-E08F-420E-BE49-3B0109DF68E3}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="Player_Footsteps-001" ID="{DFBCECC1-5D1D-4180-A824-05665AF22201}">
+															<Language>SFX</Language>
+															<AudioFile>Player_Footsteps-001.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="529740034"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ObjectLists/>
+													<ActiveSourceList>
+														<ActiveSource Name="Player_Footsteps-001" ID="{DFBCECC1-5D1D-4180-A824-05665AF22201}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+												<Sound Name="Player_Footsteps-002" ID="{AB1EA257-3B4B-4C5F-B640-166FE67D4524}" ShortID="924485752">
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{E8C30435-E2EC-40B4-A911-30D289ECE001}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{5FE25012-E08F-420E-BE49-3B0109DF68E3}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="Player_Footsteps-002" ID="{CB4456BE-13AC-4157-BBEE-FF3EDB3B0F80}">
+															<Language>SFX</Language>
+															<AudioFile>Player_Footsteps-002.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="950608656"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ObjectLists/>
+													<ActiveSourceList>
+														<ActiveSource Name="Player_Footsteps-002" ID="{CB4456BE-13AC-4157-BBEE-FF3EDB3B0F80}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+												<Sound Name="Player_Footsteps-003" ID="{8BD1CDDF-2B38-4E6E-A583-7046F712006E}" ShortID="957913312">
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{E8C30435-E2EC-40B4-A911-30D289ECE001}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{5FE25012-E08F-420E-BE49-3B0109DF68E3}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="Player_Footsteps-003" ID="{72B51E32-D976-4239-89B5-71050E9B4F29}">
+															<Language>SFX</Language>
+															<AudioFile>Player_Footsteps-003.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="733255255"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ObjectLists/>
+													<ActiveSourceList>
+														<ActiveSource Name="Player_Footsteps-003" ID="{72B51E32-D976-4239-89B5-71050E9B4F29}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+												<Sound Name="Player_Footsteps-004" ID="{87615A1F-D36C-42E7-933B-863B6209DE6C}" ShortID="72095849">
+													<PropertyList>
+														<Property Name="Inclusion" Type="bool">
+															<ValueList>
+																<Value>False</Value>
+															</ValueList>
+														</Property>
+													</PropertyList>
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{E8C30435-E2EC-40B4-A911-30D289ECE001}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{5FE25012-E08F-420E-BE49-3B0109DF68E3}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="Player_Footsteps-004" ID="{F57FBCE5-CB0D-4910-9528-725BD15FA256}">
+															<Language>SFX</Language>
+															<AudioFile>Player_Footsteps-004.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="121820035"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ObjectLists/>
+													<ActiveSourceList>
+														<ActiveSource Name="Player_Footsteps-004" ID="{F57FBCE5-CB0D-4910-9528-725BD15FA256}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+												<Sound Name="Player_Footsteps-005" ID="{4BA7E407-CEDB-46AE-9538-95A02644E119}" ShortID="422581985">
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{E8C30435-E2EC-40B4-A911-30D289ECE001}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{5FE25012-E08F-420E-BE49-3B0109DF68E3}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="Player_Footsteps-005" ID="{8CE9AAEF-E72E-408B-99E4-B6D896109848}">
+															<Language>SFX</Language>
+															<AudioFile>Player_Footsteps-005.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="819485897"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ObjectLists/>
+													<ActiveSourceList>
+														<ActiveSource Name="Player_Footsteps-005" ID="{8CE9AAEF-E72E-408B-99E4-B6D896109848}" Platform="Linked"/>
 													</ActiveSourceList>
 												</Sound>
 											</ChildrenList>
@@ -905,6 +1173,13 @@
 												</ModifierInfo>
 											</ModifierList>
 										</Property>
+										<Property Name="Volume" Type="Real64">
+											<ModifierList>
+												<ModifierInfo>
+													<Modifier Name="" ID="{53536A90-2AEF-4FD9-BC75-BBE6ED292EC8}"/>
+												</ModifierInfo>
+											</ModifierList>
+										</Property>
 									</PropertyList>
 									<ReferenceList>
 										<Reference Name="Attenuation">
@@ -961,123 +1236,7 @@
 									</PropertyList>
 									<ReferenceList>
 										<Reference Name="Attenuation">
-											<Custom CreatedFrom="{B0D4A199-1443-4648-AB38-3014F7E77842}">
-												<Attenuation Name="Stage_20m (Custom)" ID="{F159CEFF-2013-43AD-98BC-6E050297771A}" ShortID="772855692">
-													<PropertyList>
-														<Property Name="RadiusMax" Type="Real64" Value="20"/>
-													</PropertyList>
-													<CurveUsageInfoList>
-														<VolumeDryUsage>
-															<CurveUsageInfo Platform="Linked" CurveToUse="Custom">
-																<Curve Name="VolumeDry" ID="{C74FEDFE-A58C-44CC-99A6-F140466F741D}">
-																	<PropertyList>
-																		<Property Name="Flags" Type="int32" Value="3"/>
-																	</PropertyList>
-																	<PointList>
-																		<Point>
-																			<XPos>0</XPos>
-																			<YPos>0</YPos>
-																			<Flags>5</Flags>
-																		</Point>
-																		<Point>
-																			<XPos>1</XPos>
-																			<YPos>0</YPos>
-																			<Flags>0</Flags>
-																			<SegmentShape>Exp2</SegmentShape>
-																		</Point>
-																		<Point>
-																			<XPos>15</XPos>
-																			<YPos>-24</YPos>
-																			<Flags>0</Flags>
-																		</Point>
-																		<Point>
-																			<XPos>20</XPos>
-																			<YPos>-24</YPos>
-																			<Flags>37</Flags>
-																		</Point>
-																	</PointList>
-																</Curve>
-															</CurveUsageInfo>
-														</VolumeDryUsage>
-														<VolumeWetGameUsage>
-															<CurveUsageInfo Platform="Linked" CurveToUse="UseVolumeDry"/>
-														</VolumeWetGameUsage>
-														<VolumeWetUserUsage>
-															<CurveUsageInfo Platform="Linked" CurveToUse="UseVolumeDry"/>
-														</VolumeWetUserUsage>
-														<LowPassFilterUsage>
-															<CurveUsageInfo Platform="Linked" CurveToUse="Custom">
-																<Curve Name="LowPassFilter" ID="{FB22D58E-0448-4088-A501-D1C1ED1EB647}">
-																	<PropertyList>
-																		<Property Name="Flags" Type="int32" Value="65537"/>
-																	</PropertyList>
-																	<PointList>
-																		<Point>
-																			<XPos>0</XPos>
-																			<YPos>0</YPos>
-																			<Flags>5</Flags>
-																		</Point>
-																		<Point>
-																			<XPos>1</XPos>
-																			<YPos>0</YPos>
-																			<Flags>0</Flags>
-																			<SegmentShape>Exp2</SegmentShape>
-																		</Point>
-																		<Point>
-																			<XPos>15</XPos>
-																			<YPos>75</YPos>
-																			<Flags>0</Flags>
-																			<SegmentShape>Log2</SegmentShape>
-																		</Point>
-																		<Point>
-																			<XPos>20</XPos>
-																			<YPos>75</YPos>
-																			<Flags>37</Flags>
-																		</Point>
-																	</PointList>
-																</Curve>
-															</CurveUsageInfo>
-														</LowPassFilterUsage>
-														<HighPassFilterUsage>
-															<CurveUsageInfo Platform="Linked" CurveToUse="None"/>
-														</HighPassFilterUsage>
-														<SpreadUsage>
-															<CurveUsageInfo Platform="Linked" CurveToUse="Custom">
-																<Curve Name="Spread" ID="{1EC7E960-E1EB-44F8-AABD-F8347C3F4684}">
-																	<PropertyList>
-																		<Property Name="Flags" Type="int32" Value="1"/>
-																	</PropertyList>
-																	<PointList>
-																		<Point>
-																			<XPos>0</XPos>
-																			<YPos>100</YPos>
-																			<Flags>5</Flags>
-																		</Point>
-																		<Point>
-																			<XPos>1</XPos>
-																			<YPos>100</YPos>
-																			<Flags>0</Flags>
-																		</Point>
-																		<Point>
-																			<XPos>10</XPos>
-																			<YPos>0</YPos>
-																			<Flags>0</Flags>
-																		</Point>
-																		<Point>
-																			<XPos>20</XPos>
-																			<YPos>0</YPos>
-																			<Flags>37</Flags>
-																		</Point>
-																	</PointList>
-																</Curve>
-															</CurveUsageInfo>
-														</SpreadUsage>
-														<FocusUsage>
-															<CurveUsageInfo Platform="Linked" CurveToUse="None"/>
-														</FocusUsage>
-													</CurveUsageInfoList>
-												</Attenuation>
-											</Custom>
+											<ObjectRef Name="Stage_20m" ID="{B0D4A199-1443-4648-AB38-3014F7E77842}" WorkUnitID="{08BB8B25-D568-4D5B-8D2D-EE1E5F63128C}"/>
 										</Reference>
 										<Reference Name="Conversion">
 											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{E8C30435-E2EC-40B4-A911-30D289ECE001}"/>
@@ -1128,6 +1287,13 @@
 															<Property Name="Min" Type="Real64" Value="-50"/>
 														</PropertyList>
 													</Modifier>
+												</ModifierInfo>
+											</ModifierList>
+										</Property>
+										<Property Name="Volume" Type="Real64">
+											<ModifierList>
+												<ModifierInfo>
+													<Modifier Name="" ID="{9F0F8CEB-5E2B-4605-8DF2-E8C17A92F6F1}"/>
 												</ModifierInfo>
 											</ModifierList>
 										</Property>
@@ -1189,6 +1355,13 @@
 												</ModifierInfo>
 											</ModifierList>
 										</Property>
+										<Property Name="Volume" Type="Real64">
+											<ModifierList>
+												<ModifierInfo>
+													<Modifier Name="" ID="{686CE4F3-DB98-4630-87B5-176800FC66D7}"/>
+												</ModifierInfo>
+											</ModifierList>
+										</Property>
 									</PropertyList>
 									<ReferenceList>
 										<Reference Name="Attenuation">
@@ -1237,6 +1410,13 @@
 											<ModifierList>
 												<ModifierInfo>
 													<Modifier Name="" ID="{5320D0EF-50EF-4AD9-99BF-41AA7405E394}"/>
+												</ModifierInfo>
+											</ModifierList>
+										</Property>
+										<Property Name="Volume" Type="Real64">
+											<ModifierList>
+												<ModifierInfo>
+													<Modifier Name="" ID="{E7CF802D-9EBF-4AB4-AD4D-B2FA5B94BD1F}"/>
 												</ModifierInfo>
 											</ModifierList>
 										</Property>
@@ -1397,7 +1577,7 @@
 								</ActorMixer>
 								<ActorMixer Name="Enemy_Melee_Overhead_Slam" ID="{0CA534F7-752A-45B4-A24B-CE0553CD0814}" ShortID="791887233">
 									<PropertyList>
-										<Property Name="3DSpatialization" Type="int16" Value="1"/>
+										<Property Name="3DSpatialization" Type="int16" Value="2"/>
 										<Property Name="OverrideOutput" Type="bool" Value="True"/>
 										<Property Name="OverridePositioning" Type="bool" Value="True"/>
 										<Property Name="Pitch" Type="int32">
@@ -1410,6 +1590,13 @@
 															<Property Name="Min" Type="Real64" Value="-50"/>
 														</PropertyList>
 													</Modifier>
+												</ModifierInfo>
+											</ModifierList>
+										</Property>
+										<Property Name="Volume" Type="Real64">
+											<ModifierList>
+												<ModifierInfo>
+													<Modifier Name="" ID="{101BF917-A793-4636-8579-F0633463D50E}"/>
 												</ModifierInfo>
 											</ModifierList>
 										</Property>
@@ -1454,7 +1641,7 @@
 								</ActorMixer>
 								<ActorMixer Name="Enemy_Melee_Right_Hook" ID="{91DE7D7F-8867-4E38-93F4-D56AC2697AE9}" ShortID="620207186">
 									<PropertyList>
-										<Property Name="3DSpatialization" Type="int16" Value="1"/>
+										<Property Name="3DSpatialization" Type="int16" Value="2"/>
 										<Property Name="OverrideOutput" Type="bool" Value="True"/>
 										<Property Name="OverridePositioning" Type="bool" Value="True"/>
 										<Property Name="Pitch" Type="int32">
@@ -1467,6 +1654,13 @@
 															<Property Name="Min" Type="Real64" Value="-50"/>
 														</PropertyList>
 													</Modifier>
+												</ModifierInfo>
+											</ModifierList>
+										</Property>
+										<Property Name="Volume" Type="Real64">
+											<ModifierList>
+												<ModifierInfo>
+													<Modifier Name="" ID="{B467E4ED-7F24-433A-836D-D5CB9B949F43}"/>
 												</ModifierInfo>
 											</ModifierList>
 										</Property>
@@ -1647,6 +1841,219 @@
 													<ObjectLists/>
 													<ActiveSourceList>
 														<ActiveSource Name="Enemy_Damage-004" ID="{A2D0BB85-71A3-428F-B149-514F9119F691}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+											</ChildrenList>
+											<ObjectLists/>
+										</RandomSequenceContainer>
+									</ChildrenList>
+									<ObjectLists/>
+								</ActorMixer>
+								<ActorMixer Name="Enemy_Footsteps" ID="{8F19A24F-899F-4693-BC58-38BC9B7179DB}" ShortID="947710765">
+									<PropertyList>
+										<Property Name="3DSpatialization" Type="int16" Value="1"/>
+										<Property Name="IgnoreParentMaxSoundInstance" Type="bool" Value="True"/>
+										<Property Name="IsGlobalLimit" Type="int16" Value="1"/>
+										<Property Name="MaxSoundPerInstance" Type="int16">
+											<ValueList>
+												<Value>3</Value>
+											</ValueList>
+										</Property>
+										<Property Name="OverrideOutput" Type="bool" Value="True"/>
+										<Property Name="OverridePositioning" Type="bool" Value="True"/>
+										<Property Name="Pitch" Type="int32">
+											<ModifierList>
+												<ModifierInfo>
+													<Modifier Name="" ID="{104346F3-9DD4-41C9-862C-44223DD51850}">
+														<PropertyList>
+															<Property Name="Enabled" Type="bool" Value="True"/>
+															<Property Name="Max" Type="Real64" Value="25"/>
+															<Property Name="Min" Type="Real64" Value="-25"/>
+														</PropertyList>
+													</Modifier>
+												</ModifierInfo>
+											</ModifierList>
+										</Property>
+										<Property Name="UseMaxSoundPerInstance" Type="bool">
+											<ValueList>
+												<Value>True</Value>
+											</ValueList>
+										</Property>
+										<Property Name="Volume" Type="Real64">
+											<ModifierList>
+												<ModifierInfo>
+													<Modifier Name="" ID="{8252D67F-2C7E-4340-978D-F9FDC72E53C6}">
+														<PropertyList>
+															<Property Name="Enabled" Type="bool" Value="True"/>
+															<Property Name="Max" Type="Real64" Value="1"/>
+															<Property Name="Min" Type="Real64" Value="-1"/>
+														</PropertyList>
+													</Modifier>
+												</ModifierInfo>
+											</ModifierList>
+										</Property>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Attenuation">
+											<ObjectRef Name="Stage_20m" ID="{B0D4A199-1443-4648-AB38-3014F7E77842}" WorkUnitID="{08BB8B25-D568-4D5B-8D2D-EE1E5F63128C}"/>
+										</Reference>
+										<Reference Name="Conversion">
+											<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{E8C30435-E2EC-40B4-A911-30D289ECE001}"/>
+										</Reference>
+										<Reference Name="OutputBus">
+											<ObjectRef Name="Enemy_Footsteps" ID="{5124CB7D-6CA1-40C3-9178-44558416245D}" WorkUnitID="{5FE25012-E08F-420E-BE49-3B0109DF68E3}"/>
+										</Reference>
+									</ReferenceList>
+									<ChildrenList>
+										<RandomSequenceContainer Name="Enemy_Footsteps" ID="{FB1D7BAB-7E89-4DBA-BAFE-5E5ADF529FC8}" ShortID="397215920">
+											<PropertyList>
+												<Property Name="RandomAvoidRepeatingCount" Type="int32" Value="3"/>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Conversion">
+													<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{E8C30435-E2EC-40B4-A911-30D289ECE001}"/>
+												</Reference>
+												<Reference Name="OutputBus">
+													<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{5FE25012-E08F-420E-BE49-3B0109DF68E3}"/>
+												</Reference>
+											</ReferenceList>
+											<ChildrenList>
+												<Sound Name="Enemy_Footsteps-001" ID="{62EF8A1C-698C-4F66-B072-E1BAC48CF104}" ShortID="297992975">
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{E8C30435-E2EC-40B4-A911-30D289ECE001}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{5FE25012-E08F-420E-BE49-3B0109DF68E3}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="Enemy_Footsteps-001" ID="{77ED6F31-FE84-43E6-9A4E-DD8D4CB99D36}">
+															<Language>SFX</Language>
+															<AudioFile>Enemy_Footsteps-001.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="1015705834"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ObjectLists/>
+													<ActiveSourceList>
+														<ActiveSource Name="Enemy_Footsteps-001" ID="{77ED6F31-FE84-43E6-9A4E-DD8D4CB99D36}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+												<Sound Name="Enemy_Footsteps-002" ID="{05494AFA-907E-4395-B9B5-6FF469943D22}" ShortID="488645421">
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{E8C30435-E2EC-40B4-A911-30D289ECE001}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{5FE25012-E08F-420E-BE49-3B0109DF68E3}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="Enemy_Footsteps-002" ID="{04F82409-2155-4817-BCAD-0D91FE337F48}">
+															<Language>SFX</Language>
+															<AudioFile>Enemy_Footsteps-002.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="153902234"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ObjectLists/>
+													<ActiveSourceList>
+														<ActiveSource Name="Enemy_Footsteps-002" ID="{04F82409-2155-4817-BCAD-0D91FE337F48}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+												<Sound Name="Enemy_Footsteps-003" ID="{4C154A39-3B98-4983-9AEE-407B539A8427}" ShortID="253962949">
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{E8C30435-E2EC-40B4-A911-30D289ECE001}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{5FE25012-E08F-420E-BE49-3B0109DF68E3}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="Enemy_Footsteps-003" ID="{06961EAB-A150-47D8-826F-660AAF97911A}">
+															<Language>SFX</Language>
+															<AudioFile>Enemy_Footsteps-003.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="511547983"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ObjectLists/>
+													<ActiveSourceList>
+														<ActiveSource Name="Enemy_Footsteps-003" ID="{06961EAB-A150-47D8-826F-660AAF97911A}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+												<Sound Name="Enemy_Footsteps-004" ID="{50F67BC3-B08E-4440-9F51-8C8CE1CE2BA9}" ShortID="877552760">
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{E8C30435-E2EC-40B4-A911-30D289ECE001}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{5FE25012-E08F-420E-BE49-3B0109DF68E3}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="Enemy_Footsteps-004" ID="{9E32E5BC-BCD7-49AE-80DB-9E5D6B628DDD}">
+															<Language>SFX</Language>
+															<AudioFile>Enemy_Footsteps-004.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="113542656"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ObjectLists/>
+													<ActiveSourceList>
+														<ActiveSource Name="Enemy_Footsteps-004" ID="{9E32E5BC-BCD7-49AE-80DB-9E5D6B628DDD}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+												<Sound Name="Enemy_Footsteps-005" ID="{71275611-5316-460C-95F5-A5446A0B154B}" ShortID="954671742">
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{E8C30435-E2EC-40B4-A911-30D289ECE001}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{5FE25012-E08F-420E-BE49-3B0109DF68E3}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="Enemy_Footsteps-005" ID="{FD155AC7-D70D-4763-AE6E-ABEB66903E6D}">
+															<Language>SFX</Language>
+															<AudioFile>Enemy_Footsteps-005.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="54557820"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ObjectLists/>
+													<ActiveSourceList>
+														<ActiveSource Name="Enemy_Footsteps-005" ID="{FD155AC7-D70D-4763-AE6E-ABEB66903E6D}" Platform="Linked"/>
+													</ActiveSourceList>
+												</Sound>
+												<Sound Name="Enemy_Footsteps-006" ID="{BA5D6888-C04E-441B-938D-FC4A2B519637}" ShortID="513601856">
+													<ReferenceList>
+														<Reference Name="Conversion">
+															<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{E8C30435-E2EC-40B4-A911-30D289ECE001}"/>
+														</Reference>
+														<Reference Name="OutputBus">
+															<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{5FE25012-E08F-420E-BE49-3B0109DF68E3}"/>
+														</Reference>
+													</ReferenceList>
+													<ChildrenList>
+														<AudioFileSource Name="Enemy_Footsteps-006" ID="{65C30432-D026-45C6-B0D2-A2EBA9597CA7}">
+															<Language>SFX</Language>
+															<AudioFile>Enemy_Footsteps-006.wav</AudioFile>
+															<MediaIDList>
+																<MediaID ID="453216294"/>
+															</MediaIDList>
+														</AudioFileSource>
+													</ChildrenList>
+													<ObjectLists/>
+													<ActiveSourceList>
+														<ActiveSource Name="Enemy_Footsteps-006" ID="{65C30432-D026-45C6-B0D2-A2EBA9597CA7}" Platform="Linked"/>
 													</ActiveSourceList>
 												</Sound>
 											</ChildrenList>

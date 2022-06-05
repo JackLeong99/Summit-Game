@@ -21,6 +21,7 @@ namespace AK
         static const AkUniqueID ENEMY_DEATH = 1205999388U;
         static const AkUniqueID ENEMY_ERUPTION_CAST = 1789255036U;
         static const AkUniqueID ENEMY_ERUPTION_LAVA = 22559231U;
+        static const AkUniqueID ENEMY_FOOTSTEPS = 3217092839U;
         static const AkUniqueID ENEMY_MELEE_OVERHEAD_SLAM = 3324595863U;
         static const AkUniqueID ENEMY_MELEE_RIGHT_HOOK = 1491778125U;
         static const AkUniqueID GAME_QUIT = 2356404183U;
@@ -33,6 +34,7 @@ namespace AK
         static const AkUniqueID PLAYER_DAMAGE = 2074073782U;
         static const AkUniqueID PLAYER_DEATH = 3083087645U;
         static const AkUniqueID PLAYER_DODGE = 385316062U;
+        static const AkUniqueID PLAYER_FOOTSTEPS = 1730208058U;
         static const AkUniqueID PLAYER_JUMP = 1305133589U;
         static const AkUniqueID PLAYER_LAND = 3629196698U;
         static const AkUniqueID PLAYER_SHOOT_CHARGE = 3192392001U;
@@ -63,6 +65,7 @@ namespace AK
 
     namespace GAME_PARAMETERS
     {
+        static const AkUniqueID FOOTSTEPS_SIDECHAIN = 2388545719U;
         static const AkUniqueID MUSIC_SIDECHAIN = 266555239U;
         static const AkUniqueID SFX_SIDECHAIN = 2862064063U;
         static const AkUniqueID VICTORY_DEFEAT_SIDECHAIN = 622329408U;
@@ -87,6 +90,7 @@ namespace AK
         static const AkUniqueID ENEMY_DEATH = 1205999388U;
         static const AkUniqueID ENEMY_ERUPTION_CAST = 1789255036U;
         static const AkUniqueID ENEMY_ERUPTION_LAVA = 22559231U;
+        static const AkUniqueID ENEMY_FOOTSTEPS = 3217092839U;
         static const AkUniqueID ENEMY_MELEE_OVERHEAD_SLAM = 3324595863U;
         static const AkUniqueID ENEMY_MELEE_RIGHT_HOOK = 1491778125U;
         static const AkUniqueID MASTER_AMBIENCE = 4104709401U;
@@ -100,6 +104,7 @@ namespace AK
         static const AkUniqueID PLAYER_DAMAGE = 2074073782U;
         static const AkUniqueID PLAYER_DEATH = 3083087645U;
         static const AkUniqueID PLAYER_DODGE = 385316062U;
+        static const AkUniqueID PLAYER_FOOTSTEPS = 1730208058U;
         static const AkUniqueID PLAYER_JUMP = 1305133589U;
         static const AkUniqueID PLAYER_LAND = 3629196698U;
         static const AkUniqueID PLAYER_SHOOT_CHARGE = 3192392001U;

@@ -81,7 +81,7 @@
 											<PropertyList>
 												<Property Name="BusVolume" Type="Real64">
 													<ValueList>
-														<Value>-6</Value>
+														<Value>-7</Value>
 													</ValueList>
 												</Property>
 											</PropertyList>
@@ -96,7 +96,7 @@
 											<PropertyList>
 												<Property Name="BusVolume" Type="Real64">
 													<ValueList>
-														<Value>-3</Value>
+														<Value>-9</Value>
 													</ValueList>
 												</Property>
 											</PropertyList>
@@ -111,13 +111,16 @@
 											<PropertyList>
 												<Property Name="BusVolume" Type="Real64">
 													<ValueList>
-														<Value>-24</Value>
+														<Value>-18</Value>
 													</ValueList>
 												</Property>
 											</PropertyList>
 											<ReferenceList>
 												<Reference Name="Effect0" PluginName="Wwise Meter" CompanyID="0" PluginID="129" PluginType="3">
 													<ObjectRef Name="Wwise_Meter_SFX_Sidechain" ID="{F703D923-283A-45F3-A276-670CC07CB003}" WorkUnitID="{B0EB1BF1-35D5-48DA-95BE-B0BBE3A101E3}"/>
+												</Reference>
+												<Reference Name="Effect1" PluginName="Wwise Meter" CompanyID="0" PluginID="129" PluginType="3">
+													<ObjectRef Name="Wwise_Meter_Footsteps_Sidechain" ID="{3AF47CE8-EE9E-4784-8BA3-94FEC1A1E76C}" WorkUnitID="{B0EB1BF1-35D5-48DA-95BE-B0BBE3A101E3}"/>
 												</Reference>
 												<Reference Name="UserAuxSend0">
 													<ObjectRef Name="SFX_Reverb" ID="{FD34F8CD-0E17-4876-B51E-7D6BC0FD4983}" WorkUnitID="{5FE25012-E08F-420E-BE49-3B0109DF68E3}"/>
@@ -194,6 +197,9 @@
 												</Property>
 											</PropertyList>
 											<ReferenceList>
+												<Reference Name="Effect0" PluginName="Wwise Meter" CompanyID="0" PluginID="129" PluginType="3">
+													<ObjectRef Name="Wwise_Meter_Footsteps_Sidechain" ID="{3AF47CE8-EE9E-4784-8BA3-94FEC1A1E76C}" WorkUnitID="{B0EB1BF1-35D5-48DA-95BE-B0BBE3A101E3}"/>
+												</Reference>
 												<Reference Name="UserAuxSend0">
 													<ObjectRef Name="SFX_Reverb" ID="{FD34F8CD-0E17-4876-B51E-7D6BC0FD4983}" WorkUnitID="{5FE25012-E08F-420E-BE49-3B0109DF68E3}"/>
 												</Reference>
@@ -219,6 +225,9 @@
 												<Reference Name="Effect0" PluginName="Wwise Meter" CompanyID="0" PluginID="129" PluginType="3">
 													<ObjectRef Name="Wwise_Meter_SFX_Sidechain" ID="{F703D923-283A-45F3-A276-670CC07CB003}" WorkUnitID="{B0EB1BF1-35D5-48DA-95BE-B0BBE3A101E3}"/>
 												</Reference>
+												<Reference Name="Effect1" PluginName="Wwise Meter" CompanyID="0" PluginID="129" PluginType="3">
+													<ObjectRef Name="Wwise_Meter_Footsteps_Sidechain" ID="{3AF47CE8-EE9E-4784-8BA3-94FEC1A1E76C}" WorkUnitID="{B0EB1BF1-35D5-48DA-95BE-B0BBE3A101E3}"/>
+												</Reference>
 												<Reference Name="UserAuxSend0">
 													<ObjectRef Name="SFX_Reverb" ID="{FD34F8CD-0E17-4876-B51E-7D6BC0FD4983}" WorkUnitID="{5FE25012-E08F-420E-BE49-3B0109DF68E3}"/>
 												</Reference>
@@ -229,10 +238,69 @@
 											<PropertyList>
 												<Property Name="BusVolume" Type="Real64">
 													<ValueList>
-														<Value>-6</Value>
+														<Value>-9</Value>
 													</ValueList>
 												</Property>
 												<Property Name="Color" Type="int16" Value="10"/>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="UserAuxSend0">
+													<ObjectRef Name="SFX_Reverb" ID="{FD34F8CD-0E17-4876-B51E-7D6BC0FD4983}" WorkUnitID="{5FE25012-E08F-420E-BE49-3B0109DF68E3}"/>
+												</Reference>
+											</ReferenceList>
+											<ObjectLists/>
+										</Bus>
+										<Bus Name="Player_Footsteps" ID="{D0636EBF-6DE1-4B04-BCCC-F257345020E2}">
+											<PropertyList>
+												<Property Name="BusVolume" Type="Real64">
+													<ValueList>
+														<Value>-16</Value>
+													</ValueList>
+												</Property>
+												<Property Name="OutputBusVolume" Type="Real64">
+													<RTPCList>
+														<RTPC Name="" ID="{83E95857-E1DB-43D2-83D0-C56EF759F94B}" ShortID="436151839">
+															<ReferenceList>
+																<Reference Name="ControlInput">
+																	<ObjectRef Name="Footsteps_Sidechain" ID="{33D9E55F-27E1-4D9D-95B7-262E57C1940A}" WorkUnitID="{32AE5A4D-16DF-49F3-A117-4472F3B36DF9}"/>
+																</Reference>
+															</ReferenceList>
+															<Curve Name="" ID="{81754035-41CA-4E09-BA49-0394E430025D}">
+																<PropertyList>
+																	<Property Name="Flags" Type="int32" Value="3"/>
+																</PropertyList>
+																<PointList>
+																	<Point>
+																		<XPos>-48</XPos>
+																		<YPos>0.09815</YPos>
+																		<Flags>5</Flags>
+																	</Point>
+																	<Point>
+																		<XPos>-42.20134</XPos>
+																		<YPos>0.14187</YPos>
+																		<Flags>0</Flags>
+																		<SegmentShape>Log2</SegmentShape>
+																	</Point>
+																	<Point>
+																		<XPos>-9.87919</XPos>
+																		<YPos>-11.87141</YPos>
+																		<Flags>0</Flags>
+																	</Point>
+																	<Point>
+																		<XPos>0</XPos>
+																		<YPos>-12.27196</YPos>
+																		<Flags>37</Flags>
+																	</Point>
+																</PointList>
+															</Curve>
+														</RTPC>
+													</RTPCList>
+												</Property>
+												<Property Name="UserAuxSendVolume0" Type="Real64">
+													<ValueList>
+														<Value>6</Value>
+													</ValueList>
+												</Property>
 											</PropertyList>
 											<ReferenceList>
 												<Reference Name="UserAuxSend0">
@@ -279,6 +347,9 @@
 												<Reference Name="Effect0" PluginName="Wwise Meter" CompanyID="0" PluginID="129" PluginType="3">
 													<ObjectRef Name="Wwise_Meter_SFX_Sidechain" ID="{F703D923-283A-45F3-A276-670CC07CB003}" WorkUnitID="{B0EB1BF1-35D5-48DA-95BE-B0BBE3A101E3}"/>
 												</Reference>
+												<Reference Name="Effect1" PluginName="Wwise Meter" CompanyID="0" PluginID="129" PluginType="3">
+													<ObjectRef Name="Wwise_Meter_Footsteps_Sidechain" ID="{3AF47CE8-EE9E-4784-8BA3-94FEC1A1E76C}" WorkUnitID="{B0EB1BF1-35D5-48DA-95BE-B0BBE3A101E3}"/>
+												</Reference>
 											</ReferenceList>
 											<ObjectLists/>
 										</Bus>
@@ -312,7 +383,7 @@
 											<PropertyList>
 												<Property Name="BusVolume" Type="Real64">
 													<ValueList>
-														<Value>12</Value>
+														<Value>-6</Value>
 													</ValueList>
 												</Property>
 												<Property Name="Color" Type="int16" Value="10"/>
@@ -352,6 +423,9 @@
 											<ReferenceList>
 												<Reference Name="Effect0" PluginName="Wwise Meter" CompanyID="0" PluginID="129" PluginType="3">
 													<ObjectRef Name="Wwise_Meter_SFX_Sidechain" ID="{F703D923-283A-45F3-A276-670CC07CB003}" WorkUnitID="{B0EB1BF1-35D5-48DA-95BE-B0BBE3A101E3}"/>
+												</Reference>
+												<Reference Name="Effect1" PluginName="Wwise Meter" CompanyID="0" PluginID="129" PluginType="3">
+													<ObjectRef Name="Wwise_Meter_Footsteps_Sidechain" ID="{3AF47CE8-EE9E-4784-8BA3-94FEC1A1E76C}" WorkUnitID="{B0EB1BF1-35D5-48DA-95BE-B0BBE3A101E3}"/>
 												</Reference>
 												<Reference Name="UserAuxSend0">
 													<ObjectRef Name="SFX_Reverb" ID="{FD34F8CD-0E17-4876-B51E-7D6BC0FD4983}" WorkUnitID="{5FE25012-E08F-420E-BE49-3B0109DF68E3}"/>
@@ -401,6 +475,9 @@
 												<Reference Name="Effect0" PluginName="Wwise Meter" CompanyID="0" PluginID="129" PluginType="3">
 													<ObjectRef Name="Wwise_Meter_SFX_Sidechain" ID="{F703D923-283A-45F3-A276-670CC07CB003}" WorkUnitID="{B0EB1BF1-35D5-48DA-95BE-B0BBE3A101E3}"/>
 												</Reference>
+												<Reference Name="Effect1" PluginName="Wwise Meter" CompanyID="0" PluginID="129" PluginType="3">
+													<ObjectRef Name="Wwise_Meter_Footsteps_Sidechain" ID="{3AF47CE8-EE9E-4784-8BA3-94FEC1A1E76C}" WorkUnitID="{B0EB1BF1-35D5-48DA-95BE-B0BBE3A101E3}"/>
+												</Reference>
 												<Reference Name="UserAuxSend0">
 													<ObjectRef Name="SFX_Reverb" ID="{FD34F8CD-0E17-4876-B51E-7D6BC0FD4983}" WorkUnitID="{5FE25012-E08F-420E-BE49-3B0109DF68E3}"/>
 												</Reference>
@@ -423,6 +500,68 @@
 												<Property Name="UseMaxSoundPerInstance" Type="bool">
 													<ValueList>
 														<Value>True</Value>
+													</ValueList>
+												</Property>
+											</PropertyList>
+											<ReferenceList>
+												<Reference Name="Effect0" PluginName="Wwise Meter" CompanyID="0" PluginID="129" PluginType="3">
+													<ObjectRef Name="Wwise_Meter_Footsteps_Sidechain" ID="{3AF47CE8-EE9E-4784-8BA3-94FEC1A1E76C}" WorkUnitID="{B0EB1BF1-35D5-48DA-95BE-B0BBE3A101E3}"/>
+												</Reference>
+												<Reference Name="UserAuxSend0">
+													<ObjectRef Name="SFX_Reverb" ID="{FD34F8CD-0E17-4876-B51E-7D6BC0FD4983}" WorkUnitID="{5FE25012-E08F-420E-BE49-3B0109DF68E3}"/>
+												</Reference>
+											</ReferenceList>
+											<ObjectLists/>
+										</Bus>
+										<Bus Name="Enemy_Footsteps" ID="{5124CB7D-6CA1-40C3-9178-44558416245D}">
+											<PropertyList>
+												<Property Name="BusVolume" Type="Real64">
+													<ValueList>
+														<Value>-6</Value>
+													</ValueList>
+												</Property>
+												<Property Name="OutputBusVolume" Type="Real64">
+													<RTPCList>
+														<RTPC Name="" ID="{1CBFFDDD-51D8-4FA4-A990-595EEA6E91C8}" ShortID="696317620">
+															<ReferenceList>
+																<Reference Name="ControlInput">
+																	<ObjectRef Name="Footsteps_Sidechain" ID="{33D9E55F-27E1-4D9D-95B7-262E57C1940A}" WorkUnitID="{32AE5A4D-16DF-49F3-A117-4472F3B36DF9}"/>
+																</Reference>
+															</ReferenceList>
+															<Curve Name="" ID="{5FFEC7A3-A0BF-4428-BD33-16D6065ED485}">
+																<PropertyList>
+																	<Property Name="Flags" Type="int32" Value="3"/>
+																</PropertyList>
+																<PointList>
+																	<Point>
+																		<XPos>-48</XPos>
+																		<YPos>0.098150000000004</YPos>
+																		<Flags>5</Flags>
+																	</Point>
+																	<Point>
+																		<XPos>-42.20134</XPos>
+																		<YPos>0.14187000000004</YPos>
+																		<Flags>0</Flags>
+																		<SegmentShape>Log2</SegmentShape>
+																	</Point>
+																	<Point>
+																		<XPos>-9.87919</XPos>
+																		<YPos>-11.87141</YPos>
+																		<Flags>0</Flags>
+																	</Point>
+																	<Point>
+																		<XPos>0</XPos>
+																		<YPos>-12.27196</YPos>
+																		<Flags>37</Flags>
+																	</Point>
+																</PointList>
+															</Curve>
+														</RTPC>
+													</RTPCList>
+												</Property>
+												<Property Name="UserAuxSendVolume0" Type="Real64">
+													<ValueList>
+														<Value>-6</Value>
 													</ValueList>
 												</Property>
 											</PropertyList>
