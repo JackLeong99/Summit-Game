@@ -705,4 +705,9 @@ public class BossManager : MonoBehaviour
             transform.rotation = Quaternion.RotateTowards(transform.rotation, adjustedRot, attackTurnSpeed * Time.deltaTime);
         }
     }
+
+    public void onStep() 
+    {
+        AkSoundEngine.PostEvent("Enemy_Footsteps", gameObject);
+    }
 }
