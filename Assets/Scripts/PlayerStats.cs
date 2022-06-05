@@ -35,7 +35,7 @@ public class PlayerStats : MonoBehaviour
                 damage-=5; //we can change this. I was not sure how much to decrease by
             }
             //Not healing if defence stat bigger than potential damage taken.
-            if(damage - defence > 0 && !dodge.isDodging){
+            if(damage - defence > 0 && !dodge.invuln){
                 currentHealth = currentHealth - damage + defence;
             }
             

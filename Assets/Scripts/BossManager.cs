@@ -75,7 +75,7 @@ public class BossManager : MonoBehaviour
     private DamageFlash damageFlash;
     Animator animatr;
     NavMeshAgent agent;
-    private bool Alive = true;
+    public bool Alive = true;
     Rigidbody[] rigidBodies;
     [SerializeField] float attackTurnSpeed;
     [SerializeField] float turnFor = 1.0f;
@@ -119,6 +119,7 @@ public class BossManager : MonoBehaviour
         smoothLookAt(Player);
         //step = attackTurnSpeed * Time.deltaTime;
         if (Alive && !stunned){
+            canBeStunned = true;
             if(!inAttack && RockManager.Instance.countUnderWantedRocks){
                 StartCoroutine(summonRocks());
             }
@@ -204,6 +205,10 @@ public class BossManager : MonoBehaviour
                     }
                 }   
             }
+        }
+        else{
+            agent.speed = 0;
+            canBeStunned = false;
         }
     }
 
@@ -582,12 +587,13 @@ public class BossManager : MonoBehaviour
 
     IEnumerator Death()
     {
+        canBeStunned = false;
         animatr.SetTrigger("Death");
         AkSoundEngine.PostEvent("Enemy_Death", gameObject);
         GameManager.Instance.onBossDeath();
+        agent.speed = 0;
         yield return new WaitForSeconds(2.2f);
         Alive = false;
-        agent.speed = 0;
         yield return new WaitForSeconds(6f);
         UIManager.Instance.WinScreen();
         //Instantiate(deathFX, gameObject.transform.position, Quaternion.identity);
@@ -625,6 +631,7 @@ public class BossManager : MonoBehaviour
 
     IEnumerator bossStunned(){
         stunned = true;
+        canBeStunned = false;
         agent.speed = 0;
 
         animatr.SetTrigger("Stunned");
@@ -644,6 +651,7 @@ public class BossManager : MonoBehaviour
         else{
             agent.speed = startSpeed;
         }
+        canBeStunned = true;
 
     }
 
