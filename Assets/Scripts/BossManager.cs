@@ -320,7 +320,7 @@ public class BossManager : MonoBehaviour
            //possible to double slam
            //would be nice to have different animation - particle effect on the fists before first slam
            //less drawback on second slam
-            if(SelectMove(1, 4) == 3){
+            if(!inRockThrow && SelectMove(1, 4) == 3){
                 //animatr.SetFloat("Speed", agent.velocity.magnitude);
                 //Face player to aim- smoother method could be used
                 //transform.LookAt(Player);
@@ -355,6 +355,7 @@ public class BossManager : MonoBehaviour
         if(!inRockThrow){
             inAttack = false;
         }
+        currentPatience = 0;
     }
 
     // IEnumerator midActions(){
@@ -434,14 +435,17 @@ public class BossManager : MonoBehaviour
             //I probably shouldn't be using inAttack for this - it causes clashes 
             while(rockThrow.currentlyTargeting){
                 if(stunned){
-                    inRockThrow = false;
-                    lastMove = "Rock Throw";
-                    lastMoveRepeated ++;
                     currentPatience = 0;
                     attackException = false;
+                    rockThrow.stunnedInPathing();
+                    yield return new WaitForSeconds(gunStunDuration);
+                    rockThrow.stunnedInPathing();
+                }
+                else{
+                    attackException = true;
                 }
                 bPathing.bossPathing();
-                //inRockThrow = true;
+                inRockThrow = true;
                 //inAttack = true;
                 
                 bool isMelee = Vector3.Distance(transform.position, Player.position) <= MinDist;
@@ -450,11 +454,12 @@ public class BossManager : MonoBehaviour
                     //inAttack = true;
                     Debug.Log("Impatient");
                     //rockThrow.SetPlayer();
+                    currentPatience = 0;
                     StartCoroutine(meleeActions());
                     //rockThrow.SetTarget();
                     //rockPatienceCheck = true;
-                    currentPatience = 0;
-                    yield return new WaitForSeconds(2.875f);
+                    
+                    yield return new WaitForSeconds(2.875f + turnFor);
                     currentPatience = 0;
                     //attackException = true;
                     //inAttack = false;
@@ -465,7 +470,9 @@ public class BossManager : MonoBehaviour
                     currentPatience = currentPatience + (fullRandomiser(0.1f, 0.2f)) * Time.deltaTime;
                 }
                 yield return new WaitForSeconds(Time.deltaTime);
+                
             }
+            currentPatience = 0;
             animatr.SetTrigger("Throw");
             AkSoundEngine.PostEvent("Enemy_Boulder_Cast", gameObject);
             transform.LookAt(Player);
