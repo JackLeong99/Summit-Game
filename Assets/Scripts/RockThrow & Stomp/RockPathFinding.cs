@@ -47,8 +47,14 @@ public class RockPathFinding : MonoBehaviour
         Debug.Log("Changing Target to " + target);
     }
 
-    public void SetPlayer()
+    public void stunnedInPathing()
     {
-        boss.ChangeTarget(player);
+        if(currentlyTargeting){
+            currentlyTargeting = false;
+        }
+        else{
+            currentlyTargeting = true;
+        }
+        
     }
 }
