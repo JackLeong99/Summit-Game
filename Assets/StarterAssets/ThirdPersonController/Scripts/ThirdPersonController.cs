@@ -420,7 +420,7 @@ namespace StarterAssets
         {
             Transform footTransform = footIndex == 0 ? leftFoot : rightFoot;
 
-			// TODO: Chris add SFX and VFX???
+			AkSoundEngine.PostEvent("Player_Footsteps", gameObject);
         }
     }
 }

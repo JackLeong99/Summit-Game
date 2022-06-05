@@ -11,7 +11,7 @@
 	<StreamedFiles/>
 	<MediaFilesNotInAnyBank/>
 	<SoundBanks>
-		<SoundBank Id="822237696" Language="SFX" Hash="3252677575">
+		<SoundBank Id="822237696" Language="SFX" Hash="1990555008">
 			<ObjectPath>\SoundBanks\Default Work Unit\SB_Default</ObjectPath>
 			<ShortName>SB_Default</ShortName>
 			<Path>SB_Default.bnk</Path>
@@ -73,7 +73,7 @@
 						</File>
 					</IncludedMemoryFiles>
 				</Event>
-				<Event Id="1789255036" Name="Enemy_Eruption_Cast" ObjectPath="\Events\Default Work Unit\SFX_Enemy\Enemy_Eruption_Cast" MaxAttenuation="20." DurationType="OneShot" DurationMin="2.868542" DurationMax="2.868542">
+				<Event Id="1789255036" Name="Enemy_Eruption_Cast" ObjectPath="\Events\Default Work Unit\SFX_Enemy\Enemy_Eruption_Cast" MaxAttenuation="200." DurationType="OneShot" DurationMin="2.868542" DurationMax="2.868542">
 					<IncludedMemoryFiles>
 						<File Id="472729176" Language="SFX">
 							<ShortName>Enemy_Eruption_Cast.wav</ShortName>
@@ -86,6 +86,34 @@
 						<File Id="80263160" Language="SFX">
 							<ShortName>Enemy_Eruption_Lava.wav</ShortName>
 							<Path>SFX\Enemy_Eruption_Lava_10C4C929.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
+				<Event Id="3217092839" Name="Enemy_Footsteps" ObjectPath="\Events\Default Work Unit\SFX_Enemy\Enemy_Footsteps" MaxAttenuation="200." DurationType="OneShot" DurationMin="1.478495" DurationMax="1.521818">
+					<IncludedMemoryFiles>
+						<File Id="54557820" Language="SFX">
+							<ShortName>Enemy_Footsteps-005.wav</ShortName>
+							<Path>SFX\Enemy_Footsteps-005_10C4C929.wem</Path>
+						</File>
+						<File Id="113542656" Language="SFX">
+							<ShortName>Enemy_Footsteps-004.wav</ShortName>
+							<Path>SFX\Enemy_Footsteps-004_10C4C929.wem</Path>
+						</File>
+						<File Id="153902234" Language="SFX">
+							<ShortName>Enemy_Footsteps-002.wav</ShortName>
+							<Path>SFX\Enemy_Footsteps-002_10C4C929.wem</Path>
+						</File>
+						<File Id="453216294" Language="SFX">
+							<ShortName>Enemy_Footsteps-006.wav</ShortName>
+							<Path>SFX\Enemy_Footsteps-006_10C4C929.wem</Path>
+						</File>
+						<File Id="511547983" Language="SFX">
+							<ShortName>Enemy_Footsteps-003.wav</ShortName>
+							<Path>SFX\Enemy_Footsteps-003_10C4C929.wem</Path>
+						</File>
+						<File Id="1015705834" Language="SFX">
+							<ShortName>Enemy_Footsteps-001.wav</ShortName>
+							<Path>SFX\Enemy_Footsteps-001_10C4C929.wem</Path>
 						</File>
 					</IncludedMemoryFiles>
 				</Event>
@@ -178,7 +206,23 @@
 						</File>
 					</IncludedMemoryFiles>
 				</Event>
-				<Event Id="1305133589" Name="Player_Jump" ObjectPath="\Events\Default Work Unit\SFX_Player\Player_Jump" DurationType="OneShot" DurationMin="0.492832" DurationMax="0.507273">
+				<Event Id="1730208058" Name="Player_Footsteps" ObjectPath="\Events\Default Work Unit\SFX_Player\Player_Footsteps" DurationType="OneShot" DurationMin="0.772833" DurationMax="0.818789">
+					<IncludedMemoryFiles>
+						<File Id="733255255" Language="SFX">
+							<ShortName>Player_Footsteps-003.wav</ShortName>
+							<Path>SFX\Player_Footsteps-003_10C4C929.wem</Path>
+						</File>
+						<File Id="819485897" Language="SFX">
+							<ShortName>Player_Footsteps-005.wav</ShortName>
+							<Path>SFX\Player_Footsteps-005_10C4C929.wem</Path>
+						</File>
+						<File Id="950608656" Language="SFX">
+							<ShortName>Player_Footsteps-002.wav</ShortName>
+							<Path>SFX\Player_Footsteps-002_10C4C929.wem</Path>
+						</File>
+					</IncludedMemoryFiles>
+				</Event>
+				<Event Id="1305133589" Name="Player_Jump" ObjectPath="\Events\Default Work Unit\SFX_Player\Player_Jump" DurationType="OneShot" DurationMin="0.862476" DurationMax="0.887748">
 					<IncludedMemoryFiles>
 						<File Id="681125824" Language="SFX">
 							<ShortName>Player_Jump-002.wav</ShortName>
@@ -198,7 +242,7 @@
 						</File>
 					</IncludedMemoryFiles>
 				</Event>
-				<Event Id="3629196698" Name="Player_Land" ObjectPath="\Events\Default Work Unit\SFX_Player\Player_Land" DurationType="OneShot" DurationMin="0.492832" DurationMax="0.507273">
+				<Event Id="3629196698" Name="Player_Land" ObjectPath="\Events\Default Work Unit\SFX_Player\Player_Land" DurationType="OneShot" DurationMin="0.970714" DurationMax="0.999158">
 					<IncludedMemoryFiles>
 						<File Id="280217797" Language="SFX">
 							<ShortName>Player_Land-003.wav</ShortName>
@@ -295,7 +339,7 @@
 				</StateGroup>
 			</StateGroups>
 		</SoundBank>
-		<SoundBank Id="1355168291" Language="SFX" Hash="3233565659">
+		<SoundBank Id="1355168291" Language="SFX" Hash="3713076441">
 			<ObjectPath>Init</ObjectPath>
 			<ShortName>Init</ShortName>
 			<Path>Init.bnk</Path>
@@ -305,6 +349,7 @@
 			<GameParameters>
 				<GameParameter Id="266555239" Name="Music_Sidechain" ObjectPath="\Game Parameters\Default Work Unit\Music_Sidechain"/>
 				<GameParameter Id="622329408" Name="Victory_Defeat_Sidechain" ObjectPath="\Game Parameters\Default Work Unit\Victory_Defeat_Sidechain"/>
+				<GameParameter Id="2388545719" Name="Footsteps_Sidechain" ObjectPath="\Game Parameters\Default Work Unit\Footsteps_Sidechain"/>
 				<GameParameter Id="2862064063" Name="SFX_Sidechain" ObjectPath="\Game Parameters\Default Work Unit\SFX_Sidechain"/>
 				<GameParameter Id="3673881719" Name="Volume_SFX" ObjectPath="\Game Parameters\Default Work Unit\Volume_SFX"/>
 				<GameParameter Id="3695994288" Name="Volume_Master" ObjectPath="\Game Parameters\Default Work Unit\Volume_Master"/>
