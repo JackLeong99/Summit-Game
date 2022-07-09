@@ -33,6 +33,7 @@ public class UIManager : MonoBehaviour
 
     public GameObject PanelPauseMenu;
     public GameObject PowerUpMenu;
+    public GameObject SettingsMenu;
 
     private bool gameOver=true;
 
@@ -80,6 +81,7 @@ public class UIManager : MonoBehaviour
         PanelPauseMenu.SetActive(false);
         PowerUpMenu.SetActive(false);
         PanelWin.SetActive(false);
+        SettingsMenu.SetActive(false);
         BossName.text="Iwazaru: Guardian of the mountain"; //set by game later same as archer
         
     }
@@ -162,7 +164,11 @@ public class UIManager : MonoBehaviour
     {
         PowerUpMenu.SetActive(true);
         PanelPauseMenu.SetActive(false);
-        
+    }
+    public void SettingMenu()
+    {
+        SettingsMenu.SetActive(true);
+        PanelPauseMenu.SetActive(false);
     }
 
     public void Quit()
