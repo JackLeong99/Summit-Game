@@ -148,6 +148,7 @@ public class UIManager : MonoBehaviour
             AkSoundEngine.PostEvent("UI_Click", _mainCamera);
             AkSoundEngine.PostEvent("UI_Menu_On", _mainCamera);
             PowerUpMenu.SetActive(false);
+            SettingsMenu.SetActive(false);
         }
     }
 
