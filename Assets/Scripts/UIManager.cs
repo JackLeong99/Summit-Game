@@ -26,7 +26,7 @@ public class UIManager : MonoBehaviour
     public Slider BossHealthBar;
     public float BossFullHealth=100f;
 
-
+    public Slider volumeSlider;
 
     public GameObject PanelGameOver;
     public GameObject PanelWin;
@@ -172,10 +172,16 @@ public class UIManager : MonoBehaviour
         PanelPauseMenu.SetActive(false);
     }
 
+    public void VolumeChange()
+    {
+        AudioListener.volume = volumeSlider.value; //need to find what it is on wwise
+    }
     public void Quit()
     {
         AkSoundEngine.PostEvent("UI_Click", _mainCamera);
         AkSoundEngine.PostEvent("Game_Quit", _mainCamera);
         Application.Quit();
     }
+
+
 }
