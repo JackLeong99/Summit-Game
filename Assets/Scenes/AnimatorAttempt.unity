@@ -474,6 +474,10 @@ PrefabInstance:
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 1377971759432952252, guid: 90c1bd1fda819204985b62a4e3e9e7b5, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1377971759432952252, guid: 90c1bd1fda819204985b62a4e3e9e7b5, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
@@ -854,7 +858,15 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 433729255995641044, guid: 30197c7c6dc8a0f4188a9ba10e665635, type: 2}
     - target: {fileID: 8702288864805201961, guid: 90c1bd1fda819204985b62a4e3e9e7b5, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8702288864805201961, guid: 90c1bd1fda819204985b62a4e3e9e7b5, type: 3}
       propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8702288864805201961, guid: 90c1bd1fda819204985b62a4e3e9e7b5, type: 3}
+      propertyPath: m_AnchorMin.x
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -2440,6 +2452,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   boss: {fileID: 0}
   onHitParticles: {fileID: 8382442116021813945, guid: 39f09805de074e7498d7800b3036c85b, type: 3}
+--- !u!224 &1092720749 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 7152370277917233117, guid: 90c1bd1fda819204985b62a4e3e9e7b5, type: 3}
+  m_PrefabInstance: {fileID: 72617978}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1113639655 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3900266036045708740, guid: 15cb9288e8231f9419be19f0ae9ecad5, type: 3}
@@ -2936,7 +2953,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.3333334, y: 1}
+    m_SensorSize: {x: 2.0483272, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -4972,5 +4989,9 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8932579664550867901, guid: 0c28c6fe4fc4bd243bfaa09c6d69ea46, type: 3}
+      propertyPath: m_XRTrackingOrigin
+      value: 
+      objectReference: {fileID: 1092720749}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0c28c6fe4fc4bd243bfaa09c6d69ea46, type: 3}
