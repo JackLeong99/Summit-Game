@@ -2799,7 +2799,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.7777433, y: 1}
+    m_SensorSize: {x: 1.7784979, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -4327,6 +4327,42 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2733640841198387589, guid: 805846ef42bc54a4f9eee960cbfff8b4, type: 3}
+      propertyPath: m_CastShadows
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2733640841335652937, guid: 805846ef42bc54a4f9eee960cbfff8b4, type: 3}
+      propertyPath: m_CastShadows
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2733640842004939648, guid: 805846ef42bc54a4f9eee960cbfff8b4, type: 3}
+      propertyPath: m_CastShadows
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2733640842067721267, guid: 805846ef42bc54a4f9eee960cbfff8b4, type: 3}
+      propertyPath: m_CastShadows
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2733640842172317921, guid: 805846ef42bc54a4f9eee960cbfff8b4, type: 3}
+      propertyPath: m_CastShadows
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2733640842215120554, guid: 805846ef42bc54a4f9eee960cbfff8b4, type: 3}
+      propertyPath: m_CastShadows
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2733640842335793863, guid: 805846ef42bc54a4f9eee960cbfff8b4, type: 3}
+      propertyPath: m_CastShadows
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2733640842446213126, guid: 805846ef42bc54a4f9eee960cbfff8b4, type: 3}
+      propertyPath: m_CastShadows
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2733640842550066868, guid: 805846ef42bc54a4f9eee960cbfff8b4, type: 3}
+      propertyPath: m_CastShadows
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2733640842813805398, guid: 805846ef42bc54a4f9eee960cbfff8b4, type: 3}
       propertyPath: m_Name
       value: CloudPoint
@@ -4373,6 +4409,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2733640842813805400, guid: 805846ef42bc54a4f9eee960cbfff8b4, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2733640842951752070, guid: 805846ef42bc54a4f9eee960cbfff8b4, type: 3}
+      propertyPath: m_CastShadows
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
