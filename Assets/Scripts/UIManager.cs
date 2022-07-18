@@ -185,7 +185,7 @@ public class UIManager : MonoBehaviour
     {
         SettingsMenu.SetActive(true);
         PanelPauseMenu.SetActive(false);
-                    //for controller/keyboard
+            //for controller/keyboard
             //need to empty event system
             EventSystem.current.SetSelectedGameObject(null);
             //set mew selected object
@@ -195,7 +195,7 @@ public class UIManager : MonoBehaviour
     {
         SettingsMenu.SetActive(false);
         PanelPauseMenu.SetActive(true);
-                    //for controller/keyboard
+            //for controller/keyboard
             //need to empty event system
             EventSystem.current.SetSelectedGameObject(null);
             //set mew selected object
