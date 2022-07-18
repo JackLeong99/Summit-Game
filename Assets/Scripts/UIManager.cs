@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using UnityEngine.SceneManagement;
+using UnityEngine.EventSystems;
 
 public class UIManager : MonoBehaviour
 {
@@ -27,6 +28,7 @@ public class UIManager : MonoBehaviour
     public float BossFullHealth=100f;
 
     public Slider volumeSlider;
+    public Slider sensitivitySlider;
 
     public GameObject PanelGameOver;
     public GameObject PanelWin;
@@ -49,6 +51,11 @@ public class UIManager : MonoBehaviour
 
     public TMP_Text BossName;
     private GameObject _mainCamera;
+
+
+    //for controller interface
+    public GameObject pauseFirstButton, settingsFirst, settingsClosed;
+
 
     void Awake()
     {
@@ -149,6 +156,14 @@ public class UIManager : MonoBehaviour
             AkSoundEngine.PostEvent("UI_Menu_On", _mainCamera);
             PowerUpMenu.SetActive(false);
             SettingsMenu.SetActive(false);
+
+
+            //for controller/keyboard
+            //need to empty event system
+            EventSystem.current.SetSelectedGameObject(null);
+            //set mew selected object
+            EventSystem.current.SetSelectedGameObject(pauseFirstButton);
+
         }
     }
 
@@ -170,12 +185,34 @@ public class UIManager : MonoBehaviour
     {
         SettingsMenu.SetActive(true);
         PanelPauseMenu.SetActive(false);
+                    //for controller/keyboard
+            //need to empty event system
+            EventSystem.current.SetSelectedGameObject(null);
+            //set mew selected object
+            EventSystem.current.SetSelectedGameObject(settingsFirst);
+    }
+    public void SettingtoPauseMenu()
+    {
+        SettingsMenu.SetActive(false);
+        PanelPauseMenu.SetActive(true);
+                    //for controller/keyboard
+            //need to empty event system
+            EventSystem.current.SetSelectedGameObject(null);
+            //set mew selected object
+            EventSystem.current.SetSelectedGameObject(settingsClosed);
     }
 
     public void VolumeChange()
     {
         AudioListener.volume = volumeSlider.value; //need to find what it is on wwise
     }
+
+    public void SensitivityChange()
+    {
+        //GetComponent<FirstPersonController>().ChangeMouseSensitivity(sensitivitySlider.value, sensitivitySlider.value);
+    }
+
+
     public void Quit()
     {
         AkSoundEngine.PostEvent("UI_Click", _mainCamera);
