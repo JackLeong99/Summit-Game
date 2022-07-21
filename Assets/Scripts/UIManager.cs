@@ -57,6 +57,10 @@ public class UIManager : MonoBehaviour
     public GameObject pauseFirstButton, settingsFirst, settingsClosed;
 
 
+    //for volume change
+    public float masterVolume;
+
+
     void Awake()
     {
         if (instance != null)
@@ -204,7 +208,11 @@ public class UIManager : MonoBehaviour
 
     public void VolumeChange()
     {
-        AudioListener.volume = volumeSlider.value; //need to find what it is on wwise
+        float sliderValue=volumeSlider.value; //sets it to a float
+        //AudioListener.volume = volumeSlider.value; //this is what to do when it is the standard unity sound
+        masterVolume =volumeSlider.value;
+        AkSoundEngine.SetRTPCValue("Master_Ambience", masterVolume);
+        AkSoundEngine.SetRTPCValue("Master_SFX", masterVolume);
     }
 
     public void SensitivityChange()
