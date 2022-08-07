@@ -18,7 +18,7 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    private GameObject player;
+    public static GameObject player;
 
     private bool noPause=true;
 

@@ -2799,7 +2799,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.7777433, y: 1}
+    m_SensorSize: {x: 1.3333334, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -4191,6 +4191,11 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 6849462960769781656, guid: 90c1bd1fda819204985b62a4e3e9e7b5, type: 3}
   m_PrefabInstance: {fileID: 72617978}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &2036704501 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3188286698090149144, guid: 118aa6fa841507a41abd8e079e760746, type: 3}
+  m_PrefabInstance: {fileID: 6289049538950680669}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &2128756183 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 3406367461238469038, guid: 738ab131643238a48802e411ddfd2202, type: 3}
@@ -4599,6 +4604,46 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 5564621795753800860, guid: 15cb9288e8231f9419be19f0ae9ecad5, type: 3}
+      propertyPath: Player
+      value: 
+      objectReference: {fileID: 7902326121541689433}
+    - target: {fileID: 5564621795753800860, guid: 15cb9288e8231f9419be19f0ae9ecad5, type: 3}
+      propertyPath: leftHand
+      value: 
+      objectReference: {fileID: 516951571}
+    - target: {fileID: 5564621795753800860, guid: 15cb9288e8231f9419be19f0ae9ecad5, type: 3}
+      propertyPath: baseState
+      value: 
+      objectReference: {fileID: 11400000, guid: 76dd6e17a02317a429fe4e5262316a0b, type: 2}
+    - target: {fileID: 5564621795753800860, guid: 15cb9288e8231f9419be19f0ae9ecad5, type: 3}
+      propertyPath: rightHand
+      value: 
+      objectReference: {fileID: 2036704501}
+    - target: {fileID: 5564621795753800860, guid: 15cb9288e8231f9419be19f0ae9ecad5, type: 3}
+      propertyPath: attributes
+      value: 
+      objectReference: {fileID: 11400000, guid: 36493a278fbac2f47889d01b3cd7620b, type: 2}
+    - target: {fileID: 5564621795753800860, guid: 15cb9288e8231f9419be19f0ae9ecad5, type: 3}
+      propertyPath: abilities.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5564621795753800860, guid: 15cb9288e8231f9419be19f0ae9ecad5, type: 3}
+      propertyPath: abilities.Array.data[0]
+      value: 
+      objectReference: {fileID: 11400000, guid: 76dd6e17a02317a429fe4e5262316a0b, type: 2}
+    - target: {fileID: 5564621795753800860, guid: 15cb9288e8231f9419be19f0ae9ecad5, type: 3}
+      propertyPath: abilities.Array.data[1]
+      value: 
+      objectReference: {fileID: 11400000, guid: 2c0f7286ce5c73e4480344b249301522, type: 2}
+    - target: {fileID: 5564621795753800860, guid: 15cb9288e8231f9419be19f0ae9ecad5, type: 3}
+      propertyPath: abilities.Array.data[2]
+      value: 
+      objectReference: {fileID: 11400000, guid: 034aa4d635a6c6648942c871e853f274, type: 2}
+    - target: {fileID: 5564621795753800860, guid: 15cb9288e8231f9419be19f0ae9ecad5, type: 3}
+      propertyPath: abilities.Array.data[3]
+      value: 
+      objectReference: {fileID: 11400000, guid: 034aa4d635a6c6648942c871e853f274, type: 2}
     - target: {fileID: 6118956715112586494, guid: 15cb9288e8231f9419be19f0ae9ecad5, type: 3}
       propertyPath: m_Name
       value: Golem Boss
