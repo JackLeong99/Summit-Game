@@ -31,10 +31,11 @@ public class StunnedState : BaseState
 
     public IEnumerator Stunned()
     {
+        Stun(StunState.Ignore);
         boss.agent.speed = 0;
         boss.anim.SetTrigger("Stunned");
 
-        yield return new WaitForSeconds(boss.components.stunTimer);
+        yield return new WaitForSeconds(boss.attributes.stunTime);
         boss.anim.SetTrigger("StunEnd");
 
         boss.agent.speed = boss.components.rage ? boss.attributes.rageSpeed : boss.components.startSpeed;

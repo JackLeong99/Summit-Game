@@ -2,7 +2,7 @@ using System.Collections;
 using System;
 using UnityEngine;
 
-[Serializable] public abstract class BossAbility : ScriptableObject
+[Serializable] public abstract class BossState : ScriptableObject
 {
     protected BossStateMachine boss;
 
@@ -16,11 +16,6 @@ using UnityEngine;
     public GameObject parentObject;
 
     public bool ExitingState { get; protected set; }
-
-    /*public BossAbility(BossStateMachine boss)
-    {
-        this.boss = boss;
-    }*/
 
     public virtual void Invoke(BossStateMachine boss) 
     {

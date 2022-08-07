@@ -8,6 +8,7 @@ using UnityEngine;
     [Header("Distance Checks")]
     public int minPlayerDist;
     public int maxPlayerDist;
+    public float turnSpeed;
     public float turnFor = 1f;
 
     [Header("Attacks")]
@@ -21,4 +22,7 @@ using UnityEngine;
     [Header("Rage")]
     public float rageSpeed;
     public float rageMultiplier;
+
+    [Header("Stun")]
+    public float stunTime;
 }

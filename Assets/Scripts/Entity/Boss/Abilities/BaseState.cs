@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu(menuName = "Boss/Ability/BaseState")]
-public class BaseState : BossAbility
+public class BaseState : BossState
 {
     //public BaseState(BossStateMachine boss) : base(boss) { }
 
@@ -28,5 +28,17 @@ public class BaseState : BossAbility
     public override void Exit()
     {
         base.Exit();
+    }
+
+    public bool Alive()
+    {
+        return boss.components.curHealth <= 0;
+    }
+
+    public void LookTowards(Transform target)
+    {
+        var targetRot = Quaternion.LookRotation(target.position - boss.transform.position);
+        var adjustedRot = Quaternion.Euler(0.0f, targetRot.eulerAngles.y, targetRot.eulerAngles.z);
+        boss.transform.rotation = Quaternion.RotateTowards(boss.transform.rotation, adjustedRot, boss.attributes.turnSpeed * Time.deltaTime);
     }
 }

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
     
 [CreateAssetMenu(menuName = "Boss/Ability/IdleState")]
-public class IdleState : BaseState
+public class GolemIdleState : BaseState
 {
     //public IdleState(BossStateMachine boss) : base(boss) { }
 
@@ -25,10 +25,5 @@ public class IdleState : BaseState
     public override void Exit()
     {
         base.Exit();
-    }
-
-    public bool Alive()
-    {
-        return boss.components.curHealth <= 0;
     }
 }

@@ -2799,7 +2799,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.3333334, y: 1}
+    m_SensorSize: {x: 1.978974, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -4626,16 +4626,16 @@ PrefabInstance:
       objectReference: {fileID: 11400000, guid: 36493a278fbac2f47889d01b3cd7620b, type: 2}
     - target: {fileID: 5564621795753800860, guid: 15cb9288e8231f9419be19f0ae9ecad5, type: 3}
       propertyPath: abilities.Array.size
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 5564621795753800860, guid: 15cb9288e8231f9419be19f0ae9ecad5, type: 3}
       propertyPath: abilities.Array.data[0]
       value: 
-      objectReference: {fileID: 11400000, guid: 76dd6e17a02317a429fe4e5262316a0b, type: 2}
+      objectReference: {fileID: 11400000, guid: 2c0f7286ce5c73e4480344b249301522, type: 2}
     - target: {fileID: 5564621795753800860, guid: 15cb9288e8231f9419be19f0ae9ecad5, type: 3}
       propertyPath: abilities.Array.data[1]
       value: 
-      objectReference: {fileID: 11400000, guid: 2c0f7286ce5c73e4480344b249301522, type: 2}
+      objectReference: {fileID: 11400000, guid: 034aa4d635a6c6648942c871e853f274, type: 2}
     - target: {fileID: 5564621795753800860, guid: 15cb9288e8231f9419be19f0ae9ecad5, type: 3}
       propertyPath: abilities.Array.data[2]
       value: 

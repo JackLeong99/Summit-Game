@@ -14,9 +14,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   minPlayerDist: 10
   maxPlayerDist: 30
+  turnSpeed: 60
+  turnFor: 1
   attackCooldown: 0.75
   rangedCooldown: 3
   patience: 0.3
   maxHealth: 1000
   rageSpeed: 15
   rageMultiplier: 0
+  stunTime: 4

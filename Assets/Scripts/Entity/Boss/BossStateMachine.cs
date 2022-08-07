@@ -27,8 +27,7 @@ using UnityEngine.AI;
     public bool rage = false;
 
     [Header("Stun")]
-    public StunState stunState = StunState.Accepted;
-    public float stunTimer;    
+    public StunState stunState = StunState.Accepted;  
 }
 
 public enum AttackState { CanAttack, CanRanged, InAttack }
@@ -47,10 +46,10 @@ public class BossStateMachine : MonoBehaviour
     public GameObject rightHand;
 
     [Header("Abilities")]
-    public BossAbility currentAbility;
-    public BossAbility previousState;
-    public BossAbility baseState;
-    public List<BossAbility> abilities = new List<BossAbility>();
+    public BossState currentAbility;
+    public BossState previousState;
+    public BossState baseState;
+    public List<BossState> abilities = new List<BossState>();
 
     [Header("Component References")]
     public Animator anim;
@@ -73,7 +72,7 @@ public class BossStateMachine : MonoBehaviour
         damage = GetComponent<DamageFlash>();
     }
 
-    public void Initialize(BossAbility startingState)
+    public void Initialize(BossState startingState)
     {
         currentAbility = startingState;
         currentAbility.Invoke(this);
@@ -84,7 +83,7 @@ public class BossStateMachine : MonoBehaviour
         currentAbility.Update();
     }
 
-    public void ChangeState(BossAbility changeToAbility)
+    public void ChangeState(BossState changeToAbility)
     {
         if (currentAbility.ExitingState)
             return;
@@ -93,7 +92,7 @@ public class BossStateMachine : MonoBehaviour
         currentAbility.Invoke(this);
     }
 
-    public BossAbility GetState<T>() where T : BossAbility
+    public BossState GetState<T>() where T : BossState
     {
         return abilities.Find(x => x.GetType().Equals(typeof(T)));
     }
