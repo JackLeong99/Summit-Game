@@ -18,7 +18,23 @@ public class GolemIdleState : BaseState
 
         switch (Alive())
         {
+            case true:
+                bool meleeDist = Vector3.Distance(boss.transform.position, GameManager.player.transform.position) <= boss.attributes.minPlayerDist;
+                bool rangedDist = Vector3.Distance(boss.transform.position, GameManager.player.transform.position) >= boss.attributes.maxPlayerDist;
 
+                switch (meleeDist)
+                {
+                    case bool x when meleeDist:
+                        boss.ChangeState(boss.GetState<MeleeState>());
+                        break;
+                    case bool y when rangedDist:
+                        boss.ChangeState(boss.GetState<RangedState>());
+                        break;
+                    default:
+                        boss.ChangeState(boss.GetState<PathingState>());
+                        break;
+                }
+                break;
         }
     }
 
