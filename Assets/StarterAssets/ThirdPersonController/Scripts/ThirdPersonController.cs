@@ -117,6 +117,7 @@ namespace StarterAssets
 
 		private float startLock = 120;
 
+
 		//End Custom
 
 		private void Awake()
@@ -433,5 +434,13 @@ namespace StarterAssets
 
 			AkSoundEngine.PostEvent("Player_Footsteps", gameObject);
         }
+
+
+		//used by ui for sensitivity
+		public void ChangeMouseSensitivity(float X, float Y)
+		{
+      		//m_MouseLook.XSensitivity = X;
+      		//m_MouseLook.YSensitivity = Y; //attempt 1
+  		}
     }
 }

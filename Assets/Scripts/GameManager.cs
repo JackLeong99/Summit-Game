@@ -64,36 +64,16 @@ public class GameManager : MonoBehaviour
         UIManager.Instance.GameOverScreen();
         BossManager bossHealth= boss.GetComponent<BossManager>();
         bossHealth.getCurrentBossHealth();
-            
-         Analytics.CustomEvent("Player Death", new Dictionary<string, object>
-        {
-            {"Player Death time: ", timer},
-            {"Total dealt damage: ", bossHealth.getCurrentBossHealth()}
-        });
     }
 
     public void onBossDeath()
     {
-        PlayerStats health = player.GetComponent<PlayerStats>();
-         Analytics.CustomEvent("Boss Death Time", new Dictionary<string, object>
-        {
-            {"Boss death time: ", timer},
-            {"Player's health: ",health.GetPlayerHealth()}
-        });
-        Analytics.CustomEvent("Player types of damage", new Dictionary<string, object>
-        {
-            {"Total damage by sword: ", totalSwordDamage},
-            {"Total damage by gun: ",totalGunDamage}
-        });
+        //will need to find where I call this
     }
 
     public void onPlayerHit(string attack)
     {
-         /*Analytics.CustomEvent("Player hit time", new Dictionary<string, object>
-        {
-            {"Time of enemy hit: ", timer},
-            {"Name of attack: ", attack}
-        });*/
+        //same here
     }
 
     public void SwordDamge(int sDamage)
