@@ -18,6 +18,7 @@ using UnityEngine;
 
     [Header("Health")]
     public float maxHealth;
+    public float iFrameTime;
 
     [Header("Rage")]
     public float rageSpeed;

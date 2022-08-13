@@ -19,6 +19,7 @@ using UnityEngine.AI;
 
     [Header("Health")]
     public float curHealth;
+    public IState iFrame = IState.Inactive;
 
     [Header("Speed")]
     public float startSpeed;
@@ -31,6 +32,7 @@ using UnityEngine.AI;
 }
 
 public enum AttackState { CanAttack, CanRanged, InAttack }
+public enum IState { Active, Inactive }
 public enum StunState { Accepted, Stunned, Ignore }
 
 public class BossStateMachine : MonoBehaviour
@@ -106,6 +108,13 @@ public class BossStateMachine : MonoBehaviour
 
     public void TakeDamage(float dmg, Vector3 position)
     {
+        switch (components.iFrame)
+        {
+            case IState.Active:
+                return;
+        }
+
+        StartCoroutine(IFrame());
         components.curHealth -= dmg;
 
         AkSoundEngine.PostEvent("Enemy_Damage", gameObject);
@@ -124,6 +133,13 @@ public class BossStateMachine : MonoBehaviour
         }
 
         CheckRage();
+    }
+
+    public IEnumerator IFrame()
+    {
+        components.iFrame = IState.Active;
+        yield return new WaitForSeconds(attributes.iFrameTime);
+        components.iFrame = IState.Inactive;
     }
 
     public bool Alive()
