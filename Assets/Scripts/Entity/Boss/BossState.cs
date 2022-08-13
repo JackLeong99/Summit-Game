@@ -6,15 +6,6 @@ using UnityEngine;
 {
     protected BossStateMachine boss;
 
-    [Header("Information")]
-    [SerializeField] public float duration;
-    [SerializeField] public float delay;
-    [SerializeField] public int layer;
-
-    [Header("References")]
-    public GameObject spawnableObject;
-    public GameObject parentObject;
-
     public bool ExitingState { get; protected set; }
 
     public virtual void Invoke(BossStateMachine boss) 

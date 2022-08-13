@@ -3,12 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
     
 [CreateAssetMenu(menuName = "Boss/Ability/MeleeState")]
-public class MeleeState : BaseState
+public class MeleeState : DecisionState
 {
-    public List<BossState> abilities = new List<BossState>();
-
-    //public IdleState(BossStateMachine boss) : base(boss) { }
-
     public override void Invoke(BossStateMachine boss)
     {
         base.Invoke(boss);

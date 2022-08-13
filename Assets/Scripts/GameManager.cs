@@ -19,6 +19,7 @@ public class GameManager : MonoBehaviour
     }
 
     public static GameObject player;
+    public static GameObject mainCamera;
 
     private bool noPause=true;
 
@@ -45,6 +46,7 @@ public class GameManager : MonoBehaviour
         instance = this;
         Time.timeScale = 1;
         player=GameObject.FindWithTag("Player");
+        mainCamera = GameObject.FindWithTag("MainCamera");
         boss=GameObject.FindWithTag("Boss");
     }
 

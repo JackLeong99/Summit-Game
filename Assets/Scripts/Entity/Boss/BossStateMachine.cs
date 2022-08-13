@@ -48,19 +48,21 @@ public class BossStateMachine : MonoBehaviour
     [Header("Abilities")]
     public BossState currentAbility;
     public BossState previousState;
+    public BossState previousAbility;
     public BossState baseState;
     public List<BossState> abilities = new List<BossState>();
 
     [Header("Component References")]
     public Animator anim;
     public NavMeshAgent agent;
-    public DamageFlash damage;
+    public DamageFlash flash;
 
 
 
     public void Start()
     {
         GetInstances();
+        SetParameters();
         Initialize(baseState);
     }
 
@@ -69,7 +71,12 @@ public class BossStateMachine : MonoBehaviour
         instance = this;
         anim = GetComponent<Animator>();
         agent = GetComponent<NavMeshAgent>();
-        damage = GetComponent<DamageFlash>();
+        flash = GetComponent<DamageFlash>();
+    }
+
+    public void SetParameters()
+    {
+        components.curHealth = attributes.maxHealth;
     }
 
     public void Initialize(BossState startingState)
@@ -95,5 +102,49 @@ public class BossStateMachine : MonoBehaviour
     public BossState GetState<T>() where T : BossState
     {
         return abilities.Find(x => x.GetType().Equals(typeof(T)));
+    }
+
+    public void TakeDamage(float dmg, Vector3 position)
+    {
+        components.curHealth -= dmg;
+
+        AkSoundEngine.PostEvent("Enemy_Damage", gameObject);
+        AkSoundEngine.PostEvent("UI_Hit_Indicator", GameManager.mainCamera);
+
+        UIManager.Instance.HealthBossBarSet((int)Mathf.Round(components.curHealth));
+        UIManager.Instance.DamageTextPool.Spawn(position, dmg.ToString(), Color.white, dmg > 15f ? 12f : 4f);
+
+        if (flash != null)
+            flash.Flash();
+
+        if (!Alive())
+        {
+            ChangeState(GetState<DeathState>());
+            return;
+        }
+
+        CheckRage();
+    }
+
+    public bool Alive()
+    {
+        return components.curHealth >= 0;
+    }
+
+    public void CheckRage()
+    {
+        if (components.rage == false && (components.curHealth <= (attributes.maxHealth / 2)))
+        {
+            StartCoroutine(triggerRage());
+        }
+    }
+
+    IEnumerator triggerRage()
+    {
+        components.rage = true;
+        agent.speed = attributes.rageSpeed;
+        //attributes.attackTurnSpeed = 120.0f;
+        //turnFor = 0.9f;
+        yield return null;
     }
 }

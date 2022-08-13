@@ -4,12 +4,12 @@ using UnityEngine;
 
 public class EnemyDamageReceiver : MonoBehaviour
 {
-    public BossManager boss;
+    public BossStateMachine boss;
     public GameObject onHitParticles;
     
     void Start() 
     {
-        boss = GetComponentInParent<BossManager>();
+        boss = GetComponentInParent<BossStateMachine>();
         gameObject.tag = "enemyHitbox";
     }
     public void PassDamage(float dmg, Vector3 position) 

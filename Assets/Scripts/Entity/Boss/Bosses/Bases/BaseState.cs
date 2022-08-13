@@ -30,11 +30,6 @@ public class BaseState : BossState
         base.Exit();
     }
 
-    public bool Alive()
-    {
-        return boss.components.curHealth <= 0;
-    }
-
     public void LookTowards(Transform target)
     {
         var targetRot = Quaternion.LookRotation(target.position - boss.transform.position);
