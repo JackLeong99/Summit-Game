@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using UnityEngine.SceneManagement;
+using UnityEngine.EventSystems;
 
 public class UIManager : MonoBehaviour
 {
@@ -26,13 +27,15 @@ public class UIManager : MonoBehaviour
     public Slider BossHealthBar;
     public float BossFullHealth=100f;
 
-
+    public Slider volumeSlider;
+    public Slider sensitivitySlider;
 
     public GameObject PanelGameOver;
     public GameObject PanelWin;
 
     public GameObject PanelPauseMenu;
     public GameObject PowerUpMenu;
+    public GameObject SettingsMenu;
 
     private bool gameOver=true;
 
@@ -48,6 +51,15 @@ public class UIManager : MonoBehaviour
 
     public TMP_Text BossName;
     private GameObject _mainCamera;
+
+
+    //for controller interface
+    public GameObject pauseFirstButton, settingsFirst, settingsClosed;
+
+
+    //for volume change
+    public float masterVolume;
+
 
     void Awake()
     {
@@ -80,6 +92,7 @@ public class UIManager : MonoBehaviour
         PanelPauseMenu.SetActive(false);
         PowerUpMenu.SetActive(false);
         PanelWin.SetActive(false);
+        SettingsMenu.SetActive(false);
         BossName.text="Iwazaru: Guardian of the mountain"; //set by game later same as archer
         
     }
@@ -146,6 +159,15 @@ public class UIManager : MonoBehaviour
             AkSoundEngine.PostEvent("UI_Click", _mainCamera);
             AkSoundEngine.PostEvent("UI_Menu_On", _mainCamera);
             PowerUpMenu.SetActive(false);
+            SettingsMenu.SetActive(false);
+
+
+            //for controller/keyboard
+            //need to empty event system
+            EventSystem.current.SetSelectedGameObject(null);
+            //set mew selected object
+            EventSystem.current.SetSelectedGameObject(pauseFirstButton);
+
         }
     }
 
@@ -162,8 +184,42 @@ public class UIManager : MonoBehaviour
     {
         PowerUpMenu.SetActive(true);
         PanelPauseMenu.SetActive(false);
-        
     }
+    public void SettingMenu()
+    {
+        SettingsMenu.SetActive(true);
+        PanelPauseMenu.SetActive(false);
+            //for controller/keyboard
+            //need to empty event system
+            EventSystem.current.SetSelectedGameObject(null);
+            //set mew selected object
+            EventSystem.current.SetSelectedGameObject(settingsFirst);
+    }
+    public void SettingtoPauseMenu()
+    {
+        SettingsMenu.SetActive(false);
+        PanelPauseMenu.SetActive(true);
+            //for controller/keyboard
+            //need to empty event system
+            EventSystem.current.SetSelectedGameObject(null);
+            //set mew selected object
+            EventSystem.current.SetSelectedGameObject(settingsClosed);
+    }
+
+    public void VolumeChange()
+    {
+        float sliderValue=volumeSlider.value; //sets it to a float
+        //AudioListener.volume = volumeSlider.value; //this is what to do when it is the standard unity sound
+        masterVolume =volumeSlider.value;
+        AkSoundEngine.SetRTPCValue("Master_Ambience", masterVolume);
+        AkSoundEngine.SetRTPCValue("Master_SFX", masterVolume);
+    }
+
+    public void SensitivityChange()
+    {
+        //GetComponent<FirstPersonController>().ChangeMouseSensitivity(sensitivitySlider.value, sensitivitySlider.value);
+    }
+
 
     public void Quit()
     {
@@ -171,4 +227,6 @@ public class UIManager : MonoBehaviour
         AkSoundEngine.PostEvent("Game_Quit", _mainCamera);
         Application.Quit();
     }
+
+
 }
