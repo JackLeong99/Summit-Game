@@ -123,38 +123,29 @@ public class RockManager : MonoBehaviour
 
     public void SpawnNewRocks()
     {
-        GameObject newRock1= Instantiate(rockPrefab);
-        newRock1.transform.position= new Vector3(Random.Range(-50.0f, -25.0f), -2, Random.Range(-50.0f, 0f));
-        newRock1.GetComponent<RockPickedUp>().SpawnUp();
-        allRocks.Add(newRock1);
-        GameObject newRock2= Instantiate(rockPrefab);
-        newRock2.transform.position= new Vector3(Random.Range(-50.0f, -25.0f), -2, Random.Range(0f, 50f));
-        newRock2.GetComponent<RockPickedUp>().SpawnUp();
-        allRocks.Add(newRock2);
-        GameObject newRock3= Instantiate(rockPrefab);
-        newRock3.transform.position= new Vector3(Random.Range(-25.0f, 0f), -2, Random.Range(-50f, 0f));
-        newRock3.GetComponent<RockPickedUp>().SpawnUp();
-        allRocks.Add(newRock3);
-        GameObject newRock4= Instantiate(rockPrefab);
-        newRock4.transform.position= new Vector3(Random.Range(-25.0f, 0f), -2, Random.Range(0f, 50f));
-        newRock4.GetComponent<RockPickedUp>().SpawnUp();
-        allRocks.Add(newRock4);
-        GameObject newRock5= Instantiate(rockPrefab);
-        newRock5.transform.position= new Vector3(Random.Range(0f, 25f), -2, Random.Range(-50f, 0f));
-        newRock5.GetComponent<RockPickedUp>().SpawnUp();
-        allRocks.Add(newRock5);
-        GameObject newRock6= Instantiate(rockPrefab);
-        newRock6.transform.position= new Vector3(Random.Range(0f, 25f), -2, Random.Range(0f, 50f));
-        newRock6.GetComponent<RockPickedUp>().SpawnUp();
-        allRocks.Add(newRock6);
-        GameObject newRock7= Instantiate(rockPrefab);
-        newRock7.transform.position= new Vector3(Random.Range(25f, 50f), -2, Random.Range(-50f, 0f));
-        newRock7.GetComponent<RockPickedUp>().SpawnUp();
-        allRocks.Add(newRock7);
-        GameObject newRock8= Instantiate(rockPrefab);
-        newRock8.transform.position= new Vector3(Random.Range(25f, 50f), -2, Random.Range(0f, 50f));
-        newRock8.GetComponent<RockPickedUp>().SpawnUp();
-        allRocks.Add(newRock8);
+        int rocksToSpawn = 8;
+        int increase = 25;
+        float rockRangeDown = -50f;
+        float rockRangeUp = -25f;
+        float constant = -50f;
+
+        for (int i = 1; i < rocksToSpawn / 2; i++)
+        {
+            allRocks.Add(Instantiate(rockPrefab));
+            allRocks.Last().transform.position = new Vector3(Random.Range(rockRangeDown, rockRangeUp), -2, Random.Range(constant, constant + 50f));
+            allRocks.Last().GetComponent<RockPickedUp>().SpawnUp();
+
+            if (rocksToSpawn % 2 != 0)
+            {
+                constant = 0;
+            }
+            else
+            {
+                rockRangeDown += increase;
+                rockRangeUp += increase;
+                constant = -50f;
+            }
+        }
     }
 
     //needed for boss manager

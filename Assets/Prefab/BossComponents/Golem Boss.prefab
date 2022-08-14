@@ -8426,7 +8426,7 @@ GameObject:
   - component: {fileID: 6890848393958426180}
   - component: {fileID: 6353329374851288173}
   - component: {fileID: 6353329374851288169}
-  - component: {fileID: 6353329374851288171}
+  - component: {fileID: 5564621795753800860}
   - component: {fileID: 6353329374851288175}
   - component: {fileID: 6353329374851288161}
   - component: {fileID: 6353329374851288162}
@@ -8494,7 +8494,7 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &6353329374851288171
+--- !u!114 &5564621795753800860
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8503,7 +8503,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 6118956715112586494}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d824360475f57420291a62b6d52a4762, type: 3}
+  m_Script: {fileID: 11500000, guid: 14202dfd41f93a0468cc8ddfc16f5c93, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   Player: {fileID: 0}
@@ -8529,6 +8529,12 @@ MonoBehaviour:
   spawnNewRocksTime: 7
   stunned: 0
   gunStunDuration: 4
+  Alive: 1
+  attackTurnSpeed: 0
+  turnFor: 1
+  currentAbility: {fileID: 0}
+  abilities:
+  - {fileID: 11400000, guid: 578bf5665097ab8418093c05c101fc89, type: 2}
 --- !u!114 &6353329374851288175
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8577,12 +8583,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 02b76fed750f64c6e8263254b9d055a8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxSize: 50
-  scaleTime: 0.3
   shockwaveHitbox: {fileID: 4686178775174311369, guid: c8aaaf5564c7a4a3a9f37be7ab91483e, type: 3}
-  shockwaveFX: {fileID: 3520696819567259417, guid: 2497e87fcbbd94b8ba312e0f831a4298, type: 3}
-  rightHand: {fileID: 6773642960576418180}
-  leftHand: {fileID: 1974784712786466982}
+  hitPoint: {fileID: 0}
 --- !u!114 &6353329374851288165
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8617,6 +8619,7 @@ MonoBehaviour:
   hitboxObject2: {fileID: 3661587751898508818, guid: b2475ab0bf7bade4b9028d265fc6a37c, type: 3}
   parentObject2: {fileID: 3203533594738950739}
   duration: 2
+  warmup: 0
 --- !u!114 &6353329374851288167
 MonoBehaviour:
   m_ObjectHideFlags: 0

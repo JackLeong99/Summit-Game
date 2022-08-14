@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 17ec2846d6cc1d347ac36aa36397e6e7, type: 3}
+  m_Name: Golem
+  m_EditorClassIdentifier: 
+  minPlayerDist: 10
+  maxPlayerDist: 30
+  turnSpeed: 60
+  turnFor: 1
+  attackCooldown: 0.75
+  rangedCooldown: 3
+  patience: 0.3
+  maxHealth: 1000
+  iFrameTime: 0.5
+  rageSpeed: 15
+  rageMultiplier: 0
+  stunTime: 4
