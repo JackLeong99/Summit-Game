@@ -10,8 +10,8 @@ public class ApplyPowerup : MonoBehaviour
     {
         if (other.tag == "Player") 
         {
-            itemBase.effect(other.gameObject);
             Destroy(gameObject);
+            itemBase.effect(other.gameObject);
         }
     }
 }

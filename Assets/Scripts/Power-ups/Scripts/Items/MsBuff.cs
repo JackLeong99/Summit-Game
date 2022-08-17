@@ -1,13 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using StarterAssets;
 
 [CreateAssetMenu(menuName = "Powerups/MovementSpeedBuff")]
 public class MsBuff : ItemBase
 {
-    public int amount;
+    public float amount;
     public override void effect(GameObject target)
     {
-        target.GetComponent<ItemFrame>().msStacks += amount;
+        target.GetComponent<ThirdPersonController>().MoveSpeed += amount;
+        target.GetComponent<ThirdPersonController>().SprintSpeed += amount;
     }
 }
