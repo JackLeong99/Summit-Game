@@ -7,13 +7,15 @@ using StarterAssets;
 
 public class ThirdPersonShooting : MonoBehaviour
 {
-    [SerializeField] float bulletDamage;
+    public bool useGrav;
 
-    [SerializeField] float chargeTime;
+    public float bulletDamage;
 
-    [SerializeField] float succTime;
+    public float chargeTime;
 
-    [SerializeField] ParticleSystem succ;
+    public float succTime;
+
+    public ParticleSystem succ;
 
     public Camera cam;
 
@@ -25,15 +27,15 @@ public class ThirdPersonShooting : MonoBehaviour
 
     public Image CdBackground;
 
-    public float projectileSpeed = 30;
+    public float projectileSpeed;
 
-    public float shotTimeBuffer = 0f;
+    public float shotTimeBuffer;
 
-    public float shotAnimEnd = 0f;
+    public float shotAnimEnd;
 
-    public float cooldown = 0;
+    public float cooldown;
     [HideInInspector]
-    public float cdTimer = 0;
+    public float cdTimer;
     [HideInInspector]
     public bool casting;
     [HideInInspector]
@@ -77,6 +79,8 @@ public class ThirdPersonShooting : MonoBehaviour
     void Update()
     {
         CooldownHandler();
+        projectileSpeed = Mathf.Clamp(projectileSpeed, 20f, 300f);
+
     }
 
     public void CastShoot()
@@ -142,5 +146,9 @@ public class ThirdPersonShooting : MonoBehaviour
         var projectileObj = Instantiate (projectile, FirePoint.position, Quaternion.identity) as GameObject;
         projectileObj.GetComponent<PlayerBullet>().setDamage(bulletDamage);
         projectileObj.GetComponent<Rigidbody>().velocity = (destination - FirePoint.position).normalized * projectileSpeed;
+        if (useGrav) 
+        {
+            projectileObj.GetComponent<Rigidbody>().useGravity = true;
+        }
     }
 }
