@@ -15,7 +15,9 @@ public class AutoAttack : MonoBehaviour
 
     private int attackAnim;
 
-    [SerializeField] float attackDamage;
+    public bool powerUpFlag = false;
+
+    public float attackDamage;
 
     [SerializeField] GameObject attackHitbox;
 
@@ -53,6 +55,7 @@ public class AutoAttack : MonoBehaviour
 
     IEnumerator Attack()
 	{
+        powerUpFlag = true;
         AkSoundEngine.PostEvent("Player_Attack", gameObject);
         Transform player = gameObject.transform;
         if (attackAnim == 0) 
@@ -76,5 +79,6 @@ public class AutoAttack : MonoBehaviour
 			Destroy(hitbox);
 		}
 		isAttacking = false;
+        powerUpFlag = false;
     }
 }

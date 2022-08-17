@@ -132,6 +132,8 @@ public class UIManager : MonoBehaviour
 
     public void RestartGame()
     {
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
