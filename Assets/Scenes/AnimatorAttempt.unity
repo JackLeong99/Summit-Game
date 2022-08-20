@@ -5313,7 +5313,7 @@ PrefabInstance:
       objectReference: {fileID: 981408569}
     - target: {fileID: 4246193514816548867, guid: 118aa6fa841507a41abd8e079e760746, type: 3}
       propertyPath: OnHitEffects.Array.size
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 4246193514816548867, guid: 118aa6fa841507a41abd8e079e760746, type: 3}
       propertyPath: OnHitEffects.Array.data[0]
@@ -5323,6 +5323,10 @@ PrefabInstance:
       propertyPath: OnHitEffects.Array.data[1]
       value: 
       objectReference: {fileID: 11400000, guid: 7f103c22ec70e644d999c9752b0120d4, type: 2}
+    - target: {fileID: 4246193514816548867, guid: 118aa6fa841507a41abd8e079e760746, type: 3}
+      propertyPath: OnHitEffects.Array.data[2]
+      value: 
+      objectReference: {fileID: 11400000, guid: f58d4fbde17288c4d9da1a067e7fa6ed, type: 2}
     - target: {fileID: 4246193514816548868, guid: 118aa6fa841507a41abd8e079e760746, type: 3}
       propertyPath: m_RootOrder
       value: 4
