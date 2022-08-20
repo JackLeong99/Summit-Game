@@ -17,7 +17,7 @@ public abstract class ProjectileHandler : ScriptableObject
     public ProjectileBase projectileBase;
     //The on hit effect applied by this projectile
     //(this needs to be updated to a class type variable once the onhiteffect class is implemented)
-    public OnHitEffect OnHitEffect;
+    public List<OnHitEffect> OnHitEffects = new List<OnHitEffect>();
     //The point the projectile originates from
     public Transform originPoint;
     //The point the projectile is aimed at
@@ -26,7 +26,7 @@ public abstract class ProjectileHandler : ScriptableObject
     public virtual void ShootProjectile() 
     {
         var projectileObj = Instantiate(projectile, originPoint.position, Quaternion.identity) as GameObject;
-        projectileObj.GetComponent<ProjectileBase>().SetOnHitEffect(OnHitEffect);
+        projectileObj.GetComponent<ProjectileBase>().SetOnHitEffect(OnHitEffects);
         var rBody = projectileObj.GetComponent<Rigidbody>();
         rBody.velocity = (target - originPoint.position).normalized * projectileSpeed;
         if (useGrav)

@@ -6,9 +6,8 @@ public abstract class ProjectileBase : MonoBehaviour
 {
     public float maxLifetime;
     private float currentLifetime;
-    protected OnHitEffect OnHitEffect;
-    public ParticleSystem hitFX;
-
+    protected float damage;
+    protected List<OnHitEffect> OnHitEffects = new List<OnHitEffect>();
 
     public virtual void Update()
     {
@@ -21,7 +20,6 @@ public abstract class ProjectileBase : MonoBehaviour
 
     public virtual void Hit()
     {
-        hitFX.Play();
         Destroy(gameObject);
     }
 
@@ -33,11 +31,21 @@ public abstract class ProjectileBase : MonoBehaviour
     public virtual void OnTriggerEnter(Collider other) 
     {
         Hit();
-        OnHitEffect.ApplyOnHitEffects(other.gameObject);
+        other.GetComponent<EnemyDamageReceiver>().PassDamage(damage, transform.position);
+        foreach (var OnHit in OnHitEffects) 
+        {
+            Debug.Log("Applied OnHitEffect to: " + other.gameObject);
+            OnHit.ApplyOnHitEffects(other.gameObject);
+        }
     }
 
-    public void SetOnHitEffect(OnHitEffect effect) 
+    public void SetDamage(float d) 
     {
-        OnHitEffect = effect;
+        damage = d;
+    }
+
+    public void SetOnHitEffect(List<OnHitEffect> effects) 
+    {
+        OnHitEffects = effects;
     }
 }
