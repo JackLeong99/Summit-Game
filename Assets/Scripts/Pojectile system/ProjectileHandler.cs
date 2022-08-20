@@ -5,27 +5,28 @@ using UnityEngine;
 public abstract class ProjectileHandler : ScriptableObject
 {
     //Does the projectile use gravity
-    protected bool useGrav;
+    public bool useGrav;
     //The velocity the projectile is initialised with
-    protected float projectileSpeed;
+    public float projectileSpeed;
     //The minimum possible velocity for this projectile
-    protected float minSpeed;
+    public float minSpeed;
     //The maximum possible velocity for this projectile
-    protected float maxSpeed;
+    public float maxSpeed;
     //Sets the projectile being fired
-    protected GameObject projectile;
+    public GameObject projectile;
+    public ProjectileBase projectileBase;
     //The on hit effect applied by this projectile
     //(this needs to be updated to a class type variable once the onhiteffect class is implemented)
-    protected GameObject OnHitEffect;
+    public OnHitEffect OnHitEffect;
     //The point the projectile originates from
-    protected Transform originPoint;
+    public Transform originPoint;
     //The point the projectile is aimed at
-    protected Vector3 target;
+    public Vector3 target;
 
     public virtual void ShootProjectile() 
     {
         var projectileObj = Instantiate(projectile, originPoint.position, Quaternion.identity) as GameObject;
-        //projectileObj.collisionHandler.setOnHitEffect(OnHitEffect)
+        projectileObj.GetComponent<ProjectileBase>().SetOnHitEffect(OnHitEffect);
         var rBody = projectileObj.GetComponent<Rigidbody>();
         rBody.velocity = (target - originPoint.position).normalized * projectileSpeed;
         if (useGrav)
