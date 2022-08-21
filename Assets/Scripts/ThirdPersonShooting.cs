@@ -55,6 +55,7 @@ public class ThirdPersonShooting : MonoBehaviour
 
     private ParticleSystem.EmissionModule pp;
 
+    public List<OnHitEffect> OnHitEffects = new List<OnHitEffect>();
     private void Awake()
 	{
 		if (_mainCamera == null)
@@ -144,7 +145,13 @@ public class ThirdPersonShooting : MonoBehaviour
     void InstantiateProjectile()
     {
         var projectileObj = Instantiate (projectile, FirePoint.position, Quaternion.identity) as GameObject;
-        projectileObj.GetComponent<PlayerBullet>().setDamage(bulletDamage);
+        //projectileObj.GetComponent<PlayerBullet>().setDamage(bulletDamage);
+        projectileObj.GetComponent<ProjectileBase>().SetOnHitEffect(OnHitEffects);
+        projectileObj.GetComponent<ProjectileBase>().SetDamage(bulletDamage);
+        if (projectileObj.GetComponent<ProjectileBase>()) 
+        {
+            Debug.Log("Got ProjectileBase Component");
+        }
         projectileObj.GetComponent<Rigidbody>().velocity = (destination - FirePoint.position).normalized * projectileSpeed;
         if (useGrav) 
         {
