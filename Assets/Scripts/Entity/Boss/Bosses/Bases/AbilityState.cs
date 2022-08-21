@@ -13,7 +13,6 @@ public class AbilityState : BaseState
 
     [Header("References")]
     public GameObject spawnableObject;
-    public GameObject parentObject;
 
     public override void Invoke(BossStateMachine boss)
     {
@@ -29,4 +28,7 @@ public class AbilityState : BaseState
     {
         base.Exit();
     }
+
+    public virtual void Setup()
+    { }
 }
