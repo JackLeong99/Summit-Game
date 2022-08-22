@@ -9,8 +9,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1161f1a0bc3f44b4190920f7ba649bb1, type: 3}
-  m_Name: GolemRangedState
+  m_Script: {fileID: 11500000, guid: 10e4c3838652e094ea533ab63fd8fc3f, type: 3}
+  m_Name: PathingState
   m_EditorClassIdentifier: 
-  abilities:
-  - {fileID: 11400000, guid: ff4ae9b0673e20d4fa537d7f29fefdbe, type: 2}

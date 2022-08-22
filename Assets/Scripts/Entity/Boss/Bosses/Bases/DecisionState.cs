@@ -26,6 +26,8 @@ public class DecisionState : BaseState
     public override void Exit()
     {
         base.Exit();
+
+        boss.previousDecision = this;
     }
 
     public int DetermineAbility()

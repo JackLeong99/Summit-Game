@@ -13,7 +13,7 @@ using UnityEngine.AI;
 
     [Header("Attacks")]
     public AttackState attackState = AttackState.CanRanged;
-    public float currentPatience;
+    public float cooldownTimer;
     public float moveRepeated;
     public bool attackException = false;
 
@@ -49,10 +49,14 @@ public class BossStateMachine : MonoBehaviour
 
     [Header("Abilities")]
     public BossState currentAbility;
+    public BossState baseState;
+    public BossState idleState;
+    public List<BossState> abilities = new List<BossState>();
+
+    [Header("Previous States")]
     public BossState previousState;
     public BossState previousAbility;
-    public BossState baseState;
-    public List<BossState> abilities = new List<BossState>();
+    public BossState previousDecision;
 
     [Header("Component References")]
     public Animator anim;
@@ -162,5 +166,10 @@ public class BossStateMachine : MonoBehaviour
         //attributes.attackTurnSpeed = 120.0f;
         //turnFor = 0.9f;
         yield return null;
+    }
+
+    public void onStep()
+    {
+        AkSoundEngine.PostEvent("Enemy_Footsteps", gameObject);
     }
 }

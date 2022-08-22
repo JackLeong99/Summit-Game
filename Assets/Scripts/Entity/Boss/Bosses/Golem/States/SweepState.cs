@@ -5,8 +5,6 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "Boss/Ability/Golem/Sweep")]
 public class SweepState : AbilityState
 {
-    public GameObject warning;
-
     public override void Invoke(BossStateMachine boss)
     {
         base.Invoke(boss);
@@ -29,6 +27,19 @@ public class SweepState : AbilityState
         boss.anim.SetTrigger("Sweep");
         AkSoundEngine.PostEvent("Enemy_Melee_Right_Hook", boss.gameObject);
 
-        //boss.StartCoroutine();
+        boss.StartCoroutine(Sweep());
+    }
+
+    IEnumerator Sweep()
+    {
+        yield return new WaitForSeconds(delay);
+        var hitbox = Instantiate(spawnableObject, boss.leftHand.transform.position, boss.leftHand.transform.rotation, boss.leftHand.transform);
+        var hitboxB = Instantiate(spawnableObject, boss.rightHand.transform.position, boss.rightHand.transform.rotation, boss.rightHand.transform);
+        yield return new WaitForSeconds(duration);
+        Destroy(hitbox);
+        Destroy(hitboxB);
+
+        yield return new WaitForSeconds(2f);
+        boss.ChangeState(boss.baseState);
     }
 }

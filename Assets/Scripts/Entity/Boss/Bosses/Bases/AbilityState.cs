@@ -27,6 +27,8 @@ public class AbilityState : BaseState
     public override void Exit()
     {
         base.Exit();
+
+        boss.previousAbility = this;
     }
 
     public virtual void Setup()

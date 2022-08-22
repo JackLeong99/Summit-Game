@@ -23,6 +23,8 @@ public class BaseState : BossState
                 boss.ChangeState(boss.GetState<StunnedState>());
                 break;
         }
+
+        boss.anim.SetFloat("Speed", boss.agent.velocity.magnitude);
     }
 
     public override void Exit()

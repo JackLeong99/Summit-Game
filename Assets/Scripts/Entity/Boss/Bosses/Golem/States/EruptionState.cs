@@ -65,7 +65,7 @@ public class EruptionState : AbilityState
             Destroy(hitbox);
         }
 
-        yield return new WaitForSeconds(3.12f);
+        yield return new WaitForSeconds(2);
         boss.ChangeState(boss.baseState);
     }
 }

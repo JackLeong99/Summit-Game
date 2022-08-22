@@ -5,7 +5,7 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "Boss/Ability/Golem/Slam")]
 public class SlamState : AbilityState
 {
-    public GameObject warning;
+    public GameObject shockwave;
 
     public override void Invoke(BossStateMachine boss)
     {
@@ -17,6 +17,8 @@ public class SlamState : AbilityState
     public override void Update()
     {
         base.Update();
+
+        LookTowards(GameManager.player.transform);
     }
 
     public override void Exit()
@@ -29,6 +31,20 @@ public class SlamState : AbilityState
         boss.anim.SetTrigger("Slam");
         AkSoundEngine.PostEvent("Enemy_Melee_Overhead_Slam", boss.gameObject);
 
-        //boss.StartCoroutine();
+        boss.StartCoroutine(Slam());
+    }
+
+    IEnumerator Slam()
+    {
+        yield return new WaitForSeconds(delay);
+        var hitbox = Instantiate(spawnableObject, boss.rightHand.transform.position, Quaternion.identity, boss.rightHand.transform);
+        var hitbox2 = Instantiate(spawnableObject, boss.leftHand.transform.position, Quaternion.identity, boss.leftHand.transform);
+        yield return new WaitForSeconds(duration);
+        var wave = Instantiate(shockwave, GameObject.FindWithTag("Shockwave").transform.position, boss.transform.rotation);
+        Destroy(hitbox);
+        Destroy(hitbox2);
+
+        yield return new WaitForSeconds(2f);
+        boss.ChangeState(boss.baseState);
     }
 }

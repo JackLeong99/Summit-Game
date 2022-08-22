@@ -12,8 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7490f334f46204c46b5bf06d50f89aaf, type: 3}
   m_Name: GolemSweepState
   m_EditorClassIdentifier: 
-  duration: 0
-  delay: 0
+  duration: 2
+  delay: 0.2
   layer: 0
-  spawnableObject: {fileID: 0}
-  warning: {fileID: 0}
+  spawnableObject: {fileID: 3661587751898508818, guid: 1a54bd1eeecf95c4ea566e46f6b9b85c, type: 3}

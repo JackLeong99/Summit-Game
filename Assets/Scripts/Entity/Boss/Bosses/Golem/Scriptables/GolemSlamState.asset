@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 654c82509aa612f43bdd277cb255b105, type: 3}
   m_Name: GolemSlamState
   m_EditorClassIdentifier: 
-  duration: 0
-  delay: 0
+  duration: 1.2
+  delay: 0.3
   layer: 0
-  spawnableObject: {fileID: 0}
-  warning: {fileID: 0}
+  spawnableObject: {fileID: 3661587751898508818, guid: b2475ab0bf7bade4b9028d265fc6a37c, type: 3}
+  shockwave: {fileID: 6183056626978915536, guid: c54b9d287f7530648b47e086283d8f1b, type: 3}
