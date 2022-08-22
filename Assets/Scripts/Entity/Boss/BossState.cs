@@ -19,6 +19,8 @@ using UnityEngine;
     public virtual void Exit() 
     {
         ExitingState = true;
+
+        boss.previousState = this;
     }
 
     private void SetInstance(BossStateMachine boss)
