@@ -8,16 +8,23 @@ using UnityEngine.AI;
 
 public class hordePathing : MonoBehaviour
 {
+    public float lifespan;
+    private float lifespanCounter;
+    public float explosionDetection;
+    public GameObject explosionHitbox;
+    public float maxHP;
+    private float currentHP;
 
     //Determine the object the boss will path to
     [SerializeField] private GameObject target;
+
 
     //Determine the position object the enemy will path to
     private Transform targetPos;
     [HideInInspector]
     public NavMeshAgent agent;
 
-    private noCollideWithFren frenCollision;
+    //private noCollideWithFren frenCollision;
     //private BossManager Attacking;
 
     //private Transform backupTargetPos;
@@ -26,8 +33,7 @@ public class hordePathing : MonoBehaviour
     {
         agent = GetComponent<NavMeshAgent>();
         targetPos = target.transform;
-        
-        
+        currentHP = maxHP;
     }
 
     void Update()
@@ -44,18 +50,28 @@ public class hordePathing : MonoBehaviour
         // else{
         //     agent.isStopped = false;
         // }
-        frenCollision = this.GetComponent<noCollideWithFren>();
-        bool isTooClose = frenCollision.tooClose;
         
-        if(isTooClose)
+        // frenCollision = this.GetComponent<noCollideWithFren>();
+        // bool isTooClose = frenCollision.tooClose;
+        
+        // if(isTooClose)
+        // {
+        //     agent.isStopped = true;
+        // }
+        // else
+        // {
+        //     agent.isStopped = false;
+        //     Pathing();
+        // }
+        float distance = Vector3.Distance(transform.position, target.transform.position);
+        if(distance <= explosionDetection || lifespanCounter >= lifespan)
         {
-            agent.isStopped = true;
+            Instantiate(explosionHitbox, transform.position, transform.rotation);
+            Destroy(gameObject);
         }
-        else
-        {
-            agent.isStopped = false;
-            Pathing();
-        }
+
+        Pathing();
+        lifespanCounter += (Time.deltaTime + .1f);
     }
 
     public void Pathing()
@@ -67,6 +83,11 @@ public class hordePathing : MonoBehaviour
     {
         target=newTarget;
         targetPos=target.transform;
+    }
+
+    public void takeDamage(float dmg)
+    {
+        currentHP = currentHP - dmg;
     }
 }
 
