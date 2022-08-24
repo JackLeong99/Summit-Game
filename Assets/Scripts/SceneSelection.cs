@@ -48,6 +48,7 @@ public class SceneSelection : MonoBehaviour
 
     //put all in array then each time do random select and then remove it from the array
 
+    //gets called when going to new area after shop ie by teleporter
     public void SelectNewScene()
     {
         int nextLevel =Random.Range(0, avaliableLevels.Length);
@@ -70,7 +71,11 @@ public class SceneSelection : MonoBehaviour
         SceneManager.LoadScene(nextLevelString);
     }
 
-    //create method that sends to each scene, then random select what scenes and make array that will be refered to each time
+    public void GoToShop()
+    {
+        SceneManager.LoadScene("AnimatorAttempt");
+    }
+    //make a go to shop method
 
     //These methods are used for testing purposes ie when we get people to playtest
     public void RockScene()
@@ -79,18 +84,18 @@ public class SceneSelection : MonoBehaviour
     }
     public void ReaperScene()
     {
-        SceneManager.LoadScene("AnimatorAttempt"); //to be changed
+        SceneManager.LoadScene("ReaperScene"); //to be changed
     }
     public void MageScene()
     {
-        SceneManager.LoadScene("AnimatorAttempt"); //to be changed
+        SceneManager.LoadScene("MageScene"); //to be changed
     }
     public void ArcherScene()
     {
-        SceneManager.LoadScene("AnimatorAttempt"); //to be changed
+        SceneManager.LoadScene("ArcherScene"); //to be changed
     }
     public void SecretScene()
     {
-        SceneManager.LoadScene("AnimatorAttempt"); //to be changed
+        SceneManager.LoadScene("SecretScene"); //to be changed
     }
 }
