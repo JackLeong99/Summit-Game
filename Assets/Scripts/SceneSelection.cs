@@ -5,9 +5,33 @@ using UnityEngine.SceneManagement;
 
 public class SceneSelection : MonoBehaviour
 {
-
-    string[] avaliableLevels = { "AnimatorAttempt", "Reaper", "Archer", "Mage"}; //each one is a level name
+    private static SceneSelection instance;
+    public static SceneSelection Instance
+    {
+        get
+        {
+            if(instance == null)
+            {
+                Debug.LogError("No SceneSelection in the scene");
+            }
+            return instance;
+        }
+    }
+    string[] avaliableLevels = { "AnimatorAttempt", "ReaperScene", "ArcherScene", "MageScene"}; //each one is a level name
     // Start is called before the first frame update
+    void Awake()
+    {
+        DontDestroyOnLoad(this.gameObject);
+                if (instance != null)
+        {
+            Destroy(gameObject);
+        }
+        else
+        {
+            instance = this;
+        }
+    }
+    
     void Start()
     {
         
@@ -27,7 +51,6 @@ public class SceneSelection : MonoBehaviour
     public void SelectNewScene()
     {
         int nextLevel =Random.Range(0, avaliableLevels.Length);
-        Debug.Log(avaliableLevels.Length);
         string nextLevelString=avaliableLevels[nextLevel];
         string[] tempAvaliableLevels=new string[avaliableLevels.Length-1];
         int tracker=0;
@@ -44,7 +67,7 @@ public class SceneSelection : MonoBehaviour
         }   
         avaliableLevels=new string[tempAvaliableLevels.Length];
         avaliableLevels=tempAvaliableLevels;
-        Debug.Log(avaliableLevels.Length);
+        SceneManager.LoadScene(nextLevelString);
     }
 
     //create method that sends to each scene, then random select what scenes and make array that will be refered to each time
