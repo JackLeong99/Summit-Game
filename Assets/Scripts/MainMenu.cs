@@ -1,0 +1,76 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.EventSystems;
+
+public class MainMenu : MonoBehaviour
+{
+    private static MainMenu instance;
+    public static MainMenu Instance
+    {
+        get
+        {
+            if(instance == null)
+            {
+                Debug.LogError("No MainMenu in the scene");
+            }
+            return instance;
+        }
+    }
+    private GameObject _mainCamera;
+    //for controller interface
+    public GameObject mainFirstButton, selectorFirst, selectorClosed;
+
+    public GameObject mainMenu;
+    public GameObject selectorMenu;
+    void Awake()
+    {
+        if (instance != null)
+        {
+            Destroy(gameObject);
+        }
+        else
+        {
+            instance = this;
+        }
+        if (_mainCamera == null)
+        {
+            _mainCamera = GameObject.FindGameObjectWithTag("MainCamera");
+        }
+    }
+    // Start is called before the first frame update
+    void Start()
+    {
+        selectorMenu.SetActive(false);
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        
+    }
+
+
+    public void Settings()
+    {
+
+    }
+    public void LevelSelector()
+    {
+        mainMenu.SetActive(false);
+        selectorMenu.SetActive(true);
+        EventSystem.current.SetSelectedGameObject(null);
+        //set mew selected object
+        EventSystem.current.SetSelectedGameObject(selectorFirst);
+    }
+    public void Quit()
+    {
+        AkSoundEngine.PostEvent("UI_Click", _mainCamera);
+        AkSoundEngine.PostEvent("Game_Quit", _mainCamera);
+        Application.Quit();
+    }
+    public void Play()
+    {
+        SceneSelection.Instance.SelectNewScene();
+    }
+}

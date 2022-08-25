@@ -98,4 +98,8 @@ public class SceneSelection : MonoBehaviour
     {
         SceneManager.LoadScene("SecretScene"); //to be changed
     }
+    public void AlphaScene()
+    {
+        SceneManager.LoadScene("AlphaScene"); //to be changed
+    }
 }
