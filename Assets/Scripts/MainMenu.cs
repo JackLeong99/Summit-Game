@@ -73,4 +73,13 @@ public class MainMenu : MonoBehaviour
     {
         SceneSelection.Instance.SelectNewScene();
     }
+    public void BackToMain()
+    {
+        selectorMenu.SetActive(false);
+        mainMenu.SetActive(true);
+
+        EventSystem.current.SetSelectedGameObject(null);
+        //set mew selected object
+        EventSystem.current.SetSelectedGameObject(selectorClosed);
+    }
 }

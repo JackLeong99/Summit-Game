@@ -40,10 +40,6 @@ public class SceneSelection : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-    if(Input.GetButtonDown("Escape"))
-    {
-        SelectNewScene();
-    }
     }
 
     //put all in array then each time do random select and then remove it from the array
@@ -73,33 +69,45 @@ public class SceneSelection : MonoBehaviour
 
     public void GoToShop()
     {
-        SceneManager.LoadScene("AnimatorAttempt");
+        SceneManager.LoadScene("AnimatorAttempt"); //to be changed
     }
     //make a go to shop method
 
     //These methods are used for testing purposes ie when we get people to playtest
     public void RockScene()
     {
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
         SceneManager.LoadScene("AnimatorAttempt");
     }
     public void ReaperScene()
     {
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
         SceneManager.LoadScene("ReaperScene"); //to be changed
     }
     public void MageScene()
     {
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
         SceneManager.LoadScene("MageScene"); //to be changed
     }
     public void ArcherScene()
     {
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
         SceneManager.LoadScene("ArcherScene"); //to be changed
     }
     public void SecretScene()
     {
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
         SceneManager.LoadScene("SecretScene"); //to be changed
     }
     public void AlphaScene()
     {
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
         SceneManager.LoadScene("AlphaScene"); //to be changed
     }
 }
