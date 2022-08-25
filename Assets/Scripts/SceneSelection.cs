@@ -67,9 +67,10 @@ public class SceneSelection : MonoBehaviour
         SceneManager.LoadScene(nextLevelString);
     }
 
+    //called by collider on portal
     public void GoToShop()
     {
-        SceneManager.LoadScene("AnimatorAttempt"); //to be changed
+        SceneManager.LoadScene("ShopArea"); //to be changed
     }
     //make a go to shop method
 

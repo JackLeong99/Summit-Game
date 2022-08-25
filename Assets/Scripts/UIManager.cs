@@ -225,7 +225,8 @@ public class UIManager : MonoBehaviour
     {
         AkSoundEngine.PostEvent("UI_Click", _mainCamera);
         AkSoundEngine.PostEvent("Game_Quit", _mainCamera);
-        Application.Quit();
+        SceneManager.LoadScene("MainMenu");
+        //Application.Quit();
     }
 
 
