@@ -45,5 +45,14 @@ public class zombieExplosion : MonoBehaviour
                 dmgFren.takeDamage(explosionDamage);
             }
         }
+
+        // if (other.tag == "Player")
+        // {
+        //     HPTesting testDamage = other.GetComponent<HPTesting>();
+        //     if(testDamage)
+        //     {
+        //         testDamage.takeDamage(explosionDamage);
+        //     }
+        // }
     }
 }
