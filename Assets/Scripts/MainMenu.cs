@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.SceneManagement;
 
 public class MainMenu : MonoBehaviour
 {
@@ -81,5 +82,43 @@ public class MainMenu : MonoBehaviour
         EventSystem.current.SetSelectedGameObject(null);
         //set mew selected object
         EventSystem.current.SetSelectedGameObject(selectorClosed);
+    }
+    
+    //Will likely have this removed in final release unless we want to have a scene selection
+    public void RockScene()
+    {
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
+        SceneManager.LoadScene("AnimatorAttempt");
+    }
+    public void ReaperScene()
+    {
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
+        SceneManager.LoadScene("ReaperScene"); //to be changed
+    }
+    public void MageScene()
+    {
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
+        SceneManager.LoadScene("MageScene"); //to be changed
+    }
+    public void ArcherScene()
+    {
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
+        SceneManager.LoadScene("ArcherScene"); //to be changed
+    }
+    public void SecretScene()
+    {
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
+        SceneManager.LoadScene("SecretScene"); //to be changed
+    }
+    public void AlphaScene()
+    {
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
+        SceneManager.LoadScene("AlphaScene"); //to be changed
     }
 }

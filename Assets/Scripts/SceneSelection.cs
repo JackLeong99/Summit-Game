@@ -72,43 +72,15 @@ public class SceneSelection : MonoBehaviour
     {
         SceneManager.LoadScene("ShopArea"); //to be changed
     }
-    //make a go to shop method
+    public void DeathScene()
+    {
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
+        SceneManager.LoadScene("DeathScene");
+    }
 
-    //These methods are used for testing purposes ie when we get people to playtest
-    public void RockScene()
+    public void MainMenu()
     {
-        Cursor.lockState = CursorLockMode.Locked;
-        Cursor.visible = false;
-        SceneManager.LoadScene("AnimatorAttempt");
-    }
-    public void ReaperScene()
-    {
-        Cursor.lockState = CursorLockMode.Locked;
-        Cursor.visible = false;
-        SceneManager.LoadScene("ReaperScene"); //to be changed
-    }
-    public void MageScene()
-    {
-        Cursor.lockState = CursorLockMode.Locked;
-        Cursor.visible = false;
-        SceneManager.LoadScene("MageScene"); //to be changed
-    }
-    public void ArcherScene()
-    {
-        Cursor.lockState = CursorLockMode.Locked;
-        Cursor.visible = false;
-        SceneManager.LoadScene("ArcherScene"); //to be changed
-    }
-    public void SecretScene()
-    {
-        Cursor.lockState = CursorLockMode.Locked;
-        Cursor.visible = false;
-        SceneManager.LoadScene("SecretScene"); //to be changed
-    }
-    public void AlphaScene()
-    {
-        Cursor.lockState = CursorLockMode.Locked;
-        Cursor.visible = false;
-        SceneManager.LoadScene("AlphaScene"); //to be changed
+        SceneManager.LoadScene("MainMenu");
     }
 }
