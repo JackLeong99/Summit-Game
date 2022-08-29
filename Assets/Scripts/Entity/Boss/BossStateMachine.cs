@@ -119,8 +119,45 @@ public class BossStateMachine : MonoBehaviour
         }
 
         StartCoroutine(IFrame());
+
         components.curHealth -= dmg;
 
+        DamageHandler(dmg, position);
+    }
+
+    public void TakeDamage(float[] dmg, float tickRate, Vector3 position)
+    {
+        switch (components.iFrame)
+        {
+            case IState.Active:
+                return;
+        }
+
+        StartCoroutine(IFrame());
+
+        StartCoroutine(TickDamage(dmg, tickRate, position));
+    }
+
+    public IEnumerator TickDamage(float[] dmg, float tickRate, Vector3 position)
+    {
+        foreach (var tick in dmg)
+        {
+            components.curHealth -= tick;
+            DamageHandler(tick, position);
+
+            yield return new WaitForSeconds(tickRate);
+        }
+    }
+
+    public IEnumerator IFrame()
+    {
+        components.iFrame = IState.Active;
+        yield return new WaitForSeconds(attributes.iFrameTime);
+        components.iFrame = IState.Inactive;
+    }
+
+    public void DamageHandler(float dmg, Vector3 position)
+    {
         AkSoundEngine.PostEvent("Enemy_Damage", gameObject);
         AkSoundEngine.PostEvent("UI_Hit_Indicator", GameManager.mainCamera);
 
@@ -137,13 +174,6 @@ public class BossStateMachine : MonoBehaviour
         }
 
         CheckRage();
-    }
-
-    public IEnumerator IFrame()
-    {
-        components.iFrame = IState.Active;
-        yield return new WaitForSeconds(attributes.iFrameTime);
-        components.iFrame = IState.Inactive;
     }
 
     public bool Alive()

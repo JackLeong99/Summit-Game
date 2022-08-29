@@ -2394,11 +2394,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!1 &743489283 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4928274284070956964, guid: 90c1bd1fda819204985b62a4e3e9e7b5, type: 3}
-  m_PrefabInstance: {fileID: 72617978}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &835453184
 GameObject:
   m_ObjectHideFlags: 0
@@ -2732,17 +2727,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ce8e84b0a33ef4e4080cbdc1232e3d6d, type: 3}
---- !u!114 &940305114 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 5025519468452608584, guid: 90c1bd1fda819204985b62a4e3e9e7b5, type: 3}
-  m_PrefabInstance: {fileID: 72617978}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 743489283}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &963154572
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3590,7 +3574,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 2.0483272, y: 1}
+    m_SensorSize: {x: 1.3333334, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -5417,9 +5401,17 @@ PrefabInstance:
       value: Shockwave
       objectReference: {fileID: 0}
     - target: {fileID: 5564621795753800860, guid: 15cb9288e8231f9419be19f0ae9ecad5, type: 3}
+      propertyPath: baseState
+      value: 
+      objectReference: {fileID: 11400000, guid: 00ba742a00cac3f468c8c1a5bf8a6f85, type: 2}
+    - target: {fileID: 5564621795753800860, guid: 15cb9288e8231f9419be19f0ae9ecad5, type: 3}
       propertyPath: rightHand
       value: 
       objectReference: {fileID: 2036704501}
+    - target: {fileID: 5564621795753800860, guid: 15cb9288e8231f9419be19f0ae9ecad5, type: 3}
+      propertyPath: attributes
+      value: 
+      objectReference: {fileID: 11400000, guid: 36493a278fbac2f47889d01b3cd7620b, type: 2}
     - target: {fileID: 6118956715112586494, guid: 15cb9288e8231f9419be19f0ae9ecad5, type: 3}
       propertyPath: m_Name
       value: Golem Boss
