@@ -127,12 +127,6 @@ public class BossStateMachine : MonoBehaviour
 
     public void TakeDamage(float[] dmg, float tickRate, Vector3 position)
     {
-        switch (components.iFrame)
-        {
-            case IState.Active:
-                return;
-        }
-
         StartCoroutine(IFrame());
 
         StartCoroutine(TickDamage(dmg, tickRate, position));
