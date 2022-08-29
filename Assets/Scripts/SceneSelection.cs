@@ -76,6 +76,7 @@ public class SceneSelection : MonoBehaviour
     {
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
+        avaliableLevels =new string[] { "AnimatorAttempt", "ReaperScene", "ArcherScene", "MageScene"};
         SceneManager.LoadScene("DeathScene");
     }
 
