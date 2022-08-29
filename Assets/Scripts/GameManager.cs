@@ -28,6 +28,8 @@ public class GameManager : MonoBehaviour
     private GameObject boss; //discuss with Jack how hitboxes work
 
     private float timer;
+
+    public GameObject teleporterPrefab;
         
     void Awake()
     {
@@ -71,6 +73,7 @@ public class GameManager : MonoBehaviour
     public void onBossDeath()
     {
         //will need to find where I call this
+        GameObject teleporter = Instantiate(teleporterPrefab,new Vector3(0,1,0),Quaternion.identity); 
     }
 
     public void onPlayerHit(string attack)

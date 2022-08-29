@@ -2071,6 +2071,10 @@ PrefabInstance:
       propertyPath: Testing
       value: 
       objectReference: {fileID: 1508586385}
+    - target: {fileID: 2396943790228897293, guid: ffb0c1346c166184e8d4e2176beba99d, type: 3}
+      propertyPath: teleporterPrefab
+      value: 
+      objectReference: {fileID: 8881047721135868035, guid: 957f84fd948ec8d468bedc916c36774c, type: 3}
     - target: {fileID: 7582387081268774775, guid: ffb0c1346c166184e8d4e2176beba99d, type: 3}
       propertyPath: m_Name
       value: GameManager
@@ -3590,7 +3594,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.8869863, y: 1}
+    m_SensorSize: {x: 1.7977161, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
