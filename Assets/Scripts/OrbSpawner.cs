@@ -9,6 +9,8 @@ public class OrbSpawner : MonoBehaviour
     public int maxXPos=50;
     public int minZPos=0;
     public int maxZPos=50;
+
+    private int currentOrbsSpawned;
     // Start is called before the first frame update
     void Start()
     {
@@ -35,10 +37,19 @@ public class OrbSpawner : MonoBehaviour
        // GameObject orb = 
             Instantiate(orbPrefab,new Vector3(xPos, 3, zPos),Quaternion.identity);
         }
+        currentOrbsSpawned=3;
         //50 by 50
         //when setting up scene location of oasis will need to be inputted into this
     }
 
+    public void OrbDestroyed()
+    {
+        currentOrbsSpawned--;
+        if(currentOrbsSpawned==0)
+        {
+            //function to disable shield
+        }
+    }
     //need to create function to see how many orbs are left
     //need script for orb themself
 }
