@@ -763,7 +763,7 @@ PrefabInstance:
     - target: {fileID: 6349150968980738510, guid: 90c1bd1fda819204985b62a4e3e9e7b5, type: 3}
       propertyPath: m_Navigation.m_SelectOnDown
       value: 
-      objectReference: {fileID: 940305114}
+      objectReference: {fileID: 1504428338}
     - target: {fileID: 6349150968980738510, guid: 90c1bd1fda819204985b62a4e3e9e7b5, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
       value: 1
@@ -3578,7 +3578,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.3333334, y: 1}
+    m_SensorSize: {x: 1.7977161, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -3665,7 +3665,7 @@ PrefabInstance:
     - target: {fileID: 3406367461238469038, guid: 738ab131643238a48802e411ddfd2202, type: 3}
       propertyPath: settingsClosed
       value: 
-      objectReference: {fileID: 743489283}
+      objectReference: {fileID: 1504428336}
     - target: {fileID: 3406367461238469038, guid: 738ab131643238a48802e411ddfd2202, type: 3}
       propertyPath: PlayerHealthBar
       value: 
@@ -3908,6 +3908,22 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ce8e84b0a33ef4e4080cbdc1232e3d6d, type: 3}
+--- !u!1 &1504428336 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4928274284070956964, guid: 90c1bd1fda819204985b62a4e3e9e7b5, type: 3}
+  m_PrefabInstance: {fileID: 72617978}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1504428338 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5025519468452608584, guid: 90c1bd1fda819204985b62a4e3e9e7b5, type: 3}
+  m_PrefabInstance: {fileID: 72617978}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1504428336}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1508586383
 GameObject:
   m_ObjectHideFlags: 0
