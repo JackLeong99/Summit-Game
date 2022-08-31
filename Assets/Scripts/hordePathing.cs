@@ -64,12 +64,11 @@ public class hordePathing : MonoBehaviour
         //     Pathing();
         // }
         float distance = Vector3.Distance(transform.position, target.transform.position);
-        if(distance <= explosionDetection || lifespanCounter >= lifespan)
+        if(currentHP <= 0 || distance <= explosionDetection || lifespanCounter >= lifespan)
         {
-            Instantiate(explosionHitbox, transform.position, transform.rotation);
-            Destroy(gameObject);
+            explode();
         }
-
+        
         Pathing();
         lifespanCounter += (Time.deltaTime + .1f);
     }
@@ -88,6 +87,19 @@ public class hordePathing : MonoBehaviour
     public void takeDamage(float dmg)
     {
         currentHP = currentHP - dmg;
+    }
+    public void explode()
+    {
+        Instantiate(explosionHitbox, transform.position, transform.rotation);
+        Destroy(gameObject);
+    }
+
+    public void OnTriggerEnter(Collider other)
+    {
+        if (other.tag == "PlayerBullet")
+        {
+            explode();
+        }
     }
 }
 

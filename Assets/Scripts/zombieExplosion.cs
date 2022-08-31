@@ -7,12 +7,15 @@ public class zombieExplosion : MonoBehaviour
     public float lifespan;
     public float lifespanCounter;
     public float explosionDamage;
+    private Vector3 temp;
 
     //public float explosionSize;
 
     // Start is called before the first frame update
     void Awake()
     {
+        //radius is placeholder for now
+        DamageFallOff(transform.position, 2.5f, explosionDamage);
         
     }
 
@@ -26,33 +29,77 @@ public class zombieExplosion : MonoBehaviour
         lifespanCounter += (Time.deltaTime + .1f);
     }
 
-    public void OnTriggerEnter(Collider other)
-    {
-        if (other.tag == "enemyHitbox")
-        {
-            EnemyDamageReceiver receiver = other.GetComponent<EnemyDamageReceiver>();
-            if (receiver)
-            {
-                receiver.PassDamage(explosionDamage, transform.position);
-            }
-        }
+    // public void OnTriggerEnter(Collider other)
+    // {
+    //     if (other.tag == "enemyHitbox")
+    //     {
+    //         EnemyDamageReceiver receiver = other.GetComponent<EnemyDamageReceiver>();
+    //         if (receiver)
+    //         {
+    //             receiver.PassDamage(explosionDamage, transform.position);
+    //         }
+    //     }
         
-        if (other.tag == "hordeEnemy")
+    //     if (other.tag == "hordeEnemy")
+    //     {
+    //         hordePathing dmgFren = other.GetComponent<hordePathing>();
+    //         if(dmgFren)
+    //         {
+    //             dmgFren.takeDamage(explosionDamage);
+    //         }
+    //     }
+
+    //     // if (other.tag == "Player")
+    //     // {
+    //     //     HPTesting testDamage = other.GetComponent<HPTesting>();
+    //     //     if(testDamage)
+    //     //     {
+    //     //         testDamage.takeDamage(explosionDamage);
+    //     //     }
+    //     // }
+    // }
+
+    private void DamageFallOff(Vector3 location,float radius,float damage)
+    {
+        Collider[] objectsInRange = Physics.OverlapSphere(location, radius);
+        foreach (Collider col in objectsInRange)
         {
-            hordePathing dmgFren = other.GetComponent<hordePathing>();
-            if(dmgFren)
+            hordePathing dmgFren = col.GetComponent<hordePathing>();
+            if (dmgFren != null)
             {
-                dmgFren.takeDamage(explosionDamage);
+                // linear falloff of effect
+                float proximity = (location - dmgFren.transform.position).magnitude;
+                float effect = 1 - (proximity / radius);
+
+                dmgFren.takeDamage(damage * effect);
+            
+            }
+            else
+            {
+                EnemyDamageReceiver receiver = col.GetComponent<EnemyDamageReceiver>();
+                if (receiver != null)
+                {
+                    // linear falloff of effect
+                    float proximity = (location - receiver.transform.position).magnitude;
+                    float effect = 1 - (proximity / radius);
+
+                    //position is placeholder
+                    receiver.PassDamage(damage * effect, transform.position);
+                
+                }
+                else
+                {
+                    PlayerStats health = col.GetComponent<PlayerStats>();
+
+                    if(health != null)
+                    {
+                        float proximity = (location - health.transform.position).magnitude;
+                        float effect = 1 - (proximity / radius);
+
+                        health.takeDamage(damage * effect);
+                    }
+                }
             }
         }
-
-        // if (other.tag == "Player")
-        // {
-        //     HPTesting testDamage = other.GetComponent<HPTesting>();
-        //     if(testDamage)
-        //     {
-        //         testDamage.takeDamage(explosionDamage);
-        //     }
-        // }
     }
 }
