@@ -17,8 +17,6 @@ public class SlamState : AbilityState
     public override void Update()
     {
         base.Update();
-
-        LookTowards(GameManager.player.transform);
     }
 
     public override void Exit()
