@@ -5,12 +5,26 @@ using UnityEngine;
 public class OrbSpawner : MonoBehaviour
 {
     public GameObject orbPrefab;
+    public GameObject oasisOrbPrefab;
     public int minXPos=0;
     public int maxXPos=50;
     public int minZPos=0;
     public int maxZPos=50;
 
     private int currentOrbsSpawned;
+    
+    private static OrbSpawner instance;
+    public static OrbSpawner Instance
+    {
+        get
+        {
+            if(instance == null)
+            {
+                Debug.LogError("No OrbSpawner in the scene");
+            }
+            return instance;
+        }
+    }
     // Start is called before the first frame update
     void Start()
     {
@@ -38,8 +52,7 @@ public class OrbSpawner : MonoBehaviour
             Instantiate(orbPrefab,new Vector3(xPos, 3, zPos),Quaternion.identity);
         }
         currentOrbsSpawned=3;
-        //50 by 50
-        //when setting up scene location of oasis will need to be inputted into this
+        Instantiate(oasisOrbPrefab,new Vector3(0, 3, 0),Quaternion.identity);
     }
 
     public void OrbDestroyed()
@@ -47,9 +60,18 @@ public class OrbSpawner : MonoBehaviour
         currentOrbsSpawned--;
         if(currentOrbsSpawned==0)
         {
-            //function to disable shield
+            DestroyShield();
         }
     }
     //need to create function to see how many orbs are left
     //need script for orb themself
+    public void DestroyShield()
+    {
+        Destroy(GameObject.FindGameObjectWithTag("shield")); //or whatever tag it has
+    }
+
+    public void Failure()
+    {
+        //mage takes healing. Boss then disables everything
+    }
 }
