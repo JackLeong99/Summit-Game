@@ -21,6 +21,13 @@ public class MeleeAbilityState : AbilityState
     public override void Update()
     {
         base.Update();
+
+        switch (boss.components.animationActive)
+        {
+            case false:
+                boss.ChangeState(boss.baseState);
+                break;
+        }
     }
 
     public override void Exit()
@@ -33,7 +40,7 @@ public class MeleeAbilityState : AbilityState
         boss.anim.SetTrigger(animation);
         AkSoundEngine.PostEvent(soundEvent, boss.gameObject);
 
-        boss.StartCoroutine(Action());
+        boss.components.animationActive = true;
     }
 
     public IEnumerator Action()

@@ -15,7 +15,7 @@ using UnityEngine.AI;
     public AttackState attackState = AttackState.CanRanged;
     public float cooldownTimer;
     public float moveRepeated;
-    public bool attackException = false;
+    public bool animationActive = false;
 
     [Header("Health")]
     public float curHealth;
