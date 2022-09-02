@@ -18,6 +18,8 @@ public class SceneSelection : MonoBehaviour
         }
     }
     string[] avaliableLevels = { "AnimatorAttempt", "ReaperScene", "ArcherScene", "MageScene"}; //each one is a level name
+
+    private bool isSecret=false;
     // Start is called before the first frame update
     void Awake()
     {
@@ -62,8 +64,13 @@ public class SceneSelection : MonoBehaviour
             tracker=1;
             }
         }   
+        
         avaliableLevels=new string[tempAvaliableLevels.Length];
         avaliableLevels=tempAvaliableLevels;
+        if(isSecret && avaliableLevels.Length==0)
+        {
+            nextLevelString="FinalBossScene";
+        }
         SceneManager.LoadScene(nextLevelString);
     }
 
@@ -83,5 +90,11 @@ public class SceneSelection : MonoBehaviour
     public void MainMenu()
     {
         SceneManager.LoadScene("MainMenu");
+    }
+
+    public void SecretScenes()
+    {
+        avaliableLevels =new string[] { "SecretAnimatorAttempt", "SecretReaperScene", "SecretArcherScene", "SecretMageScene"};
+        isSecret=true;
     }
 }
