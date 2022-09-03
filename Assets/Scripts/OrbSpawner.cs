@@ -12,6 +12,12 @@ public class OrbSpawner : MonoBehaviour
     public int maxZPos=50;
 
     private int currentOrbsSpawned;
+
+    private float timeForBossToHeal=3f;
+
+    private float defaultTimeForBossToHeal=3f;
+
+    private bool disableShield=false;
     
     private static OrbSpawner instance;
     public static OrbSpawner Instance
@@ -23,6 +29,18 @@ public class OrbSpawner : MonoBehaviour
                 Debug.LogError("No OrbSpawner in the scene");
             }
             return instance;
+        }
+    }
+    void Awake()
+    {
+
+        if (instance != null)
+        {
+            Destroy(gameObject);
+        }
+        else
+        {
+            instance = this;
         }
     }
     // Start is called before the first frame update
@@ -38,6 +56,16 @@ public class OrbSpawner : MonoBehaviour
         {
             OrbCreation();
         }
+        if(disableShield)
+        {
+            timeForBossToHeal-=Time.deltaTime;
+            if(timeForBossToHeal<=0)
+            {
+                DestroyShield();
+                timeForBossToHeal=defaultTimeForBossToHeal;
+                disableShield=false;
+            }
+        }
     }
 
 
@@ -49,7 +77,7 @@ public class OrbSpawner : MonoBehaviour
             int xPos=Random.Range(minXPos, maxXPos);
             int zPos=Random.Range(minZPos, maxZPos);
        // GameObject orb = 
-            Instantiate(orbPrefab,new Vector3(xPos, 3, zPos),Quaternion.identity);
+            Instantiate(orbPrefab,new Vector3(xPos, 1, zPos),Quaternion.identity);
         }
         currentOrbsSpawned=3;
         Instantiate(oasisOrbPrefab,new Vector3(0, 3, 0),Quaternion.identity);
@@ -63,8 +91,7 @@ public class OrbSpawner : MonoBehaviour
             DestroyShield();
         }
     }
-    //need to create function to see how many orbs are left
-    //need script for orb themself
+
     public void DestroyShield()
     {
         Destroy(GameObject.FindGameObjectWithTag("shield")); //or whatever tag it has
@@ -72,6 +99,8 @@ public class OrbSpawner : MonoBehaviour
 
     public void Failure()
     {
-        //mage takes healing. Boss then disables everything
+        Destroy(GameObject.FindGameObjectWithTag("oasisOrb"));
+        //mage heals. Not sure if we have heal for boss and how to reference it
+        disableShield=true;
     }
 }
