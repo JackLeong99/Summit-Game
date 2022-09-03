@@ -24,6 +24,7 @@ public class SandStormOrb : MonoBehaviour
             orbHealth--;
             if(orbHealth<=0)
             {
+                //Destroy(GameObject.FindGameObjectWithTag("sandstorm")); //could maybe do it this way
                 //disable sandstorm
                 Destroy(gameObject);
             }

@@ -6,6 +6,7 @@ public class OrbSpawner : MonoBehaviour
 {
     public GameObject orbPrefab;
     public GameObject oasisOrbPrefab;
+    public GameObject oasisHealingPrefab;
     public int minXPos=0;
     public int maxXPos=50;
     public int minZPos=0;
@@ -75,12 +76,22 @@ public class OrbSpawner : MonoBehaviour
         for(int i=0; i<3; i++)
         {
             int xPos=Random.Range(minXPos, maxXPos);
+            //temp fix to prevent orbs from going into oasis
+            if(xPos<10 && xPos>-10) 
+            {
+                xPos=11;
+            }
             int zPos=Random.Range(minZPos, maxZPos);
+            if(zPos<10 && zPos>-10)
+            {
+                zPos=11;
+            }
        // GameObject orb = 
             Instantiate(orbPrefab,new Vector3(xPos, 1, zPos),Quaternion.identity);
         }
         currentOrbsSpawned=3;
         Instantiate(oasisOrbPrefab,new Vector3(0, 3, 0),Quaternion.identity);
+        Instantiate(oasisHealingPrefab,new Vector3(0, 1, 0),Quaternion.identity);
     }
 
     public void OrbDestroyed()
@@ -101,6 +112,7 @@ public class OrbSpawner : MonoBehaviour
     {
         Destroy(GameObject.FindGameObjectWithTag("oasisOrb"));
         //mage heals. Not sure if we have heal for boss and how to reference it
+        Destroy(GameObject.FindGameObjectWithTag("oasis"));
         disableShield=true;
     }
 }
