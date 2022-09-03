@@ -6,8 +6,11 @@ public class MageRockMove : MonoBehaviour
 {
     private GameObject player;
     private float timer=15f;
-    private bool needToGoUp=true;
+    private bool needToGoUp=true; //temp
     public float speed=120;
+    private bool targetSet=false;
+    private bool autoDestroy=false;
+    private float destroyTimer=20f;
 
     private float topHeight=8f;
     private Vector3 target;
@@ -28,14 +31,30 @@ public class MageRockMove : MonoBehaviour
         {
             needToGoUp=false;
         }
-        if(timer>0)
+        if(needToGoUp==false)
         {
-            timer-=Time.deltaTime;
+            if(timer>0)
+            {
+                timer-=Time.deltaTime;
+            }
+            if(timer<=0)
+            {
+                if(targetSet==false)
+                {
+                target = new Vector3(player.transform.position.x, player.transform.position.y+2 , player.transform.position.z);
+                GetComponent<Rigidbody>().velocity = (target - transform.position).normalized * speed;
+                targetSet=true;
+                autoDestroy=true;
+                }
+            }
         }
-        if(timer<=0)
+        if(autoDestroy)
         {
-            target = new Vector3(player.transform.position.x, player.transform.position.y+2 , player.transform.position.z);
-            GetComponent<Rigidbody>().velocity = (target - transform.position).normalized * speed;
+            destroyTimer-=Time.deltaTime;
+        }
+        if(destroyTimer<=0)
+        {
+            Destroy(gameObject);
         }
     }
 
@@ -57,7 +76,7 @@ public class MageRockMove : MonoBehaviour
             health.takeDamage(10);
         }
         
-        if(other.tag=="Arena")
+        if(other.tag=="Arena" && needToGoUp==false)
         {
             AkSoundEngine.PostEvent("Enemy_Boulder_Impact", gameObject);
             Destroy(gameObject);
