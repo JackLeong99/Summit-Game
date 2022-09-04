@@ -9,7 +9,10 @@ public class MeleeAbilityState : AbilityState
     [Header("Attributes")]
     public string animation;
     public string soundEvent;
- 
+
+    [Header("Hitbox Properties")]
+    public float damage;
+    public Vector2 knockbackForce;
 
     public override void Invoke(BossStateMachine boss)
     {
@@ -22,7 +25,7 @@ public class MeleeAbilityState : AbilityState
     {
         base.Update();
 
-        switch (boss.components.animationActive)
+        switch (boss.animationActive)
         {
             case false:
                 boss.ChangeState(boss.baseState);
@@ -40,11 +43,12 @@ public class MeleeAbilityState : AbilityState
         boss.anim.SetTrigger(animation);
         AkSoundEngine.PostEvent(soundEvent, boss.gameObject);
 
-        boss.components.animationActive = true;
-    }
+        boss.rightHand.force = knockbackForce;
+        boss.leftHand.force = knockbackForce;
 
-    public IEnumerator Action()
-    {
-        yield return null;
+        boss.rightHand.damage = damage;
+        boss.leftHand.damage = damage;
+
+        boss.animationActive = true;
     }
 }

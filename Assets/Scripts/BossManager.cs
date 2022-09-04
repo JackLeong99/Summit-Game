@@ -71,7 +71,7 @@ public class BossManager : MonoBehaviour
     private Eruption erupt;
     private RockPathFinding rockThrow;
     //private RockManager rocks;
-    private DamagePlayer2 damagePlayer;
+    //private DamagePlayer2 damagePlayer;
     private DamageFlash damageFlash;
     Animator animatr;
     NavMeshAgent agent;
@@ -95,7 +95,7 @@ public class BossManager : MonoBehaviour
         erupt = GetComponent<Eruption>();
         //rocks = GetComponent<RockManager>();
         rockThrow = GetComponent<RockPathFinding>();
-        damagePlayer = GetComponent<DamagePlayer2>();
+        //damagePlayer = GetComponent<DamagePlayer2>();
         animatr = gameObject.GetComponent<Animator>();
         damageFlash = GetComponent<DamageFlash>();
         agent = GetComponent<NavMeshAgent>();

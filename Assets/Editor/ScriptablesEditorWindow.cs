@@ -8,9 +8,6 @@ public class SriptablesEditorWindow : EditorWindow
     protected SerializedObject serializedObject;
     protected SerializedProperty serializedProperty;
 
-    protected string activePath = "Assets";
-    protected System.Type activeType = typeof(ScriptableObject);
-
     protected ScriptableObject[] activeObjects;
     protected string selectedPropertyPach;
     protected string selectedProperty;
@@ -19,9 +16,11 @@ public class SriptablesEditorWindow : EditorWindow
     Vector2 itemScrollPosition = Vector2.zero;
     readonly float sidebarWidth = 250f;
 
-    protected int selected;
+    protected string activePath = "Assets";
+    protected System.Type activeType = typeof(ScriptableObject);
 
     protected string scriptableName = "";
+    protected string typeName = "Scriptable Types";
 
     [MenuItem("Tools/Scriptable Object Editor")]
     protected static void ShowWindow()
@@ -53,7 +52,7 @@ public class SriptablesEditorWindow : EditorWindow
     {
         EditorGUILayout.BeginHorizontal("box", GUILayout.ExpandWidth(true));
 
-        if (GUILayout.Button(activePath, GUILayout.MaxWidth(150)))
+        if (GUILayout.Button("Folder", GUILayout.MaxWidth(150)))
         {
             string basePath = EditorUtility.OpenFolderPanel("Select folder to mask path.", activePath, "");
 
@@ -73,6 +72,7 @@ public class SriptablesEditorWindow : EditorWindow
                 activePath = basePath;
             }
         }
+        EditorGUILayout.LabelField(activePath);
 
         GUILayout.FlexibleSpace();
         EditorGUILayout.LabelField("Scriptables Editor");
@@ -84,11 +84,11 @@ public class SriptablesEditorWindow : EditorWindow
     {
         EditorGUILayout.BeginVertical("box", GUILayout.MaxWidth(sidebarWidth), GUILayout.ExpandHeight(true));
 
-        if (EditorGUILayout.DropdownButton(new GUIContent("Scriptable Types"), FocusType.Keyboard))
+        if (EditorGUILayout.DropdownButton(new GUIContent(typeName), FocusType.Keyboard))
         {
             GenericMenu menu = new GenericMenu();
 
-            var function = new GenericMenu.MenuFunction2((type) => { activeType = (System.Type)type; });
+            var function = new GenericMenu.MenuFunction2((type) => { activeType = (System.Type)type; typeName = type.ToString(); });
 
             menu.AddItem(new GUIContent("All"), false, function, typeof(ScriptableObject));
             menu.AddSeparator("");
