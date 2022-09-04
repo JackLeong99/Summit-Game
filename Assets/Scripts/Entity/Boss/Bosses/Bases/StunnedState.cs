@@ -41,6 +41,6 @@ public class StunnedState : BaseState
         boss.agent.speed = boss.components.rage ? boss.attributes.rageSpeed : boss.components.startSpeed;
 
         Stun(StunState.Accepted);
-        boss.ChangeState(boss.baseState);
+        boss.ChangeState(boss.idleState);
     }
 }
