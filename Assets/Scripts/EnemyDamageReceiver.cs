@@ -14,7 +14,7 @@ public class EnemyDamageReceiver : MonoBehaviour
         boss = GetComponentInParent<BossStateMachine>();
         gameObject.tag = "enemyHitbox";
     }
-    public void PassDamage(float dmg, Vector3 position) 
+    public void PassDamage(float dmg, Vector3 position)
     {
         boss.TakeDamage(dmg, position);
         DamageHandler();

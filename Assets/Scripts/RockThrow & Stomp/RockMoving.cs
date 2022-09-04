@@ -78,7 +78,6 @@ public class RockMoving : MonoBehaviour
             PlayerStats health = other.GetComponent<PlayerStats>();
             health.takeDamage(30);
             hasntHit=false;
-            GameManager.Instance.onPlayerHit("rock throw");
         }
         
         if(other.tag=="Arena")
