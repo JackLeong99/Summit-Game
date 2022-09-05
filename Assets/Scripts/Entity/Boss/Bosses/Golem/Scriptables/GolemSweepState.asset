@@ -9,10 +9,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7490f334f46204c46b5bf06d50f89aaf, type: 3}
+  m_Script: {fileID: 11500000, guid: bf8528ceedfb4704e8167cc322ec4ef1, type: 3}
   m_Name: GolemSweepState
   m_EditorClassIdentifier: 
-  duration: 2
-  delay: 0.2
+  duration: 0
+  delay: 0
   layer: 0
-  spawnableObject: {fileID: 3661587751898508818, guid: 1a54bd1eeecf95c4ea566e46f6b9b85c, type: 3}
+  spawnableObject: {fileID: 0}
+  animation: Sweep
+  soundEvent: Enemy_Melee_Right_Hook
+  damage: 15
+  knockbackForce: {x: 10, y: 3}
