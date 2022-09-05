@@ -25,17 +25,22 @@ public abstract class ProjectileBase : MonoBehaviour
 
     public virtual void OnCollisionEnter(Collision hit) 
     {
+        Debug.Log("hit: " + hit);
         Hit();
     }
 
     public virtual void OnTriggerEnter(Collider other) 
     {
-        Hit();
-        other.GetComponent<EnemyDamageReceiver>().PassDamage(damage, transform.position);
-        foreach (var OnHit in OnHitEffects) 
+        Debug.Log("hit: " + other);
+        if (other.CompareTag("enemyHitbox"))
         {
-            Debug.Log("Applied OnHitEffect to: " + other.gameObject);
-            OnHit.ApplyOnHitEffects(other.gameObject);
+            Hit();
+            other.GetComponent<EnemyDamageReceiver>().PassDamage(damage, transform.position);
+            foreach (var OnHit in OnHitEffects)
+            {
+                Debug.Log("Applied OnHitEffect to: " + other.gameObject);
+                OnHit.ApplyOnHitEffects(other.gameObject);
+            }
         }
     }
 

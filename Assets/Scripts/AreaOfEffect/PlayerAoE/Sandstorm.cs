@@ -8,6 +8,8 @@ public class Sandstorm : AreaOfEffect
 
     public float tickRate;
 
+    public bool covered;
+
     PlayerStats player;
 
     Coroutine routine;
@@ -16,7 +18,6 @@ public class Sandstorm : AreaOfEffect
     {
         if (other.CompareTag("Player")) 
         {
-            Debug.Log("player enter");
             player = other.GetComponent<PlayerStats>();
             routine = StartCoroutine(doEffect());
         }
@@ -26,7 +27,6 @@ public class Sandstorm : AreaOfEffect
     {
         if (other.CompareTag("Player")) 
         {
-            Debug.Log("player exit");
             //player = other.GetComponent<PlayerStats>();
             StopCoroutine(routine);
         }
@@ -41,8 +41,30 @@ public class Sandstorm : AreaOfEffect
         }
     }
 
+    public void toggleDamage() 
+    {
+        switch (covered) 
+        {
+            case true:
+                routine = StartCoroutine(doEffect());
+                covered = false;
+                break;
+            case false:
+                StopCoroutine(routine);
+                covered = true;
+                break;
+        }
+
+    }
+
+    public void OnEnable()
+    {
+        sandPillar.OnTrigger += toggleDamage;
+    }
+
     public void OnDisable()
     {
+        sandPillar.OnTrigger -= toggleDamage;
         StopCoroutine(routine);
     }
 }
