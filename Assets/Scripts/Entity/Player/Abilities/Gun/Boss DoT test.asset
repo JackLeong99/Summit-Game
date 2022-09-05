@@ -12,6 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed6879142b22e03428f568b7102d983d, type: 3}
   m_Name: Boss DoT test
   m_EditorClassIdentifier: 
-  time: 5
   rate: 0.5
-  damage: 5
+  damage:
+  - 5
+  - 5
+  - 5
+  - 5
+  - 5
+  - 5
