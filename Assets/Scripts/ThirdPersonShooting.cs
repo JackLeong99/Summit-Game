@@ -56,6 +56,7 @@ public class ThirdPersonShooting : MonoBehaviour
     private ParticleSystem.EmissionModule pp;
 
     public List<OnHitEffect> OnHitEffects = new List<OnHitEffect>();
+
     private void Awake()
 	{
 		if (_mainCamera == null)
@@ -125,7 +126,7 @@ public class ThirdPersonShooting : MonoBehaviour
         Ray ray = cam.ViewportPointToRay(new Vector3(0.5f, 0.5f , 0));
         RaycastHit hit;
 
-        if(Physics.Raycast(ray, out hit))
+        if(Physics.Raycast(ray, out hit, Mathf.Infinity, 0))
         {
             destination = hit.point;
         }

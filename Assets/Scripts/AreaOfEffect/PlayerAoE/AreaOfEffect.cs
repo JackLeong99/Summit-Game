@@ -4,7 +4,29 @@ using UnityEngine;
 
 public abstract class AreaOfEffect : MonoBehaviour
 {
-    public abstract void OnTriggerEnter(Collider other);
+    public string hitTag;
 
-    public abstract void OnTriggerExit(Collider other);
+    Coroutine routine;
+    public virtual void OnTriggerEnter(Collider other) 
+    {
+        if (other.CompareTag(hitTag))
+        {
+            routine = StartCoroutine(doEffect(other));
+        }
+    }
+
+    public virtual void OnTriggerExit(Collider other) 
+    {
+        if (other.CompareTag(hitTag))
+        {
+            StopCoroutine(routine);
+        }
+    }
+
+    public abstract IEnumerator doEffect(Collider other);
+
+    public virtual void OnDisable() 
+    {
+        StopCoroutine(routine);
+    }
 }

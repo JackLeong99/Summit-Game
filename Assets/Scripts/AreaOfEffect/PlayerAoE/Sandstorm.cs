@@ -16,45 +16,27 @@ public class Sandstorm : AreaOfEffect
 
     public override void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Player")) 
-        {
-            player = other.GetComponent<PlayerStats>();
-            routine = StartCoroutine(doEffect());
-        }
+        base.OnTriggerEnter(other);
     }
 
     public override void OnTriggerExit(Collider other)
     {
-        if (other.CompareTag("Player")) 
-        {
-            //player = other.GetComponent<PlayerStats>();
-            StopCoroutine(routine);
-        }
+        base.OnTriggerExit(other);
     }
 
-    public IEnumerator doEffect()
+    public override IEnumerator doEffect(Collider other)
     {
         while(true) 
         {
             yield return new WaitForSeconds(tickRate);
-            player.takeDamage(damage);
+            if(!covered)
+            other.gameObject.GetComponent<PlayerStats>().takeDamage(damage);
         }
     }
 
     public void toggleDamage() 
     {
-        switch (covered) 
-        {
-            case true:
-                routine = StartCoroutine(doEffect());
-                covered = false;
-                break;
-            case false:
-                StopCoroutine(routine);
-                covered = true;
-                break;
-        }
-
+        covered = !covered;
     }
 
     public void OnEnable()
@@ -62,7 +44,7 @@ public class Sandstorm : AreaOfEffect
         sandPillar.OnTrigger += toggleDamage;
     }
 
-    public void OnDisable()
+    public override void OnDisable()
     {
         sandPillar.OnTrigger -= toggleDamage;
         StopCoroutine(routine);

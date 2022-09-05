@@ -5,7 +5,7 @@ using UnityEngine;
 public abstract class ProjectileBase : MonoBehaviour
 {
     public float maxLifetime;
-    private float currentLifetime;
+    public float currentLifetime;
     protected float damage;
     protected List<OnHitEffect> OnHitEffects = new List<OnHitEffect>();
 
@@ -31,6 +31,10 @@ public abstract class ProjectileBase : MonoBehaviour
 
     public virtual void OnTriggerEnter(Collider other) 
     {
+        if (other.gameObject.layer == 8) 
+        {
+            return;
+        }
         Debug.Log("hit: " + other);
         if (other.CompareTag("enemyHitbox"))
         {
