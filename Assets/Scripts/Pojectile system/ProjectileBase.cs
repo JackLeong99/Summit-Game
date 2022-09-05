@@ -31,15 +31,21 @@ public abstract class ProjectileBase : MonoBehaviour
 
     public virtual void OnTriggerEnter(Collider other) 
     {
-        if (other.gameObject.layer == 8) 
-        {
-            return;
-        }
         Debug.Log("hit: " + other);
         if (other.CompareTag("enemyHitbox"))
         {
             Hit();
             other.GetComponent<EnemyDamageReceiver>().PassDamage(damage, transform.position);
+            foreach (var OnHit in OnHitEffects)
+            {
+                Debug.Log("Applied OnHitEffect to: " + other.gameObject);
+                OnHit.ApplyOnHitEffects(other.gameObject);
+            }
+        }
+        if (other.CompareTag("Player")) 
+        {
+            Hit();
+            other.GetComponent<PlayerStats>().takeDamage(damage);
             foreach (var OnHit in OnHitEffects)
             {
                 Debug.Log("Applied OnHitEffect to: " + other.gameObject);

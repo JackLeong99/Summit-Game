@@ -103,6 +103,8 @@ namespace StarterAssets
 		[HideInInspector]
 		public bool _Inactionable;
 
+		public bool stunned;
+
 		private float swingTimer;
 
 		private KnockbackReciever reciever;
@@ -179,7 +181,7 @@ namespace StarterAssets
 				}
 			}
 
-			if (shooting.casting || attack.isAttacking)
+			if (shooting.casting || attack.isAttacking || stunned)
 			{
 				_Inactionable = true;
 			}
@@ -442,5 +444,21 @@ namespace StarterAssets
       		//m_MouseLook.XSensitivity = X;
       		//m_MouseLook.YSensitivity = Y; //attempt 1
   		}
+
+		public void runStun(float t) 
+		{
+			if(!stunned)
+			StartCoroutine(stun(t));
+		}
+
+		public IEnumerator stun(float t) 
+		{
+			stunned = true;
+			_Inactionable = true;
+			yield return new WaitForSeconds(t);
+			stunned = false;
+			_Inactionable = false;
+			yield return null;
+		}
     }
 }
