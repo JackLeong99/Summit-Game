@@ -15,7 +15,7 @@ public class shootStunArrow : MonoBehaviour
 
     private void Update()
     {
-        target = player.transform.position + new Vector3 (0.0f, 2.0f, 0.0f);
+        target = player.transform.position + new Vector3 (0.0f, 1.0f, 0.0f);
         if (Input.GetKeyDown("b")) 
         {
             Debug.Log("pewpew");
