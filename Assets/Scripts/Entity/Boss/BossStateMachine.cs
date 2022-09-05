@@ -61,9 +61,6 @@ public class BossStateMachine : MonoBehaviour
     [Header("Component References")]
     public Animator anim;
     public NavMeshAgent agent;
-    public DamageFlash flash;
-
-
 
     public void Start()
     {
@@ -77,7 +74,6 @@ public class BossStateMachine : MonoBehaviour
         instance = this;
         anim = GetComponent<Animator>();
         agent = GetComponent<NavMeshAgent>();
-        flash = GetComponent<DamageFlash>();
     }
 
     public void SetParameters()
@@ -127,12 +123,6 @@ public class BossStateMachine : MonoBehaviour
 
     public void TakeDamage(float[] dmg, float tickRate, Vector3 position)
     {
-        switch (components.iFrame)
-        {
-            case IState.Active:
-                return;
-        }
-
         StartCoroutine(IFrame());
 
         StartCoroutine(TickDamage(dmg, tickRate, position));
@@ -163,9 +153,6 @@ public class BossStateMachine : MonoBehaviour
 
         UIManager.Instance.HealthBossBarSet((int)Mathf.Round(components.curHealth));
         UIManager.Instance.DamageTextPool.Spawn(position, dmg.ToString(), Color.white, dmg > 15f ? 12f : 4f);
-
-        if (flash != null)
-            flash.Flash();
 
         if (!Alive())
         {
