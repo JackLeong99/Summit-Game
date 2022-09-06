@@ -22,6 +22,7 @@ public class GameManager : MonoBehaviour
     public void StartGame()
     {
         instance = this;
+        mainCamera = GameObject.FindWithTag("MainCamera");
         SceneHandler.LoadScenes(startingScenes);
     }
 }
