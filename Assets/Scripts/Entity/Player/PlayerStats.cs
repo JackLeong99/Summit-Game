@@ -29,19 +29,27 @@ public class PlayerStats : MonoBehaviour
     }
 
     public void takeDamage(float damage){
-        if (currentHealth > 0){
-            if(lowerdamage)
-            {
-                damage-=5; //we can change this. I was not sure how much to decrease by
-            }
-            //Not healing if defence stat bigger than potential damage taken.
-            if(damage - defence > 0 && !dodge.invuln){
-                currentHealth = currentHealth - (damage + defence);
-            }
-            
+        //if (currentHealth > 0){
+        //    if(lowerdamage)
+        //    {
+        //        damage-=5; //we can change this. I was not sure how much to decrease by
+        //    }
+        //    //Not healing if defence stat bigger than potential damage taken.
+        //    if(damage - defence > 0 && !dodge.invuln){
+        //        currentHealth = currentHealth - (damage + defence);
+        //    }
+
+        //}
+
+        float finalDamage = damage;
+        //insert resistance calcs
+        finalDamage = Mathf.Clamp(finalDamage, 0f, Mathf.Infinity);
+        if (currentHealth > 0 && !dodge.invuln) 
+        {
+            currentHealth -= finalDamage;
+            AkSoundEngine.PostEvent("Player_Damage", gameObject);
+            UIManager.Instance.HealthBarSet(currentHealth);
         }
-        AkSoundEngine.PostEvent("Player_Damage", gameObject);
-        UIManager.Instance.HealthBarSet(currentHealth);
         //System.Console.WriteLine("current health = " + currentHealth + "after taking " + damage);
     }
 
@@ -58,17 +66,17 @@ public class PlayerStats : MonoBehaviour
         //System.Console.WriteLine("current health = " + currentHealth + "after taking " + healing);
     }
 
-    public void DecreaseDamage()
-    {
-        if(lowerdamage==true)
-        {
-            lowerdamage=false;
-        }
-        else
-        {
-           lowerdamage=true; 
-        }
-    }
+    //public void DecreaseDamage()
+    //{
+    //    if(lowerdamage==true)
+    //    {
+    //        lowerdamage=false;
+    //    }
+    //    else
+    //    {
+    //       lowerdamage=true; 
+    //    }
+    //}
 
     //used by gamemanger
     public float GetPlayerHealth()

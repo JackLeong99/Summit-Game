@@ -61,7 +61,7 @@ public class sandPillar : MonoBehaviour
 
     public void toggleActive(bool b) 
     {
-        active = b;
+        active = b;            
     }
 
     public void OnEnable()
