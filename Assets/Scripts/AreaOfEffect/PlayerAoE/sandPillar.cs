@@ -10,9 +10,11 @@ public class sandPillar : MonoBehaviour
 
     public bool playerPresent;
 
+    public bool active;
+
     public GameObject parent;
 
-    public delegate void present();
+    public delegate void present(bool b);
     public static event present OnTrigger;
 
     private void Start()
@@ -26,7 +28,7 @@ public class sandPillar : MonoBehaviour
         {
             gameObject.transform.root.gameObject.SetActive(false);
         }
-        if (playerPresent)
+        if (playerPresent && active)
         {
             health -= Time.deltaTime;
         }
@@ -38,7 +40,7 @@ public class sandPillar : MonoBehaviour
         {
             if (OnTrigger != null) 
             {
-                OnTrigger();
+                OnTrigger(true);
                 playerPresent = true;
                 Debug.Log("player covered");
             }
@@ -51,18 +53,29 @@ public class sandPillar : MonoBehaviour
         {
             if (OnTrigger != null)
             {
-                OnTrigger();
+                OnTrigger(false);
                 playerPresent = false;
             }
         }
+    }
+
+    public void toggleActive(bool b) 
+    {
+        active = b;
+    }
+
+    public void OnEnable()
+    {
+        Sandstorm.OnStorm += toggleActive;
     }
 
     public void OnDisable()
     {
         if (OnTrigger != null)
         {
-            OnTrigger();
+            OnTrigger(false);
             playerPresent = false;
         }
+        Sandstorm.OnStorm -= toggleActive;
     }
 }

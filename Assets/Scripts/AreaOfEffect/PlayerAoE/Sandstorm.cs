@@ -10,9 +10,10 @@ public class Sandstorm : AreaOfEffect
 
     public bool covered;
 
-    PlayerStats player;
-
     Coroutine routine;
+
+    public delegate void storming(bool b);
+    public static event storming OnStorm;
 
     public override void OnTriggerEnter(Collider other)
     {
@@ -34,18 +35,26 @@ public class Sandstorm : AreaOfEffect
         }
     }
 
-    public void toggleDamage() 
+    public void toggleDamage(bool b) 
     {
-        covered = !covered;
+        covered = b;
     }
 
     public void OnEnable()
     {
+        if (OnStorm != null) 
+        {
+            OnStorm(true);
+        }
         sandPillar.OnTrigger += toggleDamage;
     }
 
     public override void OnDisable()
     {
+        if (OnStorm != null)
+        {
+            OnStorm(false);
+        }
         sandPillar.OnTrigger -= toggleDamage;
         StopCoroutine(routine);
     }
