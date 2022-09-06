@@ -72,7 +72,7 @@ public class MageRockMove : MonoBehaviour
 
         if(other.tag=="player")
         {
-            PlayerStats health = other.GetComponent<PlayerStats>();
+            PlayerHealth health = other.GetComponent<PlayerHealth>();
             health.takeDamage(10);
         }
         

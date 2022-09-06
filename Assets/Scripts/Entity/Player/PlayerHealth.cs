@@ -5,7 +5,7 @@ using StarterAssets;
 
 
 
-public class PlayerStats : MonoBehaviour
+public class PlayerHealth : MonoBehaviour
 {
     private Dodge dodge;
     public float maxHealth;
@@ -41,8 +41,11 @@ public class PlayerStats : MonoBehaviour
             
         }
         AkSoundEngine.PostEvent("Player_Damage", gameObject);
-        UIManager.Instance.HealthBarSet(currentHealth);
-        //System.Console.WriteLine("current health = " + currentHealth + "after taking " + damage);
+
+        if (currentHealth <= 0)
+        {
+            //GameManager.Instance.onDeath(); //to be moved to whatever is handling health
+        }
     }
 
 
@@ -54,7 +57,6 @@ public class PlayerStats : MonoBehaviour
         if (currentHealth >= maxHealth){
             currentHealth = maxHealth;
         }
-        UIManager.Instance.HealthBarSet(currentHealth);
         //System.Console.WriteLine("current health = " + currentHealth + "after taking " + healing);
     }
 

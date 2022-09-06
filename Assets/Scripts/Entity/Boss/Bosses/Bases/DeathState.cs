@@ -28,7 +28,7 @@ public class DeathState : BossState
         boss.anim.SetTrigger("Death");
         AkSoundEngine.PostEvent("Enemy_Death", boss.gameObject);
         yield return new WaitForSeconds(8.2f);
-        GameManager.Instance.onBossDeath();
+        //GameManager.Instance.onBossDeath();
         //UIManager.Instance.WinScreen();
         //Instantiate(deathFX, gameObject.transform.position, Quaternion.identity);
     }

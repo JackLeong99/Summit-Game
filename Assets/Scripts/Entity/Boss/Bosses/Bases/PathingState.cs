@@ -34,7 +34,12 @@ public class PathingState : BaseState
                 break;
         }
 
-        boss.agent.destination = GameManager.player.transform.position;
+        switch (true)
+        {
+            case bool x when GameManager.instance.player != null:
+                boss.agent.destination = GameManager.instance.player.transform.position;
+                break;
+        }
     }
 
     public override void Exit()

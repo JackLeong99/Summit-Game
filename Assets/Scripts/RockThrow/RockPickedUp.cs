@@ -75,7 +75,7 @@ public class RockPickedUp : MonoBehaviour
         if(rockHealth<=0)
          {
             Destroy(gameObject);
-            player.GetComponent<PlayerStats>().healDamage(5.0f);
+            player.GetComponent<PlayerHealth>().healDamage(5.0f);
             Instantiate(healBurst, gameObject.transform.position, Quaternion.Euler(0, 0, 0));
             AkSoundEngine.PostEvent("Enemy_Damage", gameObject);
         }

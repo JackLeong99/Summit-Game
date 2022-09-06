@@ -41,8 +41,6 @@ public class ThirdPersonShooting : MonoBehaviour
     [HideInInspector]
     public bool onCooldown;
     private Vector3 destination;
-    public Color OffCD;
-    public Color OnCD;
 
     private ThirdPersonController controller;
 
@@ -66,8 +64,6 @@ public class ThirdPersonShooting : MonoBehaviour
 
     void Start()
     {
-        CdDisplay.text = "";
-        CdBackground.color = OffCD;
         _animator = GetComponent<Animator>();
         //Temporary code that resets player y axis rotation until we add custom player model/animations
         player = GetComponent<CharacterController>();
@@ -97,13 +93,9 @@ public class ThirdPersonShooting : MonoBehaviour
         {
             cdTimer = 0;
             onCooldown = false;
-            CdDisplay.text = "";
-            CdBackground.color = OffCD;
         }
         else
         {
-            CdDisplay.text = (cdTimer+1).ToString("0");
-            CdBackground.color = OnCD;
             onCooldown = true;
         }
     }

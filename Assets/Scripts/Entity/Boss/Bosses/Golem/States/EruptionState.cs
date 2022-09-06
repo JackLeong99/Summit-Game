@@ -34,7 +34,7 @@ public class EruptionState : AbilityState
 
     public IEnumerator Eruption()
     {
-        GameObject target = GameManager.player;
+        GameObject target = GameManager.instance.player;
         int layerMask = 1 << layer;
 
         RaycastHit hit;

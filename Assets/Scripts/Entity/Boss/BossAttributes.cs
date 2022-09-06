@@ -5,6 +5,9 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "Boss/New Attributes")]
 [Serializable] public class BossAttributes : ScriptableObject
 {
+    [Header("Boss Name")]
+    public string bossName;
+
     [Header("Distance Checks")]
     public int minPlayerDist;
     public int maxPlayerDist;
