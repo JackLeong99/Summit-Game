@@ -1604,8 +1604,9 @@ GameObject:
   - component: {fileID: 654775729}
   - component: {fileID: 654775728}
   - component: {fileID: 654775727}
+  - component: {fileID: 654775732}
   m_Layer: 0
-  m_Name: Cube
+  m_Name: Baddy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1618,7 +1619,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 654775726}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 77844f0c32e884249ad06b8e31e4381b, type: 3}
   m_Name: 
@@ -1627,6 +1628,7 @@ MonoBehaviour:
   projectileDamage: 10
   OnHitEffects:
   - {fileID: 11400000, guid: a9fa67caa0d89384c8fb23cbc231cee4, type: 2}
+  - {fileID: 11400000, guid: 572a451e5687bb74e8870dd193d9b129, type: 2}
   useGrav: 0
   projectile: {fileID: 4632217439929507364, guid: 6543525e56c78c34d913b2c9c53b898b, type: 3}
   player: {fileID: 1296980557}
@@ -1708,8 +1710,37 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 36
+  m_RootOrder: 38
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &654775732
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 654775726}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9d3e8d001b26c4c489af8a4fd0b3ab08, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  projectileSpeed: 50
+  projectileDamage: 50
+  angle: 5
+  OnHitEffects:
+  - {fileID: 11400000, guid: 572a451e5687bb74e8870dd193d9b129, type: 2}
+  - {fileID: 11400000, guid: a9fa67caa0d89384c8fb23cbc231cee4, type: 2}
+  projectiles:
+  - {fileID: 4632217439929507364, guid: e5364950120f14a4abdcfc4251f83d5d, type: 3}
+  - {fileID: 4632217439929507364, guid: e5364950120f14a4abdcfc4251f83d5d, type: 3}
+  - {fileID: 4632217439929507364, guid: e5364950120f14a4abdcfc4251f83d5d, type: 3}
+  - {fileID: 4632217439929507364, guid: e5364950120f14a4abdcfc4251f83d5d, type: 3}
+  - {fileID: 4632217439929507364, guid: e5364950120f14a4abdcfc4251f83d5d, type: 3}
+  - {fileID: 4632217439929507364, guid: e5364950120f14a4abdcfc4251f83d5d, type: 3}
+  - {fileID: 4632217439929507364, guid: e5364950120f14a4abdcfc4251f83d5d, type: 3}
+  player: {fileID: 1296980557}
+  originPoint: {fileID: 654775731}
+  target: {x: 0, y: 0, z: 0}
 --- !u!114 &733659446 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 9185530048483782247, guid: 90c1bd1fda819204985b62a4e3e9e7b5, type: 3}
@@ -1884,7 +1915,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 6132585711730146224, guid: 1e3d29942dec8eb44b19fcf43473da44, type: 3}
       propertyPath: m_RootOrder
-      value: 38
+      value: 37
       objectReference: {fileID: 0}
     - target: {fileID: 6132585711730146224, guid: 1e3d29942dec8eb44b19fcf43473da44, type: 3}
       propertyPath: m_LocalPosition.x
@@ -3346,7 +3377,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 6132585711730146224, guid: 1e3d29942dec8eb44b19fcf43473da44, type: 3}
       propertyPath: m_RootOrder
-      value: 37
+      value: 36
       objectReference: {fileID: 0}
     - target: {fileID: 6132585711730146224, guid: 1e3d29942dec8eb44b19fcf43473da44, type: 3}
       propertyPath: m_LocalPosition.x
@@ -4134,7 +4165,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1464004291001004113, guid: 72685063573e0d742816d7c72c1dd711, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1464004291001004114, guid: 72685063573e0d742816d7c72c1dd711, type: 3}
       propertyPath: m_RootOrder
@@ -5484,7 +5515,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 5564621795753800860, guid: 15cb9288e8231f9419be19f0ae9ecad5, type: 3}
       propertyPath: m_Enabled
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6118956715112586494, guid: 15cb9288e8231f9419be19f0ae9ecad5, type: 3}
       propertyPath: m_Name
