@@ -443,12 +443,9 @@ MonoBehaviour:
   player: {fileID: 0}
   mainCamera: {fileID: 0}
   startingScenes:
-  - m_SceneAsset: {fileID: 102900000, guid: 466bb403334280540bd7e90243c9b159, type: 3}
+  - m_SceneAsset: {fileID: 102900000, guid: 2a0f80f82a270df45849983b20840b97, type: 3}
     m_IsDirty: 0
-    m_ScenePath: Assets/Scenes/Key/Player.unity
-  - m_SceneAsset: {fileID: 102900000, guid: 3bde9bd6863b083479099d8025a6826d, type: 3}
-    m_IsDirty: 0
-    m_ScenePath: Assets/Scenes/Key/Overlay.unity
+    m_ScenePath: Assets/Scenes/Menus/Menu_Main.unity
   exclusionScenes:
   - m_SceneAsset: {fileID: 102900000, guid: 27bb5104a75d247498ed4711a95a51dc, type: 3}
     m_IsDirty: 0
@@ -459,6 +456,13 @@ MonoBehaviour:
   - m_SceneAsset: {fileID: 102900000, guid: 466bb403334280540bd7e90243c9b159, type: 3}
     m_IsDirty: 0
     m_ScenePath: Assets/Scenes/Key/Player.unity
+  gameScenes:
+  - m_SceneAsset: {fileID: 102900000, guid: 466bb403334280540bd7e90243c9b159, type: 3}
+    m_IsDirty: 0
+    m_ScenePath: Assets/Scenes/Key/Player.unity
+  - m_SceneAsset: {fileID: 102900000, guid: 3bde9bd6863b083479099d8025a6826d, type: 3}
+    m_IsDirty: 0
+    m_ScenePath: Assets/Scenes/Key/Overlay.unity
   bossScenes:
   - m_SceneAsset: {fileID: 102900000, guid: 9b84110c173e7ef46b35851632f9fdbf, type: 3}
     m_IsDirty: 0

@@ -12,6 +12,7 @@ public class GameManager : MonoBehaviour
     [Header("Scene Handling")]
     public List<SceneReference> startingScenes;
     public List<SceneReference> exclusionScenes;
+    public List<SceneReference> gameScenes;
     public List<SceneReference> bossScenes;
     public List<SceneReference> shopScene;
 
@@ -30,7 +31,6 @@ public class GameManager : MonoBehaviour
     public void StartGame()
     {
         SceneHandler.LoadScenes(startingScenes);
-        SceneHandler.LoadScenes(bossScenes);
     }
 
     public void LoadShop()
