@@ -22,6 +22,8 @@ TagManager:
   - shield
   - oasisOrb
   - oasis
+  - Fire
+  - ArcherProjectile
   layers:
   - Default
   - TransparentFX
@@ -30,9 +32,9 @@ TagManager:
   - Water
   - UI
   - Ground
-  - 
-  - 
-  - 
+  - particleStopper
+  - safeZone
+  - Projectile
   - Controller
   - camIgnore
   - 

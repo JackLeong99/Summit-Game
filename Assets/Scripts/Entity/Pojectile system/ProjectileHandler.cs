@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class ProjectileHandler : ScriptableObject
+public abstract class ProjectileHandler : MonoBehaviour
 {
     //Does the projectile use gravity
     public bool useGrav;
@@ -14,9 +14,8 @@ public abstract class ProjectileHandler : ScriptableObject
     public float maxSpeed;
     //Sets the projectile being fired
     public GameObject projectile;
-    public ProjectileBase projectileBase;
+    public float projectileDamage;
     //The on hit effect applied by this projectile
-    //(this needs to be updated to a class type variable once the onhiteffect class is implemented)
     public List<OnHitEffect> OnHitEffects = new List<OnHitEffect>();
     //The point the projectile originates from
     public Transform originPoint;
@@ -27,6 +26,7 @@ public abstract class ProjectileHandler : ScriptableObject
     {
         var projectileObj = Instantiate(projectile, originPoint.position, Quaternion.identity) as GameObject;
         projectileObj.GetComponent<ProjectileBase>().SetOnHitEffect(OnHitEffects);
+        projectileObj.GetComponent<ProjectileBase>().SetDamage(projectileDamage);
         var rBody = projectileObj.GetComponent<Rigidbody>();
         rBody.velocity = (target - originPoint.position).normalized * projectileSpeed;
         if (useGrav)
