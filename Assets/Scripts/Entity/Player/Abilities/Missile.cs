@@ -6,6 +6,7 @@ public class Missile : ProjectileBase
 {
     public float tracking;
     public GameObject target;
+    private bool canTrack = false;
 
     public void Start()
     {
@@ -15,7 +16,7 @@ public class Missile : ProjectileBase
     public override void Update()
     {
         base.Update();
-        if(target!= null)
+        if(target!= null && canTrack == true)
         gameObject.GetComponent<Rigidbody>().velocity += (target.transform.position - gameObject.transform.position).normalized * tracking;
     }
 
@@ -34,9 +35,18 @@ public class Missile : ProjectileBase
         base.OnTriggerEnter(other);
     }
 
-    public void setTracking(float tr, GameObject ta) 
+    public void setTracking(float tr, float de, GameObject ta) 
     {
         tracking = tr;
         target = ta;
+        StartCoroutine(trackDelay(de));
+    }
+
+    private IEnumerator trackDelay(float d) 
+    {
+        yield return new WaitForSeconds(d);
+        var v = gameObject.GetComponent<Rigidbody>().velocity;
+        gameObject.GetComponent<Rigidbody>().velocity = v / 2;
+        canTrack = true;
     }
 }

@@ -13,6 +13,7 @@ public class ActiveMissile : ItemBase
     public float tracking;
     public float damage;
     public float bufferTime;
+    public float delay;
     public override void effect(GameObject target)
     {
         target.GetComponent<ActiveItem>().StartCoroutine(fire(target));
@@ -24,15 +25,18 @@ public class ActiveMissile : ItemBase
 
         for (int i = 0; i < missileCount; i++) 
         {
-            projectileList.Add(Instantiate(projectile, target.transform.position + new Vector3(0, 2, 0), Quaternion.identity) as GameObject);
+            projectileList.Add(Instantiate(projectile, target.transform.position + new Vector3(0, 1, 0), Quaternion.identity) as GameObject);
         }
+
+        float missileNo = delay;
 
         foreach (var p in projectileList) 
         {
-            p.GetComponent<Missile>().setTracking(tracking, FindClosestEnemy());
-            p.GetComponent<Rigidbody>().velocity = (Vector3.up + new Vector3(Random.Range(-2, -2), 0, Random.Range(-2, -2))) * projectileSpeed;
+            p.GetComponent<Missile>().setTracking(tracking, missileNo, FindClosestEnemy());
+            p.GetComponent<Rigidbody>().velocity = (Vector3.up + new Vector3(Random.Range(-0.1f, 0.1f), 0, Random.Range(-0.1f, 0.1f))).normalized * projectileSpeed;
             p.GetComponent<Missile>().SetDamage(damage);
             yield return new WaitForSeconds(bufferTime);
+            missileNo += bufferTime;
         }
     }
 

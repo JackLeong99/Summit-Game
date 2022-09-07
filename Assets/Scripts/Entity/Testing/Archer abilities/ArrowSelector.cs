@@ -37,7 +37,7 @@ public class ArrowSelector : MonoBehaviour
         {
             //range values are placeholder for now- this represents 3 different arrow types
             // (1, 2, 3) are the possible returns
-            selectedArrows[i] = Random.Range(1, 5);
+            selectedArrows[i] = Random.Range(0, 4);
         }
         currentArrowIndex = 3;
         for( int i = 0; i < selectedArrows.Length; i++ )
@@ -58,13 +58,11 @@ public class ArrowSelector : MonoBehaviour
             if(currentArrowIndex >= 0)
             {
                 selectedArrows[currentArrowIndex] = 0;
+                gameObject.GetComponent<Renderer>().material.color = list.ElementAt(selectedArrows[currentArrowIndex]).Value;
                 currentArrowIndex = currentArrowIndex - 1;
                 for( int i = 0; i < selectedArrows.Length; i++ )
                 {
                     Debug.Log( selectedArrows[i] );
-
-                    gameObject.GetComponent<Renderer>().material.color = list.ElementAt(selectedArrows[i]).Value;
-                    list.ElementAt(selectedArrows[i]);
                 }
             }
             else
