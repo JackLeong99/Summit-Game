@@ -15,6 +15,14 @@ public class Sandstorm : AreaOfEffect
     public delegate void storming(bool b);
     public static event storming OnStorm;
 
+    private void Start()
+    {
+        if (OnStorm != null)
+        {
+            OnStorm(true);
+        }
+    }
+
     public override void OnTriggerEnter(Collider other)
     {
         base.OnTriggerEnter(other);

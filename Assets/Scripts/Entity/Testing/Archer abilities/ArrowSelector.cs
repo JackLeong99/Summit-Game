@@ -57,8 +57,8 @@ public class ArrowSelector : MonoBehaviour
             //0 represents used
             if(currentArrowIndex >= 0)
             {
-                selectedArrows[currentArrowIndex] = 0;
                 gameObject.GetComponent<Renderer>().material.color = list.ElementAt(selectedArrows[currentArrowIndex]).Value;
+                selectedArrows[currentArrowIndex] = 0;
                 currentArrowIndex = currentArrowIndex - 1;
                 for( int i = 0; i < selectedArrows.Length; i++ )
                 {

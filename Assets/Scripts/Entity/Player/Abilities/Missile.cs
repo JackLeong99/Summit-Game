@@ -11,7 +11,7 @@ public class Missile : ProjectileBase
     public void Start()
     {
         Physics.IgnoreLayerCollision(9, 9);
-        Physics.IgnoreLayerCollision(3, 9);
+        //Physics.IgnoreLayerCollision(3, 9);
     }
     public override void Update()
     {

@@ -25,7 +25,7 @@ public class ActiveMissile : ItemBase
 
         for (int i = 0; i < missileCount; i++) 
         {
-            projectileList.Add(Instantiate(projectile, target.transform.position + new Vector3(0, 1, 0), Quaternion.identity) as GameObject);
+            projectileList.Add(Instantiate(projectile, target.transform.position + new Vector3(0, 3, 0), Quaternion.identity) as GameObject);
         }
 
         float missileNo = delay;
