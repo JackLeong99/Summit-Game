@@ -31,7 +31,7 @@ public class Sandstorm : AreaOfEffect
         {
             yield return new WaitForSeconds(tickRate);
             if(!covered)
-            other.gameObject.GetComponent<PlayerStats>().takeDamage(damage);
+            other.gameObject.GetComponent<PlayerHealth>().takeDamage(damage);
         }
     }
 

@@ -24,7 +24,7 @@ public class LightBeam : AreaOfEffect
         while (true) 
         {
             yield return new WaitForSeconds(tickRate);
-            other.gameObject.GetComponent<PlayerStats>().takeDamage(damage);
+            other.gameObject.GetComponent<PlayerHealth>().takeDamage(damage);
         }
     }
 
