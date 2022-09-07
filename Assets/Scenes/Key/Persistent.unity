@@ -450,13 +450,10 @@ MonoBehaviour:
   - m_SceneAsset: {fileID: 102900000, guid: 27bb5104a75d247498ed4711a95a51dc, type: 3}
     m_IsDirty: 0
     m_ScenePath: Assets/Scenes/Key/Persistent.unity
-  - m_SceneAsset: {fileID: 102900000, guid: 3bde9bd6863b083479099d8025a6826d, type: 3}
-    m_IsDirty: 0
-    m_ScenePath: Assets/Scenes/Key/Overlay.unity
-  - m_SceneAsset: {fileID: 102900000, guid: 466bb403334280540bd7e90243c9b159, type: 3}
-    m_IsDirty: 0
-    m_ScenePath: Assets/Scenes/Key/Player.unity
   gameScenes:
+  - m_SceneAsset: {fileID: 102900000, guid: c9a972ca30e196445b4a38c96abc1f83, type: 3}
+    m_IsDirty: 0
+    m_ScenePath: Assets/Scenes/Menus/Menu_Pause.unity
   - m_SceneAsset: {fileID: 102900000, guid: 466bb403334280540bd7e90243c9b159, type: 3}
     m_IsDirty: 0
     m_ScenePath: Assets/Scenes/Key/Player.unity
@@ -471,6 +468,10 @@ MonoBehaviour:
   - m_SceneAsset: {fileID: 102900000, guid: 8a95e54c012075c4eadac20fc68e2a93, type: 3}
     m_IsDirty: 0
     m_ScenePath: Assets/Scenes/Bosses/Shopkeeper.unity
+  showcase:
+  - m_SceneAsset: {fileID: 102900000, guid: f83b52058884e7d49992799267908f71, type: 3}
+    m_IsDirty: 0
+    m_ScenePath: Assets/Scenes/Bosses/Showcase.unity
 --- !u!1 &2049736186
 GameObject:
   m_ObjectHideFlags: 0

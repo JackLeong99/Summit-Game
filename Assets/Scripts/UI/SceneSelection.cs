@@ -49,7 +49,8 @@ public class SceneSelection : MonoBehaviour
     //gets called when going to new area after shop ie by teleporter
     public void SelectNewScene()
     {
-        int nextLevel =Random.Range(0, avaliableLevels.Length);
+        GameManager.instance.LoadGame();
+        /*int nextLevel =Random.Range(0, avaliableLevels.Length);
         string nextLevelString=avaliableLevels[nextLevel];
         string[] tempAvaliableLevels=new string[avaliableLevels.Length-1];
         int tracker=0;
@@ -71,7 +72,7 @@ public class SceneSelection : MonoBehaviour
         {
             nextLevelString="FinalBossScene";
         }
-        SceneManager.LoadScene(nextLevelString);
+        SceneManager.LoadScene(nextLevelString);*/
     }
 
     //called by collider on portal
