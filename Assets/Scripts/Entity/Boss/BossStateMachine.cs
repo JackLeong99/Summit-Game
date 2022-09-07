@@ -36,8 +36,6 @@ public enum StunState { Accepted, Stunned, Ignore }
 
 public class BossStateMachine : MonoBehaviour
 {
-    public static BossStateMachine instance;
-
     [Header("Attributes")]
     public BossAttributes attributes;
     public BossContext components;
@@ -71,7 +69,7 @@ public class BossStateMachine : MonoBehaviour
 
     public void GetInstances()
     {
-        instance = this;
+        BossManager.instance.boss = this;
         anim = GetComponent<Animator>();
         agent = GetComponent<NavMeshAgent>();
     }
@@ -79,6 +77,18 @@ public class BossStateMachine : MonoBehaviour
     public void SetParameters()
     {
         components.curHealth = attributes.maxHealth;
+        StartCoroutine(WaitForOverlay());
+    }
+
+    public IEnumerator WaitForOverlay()
+    {
+        /*while (BossManager.instance.bossText == null)
+        {
+            yield return null;
+        }*/
+
+        yield return null;
+        BossManager.instance.SetName(attributes.bossName);
     }
 
     public void Initialize(BossState startingState)
@@ -149,10 +159,9 @@ public class BossStateMachine : MonoBehaviour
     public void DamageHandler(float dmg, Vector3 position)
     {
         AkSoundEngine.PostEvent("Enemy_Damage", gameObject);
-        AkSoundEngine.PostEvent("UI_Hit_Indicator", GameManager.mainCamera);
+        AkSoundEngine.PostEvent("UI_Hit_Indicator", GameManager.instance.mainCamera);
 
-        UIManager.Instance.HealthBossBarSet((int)Mathf.Round(components.curHealth));
-        UIManager.Instance.DamageTextPool.Spawn(position, dmg.ToString(), Color.white, dmg > 15f ? 12f : 4f);
+        BossManager.instance.damageTextPool.Spawn(position, dmg.ToString(), Color.white, dmg > 15f ? 12f : 4f);
 
         if (!Alive())
         {
@@ -180,9 +189,12 @@ public class BossStateMachine : MonoBehaviour
     {
         components.rage = true;
         agent.speed = attributes.rageSpeed;
-        //attributes.attackTurnSpeed = 120.0f;
-        //turnFor = 0.9f;
         yield return null;
+    }
+
+    public float DamageCalculation(float baseDamage)
+    {
+        return components.rage ? baseDamage * attributes.rageMultiplier : baseDamage;
     }
 
     public void onStep()

@@ -1,4 +1,4 @@
-using System.Collections;
+/*using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Analytics;
@@ -66,27 +66,12 @@ public class GameManager : MonoBehaviour
     {
         AkSoundEngine.PostEvent("Player_Death", player);
         SceneSelection.Instance.DeathScene();
-        //UIManager.Instance.GameOverScreen();
     }
 
     public void onBossDeath()
     {
         //will need to find where I call this
         GameObject teleporter = Instantiate(teleporterPrefab,new Vector3(0,1,0),Quaternion.identity); 
-    }
-
-    public void onPlayerHit(string attack)
-    {
-        //same here
-    }
-
-    public void SwordDamge(int sDamage)
-    {
-        totalSwordDamage+=sDamage;
-    }
-    public void GunDamge(int gDamage)
-    {
-        totalGunDamage+=gDamage;
     }
 
     public void PauseGame ()
@@ -111,3 +96,4 @@ public class GameManager : MonoBehaviour
         noPause=false;
     }
 }
+*/

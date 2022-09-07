@@ -5,7 +5,7 @@ using StarterAssets;
 
 
 
-public class PlayerStats : MonoBehaviour
+public class PlayerHealth : MonoBehaviour
 {
     private Dodge dodge;
     public float maxHealth;
@@ -29,28 +29,23 @@ public class PlayerStats : MonoBehaviour
     }
 
     public void takeDamage(float damage){
-        //if (currentHealth > 0){
-        //    if(lowerdamage)
-        //    {
-        //        damage-=5; //we can change this. I was not sure how much to decrease by
-        //    }
-        //    //Not healing if defence stat bigger than potential damage taken.
-        //    if(damage - defence > 0 && !dodge.invuln){
-        //        currentHealth = currentHealth - (damage + defence);
-        //    }
-
-        //}
-
-        float finalDamage = damage;
-        //insert resistance calcs
-        finalDamage = Mathf.Clamp(finalDamage, 0f, Mathf.Infinity);
-        if (currentHealth > 0 && !dodge.invuln) 
-        {
-            currentHealth -= finalDamage;
-            AkSoundEngine.PostEvent("Player_Damage", gameObject);
-            UIManager.Instance.HealthBarSet(currentHealth);
+        if (currentHealth > 0){
+            if(lowerdamage)
+            {
+                damage-=5; //we can change this. I was not sure how much to decrease by
+            }
+            //Not healing if defence stat bigger than potential damage taken.
+            if(damage - defence > 0 && !dodge.invuln){
+                currentHealth = currentHealth - damage + defence;
+            }
+            
         }
-        //System.Console.WriteLine("current health = " + currentHealth + "after taking " + damage);
+        AkSoundEngine.PostEvent("Player_Damage", gameObject);
+
+        if (currentHealth <= 0)
+        {
+            //GameManager.Instance.onDeath(); //to be moved to whatever is handling health
+        }
     }
 
 
@@ -62,7 +57,6 @@ public class PlayerStats : MonoBehaviour
         if (currentHealth >= maxHealth){
             currentHealth = maxHealth;
         }
-        UIManager.Instance.HealthBarSet(currentHealth);
         //System.Console.WriteLine("current health = " + currentHealth + "after taking " + healing);
     }
 

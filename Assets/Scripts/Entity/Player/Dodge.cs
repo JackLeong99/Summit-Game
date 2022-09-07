@@ -24,22 +24,13 @@ public class Dodge : MonoBehaviour
 
     [SerializeField] AnimationCurve dodgeCurve;
 
-    //will move to ui later
-    public Color OffCD;
-    public Color OnCD;
-    public Image CdBackground;
-    public TextMeshProUGUI CdDisplay;
-
     void Start()
     {
         	Keyframe dodge_lastFrame = dodgeCurve[dodgeCurve.length -1];
 			dodgeTimer = dodge_lastFrame.time;
             controller = GetComponent<CharacterController>();
             _animator = GetComponent<Animator>();
-            
-            //move to ui later
-            CdDisplay.text = "";
-            CdBackground.color = OffCD;
+           
     }
 
     void Update()
@@ -54,15 +45,7 @@ public class Dodge : MonoBehaviour
         if(cdTimer <=0)
         {
             cdTimer = 0;
-            CdDisplay.text = "";
-            CdBackground.color = OffCD;
         }
-        else
-        {
-            CdDisplay.text = (cdTimer+1).ToString("0");
-            CdBackground.color = OnCD;
-        }
-
     }
 
     public void callDodge()

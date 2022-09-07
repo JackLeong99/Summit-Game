@@ -20,7 +20,7 @@ public class MeleeHitbox : MonoBehaviour
         switch (other.tag)
         {
             case "Player":
-                PlayerStats health = other.GetComponent<PlayerStats>();
+                PlayerHealth health = other.GetComponent<PlayerHealth>();
 
                 if (health != null)
                 {

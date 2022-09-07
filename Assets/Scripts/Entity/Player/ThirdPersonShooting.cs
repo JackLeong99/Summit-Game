@@ -17,8 +17,6 @@ public class ThirdPersonShooting : MonoBehaviour
 
     public ParticleSystem succ;
 
-    public Camera cam;
-
     public GameObject projectile;
 
     public TextMeshProUGUI CdDisplay;
@@ -41,14 +39,10 @@ public class ThirdPersonShooting : MonoBehaviour
     [HideInInspector]
     public bool onCooldown;
     private Vector3 destination;
-    public Color OffCD;
-    public Color OnCD;
 
     private ThirdPersonController controller;
 
     private Animator _animator;
-
-    private GameObject _mainCamera;
 
     //Temporary code that resets player y axis rotation until we add custom player model/animations
     private CharacterController player;
@@ -57,18 +51,8 @@ public class ThirdPersonShooting : MonoBehaviour
 
     public List<OnHitEffect> OnHitEffects = new List<OnHitEffect>();
 
-    private void Awake()
-	{
-		if (_mainCamera == null)
-		{
-			_mainCamera = GameObject.FindGameObjectWithTag("MainCamera");
-		}
-	}
-
     void Start()
     {
-        CdDisplay.text = "";
-        CdBackground.color = OffCD;
         _animator = GetComponent<Animator>();
         //Temporary code that resets player y axis rotation until we add custom player model/animations
         player = GetComponent<CharacterController>();
@@ -98,20 +82,16 @@ public class ThirdPersonShooting : MonoBehaviour
         {
             cdTimer = 0;
             onCooldown = false;
-            CdDisplay.text = "";
-            CdBackground.color = OffCD;
         }
         else
         {
-            CdDisplay.text = (cdTimer+1).ToString("0");
-            CdBackground.color = OnCD;
             onCooldown = true;
         }
     }
 
     IEnumerator ShootProjectile()
     {
-        player.transform.rotation = _mainCamera.transform.rotation;
+        player.transform.rotation = GameManager.instance.mainCamera.transform.rotation;
         controller.LockCameraPosition = true;
         casting = true;
         _animator.SetTrigger("Charge");
@@ -123,7 +103,7 @@ public class ThirdPersonShooting : MonoBehaviour
         _animator.SetTrigger("Shoot");
         AkSoundEngine.PostEvent("Player_Shoot_Fire", gameObject);
         //AkSoundEngine.PostEvent("Player_Shoot_Cast", gameObject);
-        Ray ray = cam.ViewportPointToRay(new Vector3(0.5f, 0.5f , 0));
+        Ray ray = GameManager.instance.mainCamera.GetComponent<Camera>().ViewportPointToRay(new Vector3(0.5f, 0.5f , 0));
         RaycastHit hit;
 
         if(Physics.Raycast(ray, out hit, Mathf.Infinity, 0))

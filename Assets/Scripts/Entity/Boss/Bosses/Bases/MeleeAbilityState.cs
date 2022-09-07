@@ -46,8 +46,8 @@ public class MeleeAbilityState : AbilityState
         boss.rightHand.force = knockbackForce;
         boss.leftHand.force = knockbackForce;
 
-        boss.rightHand.damage = damage;
-        boss.leftHand.damage = damage;
+        boss.rightHand.damage = boss.DamageCalculation(damage);
+        boss.leftHand.damage = boss.DamageCalculation(damage);
 
         boss.animationActive = true;
     }

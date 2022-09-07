@@ -6,7 +6,7 @@ public class OasisHeal : MonoBehaviour
 {
     private int healing = 25;
     private void OnTriggerEnter(Collider other){
-        PlayerStats health = other.GetComponent<PlayerStats>();
+        PlayerHealth health = other.GetComponent<PlayerHealth>();
 
         if(health != null){
             health.healDamage(healing);

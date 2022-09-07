@@ -3,6 +3,11 @@ using UnityEngine;
 
 public class DamageTextPool : Pool<DamageText>
 {
+    public void Awake()
+    {
+        BossManager.instance.damageTextPool = this;
+    }
+
     protected override void OnInstantiate (DamageText instance)
     {
         base.OnInstantiate(instance);
