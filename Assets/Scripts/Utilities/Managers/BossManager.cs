@@ -19,4 +19,10 @@ public class BossManager : MonoBehaviour
     {
         bossName = name;
     }
+
+    public void ClearBoss()
+    {
+        boss = null;
+        bossName = "";
+    }
 }
