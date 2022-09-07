@@ -24,6 +24,8 @@ TagManager:
   - oasis
   - TeleportAnchor
   - Shop
+  - Fire
+  - ArcherProjectile
   layers:
   - Default
   - TransparentFX
@@ -32,9 +34,9 @@ TagManager:
   - Water
   - UI
   - Ground
-  - 
-  - 
-  - 
+  - particleStopper
+  - safeZone
+  - Projectile
   - Controller
   - camIgnore
   - 

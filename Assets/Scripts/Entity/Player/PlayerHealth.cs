@@ -60,17 +60,17 @@ public class PlayerHealth : MonoBehaviour
         //System.Console.WriteLine("current health = " + currentHealth + "after taking " + healing);
     }
 
-    public void DecreaseDamage()
-    {
-        if(lowerdamage==true)
-        {
-            lowerdamage=false;
-        }
-        else
-        {
-           lowerdamage=true; 
-        }
-    }
+    //public void DecreaseDamage()
+    //{
+    //    if(lowerdamage==true)
+    //    {
+    //        lowerdamage=false;
+    //    }
+    //    else
+    //    {
+    //       lowerdamage=true; 
+    //    }
+    //}
 
     //used by gamemanger
     public float GetPlayerHealth()

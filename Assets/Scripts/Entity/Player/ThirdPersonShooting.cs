@@ -106,7 +106,7 @@ public class ThirdPersonShooting : MonoBehaviour
         Ray ray = GameManager.instance.mainCamera.GetComponent<Camera>().ViewportPointToRay(new Vector3(0.5f, 0.5f , 0));
         RaycastHit hit;
 
-        if(Physics.Raycast(ray, out hit))
+        if(Physics.Raycast(ray, out hit, Mathf.Infinity, 0))
         {
             destination = hit.point;
         }
