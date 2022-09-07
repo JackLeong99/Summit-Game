@@ -20,9 +20,14 @@ public class BossManager : MonoBehaviour
         bossName = name;
     }
 
+    public void OnDeath()
+    { 
+        ClearBoss();
+    }
+
     public void ClearBoss()
     {
-        boss = null;
         bossName = "";
+        boss = null;
     }
 }

@@ -44,7 +44,7 @@ public class PlayerHealth : MonoBehaviour
 
         if (currentHealth <= 0)
         {
-            //GameManager.Instance.onDeath(); //to be moved to whatever is handling health
+            GameManager.instance.OnDeath(); //to be moved to whatever is handling health
         }
     }
 

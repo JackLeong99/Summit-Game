@@ -62,4 +62,9 @@ public class GameManager : MonoBehaviour
     {
         SceneHandler.SwapScenes(showcase, exclusionScenes);
     }
+
+    public void OnDeath()
+    {
+        QuitGame();
+    }
 }
