@@ -17,12 +17,12 @@ public class ShopManager : MonoBehaviour
     public int standCount;
     public Vector3 spacing;
 
-    private ScriptableObject[] itemList;
+    public ScriptableObject[] itemList;
 
     public void Start()
     {
         instance = this;
-        itemList = GetAllInstancesOfType("Assets", typeof(ItemBase));
+        //itemList = GetAllInstancesOfType("Assets", typeof(ItemBase));
 
         SpawnStands();
     }
@@ -41,7 +41,7 @@ public class ShopManager : MonoBehaviour
         inspectDisplay.gameObject.SetActive(state);
     }
 
-    public static ScriptableObject[] GetAllInstancesOfType(string activePath, System.Type activeType)
+    /*public static ScriptableObject[] GetAllInstancesOfType(string activePath, System.Type activeType)
     {
         string[] guids = AssetDatabase.FindAssets("t:" + activeType.Name, new[] { activePath });
         ScriptableObject[] a = new ScriptableObject[guids.Length];
@@ -51,5 +51,5 @@ public class ShopManager : MonoBehaviour
             a[i] = (ScriptableObject)AssetDatabase.LoadAssetAtPath(path, activeType);
         }
         return a;
-    }
+    }*/
 }

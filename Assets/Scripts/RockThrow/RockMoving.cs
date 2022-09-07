@@ -5,9 +5,9 @@ using UnityEngine;
 public class RockMoving : MonoBehaviour
 { 
     public Transform target;
-    private float translationZ;
-    private float translationY;
-    private float translationX;
+    private float translationZ = 0;
+    private float translationY = 0;
+    private float translationX = 0;
     private float speed=120; //might need to edit based on distance from player //could check this before throw and set speed based on that
     private float rageMultiplier=1;
 
