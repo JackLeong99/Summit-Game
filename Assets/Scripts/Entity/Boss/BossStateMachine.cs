@@ -77,17 +77,6 @@ public class BossStateMachine : MonoBehaviour
     public void SetParameters()
     {
         components.curHealth = attributes.maxHealth;
-        StartCoroutine(WaitForOverlay());
-    }
-
-    public IEnumerator WaitForOverlay()
-    {
-        /*while (BossManager.instance.bossText == null)
-        {
-            yield return null;
-        }*/
-
-        yield return null;
         BossManager.instance.SetName(attributes.bossName);
     }
 

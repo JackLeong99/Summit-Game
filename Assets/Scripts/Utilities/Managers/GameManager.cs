@@ -10,19 +10,31 @@ public class GameManager : MonoBehaviour
     public GameObject mainCamera;
 
     [Header("Scene Handling")]
-    public List<SceneReference> exclusionScenes;
     public List<SceneReference> startingScenes;
-    public List<SceneReference> gameScenes;
+    public List<SceneReference> exclusionScenes;
+    public List<SceneReference> bossScenes;
+    public List<SceneReference> shopScene;
 
-    public void Start()
+    public void Awake()
     {
+        GetInstances();
         StartGame();
+    }
+
+    public void GetInstances()
+    {
+        instance = this;
+        mainCamera = GameObject.FindWithTag("MainCamera");
     }
 
     public void StartGame()
     {
-        instance = this;
-        mainCamera = GameObject.FindWithTag("MainCamera");
         SceneHandler.LoadScenes(startingScenes);
+        SceneHandler.LoadScenes(bossScenes);
+    }
+
+    public void LoadShop()
+    {
+        SceneHandler.SwapScenes(shopScene, exclusionScenes);
     }
 }

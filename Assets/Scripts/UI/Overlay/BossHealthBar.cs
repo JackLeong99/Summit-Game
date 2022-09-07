@@ -12,6 +12,16 @@ public class BossHealthBar : MonoBehaviour
 
     public void Start()
     {
+        StartCoroutine(SetParameters());
+    }
+
+    public IEnumerator SetParameters()
+    {
+        if (BossManager.instance.boss == null)
+        {
+            yield return null;
+        }
+
         bossText.text = BossManager.instance.bossName;
         healthbar.maxValue = BossManager.instance.boss.attributes.maxHealth;
     }
