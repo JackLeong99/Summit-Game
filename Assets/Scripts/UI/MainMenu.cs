@@ -95,25 +95,25 @@ public class MainMenu : MonoBehaviour
     {
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
-        SceneManager.LoadScene("ReaperScene"); //to be changed
+        SceneManager.LoadScene("Reaper"); //to be changed
     }
     public void MageScene()
     {
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
-        SceneManager.LoadScene("MageScene"); //to be changed
+        SceneManager.LoadScene("Mage"); //to be changed
     }
     public void ArcherScene()
     {
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
-        SceneManager.LoadScene("ArcherScene"); //to be changed
+        SceneManager.LoadScene("Archer"); //to be changed
     }
     public void SecretScene()
     {
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
-        SceneManager.LoadScene("SecretScene"); //to be changed
+        SceneManager.LoadScene("Final"); //to be changed
     }
     public void AlphaScene()
     {
