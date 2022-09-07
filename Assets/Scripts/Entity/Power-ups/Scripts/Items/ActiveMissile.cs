@@ -24,15 +24,35 @@ public class ActiveMissile : ItemBase
 
         for (int i = 0; i < missileCount; i++) 
         {
-            projectileList.Add(Instantiate(projectile, target.transform.position + new Vector3(0, 5, 0), Quaternion.identity) as GameObject);
+            projectileList.Add(Instantiate(projectile, target.transform.position + new Vector3(0, 2, 0), Quaternion.identity) as GameObject);
         }
 
         foreach (var p in projectileList) 
         {
-            p.GetComponent<Missile>().setTracking(tracking);
+            p.GetComponent<Missile>().setTracking(tracking, FindClosestEnemy());
             p.GetComponent<Rigidbody>().velocity = (Vector3.up + new Vector3(Random.Range(-2, -2), 0, Random.Range(-2, -2))) * projectileSpeed;
             p.GetComponent<Missile>().SetDamage(damage);
             yield return new WaitForSeconds(bufferTime);
         }
+    }
+
+    public GameObject FindClosestEnemy()
+    {
+        GameObject[] gos;
+        gos = GameObject.FindGameObjectsWithTag("enemyHitbox");
+        GameObject closest = null;
+        float distance = Mathf.Infinity;
+        Vector3 position = GameManager.instance.player.transform.position;
+        foreach (GameObject go in gos)
+        {
+            Vector3 diff = go.transform.position - position;
+            float curDistance = diff.sqrMagnitude;
+            if (curDistance < distance)
+            {
+                closest = go;
+                distance = curDistance;
+            }
+        }
+        return closest;
     }
 }

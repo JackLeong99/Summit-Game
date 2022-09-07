@@ -15,7 +15,7 @@ public class Missile : ProjectileBase
     public override void Update()
     {
         base.Update();
-
+        if(target!= null)
         gameObject.GetComponent<Rigidbody>().velocity += (target.transform.position - gameObject.transform.position).normalized * tracking;
     }
 
@@ -34,8 +34,9 @@ public class Missile : ProjectileBase
         base.OnTriggerEnter(other);
     }
 
-    public void setTracking(float tr) 
+    public void setTracking(float tr, GameObject ta) 
     {
         tracking = tr;
+        target = ta;
     }
 }
