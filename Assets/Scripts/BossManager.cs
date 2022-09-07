@@ -84,7 +84,7 @@ public class BossManager : MonoBehaviour
     public bool canTurn = false;
     //used by IncreasePlayerAttack power-up
     private bool increaseDamage=false;
-    private float step;
+    //private float step;
     private GameObject _mainCamera;
     private bool canBeStunned = true;
 
@@ -118,9 +118,11 @@ public class BossManager : MonoBehaviour
     
     void Update(){
         animatr.SetFloat("Speed", agent.velocity.magnitude);
-        step = attackTurnSpeed * Time.deltaTime;
+        //step = attackTurnSpeed * Time.deltaTime;
+        smoothLookAt(Player);
+        //step = attackTurnSpeed * Time.deltaTime;
         if (Alive && !stunned){
-            StartCoroutine(smoothLookAt());
+            //StartCoroutine(smoothLookAt());
             canBeStunned = true;
             if(!inAttack && RockManager.Instance.countUnderWantedRocks){
                 StartCoroutine(summonRocks());
@@ -184,7 +186,7 @@ public class BossManager : MonoBehaviour
                     //when doing a move pass SelectMove(Midattack1, Midattacklast);
                     if(isMidRange && !inAttack && !isRanged && rangedAllowed){
                         //Debug.Log("Mid Range!");
-                        if(currentPatience >= patience && !canTurn){
+                        if(currentPatience >= patience){// && !canTurn){
                             Coroutine rActions = StartCoroutine(rangedActions());
                             currentPatience = 0;
                         }
@@ -196,7 +198,7 @@ public class BossManager : MonoBehaviour
                 }
 
                 //if melee range and not in attack delay
-                else if(isMelee && !inAttack && !canTurn){
+                else if(isMelee && !inAttack){ //&& !canTurn){
                     Coroutine mActions = StartCoroutine(meleeActions());
                 }
 
@@ -205,7 +207,7 @@ public class BossManager : MonoBehaviour
                     //Debug.Log("Long Range!");
                     bPathing.bossPathing();
                     //ranged delay only matters for attack actions. Should not affect movement.
-                    if(rangedAllowed && !canTurn){
+                    if(rangedAllowed){// && !canTurn){
                         Coroutine rActions = StartCoroutine(rangedActions());
                     }
                 }   
@@ -274,9 +276,9 @@ public class BossManager : MonoBehaviour
             //Debug.Log("Do MegaPunch!");
             //Face player to aim- smoother method could be used
             //transform.LookAt(Player);
-            //canTurn = true;
-            //yield return new WaitForSeconds(turnFor);
-            //canTurn = false;
+            canTurn = true;
+            yield return new WaitForSeconds(turnFor);
+            canTurn = false;
             //Do the animation
             animatr.SetTrigger("Sweep");
             //Do the sweep attack
@@ -309,9 +311,9 @@ public class BossManager : MonoBehaviour
                 lastMoveRepeated = 0;
             }
             //Debug.Log("Do Ground Slam!");
-            // canTurn = true;
-            // yield return new WaitForSeconds(turnFor);
-            // canTurn = false;
+            canTurn = true;
+            yield return new WaitForSeconds(turnFor);
+            canTurn = false;
             //Do the animation
             animatr.SetTrigger("Slam");
             //Do the slam attack
@@ -334,9 +336,9 @@ public class BossManager : MonoBehaviour
                 //animatr.SetFloat("Speed", agent.velocity.magnitude);
                 //Face player to aim- smoother method could be used
                 //transform.LookAt(Player);
-                // canTurn = true;
-                // yield return new WaitForSeconds(turnFor);
-                // canTurn = false;
+                canTurn = true;
+                yield return new WaitForSeconds(turnFor);
+                canTurn = false;
                 //Debug.Log("Double slam!");
                 //Do the second slam attack
                 slam.groundSlam();
@@ -405,9 +407,9 @@ public class BossManager : MonoBehaviour
             Debug.Log("Do Eruption!");
             animatr.SetTrigger("Eruption");
             AkSoundEngine.PostEvent("Enemy_Eruption_Cast", gameObject);
-            // canTurn = true;
-            // yield return new WaitForSeconds(turnFor);
-            // canTurn = false;
+            canTurn = true;
+            yield return new WaitForSeconds(turnFor);
+            canTurn = false;
             erupt.eruption();
             //transform.LookAt(Player);
             float animatrDuration = 3.292f; // Figure this out
@@ -486,7 +488,7 @@ public class BossManager : MonoBehaviour
             currentPatience = 0;
             animatr.SetTrigger("Throw");
             AkSoundEngine.PostEvent("Enemy_Boulder_Cast", gameObject);
-            //transform.LookAt(Player);
+            transform.LookAt(Player);
             //If this is before the wait the boss turns around after the throw animation and walks away for a bit after it.
             //If this is after the wait the boss turns around during the throw animation.
             attackException = false;
@@ -693,31 +695,42 @@ public class BossManager : MonoBehaviour
         return spawnRocksNumber;
     }
 
-    IEnumerator smoothLookAt() 
+    public void smoothLookAt(Transform target) 
     {
-        var targetRot = Quaternion.LookRotation(Player.position - transform.position);
-        bool isMelee = Vector3.Distance(transform.position, Player.position) <= MinDist;
-
-        if(targetRot == transform.rotation){
-            canTurn = false;
-        }
-        else{
-            canTurn = true;
-        }
-
-
         if (canTurn)
         {
-            if((isMelee && !inAttack) || (inRockThrow && !attackException)){
-                var adjustedRot = Quaternion.Euler(0.0f, targetRot.eulerAngles.y, targetRot.eulerAngles.z);
-                transform.rotation = Quaternion.RotateTowards(transform.rotation, adjustedRot, attackTurnSpeed * Time.deltaTime);
-            }
-            else{
-                //Do the normal turn stuff
-            }
+            var targetRot = Quaternion.LookRotation(target.position - transform.position);
+            var adjustedRot = Quaternion.Euler(0.0f, targetRot.eulerAngles.y, targetRot.eulerAngles.z);
+            transform.rotation = Quaternion.RotateTowards(transform.rotation, adjustedRot, attackTurnSpeed * Time.deltaTime);
         }
-        yield break;
     }
+
+
+    // IEnumerator smoothLookAt() 
+    // {
+    //     var targetRot = Quaternion.LookRotation(Player.position - transform.position);
+    //     bool isMelee = Vector3.Distance(transform.position, Player.position) <= MinDist;
+
+    //     if(targetRot == transform.rotation){
+    //         canTurn = false;
+    //     }
+    //     else{
+    //         canTurn = true;
+    //     }
+
+
+    //     if (canTurn)
+    //     {
+    //         if((isMelee && !inAttack) || (inRockThrow && !attackException)){
+    //             var adjustedRot = Quaternion.Euler(0.0f, targetRot.eulerAngles.y, targetRot.eulerAngles.z);
+    //             transform.rotation = Quaternion.RotateTowards(transform.rotation, adjustedRot, attackTurnSpeed * Time.deltaTime);
+    //         }
+    //         else{
+    //             //Do the normal turn stuff
+    //         }
+    //     }
+    //     yield break;
+    // }
 
 
 
