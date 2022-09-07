@@ -65,7 +65,7 @@ public class Pause : MonoBehaviour
                 pauseState = PauseState.Pause;
                 Time.timeScale = 0f;
                 Cursor.lockState = CursorLockMode.None;
-                //EventSystem.current.SetSelectedGameObject(pauseFirst);
+                EventSystem.current.SetSelectedGameObject(pauseFirst);
                 break;
             case false:
                 pauseState = PauseState.Playing;
