@@ -65,6 +65,13 @@ public class DialogueBox : MonoBehaviour
         meetIwazaru();
 
     }
+    void Update()
+    {
+        if (Input.GetMouseButtonDown(1))
+        {
+            meetIwazaru();
+        }
+    }
 
     //public string[,] messageOptions;
 
@@ -72,6 +79,7 @@ public class DialogueBox : MonoBehaviour
     public void meetIwazaru()
     {
         currentDialogueLines = new string[10];
+        currentDialogueIndex = 0;
 
         //First meeting
         if(!seenIwazaru)
@@ -88,7 +96,7 @@ public class DialogueBox : MonoBehaviour
                 currentDialogueLines[3] = ("first time Meeting Iwazaru 3");
                 currentDialogueIndex += 1;
                 currentDialogueLines[4] = ("first time Meeting Iwazaru 4");
-                currentDialogueIndex += 1;
+                
             }
             else if(tempDecider == 1)
             {
@@ -101,7 +109,7 @@ public class DialogueBox : MonoBehaviour
                 currentDialogueLines[3] = ("first time Meeting Iwazaru 3");
                 currentDialogueIndex += 1;
                 currentDialogueLines[4] = ("first time Meeting Iwazaru 4");
-                currentDialogueIndex += 1;
+
             }
             else
             {
@@ -114,11 +122,26 @@ public class DialogueBox : MonoBehaviour
                 currentDialogueLines[3] = ("first time Meeting Iwazaru 3");
                 currentDialogueIndex += 1;
                 currentDialogueLines[4] = ("first time Meeting Iwazaru 4");
-                currentDialogueIndex += 1;
+                
             }
             
 
             seenIwazaru = true;
+        }
+
+        else if(deathsToIwazaru == 0)
+        {
+            int tempDecider = randomSelector(1, 3);
+            if(tempDecider == 1)
+            {
+                currentDialogueLines[0] = ("Iwazaru, Not glitched, never killed, 0 death, line 1");
+                        
+            }
+            else
+            {
+                currentDialogueLines[0] = ("Iwazaru, Not glitched, never killed, 0 death, line 2");
+                        
+            }
         }
 
         // else if(isGlitched)
@@ -127,18 +150,18 @@ public class DialogueBox : MonoBehaviour
         //     if(tempDecider == 1)
         //     {
         //         currentDialogueLines[0] = ("glitched, line 1");
-        //         currentDialogueIndex += 1;
+        //         
             
         //     }
         //     else if(tempDecider == 2)
         //     {
         //         currentDialogueLines[0] = ("glitched, line 2");
-        //         currentDialogueIndex += 1;
+        //         
         //     }
         //     else
         //     {
         //         currentDialogueLines[0] = ("glitched, line 3");
-        //         currentDialogueIndex += 1;
+        //         
         //     }
         // }
         // else{
@@ -150,12 +173,12 @@ public class DialogueBox : MonoBehaviour
         //             if(tempDecider == 1)
         //             {
         //                 currentDialogueLines[0] = ("Not glitched, last killed by Iwazaru, 1 death, line 1");
-        //                 currentDialogueIndex += 1;
+        //                 
         //             }
         //             else
         //             {
         //                 currentDialogueLines[0] = ("Not glitched, last killed by Iwazaru, 1 death, line 2");
-        //                 currentDialogueIndex += 1;
+        //                 
         //             }
 
         //         }
@@ -166,12 +189,12 @@ public class DialogueBox : MonoBehaviour
         //             if(tempDecider == 1)
         //             {
         //                 currentDialogueLines[0] = ("Not glitched, last killed by Iwazaru, 2 deaths, line 1");
-        //                 currentDialogueIndex += 1;
+        //                 
         //             }
         //             else
         //             {
         //                 currentDialogueLines[0] = ("Not glitched, last killed by Iwazaru, 2 deaths, line 2");
-        //                 currentDialogueIndex += 1;
+        //                 
         //             }
         //         }
         //         //more than 2 deaths to Iwazaru
@@ -181,17 +204,17 @@ public class DialogueBox : MonoBehaviour
         //             if(tempDecider == 1)
         //             {
         //                 currentDialogueLines[0] = ("Not glitched, last killed by Iwazaru, > 2 deaths, line 1");
-        //                 currentDialogueIndex += 1;
+        //                 
         //             }
         //             else if(tempDecider == 2)
         //             {
         //                 currentDialogueLines[0] = ("Not glitched, last killed by Iwazaru, > 2 deaths, line 2");
-        //                 currentDialogueIndex += 1;
+        //                 
         //             }
         //             else
         //             {
         //                 currentDialogueLines[0] = ("Not glitched, last killed by Iwazaru, > 2 deaths, line 3");
-        //                 currentDialogueIndex += 1;
+        //                 
         //             }
         //         }
         //     }
@@ -203,17 +226,17 @@ public class DialogueBox : MonoBehaviour
         //             if(tempDecider == 1)
         //             {
         //                 currentDialogueLines[0] = ("Not glitched, last killed by Other, 0 deaths, line 1");
-        //                 currentDialogueIndex += 1;
+        //                 
         //             }
         //             else if(tempDecider == 2)
         //             {
         //                 currentDialogueLines[0] = ("Not glitched, last killed by Other, 0 deaths, line 2");
-        //                 currentDialogueIndex += 1;
+        //                 
         //             }
         //             else
         //             {
         //                 currentDialogueLines[0] = ("Not glitched, last killed by Other, 0 deaths, line 3");
-        //                 currentDialogueIndex += 1;
+        //                 
         //             }
 
                     
@@ -224,12 +247,12 @@ public class DialogueBox : MonoBehaviour
         //             if(tempDecider == 1)
         //             {
         //                 currentDialogueLines[0] = ("Not glitched, last killed by Other, 1 death, line 1");
-        //                 currentDialogueIndex += 1;
+        //                 
         //             }
         //             else
         //             {
         //                 currentDialogueLines[0] = ("Not glitched, last killed by Other, 1 death, line 2");
-        //                 currentDialogueIndex += 1;
+        //                 
         //             }
 
         //         }
@@ -240,12 +263,12 @@ public class DialogueBox : MonoBehaviour
         //             if(tempDecider == 1)
         //             {
         //                 currentDialogueLines[0] = ("Not glitched, last killed by Other, 2 deaths, line 1");
-        //                 currentDialogueIndex += 1;
+        //                 
         //             }
         //             else
         //             {
         //                 currentDialogueLines[0] = ("Not glitched, last killed by Other, 2 deaths, line 2");
-        //                 currentDialogueIndex += 1;
+        //                 
         //             }
         //         }
         //         //more than 2 deaths to Iwazaru
@@ -255,17 +278,17 @@ public class DialogueBox : MonoBehaviour
         //             if(tempDecider == 1)
         //             {
         //                 currentDialogueLines[0] = ("Not glitched, last killed by Other, > 2 deaths, line 1");
-        //                 currentDialogueIndex += 1;
+        //                 
         //             }
         //             else if(tempDecider == 2)
         //             {
         //                 currentDialogueLines[0] = ("Not glitched, last killed by Other, > 2 deaths, line 2");
-        //                 currentDialogueIndex += 1;
+        //                 
         //             }
         //             else
         //             {
         //                 currentDialogueLines[0] = ("Not glitched, last killed by Other, > 2 deaths, line 3");
-        //                 currentDialogueIndex += 1;
+        //                 
         //             }
         //         }
         //     }
@@ -287,18 +310,18 @@ public class DialogueBox : MonoBehaviour
     //         if(tempDecider == 1)
     //         {
     //             currentDialogueLines[0] = ("Reaper, glitched, line 1");
-    //             currentDialogueIndex += 1;
+    //             
             
     //         }
     //         else if(tempDecider == 2)
     //         {
     //             currentDialogueLines[0] = ("Reaper, glitched, line 2");
-    //             currentDialogueIndex += 1;
+    //             
     //         }
     //         else
     //         {
     //             currentDialogueLines[0] = ("Reaper, glitched, line 3");
-    //             currentDialogueIndex += 1;
+    //             
     //         }
     //     }
     //     else{
@@ -310,12 +333,12 @@ public class DialogueBox : MonoBehaviour
     //                 if(tempDecider == 1)
     //                 {
     //                     currentDialogueLines[0] = ("Reaper, Not glitched, last killed by Reaper, 1 death, line 1");
-    //                     currentDialogueIndex += 1;
+    //                     
     //                 }
     //                 else
     //                 {
     //                     currentDialogueLines[0] = ("Reaper, Not glitched, last killed by Reaper, 1 death, line 2");
-    //                     currentDialogueIndex += 1;
+    //                     
     //                 }
 
     //             }
@@ -326,12 +349,12 @@ public class DialogueBox : MonoBehaviour
     //                 if(tempDecider == 1)
     //                 {
     //                     currentDialogueLines[0] = ("Reaper, Not glitched, last killed by Reaper, 2 deaths, line 1");
-    //                     currentDialogueIndex += 1;
+    //                     
     //                 }
     //                 else
     //                 {
     //                     currentDialogueLines[0] = ("Reaper, Not glitched, last killed by Reaper, 2 deaths, line 2");
-    //                     currentDialogueIndex += 1;
+    //                     
     //                 }
     //             }
     //             //more than 2 deaths to Reaper
@@ -341,17 +364,17 @@ public class DialogueBox : MonoBehaviour
     //                 if(tempDecider == 1)
     //                 {
     //                     currentDialogueLines[0] = ("Reaper, Not glitched, last killed by Reaper, > 2 deaths, line 1");
-    //                     currentDialogueIndex += 1;
+    //                     
     //                 }
     //                 else if(tempDecider == 2)
     //                 {
     //                     currentDialogueLines[0] = ("Reaper, Not glitched, last killed by Reaper, > 2 deaths, line 2");
-    //                     currentDialogueIndex += 1;
+    //                     
     //                 }
     //                 else
     //                 {
     //                     currentDialogueLines[0] = ("Reaper, Not glitched, last killed by Reaper, > 2 deaths, line 3");
-    //                     currentDialogueIndex += 1;
+    //                     
     //                 }
     //             }
     //         }
@@ -363,17 +386,17 @@ public class DialogueBox : MonoBehaviour
     //                 if(tempDecider == 1)
     //                 {
     //                     currentDialogueLines[0] = ("Reaper, Not glitched, last killed by Other, 0 deaths, line 1");
-    //                     currentDialogueIndex += 1;
+    //                     
     //                 }
     //                 else if(tempDecider == 2)
     //                 {
     //                     currentDialogueLines[0] = ("Reaper, Not glitched, last killed by Other, 0 deaths, line 2");
-    //                     currentDialogueIndex += 1;
+    //                     
     //                 }
     //                 else
     //                 {
     //                     currentDialogueLines[0] = ("Reaper, Not glitched, last killed by Other, 0 deaths, line 3");
-    //                     currentDialogueIndex += 1;
+    //                     
     //                 }
 
                     
@@ -842,14 +865,16 @@ public class DialogueBox : MonoBehaviour
 
     public void displayText()
     {
-        string[] copy = new string[currentDialogueIndex];
+        string[] copy = new string[currentDialogueIndex+1];
         for(int i = 0; i <= currentDialogueIndex; i++)
         {
             //dialogueTrigger.dialogue.sentences[i] = currentDialogueLines[i];
-            dialogue.sentences[i] = currentDialogueLines[i];
+            copy[i] = currentDialogueLines[i];
+            //dialogue.sentences[i] = currentDialogueLines[i];
         }
-        dialogueTrigger.TriggerDialogue();
-        //dialogueTrigger.setDialogue(copy);
+        //dialogueTrigger.TriggerDialogue();
+        dialogue.sentences = copy;
+        dialogueTrigger.setDialogue(dialogue.sentences);
     }
     // public void displayText()
     // {

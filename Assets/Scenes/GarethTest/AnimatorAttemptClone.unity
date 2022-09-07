@@ -5007,13 +5007,53 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: -142
       objectReference: {fileID: 0}
+    - target: {fileID: 430630244786067566, guid: aed374a1f0e9e4839956e8f7bb39e48d, type: 3}
+      propertyPath: m_text
+      value: Right click to trigger a new Meet Iwazaru event.
+      objectReference: {fileID: 0}
     - target: {fileID: 430630245323913781, guid: aed374a1f0e9e4839956e8f7bb39e48d, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1302060199}
-    - target: {fileID: 430630245631368413, guid: aed374a1f0e9e4839956e8f7bb39e48d, type: 3}
-      propertyPath: m_Enabled
+    - target: {fileID: 430630245631368412, guid: aed374a1f0e9e4839956e8f7bb39e48d, type: 3}
+      propertyPath: m_Colors.m_PressedColor.b
+      value: 0.49741903
+      objectReference: {fileID: 0}
+    - target: {fileID: 430630245631368412, guid: aed374a1f0e9e4839956e8f7bb39e48d, type: 3}
+      propertyPath: m_Colors.m_PressedColor.g
+      value: 0.49741903
+      objectReference: {fileID: 0}
+    - target: {fileID: 430630245631368412, guid: aed374a1f0e9e4839956e8f7bb39e48d, type: 3}
+      propertyPath: m_Colors.m_PressedColor.r
+      value: 0.509434
+      objectReference: {fileID: 0}
+    - target: {fileID: 430630245631368412, guid: aed374a1f0e9e4839956e8f7bb39e48d, type: 3}
+      propertyPath: m_Colors.m_HighlightedColor.b
+      value: 0.74612856
+      objectReference: {fileID: 0}
+    - target: {fileID: 430630245631368412, guid: aed374a1f0e9e4839956e8f7bb39e48d, type: 3}
+      propertyPath: m_Colors.m_HighlightedColor.g
+      value: 0.74612856
+      objectReference: {fileID: 0}
+    - target: {fileID: 430630245631368412, guid: aed374a1f0e9e4839956e8f7bb39e48d, type: 3}
+      propertyPath: m_Colors.m_HighlightedColor.r
+      value: 0.764151
+      objectReference: {fileID: 0}
+    - target: {fileID: 430630245631368412, guid: aed374a1f0e9e4839956e8f7bb39e48d, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 430630245631368412, guid: aed374a1f0e9e4839956e8f7bb39e48d, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 945751690}
+    - target: {fileID: 430630245631368412, guid: aed374a1f0e9e4839956e8f7bb39e48d, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: meetIwazaru
+      objectReference: {fileID: 0}
+    - target: {fileID: 430630245631368412, guid: aed374a1f0e9e4839956e8f7bb39e48d, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: DialogueBox, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 430630246197403294, guid: aed374a1f0e9e4839956e8f7bb39e48d, type: 3}
       propertyPath: m_Name

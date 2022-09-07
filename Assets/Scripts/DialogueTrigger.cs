@@ -23,8 +23,12 @@ public class DialogueTrigger : MonoBehaviour
     //     {
     //         dialogue.sentences = dialogueBoxSentences;
     //     }
-        
     // }
+    public void setDialogue(string[] dialogueBoxSentences)
+    {
+        dialogue.sentences = dialogueBoxSentences;
+        TriggerDialogue();
+    }
 }
 
 
