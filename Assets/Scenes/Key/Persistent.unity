@@ -339,7 +339,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1177756096
+--- !u!1 &782339796
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -347,8 +347,8 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 1177756098}
-  - component: {fileID: 1177756097}
+  - component: {fileID: 782339798}
+  - component: {fileID: 782339797}
   m_Layer: 0
   m_Name: WwiseGlobal
   m_TagString: Untagged
@@ -356,13 +356,13 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1177756097
+--- !u!114 &782339797
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1177756096}
+  m_GameObject: {fileID: 782339796}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 309de00d26c535341b6e8d3b274f02f6, type: 3}
@@ -381,13 +381,13 @@ MonoBehaviour:
   spatialAudioPoolSize: 0
   maxSoundPropagationDepth: 0
   engineLogging: 0
---- !u!4 &1177756098
+--- !u!4 &782339798
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1177756096}
+  m_GameObject: {fileID: 782339796}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
@@ -442,18 +442,31 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 0}
   mainCamera: {fileID: 0}
-  exclusionScenes: []
   startingScenes:
-  - m_SceneAsset: {fileID: 102900000, guid: 9b84110c173e7ef46b35851632f9fdbf, type: 3}
-    m_IsDirty: 0
-    m_ScenePath: Assets/Scenes/Bosses/Golem.unity
   - m_SceneAsset: {fileID: 102900000, guid: 466bb403334280540bd7e90243c9b159, type: 3}
     m_IsDirty: 0
     m_ScenePath: Assets/Scenes/Key/Player.unity
   - m_SceneAsset: {fileID: 102900000, guid: 3bde9bd6863b083479099d8025a6826d, type: 3}
     m_IsDirty: 0
     m_ScenePath: Assets/Scenes/Key/Overlay.unity
-  gameScenes: []
+  exclusionScenes:
+  - m_SceneAsset: {fileID: 102900000, guid: 27bb5104a75d247498ed4711a95a51dc, type: 3}
+    m_IsDirty: 0
+    m_ScenePath: Assets/Scenes/Key/Persistent.unity
+  - m_SceneAsset: {fileID: 102900000, guid: 3bde9bd6863b083479099d8025a6826d, type: 3}
+    m_IsDirty: 0
+    m_ScenePath: Assets/Scenes/Key/Overlay.unity
+  - m_SceneAsset: {fileID: 102900000, guid: 466bb403334280540bd7e90243c9b159, type: 3}
+    m_IsDirty: 0
+    m_ScenePath: Assets/Scenes/Key/Player.unity
+  bossScenes:
+  - m_SceneAsset: {fileID: 102900000, guid: 9b84110c173e7ef46b35851632f9fdbf, type: 3}
+    m_IsDirty: 0
+    m_ScenePath: Assets/Scenes/Bosses/Golem.unity
+  shopScene:
+  - m_SceneAsset: {fileID: 102900000, guid: 8a95e54c012075c4eadac20fc68e2a93, type: 3}
+    m_IsDirty: 0
+    m_ScenePath: Assets/Scenes/Bosses/Shopkeeper.unity
 --- !u!1 &2049736186
 GameObject:
   m_ObjectHideFlags: 0

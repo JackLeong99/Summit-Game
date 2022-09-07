@@ -31,7 +31,7 @@ public class GolemIdleState : BaseState
                         boss.ChangeState(boss.GetState<RangedState>());
                         break;
                     default:
-                        Debug.Log("Mid range");
+                        boss.ChangeState(boss.GetState<RangedState>());
                         break;
                 }
                 break;
