@@ -14,14 +14,14 @@ public class PlayerBurn : OnHitEffect
 
     public override void ApplyOnHitEffects(GameObject target)
     {
-        var player = target.GetComponent<PlayerStats>();
+        var player = target.GetComponent<PlayerHealth>();
         if (player) 
         {
             player.StartCoroutine(burn(damage, tickRate, duration, player));
         }
     }
 
-    public IEnumerator burn(float damage, float tickRate, float duration, PlayerStats stats) 
+    public IEnumerator burn(float damage, float tickRate, float duration, PlayerHealth stats) 
     {
         float t = duration;
         while (t > 0) 

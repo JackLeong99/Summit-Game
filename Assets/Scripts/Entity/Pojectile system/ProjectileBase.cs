@@ -45,7 +45,7 @@ public abstract class ProjectileBase : MonoBehaviour
         if (other.CompareTag("Player")) 
         {
             Hit();
-            other.GetComponent<PlayerStats>().takeDamage(damage);
+            other.GetComponent<PlayerHealth>().takeDamage(damage);
             foreach (var OnHit in OnHitEffects)
             {
                 Debug.Log("Applied OnHitEffect to: " + other.gameObject);

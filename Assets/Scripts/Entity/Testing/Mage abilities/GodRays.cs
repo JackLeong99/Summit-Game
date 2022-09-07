@@ -29,7 +29,7 @@ public class GodRays : MonoBehaviour
     }
     public IEnumerator doRays()
     {
-        GameObject target = GameManager.player;
+        GameObject target = GameManager.instance.player;
         List<GameObject> rayList = new List<GameObject>();
         List<GameObject> damageRayList = new List<GameObject>();
 
