@@ -17,7 +17,7 @@ public class SceneSelection : MonoBehaviour
             return instance;
         }
     }
-    string[] avaliableLevels = { "AnimatorAttempt", "ReaperScene", "ArcherScene", "MageScene"}; //each one is a level name
+    string[] avaliableLevels = { "AnimatorAttempt", "Reaper", "Archer", "Mage"}; //each one is a level name
 
     private bool isSecret=false;
     // Start is called before the first frame update
@@ -83,7 +83,7 @@ public class SceneSelection : MonoBehaviour
     {
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
-        avaliableLevels =new string[] { "AnimatorAttempt", "ReaperScene", "ArcherScene", "MageScene"};
+        avaliableLevels =new string[] { "AnimatorAttempt", "Reaper", "Archer", "Mage"};
         SceneManager.LoadScene("DeathScene");
     }
 
@@ -94,7 +94,7 @@ public class SceneSelection : MonoBehaviour
 
     public void SecretScenes()
     {
-        avaliableLevels =new string[] { "SecretAnimatorAttempt", "SecretReaperScene", "SecretArcherScene", "SecretMageScene"};
+        avaliableLevels =new string[] { "SecretAnimatorAttempt", "SecretReaper", "SecretArcher", "SecretMage"};
         isSecret=true;
     }
 }
