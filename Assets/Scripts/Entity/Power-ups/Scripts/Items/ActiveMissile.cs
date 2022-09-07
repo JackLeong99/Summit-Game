@@ -24,7 +24,7 @@ public class ActiveMissile : ItemBase
 
         for (int i = 0; i < missileCount; i++) 
         {
-            projectileList.Add(Instantiate(projectile, target.transform.position, Quaternion.identity) as GameObject);
+            projectileList.Add(Instantiate(projectile, target.transform.position + new Vector3(0, 5, 0), Quaternion.identity) as GameObject);
         }
 
         foreach (var p in projectileList) 
