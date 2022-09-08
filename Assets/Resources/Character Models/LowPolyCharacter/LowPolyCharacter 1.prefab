@@ -6487,6 +6487,8 @@ GameObject:
   - component: {fileID: 4246193514816548865}
   - component: {fileID: 4246193514816548870}
   - component: {fileID: 4246193514816548871}
+  - component: {fileID: 5686820786890290041}
+  - component: {fileID: 364293562634734320}
   m_Layer: 0
   m_Name: LowPolyCharacter 1
   m_TagString: Player
@@ -6612,7 +6614,10 @@ MonoBehaviour:
   BottomClamp: -35
   CameraAngleOverride: 0
   LockCameraPosition: 0
+  leftFoot: {fileID: 0}
+  rightFoot: {fileID: 0}
   _Inactionable: 0
+  stunned: 0
 --- !u!114 &4246193514816548866
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6644,11 +6649,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 233fe0ead2a86684c82a76a1223b785c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  useGrav: 0
   bulletDamage: 30
   chargeTime: 0.5
   succTime: 0.3
   succ: {fileID: 2140396280535772093}
-  cam: {fileID: 0}
   projectile: {fileID: 5944307442520353345, guid: f6cb894fb887996448b226c17d16f0c3, type: 3}
   CdDisplay: {fileID: 0}
   FirePoint: {fileID: 6289049540081393840}
@@ -6660,8 +6665,7 @@ MonoBehaviour:
   cdTimer: 0
   casting: 0
   onCooldown: 0
-  OffCD: {r: 0.2910822, g: 0.6509434, b: 0.36346397, a: 1}
-  OnCD: {r: 0.49056602, g: 0.49056602, b: 0.49056602, a: 0.54509807}
+  OnHitEffects: []
 --- !u!114 &4246193514816548864
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6704,8 +6708,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5c41f9d78325dcc4a831456ccde065b6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  invulnTime: 0.25
   cdTimer: 0
   dodgeMultiplier: 7
+  invuln: 0
   isDodging: 0
   cooldown: 1
   dodgeCurve:
@@ -6732,10 +6738,6 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  OffCD: {r: 0.6132076, g: 0.20478815, b: 0.20478815, a: 1}
-  OnCD: {r: 0.33962262, g: 0.33962262, b: 0.33962262, a: 0.58431375}
-  CdBackground: {fileID: 0}
-  CdDisplay: {fileID: 0}
 --- !u!114 &4246193514816548871
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6776,6 +6778,31 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &5686820786890290041
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3577637310315195070}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 27029e04c533a464ca439928c2812c54, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &364293562634734320
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3577637310315195070}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b1dbfcfda82a84fa405f35b304f290, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  interactRange: 100
 --- !u!1 &3599197199857106652
 GameObject:
   m_ObjectHideFlags: 0

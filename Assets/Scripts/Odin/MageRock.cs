@@ -14,7 +14,7 @@ public class MageRock : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetButtonDown("Teleport"))
+        if(Input.GetKeyDown("l"))
         {
             SpawnRocks();
         }

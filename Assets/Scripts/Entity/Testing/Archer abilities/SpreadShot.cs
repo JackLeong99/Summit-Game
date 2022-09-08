@@ -9,13 +9,10 @@ public class SpreadShot : MonoBehaviour
     public float angle;
     public List<OnHitEffect> OnHitEffects = new List<OnHitEffect>();
     public List<GameObject> projectiles;
-    public GameObject player;
     public Transform originPoint;
-    public Vector3 target;
 
     private void Update()
     {
-        target = player.transform.position + new Vector3(0.0f, 1.0f, 0.0f);
         if (Input.GetKeyDown("v"))
         {
             Debug.Log("pewpew");
@@ -36,7 +33,7 @@ public class SpreadShot : MonoBehaviour
         {
             obj.GetComponent<ProjectileBase>().SetOnHitEffect(OnHitEffects);
             obj.GetComponent<ProjectileBase>().SetDamage(projectileDamage);
-            var targetDir = (target - originPoint.position).normalized;
+            var targetDir = ((GameManager.instance.player.transform.position + new Vector3(0.0f, 1.0f, 0.0f)) - originPoint.position).normalized;
             var angleDir = Vector3.Cross(targetDir, Vector3.left);
             var releaseVector = Quaternion.AngleAxis(totalAngle, angleDir) * targetDir;
             obj.GetComponent<Rigidbody>().velocity = releaseVector * projectileSpeed;

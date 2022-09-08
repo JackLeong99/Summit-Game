@@ -1,0 +1,99 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.AI;
+
+
+//Some of this (such as the attack stuff) could be coming back so commented for now.
+
+public class hordePathing : MonoBehaviour
+{
+    public float lifespan;
+    private float lifespanCounter;
+    public float explosionDetection;
+    public GameObject explosionHitbox;
+    public float maxHP;
+    private float currentHP;
+
+    //Determine the object the boss will path to
+
+
+
+    //Determine the position object the enemy will path to
+    private Transform targetPos;
+    [HideInInspector]
+    public NavMeshAgent agent;
+
+    //private noCollideWithFren frenCollision;
+    //private BossManager Attacking;
+
+    //private Transform backupTargetPos;
+
+    private void Awake()
+    {
+        agent = GetComponent<NavMeshAgent>();
+        targetPos = GameManager.instance.player.transform;
+        currentHP = maxHP;
+    }
+
+    void Update()
+    {
+        //agent.destination = targetPos.position;
+        // Attacking = this.GetComponent<BossManager>();
+        // bool isAttacking = Attacking.inAttack;
+        // bool isException = Attacking.attackException;
+        // bool isStunned = Attacking.stunned;
+        //bool isRockThrow = Attacking.inRockThrow;
+        // if(isStunned || (isAttacking && !isException)){
+        //     agent.isStopped = true;
+        // }
+        // else{
+        //     agent.isStopped = false;
+        // }
+        
+        // frenCollision = this.GetComponent<noCollideWithFren>();
+        // bool isTooClose = frenCollision.tooClose;
+        
+        // if(isTooClose)
+        // {
+        //     agent.isStopped = true;
+        // }
+        // else
+        // {
+        //     agent.isStopped = false;
+        //     Pathing();
+        // }
+        float distance = Vector3.Distance(transform.position, GameManager.instance.player.transform.position);
+        if(currentHP <= 0 || distance <= explosionDetection || lifespanCounter >= lifespan)
+        {
+            explode();
+        }
+        
+        Pathing();
+        lifespanCounter += (Time.deltaTime + .1f);
+    }
+
+    public void Pathing()
+    {
+        agent.destination = targetPos.position;
+    }
+
+    public void takeDamage(float dmg)
+    {
+        currentHP = currentHP - dmg;
+    }
+    public void explode()
+    {
+        Instantiate(explosionHitbox, transform.position, transform.rotation);
+        Destroy(gameObject);
+    }
+
+    public void OnTriggerEnter(Collider other)
+    {
+        if (other.tag == "PlayerBullet")
+        {
+            explode();
+        }
+    }
+}
+
