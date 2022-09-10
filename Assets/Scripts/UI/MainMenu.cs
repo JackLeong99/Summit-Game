@@ -38,11 +38,15 @@ public class MainMenu : MonoBehaviour
         {
             _mainCamera = GameObject.FindGameObjectWithTag("MainCamera");
         }
+
     }
     // Start is called before the first frame update
     void Start()
     {
         selectorMenu.SetActive(false);
+        EventSystem.current.SetSelectedGameObject(null);
+        //set mew selected object
+        EventSystem.current.SetSelectedGameObject(mainFirstButton);
     }
 
     // Update is called once per frame
@@ -89,7 +93,7 @@ public class MainMenu : MonoBehaviour
     {
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
-        SceneManager.LoadScene("AnimatorAttempt");
+        SceneManager.LoadScene("Golem");
     }
     public void ReaperScene()
     {
