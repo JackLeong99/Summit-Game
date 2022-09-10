@@ -11,9 +11,6 @@ public class AbilityState : BaseState
     [SerializeField] public float delay;
     [SerializeField] public int layer;
 
-    [Header("References")]
-    public GameObject spawnableObject;
-
     public override void Invoke(BossStateMachine boss)
     {
         base.Invoke(boss);

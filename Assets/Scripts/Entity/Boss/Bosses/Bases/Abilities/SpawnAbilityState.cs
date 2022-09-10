@@ -2,10 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(menuName = "Boss/Ability/Golem/Rock Throw")]
-public class RockThrowState : AbilityState
+[CreateAssetMenu(menuName = "Boss/Ability/Spawnable AbilityState")]
+public class SpawnAbilityState : AbilityState
 {
-    public GameObject warning;
+    [Header("References")]
+    public GameObject spawnableObject;
 
     public override void Invoke(BossStateMachine boss)
     {
@@ -26,6 +27,6 @@ public class RockThrowState : AbilityState
 
     public override void Setup()
     {
-        //boss.StartCoroutine();
+
     }
 }
