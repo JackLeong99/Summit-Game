@@ -76,6 +76,8 @@ public class MainMenu : MonoBehaviour
     }
     public void Play()
     {
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
         SceneSelection.Instance.SelectNewScene();
     }
     public void BackToMain()
