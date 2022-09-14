@@ -55,11 +55,11 @@ public class EruptionState : AbilityState
         }
         else
         {
-            var prehit = Instantiate(warning, target.transform.position, Quaternion.identity);
+            var prehit = Instantiate(warning, target.transform.position, Quaternion.identity, boss.transform);
             AkSoundEngine.PostEvent("Enemy_Eruption_Lava", prehit);
             prehit.transform.localPosition += new Vector3(0, -0.3f, 0);
             yield return new WaitForSeconds(delay);
-            var hitbox = Instantiate(spawnableObject, prehit.transform.position, Quaternion.identity);
+            var hitbox = Instantiate(spawnableObject, prehit.transform.position, Quaternion.identity, boss.transform);
             hitbox.transform.localPosition += new Vector3(0, -0.05f, 0);
             yield return new WaitForSeconds(duration);
             Destroy(prehit);
