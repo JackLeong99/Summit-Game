@@ -223,6 +223,14 @@ namespace StarterAssets
 					}
 				}
 			}
+
+			//for pause although currently it is a bit buggy
+			if (_input.pause)
+			{
+				GameObject pauseObject = GameObject.FindWithTag("Pause");
+				Pause pausing = pauseObject.GetComponent<Pause>();
+				pausing.DoPause();
+			}
 		}
 
 		private void LateUpdate()
