@@ -78,7 +78,8 @@ public class MainMenu : MonoBehaviour
     {
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
-        SceneSelection.Instance.SelectNewScene();
+
+        GameManager.instance.LoadGame();
     }
     public void BackToMain()
     {
