@@ -56,6 +56,8 @@ public class Pause : MonoBehaviour
 
     public void UpdatePause(bool pause)
     {
+        AkSoundEngine.PostEvent("UI_Click", GameManager.instance.mainCamera);
+
         pauseMenu.SetActive(pause);
         background.SetActive(pause);
 
@@ -66,11 +68,13 @@ public class Pause : MonoBehaviour
                 Time.timeScale = 0f;
                 Cursor.lockState = CursorLockMode.None;
                 EventSystem.current.SetSelectedGameObject(pauseFirst);
+                AkSoundEngine.PostEvent("UI_Menu_On", GameManager.instance.mainCamera);
                 break;
             case false:
                 pauseState = PauseState.Playing;
                 Time.timeScale = 1f;
                 Cursor.lockState = CursorLockMode.Locked;
+                AkSoundEngine.PostEvent("UI_Menu_Off", GameManager.instance.mainCamera);
                 break;
         }
 
@@ -79,7 +83,7 @@ public class Pause : MonoBehaviour
 
     public void CallMenu() //Trigger for menu button
     {
-        StartCoroutine("ChangeToMain");
+        StartCoroutine(ChangeToMain());
     }
 
     IEnumerator ChangeToMain()

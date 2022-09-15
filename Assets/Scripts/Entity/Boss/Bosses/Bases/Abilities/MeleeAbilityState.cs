@@ -6,10 +6,6 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "Boss/Ability/Melee AbilityState")]
 public class MeleeAbilityState : AbilityState
 {
-    [Header("Attributes")]
-    public string animation;
-    public string soundEvent;
-
     [Header("Hitbox Properties")]
     public float damage;
     public Vector2 knockbackForce;
@@ -24,13 +20,6 @@ public class MeleeAbilityState : AbilityState
     public override void Update()
     {
         base.Update();
-
-        switch (boss.animationActive)
-        {
-            case false:
-                boss.ChangeState(boss.baseState);
-                break;
-        }
     }
 
     public override void Exit()
@@ -40,15 +29,12 @@ public class MeleeAbilityState : AbilityState
 
     public override void Setup()
     {
-        boss.anim.SetTrigger(animation);
-        AkSoundEngine.PostEvent(soundEvent, boss.gameObject);
+        base.Setup();
 
         boss.rightHand.force = knockbackForce;
         boss.leftHand.force = knockbackForce;
 
         boss.rightHand.damage = boss.DamageCalculation(damage);
         boss.leftHand.damage = boss.DamageCalculation(damage);
-
-        boss.animationActive = true;
     }
 }
