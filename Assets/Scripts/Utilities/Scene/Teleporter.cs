@@ -15,8 +15,7 @@ public class Teleporter : MonoBehaviour
                 switch (state)
                 {
                     case TeleportState.Boss:
-                        //SceneHandler.SwapScenes(GameManager.instance.bossScenes, GameManager.instance.exclusionScenes);
-                        SceneHandler.SwapScenes(GameManager.instance.showcase, GameManager.instance.exclusionScenes);
+                        SceneHandler.SwapScenes(GameManager.instance.bossScenes, GameManager.instance.exclusionScenes);
                         HealthbarManager.instance.SetActive(true);
 
                         break;

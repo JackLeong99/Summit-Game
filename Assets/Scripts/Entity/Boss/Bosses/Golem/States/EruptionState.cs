@@ -6,6 +6,7 @@ using UnityEngine;
 public class EruptionState : AbilityState
 {
     public GameObject warning;
+    public GameObject spawnableObject;
 
     public override void Invoke(BossStateMachine boss)
     {
@@ -41,11 +42,11 @@ public class EruptionState : AbilityState
         if (Physics.Raycast(target.transform.position, boss.transform.TransformDirection(Vector3.down), out hit, Mathf.Infinity, layerMask))
         {
             Vector3 targetPoint = hit.point;
-            var prehit = Instantiate(warning, hit.point, Quaternion.identity);
+            var prehit = Instantiate(warning, hit.point, Quaternion.identity, boss.transform);
             AkSoundEngine.PostEvent("Enemy_Eruption_Lava", prehit);
             prehit.transform.localPosition += new Vector3(0, -0.3f, 0);
             yield return new WaitForSeconds(delay);
-            var hitbox = Instantiate(spawnableObject, prehit.transform.position, Quaternion.identity);
+            var hitbox = Instantiate(spawnableObject, prehit.transform.position, Quaternion.identity, boss.transform);
             hitbox.transform.localPosition += new Vector3(0, -0.05f, 0);
             yield return new WaitForSeconds(duration);
             Destroy(prehit);
@@ -54,11 +55,11 @@ public class EruptionState : AbilityState
         }
         else
         {
-            var prehit = Instantiate(warning, target.transform.position, Quaternion.identity);
+            var prehit = Instantiate(warning, target.transform.position, Quaternion.identity, boss.transform);
             AkSoundEngine.PostEvent("Enemy_Eruption_Lava", prehit);
             prehit.transform.localPosition += new Vector3(0, -0.3f, 0);
             yield return new WaitForSeconds(delay);
-            var hitbox = Instantiate(spawnableObject, prehit.transform.position, Quaternion.identity);
+            var hitbox = Instantiate(spawnableObject, prehit.transform.position, Quaternion.identity, boss.transform);
             hitbox.transform.localPosition += new Vector3(0, -0.05f, 0);
             yield return new WaitForSeconds(duration);
             Destroy(prehit);

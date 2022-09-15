@@ -17,7 +17,7 @@ public class GameManager : MonoBehaviour
     public List<SceneReference> gameScenes;
     public List<SceneReference> bossScenes;
     public List<SceneReference> shopScene;
-    public List<SceneReference> showcase;
+    public List<SceneReference> testScenes;
 
     public void Awake()
     {
@@ -33,7 +33,16 @@ public class GameManager : MonoBehaviour
 
     public void LoadStarting()
     {
-        SceneHandler.LoadScenes(startingScenes);
+        switch (true)
+        {
+            case bool x when testScenes.Count > 0:
+                List<AsyncOperation> scenesLoading = SceneHandler.SwapScenes(gameScenes, exclusionScenes);
+                scenesLoading.Concat(SceneHandler.LoadScenes(testScenes));
+                break;
+            default:
+                SceneHandler.LoadScenes(startingScenes);
+                break;
+        }
     }
 
     public void LoadGame()
@@ -56,11 +65,6 @@ public class GameManager : MonoBehaviour
     public void LoadShop()
     {
         SceneHandler.SwapScenes(shopScene, exclusionScenes);
-    }
-
-    public void LoadShowcase()
-    {
-        SceneHandler.SwapScenes(showcase, exclusionScenes);
     }
 
     public void OnDeath()

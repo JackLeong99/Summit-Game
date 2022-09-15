@@ -17,10 +17,11 @@ public class TeleportAnchor : MonoBehaviour
 
     public IEnumerator Teleport()
     {
-        GameManager.instance.player.GetComponent<ThirdPersonController>()._Inactionable = true;
+        CharacterController cc = GameManager.instance.player.GetComponent<CharacterController>();
+        cc.enabled = false;
         yield return new WaitForEndOfFrame();
         GameManager.instance.player.transform.position = gameObject.transform.position;
         yield return new WaitForEndOfFrame();
-        GameManager.instance.player.GetComponent<ThirdPersonController>()._Inactionable = false;
+        cc.enabled = true;
     }
 }
