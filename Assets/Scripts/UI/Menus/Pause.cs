@@ -28,7 +28,7 @@ public class Pause : MonoBehaviour
 
     public void Update() //Ensures the pause menu can function
     {
-        if (Input.GetKeyDown(KeyCode.Escape)) //Show pause menu
+       /* if (Input.GetKeyDown(KeyCode.Escape)) //Show pause menu
         {
             switch (pauseState)
             {
@@ -39,11 +39,29 @@ public class Pause : MonoBehaviour
                     ResumeG();
                     break;
             }
-        }
+        }*/
     }
     #endregion
 
     #region Pause
+
+    public void DoPause()
+    {                
+        switch (pauseState)
+            {
+                case PauseState.Playing:
+                    PauseG();
+                    break;
+                case PauseState.Pause:
+                    ResumeG();
+                    break;
+            }
+    }
+    public void ThisIsTest()
+    {
+
+    }
+
     public void ResumeG() //Trigger for resuming game and resume button
     {
         UpdatePause(false);
