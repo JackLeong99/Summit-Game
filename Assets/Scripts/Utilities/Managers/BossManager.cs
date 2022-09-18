@@ -10,6 +10,9 @@ public class BossManager : MonoBehaviour
     public DamageTextPool damageTextPool;
     public string bossName;
 
+    [Header("Reference")]
+    public GameObject portalPrefab;
+
     public void Awake()
     {
         instance = this;
@@ -20,14 +23,16 @@ public class BossManager : MonoBehaviour
         bossName = name;
     }
 
-    public void OnDeath()
+    public void OnDeath(Vector3 portalPos)
     { 
-        ClearBoss();
+        ClearBoss(portalPos);
     }
 
-    public void ClearBoss()
+    public void ClearBoss(Vector3 portalPos)
     {
         bossName = "";
         boss = null;
+
+        Instantiate(portalPrefab, portalPos, Quaternion.identity);
     }
 }

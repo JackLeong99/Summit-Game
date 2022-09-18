@@ -24,6 +24,7 @@ public class ChainAbilityState : BaseState
             abilities[i].nextState = abilities[next];
         }
 
+        Debug.Log("Chain started");
         boss.ChangeState(abilities[0]);
     }
 

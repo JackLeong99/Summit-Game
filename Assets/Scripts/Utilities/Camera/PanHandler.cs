@@ -24,11 +24,6 @@ public class PanHandler : MonoBehaviour
     public void Update()
     {
         FocusAnchor();
-
-        if (Input.GetKeyDown(KeyCode.H))
-        {
-            selectedIndex = IndexLooper.Increment(selectedIndex, anchors.Count);
-        }
     }
 
     public void FocusAnchor()
@@ -38,6 +33,16 @@ public class PanHandler : MonoBehaviour
             case bool x when anchors.Count > 0:
                 GameManager.instance.mainCamera.transform.position = Vector3.Lerp(GameManager.instance.mainCamera.transform.position, anchors[selectedIndex].anchor.position, anchors[selectedIndex].speed * Time.deltaTime);
                 GameManager.instance.mainCamera.transform.rotation = Quaternion.Lerp(GameManager.instance.mainCamera.transform.rotation, anchors[selectedIndex].anchor.rotation, anchors[selectedIndex].speed * Time.deltaTime);
+                break;
+        }
+    }
+
+    public void SwapFocus(int index)
+    {
+        switch (index)
+        {
+            case int x when x < anchors.Count:
+                selectedIndex = index;
                 break;
         }
     }

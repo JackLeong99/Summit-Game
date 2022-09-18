@@ -29,4 +29,7 @@ using UnityEngine;
 
     [Header("Stun")]
     public float stunTime;
+
+    [Header("Portal Drop Location")]
+    public Vector3 position;
 }

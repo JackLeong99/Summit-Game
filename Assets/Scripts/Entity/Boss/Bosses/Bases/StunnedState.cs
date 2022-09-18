@@ -5,8 +5,6 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "Boss/Ability/StunState")]
 public class StunnedState : BaseState
 {
-    //public StunnedState(BossStateMachine boss) : base(boss) { }
-
     public override void Invoke(BossStateMachine boss)
     {
         base.Invoke(boss);

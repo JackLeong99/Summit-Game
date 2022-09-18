@@ -4,9 +4,11 @@ using UnityEngine;
 using System.Linq;
 using UnityEngine.SceneManagement;
 using DevLocker.Utils;
+using StarterAssets;
 
 public class GameManager : MonoBehaviour
 {
+
     public static GameManager instance;
     public GameObject player;
     public GameObject mainCamera;
@@ -50,6 +52,8 @@ public class GameManager : MonoBehaviour
         List<AsyncOperation> scenesLoading = SceneHandler.SwapScenes(gameScenes, exclusionScenes);
         scenesLoading.Concat(SceneHandler.LoadScenes(bossScenes));
         exclusionScenes = exclusionScenes.Concat(gameScenes).ToList();
+
+        StartCoroutine(LoadProgression(scenesLoading, true));
     }
 
     public void QuitGame()
@@ -60,6 +64,37 @@ public class GameManager : MonoBehaviour
         }
 
         List<AsyncOperation> scenesLoading = SceneHandler.SwapScenes(startingScenes, exclusionScenes);
+
+        StartCoroutine(LoadProgression(scenesLoading, false));
+    }
+
+    public IEnumerator LoadProgression(List<AsyncOperation> scenesLoading, bool isLoad)
+    {
+        yield return WaitForDataProgress();
+
+        yield return StartCoroutine(SceneLoadProgress(scenesLoading));
+
+        yield return new WaitForSeconds(1f);
+        player.GetComponent<ThirdPersonController>().cinemachine.SetActive(true);
+    }
+
+    public IEnumerator SceneLoadProgress(List<AsyncOperation> scenesLoading)
+    {
+        for (int i = 0; i < scenesLoading.Count; i++)
+        {
+            while (!scenesLoading[i].isDone)
+            {
+                yield return null;
+            }
+        }
+    }
+
+    public IEnumerator WaitForDataProgress()
+    {
+        while (player == null)
+        {
+            yield return null;
+        }
     }
 
     public void LoadShop()

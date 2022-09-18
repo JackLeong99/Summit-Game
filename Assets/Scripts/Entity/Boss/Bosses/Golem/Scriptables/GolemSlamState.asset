@@ -14,8 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animation: Slam
   soundEvent: Enemy_Melee_Overhead_Slam
+  animationActive: 0
   duration: 0
-  delay: 0
+  delay: 0.1
   layer: 0
   nextState: {fileID: 0}
   damage: 12.5

@@ -119,6 +119,8 @@ namespace StarterAssets
 
 		private float startLock = 120;
 
+		public GameObject cinemachine;
+
 
 		//End Custom
 
@@ -130,6 +132,8 @@ namespace StarterAssets
 			{
 				_mainCamera = GameObject.FindGameObjectWithTag("MainCamera");
 			}
+
+			cinemachine.SetActive(false);
 		}
 
 		private void Start()

@@ -12,11 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bf8528ceedfb4704e8167cc322ec4ef1, type: 3}
   m_Name: GolemSweepState
   m_EditorClassIdentifier: 
-  duration: 0
-  delay: 0
-  layer: 0
-  nextState: {fileID: 0}
   animation: Sweep
   soundEvent: Enemy_Melee_Right_Hook
+  animationActive: 0
+  duration: 0
+  delay: 0.1
+  layer: 0
+  nextState: {fileID: 0}
   damage: 15
   knockbackForce: {x: 10, y: 3}
