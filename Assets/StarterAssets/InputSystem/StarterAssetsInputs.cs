@@ -12,6 +12,10 @@ namespace StarterAssets
 		public Vector2 look;
 		public bool jump;
 		public bool sprint;
+		public bool pause;
+		public bool meleeAttack;
+		public bool shoot;
+		public bool dodge;
 
 		[Header("Movement Settings")]
 		public bool analogMovement;
@@ -45,6 +49,22 @@ namespace StarterAssets
 		{
 			SprintInput(value.isPressed);
 		}
+		public void OnPause(InputValue value)
+		{
+			PauseInput(value.isPressed);
+		}
+		public void OnMeleeAttack(InputValue value)
+		{
+			MeleeAttackInput(value.isPressed);
+		}
+		public void OnShoot(InputValue value)
+		{
+			ShootInput(value.isPressed);
+		}
+		public void OnDodge(InputValue value)
+		{
+			DodgeInput(value.isPressed);
+		}
 #else
 	// old input sys if we do decide to have it (most likely wont)...
 #endif
@@ -68,6 +88,22 @@ namespace StarterAssets
 		public void SprintInput(bool newSprintState)
 		{
 			sprint = newSprintState;
+		}
+		public void PauseInput(bool newPauseState)
+		{
+			pause = newPauseState;
+		}
+		public void MeleeAttackInput(bool newMeleeAttackState)
+		{
+			meleeAttack = newMeleeAttackState;
+		}
+		public void ShootInput(bool newShootState)
+		{
+			shoot = newShootState;
+		}
+		public void DodgeInput(bool newDodgeState)
+		{
+			dodge = newDodgeState;
 		}
 
 #if !UNITY_IOS || !UNITY_ANDROID

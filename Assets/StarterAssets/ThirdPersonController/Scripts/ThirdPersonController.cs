@@ -203,7 +203,7 @@ namespace StarterAssets
 			if(reciever.impact.magnitude <= 5 && !_Inactionable){
 				Move();
 
-				if(Input.GetButtonDown("Fire1"))
+				if(_input.meleeAttack)
 				{
 					if(!dodge.isDodging && Grounded)
 					{
@@ -211,7 +211,7 @@ namespace StarterAssets
 					}
 				}
 
-				if(Input.GetButtonDown("Spell1") && shooting.cdTimer <= 0)
+				if(_input.shoot && shooting.cdTimer <= 0)
 				{
 					if(!_Inactionable && Grounded && !attack.isAttacking && !dodge.isDodging)
 					{
@@ -219,13 +219,21 @@ namespace StarterAssets
 					}
 				}
 
-				if(Input.GetButtonDown("Spell2") && dodge.cdTimer <= 0)
+				if(_input.dodge && dodge.cdTimer <= 0)
 				{
 					if(_speed != 0 && Grounded && !attack.isAttacking)
 					{
 						dodge.callDodge();
 					}
 				}
+			}
+
+			//for pause although currently it is a bit buggy
+			if (_input.pause)
+			{
+				GameObject pauseObject = GameObject.FindWithTag("Pause");
+				Pause pausing = pauseObject.GetComponent<Pause>();
+				pausing.DoPause();
 			}
 		}
 
@@ -261,8 +269,8 @@ namespace StarterAssets
             // if there is an input and camera position is not fixed
             if (_input.look.sqrMagnitude >= _threshold && !LockCameraPosition)
             {
-                _cinemachineTargetYaw += _input.look.x * Time.deltaTime;
-                _cinemachineTargetPitch += _input.look.y * Time.deltaTime;
+                _cinemachineTargetYaw += _input.look.x * Time.deltaTime*DataManager.instance.sensitivity;
+                _cinemachineTargetPitch += _input.look.y * Time.deltaTime*DataManager.instance.sensitivity;
             }
 
             // clamp our rotations so our values are limited 360 degrees
