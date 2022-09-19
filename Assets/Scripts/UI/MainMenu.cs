@@ -43,7 +43,7 @@ public class MainMenu : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        selectorMenu.SetActive(false);
+        //selectorMenu.SetActive(false);
         EventSystem.current.SetSelectedGameObject(null);
         //set mew selected object
         EventSystem.current.SetSelectedGameObject(mainFirstButton);
