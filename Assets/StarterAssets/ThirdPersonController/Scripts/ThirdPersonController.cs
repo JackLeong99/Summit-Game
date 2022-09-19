@@ -133,7 +133,7 @@ namespace StarterAssets
 				_mainCamera = GameObject.FindGameObjectWithTag("MainCamera");
 			}
 
-			cinemachine.SetActive(false);
+			//cinemachine.SetActive(false);
 		}
 
 		private void Start()

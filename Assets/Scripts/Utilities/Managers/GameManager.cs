@@ -40,6 +40,7 @@ public class GameManager : MonoBehaviour
             case bool x when testScenes.Count > 0:
                 List<AsyncOperation> scenesLoading = SceneHandler.SwapScenes(gameScenes, exclusionScenes);
                 scenesLoading.Concat(SceneHandler.LoadScenes(testScenes));
+                exclusionScenes = exclusionScenes.Concat(gameScenes).ToList();
                 break;
             default:
                 SceneHandler.LoadScenes(startingScenes);
@@ -75,7 +76,7 @@ public class GameManager : MonoBehaviour
         yield return StartCoroutine(SceneLoadProgress(scenesLoading));
 
         yield return new WaitForSeconds(1f);
-        player.GetComponent<ThirdPersonController>().cinemachine.SetActive(true);
+        //player.GetComponent<ThirdPersonController>().cinemachine.SetActive(true);
     }
 
     public IEnumerator SceneLoadProgress(List<AsyncOperation> scenesLoading)

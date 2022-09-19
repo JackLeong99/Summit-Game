@@ -33,17 +33,24 @@ public class Inspector : MonoBehaviour
                         stand.BuyItem();
                     }
                     break;
+                default:
+                    CheckDisplay();
+                    break;
             }
         }
         else
         {
-            switch (true)
-            {
-                case bool x when ShopManager.instance != null && ShopManager.instance.inspectDisplay.gameObject.activeInHierarchy == true:
-                    ShopManager.instance.DisplayText(false);
-                    break;
-            }
+            CheckDisplay();
+        }
+    }
 
+    public void CheckDisplay()
+    {
+        switch (true)
+        {
+            case bool x when ShopManager.instance != null && ShopManager.instance.inspectDisplay.gameObject.activeInHierarchy == true:
+                ShopManager.instance.DisplayText(false);
+                break;
         }
     }
 }

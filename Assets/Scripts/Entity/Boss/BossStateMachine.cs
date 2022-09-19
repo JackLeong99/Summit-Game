@@ -79,7 +79,7 @@ public class BossStateMachine : MonoBehaviour
     public void SetParameters()
     {
         components.curHealth = attributes.maxHealth;
-        BossManager.instance.SetName(attributes.bossName);
+        BossManager.instance.SetBoss();
     }
 
     public void Initialize(BossState startingState)

@@ -68,8 +68,6 @@ public class RockManager : MonoBehaviour
         }
     }
 
-
-
     //update the array with the new position
     public void RockPositionUpdate(GameObject rockMoved)
     {

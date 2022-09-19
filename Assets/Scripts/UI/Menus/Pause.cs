@@ -25,26 +25,9 @@ public class Pause : MonoBehaviour
         background.SetActive(false);
         //selectors.Visibility(false);
     }
-
-    public void Update() //Ensures the pause menu can function
-    {
-       /* if (Input.GetKeyDown(KeyCode.Escape)) //Show pause menu
-        {
-            switch (pauseState)
-            {
-                case PauseState.Playing:
-                    PauseG();
-                    break;
-                case PauseState.Pause:
-                    ResumeG();
-                    break;
-            }
-        }*/
-    }
     #endregion
 
     #region Pause
-
     public void DoPause()
     {                
         switch (pauseState)
