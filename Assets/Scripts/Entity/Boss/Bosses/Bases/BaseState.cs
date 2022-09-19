@@ -6,8 +6,6 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "Boss/Ability/BaseState")]
 public class BaseState : BossState
 {
-    //public BaseState(BossStateMachine boss) : base(boss) { }
-
     public override void Invoke(BossStateMachine boss)
     {
         base.Invoke(boss);

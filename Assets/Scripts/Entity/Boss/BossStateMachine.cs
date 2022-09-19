@@ -15,6 +15,7 @@ using UnityEngine.AI;
     public AttackState attackState = AttackState.CanRanged;
     public float cooldownTimer;
     public float moveRepeated;
+    //public List<Coroutine> actions = new List<Coroutine>();
 
     [Header("Health")]
     public float curHealth;
@@ -33,13 +34,14 @@ using UnityEngine.AI;
 public enum AttackState { CanAttack, CanRanged, InAttack }
 public enum IState { Active, Inactive }
 public enum StunState { Accepted, Stunned, Ignore }
+public enum AnimationState { Accepted, Ignore, Done }
 
 public class BossStateMachine : MonoBehaviour
 {
     [Header("Attributes")]
     public BossAttributes attributes;
     public BossContext components;
-    public bool animationActive = false;
+    //public AnimationState animationActive = AnimationState.Accepted;
 
     [Header("Ability Keypoints")]
     public MeleeHitbox leftHand;

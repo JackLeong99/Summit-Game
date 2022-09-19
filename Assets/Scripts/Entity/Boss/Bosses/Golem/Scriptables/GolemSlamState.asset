@@ -12,11 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bf8528ceedfb4704e8167cc322ec4ef1, type: 3}
   m_Name: GolemSlamState
   m_EditorClassIdentifier: 
-  duration: 0
-  delay: 0
-  layer: 0
-  spawnableObject: {fileID: 0}
   animation: Slam
   soundEvent: Enemy_Melee_Overhead_Slam
+  animationActive: 0
+  duration: 0
+  delay: 0.1
+  layer: 0
+  nextState: {fileID: 0}
   damage: 12.5
   knockbackForce: {x: 10, y: 3}
