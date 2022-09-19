@@ -11,22 +11,29 @@ public class SettingsMenu : MonoBehaviour
     //public UIEvents selectors;
     [Header("Sliders")]
     public Slider sensitivity;
+    public Slider volume;
     #endregion
     // Start is called before the first frame update
 
     void Start()
     {
         sensitivity.value = DataManager.instance.sensitivity;
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        volume.value=DataManager.instance.volume;
     }
 
     public void Sensitivity(float value)
     {
         DataManager.instance.sensitivity=value;
+    }
+
+    public void Volume(float value)
+    {
+        DataManager.instance.volume=value;
+        AkSoundEngine.SetRTPCValue("Volume_Master", value);
+    }
+
+    public void GoBack()
+    {
+        //go back to main or pause depending on which menu was previous
     }
 }
