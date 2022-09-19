@@ -25,11 +25,9 @@ public class Pause : MonoBehaviour
         background.SetActive(false);
         //selectors.Visibility(false);
     }
-
     #endregion
 
     #region Pause
-
     public void DoPause()
     {                
         switch (pauseState)
