@@ -9,11 +9,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0b8cc5d375784fe49a3300d2135a56c9, type: 3}
+  m_Script: {fileID: 11500000, guid: 4775bb5d9b9e1064d8ab16b2ee6f8072, type: 3}
   m_Name: GolemEruptionState
   m_EditorClassIdentifier: 
-  duration: 2
-  delay: 0.7
-  layer: 6
-  spawnableObject: {fileID: 7477481558212652647, guid: 70dad633a8ff1524faf7e641d0688681, type: 3}
-  warning: {fileID: 3956136142030373530, guid: a3a74d7123a960445aec88dfc77139dd, type: 3}
+  animation: Eruption
+  soundEvent: Enemy_Eruption_Cast
+  animationActive: 0
+  delay: 0
+  nextState: {fileID: 0}
+  spawnLength: 0.45
+  layerMask:
+    serializedVersion: 2
+    m_Bits: 64
+  spawnPos: 0
+  spawnableObject: {fileID: 3956136142030373530, guid: a3a74d7123a960445aec88dfc77139dd, type: 3}

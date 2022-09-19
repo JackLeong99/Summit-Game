@@ -8,7 +8,6 @@ public class BossManager : MonoBehaviour
     public static BossManager instance;
     public BossStateMachine boss;
     public DamageTextPool damageTextPool;
-    public string bossName;
 
     [Header("Reference")]
     public GameObject portalPrefab;
@@ -18,9 +17,14 @@ public class BossManager : MonoBehaviour
         instance = this;
     }
 
-    public void SetName(string name)
+    public void SetBoss()
     {
-        bossName = name;
+        switch (true)
+        {
+            case bool x when HealthbarManager.instance != null:
+                HealthbarManager.instance.SetBoss();
+                break;
+        }
     }
 
     public void OnDeath(Vector3 portalPos)
@@ -30,8 +34,8 @@ public class BossManager : MonoBehaviour
 
     public void ClearBoss(Vector3 portalPos)
     {
-        bossName = "";
         boss = null;
+        HealthbarManager.instance.ClearBoss();
 
         Instantiate(portalPrefab, portalPos, Quaternion.identity);
     }

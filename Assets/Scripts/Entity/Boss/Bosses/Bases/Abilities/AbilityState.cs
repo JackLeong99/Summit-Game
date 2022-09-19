@@ -13,9 +13,7 @@ public class AbilityState : BaseState
     public AnimationState animationActive;
 
     [Header("Information")]
-    [SerializeField] public float duration;
     [SerializeField] public float delay;
-    [SerializeField] public int layer;
 
     public AbilityState nextState;
 
@@ -50,8 +48,9 @@ public class AbilityState : BaseState
     public virtual void Setup()
     {
         animationActive = AnimationState.Accepted;
-        //Debug.Log(this.name + " Loaded");
         boss.anim.SetTrigger(animation);
+
+        //Debug.Log(this.name + " Loaded");
         AkSoundEngine.PostEvent(soundEvent, boss.gameObject);
         boss.StartCoroutine(AnimationControl());
     }

@@ -10,9 +10,9 @@ public class BossHealthBar : MonoBehaviour
     public Slider healthbar;
     public TextMeshProUGUI bossText;
 
-    public void Start()
+    public void Awake()
     {
-        StartCoroutine(SetParameters());
+        gameObject.SetActive(false);
     }
 
     public IEnumerator SetParameters()
@@ -22,10 +22,20 @@ public class BossHealthBar : MonoBehaviour
             yield return null;
         }
 
-        yield return new WaitForSeconds(0.5f);
-
-        bossText.text = BossManager.instance.bossName;
+        bossText.text = BossManager.instance.boss.attributes.bossName;
         healthbar.maxValue = BossManager.instance.boss.attributes.maxHealth;
+    }
+
+    public IEnumerator ClearParameters()
+    {
+        if (BossManager.instance.boss != null)
+        {
+            yield return null;
+        }
+
+        bossText.text = "";
+        healthbar.maxValue = 0;
+        healthbar.value = 0;
     }
 
     public void Update()
@@ -35,7 +45,6 @@ public class BossHealthBar : MonoBehaviour
             case bool x when BossManager.instance.boss != null:
                 healthbar.value = BossManager.instance.boss.components.curHealth;
                 break;
-
         }
     }
 }
