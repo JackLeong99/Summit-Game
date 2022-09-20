@@ -14,9 +14,10 @@ public class FadeController : MonoBehaviour
         yield return FadeWait();
     }
 
-    public void FadeOut() //Called upon to Fade In.
+    public IEnumerator FadeOut() //Called upon to Fade In.
     {
         fade.SetTrigger("FadeOut");
+        yield return FadeWait();
     }
 
     public IEnumerator FadeWait()

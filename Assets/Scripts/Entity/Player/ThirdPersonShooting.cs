@@ -102,6 +102,7 @@ public class ThirdPersonShooting : MonoBehaviour
         pp.enabled = false;
         _animator.SetTrigger("Shoot");
         AkSoundEngine.PostEvent("Player_Shoot_Fire", gameObject);
+        CameraListener.instance.CameraShake(5, 0.1f);
         //AkSoundEngine.PostEvent("Player_Shoot_Cast", gameObject);
         Ray ray = GameManager.instance.mainCamera.GetComponent<Camera>().ViewportPointToRay(new Vector3(0.5f, 0.5f , 0));
         RaycastHit hit;

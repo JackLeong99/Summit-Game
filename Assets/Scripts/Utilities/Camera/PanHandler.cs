@@ -19,12 +19,18 @@ public class PanHandler : MonoBehaviour
     public void Start()
     {
         GameManager.instance.mainCamera.GetComponent<Camera>().fieldOfView = 60;
+
         GameManager.instance.mainCamera.transform.SetPositionAndRotation(anchors[selectedIndex].anchor.position, anchors[selectedIndex].anchor.rotation);
     }
 
     public void Update()
     {
         FocusAnchor();
+    }
+
+    public void OnDestroy()
+    {
+        GameManager.instance.mainCamera.GetComponent<Camera>().fieldOfView = 40;
     }
 
     public void FocusAnchor()
