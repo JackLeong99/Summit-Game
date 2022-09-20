@@ -19,12 +19,6 @@ public class AnnouncementHandler : MonoBehaviour
         instance = this;
     }
 
-    public void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.H))
-        Announce(spriteCodes[0] + " Hello gamer " + spriteCodes[1], 5);
-    }
-
     public void Announce(string announcementText, float duration)
     {
         StartCoroutine(Announcement(announcementText, duration));
@@ -32,10 +26,10 @@ public class AnnouncementHandler : MonoBehaviour
 
     public IEnumerator Announcement(string announcement, float duration)
     {
-        text.text = announcement;
+        text.text = spriteCodes[0] + announcement + spriteCodes[1];
 
         yield return fade.FadeIn();
         yield return new WaitForSeconds(duration);
-        fade.FadeOut();
+        yield return fade.FadeOut();
     }
 }

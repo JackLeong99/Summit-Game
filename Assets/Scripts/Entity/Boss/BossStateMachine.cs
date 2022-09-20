@@ -65,8 +65,7 @@ public class BossStateMachine : MonoBehaviour
     public void Start()
     {
         GetInstances();
-        SetParameters();
-        Initialize(baseState);
+        StartCoroutine(SetParameters());
     }
 
     public void GetInstances()
@@ -76,10 +75,12 @@ public class BossStateMachine : MonoBehaviour
         agent = GetComponent<NavMeshAgent>();
     }
 
-    public void SetParameters()
+    public IEnumerator SetParameters()
     {
         components.curHealth = attributes.maxHealth;
+        yield return AnnouncementHandler.instance.Announcement(attributes.bossName, 2);
         BossManager.instance.SetBoss();
+        Initialize(baseState);
     }
 
     public void Initialize(BossState startingState)
@@ -90,7 +91,15 @@ public class BossStateMachine : MonoBehaviour
 
     public void Update()
     {
-        currentAbility.Update();
+        switch (true)
+        {
+            case bool x when currentAbility != null:
+                currentAbility.Update();
+                break;
+            default:
+                Debug.Log("CurrentAbility is: " + currentAbility);
+                break;
+        }
     }
 
     public void ChangeState(BossState changeToAbility)

@@ -38,6 +38,8 @@ public class KnockbackReciever : MonoBehaviour
         {
             dir.y = -dir.y;
         }
+
+        Debug.Log(impact);
         impact += dir.normalized * force * 10 / mass;
     }
     void Update()
