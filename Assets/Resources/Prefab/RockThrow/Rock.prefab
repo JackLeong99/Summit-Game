@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 5245996861810202409}
   - component: {fileID: 8010057726242726883}
   - component: {fileID: -7979121750240947989}
-  - component: {fileID: 2433480651189237772}
+  - component: {fileID: 4798630209479127538}
   - component: {fileID: 4950186718092724158}
   m_Layer: 6
   m_Name: Rock
@@ -100,7 +100,7 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 289301614986012343, guid: de5cc48f845ebd14fa561f94eb0aeab9, type: 3}
---- !u!114 &2433480651189237772
+--- !u!114 &4798630209479127538
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -109,12 +109,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 8370376826668548662}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1e98b6f5cd1044a45b4d3d8694978b39, type: 3}
+  m_Script: {fileID: 11500000, guid: c751cf915568154469169e2408fbe5f7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rockPrefab: {fileID: 8358722399614396407, guid: 6761bec4156a89349bd0643744e29a8c, type: 3}
-  rockHand: {fileID: 0}
-  sparksPrefab: {fileID: 360004003803245523, guid: c606c23f84508824cbb5988fa2f1e3cc, type: 3}
+  rockHealth: 3
+  sparks: {fileID: 360004003803245523, guid: c606c23f84508824cbb5988fa2f1e3cc, type: 3}
   healBurst: {fileID: 5276895342409573505, guid: e878a52606cf912418ee0f20d6af297d, type: 3}
 --- !u!54 &4950186718092724158
 Rigidbody:
