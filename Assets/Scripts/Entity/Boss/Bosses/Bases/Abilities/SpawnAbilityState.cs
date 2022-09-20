@@ -5,6 +5,9 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "Boss/Ability/Spawnable AbilityState")]
 public class SpawnAbilityState : AbilityState
 {
+    [Header("Attributes")]
+    public string spawnSoundEvent;
+
     [Header("Values")]
     public float spawnLength;
     public LayerMask layerMask = 6;
@@ -55,9 +58,10 @@ public class SpawnAbilityState : AbilityState
                 }
                 break;
         }
-        
+
         var spawnable = Instantiate(spawnableObject, target, Quaternion.identity, boss.transform);
         spawnable.transform.parent = null;
+        AkSoundEngine.PostEvent(spawnSoundEvent, spawnable);
 
         yield return null;
     }
