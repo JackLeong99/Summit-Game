@@ -40,10 +40,6 @@ public class Pause : MonoBehaviour
                     break;
             }
     }
-    public void ThisIsTest()
-    {
-
-    }
 
     public void ResumeG() //Trigger for resuming game and resume button
     {
@@ -94,9 +90,11 @@ public class Pause : MonoBehaviour
         yield return null;
     }
 
-    public void OptionsCall(bool toggle)
+    public void SettingsCall()
     {
-        //GameManager.instance.optionsMenu.ToggleOptions(toggle);
+        pauseMenu.SetActive(false);
+        background.SetActive(false);
+        SettingsMenu.instance.isSettings(true, 0);
     }
     #endregion
 }

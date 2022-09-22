@@ -20,10 +20,10 @@ public class MainMenu : MonoBehaviour
     }
     private GameObject _mainCamera;
     //for controller interface
-    public GameObject mainFirstButton, selectorFirst, selectorClosed;
+    public GameObject mainFirstButton, mainsettingsButton, creditsButton;
 
     public GameObject mainMenu;
-    public GameObject selectorMenu;
+
     void Awake()
     {
         if (instance != null)
@@ -60,14 +60,7 @@ public class MainMenu : MonoBehaviour
     {
 
     }
-    public void LevelSelector()
-    {
-        mainMenu.SetActive(false);
-        selectorMenu.SetActive(true);
-        EventSystem.current.SetSelectedGameObject(null);
-        //set mew selected object
-        EventSystem.current.SetSelectedGameObject(selectorFirst);
-    }
+
     public void Quit()
     {
         AkSoundEngine.PostEvent("UI_Click", _mainCamera);
@@ -81,51 +74,25 @@ public class MainMenu : MonoBehaviour
 
         GameManager.instance.LoadGame();
     }
-    public void BackToMain()
-    {
-        selectorMenu.SetActive(false);
-        mainMenu.SetActive(true);
-
-        EventSystem.current.SetSelectedGameObject(null);
-        //set mew selected object
-        EventSystem.current.SetSelectedGameObject(selectorClosed);
-    }
     
-    //Will likely have this removed in final release unless we want to have a scene selection
-    public void RockScene()
+    public void SettingsCall()
     {
-        Cursor.lockState = CursorLockMode.Locked;
-        Cursor.visible = false;
-        SceneManager.LoadScene("Golem");
+        mainMenu.SetActive(false);
+        SettingsMenu.instance.isSettings(true, 1);
     }
-    public void ReaperScene()
+    public void CreditsCall()
     {
-        Cursor.lockState = CursorLockMode.Locked;
-        Cursor.visible = false;
-        SceneManager.LoadScene("Reaper"); //to be changed
+        mainMenu.SetActive(false);
+        Credits.instance.isCredits(true);
     }
-    public void MageScene()
+    public void MainTrue()
     {
-        Cursor.lockState = CursorLockMode.Locked;
-        Cursor.visible = false;
-        SceneManager.LoadScene("Mage"); //to be changed
+        mainMenu.SetActive(true);
+        EventSystem.current.SetSelectedGameObject(mainsettingsButton);
     }
-    public void ArcherScene()
+    public void BackCredits()
     {
-        Cursor.lockState = CursorLockMode.Locked;
-        Cursor.visible = false;
-        SceneManager.LoadScene("Archer"); //to be changed
-    }
-    public void SecretScene()
-    {
-        Cursor.lockState = CursorLockMode.Locked;
-        Cursor.visible = false;
-        SceneManager.LoadScene("Final"); //to be changed
-    }
-    public void AlphaScene()
-    {
-        Cursor.lockState = CursorLockMode.Locked;
-        Cursor.visible = false;
-        SceneManager.LoadScene("AlphaScene"); //to be changed
+        mainMenu.SetActive(true);
+        EventSystem.current.SetSelectedGameObject(creditsButton);
     }
 }

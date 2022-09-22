@@ -121,6 +121,8 @@ namespace StarterAssets
 
 		public GameObject cinemachine;
 
+		private float pauseTimer=0;
+
 
 		//End Custom
 
@@ -203,7 +205,8 @@ namespace StarterAssets
 			if(reciever.impact.magnitude <= 5 && !_Inactionable){
 				Move();
 
-				if(Input.GetButtonDown("Fire1"))
+				if(_input.meleeAttack)
+				//if(Input.GetButtonDown("Fire1"))
 				{
 					if(!dodge.isDodging && Grounded)
 					{
@@ -211,7 +214,8 @@ namespace StarterAssets
 					}
 				}
 
-				if(Input.GetButtonDown("Spell1") && shooting.cdTimer <= 0)
+				if(_input.shoot && shooting.cdTimer <= 0)
+				//if(Input.GetButtonDown("Spell1") && shooting.cdTimer <= 0)
 				{
 					if(!_Inactionable && Grounded && !attack.isAttacking && !dodge.isDodging)
 					{
@@ -219,7 +223,8 @@ namespace StarterAssets
 					}
 				}
 
-				if(Input.GetButtonDown("Spell2") && dodge.cdTimer <= 0)
+				if(_input.dodge && dodge.cdTimer <= 0)
+				//if(Input.GetButtonDown("Spell2") && dodge.cdTimer <= 0)
 				{
 					if(_speed != 0 && Grounded && !attack.isAttacking)
 					{
@@ -229,11 +234,16 @@ namespace StarterAssets
 			}
 
 			//for pause although currently it is a bit buggy
-			if (_input.pause)
+			if (_input.pause && pauseTimer<=0)
 			{
+				pauseTimer=0.5f;
 				GameObject pauseObject = GameObject.FindWithTag("Pause");
 				Pause pausing = pauseObject.GetComponent<Pause>();
 				pausing.DoPause();
+			}
+			if(pauseTimer>0)
+			{
+				pauseTimer-=Time.deltaTime;
 			}
 		}
 
