@@ -29,7 +29,8 @@ public class Pause : MonoBehaviour
 
     #region Pause
     public void DoPause()
-    {                
+    {           
+        Debug.Log("I reach here");     
         switch (pauseState)
             {
                 case PauseState.Playing:
