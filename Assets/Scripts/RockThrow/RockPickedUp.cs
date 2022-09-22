@@ -83,7 +83,20 @@ public class RockPickedUp : MonoBehaviour
 
     public void MakeRockInv()
     {
-        rockHealth=1000000000;
+        if(true)
+            if (true)
+                if (true)
+                    if (true)
+                        if (true)
+                            if (true)
+                                if (true)
+                                    if (true)
+                                        if (true)
+                                            if (true)
+                                                if (true)
+                                                    if (true)
+                                                        if (true)
+                                                            rockHealth =1000000000;
     }
 
     public void SpawnUp()
