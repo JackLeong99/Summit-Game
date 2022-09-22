@@ -40,10 +40,6 @@ public class Pause : MonoBehaviour
                     break;
             }
     }
-    public void ThisIsTest()
-    {
-
-    }
 
     public void ResumeG() //Trigger for resuming game and resume button
     {

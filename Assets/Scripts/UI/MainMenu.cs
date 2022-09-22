@@ -20,7 +20,7 @@ public class MainMenu : MonoBehaviour
     }
     private GameObject _mainCamera;
     //for controller interface
-    public GameObject mainFirstButton, mainsettingsButton;
+    public GameObject mainFirstButton, mainsettingsButton, creditsButton;
 
     public GameObject mainMenu;
 
@@ -80,9 +80,19 @@ public class MainMenu : MonoBehaviour
         mainMenu.SetActive(false);
         SettingsMenu.instance.isSettings(true, 1);
     }
+    public void CreditsCall()
+    {
+        mainMenu.SetActive(false);
+        Credits.instance.isCredits(true);
+    }
     public void MainTrue()
     {
         mainMenu.SetActive(true);
         EventSystem.current.SetSelectedGameObject(mainsettingsButton);
+    }
+    public void BackCredits()
+    {
+        mainMenu.SetActive(true);
+        EventSystem.current.SetSelectedGameObject(creditsButton);
     }
 }

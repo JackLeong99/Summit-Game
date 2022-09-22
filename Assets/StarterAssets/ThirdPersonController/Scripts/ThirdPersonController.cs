@@ -121,6 +121,8 @@ namespace StarterAssets
 
 		public GameObject cinemachine;
 
+		private float pauseTimer=0;
+
 
 		//End Custom
 
@@ -232,11 +234,16 @@ namespace StarterAssets
 			}
 
 			//for pause although currently it is a bit buggy
-			if (_input.pause)
+			if (_input.pause && pauseTimer<=0)
 			{
+				pauseTimer=0.5f;
 				GameObject pauseObject = GameObject.FindWithTag("Pause");
 				Pause pausing = pauseObject.GetComponent<Pause>();
 				pausing.DoPause();
+			}
+			if(pauseTimer>0)
+			{
+				pauseTimer-=Time.deltaTime;
 			}
 		}
 
