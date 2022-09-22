@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using StarterAssets;
 
 public class Pause : MonoBehaviour
 {
@@ -29,12 +30,12 @@ public class Pause : MonoBehaviour
 
     #region Pause
     public void DoPause()
-    {           
-        Debug.Log("I reach here");     
+    {             
         switch (pauseState)
             {
                 case PauseState.Playing:
-                    PauseG();
+                    PauseG(); 
+
                     break;
                 case PauseState.Pause:
                     ResumeG();
@@ -50,6 +51,7 @@ public class Pause : MonoBehaviour
     public void PauseG() //Trigger for pausing game
     {
         UpdatePause(true);
+      
     }
 
     public void UpdatePause(bool pause)
@@ -99,7 +101,6 @@ public class Pause : MonoBehaviour
     }
     #endregion
 }
-
 public enum PauseState
 {
     Playing,
