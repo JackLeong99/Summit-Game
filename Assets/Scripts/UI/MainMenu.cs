@@ -79,8 +79,6 @@ public class MainMenu : MonoBehaviour
     {
         mainMenu.SetActive(false);
         SettingsMenu.instance.isSettings(true, 1);
-        //GameManager.instance.optionsMenu.ToggleOptions(toggle);
-        //need to do reference here change name
     }
     public void MainTrue()
     {

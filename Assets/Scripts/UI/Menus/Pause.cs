@@ -99,8 +99,6 @@ public class Pause : MonoBehaviour
         pauseMenu.SetActive(false);
         background.SetActive(false);
         SettingsMenu.instance.isSettings(true, 0);
-        //GameManager.instance.optionsMenu.ToggleOptions(toggle);
-        //need to do reference here change name
     }
     #endregion
 }
