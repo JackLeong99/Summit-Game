@@ -94,9 +94,13 @@ public class Pause : MonoBehaviour
         yield return null;
     }
 
-    public void OptionsCall(bool toggle)
+    public void SettingsCall()
     {
+        pauseMenu.SetActive(false);
+        background.SetActive(false);
+        SettingsMenu.instance.isSettings(true, 0);
         //GameManager.instance.optionsMenu.ToggleOptions(toggle);
+        //need to do reference here change name
     }
     #endregion
 }
