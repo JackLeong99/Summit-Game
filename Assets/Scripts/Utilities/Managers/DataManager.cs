@@ -26,6 +26,10 @@ public class DataManager : MonoBehaviour
     [Range(1, 10)]
     public float sensitivity;
 
+    [Header("Volume")]
+    [Range(0,100)]
+    public float volume;
+
     public void Awake()
     {
         instance = this;
