@@ -123,6 +123,8 @@ namespace StarterAssets
 
 		private float pauseTimer=0;
 
+		private bool isPaused=false;
+
 
 		//End Custom
 
@@ -234,13 +236,26 @@ namespace StarterAssets
 			}
 
 			//for pause although currently it is a bit buggy
-			if (_input.pause && pauseTimer<=0)
+			/*if (_input.pause && pauseTimer<=0)
 			{
 				pauseTimer=0.5f;
 				GameObject pauseObject = GameObject.FindWithTag("Pause");
 				Pause pausing = pauseObject.GetComponent<Pause>();
 				pausing.DoPause();
+			}*/
+			if (_input.pause && isPaused ==false)
+			{
+				GameObject pauseObject = GameObject.FindWithTag("Pause");
+				Pause pausing = pauseObject.GetComponent<Pause>();
+				pausing.DoPause();
+				isPaused=true;
 			}
+			/*if (_input.pause)
+			{
+				GameObject pauseObject = GameObject.FindWithTag("Pause");
+				Pause pausing = pauseObject.GetComponent<Pause>();
+				pausing.DoPause();
+			}*/
 			if(pauseTimer>0)
 			{
 				pauseTimer-=Time.deltaTime;
@@ -482,6 +497,11 @@ namespace StarterAssets
 			stunned = false;
 			_Inactionable = false;
 			yield return null;
+		}
+
+		public void ChangePause()
+		{
+			isPaused=false;
 		}
     }
 }

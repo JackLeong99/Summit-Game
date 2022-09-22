@@ -105,6 +105,8 @@ public class GameManager : MonoBehaviour
 
     public void OnDeath()
     {
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
         QuitGame();
     }
 }
