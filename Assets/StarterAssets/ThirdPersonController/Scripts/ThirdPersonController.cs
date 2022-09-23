@@ -92,7 +92,7 @@ namespace StarterAssets
 
 		private GameObject _mainCamera;
 
-		private StarterAssetsInputs _input;
+		public StarterAssetsInputs _input;
 
 		private const float _threshold = 0.01f;
 
@@ -134,7 +134,7 @@ namespace StarterAssets
 			// get a reference to our main camera
 			if (_mainCamera == null)
 			{
-				_mainCamera = GameObject.FindGameObjectWithTag("MainCamera");
+				_mainCamera = GameManager.instance.mainCamera;
 			}
 
 			//cinemachine.SetActive(false);
@@ -243,23 +243,23 @@ namespace StarterAssets
 				Pause pausing = pauseObject.GetComponent<Pause>();
 				pausing.DoPause();
 			}*/
-			if (_input.pause && isPaused ==false)
+			/*if (_input.pause && isPaused ==false)
 			{
 				GameObject pauseObject = GameObject.FindWithTag("Pause");
 				Pause pausing = pauseObject.GetComponent<Pause>();
 				pausing.DoPause();
 				isPaused=true;
-			}
+			}*/
 			/*if (_input.pause)
 			{
 				GameObject pauseObject = GameObject.FindWithTag("Pause");
 				Pause pausing = pauseObject.GetComponent<Pause>();
 				pausing.DoPause();
 			}*/
-			if(pauseTimer>0)
+			/*if(pauseTimer>0)
 			{
 				pauseTimer-=Time.deltaTime;
-			}
+			}*/
 		}
 
 		private void LateUpdate()
