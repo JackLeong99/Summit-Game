@@ -18,7 +18,11 @@ public class GameManager : MonoBehaviour
     public List<SceneReference> exclusionScenes;
     public List<SceneReference> gameScenes;
     public List<SceneReference> bossScenes;
+
+    [Header("Unique Scene Handling")]
     public List<SceneReference> shopScene;
+    public List<SceneReference> deathScene;
+    public List<SceneReference> introScene;
     public List<SceneReference> testScenes;
 
     public void Awake()
@@ -51,7 +55,7 @@ public class GameManager : MonoBehaviour
     public void LoadGame()
     {
         List<AsyncOperation> scenesLoading = SceneHandler.SwapScenes(gameScenes, exclusionScenes);
-        scenesLoading.Concat(SceneHandler.LoadScenes(bossScenes));
+        scenesLoading.Concat(SceneHandler.LoadScenes(introScene));
         exclusionScenes = exclusionScenes.Concat(gameScenes).ToList();
 
         StartCoroutine(LoadProgression(scenesLoading, true));
@@ -75,13 +79,7 @@ public class GameManager : MonoBehaviour
 
         yield return StartCoroutine(SceneLoadProgress(scenesLoading));
 
-        Scene load = SceneManager.GetSceneByName(bossScenes[0]);
-        SceneManager.MoveGameObjectToScene(mainCamera, load);
-
         yield return new WaitForSeconds(1f);
-
-
-        //player.GetComponent<ThirdPersonController>().cinemachine.SetActive(true);
     }
 
     public IEnumerator SceneLoadProgress(List<AsyncOperation> scenesLoading)
@@ -106,6 +104,11 @@ public class GameManager : MonoBehaviour
     public void LoadShop()
     {
         SceneHandler.SwapScenes(shopScene, exclusionScenes);
+    }
+
+    public void LoadBoss()
+    {
+        SceneHandler.SwapScenes(bossScenes, exclusionScenes);
     }
 
     public void OnDeath()

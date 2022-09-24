@@ -142,6 +142,7 @@ public class BossStateMachine : MonoBehaviour
     {
         foreach (var tick in dmg)
         {
+            if (!Alive()) continue;
             components.curHealth -= tick;
             DamageHandler(tick, position);
 
