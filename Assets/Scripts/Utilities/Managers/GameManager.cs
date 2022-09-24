@@ -39,26 +39,29 @@ public class GameManager : MonoBehaviour
 
     public void LoadStarting()
     {
+        List<AsyncOperation> scenesLoading = new List<AsyncOperation>();
+
         switch (true)
         {
             case bool x when testScenes.Count > 0:
-                List<AsyncOperation> scenesLoading = SceneHandler.SwapScenes(gameScenes, exclusionScenes);
-                scenesLoading.Concat(SceneHandler.LoadScenes(testScenes));
+                scenesLoading = SceneHandler.LoadScenes(gameScenes);
+                scenesLoading = scenesLoading.Concat(SceneHandler.LoadScenes(testScenes)).ToList();
                 exclusionScenes = exclusionScenes.Concat(gameScenes).ToList();
+                StartCoroutine(LoadProgression(scenesLoading, testScenes[0]));
                 break;
             default:
-                SceneHandler.LoadScenes(startingScenes);
+                scenesLoading = SceneHandler.LoadScenes(startingScenes);
+                StartCoroutine(LoadProgression(scenesLoading, startingScenes[0]));
+                Debug.Log("?");
                 break;
         }
     }
 
     public void LoadGame()
     {
-        List<AsyncOperation> scenesLoading = SceneHandler.SwapScenes(gameScenes, exclusionScenes);
-        scenesLoading.Concat(SceneHandler.LoadScenes(introScene));
-        exclusionScenes = exclusionScenes.Concat(gameScenes).ToList();
+        List<AsyncOperation> scenesLoading = SceneHandler.SwapScenes(introScene, exclusionScenes);
 
-        StartCoroutine(LoadProgression(scenesLoading, true));
+        StartCoroutine(LoadProgression(scenesLoading, introScene[0]));
     }
 
     public void QuitGame()
@@ -70,16 +73,15 @@ public class GameManager : MonoBehaviour
 
         List<AsyncOperation> scenesLoading = SceneHandler.SwapScenes(startingScenes, exclusionScenes);
 
-        StartCoroutine(LoadProgression(scenesLoading, false));
+        StartCoroutine(LoadProgression(scenesLoading, startingScenes[0]));
     }
 
-    public IEnumerator LoadProgression(List<AsyncOperation> scenesLoading, bool isLoad)
+    public IEnumerator LoadProgression(List<AsyncOperation> scenesLoading, SceneReference activeScene)
     {
-        yield return WaitForDataProgress();
-
         yield return StartCoroutine(SceneLoadProgress(scenesLoading));
 
-        yield return new WaitForSeconds(1f);
+        yield return StartCoroutine(SceneHandler.SetActive(activeScene));
+        Debug.Log("?");
     }
 
     public IEnumerator SceneLoadProgress(List<AsyncOperation> scenesLoading)
@@ -88,6 +90,7 @@ public class GameManager : MonoBehaviour
         {
             while (!scenesLoading[i].isDone)
             {
+                Debug.Log(scenesLoading[i].ToString());
                 yield return null;
             }
         }
@@ -103,12 +106,17 @@ public class GameManager : MonoBehaviour
 
     public void LoadShop()
     {
-        SceneHandler.SwapScenes(shopScene, exclusionScenes);
+        List<AsyncOperation> scenesLoading = SceneHandler.SwapScenes(shopScene, exclusionScenes);
+        StartCoroutine(LoadProgression(scenesLoading, shopScene[0]));
     }
 
     public void LoadBoss()
     {
-        SceneHandler.SwapScenes(bossScenes, exclusionScenes);
+        List<AsyncOperation> scenesLoading = SceneHandler.SwapScenes(gameScenes, exclusionScenes);
+        scenesLoading = scenesLoading.Concat(SceneHandler.LoadScenes(bossScenes)).ToList();
+        exclusionScenes = exclusionScenes.Concat(gameScenes).ToList();
+
+        StartCoroutine(LoadProgression(scenesLoading, bossScenes[0]));
     }
 
     public void OnDeath()
