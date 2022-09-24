@@ -31,6 +31,7 @@ public class DialogueController : MonoBehaviour
 
     public void Update()
     {
+
         if (dialogueState == DialogueState.Load)
         {
             StartCoroutine(DisplayText(dialogue[index]));

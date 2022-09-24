@@ -26,10 +26,18 @@ public class Pause : MonoBehaviour
         background.SetActive(false);
         //selectors.Visibility(false);
     }
+
+    public void Update()
+    {
+        if (GameManager.instance.player.GetComponent<ThirdPersonController>()._input.pause)
+        {
+            PauseCall();
+        }
+    }
     #endregion
 
     #region Pause
-    public void DoPause()
+    public void PauseCall()
     {             
         switch (pauseState)
             {

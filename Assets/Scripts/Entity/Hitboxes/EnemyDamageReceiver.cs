@@ -16,12 +16,14 @@ public class EnemyDamageReceiver : MonoBehaviour
     }
     public void PassDamage(float dmg, Vector3 position)
     {
+        if (!boss.Alive()) return;
         boss.TakeDamage(dmg, position);
         DamageHandler();
     }
 
     public void PassDamage(float[] dmg, float tickRate, Vector3 position)
     {
+        if (!boss.Alive()) return;
         boss.TakeDamage(dmg, tickRate, position);
         DamageHandler();
     }

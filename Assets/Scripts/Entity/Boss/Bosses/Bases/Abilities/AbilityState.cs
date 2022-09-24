@@ -58,6 +58,7 @@ public class AbilityState : BaseState
     public IEnumerator AnimationControl()
     {
         animationActive = AnimationState.Ignore;
+        yield return new WaitForEndOfFrame();
         yield return new WaitForSeconds(boss.anim.GetCurrentAnimatorStateInfo(0).length);
         animationActive = AnimationState.Done;
     }
