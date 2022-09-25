@@ -10,7 +10,6 @@ public class Pause : MonoBehaviour
     [Header("General")]
     public PauseState pauseState = PauseState.Playing; //Checks whether or not the game is paused
     public GameObject pauseMenu, background;
-    public StarterAssetsInputs _input;
     //public FadeController fade;
 
     [Header("Selector")]
@@ -28,15 +27,9 @@ public class Pause : MonoBehaviour
         //selectors.Visibility(false);
     }
 
-    public void Start()
-    {
-            GameObject eventObject = GameObject.FindWithTag("EventSystem");
-			_input=eventObject.GetComponent<StarterAssetsInputs>();
-    }
-
     public void Update()
     {
-        if (_input.pause)
+        if (GameManager.instance.input.pause)
         {
             PauseCall();
         }

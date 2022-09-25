@@ -8,10 +8,10 @@ using StarterAssets;
 
 public class GameManager : MonoBehaviour
 {
-
     public static GameManager instance;
     public GameObject player;
     public GameObject mainCamera;
+    public StarterAssetsInputs input;
 
     [Header("Scene Handling")]
     public List<SceneReference> startingScenes;
@@ -35,6 +35,7 @@ public class GameManager : MonoBehaviour
     {
         instance = this;
         mainCamera = GameObject.FindWithTag("MainCamera");
+        input = GameObject.FindWithTag("EventSystem").GetComponent<StarterAssetsInputs>();
     }
 
     public void LoadStarting()
