@@ -153,7 +153,8 @@ namespace StarterAssets
 		{
 			_hasAnimator = TryGetComponent(out _animator);
 			_controller = GetComponent<CharacterController>();
-			_input = GetComponent<StarterAssetsInputs>();
+			GameObject eventObject = GameObject.FindWithTag("EventSystem");
+			_input=eventObject.GetComponent<StarterAssetsInputs>();
 			reciever = GetComponent<KnockbackReciever>();
 			shooting = GetComponent<ThirdPersonShooting>();
 			dodge = GetComponent<Dodge>();
