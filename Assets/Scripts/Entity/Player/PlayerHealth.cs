@@ -37,6 +37,7 @@ public class PlayerHealth : MonoBehaviour
             //Not healing if defence stat bigger than potential damage taken.
             if(damage - defence > 0 && !dodge.invuln){
                 currentHealth = currentHealth - damage + defence;
+                UIDamageIn.instance.DamageVis();
             }
             
         }
