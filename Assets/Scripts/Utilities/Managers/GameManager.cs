@@ -75,7 +75,12 @@ public class GameManager : MonoBehaviour
 
         yield return StartCoroutine(SceneLoadProgress(scenesLoading));
 
+        Scene load = SceneManager.GetSceneByName(bossScenes[0]);
+        SceneManager.MoveGameObjectToScene(mainCamera, load);
+
         yield return new WaitForSeconds(1f);
+
+
         //player.GetComponent<ThirdPersonController>().cinemachine.SetActive(true);
     }
 
@@ -105,6 +110,8 @@ public class GameManager : MonoBehaviour
 
     public void OnDeath()
     {
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
         QuitGame();
     }
 }

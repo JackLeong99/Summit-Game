@@ -351,6 +351,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sensitivity: 1
+  volume: 100
 --- !u!1 &607801088
 GameObject:
   m_ObjectHideFlags: 0
@@ -701,10 +702,19 @@ MonoBehaviour:
   - m_SceneAsset: {fileID: 102900000, guid: 2a0f80f82a270df45849983b20840b97, type: 3}
     m_IsDirty: 0
     m_ScenePath: Assets/Scenes/Menus/Menu_Main.unity
+  - m_SceneAsset: {fileID: 102900000, guid: dbbbbd36cc64a424b8eabcb149274069, type: 3}
+    m_IsDirty: 0
+    m_ScenePath: Assets/Scenes/Menus/Settings.unity
+  - m_SceneAsset: {fileID: 102900000, guid: f9bd14a456d915b4bac7a6bf1228faf9, type: 3}
+    m_IsDirty: 0
+    m_ScenePath: Assets/Scenes/Menus/Credits.unity
   exclusionScenes:
   - m_SceneAsset: {fileID: 102900000, guid: 27bb5104a75d247498ed4711a95a51dc, type: 3}
     m_IsDirty: 0
     m_ScenePath: Assets/Scenes/Key/Persistent.unity
+  - m_SceneAsset: {fileID: 102900000, guid: dbbbbd36cc64a424b8eabcb149274069, type: 3}
+    m_IsDirty: 0
+    m_ScenePath: Assets/Scenes/Menus/Settings.unity
   gameScenes:
   - m_SceneAsset: {fileID: 102900000, guid: 466bb403334280540bd7e90243c9b159, type: 3}
     m_IsDirty: 0

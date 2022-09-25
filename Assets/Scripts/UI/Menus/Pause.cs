@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using StarterAssets;
 
 public class Pause : MonoBehaviour
 {
@@ -25,24 +26,29 @@ public class Pause : MonoBehaviour
         background.SetActive(false);
         //selectors.Visibility(false);
     }
+
+    public void Update()
+    {
+        if (GameManager.instance.player.GetComponent<ThirdPersonController>()._input.pause)
+        {
+            PauseCall();
+        }
+    }
     #endregion
 
     #region Pause
-    public void DoPause()
-    {                
+    public void PauseCall()
+    {             
         switch (pauseState)
             {
                 case PauseState.Playing:
-                    PauseG();
+                    PauseG(); 
+
                     break;
                 case PauseState.Pause:
                     ResumeG();
                     break;
             }
-    }
-    public void ThisIsTest()
-    {
-
     }
 
     public void ResumeG() //Trigger for resuming game and resume button
@@ -53,6 +59,7 @@ public class Pause : MonoBehaviour
     public void PauseG() //Trigger for pausing game
     {
         UpdatePause(true);
+      
     }
 
     public void UpdatePause(bool pause)
@@ -94,13 +101,14 @@ public class Pause : MonoBehaviour
         yield return null;
     }
 
-    public void OptionsCall(bool toggle)
+    public void SettingsCall()
     {
-        //GameManager.instance.optionsMenu.ToggleOptions(toggle);
+        pauseMenu.SetActive(false);
+        background.SetActive(false);
+        SettingsMenu.instance.isSettings(true, 0);
     }
     #endregion
 }
-
 public enum PauseState
 {
     Playing,
