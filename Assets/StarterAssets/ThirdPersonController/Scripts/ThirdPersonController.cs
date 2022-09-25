@@ -130,6 +130,9 @@ namespace StarterAssets
 
 		private void Awake()
 		{
+			Cursor.lockState = CursorLockMode.Locked;
+			Cursor.visible = false;
+
 			GameManager.instance.player = gameObject;
 			// get a reference to our main camera
 			if (_mainCamera == null)
@@ -140,11 +143,18 @@ namespace StarterAssets
 			//cinemachine.SetActive(false);
 		}
 
-		private void Start()
+        private void OnDestroy()
+        {
+			Cursor.lockState = CursorLockMode.None;
+			Cursor.visible = true;
+		}
+
+        private void Start()
 		{
 			_hasAnimator = TryGetComponent(out _animator);
 			_controller = GetComponent<CharacterController>();
-			_input = GetComponent<StarterAssetsInputs>();
+			GameObject eventObject = GameObject.FindWithTag("EventSystem");
+			_input=eventObject.GetComponent<StarterAssetsInputs>();
 			reciever = GetComponent<KnockbackReciever>();
 			shooting = GetComponent<ThirdPersonShooting>();
 			dodge = GetComponent<Dodge>();

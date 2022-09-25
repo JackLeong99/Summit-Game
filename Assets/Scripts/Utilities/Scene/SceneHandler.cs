@@ -56,4 +56,13 @@ public static class SceneHandler
     {
         return new List<AsyncOperation>(UnloadAllScenes(exclusionScenes).Concat(LoadScenes(loadingScenes)));
     }
+
+    public static IEnumerator SetActive(SceneReference activeScene)
+    {
+        Scene active = SceneManager.GetSceneByName(activeScene);
+        SceneManager.SetActiveScene(active);
+        Debug.Log(active.name + " " + SceneManager.SetActiveScene(active));
+
+        yield return null;
+    }
 }
