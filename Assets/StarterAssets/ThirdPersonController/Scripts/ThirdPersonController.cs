@@ -123,6 +123,9 @@ namespace StarterAssets
 
 		private bool isPaused=false;
 
+		[SerializeField]
+		private ParticleSystem chargeSystem;
+		private ParticleSystem.EmissionModule chargeEmission;
 
 		//End Custom
 
@@ -161,6 +164,8 @@ namespace StarterAssets
 			// reset our timeouts on start
 			_jumpTimeoutDelta = JumpTimeout;
 			_fallTimeoutDelta = FallTimeout;
+			chargeEmission = chargeSystem.emission;
+			chargeEmission.enabled = false;
 		}
 
 		private void Update()
@@ -508,6 +513,20 @@ namespace StarterAssets
 		public void ChangePause()
 		{
 			isPaused=false;
+		}
+
+		public void setChargeParticles(int state) 
+		{
+			//switch case is because animator events do not support functions that take bools (for some reason)
+			switch (state) 
+			{
+				case 1:
+					chargeEmission.enabled = true;
+					break;
+				default:
+					chargeEmission.enabled = false;
+					break;
+			}
 		}
     }
 }

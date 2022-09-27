@@ -10,6 +10,6 @@ public class ShopHandler : MonoBehaviour
     public void BuyItem()
     {
         //switch ()
-        item.effect(GameManager.instance.player);
+        item.effect();
     }
 }

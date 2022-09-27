@@ -4,17 +4,17 @@ using UnityEngine;
 
 public class ActiveItem : MonoBehaviour
 {
-    public ItemBase item;
+    public ActiveAbility item;
 
     private void Update()
     {
-        if (Input.GetButtonDown("Fire2") && item != null) 
+        if (GameManager.instance.input.activeItem) 
         {
-            item.effect(GameManager.instance.player);
+            item.effect();
         }
     }
 
-    public void setItem(ItemBase i) 
+    public void setItem(ActiveAbility i) 
     {
         item = i;
     }
