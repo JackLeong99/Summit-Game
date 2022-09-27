@@ -2,16 +2,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
-using UnityEngine.SceneManagement;
 using DevLocker.Utils;
 using StarterAssets;
+using UnityEngine.InputSystem;
 
 public class GameManager : MonoBehaviour
 {
-
     public static GameManager instance;
     public GameObject player;
     public GameObject mainCamera;
+    public StarterAssetsInputs input;
+    public MenuInput menuInput;
 
     [Header("Scene Handling")]
     public List<SceneReference> startingScenes;
@@ -29,12 +30,15 @@ public class GameManager : MonoBehaviour
     {
         GetInstances();
         LoadStarting();
+        menuInput = new MenuInput();
+        menuInput.UI.Enable();
     }
 
     public void GetInstances()
     {
         instance = this;
         mainCamera = GameObject.FindWithTag("MainCamera");
+        input = GameObject.FindWithTag("EventSystem").GetComponent<StarterAssetsInputs>();
     }
 
     public void LoadStarting()
@@ -121,8 +125,7 @@ public class GameManager : MonoBehaviour
 
     public void OnDeath()
     {
-        Cursor.lockState = CursorLockMode.None;
-        Cursor.visible = true;
-        QuitGame();
+        List<AsyncOperation> scenesLoading = SceneHandler.SwapScenes(deathScene, exclusionScenes);
+        StartCoroutine(LoadProgression(scenesLoading, deathScene[0]));
     }
 }
