@@ -1330,7 +1330,6 @@ MonoBehaviour:
   player: {fileID: 0}
   mainCamera: {fileID: 0}
   input: {fileID: 0}
-  control: {fileID: -944628639613478452, guid: 18b4081bb327d394496f794954f1a511, type: 3}
   startingScenes:
   - m_SceneAsset: {fileID: 102900000, guid: 2a0f80f82a270df45849983b20840b97, type: 3}
     m_IsDirty: 0
@@ -1374,10 +1373,7 @@ MonoBehaviour:
   - m_SceneAsset: {fileID: 102900000, guid: d381ca4c95801c24a98d3228cc2bc10b, type: 3}
     m_IsDirty: 0
     m_ScenePath: Assets/Scenes/Unique/Intro.unity
-  testScenes:
-  - m_SceneAsset: {fileID: 102900000, guid: 8a95e54c012075c4eadac20fc68e2a93, type: 3}
-    m_IsDirty: 0
-    m_ScenePath: Assets/Scenes/Unique/Shopkeeper.unity
+  testScenes: []
 --- !u!1 &2049736186
 GameObject:
   m_ObjectHideFlags: 0

@@ -125,7 +125,8 @@ public class GameManager : MonoBehaviour
 
     public void OnDeath()
     {
-        List<AsyncOperation> scenesLoading = SceneHandler.SwapScenes(deathScene, exclusionScenes);
+        List<AsyncOperation> scenesLoading = SceneHandler.ReloadScene(gameScenes[0]);
+        scenesLoading = scenesLoading.Concat(SceneHandler.SwapScenes(deathScene, exclusionScenes)).ToList();
         StartCoroutine(LoadProgression(scenesLoading, deathScene[0]));
     }
 }

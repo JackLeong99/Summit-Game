@@ -41,7 +41,7 @@ public class PlayerHealth : MonoBehaviour
             
         }
         AkSoundEngine.PostEvent("Player_Damage", gameObject);
-        CameraListener.instance.CameraShake(6, 0.25f);
+        CameraListener.instance.CameraShake(damage, 0.25f);
 
         if (currentHealth <= 0)
         {
