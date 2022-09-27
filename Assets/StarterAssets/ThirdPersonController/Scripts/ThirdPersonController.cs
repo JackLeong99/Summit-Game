@@ -98,7 +98,7 @@ namespace StarterAssets
 
 		//Start custom code
 
-		[HideInInspector]
+		//[HideInInspector]
 		public bool _Inactionable;
 
 		public bool stunned;
@@ -199,15 +199,6 @@ namespace StarterAssets
 					AkSoundEngine.PostEvent("Player_Land", gameObject);
 					isAirborn = false;
 				}
-			}
-
-			if (shooting.casting || attack.isAttacking || stunned)
-			{
-				_Inactionable = true;
-			}
-			else 
-			{
-				_Inactionable = false;
 			}
 
 			_hasAnimator = TryGetComponent(out _animator);

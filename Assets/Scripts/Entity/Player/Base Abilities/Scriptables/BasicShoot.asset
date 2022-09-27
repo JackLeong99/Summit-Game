@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1691f310a8635d649b666446f2aaad93, type: 3}
   m_Name: BasicShoot
   m_EditorClassIdentifier: 
+  cooldown: 3
   chargeTime: 0.8
   shootTime: 0.85
   projectile: {fileID: 5944307442520353345, guid: 408d2c61b33884943bc23f44c5eb1497, type: 3}
