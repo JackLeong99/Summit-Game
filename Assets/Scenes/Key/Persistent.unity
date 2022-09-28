@@ -810,6 +810,7 @@ MonoBehaviour:
   meleeAttack: 0
   shoot: 0
   dodge: 0
+  activeItem: 0
   analogMovement: 0
   cursorLocked: 1
   cursorInputForLook: 1
@@ -1498,7 +1499,10 @@ MonoBehaviour:
   - m_SceneAsset: {fileID: 102900000, guid: d381ca4c95801c24a98d3228cc2bc10b, type: 3}
     m_IsDirty: 0
     m_ScenePath: Assets/Scenes/Unique/Intro.unity
-  testScenes: []
+  testScenes:
+  - m_SceneAsset: {fileID: 102900000, guid: 9b84110c173e7ef46b35851632f9fdbf, type: 3}
+    m_IsDirty: 0
+    m_ScenePath: Assets/Scenes/Bosses/Golem.unity
 --- !u!1 &2049736186
 GameObject:
   m_ObjectHideFlags: 0
