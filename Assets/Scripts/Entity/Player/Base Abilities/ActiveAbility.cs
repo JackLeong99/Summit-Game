@@ -5,7 +5,7 @@ using UnityEngine;
 public abstract class ActiveAbility : ItemBase
 {
     public float cooldown;
-    //[HideInInspector]
+    [HideInInspector]
     public float castTime;
     public abstract IEnumerator doEffect();
 }
