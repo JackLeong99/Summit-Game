@@ -9,11 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 693fedb886d3ebb4b8feebd1a60dc4a9, type: 3}
-  m_Name: BasicAttack
+  m_Script: {fileID: 11500000, guid: 37825e9fbc144004b96a16001b2673c5, type: 3}
+  m_Name: Default Ability
   m_EditorClassIdentifier: 
-  cooldown: 0.5
-  damage: 20
-  chainWindow: 0.3
-  attackBox: {fileID: 1548620108195507319, guid: 1ffb75d4023a5164495d05dcfb564217, type: 3}
-  attackState: 0
+  cooldown: 1

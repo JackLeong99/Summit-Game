@@ -18,17 +18,20 @@ public class BasicDodge : ActiveAbility
     private float distance;
     [SerializeField]
     private float percentInvulnerable;
+
+    private float totalSpeed;
     public override void effect()
     {
         player = GameManager.instance.player;
         controller = GameManager.instance.player.GetComponent<ThirdPersonController>();
         animator = GameManager.instance.player.GetComponent<Animator>();
         GameManager.instance.player.GetComponent<PlayerAbilities>().StartCoroutine(doEffect());
+        totalSpeed = speed + controller.SprintSpeed;
     }
 
     public override IEnumerator doEffect()
     {
-        float dodgeTimer = distance / speed;
+        float dodgeTimer = distance / totalSpeed;
         AkSoundEngine.PostEvent("Player_Dodge", player);
         controller._Inactionable = true;
         player.GetComponent<PlayerHealth>().invulnerable = true;
