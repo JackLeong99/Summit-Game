@@ -4,18 +4,23 @@ using UnityEngine;
 
 public class ActiveItem : MonoBehaviour
 {
-    public ItemBase item;
+    public ActiveAbility item;
+    public float activeItemCD;
 
     private void Update()
     {
-        if (Input.GetButtonDown("Fire2") && item != null) 
+        activeItemCD -= Time.deltaTime;
+        activeItemCD = Mathf.Clamp(activeItemCD, 0f, Mathf.Infinity);
+        if (GameManager.instance.input.activeItem && activeItemCD <= 0) 
         {
-            item.effect(GameManager.instance.player);
+            item.effect();
+            activeItemCD = item.cooldown;
         }
     }
 
-    public void setItem(ItemBase i) 
+    public void setItem(ActiveAbility i) 
     {
         item = i;
+        activeItemCD = item.cooldown;
     }
 }

@@ -4,7 +4,7 @@ using UnityEngine;
 
 [CreateAssetMenu(menuName = "Powerups/activeMissile")]
 
-public class ActiveMissile : ItemBase
+public class ActiveMissile : ActiveAbility
 {
     public GameObject projectile;
 
@@ -14,18 +14,18 @@ public class ActiveMissile : ItemBase
     public float damage;
     public float bufferTime;
     public float delay;
-    public override void effect(GameObject target)
+    public override void effect()
     {
-        target.GetComponent<ActiveItem>().StartCoroutine(fire(target));
+        GameManager.instance.player.GetComponent<PlayerAbilities>().StartCoroutine(doEffect());
     }
 
-    public IEnumerator fire(GameObject target) 
+    public override IEnumerator doEffect() 
     {
         List<GameObject> projectileList = new List<GameObject>();
 
         for (int i = 0; i < missileCount; i++) 
         {
-            projectileList.Add(Instantiate(projectile, target.transform.position + new Vector3(0, 3, 0), Quaternion.identity) as GameObject);
+            projectileList.Add(Instantiate(projectile, GameManager.instance.player.transform.position + new Vector3(0, 3, 0), Quaternion.identity) as GameObject);
         }
 
         float missileNo = delay;

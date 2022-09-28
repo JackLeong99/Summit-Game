@@ -98,7 +98,7 @@ namespace StarterAssets
 
 		//Start custom code
 
-		[HideInInspector]
+		//[HideInInspector]
 		public bool _Inactionable;
 
 		public bool stunned;
@@ -106,12 +106,6 @@ namespace StarterAssets
 		private float swingTimer;
 
 		private KnockbackReciever reciever;
-
-		private ThirdPersonShooting shooting;
-
-		private Dodge dodge;
-
-		private AutoAttack attack;
 
 		private bool isAirborn;
 
@@ -123,6 +117,9 @@ namespace StarterAssets
 
 		private bool isPaused=false;
 
+		[SerializeField]
+		private ParticleSystem chargeSystem;
+		private ParticleSystem.EmissionModule chargeEmission;
 
 		//End Custom
 
@@ -152,15 +149,14 @@ namespace StarterAssets
 			_hasAnimator = TryGetComponent(out _animator);
 			_controller = GetComponent<CharacterController>();
 			reciever = GetComponent<KnockbackReciever>();
-			shooting = GetComponent<ThirdPersonShooting>();
-			dodge = GetComponent<Dodge>();
-			attack = GetComponent<AutoAttack>();
 
 			AssignAnimationIDs();
 
 			// reset our timeouts on start
 			_jumpTimeoutDelta = JumpTimeout;
 			_fallTimeoutDelta = FallTimeout;
+			chargeEmission = chargeSystem.emission;
+			chargeEmission.enabled = false;
 		}
 
 		private void Update()
@@ -196,49 +192,13 @@ namespace StarterAssets
 				}
 			}
 
-			if (shooting.casting || attack.isAttacking || stunned)
-			{
-				_Inactionable = true;
-			}
-			else 
-			{
-				_Inactionable = false;
-			}
-
 			_hasAnimator = TryGetComponent(out _animator);
 			
 			GroundedCheck();
 			JumpAndGravity();
 
-			if(reciever.impact.magnitude <= 5 && !_Inactionable){
+			if(!_Inactionable){
 				Move();
-
-				if(GameManager.instance.input.meleeAttack)
-				//if(Input.GetButtonDown("Fire1"))
-				{
-					if(!dodge.isDodging && Grounded)
-					{
-						attack.doAttack();
-					}
-				}
-
-				if(GameManager.instance.input.shoot && shooting.cdTimer <= 0)
-				//if(Input.GetButtonDown("Spell1") && shooting.cdTimer <= 0)
-				{
-					if(!_Inactionable && Grounded && !attack.isAttacking && !dodge.isDodging)
-					{
-						shooting.CastShoot();
-					}
-				}
-
-				if(GameManager.instance.input.dodge && dodge.cdTimer <= 0)
-				//if(Input.GetButtonDown("Spell2") && dodge.cdTimer <= 0)
-				{
-					if(_speed != 0 && Grounded && !attack.isAttacking)
-					{
-						dodge.callDodge();
-					}
-				}
 			}
 
 			//for pause although currently it is a bit buggy
@@ -508,6 +468,20 @@ namespace StarterAssets
 		public void ChangePause()
 		{
 			isPaused=false;
+		}
+
+		public void setChargeParticles(int state) 
+		{
+			//switch case is because animator events do not support functions that take bools (for some reason)
+			switch (state) 
+			{
+				case 1:
+					chargeEmission.enabled = true;
+					break;
+				default:
+					chargeEmission.enabled = false;
+					break;
+			}
 		}
     }
 }
