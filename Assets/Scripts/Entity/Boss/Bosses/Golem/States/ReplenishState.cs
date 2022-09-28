@@ -6,11 +6,8 @@ using UnityEngine;
 public class ReplenishState : AbilityState
 {
     [Header("Information")]
-    public int rocksToSpawn = 8;
-    public int increase = 25;
-    public float rockRangeDown = -50f;
-    public float rockRangeUp = -25f;
-    public float constant = -50f;
+    public int rocksToSpawn;
+    public float spawnRadius;
 
     [Header("Values")]
     public float spawnLength;
@@ -46,21 +43,11 @@ public class ReplenishState : AbilityState
     {
         yield return new WaitForSeconds(boss.anim.GetCurrentAnimatorStateInfo(0).length * spawnLength);
 
-        for (int i = 1; i < rocksToSpawn / 2; i++)
+        for (int i = 0; i < rocksToSpawn; i++)
         {
             GameObject rock = Instantiate(rockPrefab);
-            rock.transform.position = new Vector3(Random.Range(rockRangeDown, rockRangeUp), 0, Random.Range(constant, constant + 50f));
-
-            if (rocksToSpawn % 2 != 0)
-            {
-                constant = 0;
-            }
-            else
-            {
-                rockRangeDown += increase;
-                rockRangeUp += increase;
-                constant = -50f;
-            }
+            Vector2 spawnPos = Random.insideUnitCircle * spawnRadius;
+            rock.transform.position = new Vector3(spawnPos.x, 0, spawnPos.y);
         }
 
         yield return null;
