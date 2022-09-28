@@ -35,6 +35,7 @@ public class BasicShoot : ActiveAbility
 
     public override IEnumerator doEffect()
     {
+        this.castTime = chargeTime + shootTime;
         player.transform.rotation = GameManager.instance.mainCamera.transform.rotation;
         controller.LockCameraPosition = true;
         controller._Inactionable = true;

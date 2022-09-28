@@ -14,13 +14,6 @@ public class PlayerAbilities : MonoBehaviour
     public List<ActiveAbility> AbilitySlot;
     [Header("List of minimum cooldowns based on the abilities cast time (do not edit, only visible for debugging)")]
     public List<float> internalCooldown;
-    [Header("Additional cooldowns for balancing")]
-    public float slot1CD;
-    public float slot2CD;
-    public float slot3CD;
-    public float slot4CD;
-    [HideInInspector]
-    public List<float> additionalCooldown;
     [Header("Define the default slot filler (ie an empty ability)")]
     public ActiveAbility defaultAbility;
 
@@ -33,7 +26,6 @@ public class PlayerAbilities : MonoBehaviour
     {
         AbilitySlot = new List<ActiveAbility> { slot1, slot2, slot3, slot4 };
         internalCooldown = new List<float> { 0, 0, 0, 0 };
-        additionalCooldown = new List<float> { slot1CD, slot2CD, slot3CD, slot4CD };
         playerController = GameManager.instance.player.GetComponent<ThirdPersonController>();
         knockbackReciever = GameManager.instance.player.GetComponent<KnockbackReciever>();
     }
@@ -51,25 +43,25 @@ public class PlayerAbilities : MonoBehaviour
         if (GameManager.instance.input.meleeAttack && internalCooldown[0] <= 0)
         {
             AbilitySlot[0].effect();
-            internalCooldown[0] = AbilitySlot[0].cooldown + additionalCooldown[0];
+            internalCooldown[0] = AbilitySlot[0].cooldown + AbilitySlot[0].castTime;
             return;
         }
         if (GameManager.instance.input.shoot && internalCooldown[1] <= 0)
         {
             AbilitySlot[1].effect();
-            internalCooldown[1] = AbilitySlot[1].cooldown + additionalCooldown[1];
+            internalCooldown[1] = AbilitySlot[1].cooldown + AbilitySlot[1].castTime;
             return;
         }
         if (GameManager.instance.input.dodge && internalCooldown[2] <= 0)
         {
             AbilitySlot[2].effect();
-            internalCooldown[2] = AbilitySlot[2].cooldown + additionalCooldown[2];
+            internalCooldown[2] = AbilitySlot[2].cooldown + AbilitySlot[2].castTime;
             return;
         }
         if (GameManager.instance.input.activeItem && internalCooldown[3] <= 0)
         {
             AbilitySlot[3].effect();
-            internalCooldown[3] = AbilitySlot[3].cooldown + additionalCooldown[3];
+            internalCooldown[3] = AbilitySlot[3].cooldown + AbilitySlot[3].castTime;
             return;
         }
     }

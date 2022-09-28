@@ -33,6 +33,7 @@ public class BasicAttack : ActiveAbility
 
     public override IEnumerator doEffect()
     {
+        //this.castTime = 0.458f;
         AkSoundEngine.PostEvent("Player_Attack", player);
         //animator.speed = ? cooldown;
         switch (attackState) 

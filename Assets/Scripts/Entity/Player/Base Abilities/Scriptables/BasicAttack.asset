@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: BasicAttack
   m_EditorClassIdentifier: 
   cooldown: 0.5
+  castTime: 0
   damage: 20
   chainWindow: 0.3
   attackBox: {fileID: 1548620108195507319, guid: 1ffb75d4023a5164495d05dcfb564217, type: 3}

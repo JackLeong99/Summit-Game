@@ -12,7 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 99c46e78605744d4eab42d1f49a075fe, type: 3}
   m_Name: BasicDodge
   m_EditorClassIdentifier: 
-  cooldown: 1
+  cooldown: 2
+  castTime: 0.6
   dodgeCurve:
     serializedVersion: 2
     m_Curve:

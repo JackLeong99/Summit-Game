@@ -22,13 +22,14 @@ public class CooldownIndicator : MonoBehaviour
     }
     void Update()
     {
-        if (playerAbilities.internalCooldown[slotNumber] > 0 && playerAbilities.AbilitySlot[slotNumber].cooldown > 1)
+        switch (true)
         {
-            mat.SetColor("_EmissionColor", charging * 6);
-        }
-        else
-        {
-            mat.SetColor("_EmissionColor", charged * 6);
+            case bool x when playerAbilities.internalCooldown[slotNumber] > 0 && playerAbilities.internalCooldown[slotNumber] < playerAbilities.AbilitySlot[slotNumber].cooldown && playerAbilities.AbilitySlot[slotNumber].cooldown > 1:
+                mat.SetColor("_EmissionColor", charging * 6);
+                break;
+            default:
+                mat.SetColor("_EmissionColor", charged * 6);
+                break;
         }
     }
 }

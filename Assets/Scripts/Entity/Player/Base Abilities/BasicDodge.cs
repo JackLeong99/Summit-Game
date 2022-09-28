@@ -32,6 +32,7 @@ public class BasicDodge : ActiveAbility
     public override IEnumerator doEffect()
     {
         float dodgeTimer = distance / totalSpeed;
+        this.castTime = dodgeTimer;
         AkSoundEngine.PostEvent("Player_Dodge", player);
         controller._Inactionable = true;
         player.GetComponent<PlayerHealth>().invulnerable = true;
