@@ -77,6 +77,8 @@ public class BossStateMachine : MonoBehaviour
 
     public IEnumerator SetParameters()
     {
+        while (GameManager.instance.inLoading) { yield return null; }
+
         components.curHealth = attributes.maxHealth;
         yield return AnnouncementHandler.instance.Announcement(attributes.bossName, 2);
         BossManager.instance.SetBoss();

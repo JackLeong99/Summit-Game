@@ -74,7 +74,7 @@ public class MainMenu : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
 
-        GameManager.instance.LoadGame();
+        GameManager.instance.LoadDelegate(GameManager.instance.LoadGame());
     }
     
     public void SettingsCall()

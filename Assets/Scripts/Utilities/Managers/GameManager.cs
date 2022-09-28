@@ -9,8 +9,14 @@ using UnityEngine.InputSystem;
 public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
+
+    [Header("Key References")]
     public GameObject player;
     public GameObject mainCamera;
+    public FadeController fade;
+    public bool inLoading = false;
+
+    [Header("Input References")]
     public StarterAssetsInputs input;
     public MenuInput menuInput;
 
@@ -29,7 +35,7 @@ public class GameManager : MonoBehaviour
     public void Awake()
     {
         GetInstances();
-        LoadStarting();
+        StartCoroutine(LoadStarting());
         menuInput = new MenuInput();
         menuInput.UI.Enable();
     }
@@ -38,11 +44,14 @@ public class GameManager : MonoBehaviour
     {
         instance = this;
         mainCamera = GameObject.FindWithTag("MainCamera");
+        fade = GameObject.FindWithTag("FadeController").GetComponent<FadeController>();
         input = GameObject.FindWithTag("EventSystem").GetComponent<StarterAssetsInputs>();
     }
 
-    public void LoadStarting()
+    public IEnumerator LoadStarting()
     {
+        yield return StartCoroutine(StartLoad());
+
         List<AsyncOperation> scenesLoading = new List<AsyncOperation>();
 
         switch (true)
@@ -51,25 +60,29 @@ public class GameManager : MonoBehaviour
                 scenesLoading = SceneHandler.LoadScenes(gameScenes);
                 scenesLoading = scenesLoading.Concat(SceneHandler.LoadScenes(testScenes)).ToList();
                 exclusionScenes = exclusionScenes.Concat(gameScenes).ToList();
-                StartCoroutine(LoadProgression(scenesLoading, testScenes[0]));
+                yield return StartCoroutine(LoadProgression(scenesLoading, testScenes[0]));
                 break;
             default:
                 scenesLoading = SceneHandler.LoadScenes(startingScenes);
-                StartCoroutine(LoadProgression(scenesLoading, startingScenes[0]));
+                yield return StartCoroutine(LoadProgression(scenesLoading, startingScenes[0]));
                 Debug.Log("?");
                 break;
         }
     }
 
-    public void LoadGame()
+    public IEnumerator LoadGame()
     {
+        yield return StartCoroutine(StartLoad());
+
         List<AsyncOperation> scenesLoading = SceneHandler.SwapScenes(introScene, exclusionScenes);
 
-        StartCoroutine(LoadProgression(scenesLoading, introScene[0]));
+        yield return StartCoroutine(LoadProgression(scenesLoading, introScene[0]));
     }
 
-    public void QuitGame()
+    public IEnumerator QuitGame()
     {
+        yield return StartCoroutine(StartLoad());
+
         foreach (var scene in gameScenes)
         {
             exclusionScenes.Remove(scene);
@@ -77,7 +90,7 @@ public class GameManager : MonoBehaviour
 
         List<AsyncOperation> scenesLoading = SceneHandler.SwapScenes(startingScenes, exclusionScenes);
 
-        StartCoroutine(LoadProgression(scenesLoading, startingScenes[0]));
+        yield return StartCoroutine(LoadProgression(scenesLoading, startingScenes[0]));
     }
 
     public IEnumerator LoadProgression(List<AsyncOperation> scenesLoading, SceneReference activeScene)
@@ -85,7 +98,9 @@ public class GameManager : MonoBehaviour
         yield return StartCoroutine(SceneLoadProgress(scenesLoading));
 
         yield return StartCoroutine(SceneHandler.SetActive(activeScene));
-        Debug.Log("?");
+
+        yield return fade.FadeOut();
+        inLoading = false;
     }
 
     public IEnumerator SceneLoadProgress(List<AsyncOperation> scenesLoading)
@@ -94,7 +109,6 @@ public class GameManager : MonoBehaviour
         {
             while (!scenesLoading[i].isDone)
             {
-                Debug.Log(scenesLoading[i].ToString());
                 yield return null;
             }
         }
@@ -108,25 +122,42 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public void LoadShop()
+    public IEnumerator StartLoad()
     {
-        List<AsyncOperation> scenesLoading = SceneHandler.SwapScenes(shopScene, exclusionScenes);
-        StartCoroutine(LoadProgression(scenesLoading, shopScene[0]));
+        inLoading = true;
+        yield return fade.FadeIn();
     }
 
-    public void LoadBoss()
+    public IEnumerator LoadShop()
     {
+        yield return StartCoroutine(StartLoad());
+
+        List<AsyncOperation> scenesLoading = SceneHandler.SwapScenes(shopScene, exclusionScenes);
+        yield return StartCoroutine(LoadProgression(scenesLoading, shopScene[0]));
+    }
+
+    public IEnumerator LoadBoss()
+    {
+        yield return StartCoroutine(StartLoad());
+
         List<AsyncOperation> scenesLoading = SceneHandler.SwapScenes(gameScenes, exclusionScenes);
         scenesLoading = scenesLoading.Concat(SceneHandler.LoadScenes(bossScenes)).ToList();
         exclusionScenes = exclusionScenes.Concat(gameScenes).ToList();
 
-        StartCoroutine(LoadProgression(scenesLoading, bossScenes[0]));
+        yield return StartCoroutine(LoadProgression(scenesLoading, bossScenes[0]));
     }
 
-    public void OnDeath()
+    public IEnumerator OnDeath()
     {
+        yield return StartCoroutine(StartLoad());
+
         List<AsyncOperation> scenesLoading = SceneHandler.ReloadScene(gameScenes[0]);
         scenesLoading = scenesLoading.Concat(SceneHandler.SwapScenes(deathScene, exclusionScenes)).ToList();
-        StartCoroutine(LoadProgression(scenesLoading, deathScene[0]));
+        yield return StartCoroutine(LoadProgression(scenesLoading, deathScene[0]));
+    }
+
+    public void LoadDelegate(IEnumerator coroutine)
+    {
+        StartCoroutine(coroutine);
     }
 }
