@@ -16,6 +16,7 @@ namespace StarterAssets
 		public bool meleeAttack;
 		public bool shoot;
 		public bool dodge;
+		public bool activeItem;
 
 		[Header("Movement Settings")]
 		public bool analogMovement;
@@ -65,6 +66,10 @@ namespace StarterAssets
 		{
 			DodgeInput(value.isPressed);
 		}
+		public void OnActiveItem(InputValue value)
+		{
+			ActiveItemInput(value.isPressed);
+		}
 #else
 	// old input sys if we do decide to have it (most likely wont)...
 #endif
@@ -105,6 +110,11 @@ namespace StarterAssets
 		{
 			dodge = newDodgeState;
 		}
+		public void ActiveItemInput(bool newActiveItemState) 
+		{
+			activeItem = newActiveItemState;
+		}
+		
 
 
 #if !UNITY_IOS || !UNITY_ANDROID

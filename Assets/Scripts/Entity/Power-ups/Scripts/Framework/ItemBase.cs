@@ -4,5 +4,5 @@ using UnityEngine;
 
 public abstract class ItemBase : ScriptableObject
 {
-    public abstract void effect(GameObject target);
+    public abstract void effect();
 }

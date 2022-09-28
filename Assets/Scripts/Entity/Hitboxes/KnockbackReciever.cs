@@ -14,6 +14,8 @@ public class KnockbackReciever : MonoBehaviour
 
     [SerializeField] float mass;
 
+    public bool invulnerable;
+
     private void Awake()
     {
         dodge = GetComponent<Dodge>();
@@ -45,7 +47,7 @@ public class KnockbackReciever : MonoBehaviour
     void Update()
     {
         //Debug.Log(impact.magnitude);
-        if(impact.magnitude > 5 && !dodge.isDodging)
+        if(impact.magnitude > 5 && !invulnerable)
         {
             player.Move(impact * Time.deltaTime);
             impact = Vector3.Lerp(impact, Vector3.zero, 5 * Time.deltaTime);
