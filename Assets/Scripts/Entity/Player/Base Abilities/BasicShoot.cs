@@ -30,7 +30,7 @@ public class BasicShoot : ActiveAbility
         controller = GameManager.instance.player.GetComponent<ThirdPersonController>();
         animator = GameManager.instance.player.GetComponent<Animator>();
         FirePoint = GameObject.FindGameObjectWithTag("FirePoint").transform;
-        GameManager.instance.player.GetComponent<ActiveItem>().StartCoroutine(doEffect());
+        GameManager.instance.player.GetComponent<PlayerAbilities>().StartCoroutine(doEffect());
     }
 
     public override IEnumerator doEffect()

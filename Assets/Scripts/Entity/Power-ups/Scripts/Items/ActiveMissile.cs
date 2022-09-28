@@ -16,7 +16,7 @@ public class ActiveMissile : ActiveAbility
     public float delay;
     public override void effect()
     {
-        GameManager.instance.player.GetComponent<ActiveItem>().StartCoroutine(doEffect());
+        GameManager.instance.player.GetComponent<PlayerAbilities>().StartCoroutine(doEffect());
     }
 
     public override IEnumerator doEffect() 

@@ -16,18 +16,18 @@ public class WeaponIndicator : MonoBehaviour
 
     void Start()
     {
-        gun = GetComponentInParent<ThirdPersonShooting>();
-        mat = GetComponent<Renderer>().materials[matNumber];
+        //gun = GetComponentInParent<ThirdPersonShooting>();
+        //mat = GetComponent<Renderer>().materials[matNumber];
     }
     void Update()
     {
-        if (gun.onCooldown == true)
-        {
-            mat.SetColor("_EmissionColor", charging * 6);
-        }
-        else 
-        {
-            mat.SetColor("_EmissionColor", charged * 6);
-        }
+        //if (gun.onCooldown == true)
+        //{
+        //    mat.SetColor("_EmissionColor", charging * 6);
+        //}
+        //else 
+        //{
+        //    mat.SetColor("_EmissionColor", charged * 6);
+        //}
     }
 }

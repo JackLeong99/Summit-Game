@@ -107,12 +107,6 @@ namespace StarterAssets
 
 		private KnockbackReciever reciever;
 
-		private ThirdPersonShooting shooting;
-
-		private Dodge dodge;
-
-		private AutoAttack attack;
-
 		private bool isAirborn;
 
 		private float startLock = 120;
@@ -155,9 +149,6 @@ namespace StarterAssets
 			_hasAnimator = TryGetComponent(out _animator);
 			_controller = GetComponent<CharacterController>();
 			reciever = GetComponent<KnockbackReciever>();
-			shooting = GetComponent<ThirdPersonShooting>();
-			dodge = GetComponent<Dodge>();
-			attack = GetComponent<AutoAttack>();
 
 			AssignAnimationIDs();
 
@@ -206,35 +197,8 @@ namespace StarterAssets
 			GroundedCheck();
 			JumpAndGravity();
 
-			if(reciever.impact.magnitude <= 5 && !_Inactionable){
+			if(!_Inactionable){
 				Move();
-
-				if(GameManager.instance.input.meleeAttack)
-				//if(Input.GetButtonDown("Fire1"))
-				{
-					if(!dodge.isDodging && Grounded)
-					{
-						attack.doAttack();
-					}
-				}
-
-				if(GameManager.instance.input.shoot && shooting.cdTimer <= 0)
-				//if(Input.GetButtonDown("Spell1") && shooting.cdTimer <= 0)
-				{
-					if(!_Inactionable && Grounded && !attack.isAttacking && !dodge.isDodging)
-					{
-						shooting.CastShoot();
-					}
-				}
-
-				if(GameManager.instance.input.dodge && dodge.cdTimer <= 0)
-				//if(Input.GetButtonDown("Spell2") && dodge.cdTimer <= 0)
-				{
-					if(_speed != 0 && Grounded && !attack.isAttacking)
-					{
-						dodge.callDodge();
-					}
-				}
 			}
 
 			//for pause although currently it is a bit buggy

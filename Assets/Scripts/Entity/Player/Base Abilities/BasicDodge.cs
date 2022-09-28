@@ -23,7 +23,7 @@ public class BasicDodge : ActiveAbility
         player = GameManager.instance.player;
         controller = GameManager.instance.player.GetComponent<ThirdPersonController>();
         animator = GameManager.instance.player.GetComponent<Animator>();
-        GameManager.instance.player.GetComponent<ActiveItem>().StartCoroutine(doEffect());
+        GameManager.instance.player.GetComponent<PlayerAbilities>().StartCoroutine(doEffect());
     }
 
     public override IEnumerator doEffect()
