@@ -5,93 +5,77 @@ using StarterAssets;
 
 public class PlayerAbilities : MonoBehaviour
 {
-    [Header("Ability slot 1")]
+    [Header("Ability slots")]
     public ActiveAbility slot1;
-    public float cooldown1;
-
-    [Header("Ability slot 2")]
     public ActiveAbility slot2;
-    public float cooldown2;
-
-    [Header("Ability slot 3")]
     public ActiveAbility slot3;
-    public float cooldown3;
+    public ActiveAbility slot4;
+    [HideInInspector]
+    public List<ActiveAbility> AbilitySlot;
+    [Header("List of minimum cooldowns based on the abilities cast time (do not edit, only visible for debugging)")]
+    public List<float> internalCooldown;
+    [Header("Define the default slot filler (ie an empty ability)")]
+    public ActiveAbility defaultAbility;
 
-    [Header("Active item slot")]
-    public ActiveAbility slotItem;
-    public float cooldownItem;
+
 
     private ThirdPersonController playerController;
     private KnockbackReciever knockbackReciever;
 
     private void Start()
     {
+        AbilitySlot = new List<ActiveAbility> { slot1, slot2, slot3, slot4 };
+        internalCooldown = new List<float> { 0, 0, 0, 0 };
         playerController = GameManager.instance.player.GetComponent<ThirdPersonController>();
         knockbackReciever = GameManager.instance.player.GetComponent<KnockbackReciever>();
     }
 
     private void Update()
-    { 
-        cooldown1 -= Time.deltaTime;
-        cooldown1 = Mathf.Clamp(cooldown1, 0f, Mathf.Infinity);
-        cooldown2 -= Time.deltaTime;
-        cooldown2 = Mathf.Clamp(cooldown2, 0f, Mathf.Infinity);
-        cooldown3 -= Time.deltaTime;
-        cooldown3 = Mathf.Clamp(cooldown3, 0f, Mathf.Infinity);
-        cooldownItem -= Time.deltaTime;
-        cooldownItem = Mathf.Clamp(cooldownItem, 0f, Mathf.Infinity);
+    {
+        for (int i = 0; i < AbilitySlot.Count; i++) 
+        {
+            internalCooldown[i] -= Time.deltaTime;
+            internalCooldown[i] = Mathf.Clamp(internalCooldown[i], 0f, Mathf.Infinity);
+        }
 
         if (playerController._Inactionable || knockbackReciever.impact.magnitude > 5) return;
 
-        if (GameManager.instance.input.meleeAttack && cooldown1 <= 0)
+        if (GameManager.instance.input.meleeAttack && internalCooldown[0] <= 0)
         {
-            switch (true)
-            {
-                case bool x when slot1 == null:
-                    break;
-                default:
-                    slot1.effect();
-                    cooldown1 = slot1.cooldown;
-                    break;
-            }
+            AbilitySlot[0].effect();
+            internalCooldown[0] = AbilitySlot[0].cooldown + AbilitySlot[0].castTime;
             return;
         }
-        if (GameManager.instance.input.shoot && cooldown2 <= 0)
+        if (GameManager.instance.input.shoot && internalCooldown[1] <= 0)
         {
-            switch (true)
-            {
-                case bool x when slot2 == null:
-                    break;
-                default:
-                    slot2.effect();
-                    cooldown2 = slot2.cooldown;
-                    break;
-            }
+            AbilitySlot[1].effect();
+            internalCooldown[1] = AbilitySlot[1].cooldown + AbilitySlot[1].castTime;
             return;
         }
-        if (GameManager.instance.input.dodge && cooldown3 <= 0)
+        if (GameManager.instance.input.dodge && internalCooldown[2] <= 0)
         {
-            switch (true)
-            {
-                case bool x when slot3 == null:
-                    break;
-                default:
-                    slot3.effect();
-                    cooldown3 = slot3.cooldown;
-                    break;
-            }
+            AbilitySlot[2].effect();
+            internalCooldown[2] = AbilitySlot[2].cooldown + AbilitySlot[2].castTime;
             return;
         }
-        if (GameManager.instance.input.activeItem && cooldownItem <= 0)
+        if (GameManager.instance.input.activeItem && internalCooldown[3] <= 0)
         {
-            switch (true)
+            AbilitySlot[3].effect();
+            internalCooldown[3] = AbilitySlot[3].cooldown + AbilitySlot[3].castTime;
+            return;
+        }
+    }
+
+    public void fillSlots(ActiveAbility def) 
+    {
+        //this function is a safety net to be called if an ability is to be removed but not replaced with another
+        int i = 0;
+        foreach (ActiveAbility a in AbilitySlot) 
+        {
+            if (a == null) 
             {
-                case bool x when slotItem == null:
-                    break;
-                default:
-                    slotItem.effect();
-                    cooldownItem = slotItem.cooldown;
-                    break;
+               AbilitySlot[i] = def;
+               i++;
             }
         }
     }

@@ -15,6 +15,7 @@ public class BasicAttack : ActiveAbility
     public float damage;
     public float chainWindow;
     public GameObject attackBox;
+    public float animationTime;
 
     //this whole chain thing needs to be reworked
     [HideInInspector]
@@ -33,13 +34,14 @@ public class BasicAttack : ActiveAbility
 
     public override IEnumerator doEffect()
     {
+        this.castTime = animationTime;
         AkSoundEngine.PostEvent("Player_Attack", player);
         //animator.speed = ? cooldown;
         switch (attackState) 
         {
             case AttackStates.stage1:
                 animator.SetTrigger("attack0");
-                playerAbilities.StartCoroutine(createChainWindow(cooldown + chainWindow));
+                playerAbilities.StartCoroutine(createChainWindow(castTime + chainWindow));
                 attackState = AttackStates.stage2;
                 break;
 
