@@ -89,7 +89,7 @@ public class PlayerAbilities : MonoBehaviour
                 case bool x when slotItem == null:
                     break;
                 default:
-                    slot1.effect();
+                    slotItem.effect();
                     cooldownItem = slotItem.cooldown;
                     break;
             }

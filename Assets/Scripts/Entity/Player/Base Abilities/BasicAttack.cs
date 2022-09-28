@@ -11,6 +11,7 @@ public class BasicAttack : ActiveAbility
     private ThirdPersonController controller;
     private Animator animator;
     private PlayerAbilities playerAbilities;
+    [Header("For now set cooldown to swing animation duration")]
     public float damage;
     public float chainWindow;
     public GameObject attackBox;
@@ -33,17 +34,7 @@ public class BasicAttack : ActiveAbility
     public override IEnumerator doEffect()
     {
         AkSoundEngine.PostEvent("Player_Attack", player);
-        animator.speed = 1 / cooldown;
-        //if (attackAnim == 0)
-        //{
-        //    _animator.SetTrigger("attack0");
-        //    chainTimer = 1.5f;
-        //}
-        //if (attackAnim == 1)
-        //{
-        //    _animator.SetTrigger("attack1");
-        //    chainTimer = 0;
-        //}
+        //animator.speed = ? cooldown;
         switch (attackState) 
         {
             case AttackStates.stage1:
@@ -68,7 +59,7 @@ public class BasicAttack : ActiveAbility
             Destroy(hitbox);
         }
         controller._Inactionable = false;
-        animator.speed = 1;
+        //animator.speed = 1;
     }
 
     public IEnumerator createChainWindow(float t) 
