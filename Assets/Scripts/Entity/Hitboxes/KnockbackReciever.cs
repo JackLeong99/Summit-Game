@@ -4,32 +4,25 @@ using UnityEngine;
 
 public class KnockbackReciever : MonoBehaviour
 {   
-    private Dodge dodge;
     private CharacterController player;
-
+    private Inventory inventory;
+    [SerializeField] float mass;
+    
     [HideInInspector]
     public Vector3 impact;
-
-    [SerializeField] float gravity;
-
-    [SerializeField] float mass;
-
+    [HideInInspector]
     public bool invulnerable;
-
-    private void Awake()
-    {
-        dodge = GetComponent<Dodge>();
-    }
 
     void Start()
     {
         player = GetComponent<CharacterController>();
+        inventory = GetComponent<Inventory>();
     }
 
     public void AddImpactH(Vector3 dir, float force)
     {
         dir.y = 0;
-        impact += dir.normalized * force * 10 / mass;
+        impact += dir.normalized * force * 10 / (mass * (1 + inventory.knockbackReduction));
     }
 
     public void AddImpactV(Vector3 dir, float force)
@@ -40,13 +33,10 @@ public class KnockbackReciever : MonoBehaviour
         {
             dir.y = -dir.y;
         }
-
-        Debug.Log(impact);
-        impact += dir.normalized * force * 10 / mass;
+        impact += dir.normalized * force * 10 / (mass * (1 + inventory.knockbackReduction));
     }
     void Update()
     {
-        //Debug.Log(impact.magnitude);
         if(impact.magnitude > 5 && !invulnerable)
         {
             player.Move(impact * Time.deltaTime);
