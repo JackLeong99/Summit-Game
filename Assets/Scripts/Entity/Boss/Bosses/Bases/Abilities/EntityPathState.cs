@@ -23,7 +23,7 @@ public class EntityPathState : AbilityState
 
         switch (true)
         {
-            case bool x when Vector3.Distance(boss.agent.destination, boss.transform.position) < stoppingDist:
+            case bool x when Vector3.Distance(boss.agent.destination, boss.transform.position) < stoppingDist && animationActive == AnimationState.Ignore:
                 animationActive = AnimationState.Done;
                 break;
         }
@@ -39,6 +39,7 @@ public class EntityPathState : AbilityState
 
     public override void Setup()
     {
+        animationActive = AnimationState.Ignore;
         boss.agent.destination = GetNearestEntity().transform.position;
         boss.agent.isStopped = false;
     }
