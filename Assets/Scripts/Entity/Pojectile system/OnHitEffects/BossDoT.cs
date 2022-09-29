@@ -10,19 +10,20 @@ public class BossDoT : OnHitEffect
     public float rate;
     [Tooltip("Damage per tick")]
     public float damage;
-    public float numberOfTicks;
+    public int numberOfTicks;
     [Tooltip("Corresponding powerup")]
-    public string item;
+    public UtilGun item;
 
     private float[] damageStack;
     private Inventory player;
 
     public override void ApplyOnHitEffects(GameObject target)
     {
+        damageStack = new float[numberOfTicks];
         player = GameManager.instance.player.GetComponent<Inventory>();
         for (int i = 0; i < numberOfTicks; i++) 
         {
-            damageStack[i] = damage + (1 * player.GetStacks(item));
+            damageStack[i] = damage + (damage * player.GetStacks(item));
         }
         target.GetComponent<EnemyDamageReceiver>().PassDamage(damageStack, rate, target.transform.position);
     }

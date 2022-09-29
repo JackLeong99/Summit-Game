@@ -10,14 +10,14 @@ public class UtilGun : ItemBase
     {
         Inventory inv = GameManager.instance.player.GetComponent<Inventory>();
         Debug.Log("utilgun name: " + itemName);
-        if (inv.GetStacks(itemName) == 0)
+        if (inv.GetStacks(this) == 0)
         {
-            inv.items.Add(itemName, 1);
+            inv.items.Add(this, 1);
             inv.abilityOnHitEffects.Add(hitEffect);
         }
         else 
         {
-            inv.items[itemName] += 1;
+            inv.items[this] += 1;
         }
     }
 }

@@ -6,7 +6,7 @@ using StarterAssets;
 
 public class Inventory : MonoBehaviour
 {
-    public Dictionary<string, int> items = new Dictionary<string, int>(); 
+    public Dictionary<ItemBase, int> items = new Dictionary<ItemBase, int>(); 
 
     [HideInInspector]
     public ThirdPersonController controller;
@@ -68,7 +68,7 @@ public class Inventory : MonoBehaviour
         abilityOnHitEffects = new List<OnHitEffect>();
     }
 
-    public int GetStacks(string i)
+    public int GetStacks(ItemBase i)
     {
         switch (true)
         {
