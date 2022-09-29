@@ -534,11 +534,11 @@ public class BossManagerOld : MonoBehaviour
     {
         Vector3 spherePosition = new Vector3(transform.position.x, transform.position.y - GroundedOffset, transform.position.z);
 		Grounded = Physics.CheckSphere(spherePosition, GroundedRadius, GroundLayers, QueryTriggerInteraction.Ignore);
-    }*/
-/*
+    }
+
     IEnumerator waitTime(float animatrDuration, float delay){
         yield return new WaitForSeconds(animatrDuration + delay);
-    }*//*
+    }
 
     public void TakeDamage(float dmg, Vector3 position)
     {

@@ -12,3 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ca41362c0f2247489c96f08f4fcebea, type: 3}
   m_Name: GolemRockPathingState
   m_EditorClassIdentifier: 
+  animation: 
+  soundEvent: 
+  animationActive: 0
+  delay: 0
+  nextState: {fileID: 0}
+  targetTag: rocks
+  stoppingDist: 3

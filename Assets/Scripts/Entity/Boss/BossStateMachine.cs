@@ -68,7 +68,7 @@ public class BossStateMachine : MonoBehaviour
         StartCoroutine(SetParameters());
     }
 
-    public void GetInstances()
+    public void GetInstances()  
     {
         BossManager.instance.boss = this;
         anim = GetComponent<Animator>();
@@ -99,7 +99,7 @@ public class BossStateMachine : MonoBehaviour
                 currentAbility.Update();
                 break;
             default:
-                Debug.Log("CurrentAbility is: " + currentAbility);
+                Debug.LogWarning("CurrentAbility is: " + currentAbility);
                 break;
         }
     }
