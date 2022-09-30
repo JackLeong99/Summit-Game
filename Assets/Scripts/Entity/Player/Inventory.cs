@@ -24,6 +24,9 @@ public class Inventory : MonoBehaviour
         base_Defense;
 
     [HideInInspector]
+    public List<ActiveAbility> base_ActiveAbilities = new List<ActiveAbility>();
+
+    [HideInInspector]
     public float
         walkSpeed,
         sprintSpeed,
@@ -32,9 +35,26 @@ public class Inventory : MonoBehaviour
         physicalDamage,
         abilityDamage,
         bonusProjectileVelocity,
-        knockbackReduction;
+        knockbackReduction,
+        cooldownReduction;
+
+    public enum StatType 
+    {
+        walkSpeed,
+        sprintSpeed,
+        health,
+        defense,
+        physicalDamage,
+        abilityDamage,
+        bonusProjectileVelocity,
+        knockbackReduction,
+        cooldownReduction
+    }
+
     //[HideInInspector]
     public List<OnHitEffect> abilityOnHitEffects = new List<OnHitEffect>();
+    //TODO on attack effects ( less powerful onHitEffects for more frequent attacks ie. basic attack)
+    //public List<OnHitEffect> OnAttackEffects = new List<OnHitEffects>();
 
     private void Start()
     {
@@ -52,6 +72,7 @@ public class Inventory : MonoBehaviour
         base_WalkSpeed = controller.MoveSpeed;
         base_Health = playerHealth.maxHealth;
         base_Defense = playerHealth.defence;
+        base_ActiveAbilities = abilities.AbilitySlot;
     }
 
     public void resetStats() 
@@ -65,7 +86,9 @@ public class Inventory : MonoBehaviour
         abilityDamage = 0;
         bonusProjectileVelocity = 0;
         knockbackReduction = 0;
+        cooldownReduction = 0;
         abilityOnHitEffects = new List<OnHitEffect>();
+        abilities.AbilitySlot = base_ActiveAbilities;
     }
 
     public int GetStacks(ItemBase i)
@@ -76,6 +99,26 @@ public class Inventory : MonoBehaviour
                 return items[i];
             default:
                 return 0;
+        }
+    }
+
+    public void updateStat(StatType type, float val) 
+    {
+        switch (type) 
+        {
+            case StatType.walkSpeed:
+                walkSpeed += val;
+                controller.MoveSpeed = base_WalkSpeed + walkSpeed;
+                break;
+            case StatType.sprintSpeed:
+                sprintSpeed += val;
+                controller.SprintSpeed = base_SprintSpeed + sprintSpeed;
+                break;
+            //TODO other stat cases
+            case StatType.cooldownReduction:
+                cooldownReduction += val;
+                abilities.addCDR(val);
+                break;
         }
     }
 }

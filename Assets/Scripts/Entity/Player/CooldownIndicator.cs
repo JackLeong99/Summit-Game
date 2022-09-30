@@ -24,7 +24,7 @@ public class CooldownIndicator : MonoBehaviour
     {
         switch (true)
         {
-            case bool x when playerAbilities.internalCooldown[slotNumber] > 0 && playerAbilities.internalCooldown[slotNumber] < playerAbilities.AbilitySlot[slotNumber].cooldown && playerAbilities.AbilitySlot[slotNumber].cooldown > 1:
+            case bool x when playerAbilities.internalCooldown[slotNumber] > 0 && playerAbilities.internalCooldown[slotNumber] < playerAbilities.AbilitySlot[slotNumber].cooldown * playerAbilities.cdrMod && playerAbilities.AbilitySlot[slotNumber].cooldown > 1:
                 mat.SetColor("_EmissionColor", charging * 6);
                 break;
             default:

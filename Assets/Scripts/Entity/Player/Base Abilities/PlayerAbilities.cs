@@ -14,6 +14,13 @@ public class PlayerAbilities : MonoBehaviour
     public List<ActiveAbility> AbilitySlot;
     [Header("List of minimum cooldowns based on the abilities cast time (do not edit, only visible for debugging)")]
     public List<float> internalCooldown;
+    [Header("Cooldown reduction (0 - 100%)")]
+    public float cooldownReduction;
+    public float cdrMod;
+    [Header("Minimum possible cooldown")]
+    public float minCD;
+    [Header("Cooldown reduction cap")]
+    public float maxCDR;
     [Header("Define the default slot filler (ie an empty ability)")]
     public ActiveAbility defaultAbility;
 
@@ -26,6 +33,7 @@ public class PlayerAbilities : MonoBehaviour
         internalCooldown = new List<float> { 0, 0, 0, 0 };
         playerController = GameManager.instance.player.GetComponent<ThirdPersonController>();
         knockbackReciever = GameManager.instance.player.GetComponent<KnockbackReciever>();
+        addCDR(cooldownReduction);
     }
 
     private void Update()
@@ -42,26 +50,39 @@ public class PlayerAbilities : MonoBehaviour
         {
             AbilitySlot[0].effect();
             internalCooldown[0] = AbilitySlot[0].cooldown + AbilitySlot[0].castTime;
+            //internalCooldown[0] = Mathf.Clamp((AbilitySlot[0].cooldown * cdrMod) + AbilitySlot[0].castTime, minCD, Mathf.Infinity);
             return;
         }
         if (GameManager.instance.input.shoot && internalCooldown[1] <= 0)
         {
             AbilitySlot[1].effect();
-            internalCooldown[1] = AbilitySlot[1].cooldown + AbilitySlot[1].castTime;
+            internalCooldown[1] = Mathf.Clamp((AbilitySlot[1].cooldown * cdrMod) + AbilitySlot[1].castTime, minCD, AbilitySlot[1].cooldown + AbilitySlot[1].castTime);
             return;
         }
         if (GameManager.instance.input.dodge && internalCooldown[2] <= 0)
         {
             AbilitySlot[2].effect();
-            internalCooldown[2] = AbilitySlot[2].cooldown + AbilitySlot[2].castTime;
+            internalCooldown[2] = Mathf.Clamp((AbilitySlot[2].cooldown * cdrMod) + AbilitySlot[2].castTime, minCD, AbilitySlot[2].cooldown + AbilitySlot[2].castTime);
             return;
         }
         if (GameManager.instance.input.activeItem && internalCooldown[3] <= 0)
         {
             AbilitySlot[3].effect();
-            internalCooldown[3] = AbilitySlot[3].cooldown + AbilitySlot[3].castTime;
+            internalCooldown[3] = Mathf.Clamp((AbilitySlot[3].cooldown * cdrMod) + AbilitySlot[3].castTime, minCD, AbilitySlot[3].cooldown + AbilitySlot[3].castTime);
             return;
         }
+    }
+
+    public void addCDR(float c) 
+    {
+        cooldownReduction = Mathf.Clamp(cooldownReduction += c, 0f, maxCDR);
+        cdrMod = ((100 - cooldownReduction) / 100);
+    }
+
+    public void resetCDR() 
+    {
+        cooldownReduction = 0;
+        cdrMod = 1;
     }
 
     public void fillSlots(ActiveAbility def) 

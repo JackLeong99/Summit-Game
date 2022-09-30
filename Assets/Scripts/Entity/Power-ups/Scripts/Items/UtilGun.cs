@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(menuName = "Powerups/testDoT")]
+[CreateAssetMenu(menuName = "Powerups/testDotOnHit")]
 public class UtilGun : PassiveItem
 {
     public OnHitEffect hitEffect;

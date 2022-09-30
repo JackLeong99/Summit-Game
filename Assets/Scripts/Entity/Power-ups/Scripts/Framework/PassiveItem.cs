@@ -12,11 +12,11 @@ public abstract class PassiveItem : ItemBase
         {
             case bool x when inv.GetStacks(this) == 0:
                 inv.items.Add(this, 1);
-                effect();
                 break;
             default:
                 inv.items[this] += 1;
                 break;
         }
+        effect();
     }
 }
