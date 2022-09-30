@@ -114,7 +114,27 @@ public class Inventory : MonoBehaviour
                 sprintSpeed += val;
                 controller.SprintSpeed = base_SprintSpeed + sprintSpeed;
                 break;
-            //TODO other stat cases
+            case StatType.health:
+                health += val;
+                playerHealth.maxHealth = base_Health + health;
+                break;
+            case StatType.defense:
+                defense += val;
+                playerHealth.defence = base_Defense + defense;
+                break;
+            case StatType.physicalDamage:
+                physicalDamage += val;
+                break;
+            case StatType.abilityDamage:
+                abilityDamage += val;
+                break;
+            case StatType.bonusProjectileVelocity:
+                bonusProjectileVelocity += val;
+                break;
+            case StatType.knockbackReduction:
+                knockbackReduction += val;
+                //TODO knockbackreduction
+                break;
             case StatType.cooldownReduction:
                 cooldownReduction += val;
                 abilities.addCDR(val);
