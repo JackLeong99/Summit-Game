@@ -2,7 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using TMPro;
 using StarterAssets;
 
 public class ThirdPersonShooting : MonoBehaviour
@@ -15,11 +14,9 @@ public class ThirdPersonShooting : MonoBehaviour
 
     public float succTime;
 
-    public ParticleSystem succ;
+    //public ParticleSystem succ;
 
     public GameObject projectile;
-
-    public TextMeshProUGUI CdDisplay;
 
     public Transform FirePoint;
 
@@ -47,7 +44,7 @@ public class ThirdPersonShooting : MonoBehaviour
     //Temporary code that resets player y axis rotation until we add custom player model/animations
     private CharacterController player;
 
-    private ParticleSystem.EmissionModule pp;
+    //private ParticleSystem.EmissionModule pp;
 
     public List<OnHitEffect> OnHitEffects = new List<OnHitEffect>();
 
@@ -57,8 +54,8 @@ public class ThirdPersonShooting : MonoBehaviour
         //Temporary code that resets player y axis rotation until we add custom player model/animations
         player = GetComponent<CharacterController>();
         controller = GetComponent<ThirdPersonController>();
-        pp = succ.emission;
-        pp.enabled = false;
+        //pp = succ.emission;
+        //pp.enabled = false;
     }
 
     // Update is called once per frame
@@ -97,9 +94,9 @@ public class ThirdPersonShooting : MonoBehaviour
         _animator.SetTrigger("Charge");
         AkSoundEngine.PostEvent("Player_Shoot_Charge", gameObject);
         yield return new WaitForSeconds(succTime);
-        pp.enabled = true;
+        //pp.enabled = true;
         yield return new WaitForSeconds(chargeTime);
-        pp.enabled = false;
+        //pp.enabled = false;
         _animator.SetTrigger("Shoot");
         AkSoundEngine.PostEvent("Player_Shoot_Fire", gameObject);
         CameraListener.instance.CameraShake(5, 0.1f);

@@ -7,10 +7,10 @@ public class UtilGun : ItemBase
 {
     public float bonusDamage;
     public float reducedSpeed;
-    public override void effect(GameObject target)
+    public override void effect()
     {
-        target.GetComponent<ThirdPersonShooting>().bulletDamage += bonusDamage;
-        target.GetComponent<ThirdPersonShooting>().projectileSpeed -= reducedSpeed;
-        target.GetComponent<ThirdPersonShooting>().useGrav = true;
+        GameManager.instance.player.GetComponent<ThirdPersonShooting>().bulletDamage += bonusDamage;
+        GameManager.instance.player.GetComponent<ThirdPersonShooting>().projectileSpeed -= reducedSpeed;
+        GameManager.instance.player.GetComponent<ThirdPersonShooting>().useGrav = true;
     }
 }

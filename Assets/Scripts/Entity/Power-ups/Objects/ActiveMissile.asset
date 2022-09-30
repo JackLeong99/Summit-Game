@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0930528f6e6e01a45a7270f09495285e, type: 3}
   m_Name: ActiveMissile
   m_EditorClassIdentifier: 
+  cooldown: 5
   projectile: {fileID: 8434380028405312774, guid: d014fd6b5bc54704fa0d2ac160e76965, type: 3}
   missileCount: 6
   projectileSpeed: 20
