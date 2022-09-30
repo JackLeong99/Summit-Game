@@ -6,4 +6,5 @@ public abstract class ItemBase : ScriptableObject
 {
     public string itemName;
     public abstract void effect();
+    public abstract void acquire();
 }

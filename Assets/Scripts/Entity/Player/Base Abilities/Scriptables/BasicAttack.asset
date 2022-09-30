@@ -12,6 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 693fedb886d3ebb4b8feebd1a60dc4a9, type: 3}
   m_Name: BasicAttack
   m_EditorClassIdentifier: 
+  itemName: Basic Attack
+  slot: 0
   cooldown: 0.05
   castTime: 0.458
   damage: 20

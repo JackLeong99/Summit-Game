@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ApplyPowerup : MonoBehaviour
+public class ItemPickup : MonoBehaviour
 {
     public ItemBase itemBase;
 
@@ -11,7 +11,7 @@ public class ApplyPowerup : MonoBehaviour
         if (other.tag == "Player") 
         {
             Destroy(gameObject);
-            itemBase.effect();
+            itemBase.acquire();
         }
     }
 }

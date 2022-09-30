@@ -5,19 +5,17 @@ using StarterAssets;
 
 public class PlayerAbilities : MonoBehaviour
 {
-    [Header("Ability slots")]
+    [Header("Starting Abilities")]
     public ActiveAbility slot1;
     public ActiveAbility slot2;
     public ActiveAbility slot3;
     public ActiveAbility slot4;
-    [HideInInspector]
+    [Header("Current Abilities")]
     public List<ActiveAbility> AbilitySlot;
     [Header("List of minimum cooldowns based on the abilities cast time (do not edit, only visible for debugging)")]
     public List<float> internalCooldown;
     [Header("Define the default slot filler (ie an empty ability)")]
     public ActiveAbility defaultAbility;
-
-
 
     private ThirdPersonController playerController;
     private KnockbackReciever knockbackReciever;
