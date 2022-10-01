@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
-using StarterAssets;
+using UnityEngine.InputSystem;
 
 public class Pause : MonoBehaviour
 {
@@ -10,7 +10,6 @@ public class Pause : MonoBehaviour
     [Header("General")]
     public PauseState pauseState = PauseState.Playing; //Checks whether or not the game is paused
     public GameObject pauseMenu, background;
-    public StarterAssetsInputs _input;
     //public FadeController fade;
 
     [Header("Selector")]
@@ -26,36 +25,27 @@ public class Pause : MonoBehaviour
         pauseMenu.SetActive(false);
         background.SetActive(false);
         //selectors.Visibility(false);
+        GameManager.instance.menuInput.UI.Pause.performed += PauseCall;
     }
 
-    public void Start()
-    {
-            GameObject eventObject = GameObject.FindWithTag("EventSystem");
-			_input=eventObject.GetComponent<StarterAssetsInputs>();
-    }
-
-    public void Update()
-    {
-        if (_input.pause)
-        {
-            PauseCall();
-        }
-    }
     #endregion
 
     #region Pause
-    public void PauseCall()
-    {             
-        switch (pauseState)
+    public void PauseCall(InputAction.CallbackContext context)
+    {
+        if (context.performed)
+        {
+            switch (pauseState)
             {
                 case PauseState.Playing:
-                    PauseG(); 
+                    PauseG();
 
                     break;
                 case PauseState.Pause:
                     ResumeG();
                     break;
             }
+        }
     }
 
     public void ResumeG() //Trigger for resuming game and resume button

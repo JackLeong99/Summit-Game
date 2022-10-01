@@ -92,8 +92,6 @@ namespace StarterAssets
 
 		private GameObject _mainCamera;
 
-		public StarterAssetsInputs _input;
-
 		private const float _threshold = 0.01f;
 
 		private bool _hasAnimator;
@@ -153,8 +151,6 @@ namespace StarterAssets
 		{
 			_hasAnimator = TryGetComponent(out _animator);
 			_controller = GetComponent<CharacterController>();
-			GameObject eventObject = GameObject.FindWithTag("EventSystem");
-			_input=eventObject.GetComponent<StarterAssetsInputs>();
 			reciever = GetComponent<KnockbackReciever>();
 			shooting = GetComponent<ThirdPersonShooting>();
 			dodge = GetComponent<Dodge>();
@@ -217,7 +213,7 @@ namespace StarterAssets
 			if(reciever.impact.magnitude <= 5 && !_Inactionable){
 				Move();
 
-				if(_input.meleeAttack)
+				if(GameManager.instance.input.meleeAttack)
 				//if(Input.GetButtonDown("Fire1"))
 				{
 					if(!dodge.isDodging && Grounded)
@@ -226,7 +222,7 @@ namespace StarterAssets
 					}
 				}
 
-				if(_input.shoot && shooting.cdTimer <= 0)
+				if(GameManager.instance.input.shoot && shooting.cdTimer <= 0)
 				//if(Input.GetButtonDown("Spell1") && shooting.cdTimer <= 0)
 				{
 					if(!_Inactionable && Grounded && !attack.isAttacking && !dodge.isDodging)
@@ -235,7 +231,7 @@ namespace StarterAssets
 					}
 				}
 
-				if(_input.dodge && dodge.cdTimer <= 0)
+				if(GameManager.instance.input.dodge && dodge.cdTimer <= 0)
 				//if(Input.GetButtonDown("Spell2") && dodge.cdTimer <= 0)
 				{
 					if(_speed != 0 && Grounded && !attack.isAttacking)
@@ -246,21 +242,21 @@ namespace StarterAssets
 			}
 
 			//for pause although currently it is a bit buggy
-			/*if (_input.pause && pauseTimer<=0)
+			/*if (GameManager.instance.input.pause && pauseTimer<=0)
 			{
 				pauseTimer=0.5f;
 				GameObject pauseObject = GameObject.FindWithTag("Pause");
 				Pause pausing = pauseObject.GetComponent<Pause>();
 				pausing.DoPause();
 			}*/
-			/*if (_input.pause && isPaused ==false)
+			/*if (GameManager.instance.input.pause && isPaused ==false)
 			{
 				GameObject pauseObject = GameObject.FindWithTag("Pause");
 				Pause pausing = pauseObject.GetComponent<Pause>();
 				pausing.DoPause();
 				isPaused=true;
 			}*/
-			/*if (_input.pause)
+			/*if (GameManager.instance.input.pause)
 			{
 				GameObject pauseObject = GameObject.FindWithTag("Pause");
 				Pause pausing = pauseObject.GetComponent<Pause>();
@@ -302,10 +298,10 @@ namespace StarterAssets
 		private void CameraRotation()
 		{
             // if there is an input and camera position is not fixed
-            if (_input.look.sqrMagnitude >= _threshold && !LockCameraPosition)
+            if (GameManager.instance.input.look.sqrMagnitude >= _threshold && !LockCameraPosition)
             {
-                _cinemachineTargetYaw += _input.look.x * Time.deltaTime*DataManager.instance.sensitivity;
-                _cinemachineTargetPitch += _input.look.y * Time.deltaTime*DataManager.instance.sensitivity;
+                _cinemachineTargetYaw += GameManager.instance.input.look.x * Time.deltaTime*DataManager.instance.sensitivity;
+                _cinemachineTargetPitch += GameManager.instance.input.look.y * Time.deltaTime*DataManager.instance.sensitivity;
             }
 
             // clamp our rotations so our values are limited 360 degrees
@@ -319,19 +315,19 @@ namespace StarterAssets
 		private void Move()
 		{
 			// set target speed based on move speed, sprint speed and if sprint is pressed
-			float targetSpeed = _input.sprint ? SprintSpeed : MoveSpeed;
+			float targetSpeed = GameManager.instance.input.sprint ? SprintSpeed : MoveSpeed;
 
 			// a simplistic acceleration and deceleration designed to be easy to remove, replace, or iterate upon
 
 			// note: Vector2's == operator uses approximation so is not floating point error prone, and is cheaper than magnitude
 			// if there is no input, set the target speed to 0
-			if (_input.move == Vector2.zero) targetSpeed = 0.0f;
+			if (GameManager.instance.input.move == Vector2.zero) targetSpeed = 0.0f;
 
 			// a reference to the players current horizontal velocity
 			float currentHorizontalSpeed = new Vector3(_controller.velocity.x, 0.0f, _controller.velocity.z).magnitude;
 
 			float speedOffset = 0.1f;
-			float inputMagnitude = _input.analogMovement ? _input.move.magnitude : 1f;
+			float inputMagnitude = GameManager.instance.input.analogMovement ? GameManager.instance.input.move.magnitude : 1f;
 
 			// accelerate or decelerate to target speed
 			if (currentHorizontalSpeed < targetSpeed - speedOffset || currentHorizontalSpeed > targetSpeed + speedOffset)
@@ -350,11 +346,11 @@ namespace StarterAssets
 			_animationBlend = Mathf.Lerp(_animationBlend, targetSpeed, Time.deltaTime * SpeedChangeRate);
 
 			// normalise input direction
-			Vector3 inputDirection = new Vector3(_input.move.x, 0.0f, _input.move.y).normalized;
+			Vector3 inputDirection = new Vector3(GameManager.instance.input.move.x, 0.0f, GameManager.instance.input.move.y).normalized;
 
 			// note: Vector2's != operator uses approximation so is not floating point error prone, and is cheaper than magnitude
 			// if there is a move input rotate player when the player is moving
-			if (_input.move != Vector2.zero)
+			if (GameManager.instance.input.move != Vector2.zero)
 			{
 				_targetRotation = Mathf.Atan2(inputDirection.x, inputDirection.z) * Mathf.Rad2Deg + _mainCamera.transform.eulerAngles.y;
 				float rotation = Mathf.SmoothDampAngle(transform.eulerAngles.y, _targetRotation, ref _rotationVelocity, RotationSmoothTime);
@@ -398,7 +394,7 @@ namespace StarterAssets
 				}
 
 				// Jump
-				if (_input.jump && _jumpTimeoutDelta <= 0.0f && !_Inactionable)
+				if (GameManager.instance.input.jump && _jumpTimeoutDelta <= 0.0f && !_Inactionable)
 				{
 					// the square root of H * -2 * G = how much velocity needed to reach desired height
 					_verticalVelocity = Mathf.Sqrt(JumpHeight * -2f * Gravity);
@@ -437,7 +433,7 @@ namespace StarterAssets
 				}
 
 				// if we are not grounded, do not jump
-				_input.jump = false;
+				GameManager.instance.input.jump = false;
 			}
 
 			// apply gravity over time if under terminal (multiply by delta time twice to linearly speed up over time)
