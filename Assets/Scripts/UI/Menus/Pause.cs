@@ -94,7 +94,7 @@ public class Pause : MonoBehaviour
     IEnumerator ChangeToMain()
     {
         Time.timeScale = 1f;
-        GameManager.instance.QuitGame();
+        GameManager.instance.LoadDelegate(GameManager.instance.QuitGame());
         yield return null;
     }
 

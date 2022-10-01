@@ -30,7 +30,12 @@ public class PanHandler : MonoBehaviour
 
     public void OnDestroy()
     {
-        GameManager.instance.mainCamera.GetComponent<Camera>().fieldOfView = 40;
+        switch (true)
+        {
+            case bool x when GameManager.instance.mainCamera != null:
+                GameManager.instance.mainCamera.GetComponent<Camera>().fieldOfView = 40;
+                break;
+        }
     }
 
     public void FocusAnchor()

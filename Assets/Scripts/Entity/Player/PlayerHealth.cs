@@ -10,6 +10,7 @@ public class PlayerHealth : MonoBehaviour
     private Dodge dodge;
     public float maxHealth;
     public float currentHealth;
+    public bool invulnerable = false;
 
     //added at my own liberty- figure it'll be useful down the line.
     public float defence = 0f;
@@ -29,24 +30,29 @@ public class PlayerHealth : MonoBehaviour
     }
 
     public void takeDamage(float damage){
+        if (invulnerable) 
+        {
+            return;
+        }
+
         if (currentHealth > 0){
             if(lowerdamage)
             {
                 damage-=5; //we can change this. I was not sure how much to decrease by
             }
             //Not healing if defence stat bigger than potential damage taken.
-            if(damage - defence > 0 && !dodge.invuln){
+            if(damage - defence > 0){
                 currentHealth = currentHealth - damage + defence;
                 UIDamageIn.instance.DamageVis();
             }
             
         }
         AkSoundEngine.PostEvent("Player_Damage", gameObject);
-        CameraListener.instance.CameraShake(6, 0.25f);
+        CameraListener.instance.CameraShake(damage, 0.25f);
 
         if (currentHealth <= 0)
         {
-            GameManager.instance.OnDeath(); //to be moved to whatever is handling health
+            GameManager.instance.LoadDelegate(GameManager.instance.OnDeath()); //to be moved to whatever is handling health
         }
     }
 

@@ -22,7 +22,9 @@ public class SriptablesEditorWindow : EditorWindow
     protected string scriptableName = "";
     protected string typeName = "Scriptable Types";
 
-    [MenuItem("Tools/Scriptable Object Editor")]
+    protected string sortSearch = "";
+
+    [UnityEditor.MenuItem("Tools/Scriptable Object Editor")]
     protected static void ShowWindow()
     {
         GetWindow<SriptablesEditorWindow>("Scriptables Editor");
@@ -34,8 +36,13 @@ public class SriptablesEditorWindow : EditorWindow
 
         if (activeObjects.Length > 0)
             serializedObject = new SerializedObject(activeObjects[0]);
-        
+
+        EditorGUILayout.BeginVertical("box");
+
+        HeaderTitle();
         HeaderNavigation();
+
+        EditorGUILayout.EndVertical();
 
         EditorGUILayout.BeginHorizontal();
 
@@ -48,9 +55,21 @@ public class SriptablesEditorWindow : EditorWindow
             Apply();
     }
 
+    private void HeaderTitle()
+    {
+        //GUIStyle headerFont = new GUIStyle() { fontSize = 10, fontStyle = FontStyle.Bold }; headerFont.normal.textColor = Color.white;
+        EditorGUILayout.BeginHorizontal(GUILayout.ExpandWidth(true));
+        GUILayout.FlexibleSpace();
+        EditorGUILayout.LabelField("Scriptables Editor");
+        GUILayout.FlexibleSpace();
+        EditorGUILayout.EndHorizontal();
+    }
+
+    #region Navigation
+    #region Header
     private void HeaderNavigation()
     {
-        EditorGUILayout.BeginHorizontal("box", GUILayout.ExpandWidth(true));
+        EditorGUILayout.BeginHorizontal(GUILayout.ExpandWidth(true));
 
         if (GUILayout.Button("Folder", GUILayout.MaxWidth(150)))
         {
@@ -73,13 +92,11 @@ public class SriptablesEditorWindow : EditorWindow
             }
         }
         EditorGUILayout.LabelField(activePath);
-
-        GUILayout.FlexibleSpace();
-        EditorGUILayout.LabelField("Scriptables Editor");
-        GUILayout.FlexibleSpace();
         EditorGUILayout.EndHorizontal();
     }
+    #endregion
 
+    #region Sidebar
     private void SelectionNavigation()
     {
         EditorGUILayout.BeginVertical("box", GUILayout.MaxWidth(sidebarWidth), GUILayout.ExpandHeight(true));
@@ -99,6 +116,14 @@ public class SriptablesEditorWindow : EditorWindow
             }
             menu.ShowAsContext();
         }
+
+        #region Searchbar
+        EditorGUILayout.BeginHorizontal();
+        GUILayout.FlexibleSpace();
+        sortSearch = EditorGUILayout.TextField(sortSearch, GUILayout.MaxWidth(240));
+        GUILayout.FlexibleSpace();
+        EditorGUILayout.EndHorizontal();
+        #endregion
 
         scrollPosition = EditorGUILayout.BeginScrollView(scrollPosition, GUIStyle.none, GUI.skin.verticalScrollbar, GUILayout.ExpandHeight(true));
 
@@ -122,7 +147,7 @@ public class SriptablesEditorWindow : EditorWindow
             else
             {
                 var type = activeObjects[0].GetType();
-                UnityEngine.Object newScriptable = CreateObject(type);
+                Object newScriptable = CreateObject(type);
                 AssetDatabase.CreateAsset(newScriptable, activePath + "/" + scriptableName + ".asset");
                 AssetDatabase.SaveAssets();
                 AssetDatabase.Refresh();
@@ -132,7 +157,10 @@ public class SriptablesEditorWindow : EditorWindow
             
         EditorGUILayout.EndVertical();
     }
+    #endregion
+    #endregion
 
+    #region Display Selected Contents
     private void SelectableContents()
     {
         EditorGUILayout.BeginVertical("box", GUILayout.ExpandHeight(true));
@@ -171,7 +199,7 @@ public class SriptablesEditorWindow : EditorWindow
         EditorGUILayout.EndScrollView();
         EditorGUILayout.EndVertical();
     }
-
+    #endregion
 
     public static ScriptableObject[] GetAllInstancesOfType(string activePath, System.Type activeType)
     {
@@ -210,9 +238,12 @@ public class SriptablesEditorWindow : EditorWindow
     {
         foreach (ScriptableObject item in objects)
         {
-            if (GUILayout.Button(item.name))
+            if (item.name.IndexOf(sortSearch, System.StringComparison.OrdinalIgnoreCase) >= 0)
             {
-                selectedPropertyPach = item.name;
+                if (GUILayout.Button(item.name))
+                {
+                    selectedPropertyPach = item.name;
+                }
             }
         }
 

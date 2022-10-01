@@ -15,10 +15,10 @@ public class Teleporter : MonoBehaviour
                 switch (state)
                 {
                     case TeleportState.Boss:
-                        GameManager.instance.LoadBoss();
+                        GameManager.instance.LoadDelegate(GameManager.instance.LoadBoss());
                         break;
                     case TeleportState.Shop:
-                        GameManager.instance.LoadShop();
+                        GameManager.instance.LoadDelegate(GameManager.instance.LoadShop());
                         Destroy(gameObject);
                         break;
                 }

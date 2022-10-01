@@ -65,4 +65,13 @@ public static class SceneHandler
 
         yield return null;
     }
+
+    public static List<AsyncOperation> ReloadScene(SceneReference sceneToReload)
+    {
+        return new List<AsyncOperation>
+        {
+            SceneManager.UnloadSceneAsync(sceneToReload),
+            SceneManager.LoadSceneAsync(sceneToReload, LoadSceneMode.Additive)
+        };
+    }
 }

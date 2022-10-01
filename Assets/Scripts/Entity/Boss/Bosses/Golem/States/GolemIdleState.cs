@@ -17,6 +17,13 @@ public class GolemIdleState : BaseState
         switch (boss.Alive())
         {
             case true:
+                switch (RocksLeft())
+                {
+                    case false:
+                        boss.ChangeState(boss.GetState<ReplenishState>());
+                        return;
+                }
+
                 bool meleeDist = Vector3.Distance(boss.transform.position, GameManager.instance.player.transform.position) <= boss.attributes.minPlayerDist;
                 bool rangedDist = Vector3.Distance(boss.transform.position, GameManager.instance.player.transform.position) >= boss.attributes.maxPlayerDist;
 
@@ -39,5 +46,10 @@ public class GolemIdleState : BaseState
     public override void Exit()
     {
         base.Exit();
+    }
+
+    public bool RocksLeft()
+    {
+        return GameObject.FindGameObjectsWithTag("rocks").Length > 0;
     }
 }

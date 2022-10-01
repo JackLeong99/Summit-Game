@@ -5,7 +5,7 @@ using StarterAssets;
 
 public class PowerUpHolder : MonoBehaviour
 {
-    public Dictionary<ItemBase, float> items; 
+    public Dictionary<ItemBase, int> items; 
 
     public ThirdPersonController controller;
     public PlayerHealth playerHealth;
