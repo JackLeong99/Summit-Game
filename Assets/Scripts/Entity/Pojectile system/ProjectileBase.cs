@@ -6,8 +6,8 @@ public abstract class ProjectileBase : MonoBehaviour
 {
     public float maxLifetime;
     public float currentLifetime;
-    protected float damage;
-    protected List<OnHitEffect> OnHitEffects = new List<OnHitEffect>();
+    public float damage;
+    public List<OnHitEffect> OnHitEffects = new List<OnHitEffect>();
 
     public virtual void Update()
     {
