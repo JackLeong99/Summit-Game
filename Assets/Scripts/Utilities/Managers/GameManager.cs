@@ -15,6 +15,7 @@ public class GameManager : MonoBehaviour
     public GameObject mainCamera;
     public FadeController fade;
     public bool inLoading = false;
+    public bool finalReady = false;
 
     [Header("Input References")]
     public StarterAssetsInputs input;
@@ -32,6 +33,8 @@ public class GameManager : MonoBehaviour
     public List<SceneReference> introScene;
     public List<SceneReference> testScenes;
 
+    private List<SceneReference> selectableScenes;
+
     public void Awake()
     {
         GetInstances();
@@ -46,6 +49,8 @@ public class GameManager : MonoBehaviour
         mainCamera = GameObject.FindWithTag("MainCamera");
         fade = GameObject.FindWithTag("FadeController").GetComponent<FadeController>();
         input = GameObject.FindWithTag("EventSystem").GetComponent<StarterAssetsInputs>();
+
+        selectableScenes = bossScenes;
     }
 
     public IEnumerator LoadStarting()
@@ -136,15 +141,31 @@ public class GameManager : MonoBehaviour
         yield return StartCoroutine(LoadProgression(scenesLoading, shopScene[0]));
     }
 
-    public IEnumerator LoadBoss()
+    public IEnumerator LoadBoss(bool firstLoad)
     {
         yield return StartCoroutine(StartLoad());
 
-        List<AsyncOperation> scenesLoading = SceneHandler.SwapScenes(gameScenes, exclusionScenes);
-        scenesLoading = scenesLoading.Concat(SceneHandler.LoadScenes(bossScenes)).ToList();
-        exclusionScenes = exclusionScenes.Concat(gameScenes).ToList();
+        List<AsyncOperation> scenesLoading = new List<AsyncOperation>();
 
-        yield return StartCoroutine(LoadProgression(scenesLoading, bossScenes[0]));
+        switch (true)
+        {
+            case bool x when firstLoad:
+                scenesLoading = scenesLoading.Concat(SceneHandler.LoadScenes(gameScenes)).ToList();
+                exclusionScenes = exclusionScenes.Concat(gameScenes).ToList();
+                break;
+            case bool y when selectableScenes.Count == 1:
+                finalReady = true;
+                break;
+            case bool z when selectableScenes.Count < 1:
+                selectableScenes = bossScenes;
+                break;
+        }
+
+        SceneReference selected = selectableScenes[ListHandler.IndexRandomizer(selectableScenes.Count)];
+        scenesLoading = scenesLoading.Concat(SceneHandler.SwapScenes(selected, exclusionScenes)).ToList();
+        selectableScenes.Remove(selected);
+
+        yield return StartCoroutine(LoadProgression(scenesLoading, selected));
     }
 
     public IEnumerator OnDeath()

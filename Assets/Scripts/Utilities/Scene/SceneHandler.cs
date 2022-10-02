@@ -22,6 +22,18 @@ public static class SceneHandler
         return output;
     }
 
+    public static List<AsyncOperation> LoadScenes(SceneReference loadingScene)
+    {
+        List<AsyncOperation> output = new List<AsyncOperation>();
+
+        if (!SceneManager.GetSceneByName(loadingScene).isLoaded)
+        {
+             output.Add(SceneManager.LoadSceneAsync(loadingScene, LoadSceneMode.Additive));
+        }
+
+        return output;
+    }
+
     public static List<AsyncOperation> UnloadAllScenes(List<SceneReference> exclusionScenes)
     {
         List<AsyncOperation> output = new List<AsyncOperation>();
@@ -53,6 +65,11 @@ public static class SceneHandler
     }
 
     public static List<AsyncOperation> SwapScenes(List<SceneReference> loadingScenes, List<SceneReference> exclusionScenes)
+    {
+        return new List<AsyncOperation>(UnloadAllScenes(exclusionScenes).Concat(LoadScenes(loadingScenes)));
+    }
+
+    public static List<AsyncOperation> SwapScenes(SceneReference loadingScenes, List<SceneReference> exclusionScenes)
     {
         return new List<AsyncOperation>(UnloadAllScenes(exclusionScenes).Concat(LoadScenes(loadingScenes)));
     }

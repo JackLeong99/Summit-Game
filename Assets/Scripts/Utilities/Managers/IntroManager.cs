@@ -22,6 +22,6 @@ public class IntroManager : MonoBehaviour
         }
 
         yield return new WaitForEndOfFrame();
-        GameManager.instance.LoadDelegate(GameManager.instance.LoadBoss());
+        GameManager.instance.LoadDelegate(GameManager.instance.LoadBoss(true));
     }
 }
