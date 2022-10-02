@@ -18,19 +18,23 @@ public class SummonZombie : MonoBehaviour
     private int numInCurrentRow;
     private int currentRow;
 
+    public GameObject scuffedPositionSetBoss;
+
     // Start is called before the first frame update
     void Start()
     {
         zombieArray = new GameObject[maxZombies];
+        transform.position = scuffedPositionSetBoss.transform.position;
+        Summon();
     }
 
-    private void Update()
-    {
-       if (Input.GetKeyDown("z")) 
-       {
-            Summon();
-       }
-    }
+    // private void Update()
+    // {
+    //    if (Input.GetKeyDown("z")) 
+    //    {
+    //         Summon();
+    //    }
+    // }
 
     public void Summon()
     {
@@ -69,5 +73,6 @@ public class SummonZombie : MonoBehaviour
                 currentZombies += 1;   
             }
         }
+        Destroy(gameObject);
     }
 }
