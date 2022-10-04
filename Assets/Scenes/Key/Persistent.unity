@@ -411,7 +411,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: -200}
-  m_SizeDelta: {x: 600, y: 80}
+  m_SizeDelta: {x: 1000, y: 80}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &562364231
 CanvasRenderer:
@@ -986,8 +986,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 36
-  m_fontSizeBase: 36
+  m_fontSize: 26
+  m_fontSizeBase: 26
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -1455,6 +1455,7 @@ MonoBehaviour:
   mainCamera: {fileID: 0}
   fade: {fileID: 0}
   inLoading: 0
+  finalReady: 0
   input: {fileID: 0}
   startingScenes:
   - m_SceneAsset: {fileID: 102900000, guid: 2a0f80f82a270df45849983b20840b97, type: 3}
@@ -1490,6 +1491,15 @@ MonoBehaviour:
   - m_SceneAsset: {fileID: 102900000, guid: 9b84110c173e7ef46b35851632f9fdbf, type: 3}
     m_IsDirty: 0
     m_ScenePath: Assets/Scenes/Bosses/Golem.unity
+  - m_SceneAsset: {fileID: 102900000, guid: 6e29140228426ef4c91e9c5c1b6fe903, type: 3}
+    m_IsDirty: 0
+    m_ScenePath: Assets/Scenes/Bosses/Reaper.unity
+  - m_SceneAsset: {fileID: 102900000, guid: b5352b205b64049459c039c8eb9f131c, type: 3}
+    m_IsDirty: 0
+    m_ScenePath: Assets/Scenes/Bosses/Archer.unity
+  - m_SceneAsset: {fileID: 102900000, guid: f8927bc79b0308241ac9ecf25d596400, type: 3}
+    m_IsDirty: 0
+    m_ScenePath: Assets/Scenes/Bosses/Mage.unity
   shopScene:
   - m_SceneAsset: {fileID: 102900000, guid: 8a95e54c012075c4eadac20fc68e2a93, type: 3}
     m_IsDirty: 0

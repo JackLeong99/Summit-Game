@@ -32,7 +32,6 @@ public class RockProjectile : ProjectileBase
 
     public override void OnTriggerEnter(Collider other)
     {
-        Debug.Log("Rock collided with: " + other.tag);
         switch (other.tag) 
         {
             case "Player":
