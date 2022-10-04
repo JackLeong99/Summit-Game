@@ -7,9 +7,9 @@ public class OrbSpawner : MonoBehaviour
     public GameObject orbPrefab;
     public GameObject oasisOrbPrefab;
     public GameObject oasisHealingPrefab;
-    public int minXPos=0;
+    public int minXPos=-50;
     public int maxXPos=50;
-    public int minZPos=0;
+    public int minZPos=-50;
     public int maxZPos=50;
 
     private int currentOrbsSpawned;
@@ -47,16 +47,12 @@ public class OrbSpawner : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+         OrbCreation();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetButtonDown("Teleport"))
-        {
-            OrbCreation();
-        }
         if(disableShield)
         {
             timeForBossToHeal-=Time.deltaTime;
@@ -106,6 +102,7 @@ public class OrbSpawner : MonoBehaviour
     public void DestroyShield()
     {
         Destroy(GameObject.FindGameObjectWithTag("shield")); //or whatever tag it has
+        Destroy(gameObject);
     }
 
     public void Failure()
@@ -114,5 +111,6 @@ public class OrbSpawner : MonoBehaviour
         //mage heals. Not sure if we have heal for boss and how to reference it
         Destroy(GameObject.FindGameObjectWithTag("oasis"));
         disableShield=true;
+        Destroy(gameObject);
     }
 }

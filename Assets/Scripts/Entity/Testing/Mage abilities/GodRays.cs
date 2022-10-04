@@ -20,13 +20,18 @@ public class GodRays : MonoBehaviour
 
     public GameObject ray;
 
-    public void Update()
+    public void Start()
+    {
+        StartCoroutine(doRays());
+    }
+
+    /*public void Update()
     {
         if (Input.GetKeyDown("h")) 
         {
             StartCoroutine(doRays());
         }
-    }
+    }*/
     public IEnumerator doRays()
     {
         GameObject target = GameManager.instance.player;
@@ -51,10 +56,11 @@ public class GodRays : MonoBehaviour
         }
 
         yield return new WaitForSeconds(duration);
-
+        Destroy(gameObject);
         foreach (var rays in damageRayList) 
         {
             Destroy(rays);
         }
+        
     }
 }
