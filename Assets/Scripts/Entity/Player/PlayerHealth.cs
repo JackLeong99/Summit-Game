@@ -7,6 +7,7 @@ using StarterAssets;
 
 public class PlayerHealth : MonoBehaviour
 {
+    public ThirdPersonController controller;
     public float maxHealth;
     public float currentHealth;
     public float defence;
