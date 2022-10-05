@@ -86,7 +86,7 @@ namespace StarterAssets
 		private int _animIDFreeFall;
 		private int _animIDMotionSpeed;
 
-		private Animator _animator;
+		public Animator _animator;
 
 		private CharacterController _controller;
 
