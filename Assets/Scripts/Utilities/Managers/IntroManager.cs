@@ -16,9 +16,12 @@ public class IntroManager : MonoBehaviour
     {
         while (GameManager.instance.inLoading) { yield return null; }
 
+        yield return new WaitForSeconds(1.2f);
+
         for (int i = 0; i < introDialogue.Count; i++)
         {
             yield return AnnouncementHandler.instance.Announcement(introDialogue[i], introDuration[i]);
+            yield return new WaitForSeconds(1);
         }
 
         yield return new WaitForEndOfFrame();

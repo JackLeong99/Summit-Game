@@ -695,6 +695,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 845075122}
     m_Modifications:
+    - target: {fileID: 326613920886555689, guid: 56799dd9a5164d14eb506ce7b87c17e5, type: 3}
+      propertyPath: state
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2649803870162256538, guid: 56799dd9a5164d14eb506ce7b87c17e5, type: 3}
       propertyPath: m_Name
       value: Teleporter

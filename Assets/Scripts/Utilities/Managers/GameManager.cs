@@ -33,7 +33,7 @@ public class GameManager : MonoBehaviour
     public List<SceneReference> introScene;
     public List<SceneReference> testScenes;
 
-    private List<SceneReference> selectableScenes;
+    private  List<SceneReference> selectableScenes;
 
     public void Awake()
     {
@@ -50,7 +50,7 @@ public class GameManager : MonoBehaviour
         fade = GameObject.FindWithTag("FadeController").GetComponent<FadeController>();
         input = GameObject.FindWithTag("EventSystem").GetComponent<StarterAssetsInputs>();
 
-        selectableScenes = bossScenes;
+        selectableScenes = new List<SceneReference>(bossScenes);
     }
 
     public IEnumerator LoadStarting()
@@ -157,7 +157,7 @@ public class GameManager : MonoBehaviour
                 finalReady = true;
                 break;
             case bool z when selectableScenes.Count < 1:
-                selectableScenes = bossScenes;
+                selectableScenes = new List<SceneReference>(bossScenes);
                 break;
         }
 
