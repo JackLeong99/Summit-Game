@@ -31,7 +31,7 @@ public class AbilityState : BaseState
         {
             case AnimationState.Done:
                 animationActive = AnimationState.Accepted;
-                //Debug.Log("After: " + animationActive);
+                Debug.Log("After: " + animationActive);
                 boss.StartCoroutine(SwapState(nextState != null ? nextState : boss.baseState, delay));
                 break;
         }
@@ -65,7 +65,7 @@ public class AbilityState : BaseState
 
     public virtual IEnumerator SwapState(BossState state, float delay)
     {
-        //Debug.Log("Swapped to " + state);
+        Debug.Log("Swapped to " + state);
         yield return new WaitForSeconds(delay);
         boss.ChangeState(state);
     }

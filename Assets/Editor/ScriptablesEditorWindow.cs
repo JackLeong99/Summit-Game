@@ -1,7 +1,6 @@
 ﻿using System.Linq;
 using UnityEngine;
 using UnityEditor;
-using System.Diagnostics;
 
 public class SriptablesEditorWindow : EditorWindow
 {
@@ -152,8 +151,6 @@ public class SriptablesEditorWindow : EditorWindow
                 AssetDatabase.CreateAsset(newScriptable, activePath + "/" + scriptableName + ".asset");
                 AssetDatabase.SaveAssets();
                 AssetDatabase.Refresh();
-
-                Process p = Process.Start("notepad.exe");
             }
         }
         EditorGUILayout.EndHorizontal();
