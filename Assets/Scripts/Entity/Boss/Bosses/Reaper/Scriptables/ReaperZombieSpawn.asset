@@ -14,11 +14,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animation: 
   soundEvent: 
-  animationActive: 0
+  animationActive: 1
   delay: 0
   nextState: {fileID: 0}
   spawnSoundEvent: 
-  spawnLength: 0
+  spawnLength: 0.2
   layerMask:
     serializedVersion: 2
     m_Bits: 64

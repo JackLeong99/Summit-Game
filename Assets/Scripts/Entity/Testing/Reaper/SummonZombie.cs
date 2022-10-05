@@ -24,17 +24,12 @@ public class SummonZombie : MonoBehaviour
     void Start()
     {
         zombieArray = new GameObject[maxZombies];
+        scuffedPositionSetBoss = GameObject.FindGameObjectWithTag("enemyHitbox");
         transform.position = scuffedPositionSetBoss.transform.position;
+        transform.forward = scuffedPositionSetBoss.transform.forward;
+        transform.rotation = scuffedPositionSetBoss.transform.rotation;
         Summon();
     }
-
-    // private void Update()
-    // {
-    //    if (Input.GetKeyDown("z")) 
-    //    {
-    //         Summon();
-    //    }
-    // }
 
     public void Summon()
     {
