@@ -9,7 +9,17 @@ public class ShopHandler : MonoBehaviour
 
     public void BuyItem()
     {
-        //switch ()
-        item.acquire();
+        switch (true) 
+        {
+            case bool x when Inventory.instance.gold >= cost:
+                Inventory.instance.gold -= cost;
+                item.acquire();
+                break;
+        }
+    }
+
+    public void setCost() 
+    {
+        cost = item.cost;
     }
 }
