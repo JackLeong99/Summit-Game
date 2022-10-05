@@ -33,7 +33,7 @@ public class GameManager : MonoBehaviour
     public List<SceneReference> introScene;
     public List<SceneReference> testScenes;
 
-    private List<SceneReference> selectableScenes;
+    private  List<SceneReference> selectableScenes;
 
     public void Awake()
     {
