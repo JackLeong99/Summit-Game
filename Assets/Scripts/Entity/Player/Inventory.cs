@@ -55,6 +55,7 @@ public class Inventory : MonoBehaviour
     public List<OnHitEffect> abilityOnHitEffects = new List<OnHitEffect>();
     //TODO on attack effects ( less powerful onHitEffects for more frequent attacks ie. basic attack)
     //public List<OnHitEffect> OnAttackEffects = new List<OnHitEffects>();
+    public PassiveItem keyItem;
 
     private void Start()
     {
