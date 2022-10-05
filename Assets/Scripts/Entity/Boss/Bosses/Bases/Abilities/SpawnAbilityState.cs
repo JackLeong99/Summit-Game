@@ -12,7 +12,7 @@ public class SpawnAbilityState : AbilityState
     public float spawnLength;
     public LayerMask layerMask = 6;
     public SpawnPosition spawnPos = SpawnPosition.Ground;
-    public enum SpawnPosition { Ground, Target }
+    public enum SpawnPosition { Ground, Target, Random }
 
     [Header("References")]
     public GameObject spawnableObject;
