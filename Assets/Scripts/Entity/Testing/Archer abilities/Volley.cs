@@ -7,17 +7,7 @@ public class Volley : MonoBehaviour
     public float damagePerTick;
     public float timeBetweenTicks;
     public float tickCounter = 0;
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 
     public void OnTriggerStay(Collider other)
     {

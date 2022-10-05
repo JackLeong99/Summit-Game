@@ -13,6 +13,7 @@ public class PlayerHealth : MonoBehaviour
     public float shakeScale;
     [HideInInspector]
     public bool invulnerable = false;
+    public float deathDuration = 4;
 
     public void Start()
     {
@@ -26,6 +27,7 @@ public class PlayerHealth : MonoBehaviour
         }
         AkSoundEngine.PostEvent("Player_Damage", gameObject);
         CameraListener.instance.CameraShake(damage * shakeScale, 0.25f);
+        UIDamageIn.instance.DamageVis();
         damage -= defence;
         damage = Mathf.Clamp(damage, 0f, Mathf.Infinity);
         switch (true) 
@@ -34,7 +36,7 @@ public class PlayerHealth : MonoBehaviour
                 currentHealth -= damage;
                 break;
             default:
-                GameManager.instance.LoadDelegate(GameManager.instance.OnDeath());
+                StartCoroutine(Death());
                 break;
         }
     }
@@ -43,6 +45,17 @@ public class PlayerHealth : MonoBehaviour
     {
         currentHealth += healing;
         currentHealth = Mathf.Clamp(currentHealth, 0f, maxHealth);
+    }
+    
+    public IEnumerator Death()
+    {
+        invulnerable = true;
+        controller._Inactionable = true;
+        controller._animator.SetTrigger("Death");
+        yield return new WaitForSeconds(controller._animator.GetCurrentAnimatorStateInfo(0).length * 0.5f);
+        yield return AnnouncementHandler.instance.Announcement("You Died.", deathDuration);
+        HealthbarManager.instance.ClearBoss();
+        GameManager.instance.LoadDelegate(GameManager.instance.OnDeath()); //to be moved to whatever is handling health
     }
 
     public float GetPlayerHealth()

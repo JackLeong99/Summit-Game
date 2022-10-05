@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class IntroManager : MonoBehaviour
 {
-    public List<string> introDialogue;
-    public List<int> introDuration;
+    public AnnouncementIdentity identity;
+    public float waitUntil;
 
     public void Start()
     {
@@ -16,12 +16,12 @@ public class IntroManager : MonoBehaviour
     {
         while (GameManager.instance.inLoading) { yield return null; }
 
-        yield return new WaitForSeconds(1.2f);
+        yield return new WaitForSeconds(waitUntil);
 
-        for (int i = 0; i < introDialogue.Count; i++)
+        foreach (var item in identity.announcement)
         {
-            yield return AnnouncementHandler.instance.Announcement(introDialogue[i], introDuration[i]);
-            yield return new WaitForSeconds(1);
+            yield return AnnouncementHandler.instance.Announcement(item.text, item.duration);
+            yield return new WaitForSeconds(item.duration);
         }
 
         yield return new WaitForEndOfFrame();

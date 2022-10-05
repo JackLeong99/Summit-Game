@@ -28,10 +28,13 @@ public class GameManager : MonoBehaviour
     public List<SceneReference> bossScenes;
 
     [Header("Unique Scene Handling")]
-    public List<SceneReference> shopScene;
-    public List<SceneReference> deathScene;
-    public List<SceneReference> introScene;
+    public SceneReference shopScene;
+    public SceneReference deathScene;
+    public SceneReference finalScene;
+    public SceneReference introScene;
+    public SceneReference EndingScene;
     public List<SceneReference> testScenes;
+
 
     private  List<SceneReference> selectableScenes;
 
@@ -81,7 +84,7 @@ public class GameManager : MonoBehaviour
 
         List<AsyncOperation> scenesLoading = SceneHandler.SwapScenes(introScene, exclusionScenes);
 
-        yield return StartCoroutine(LoadProgression(scenesLoading, introScene[0]));
+        yield return StartCoroutine(LoadProgression(scenesLoading, introScene));
     }
 
     public IEnumerator QuitGame()
@@ -138,7 +141,7 @@ public class GameManager : MonoBehaviour
         yield return StartCoroutine(StartLoad());
 
         List<AsyncOperation> scenesLoading = SceneHandler.SwapScenes(shopScene, exclusionScenes);
-        yield return StartCoroutine(LoadProgression(scenesLoading, shopScene[0]));
+        yield return StartCoroutine(LoadProgression(scenesLoading, shopScene));
     }
 
     public IEnumerator LoadBoss(bool firstLoad)
@@ -174,7 +177,7 @@ public class GameManager : MonoBehaviour
 
         List<AsyncOperation> scenesLoading = SceneHandler.ReloadScene(gameScenes[0]);
         scenesLoading = scenesLoading.Concat(SceneHandler.SwapScenes(deathScene, exclusionScenes)).ToList();
-        yield return StartCoroutine(LoadProgression(scenesLoading, deathScene[0]));
+        yield return StartCoroutine(LoadProgression(scenesLoading, deathScene));
     }
 
     public void LoadDelegate(IEnumerator coroutine)

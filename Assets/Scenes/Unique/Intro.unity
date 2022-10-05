@@ -349,10 +349,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc98fb7009c396149b7dbb03d7948493, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  introDialogue:
-  - Why seek the mountain?
-  - What could you possibly have to gain...
-  introDuration: 0400000005000000
+  identity: {fileID: 11400000, guid: 832b50ff45cab804793e5b5b43ed3ab9, type: 2}
+  waitUntil: 1.2
 --- !u!224 &1838190530
 RectTransform:
   m_ObjectHideFlags: 0

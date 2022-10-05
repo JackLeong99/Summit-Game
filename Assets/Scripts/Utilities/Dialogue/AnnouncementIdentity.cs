@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu(menuName = "Dialogue/New Announcement")]
+[Serializable]
 public class AnnouncementIdentity : ScriptableObject
 {
     public List<Announcement> announcement;
