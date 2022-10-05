@@ -31,6 +31,7 @@ TagManager:
   - EventSystem
   - FadeController
   - FirePoint
+  - BossProjectile
   layers:
   - Default
   - TransparentFX
@@ -44,8 +45,8 @@ TagManager:
   - Projectile
   - Controller
   - camIgnore
-  - 
-  - 
+  - BossProjectile
+  - Boss
   - 
   - 
   - 
