@@ -1498,21 +1498,29 @@ MonoBehaviour:
     m_IsDirty: 0
     m_ScenePath: Assets/Scenes/Bosses/Mage.unity
   shopScene:
-  - m_SceneAsset: {fileID: 102900000, guid: 8a95e54c012075c4eadac20fc68e2a93, type: 3}
+    m_SceneAsset: {fileID: 102900000, guid: 8a95e54c012075c4eadac20fc68e2a93, type: 3}
     m_IsDirty: 0
     m_ScenePath: Assets/Scenes/Unique/Shopkeeper.unity
   deathScene:
-  - m_SceneAsset: {fileID: 102900000, guid: 1bb9722980abec4408af068bac279356, type: 3}
+    m_SceneAsset: {fileID: 102900000, guid: 1bb9722980abec4408af068bac279356, type: 3}
     m_IsDirty: 0
     m_ScenePath: Assets/Scenes/Unique/Death.unity
+  finalScene:
+    m_SceneAsset: {fileID: 102900000, guid: f3857616f412b5244900de4b07daf1e2, type: 3}
+    m_IsDirty: 0
+    m_ScenePath: Assets/Scenes/Bosses/Final.unity
   introScene:
-  - m_SceneAsset: {fileID: 102900000, guid: d381ca4c95801c24a98d3228cc2bc10b, type: 3}
+    m_SceneAsset: {fileID: 102900000, guid: d381ca4c95801c24a98d3228cc2bc10b, type: 3}
     m_IsDirty: 0
     m_ScenePath: Assets/Scenes/Unique/Intro.unity
-  testScenes:
-  - m_SceneAsset: {fileID: 102900000, guid: 9b84110c173e7ef46b35851632f9fdbf, type: 3}
+  EndingScene:
+    m_SceneAsset: {fileID: 102900000, guid: 317afe1f4eeb4404b8b32f9347d79e5a, type: 3}
     m_IsDirty: 0
-    m_ScenePath: Assets/Scenes/Bosses/Golem.unity
+    m_ScenePath: Assets/Scenes/Unique/Ending.unity
+  testScenes:
+  - m_SceneAsset: {fileID: 102900000, guid: 317afe1f4eeb4404b8b32f9347d79e5a, type: 3}
+    m_IsDirty: 0
+    m_ScenePath: Assets/Scenes/Unique/Ending.unity
 --- !u!1 &2049736186
 GameObject:
   m_ObjectHideFlags: 0

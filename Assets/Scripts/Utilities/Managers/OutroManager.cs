@@ -2,17 +2,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class IntroManager : MonoBehaviour
+public class OutroManager : MonoBehaviour
 {
     public AnnouncementIdentity identity;
     public float waitUntil;
 
     public void Start()
     {
-        StartCoroutine(PlayIntro());
+        StartCoroutine(PlayOutro());
     }
 
-    public IEnumerator PlayIntro()
+    public IEnumerator PlayOutro()
     {
         while (GameManager.instance.inLoading) { yield return null; }
 
@@ -25,6 +25,6 @@ public class IntroManager : MonoBehaviour
         }
 
         yield return new WaitForEndOfFrame();
-        GameManager.instance.LoadDelegate(GameManager.instance.LoadBoss(true));
+        GameManager.instance.LoadDelegate(GameManager.instance.QuitGame());
     }
 }
