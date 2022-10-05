@@ -12,10 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 693fedb886d3ebb4b8feebd1a60dc4a9, type: 3}
   m_Name: BasicAttack
   m_EditorClassIdentifier: 
+  itemName: Basic Attack
+  slot: 0
   cooldown: 0.05
   castTime: 0.458
   damage: 20
   chainWindow: 0.3
   attackBox: {fileID: 1548620108195507319, guid: 1ffb75d4023a5164495d05dcfb564217, type: 3}
-  animationTime: 0.458
+  animationTime: 0.46
   attackState: 0

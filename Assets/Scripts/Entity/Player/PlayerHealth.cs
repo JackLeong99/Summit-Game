@@ -7,27 +7,16 @@ using StarterAssets;
 
 public class PlayerHealth : MonoBehaviour
 {
-    public ThirdPersonController controller;
-    private Dodge dodge;
     public float maxHealth;
     public float currentHealth;
+    public float defence;
+    public float shakeScale;
+    [HideInInspector]
     public bool invulnerable = false;
     public float deathDuration = 4;
 
-    //added at my own liberty- figure it'll be useful down the line.
-    public float defence = 0f;
-
-    //Used by DecreaseEnemyAttack power-up
-    private bool lowerdamage=false;
-
-
-    private void Awake()
+    public void Start()
     {
-        dodge = GetComponent<Dodge>();
-    }
-    void Start()
-    {
-        //prevents bugs- always start with max hp- can't set to start higher than max.
         currentHealth = maxHealth;
     }
 
@@ -36,28 +25,28 @@ public class PlayerHealth : MonoBehaviour
         {
             return;
         }
-
-        if (currentHealth > 0){
-            if(lowerdamage)
-            {
-                damage-=5; //we can change this. I was not sure how much to decrease by
-            }
-            //Not healing if defence stat bigger than potential damage taken.
-            if(damage - defence > 0){
-                currentHealth = currentHealth - damage + defence;
-                UIDamageIn.instance.DamageVis();
-            }
-            
-        }
         AkSoundEngine.PostEvent("Player_Damage", gameObject);
-        CameraListener.instance.CameraShake(damage, 0.25f);
-
-        if (currentHealth <= 0)
+        CameraListener.instance.CameraShake(damage * shakeScale, 0.25f);
+        UIDamageIn.instance.DamageVis();
+        damage -= defence;
+        damage = Mathf.Clamp(damage, 0f, Mathf.Infinity);
+        switch (true) 
         {
-            StartCoroutine(Death());
+            case bool x when currentHealth - damage > 0:
+                currentHealth -= damage;
+                break;
+            default:
+                StartCoroutine(Death());
+                break;
         }
     }
 
+    public void healDamage(float healing)
+    {
+        currentHealth += healing;
+        currentHealth = Mathf.Clamp(currentHealth, 0f, maxHealth);
+    }
+    
     public IEnumerator Death()
     {
         invulnerable = true;
@@ -69,33 +58,8 @@ public class PlayerHealth : MonoBehaviour
         GameManager.instance.LoadDelegate(GameManager.instance.OnDeath()); //to be moved to whatever is handling health
     }
 
-//Doesn't work for some reason- revisit.
-    public void healDamage(float healing){
-
-        currentHealth += healing;
-        //Prevents Overhealing
-        if (currentHealth >= maxHealth){
-            currentHealth = maxHealth;
-        }
-        //System.Console.WriteLine("current health = " + currentHealth + "after taking " + healing);
-    }
-
-    //public void DecreaseDamage()
-    //{
-    //    if(lowerdamage==true)
-    //    {
-    //        lowerdamage=false;
-    //    }
-    //    else
-    //    {
-    //       lowerdamage=true; 
-    //    }
-    //}
-
-    //used by gamemanger
     public float GetPlayerHealth()
     {
         return currentHealth;
-
     }
 }    

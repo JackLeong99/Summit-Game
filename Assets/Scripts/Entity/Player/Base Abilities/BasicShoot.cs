@@ -10,6 +10,7 @@ public class BasicShoot : ActiveAbility
     private GameObject player;
     private ThirdPersonController controller;
     private Animator animator;
+    private Inventory inventory;
     [SerializeField]
     private float chargeTime;
     [SerializeField]
@@ -21,14 +22,15 @@ public class BasicShoot : ActiveAbility
     private float damage;
     [SerializeField]
     private float projectileVelocity;
-    [SerializeField]
-    private List<OnHitEffect> OnHitEffects = new List<OnHitEffect>();
+    //[SerializeField]
+    //private List<OnHitEffect> OnHitEffects = new List<OnHitEffect>();
 
     public override void effect()
     {
         player = GameManager.instance.player;
         controller = GameManager.instance.player.GetComponent<ThirdPersonController>();
         animator = GameManager.instance.player.GetComponent<Animator>();
+        inventory = GameManager.instance.player.GetComponent<Inventory>();
         FirePoint = GameObject.FindGameObjectWithTag("FirePoint").transform;
         GameManager.instance.player.GetComponent<PlayerAbilities>().StartCoroutine(doEffect());
     }
@@ -57,7 +59,8 @@ public class BasicShoot : ActiveAbility
             destination = ray.GetPoint(1000);
         }
         var projectileObj = Instantiate(projectile, FirePoint.position, Quaternion.identity) as GameObject;
-        projectileObj.GetComponent<ProjectileBase>().SetOnHitEffect(OnHitEffects);
+        //projectileObj.GetComponent<ProjectileBase>().SetOnHitEffect(OnHitEffects);
+        projectileObj.GetComponent<ProjectileBase>().SetOnHitEffect(inventory.abilityOnHitEffects);
         projectileObj.GetComponent<ProjectileBase>().SetDamage(damage);
         projectileObj.GetComponent<Rigidbody>().velocity = (destination - FirePoint.position).normalized * projectileVelocity;
         //if (useGrav)
@@ -67,6 +70,5 @@ public class BasicShoot : ActiveAbility
         yield return new WaitForSeconds(shootTime);
         controller.LockCameraPosition = false;
         controller._Inactionable = false;
-        //TODO set cd
     }
 }

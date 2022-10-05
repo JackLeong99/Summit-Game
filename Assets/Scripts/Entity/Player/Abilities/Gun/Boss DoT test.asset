@@ -13,10 +13,6 @@ MonoBehaviour:
   m_Name: Boss DoT test
   m_EditorClassIdentifier: 
   rate: 0.5
-  damage:
-  - 5
-  - 5
-  - 5
-  - 5
-  - 5
-  - 5
+  damage: 5
+  numberOfTicks: 5
+  item: {fileID: 11400000, guid: 90c13b3e8e6eaca44a6983172c166464, type: 2}

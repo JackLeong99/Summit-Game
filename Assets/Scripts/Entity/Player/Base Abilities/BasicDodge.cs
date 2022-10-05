@@ -46,7 +46,7 @@ public class BasicDodge : ActiveAbility
                 player.GetComponent<PlayerHealth>().invulnerable = false;
                 player.GetComponent<KnockbackReciever>().invulnerable = false;
             }
-            Vector3 dir = (dodgeCurve.Evaluate(timer) * player.transform.forward);
+            Vector3 dir = (dodgeCurve.Evaluate(timer) * (player.transform.forward - player.transform.up));
             player.GetComponent<CharacterController>().Move(dir * (Time.deltaTime*(distance / dodgeTimer)));
             timer += Time.deltaTime;
             yield return null;

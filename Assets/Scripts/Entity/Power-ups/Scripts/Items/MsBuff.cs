@@ -4,7 +4,7 @@ using UnityEngine;
 using StarterAssets;
 
 [CreateAssetMenu(menuName = "Powerups/MovementSpeedBuff")]
-public class MsBuff : ItemBase
+public class MsBuff : PassiveItem
 {
     public float amount;
     public override void effect()

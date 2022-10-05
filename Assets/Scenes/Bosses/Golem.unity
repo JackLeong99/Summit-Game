@@ -689,9 +689,13 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 931911070, guid: 15cb9288e8231f9419be19f0ae9ecad5, type: 3}
-      propertyPath: m_Layer
-      value: 13
+    - target: {fileID: 1442055162, guid: 15cb9288e8231f9419be19f0ae9ecad5, type: 3}
+      propertyPath: weakSpot
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 221357629289508930, guid: 15cb9288e8231f9419be19f0ae9ecad5, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 15.5664835
       objectReference: {fileID: 0}
     - target: {fileID: 44131078284581809, guid: 15cb9288e8231f9419be19f0ae9ecad5, type: 3}
       propertyPath: m_Layer
