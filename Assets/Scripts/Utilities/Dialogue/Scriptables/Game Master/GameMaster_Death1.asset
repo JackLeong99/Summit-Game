@@ -12,4 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 05a14dac5ec7fbd43924a10f2c3fe4f7, type: 3}
   m_Name: GameMaster_Death1
   m_EditorClassIdentifier: 
-  announcement: []
+  announcement:
+  - text: "No\u2026"
+    duration: 4
+    delay: 0.4
+  - text: No!
+    duration: 1
+    delay: 0

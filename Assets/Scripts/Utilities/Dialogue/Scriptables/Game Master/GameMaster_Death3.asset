@@ -12,4 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 05a14dac5ec7fbd43924a10f2c3fe4f7, type: 3}
   m_Name: GameMaster_Death3
   m_EditorClassIdentifier: 
-  announcement: []
+  announcement:
+  - text: "You\u2019ll destroy\u2026"
+    duration: 4
+    delay: 0.4
+  - text: Everything.
+    duration: 2
+    delay: 0

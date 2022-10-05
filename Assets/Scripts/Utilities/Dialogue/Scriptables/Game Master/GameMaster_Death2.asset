@@ -12,4 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 05a14dac5ec7fbd43924a10f2c3fe4f7, type: 3}
   m_Name: GameMaster_Death2
   m_EditorClassIdentifier: 
-  announcement: []
+  announcement:
+  - text: "This\u2026"
+    duration: 3
+    delay: 0.4
+  - text: Is not...
+    duration: 3
+    delay: 0.4
+  - text: The end.
+    duration: 2
+    delay: 0
