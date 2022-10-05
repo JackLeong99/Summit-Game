@@ -18,6 +18,7 @@ public class ShopManager : MonoBehaviour
     public Vector3 spacing;
 
     public ScriptableObject[] itemList;
+    public ItemBase storyItem;
 
     public void Start()
     {
@@ -33,6 +34,13 @@ public class ShopManager : MonoBehaviour
         {
             shopStands.Add(Instantiate(shopPrefab, gameObject.transform.position + (spacing * i), Quaternion.identity, gameObject.transform));
             shopStands[i].GetComponent<ShopHandler>().item = (ItemBase)itemList[Random.Range(0, itemList.Length)];
+        }
+
+        switch (GameManager.instance.finalReady)
+        {
+            case true:
+                shopStands[0].GetComponent<ShopHandler>().item = storyItem;
+                break;
         }
     }
 

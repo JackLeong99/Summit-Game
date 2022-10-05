@@ -2,15 +2,18 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(menuName = "Powerups/SlowShotBuff")]
-public class UtilGun : ItemBase
+[CreateAssetMenu(menuName = "Powerups/testDotOnHit")]
+public class UtilGun : PassiveItem
 {
-    public float bonusDamage;
-    public float reducedSpeed;
+    public OnHitEffect hitEffect;
+    public override void acquire()
+    {
+        base.acquire();
+    }
+
     public override void effect()
     {
-        GameManager.instance.player.GetComponent<ThirdPersonShooting>().bulletDamage += bonusDamage;
-        GameManager.instance.player.GetComponent<ThirdPersonShooting>().projectileSpeed -= reducedSpeed;
-        GameManager.instance.player.GetComponent<ThirdPersonShooting>().useGrav = true;
+        Inventory inv = GameManager.instance.player.GetComponent<Inventory>();
+        inv.abilityOnHitEffects.Add(hitEffect);
     }
 }

@@ -69,7 +69,7 @@ public class zombieExplosion : MonoBehaviour
             {
                 // linear falloff of effect
                 float proximity = (location - dmgFren.transform.position).magnitude;
-                float effect = 1 - (proximity / radius);
+                float effect = Mathf.Clamp(1 - (proximity / radius), 1, explosionDamage);
 
                 dmgFren.takeDamage(damage * effect);
             
@@ -81,10 +81,23 @@ public class zombieExplosion : MonoBehaviour
                 {
                     // linear falloff of effect
                     float proximity = (location - receiver.transform.position).magnitude;
+                    //gives magnitude / radius - percentage ratio.
+
+                    //This method gives = explosion damage every time.
+                    //float effect = Mathf.Clamp(1 - (proximity / radius), 1, explosionDamage);
+                    
+                    
+                    //This method works but causes a lag spike.
                     float effect = 1 - (proximity / radius);
+                    if(effect < 0)
+                    {
+                        effect *= -1;
+                    }
 
                     //position is placeholder
-                    receiver.PassDamage(damage * effect, transform.position);
+                    float[] effectPasser = new float[1];
+                    effectPasser[0] = damage * effect;
+                    receiver.PassDamage(effectPasser, 1, transform.position);
                 
                 }
                 else
@@ -94,7 +107,7 @@ public class zombieExplosion : MonoBehaviour
                     if(health != null)
                     {
                         float proximity = (location - health.transform.position).magnitude;
-                        float effect = 1 - (proximity / radius);
+                        float effect = Mathf.Clamp(1 - (proximity / radius), 1, explosionDamage);
 
                         health.takeDamage(damage * effect);
                     }

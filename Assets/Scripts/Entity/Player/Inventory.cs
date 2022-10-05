@@ -1,0 +1,145 @@
+using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
+using UnityEngine;
+using StarterAssets;
+
+public class Inventory : MonoBehaviour
+{
+    public Dictionary<ItemBase, int> items = new Dictionary<ItemBase, int>(); 
+
+    [HideInInspector]
+    public ThirdPersonController controller;
+    [HideInInspector]
+    public PlayerHealth playerHealth;
+    [HideInInspector]
+    public KnockbackReciever knockback;
+    [HideInInspector]
+    public PlayerAbilities abilities;
+
+    private float 
+        base_SprintSpeed,
+        base_WalkSpeed,
+        base_Health,
+        base_Defense;
+
+    [HideInInspector]
+    public List<ActiveAbility> base_ActiveAbilities = new List<ActiveAbility>();
+
+    [HideInInspector]
+    public float
+        walkSpeed,
+        sprintSpeed,
+        health,
+        defense,
+        physicalDamage,
+        abilityDamage,
+        bonusProjectileVelocity,
+        knockbackReduction,
+        cooldownReduction;
+
+    public enum StatType 
+    {
+        walkSpeed,
+        sprintSpeed,
+        health,
+        defense,
+        physicalDamage,
+        abilityDamage,
+        bonusProjectileVelocity,
+        knockbackReduction,
+        cooldownReduction
+    }
+
+    //[HideInInspector]
+    public List<OnHitEffect> abilityOnHitEffects = new List<OnHitEffect>();
+    //TODO on attack effects ( less powerful onHitEffects for more frequent attacks ie. basic attack)
+    //public List<OnHitEffect> OnAttackEffects = new List<OnHitEffects>();
+    public PassiveItem keyItem;
+
+    private void Start()
+    {
+        controller = GetComponent<ThirdPersonController>();
+        playerHealth = GetComponent<PlayerHealth>();
+        knockback = GetComponent<KnockbackReciever>();
+        abilities = GetComponent<PlayerAbilities>();
+
+        initializeValues();
+    }
+
+    public void initializeValues() 
+    {
+        base_SprintSpeed = controller.SprintSpeed;
+        base_WalkSpeed = controller.MoveSpeed;
+        base_Health = playerHealth.maxHealth;
+        base_Defense = playerHealth.defence;
+        base_ActiveAbilities = abilities.AbilitySlot;
+    }
+
+    public void resetStats() 
+    {
+        controller.SprintSpeed = base_SprintSpeed;
+        controller.MoveSpeed = base_WalkSpeed;
+        playerHealth.maxHealth = base_Health;
+        playerHealth.defence = base_Defense;
+
+        physicalDamage = 0;
+        abilityDamage = 0;
+        bonusProjectileVelocity = 0;
+        knockbackReduction = 0;
+        cooldownReduction = 0;
+        abilityOnHitEffects = new List<OnHitEffect>();
+        abilities.AbilitySlot = base_ActiveAbilities;
+    }
+
+    public int GetStacks(ItemBase i)
+    {
+        switch (true)
+        {
+            case bool x when items.ContainsKey(i):
+                return items[i];
+            default:
+                return 0;
+        }
+    }
+
+    public void updateStat(StatType type, float val) 
+    {
+        switch (type) 
+        {
+            case StatType.walkSpeed:
+                walkSpeed += val;
+                controller.MoveSpeed = base_WalkSpeed + walkSpeed;
+                break;
+            case StatType.sprintSpeed:
+                sprintSpeed += val;
+                controller.SprintSpeed = base_SprintSpeed + sprintSpeed;
+                break;
+            case StatType.health:
+                health += val;
+                playerHealth.maxHealth = base_Health + health;
+                break;
+            case StatType.defense:
+                defense += val;
+                playerHealth.defence = base_Defense + defense;
+                break;
+            case StatType.physicalDamage:
+                physicalDamage += val;
+                break;
+            case StatType.abilityDamage:
+                abilityDamage += val;
+                break;
+            case StatType.bonusProjectileVelocity:
+                bonusProjectileVelocity += val;
+                break;
+            case StatType.knockbackReduction:
+                knockbackReduction += val;
+                //TODO knockbackreduction
+                break;
+            case StatType.cooldownReduction:
+                cooldownReduction += val;
+                abilities.addCDR(val);
+                break;
+        }
+    }
+}

@@ -8,6 +8,7 @@ public class EnemyDamageReceiver : MonoBehaviour
     public BossStateMachine boss;
     public GameObject onHitParticles;
     public static event Action OnDamageTaken;
+    public bool weakSpot;
     
     void Start() 
     {
@@ -17,6 +18,7 @@ public class EnemyDamageReceiver : MonoBehaviour
     public void PassDamage(float dmg, Vector3 position)
     {
         if (!boss.Alive()) return;
+        if (weakSpot) boss.components.stunState = StunState.Stunned;
         boss.TakeDamage(dmg, position);
         DamageHandler();
     }
@@ -24,6 +26,7 @@ public class EnemyDamageReceiver : MonoBehaviour
     public void PassDamage(float[] dmg, float tickRate, Vector3 position)
     {
         if (!boss.Alive()) return;
+        if (weakSpot) boss.components.stunState = StunState.Stunned;
         boss.TakeDamage(dmg, tickRate, position);
         DamageHandler();
     }
