@@ -17,7 +17,7 @@ public class ShopManager : MonoBehaviour
     public int standCount;
     public Vector3 spacing;
 
-    public ScriptableObject[] itemList;
+    public ItemBase[] itemList;
     public ItemBase storyItem;
 
     public void Start()
@@ -33,13 +33,15 @@ public class ShopManager : MonoBehaviour
         for (int i = 0; i < standCount; i++)
         {
             shopStands.Add(Instantiate(shopPrefab, gameObject.transform.position + (spacing * i), Quaternion.identity, gameObject.transform));
-            shopStands[i].GetComponent<ShopHandler>().item = (ItemBase)itemList[Random.Range(0, itemList.Length)];
+            shopStands[i].GetComponent<ShopHandler>().item = itemList[Random.Range(0, itemList.Length)];
+            shopStands[i].GetComponent<ShopHandler>().setCost();
         }
 
         switch (GameManager.instance.finalReady)
         {
             case true:
                 shopStands[0].GetComponent<ShopHandler>().item = storyItem;
+                shopStands[0].GetComponent<ShopHandler>().setCost();
                 break;
         }
     }

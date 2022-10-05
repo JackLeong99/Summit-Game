@@ -26,7 +26,7 @@ public class Inspector : MonoBehaviour
                     ShopManager.instance.DisplayText(true);
 
                     var stand = hit.collider.gameObject.GetComponent<ShopHandler>();
-                    ShopManager.instance.inspectDisplay.text = stand.item.name + "\nPrice: " + stand.cost;
+                    ShopManager.instance.inspectDisplay.text = stand.item.itemName + "\nPrice: " + stand.cost;
 
                     if (Input.GetKeyDown(KeyCode.X))
                     {

@@ -6,6 +6,8 @@ using StarterAssets;
 
 public class Inventory : MonoBehaviour
 {
+    public static Inventory instance;
+
     public Dictionary<ItemBase, int> items = new Dictionary<ItemBase, int>(); 
 
     [HideInInspector]
@@ -55,7 +57,13 @@ public class Inventory : MonoBehaviour
     public List<OnHitEffect> abilityOnHitEffects = new List<OnHitEffect>();
     //TODO on attack effects ( less powerful onHitEffects for more frequent attacks ie. basic attack)
     //public List<OnHitEffect> OnAttackEffects = new List<OnHitEffects>();
+    public int gold;
     public PassiveItem keyItem;
+
+    private void Awake()
+    {
+        instance = this;
+    }
 
     private void Start()
     {
