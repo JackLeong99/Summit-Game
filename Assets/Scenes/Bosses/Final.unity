@@ -122,7 +122,7 @@ NavMeshSettings:
     preserveTilesOutsideBounds: 0
     debug:
       m_Flags: 0
-  m_NavMeshData: {fileID: 0}
+  m_NavMeshData: {fileID: 23800000, guid: a4e4a4b84f288fe408ed2e9d65348402, type: 2}
 --- !u!1 &607704049
 GameObject:
   m_ObjectHideFlags: 0
@@ -1411,6 +1411,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 13
       objectReference: {fileID: 0}
+    - target: {fileID: 5564621795753800860, guid: 15cb9288e8231f9419be19f0ae9ecad5, type: 3}
+      propertyPath: attributes
+      value: 
+      objectReference: {fileID: 11400000, guid: ac594a82966514554aeeef3a5d2ee619, type: 2}
     - target: {fileID: 5571649161387442251, guid: 15cb9288e8231f9419be19f0ae9ecad5, type: 3}
       propertyPath: m_Layer
       value: 13
@@ -2425,6 +2429,10 @@ PrefabInstance:
     - target: {fileID: 47039091150516078, guid: 8818009a1b37f4f41bfe96db18a4dd2a, type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2677657979296242475, guid: 8818009a1b37f4f41bfe96db18a4dd2a, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 95
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8818009a1b37f4f41bfe96db18a4dd2a, type: 3}

@@ -72,7 +72,6 @@ public class zombieExplosion : MonoBehaviour
                 float effect = Mathf.Clamp(1 - (proximity / radius), 1, explosionDamage);
 
                 dmgFren.takeDamage(damage * effect);
-            
             }
             else
             {
@@ -96,9 +95,8 @@ public class zombieExplosion : MonoBehaviour
 
                     //position is placeholder
                     float[] effectPasser = new float[1];
-                    effectPasser[0] = damage * effect;
+                    effectPasser[0] = Mathf.Round(damage * effect);
                     receiver.PassDamage(effectPasser, 1, transform.position);
-                
                 }
                 else
                 {
