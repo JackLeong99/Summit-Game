@@ -22,10 +22,10 @@ public class Teleporter : MonoBehaviour
                         Destroy(gameObject);
                         break;
                     case TeleportState.Final:
-                        //GameManager.instance.LoadDelegate
+                        GameManager.instance.LoadDelegate(GameManager.instance.LoadFinal());
                         break;
                     case TeleportState.Outro:
-                        //GameManager.instance.LoadDelegate
+                        GameManager.instance.LoadDelegate(GameManager.instance.LoadOutro());
                         break;
                 }
                 break;

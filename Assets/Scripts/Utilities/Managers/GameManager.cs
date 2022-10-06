@@ -32,7 +32,7 @@ public class GameManager : MonoBehaviour
     public SceneReference deathScene;
     public SceneReference finalScene;
     public SceneReference introScene;
-    public SceneReference EndingScene;
+    public SceneReference endingScene;
     public List<SceneReference> testScenes;
 
 
@@ -142,6 +142,22 @@ public class GameManager : MonoBehaviour
 
         List<AsyncOperation> scenesLoading = SceneHandler.SwapScenes(shopScene, exclusionScenes);
         yield return StartCoroutine(LoadProgression(scenesLoading, shopScene));
+    }
+
+    public IEnumerator LoadFinal()
+    {
+        yield return StartCoroutine(StartLoad());
+
+        List<AsyncOperation> scenesLoading = SceneHandler.SwapScenes(finalScene, exclusionScenes);
+        yield return StartCoroutine(LoadProgression(scenesLoading, finalScene));
+    }
+
+    public IEnumerator LoadOutro()
+    {
+        yield return StartCoroutine(StartLoad());
+
+        List<AsyncOperation> scenesLoading = SceneHandler.SwapScenes(endingScene, exclusionScenes);
+        yield return StartCoroutine(LoadProgression(scenesLoading, endingScene));
     }
 
     public IEnumerator LoadBoss(bool firstLoad)
