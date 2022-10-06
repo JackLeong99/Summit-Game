@@ -122,7 +122,76 @@ NavMeshSettings:
     preserveTilesOutsideBounds: 0
     debug:
       m_Flags: 0
-  m_NavMeshData: {fileID: 0}
+  m_NavMeshData: {fileID: 23800000, guid: 80fac33085e1b4b93b6ac264d8459b74, type: 2}
+--- !u!1001 &61623709
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 5564621795753800860, guid: b723407ab9dec429ea84736faed19c0c, type: 3}
+      propertyPath: attributes
+      value: 
+      objectReference: {fileID: 11400000, guid: 2471001b7f54b4d90a7f2db615aade44, type: 2}
+    - target: {fileID: 5564621795753800860, guid: b723407ab9dec429ea84736faed19c0c, type: 3}
+      propertyPath: abilities.Array.data[0]
+      value: 
+      objectReference: {fileID: 11400000, guid: 07c13db27e5f5434390bde2b43fcd3e6, type: 2}
+    - target: {fileID: 5564621795753800860, guid: b723407ab9dec429ea84736faed19c0c, type: 3}
+      propertyPath: abilities.Array.data[1]
+      value: 
+      objectReference: {fileID: 11400000, guid: 51a7e0556f3ef4bcc982ff5c05564711, type: 2}
+    - target: {fileID: 6118956715112586494, guid: b723407ab9dec429ea84736faed19c0c, type: 3}
+      propertyPath: m_Name
+      value: MageGolem
+      objectReference: {fileID: 0}
+    - target: {fileID: 6890848393958426180, guid: b723407ab9dec429ea84736faed19c0c, type: 3}
+      propertyPath: m_RootOrder
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6890848393958426180, guid: b723407ab9dec429ea84736faed19c0c, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -12.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 6890848393958426180, guid: b723407ab9dec429ea84736faed19c0c, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.09
+      objectReference: {fileID: 0}
+    - target: {fileID: 6890848393958426180, guid: b723407ab9dec429ea84736faed19c0c, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 12.33
+      objectReference: {fileID: 0}
+    - target: {fileID: 6890848393958426180, guid: b723407ab9dec429ea84736faed19c0c, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 6890848393958426180, guid: b723407ab9dec429ea84736faed19c0c, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6890848393958426180, guid: b723407ab9dec429ea84736faed19c0c, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 6890848393958426180, guid: b723407ab9dec429ea84736faed19c0c, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6890848393958426180, guid: b723407ab9dec429ea84736faed19c0c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6890848393958426180, guid: b723407ab9dec429ea84736faed19c0c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 90
+      objectReference: {fileID: 0}
+    - target: {fileID: 6890848393958426180, guid: b723407ab9dec429ea84736faed19c0c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: b723407ab9dec429ea84736faed19c0c, type: 3}
 --- !u!1 &317173982
 GameObject:
   m_ObjectHideFlags: 0
