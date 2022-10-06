@@ -21,7 +21,7 @@ public class IntroManager : MonoBehaviour
         foreach (var item in identity.announcement)
         {
             yield return AnnouncementHandler.instance.Announcement(item.text, item.duration);
-            yield return new WaitForSeconds(item.duration);
+            yield return new WaitForSeconds(item.delay);
         }
 
         yield return new WaitForEndOfFrame();
