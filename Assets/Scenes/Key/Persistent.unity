@@ -123,6 +123,63 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &21162802
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 21162804}
+  - component: {fileID: 21162803}
+  m_Layer: 0
+  m_Name: WwiseGlobal
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &21162803
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 21162802}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 309de00d26c535341b6e8d3b274f02f6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  InitializationSettings: {fileID: 11400000, guid: 8942d5a96b4d7c344a22860415c96074, type: 2}
+  basePath: 
+  language: 
+  defaultPoolSize: 0
+  lowerPoolSize: 0
+  streamingPoolSize: 0
+  memoryCutoffThreshold: 0
+  monitorPoolSize: 0
+  monitorQueuePoolSize: 0
+  callbackManagerBufferSize: 0
+  spatialAudioPoolSize: 0
+  maxSoundPropagationDepth: 0
+  engineLogging: 0
+--- !u!4 &21162804
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 21162802}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 9
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &119712482
 GameObject:
   m_ObjectHideFlags: 0
@@ -853,7 +910,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 842629238}
-  - component: {fileID: 842629237}
   m_Layer: 0
   m_Name: WwiseGlobal
   m_TagString: Untagged
@@ -861,31 +917,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &842629237
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 842629236}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 309de00d26c535341b6e8d3b274f02f6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  InitializationSettings: {fileID: 11400000, guid: 8942d5a96b4d7c344a22860415c96074, type: 2}
-  basePath: 
-  language: 
-  defaultPoolSize: 0
-  lowerPoolSize: 0
-  streamingPoolSize: 0
-  memoryCutoffThreshold: 0
-  monitorPoolSize: 0
-  monitorQueuePoolSize: 0
-  callbackManagerBufferSize: 0
-  spatialAudioPoolSize: 0
-  maxSoundPropagationDepth: 0
-  engineLogging: 0
 --- !u!4 &842629238
 Transform:
   m_ObjectHideFlags: 0
@@ -1488,15 +1519,9 @@ MonoBehaviour:
   - m_SceneAsset: {fileID: 102900000, guid: 9b84110c173e7ef46b35851632f9fdbf, type: 3}
     m_IsDirty: 0
     m_ScenePath: Assets/Scenes/Bosses/Golem.unity
-  - m_SceneAsset: {fileID: 102900000, guid: 6e29140228426ef4c91e9c5c1b6fe903, type: 3}
+  - m_SceneAsset: {fileID: 102900000, guid: 9b84110c173e7ef46b35851632f9fdbf, type: 3}
     m_IsDirty: 0
-    m_ScenePath: Assets/Scenes/Bosses/Reaper.unity
-  - m_SceneAsset: {fileID: 102900000, guid: b5352b205b64049459c039c8eb9f131c, type: 3}
-    m_IsDirty: 0
-    m_ScenePath: Assets/Scenes/Bosses/Archer.unity
-  - m_SceneAsset: {fileID: 102900000, guid: f8927bc79b0308241ac9ecf25d596400, type: 3}
-    m_IsDirty: 0
-    m_ScenePath: Assets/Scenes/Bosses/Mage.unity
+    m_ScenePath: Assets/Scenes/Bosses/Golem.unity
   shopScene:
     m_SceneAsset: {fileID: 102900000, guid: 8a95e54c012075c4eadac20fc68e2a93, type: 3}
     m_IsDirty: 0
@@ -1513,14 +1538,14 @@ MonoBehaviour:
     m_SceneAsset: {fileID: 102900000, guid: d381ca4c95801c24a98d3228cc2bc10b, type: 3}
     m_IsDirty: 0
     m_ScenePath: Assets/Scenes/Unique/Intro.unity
-  EndingScene:
+  endingScene:
     m_SceneAsset: {fileID: 102900000, guid: 317afe1f4eeb4404b8b32f9347d79e5a, type: 3}
     m_IsDirty: 0
     m_ScenePath: Assets/Scenes/Unique/Ending.unity
   testScenes:
-  - m_SceneAsset: {fileID: 102900000, guid: 9b84110c173e7ef46b35851632f9fdbf, type: 3}
+  - m_SceneAsset: {fileID: 102900000, guid: f3857616f412b5244900de4b07daf1e2, type: 3}
     m_IsDirty: 0
-    m_ScenePath: Assets/Scenes/Bosses/Golem.unity
+    m_ScenePath: Assets/Scenes/Bosses/Final.unity
 --- !u!1 &2049736186
 GameObject:
   m_ObjectHideFlags: 0
