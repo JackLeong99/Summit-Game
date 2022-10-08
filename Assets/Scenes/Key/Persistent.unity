@@ -122,7 +122,7 @@ NavMeshSettings:
     preserveTilesOutsideBounds: 0
     debug:
       m_Flags: 0
-  m_NavMeshData: {fileID: 23800000, guid: 056de62a2e5eeb34191dbb9ac81d7438, type: 2}
+  m_NavMeshData: {fileID: 0}
 --- !u!1 &21162802
 GameObject:
   m_ObjectHideFlags: 0
@@ -1549,9 +1549,9 @@ MonoBehaviour:
     m_IsDirty: 0
     m_ScenePath: Assets/Scenes/Unique/Ending.unity
   testScenes:
-  - m_SceneAsset: {fileID: 102900000, guid: 6e29140228426ef4c91e9c5c1b6fe903, type: 3}
+  - m_SceneAsset: {fileID: 102900000, guid: b5352b205b64049459c039c8eb9f131c, type: 3}
     m_IsDirty: 0
-    m_ScenePath: Assets/Scenes/Bosses/Reaper.unity
+    m_ScenePath: Assets/Scenes/Bosses/Archer.unity
 --- !u!1 &2049736186
 GameObject:
   m_ObjectHideFlags: 0
