@@ -2,7 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
-using UnityEngine.SocialPlatforms.Impl;
+using System.Linq;
+using System;
 
 public class UIItemDisplay : MonoBehaviour
 {
@@ -11,10 +12,16 @@ public class UIItemDisplay : MonoBehaviour
     public TMP_Text gold;
     private string activeItemFormat = "Active Item: {0}";
     public TMP_Text activeItem;
+    private string passiveItemFormat = "{0}: {1}";
+    public TMP_Text passiveItem1;
+
+    private List<String> itemNamesList = new List<String>;
 
 
     private Inventory inventory;
     private PlayerAbilities abilities;
+
+    //make a list of acquired items which can then be read
     // Start is called before the first frame update
 
     private void Awake()
@@ -48,6 +55,10 @@ public class UIItemDisplay : MonoBehaviour
             //Debug.Log(test.gold);
             Debug.Log(abilities.AbilitySlot[3].itemName);
             ItemDisplayUpdate();
+           // foreach (KeyItem item in inventory.items)
+          //  {
+
+           // }
                 }
     }
 
@@ -58,5 +69,26 @@ public class UIItemDisplay : MonoBehaviour
         {
             activeItem.text = string.Format(activeItemFormat, abilities.AbilitySlot[3].itemName);
         }
+    }
+
+    public void GetNewItem(ItemBase item)
+    {
+        if(HaveItemBefore(item.itemName))
+        {
+
+        }
+        passiveItem1.text = string.Format(passiveItemFormat, item.itemName, inventory.GetStacks(item)+1);
+        //int i=inventory.GetStacks(item);
+    }
+    public bool HaveItemBefore(string itemname)
+    {
+        for(int i=0; i< itemNamesList.Count; i++)
+        {
+            if(itemname== itemNamesList[i])
+            {
+                return false;
+            }
+        }
+        return true;
     }
 }
