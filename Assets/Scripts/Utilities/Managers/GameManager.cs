@@ -4,7 +4,7 @@ using UnityEngine;
 using System.Linq;
 using DevLocker.Utils;
 using StarterAssets;
-using UnityEngine.InputSystem;
+using UnityEngine.Events;
 
 public class GameManager : MonoBehaviour
 {
@@ -34,7 +34,6 @@ public class GameManager : MonoBehaviour
     public SceneReference introScene;
     public SceneReference endingScene;
     public List<SceneReference> testScenes;
-
 
     private  List<SceneReference> selectableScenes;
 
@@ -136,11 +135,21 @@ public class GameManager : MonoBehaviour
         yield return fade.FadeIn();
     }
 
-    public IEnumerator LoadShop()
+    public IEnumerator LoadShop(bool firstLoad)
     {
         yield return StartCoroutine(StartLoad());
 
-        List<AsyncOperation> scenesLoading = SceneHandler.SwapScenes(shopScene, exclusionScenes);
+        List<AsyncOperation> scenesLoading = new List<AsyncOperation>();
+
+        switch (true)
+        {
+            case bool x when firstLoad:
+                scenesLoading = scenesLoading.Concat(SceneHandler.LoadScenes(gameScenes)).ToList();
+                exclusionScenes = exclusionScenes.Concat(gameScenes).ToList();
+                break;
+        }
+
+        scenesLoading = scenesLoading.Concat(SceneHandler.SwapScenes(shopScene, exclusionScenes)).ToList();
         yield return StartCoroutine(LoadProgression(scenesLoading, shopScene));
     }
 
@@ -160,7 +169,7 @@ public class GameManager : MonoBehaviour
         yield return StartCoroutine(LoadProgression(scenesLoading, endingScene));
     }
 
-    public IEnumerator LoadBoss(bool firstLoad)
+    public IEnumerator LoadBoss()
     {
         yield return StartCoroutine(StartLoad());
 
@@ -168,10 +177,6 @@ public class GameManager : MonoBehaviour
 
         switch (true)
         {
-            case bool x when firstLoad:
-                scenesLoading = scenesLoading.Concat(SceneHandler.LoadScenes(gameScenes)).ToList();
-                exclusionScenes = exclusionScenes.Concat(gameScenes).ToList();
-                break;
             case bool y when selectableScenes.Count == 1:
                 finalReady = true;
                 break;

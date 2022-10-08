@@ -1,9 +1,10 @@
-﻿using System.Linq;
+using System.Linq;
 using UnityEngine;
 using UnityEditor;
 
 public class SriptablesEditorWindow : EditorWindow
 {
+    protected GUISkin skin;
 
     protected SerializedObject serializedObject;
     protected SerializedProperty serializedProperty;
@@ -24,10 +25,15 @@ public class SriptablesEditorWindow : EditorWindow
 
     protected string sortSearch = "";
 
-    [UnityEditor.MenuItem("Tools/Scriptable Object Editor")]
+    [MenuItem("Tools/Scriptable Object Editor")]
     protected static void ShowWindow()
     {
         GetWindow<SriptablesEditorWindow>("Scriptables Editor");
+    }
+
+    private void OnEnable()
+    {
+        skin = (GUISkin)Resources.Load("ScriptableEditorGUI");
     }
 
     private void OnGUI()
@@ -60,7 +66,7 @@ public class SriptablesEditorWindow : EditorWindow
         //GUIStyle headerFont = new GUIStyle() { fontSize = 10, fontStyle = FontStyle.Bold }; headerFont.normal.textColor = Color.white;
         EditorGUILayout.BeginHorizontal(GUILayout.ExpandWidth(true));
         GUILayout.FlexibleSpace();
-        EditorGUILayout.LabelField("Scriptables Editor");
+        EditorGUILayout.LabelField("Scriptables Editor", skin.label);
         GUILayout.FlexibleSpace();
         EditorGUILayout.EndHorizontal();
     }
@@ -75,9 +81,7 @@ public class SriptablesEditorWindow : EditorWindow
         {
             string basePath = EditorUtility.OpenFolderPanel("Select folder to mask path.", activePath, "");
 
-            if (basePath.Length <= 0) { return; }
-
-            if (basePath.Contains("Assets"))
+            if (basePath.Contains(Application.dataPath))
             {
                 basePath = basePath.Substring(basePath.LastIndexOf("Assets"));
             }
@@ -105,7 +109,7 @@ public class SriptablesEditorWindow : EditorWindow
         {
             GenericMenu menu = new GenericMenu();
 
-            var function = new GenericMenu.MenuFunction2((type) => { activeType = (System.Type)type; typeName = type.ToString(); });
+            var function = new GenericMenu.MenuFunction2((type) => { activeType = (System.Type)type; typeName = type.ToString(); if (activeType == typeof(ScriptableObject)) typeName = "All"; });
 
             menu.AddItem(new GUIContent("All"), false, function, typeof(ScriptableObject));
             menu.AddSeparator("");
@@ -117,13 +121,11 @@ public class SriptablesEditorWindow : EditorWindow
             menu.ShowAsContext();
         }
 
-        #region Searchbar
         EditorGUILayout.BeginHorizontal();
         GUILayout.FlexibleSpace();
         sortSearch = EditorGUILayout.TextField(sortSearch, GUILayout.MaxWidth(240));
         GUILayout.FlexibleSpace();
         EditorGUILayout.EndHorizontal();
-        #endregion
 
         scrollPosition = EditorGUILayout.BeginScrollView(scrollPosition, GUIStyle.none, GUI.skin.verticalScrollbar, GUILayout.ExpandHeight(true));
 
@@ -154,7 +156,7 @@ public class SriptablesEditorWindow : EditorWindow
             }
         }
         EditorGUILayout.EndHorizontal();
-            
+
         EditorGUILayout.EndVertical();
     }
     #endregion
@@ -240,7 +242,7 @@ public class SriptablesEditorWindow : EditorWindow
         {
             if (item.name.IndexOf(sortSearch, System.StringComparison.OrdinalIgnoreCase) >= 0)
             {
-                if (GUILayout.Button(item.name))
+                if (GUILayout.Button(item.name, skin.button))
                 {
                     selectedPropertyPach = item.name;
                 }
