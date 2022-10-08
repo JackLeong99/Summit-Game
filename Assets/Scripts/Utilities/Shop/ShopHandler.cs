@@ -13,7 +13,6 @@ public class ShopHandler : MonoBehaviour
         {
             case bool x when Inventory.instance.gold >= cost:
                 Inventory.instance.gold -= cost;
-                UIItemDisplay.instance.GetNewItem(item);
                 item.acquire();
                 break;
         }

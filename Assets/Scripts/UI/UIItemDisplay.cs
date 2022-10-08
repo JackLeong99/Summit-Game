@@ -13,9 +13,10 @@ public class UIItemDisplay : MonoBehaviour
     private string activeItemFormat = "Active Item: {0}";
     public TMP_Text activeItem;
     private string passiveItemFormat = "{0}: {1}";
-    public TMP_Text passiveItem1;
+    //public TMP_Text passiveItem1;
 
-    private List<String> itemNamesList = new List<String>;
+    private List<String> itemNamesList = new List<String>();
+    public List<TMP_Text> passiveItems= new List<TMP_Text>();
 
 
     private Inventory inventory;
@@ -54,7 +55,7 @@ public class UIItemDisplay : MonoBehaviour
             //Debug.Log(test.GetStacks(test2.defaultAbility));
             //Debug.Log(test.gold);
             Debug.Log(abilities.AbilitySlot[3].itemName);
-            ItemDisplayUpdate();
+            //ItemDisplayUpdate();
            // foreach (KeyItem item in inventory.items)
           //  {
 
@@ -62,7 +63,7 @@ public class UIItemDisplay : MonoBehaviour
                 }
     }
 
-    public void ItemDisplayUpdate()
+    public void ActiveItemSet()
     {
         gold.text = string.Format(goldFormat, inventory.gold);
         if(abilities.AbilitySlot[3].itemName != "Empty Ability")
@@ -73,12 +74,19 @@ public class UIItemDisplay : MonoBehaviour
 
     public void GetNewItem(ItemBase item)
     {
+        //active item check
         if(HaveItemBefore(item.itemName))
         {
-
+            itemNamesList.Add(item.itemName);
         }
-        passiveItem1.text = string.Format(passiveItemFormat, item.itemName, inventory.GetStacks(item)+1);
-        //int i=inventory.GetStacks(item);
+        for(int i=0; i< itemNamesList.Count; i++)
+        {
+            if(item.itemName== itemNamesList[i])
+            {
+                passiveItems[i].text = string.Format(passiveItemFormat, item.itemName, inventory.GetStacks(item));
+            }
+        }
+        gold.text = string.Format(goldFormat, inventory.gold);
     }
     public bool HaveItemBefore(string itemname)
     {

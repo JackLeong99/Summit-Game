@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static UnityEditor.Progress;
 
 public abstract class PassiveItem : ItemBase
 {
@@ -17,6 +18,7 @@ public abstract class PassiveItem : ItemBase
                 inv.items[this] += 1;
                 break;
         }
+        UIItemDisplay.instance.GetNewItem(this);
         effect();
     }
 }

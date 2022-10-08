@@ -1438,51 +1438,6 @@ Light:
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
   m_ShadowAngle: 0
---- !u!1 &1837662430
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1837662432}
-  - component: {fileID: 1837662431}
-  m_Layer: 0
-  m_Name: Test
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1837662431
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1837662430}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b931151cf6bb57b4d95bdcf0b6a98dad, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  gold: {fileID: 0}
---- !u!4 &1837662432
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1837662430}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 375.49316, y: 219.26816, z: 189.46124}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 10
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1980825569
 GameObject:
   m_ObjectHideFlags: 0
@@ -1596,7 +1551,10 @@ MonoBehaviour:
     m_SceneAsset: {fileID: 102900000, guid: 317afe1f4eeb4404b8b32f9347d79e5a, type: 3}
     m_IsDirty: 0
     m_ScenePath: Assets/Scenes/Unique/Ending.unity
-  testScenes: []
+  testScenes:
+  - m_SceneAsset: {fileID: 102900000, guid: 8a95e54c012075c4eadac20fc68e2a93, type: 3}
+    m_IsDirty: 0
+    m_ScenePath: Assets/Scenes/Unique/Shopkeeper.unity
 --- !u!1 &2049736186
 GameObject:
   m_ObjectHideFlags: 0
