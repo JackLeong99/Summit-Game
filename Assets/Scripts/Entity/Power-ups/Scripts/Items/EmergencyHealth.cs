@@ -32,12 +32,7 @@ public class EmergencyHealth : EventItem
 
     public void effect(float f) 
     {
-        switch (true) 
-        {
-            case bool x when available && f <= procPercent:
-                Inventory.instance.StartCoroutine(proc());
-                break;
-        }
+        if (available && f <= procPercent) Inventory.instance.StartCoroutine(proc());
     }
 
     public IEnumerator proc() 
@@ -46,13 +41,13 @@ public class EmergencyHealth : EventItem
         int currentStacks = Inventory.instance.GetStacks(this);
         float heal = baseHeal + (healPerStack * currentStacks);
         PlayerHealth hp = GameManager.instance.player.GetComponent<PlayerHealth>();
-        int i = 0;
-        while (i < numberOfTicks) 
+        for (int i = 0; i < numberOfTicks; i++) 
         {
             hp.healDamage(heal);
             yield return new WaitForSeconds(tickRate);
         }
         yield return new WaitForSeconds(cooldown);
         available = true;
+        if ((hp.currentHealth / hp.maxHealth) * 100 <= procPercent) Inventory.instance.StartCoroutine(proc());
     }
 }

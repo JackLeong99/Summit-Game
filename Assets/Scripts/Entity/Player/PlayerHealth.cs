@@ -38,6 +38,9 @@ public class PlayerHealth : MonoBehaviour
             case false:
                 StartCoroutine(Death());
                 break;
+            case true:
+                EventManager.instance.OnHealthChange?.Invoke((currentHealth/maxHealth) * 100);
+                break;
         }
     }
 
