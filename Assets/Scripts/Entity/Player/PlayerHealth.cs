@@ -21,25 +21,29 @@ public class PlayerHealth : MonoBehaviour
         currentHealth = maxHealth;
     }
 
-    public void takeDamage(float damage){
-        if (invulnerable) 
-        {
-            return;
-        }
+    public void takeDamage(float damage)
+    {
+        if (invulnerable) { return; }
+
         AkSoundEngine.PostEvent("Player_Damage", gameObject);
         CameraListener.instance.CameraShake(damage * shakeScale, 0.25f);
         UIDamageIn.instance.DamageVis();
+
         damage -= defence;
         damage = Mathf.Clamp(damage, 0f, Mathf.Infinity);
-        switch (true) 
+        currentHealth -= damage;
+
+        switch (Alive()) 
         {
-            case bool x when currentHealth - damage > 0:
-                currentHealth -= damage;
-                break;
-            default:
+            case false:
                 StartCoroutine(Death());
                 break;
         }
+    }
+
+    public bool Alive()
+    {
+        return currentHealth >= 0;
     }
 
     public void healDamage(float healing)
@@ -51,10 +55,13 @@ public class PlayerHealth : MonoBehaviour
     public IEnumerator Death()
     {
         invulnerable = true;
+
         controller._Inactionable = true;
         controller._animator.SetTrigger("Death");
+
         yield return new WaitForSeconds(controller._animator.GetCurrentAnimatorStateInfo(0).length * 0.5f);
         yield return AnnouncementHandler.instance.Announcement("You Died.", deathDuration);
+
         HealthbarManager.instance.ClearBoss();
         GameManager.instance.LoadDelegate(GameManager.instance.OnDeath()); //to be moved to whatever is handling health
     }
