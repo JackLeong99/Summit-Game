@@ -46,7 +46,7 @@ public class PlayerHealth : MonoBehaviour
 
     public bool Alive()
     {
-        return currentHealth >= 0;
+        return currentHealth > 0;
     }
 
     public void healDamage(float healing)
