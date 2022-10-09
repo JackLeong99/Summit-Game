@@ -21,6 +21,7 @@ public class Sandstorm : AreaOfEffect
         {
             OnStorm(true);
         }
+        StartCoroutine(tempLifetime(7));
     }
 
     public override void OnTriggerEnter(Collider other)
@@ -65,5 +66,11 @@ public class Sandstorm : AreaOfEffect
         }
         sandPillar.OnTrigger -= toggleDamage;
         StopCoroutine(routine);
+    }
+
+    public IEnumerator tempLifetime(float f) 
+    {
+        yield return new WaitForSeconds(f);
+        Destroy(gameObject.transform.parent.gameObject);
     }
 }
