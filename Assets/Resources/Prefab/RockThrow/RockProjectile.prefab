@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: -2248026111634641959}
   - component: {fileID: 5137502300843569718}
   - component: {fileID: 7319675032448248423}
+  - component: {fileID: 840136536142065650}
   m_Layer: 12
   m_Name: RockProjectile
   m_TagString: BossProjectile
@@ -31,7 +32,7 @@ Transform:
   m_GameObject: {fileID: 7407550873981332137}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 23, y: 4, z: -6}
-  m_LocalScale: {x: 240, y: 240, z: 240}
+  m_LocalScale: {x: 3, y: 3, z: 3}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
@@ -44,7 +45,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7407550873981332137}
-  m_Mesh: {fileID: 289301614986012343, guid: de5cc48f845ebd14fa561f94eb0aeab9, type: 3}
+  m_Mesh: {fileID: 70948873267775455, guid: f433df3fbdc2ce34aa50ae206b85b228, type: 3}
 --- !u!23 &9064642371444345724
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -98,7 +99,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.0225, y: 0.0225, z: 0.0225}
+  m_Size: {x: 1.5, y: 1.5, z: 1.5}
   m_Center: {x: 0, y: -0.00008889934, z: 0}
 --- !u!135 &-2248026111634641959
 SphereCollider:
@@ -111,7 +112,7 @@ SphereCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.001
+  m_Radius: 0.01
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!54 &5137502300843569718
 Rigidbody:
@@ -147,3 +148,17 @@ MonoBehaviour:
   OnHitEffects: []
   rockPrefab: {fileID: 8370376826668548662, guid: ce8e84b0a33ef4e4080cbdc1232e3d6d, type: 3}
   rockParticle: {fileID: 659758095854779250, guid: 8047c1f695a30d44ca00917f3ac3004b, type: 3}
+--- !u!114 &840136536142065650
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7407550873981332137}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4309036dd87b64402a0f2c171852a4e7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 0
+  force: {x: 5, y: 2}

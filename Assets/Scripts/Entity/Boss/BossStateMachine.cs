@@ -177,7 +177,7 @@ public class BossStateMachine : MonoBehaviour
 
     public bool Alive()
     {
-        return components.curHealth >= 0;
+        return components.curHealth > 0;
     }
 
     public void CheckRage()

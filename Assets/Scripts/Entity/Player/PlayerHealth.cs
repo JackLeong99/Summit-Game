@@ -38,12 +38,15 @@ public class PlayerHealth : MonoBehaviour
             case false:
                 StartCoroutine(Death());
                 break;
+            case true:
+                EventManager.instance.OnHealthChange?.Invoke((currentHealth/maxHealth) * 100);
+                break;
         }
     }
 
     public bool Alive()
     {
-        return currentHealth >= 0;
+        return currentHealth > 0;
     }
 
     public void healDamage(float healing)
