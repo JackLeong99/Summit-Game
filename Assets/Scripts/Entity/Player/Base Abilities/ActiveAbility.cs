@@ -15,5 +15,6 @@ public abstract class ActiveAbility : ItemBase
         Debug.Log("Acquired: " + this.itemName);
         PlayerAbilities playerAbilities = GameManager.instance.player.GetComponent<PlayerAbilities>();
         playerAbilities.AbilitySlot[slot] = this;
+        UIItemDisplay.instance.ActiveItemSet();
     }
 }
