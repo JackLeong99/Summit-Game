@@ -21,6 +21,7 @@ public class TeleportAnchor : MonoBehaviour
         cc.enabled = false;
         yield return new WaitForEndOfFrame();
         GameManager.instance.player.transform.position = gameObject.transform.position;
+        //GameManager.instance.player.transform.rotation = gameObject.transform.rotation;
         yield return new WaitForEndOfFrame();
         cc.enabled = true;
     }
