@@ -18,6 +18,7 @@ public abstract class EventItem : PassiveItem
                 inv.items[this] += 1;
                 break;
         }
+        UIItemDisplay.instance.GetNewItem(this);
     }
 
     public abstract void subscribe();
