@@ -5,21 +5,28 @@ using UnityEngine;
 public class ShopHandler : MonoBehaviour
 {
     public ItemBase item;
-    public int cost;
+
+    [Header("Components")]
+    public SpriteRenderer icon;
 
     public void BuyItem()
     {
         switch (true) 
         {
-            case bool x when Inventory.instance.gold >= cost:
-                Inventory.instance.gold -= cost;
+            case bool x when Inventory.instance.gold >= item.cost:
+                Inventory.instance.gold -= item.cost;
                 item.acquire();
                 break;
         }
     }
 
-    public void setCost() 
+    public void DisplayItem()
     {
-        cost = item.cost;
+        ShopManager.instance.DisplayItem(item);
+    }
+
+    public void SetIcon()
+    {
+        icon.sprite = item.icon;
     }
 }

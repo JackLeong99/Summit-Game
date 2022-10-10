@@ -97,7 +97,7 @@ LightmapSettings:
     m_ExportTrainingData: 0
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
-  m_LightingDataAsset: {fileID: 112000002, guid: a34b177c8ded9344c91609280b4ca0a6, type: 2}
+  m_LightingDataAsset: {fileID: 112000000, guid: f4ed2312af8bbe342a38d6fed2ca1fec, type: 2}
   m_LightingSettings: {fileID: 0}
 --- !u!196 &4
 NavMeshSettings:
@@ -1599,7 +1599,10 @@ MonoBehaviour:
     m_SceneAsset: {fileID: 102900000, guid: 317afe1f4eeb4404b8b32f9347d79e5a, type: 3}
     m_IsDirty: 0
     m_ScenePath: Assets/Scenes/Unique/Ending.unity
-  testScenes: []
+  testScenes:
+  - m_SceneAsset: {fileID: 102900000, guid: 8a95e54c012075c4eadac20fc68e2a93, type: 3}
+    m_IsDirty: 0
+    m_ScenePath: Assets/Scenes/Unique/Shopkeeper.unity
 --- !u!1 &2049736186
 GameObject:
   m_ObjectHideFlags: 0

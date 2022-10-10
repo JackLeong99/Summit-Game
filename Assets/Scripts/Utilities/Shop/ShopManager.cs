@@ -7,7 +7,12 @@ using TMPro;
 public class ShopManager : MonoBehaviour
 {
     public static ShopManager instance;
-    public TextMeshProUGUI inspectDisplay;
+
+    [Header("Display Information")]
+    public GameObject displayParent;
+    public TextMeshProUGUI displayName;
+    public TextMeshProUGUI displayCost;
+    public TextMeshProUGUI displayDescription;
 
     [Header("Shop Stand Prefab")]
     public GameObject shopPrefab;
@@ -23,7 +28,6 @@ public class ShopManager : MonoBehaviour
     public void Start()
     {
         instance = this;
-        //itemList = GetAllInstancesOfType("Assets", typeof(ItemBase));
 
         SpawnStands();
     }
@@ -34,32 +38,35 @@ public class ShopManager : MonoBehaviour
         {
             shopStands.Add(Instantiate(shopPrefab, gameObject.transform.position + (spacing * i), Quaternion.identity, gameObject.transform));
             shopStands[i].GetComponent<ShopHandler>().item = itemList[Random.Range(0, itemList.Length)];
-            shopStands[i].GetComponent<ShopHandler>().setCost();
+            shopStands[i].GetComponent<ShopHandler>().SetIcon();
         }
 
         switch (GameManager.instance.finalReady)
         {
             case true:
                 shopStands[0].GetComponent<ShopHandler>().item = storyItem;
-                shopStands[0].GetComponent<ShopHandler>().setCost();
+                shopStands[0].GetComponent<ShopHandler>().SetIcon();
                 break;
         }
     }
 
-    public void DisplayText(bool state)
+    public void DisplayItem(ItemBase selected)
     {
-        inspectDisplay.gameObject.SetActive(state);
+
+        displayName.text = selected.itemName;
+        displayDescription.text = selected.description;
+        displayCost.text = selected.cost.ToString();
+
+        EnableDisplay(true);
     }
 
-    /*public static ScriptableObject[] GetAllInstancesOfType(string activePath, System.Type activeType)
+    public void EnableDisplay(bool state)
     {
-        string[] guids = AssetDatabase.FindAssets("t:" + activeType.Name, new[] { activePath });
-        ScriptableObject[] a = new ScriptableObject[guids.Length];
-        for (int i = 0; i < guids.Length; i++)
+        switch (displayParent.activeInHierarchy)
         {
-            string path = AssetDatabase.GUIDToAssetPath(guids[i]);
-            a[i] = (ScriptableObject)AssetDatabase.LoadAssetAtPath(path, activeType);
+            case bool x when x != state:
+                displayParent.SetActive(state);
+                break;
         }
-        return a;
-    }*/
+    }
 }

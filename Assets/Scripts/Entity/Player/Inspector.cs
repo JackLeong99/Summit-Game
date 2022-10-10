@@ -23,10 +23,8 @@ public class Inspector : MonoBehaviour
             switch (hit.collider.tag)
             {
                 case "Shop":
-                    ShopManager.instance.DisplayText(true);
-
                     var stand = hit.collider.gameObject.GetComponent<ShopHandler>();
-                    ShopManager.instance.inspectDisplay.text = stand.item.itemName + "\nPrice: " + stand.cost;
+                    stand.DisplayItem();
 
                     if (Input.GetKeyDown(KeyCode.X))
                     {
@@ -48,8 +46,8 @@ public class Inspector : MonoBehaviour
     {
         switch (true)
         {
-            case bool x when ShopManager.instance != null && ShopManager.instance.inspectDisplay.gameObject.activeInHierarchy == true:
-                ShopManager.instance.DisplayText(false);
+            case bool x when ShopManager.instance != null && ShopManager.instance.displayParent.activeInHierarchy == true:
+                ShopManager.instance.EnableDisplay(false);
                 break;
         }
     }
