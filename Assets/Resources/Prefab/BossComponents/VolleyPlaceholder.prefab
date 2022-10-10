@@ -402,7 +402,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: af460c9ec0b67c7499d59af4f4ab8da0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damagePerTick: 20
+  damagePerTick: 1
   timeBetweenTicks: 0.2
   tickCounter: 0
 --- !u!1 &2236676342313289102
@@ -682,7 +682,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c2d944fc4c7a7bc4da7dddc4e132fa40, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  delay: 0
+  delay: 1
   duration: 2
   warning: {fileID: 2933644753150584743}
   attack: {fileID: 2236676342313289102}
