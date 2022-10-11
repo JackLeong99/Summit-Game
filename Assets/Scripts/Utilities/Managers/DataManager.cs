@@ -23,7 +23,7 @@ public class DataManager : MonoBehaviour
     };
 
     [Header("Sensitivity")]
-    [Range(1, 10)]
+    [Range(0.1f, 10)]
     public float sensitivity;
 
     [Header("Volume")]
