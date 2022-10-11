@@ -22,6 +22,10 @@ public class ShopManager : MonoBehaviour
     public int standCount;
     public Vector3 spacing;
 
+    [Header("Shop Refresh")]
+    public int cost;
+    public float multiplier;
+
     public ItemBase[] itemList;
     public ItemBase storyItem;
 
@@ -68,5 +72,18 @@ public class ShopManager : MonoBehaviour
                 displayParent.SetActive(state);
                 break;
         }
+    }
+
+    public void Refresh()
+    {
+        foreach (var item in shopStands)
+        {
+            Destroy(item);
+        }
+
+        shopStands.Clear();
+        SpawnStands();
+
+        cost = (int)(cost * multiplier);
     }
 }

@@ -35,6 +35,22 @@ public class Inspector : MonoBehaviour
                     CheckDisplay();
                     break;
             }
+
+            switch (hit.collider.tag)
+            {
+                case "Refresh":
+                    if (Input.GetKeyDown(KeyCode.X))
+                    {
+                        switch (true)
+                        {
+                            case bool x when Inventory.instance.gold >= ShopManager.instance.cost:
+                                Inventory.instance.gold -= ShopManager.instance.cost;
+                                ShopManager.instance.Refresh();
+                                break;
+                        }
+                    }
+                    break;
+            }
         }
         else
         {
