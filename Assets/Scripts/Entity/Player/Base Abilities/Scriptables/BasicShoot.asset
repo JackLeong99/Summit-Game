@@ -13,6 +13,9 @@ MonoBehaviour:
   m_Name: BasicShoot
   m_EditorClassIdentifier: 
   itemName: Energy ball
+  description: This is an item
+  cost: 0
+  icon: {fileID: 21300000, guid: 0049f78ccfaabf24d964680fb88e12cb, type: 3}
   slot: 1
   cooldown: 3
   castTime: 0
