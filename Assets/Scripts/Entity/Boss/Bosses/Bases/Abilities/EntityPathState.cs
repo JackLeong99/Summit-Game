@@ -10,6 +10,8 @@ public class EntityPathState : AbilityState
     public string targetTag;
     public float stoppingDist;
 
+    private AnimationState animationActive = AnimationState.Accepted;
+
     public override void Invoke(BossStateMachine boss)
     {
         base.Invoke(boss);

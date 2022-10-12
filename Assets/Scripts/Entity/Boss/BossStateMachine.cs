@@ -2,7 +2,8 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.AI;   
+using UnityEngine.AI;
+using UnityEngine.Events;
 
 [RequireComponent(typeof(Animator))]
 [RequireComponent(typeof(NavMeshAgent))]
@@ -15,7 +16,6 @@ using UnityEngine.AI;
     public AttackState attackState = AttackState.CanRanged;
     public float cooldownTimer;
     public float moveRepeated;
-    //public List<Coroutine> actions = new List<Coroutine>();
 
     [Header("Health")]
     public float curHealth;
@@ -41,7 +41,7 @@ public class BossStateMachine : MonoBehaviour
     [Header("Attributes")]
     public BossAttributes attributes;
     public BossContext components;
-    //public AnimationState animationActive = AnimationState.Accepted;
+    public UnityEvent callback;
 
     [Header("Ability Keypoints")]
     public MeleeHitbox leftHand;
@@ -116,6 +116,11 @@ public class BossStateMachine : MonoBehaviour
     public BossState GetState<T>() where T : BossState
     {
         return abilities.Find(x => x.GetType().Equals(typeof(T)));
+    }
+
+    public void AnimationInvoke()
+    {
+        callback.Invoke();
     }
 
     public void TakeDamage(float dmg, Vector3 position)
