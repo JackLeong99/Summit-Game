@@ -4,6 +4,7 @@ using UnityEngine;
 using TMPro;
 using System.Linq;
 using System;
+using UnityEngine.UI;
 
 public class UIItemDisplay : MonoBehaviour
 {
@@ -17,6 +18,10 @@ public class UIItemDisplay : MonoBehaviour
 
     private List<String> itemNamesList = new List<String>();
     public List<TMP_Text> passiveItems= new List<TMP_Text>();
+
+    public GameObject panelObject;
+    public TMP_Text PassivePrefab;
+    private float nextPassive = -40f;
 
 
     private Inventory inventory;
@@ -39,28 +44,7 @@ public class UIItemDisplay : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyUp(KeyCode.J))
-        {
-           // Inventory test = GameManager.instance.player.GetComponent<Inventory>();
-           
-            //Debug.Log(test.GetStacks(MsBuff.itemName));
-            // test.GetStacks(test2.AbilitySlot[0]); //like this but with all ability slots
-            // int i = test.gold;
-            //Debug.Log(test.items.ContainsKey(1));
-
-            /*for(int i=0; i<test2.Size(); i++)
-            {
-
-            }*/
-            //Debug.Log(test.GetStacks(test2.defaultAbility));
-            //Debug.Log(test.gold);
-            Debug.Log(abilities.AbilitySlot[3].itemName);
-            //ItemDisplayUpdate();
-           // foreach (KeyItem item in inventory.items)
-          //  {
-
-           // }
-                }
+ 
     }
 
     public void ActiveItemSet()
@@ -83,7 +67,14 @@ public class UIItemDisplay : MonoBehaviour
         {
             if(item.itemName== itemNamesList[i])
             {
+                //passiveItems[i].text = string.Format(passiveItemFormat, item.itemName, inventory.GetStacks(item));
+                TMP_Text newPassiveText = Instantiate(PassivePrefab, PassivePrefab.transform.position, transform.rotation) as TMP_Text;
+                newPassiveText.transform.SetParent(panelObject.transform, false);
+                newPassiveText.GetComponent<RectTransform>().anchoredPosition = new Vector2(-50, nextPassive);
+                nextPassive -= 40;
+                passiveItems.Add(newPassiveText);
                 passiveItems[i].text = string.Format(passiveItemFormat, item.itemName, inventory.GetStacks(item));
+
             }
         }
         gold.text = string.Format(goldFormat, inventory.gold);
