@@ -54,7 +54,7 @@ public class BasicAttack : ActiveAbility
         yield return new WaitForSeconds(0.2f);
         var hitbox = Instantiate(attackBox, player.transform.position + new Vector3(0, 1.3f, 0), player.transform.rotation, player.transform);
         hitbox.transform.localPosition += new Vector3(0, 0, 1.5f);
-        hitbox.GetComponent<PlayerDamage>().setDamage(damage);
+        hitbox.GetComponent<PlayerDamage>().setDamage(damage + Inventory.instance.physicalDamage);
         yield return new WaitForSeconds(cooldown);
         if (hitbox)
         {
