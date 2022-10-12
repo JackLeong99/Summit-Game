@@ -189,7 +189,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 269016101}
-  - component: {fileID: 269016100}
   m_Layer: 0
   m_Name: WwiseGlobal
   m_TagString: Untagged
@@ -197,31 +196,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &269016100
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 269016099}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 309de00d26c535341b6e8d3b274f02f6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  InitializationSettings: {fileID: 11400000, guid: 8942d5a96b4d7c344a22860415c96074, type: 2}
-  basePath: 
-  language: 
-  defaultPoolSize: 0
-  lowerPoolSize: 0
-  streamingPoolSize: 0
-  memoryCutoffThreshold: 0
-  monitorPoolSize: 0
-  monitorQueuePoolSize: 0
-  callbackManagerBufferSize: 0
-  spatialAudioPoolSize: 0
-  maxSoundPropagationDepth: 0
-  engineLogging: 0
 --- !u!4 &269016101
 Transform:
   m_ObjectHideFlags: 0
@@ -693,10 +667,6 @@ PrefabInstance:
       propertyPath: weakSpot
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 221357629289508930, guid: 15cb9288e8231f9419be19f0ae9ecad5, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 15.5664835
-      objectReference: {fileID: 0}
     - target: {fileID: 44131078284581809, guid: 15cb9288e8231f9419be19f0ae9ecad5, type: 3}
       propertyPath: m_Layer
       value: 13
@@ -720,6 +690,10 @@ PrefabInstance:
     - target: {fileID: 158028199445095800, guid: 15cb9288e8231f9419be19f0ae9ecad5, type: 3}
       propertyPath: m_Layer
       value: 13
+      objectReference: {fileID: 0}
+    - target: {fileID: 221357629289508930, guid: 15cb9288e8231f9419be19f0ae9ecad5, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 15.5664835
       objectReference: {fileID: 0}
     - target: {fileID: 252626852016788712, guid: 15cb9288e8231f9419be19f0ae9ecad5, type: 3}
       propertyPath: m_Layer
