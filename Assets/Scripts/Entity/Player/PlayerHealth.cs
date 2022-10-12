@@ -9,6 +9,8 @@ public class PlayerHealth : MonoBehaviour
 {
     public ThirdPersonController controller;
     public float maxHealth;
+    public float healthPercentCap;
+    public float maxHealthAllowed;
     public float currentHealth;
     public float defence;
     public float shakeScale;
@@ -51,8 +53,9 @@ public class PlayerHealth : MonoBehaviour
 
     public void healDamage(float healing)
     {
+        maxHealthAllowed = healthPercentCap/100 * maxHealth;
         currentHealth += healing;
-        currentHealth = Mathf.Clamp(currentHealth, 0f, maxHealth);
+        currentHealth = Mathf.Clamp(currentHealth, 0f, maxHealthAllowed);
     }
     
     public IEnumerator Death()

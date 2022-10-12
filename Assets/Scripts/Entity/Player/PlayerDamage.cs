@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerDamage : MonoBehaviour
 {
-    private float damage;
+    public float damage;
 
     public void setDamage(float dmg) 
     {
@@ -23,4 +23,14 @@ public class PlayerDamage : MonoBehaviour
             }
         }
     }
+
+    // public void percentIncreaseDamage(float dmg)
+    // {
+    //     damage += (damage/100) * dmg;
+    // }
+
+    // public void percentDecreasedamage(float dmg)
+    // {
+    //     damage -= (damage/100) * dmg;
+    // }
 }

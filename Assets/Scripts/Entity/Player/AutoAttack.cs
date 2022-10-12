@@ -15,7 +15,7 @@ public class AutoAttack : MonoBehaviour
 
     private int attackAnim;
 
-    [SerializeField] float attackDamage;
+    [SerializeField] public float attackDamage;
 
     [SerializeField] GameObject attackHitbox;
 
