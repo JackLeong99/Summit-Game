@@ -6,7 +6,6 @@ public class Inspector : MonoBehaviour
 {
     [Header("Values")]
     public float interactRange;
-
     public void Update()
     {
         Inspection();
@@ -25,9 +24,11 @@ public class Inspector : MonoBehaviour
                 case "Shop":
                     var stand = hit.collider.gameObject.GetComponent<ShopHandler>();
                     stand.DisplayItem();
-
-                    if (Input.GetKeyDown(KeyCode.X))
+                   // GameManager.instance.input.buyItem.triggered
+                    //if (Input.GetKeyDown(KeyCode.X)) //move this to new input
+                    if (GameManager.instance.input.buyItem==1)
                     {
+                        GameManager.instance.input.buyItem++;
                         stand.BuyItem();
                     }
                     break;
@@ -39,7 +40,8 @@ public class Inspector : MonoBehaviour
             switch (hit.collider.tag)
             {
                 case "Refresh":
-                    if (Input.GetKeyDown(KeyCode.X))
+                    //if (Input.GetKeyDown(KeyCode.X)) //move this to new input
+                    if (GameManager.instance.input.buyItem==2)
                     {
                         switch (true)
                         {
