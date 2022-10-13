@@ -38,7 +38,7 @@ public class UIItemDisplay : MonoBehaviour
     {
         inventory = GameManager.instance.player.GetComponent<Inventory>();
         abilities = GameManager.instance.player.GetComponent<PlayerAbilities>();
-        gold.text = string.Format(goldFormat, inventory.gold);
+        UpdateGold();
     }
 
     // Update is called once per frame
@@ -77,7 +77,6 @@ public class UIItemDisplay : MonoBehaviour
 
             }
         }
-        gold.text = string.Format(goldFormat, inventory.gold);
     }
     public bool HaveItemBefore(string itemname)
     {
@@ -89,5 +88,10 @@ public class UIItemDisplay : MonoBehaviour
             }
         }
         return true;
+    }
+
+    public void UpdateGold()
+    {
+        gold.text = string.Format(goldFormat, inventory.gold);
     }
 }

@@ -19,38 +19,21 @@ public class Inspector : MonoBehaviour
 
         if (Physics.Raycast(mousePosition, cam.transform.forward, out hit, interactRange)) //Checks whether or not the raycast has hit anything.
         {
-            switch (hit.collider.tag)
+            switch (true)
             {
-                case "Shop":
-                    var stand = hit.collider.gameObject.GetComponent<ShopHandler>();
-                    stand.DisplayItem();
-                   // GameManager.instance.input.buyItem.triggered
-                    //if (Input.GetKeyDown(KeyCode.X)) //move this to new input
+                case bool x when hit.collider.gameObject.GetComponent<Interactable>():
+                    var interact = hit.collider.gameObject.GetComponent<Interactable>();
+
+                    interact.Display();
+
                     if (GameManager.instance.input.buyItem==1)
                     {
                         GameManager.instance.input.buyItem++;
-                        stand.BuyItem();
+                        interact.Invoke();
                     }
                     break;
                 default:
                     CheckDisplay();
-                    break;
-            }
-
-            switch (hit.collider.tag)
-            {
-                case "Refresh":
-                    //if (Input.GetKeyDown(KeyCode.X)) //move this to new input
-                    if (GameManager.instance.input.buyItem==2)
-                    {
-                        switch (true)
-                        {
-                            case bool x when Inventory.instance.gold >= ShopManager.instance.cost:
-                                Inventory.instance.gold -= ShopManager.instance.cost;
-                                ShopManager.instance.Refresh();
-                                break;
-                        }
-                    }
                     break;
             }
         }
