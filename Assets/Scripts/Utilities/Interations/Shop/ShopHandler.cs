@@ -11,10 +11,9 @@ public class ShopHandler : MonoBehaviour
 
     public void BuyItem()
     {
-        switch (true) 
+        switch (Inventory.instance.CanPurchase(item.cost)) 
         {
-            case bool x when Inventory.instance.gold >= item.cost:
-                Inventory.instance.gold -= item.cost;
+            case true:
                 item.acquire();
                 break;
         }

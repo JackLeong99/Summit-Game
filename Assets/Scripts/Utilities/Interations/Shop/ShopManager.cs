@@ -76,14 +76,19 @@ public class ShopManager : MonoBehaviour
 
     public void Refresh()
     {
-        foreach (var item in shopStands)
+        switch (Inventory.instance.CanPurchase(cost))
         {
-            Destroy(item);
+            case true:
+                foreach (var item in shopStands)
+                {
+                    Destroy(item);
+                }
+
+                shopStands.Clear();
+                SpawnStands();
+
+                cost = (int)(cost * multiplier);
+                break;
         }
-
-        shopStands.Clear();
-        SpawnStands();
-
-        cost = (int)(cost * multiplier);
     }
 }

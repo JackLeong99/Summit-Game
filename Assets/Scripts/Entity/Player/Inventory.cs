@@ -150,4 +150,18 @@ public class Inventory : MonoBehaviour
                 break;
         }
     }
+
+    public bool CanPurchase(int cost)
+    {
+        bool temp = gold >= cost;
+
+        if (temp)
+        {
+            gold -= cost;
+        }
+
+        UIItemDisplay.instance.UpdateGold();
+
+        return temp;
+    }
 }
