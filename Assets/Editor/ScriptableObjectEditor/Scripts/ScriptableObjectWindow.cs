@@ -114,7 +114,7 @@ public class SriptablesEditorWindow : EditorWindow
             menu.AddItem(new GUIContent("All"), false, function, typeof(ScriptableObject));
             menu.AddSeparator("");
 
-            foreach (var item in GetAllTypes())
+            foreach (var item in AssemblyTypes.GetAllTypes())
             {
                 menu.AddItem(new GUIContent(item.ToString()), false, function, item);
             }
@@ -169,7 +169,7 @@ public class SriptablesEditorWindow : EditorWindow
         itemScrollPosition = EditorGUILayout.BeginScrollView(itemScrollPosition, GUIStyle.none, GUI.skin.verticalScrollbar, GUILayout.ExpandHeight(true));
         switch (true)
         {
-            case bool x when selectedProperty != null && selectedProperty != "":
+            case bool _ when selectedProperty != null && selectedProperty != "":
                 for (int i = 0; i < activeObjects.Length; i++)
                 {
                     if (activeObjects[i].name == selectedProperty)
@@ -218,14 +218,6 @@ public class SriptablesEditorWindow : EditorWindow
     public static Object CreateObject(System.Type type)
     {
         return CreateInstance(type);
-    }
-
-    public static System.Type[] GetAllTypes()
-    {
-        System.Type[] types = AssemblyTypes.ReturnTypes();
-        System.Type[] possible = (from System.Type type in types where type.IsSubclassOf(typeof(ScriptableObject)) select type).ToArray();
-
-        return possible;
     }
 
     protected void DrawProperties(SerializedProperty property)
