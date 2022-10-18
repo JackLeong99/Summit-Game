@@ -1,14 +1,17 @@
 using System.Linq;
 using UnityEngine;
 using UnityEditor;
+using System.Collections.Generic;
 
-public class SriptablesEditorWindow : EditorWindow
+public class ScriptablesEditorWindow : EditorWindow
 {
     protected GUISkin skin;
 
     protected SerializedObject serializedObject;
     protected SerializedProperty serializedProperty;
 
+    protected Object selectedObject;
+    protected string selectedName;
     protected ScriptableObject[] activeObjects;
     protected string selectedPropertyPach;
     protected string selectedProperty;
@@ -25,10 +28,12 @@ public class SriptablesEditorWindow : EditorWindow
 
     protected string sortSearch = "";
 
+    protected Rect renameButton;
+
     [MenuItem("Tools/Scriptable Object Editor")]
     protected static void ShowWindow()
     {
-        GetWindow<SriptablesEditorWindow>("Scriptables Editor");
+        GetWindow<ScriptablesEditorWindow>("Scriptables Editor");
     }
 
     private void OnEnable()
@@ -63,10 +68,9 @@ public class SriptablesEditorWindow : EditorWindow
 
     private void HeaderTitle()
     {
-        //GUIStyle headerFont = new GUIStyle() { fontSize = 10, fontStyle = FontStyle.Bold }; headerFont.normal.textColor = Color.white;
         EditorGUILayout.BeginHorizontal(GUILayout.ExpandWidth(true));
         GUILayout.FlexibleSpace();
-        EditorGUILayout.LabelField("Scriptables Editor", skin.label);
+        EditorGUILayout.LabelField("Scriptables Editor", skin.customStyles.ToList().Find(x => x.name == "Header"));
         GUILayout.FlexibleSpace();
         EditorGUILayout.EndHorizontal();
     }
@@ -159,6 +163,11 @@ public class SriptablesEditorWindow : EditorWindow
 
         EditorGUILayout.EndVertical();
     }
+
+    public void CreateNew()
+    {
+
+    }
     #endregion
     #endregion
 
@@ -169,29 +178,40 @@ public class SriptablesEditorWindow : EditorWindow
         itemScrollPosition = EditorGUILayout.BeginScrollView(itemScrollPosition, GUIStyle.none, GUI.skin.verticalScrollbar, GUILayout.ExpandHeight(true));
         switch (true)
         {
-            case bool _ when selectedProperty != null && selectedProperty != "":
-                for (int i = 0; i < activeObjects.Length; i++)
+            case bool _ when serializedObject != null && selectedObject != null:
+                GUI.enabled = false;
+                EditorGUILayout.PropertyField(serializedObject.FindProperty("m_Name"));
+                GUI.enabled = true;
+
+                serializedProperty = serializedObject.GetIterator();
+                serializedProperty.NextVisible(true);
+                DrawProperties(serializedProperty);
+
+                GUILayout.Space(15);
+
+                EditorGUILayout.BeginHorizontal();
+                if (GUILayout.Button("Rename"))
                 {
-                    if (activeObjects[i].name == selectedProperty)
+                    PopupWindow.Show(renameButton, new NamingEditorWindow(selectedObject));
+                }
+                if (Event.current.type == EventType.Repaint) renameButton = GUILayoutUtility.GetLastRect();
+
+                var style = new GUIStyle(GUI.skin.button);
+                style.normal.textColor = Color.red;
+
+                if (GUILayout.Button("Delete", style))
+                {
+                    switch (EditorUtility.DisplayDialog("Delete " + selectedObject.name + "?", "Are you sure you want to delete '" + selectedObject.name + "'?", "Yes", "No"))
                     {
-                        serializedObject = new SerializedObject(activeObjects[i]);
-                        serializedProperty = serializedObject.GetIterator();
-                        serializedProperty.NextVisible(true);
-                        DrawProperties(serializedProperty);
-
-                        GUILayout.Space(15);
-
-                        var style = new GUIStyle(GUI.skin.button);
-                        style.normal.textColor = Color.red;
-
-                        if (GUILayout.Button("Delete", style))
-                        {
-                            string path = AssetDatabase.GetAssetPath(activeObjects[i]);
+                        case true:
+                            string path = AssetDatabase.GetAssetPath(selectedObject);
                             AssetDatabase.DeleteAsset(path);
                             serializedObject = null;
-                        }
+                            selectedObject = null;
+                            break;
                     }
                 }
+                EditorGUILayout.EndHorizontal();
                 break;
             default:
                 EditorGUILayout.LabelField("No item selected, make sure you've selected an item.");
@@ -221,7 +241,13 @@ public class SriptablesEditorWindow : EditorWindow
     }
 
     protected void DrawProperties(SerializedProperty property)
-    {
+    { 
+        if (property.displayName == "Script") { GUI.enabled = false; }
+        EditorGUILayout.PropertyField(property, true);
+        GUI.enabled = true;
+
+        EditorGUILayout.Space(40);
+
         while (property.NextVisible(false))
         {
             EditorGUILayout.PropertyField(property, true);
@@ -237,18 +263,32 @@ public class SriptablesEditorWindow : EditorWindow
                 if (GUILayout.Button(item.name, skin.button))
                 {
                     selectedPropertyPach = item.name;
+
+                    if (!string.IsNullOrEmpty(selectedPropertyPach))
+                    {
+                        selectedProperty = selectedPropertyPach;
+                        selectedObject = FindObject(activeObjects);
+                    }
                 }
             }
         }
 
-        if (!string.IsNullOrEmpty(selectedPropertyPach))
+        switch (true)
         {
-            selectedProperty = selectedPropertyPach;
+            case bool _ when selectedObject != null:
+                serializedObject = new SerializedObject(selectedObject);
+                break;
         }
+    }
+
+    protected ScriptableObject FindObject(ScriptableObject[] objects)
+    {
+        return objects.Where(x => x.name == selectedProperty).First();
     }
 
     protected void Apply()
     {
+        Debug.Log("Applied: " + serializedObject.ApplyModifiedProperties());
         serializedObject.ApplyModifiedProperties();
     }
 }
