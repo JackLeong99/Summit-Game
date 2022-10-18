@@ -12,9 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4775bb5d9b9e1064d8ab16b2ee6f8072, type: 3}
   m_Name: ReaperZombieSpawn
   m_EditorClassIdentifier: 
-  animation: 
+  animation: Raise
   soundEvent: 
-  animationActive: 1
   delay: 0
   nextState: {fileID: 0}
   spawnSoundEvent: 
