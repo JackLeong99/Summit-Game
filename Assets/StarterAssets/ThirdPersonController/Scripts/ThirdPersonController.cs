@@ -3,6 +3,7 @@
 using UnityEngine.InputSystem;
 #endif
 using System.Collections;
+using Cinemachine;
 
 /* Note: animations are called via the controller for both the character and capsule using animator null checks
  */
@@ -257,19 +258,24 @@ namespace StarterAssets
 
 		private void CameraRotation()
 		{
-            // if there is an input and camera position is not fixed
-            if (GameManager.instance.input.look.sqrMagnitude >= _threshold && !LockCameraPosition)
-            {
-                _cinemachineTargetYaw += GameManager.instance.input.look.x * Time.deltaTime*DataManager.instance.sensitivity;
-                _cinemachineTargetPitch += GameManager.instance.input.look.y * Time.deltaTime*DataManager.instance.sensitivity;
-            }
+			// if there is an input and camera position is not fixed
+			switch (true)
+			{
+				case bool _ when LockCameraPosition && BossManager.instance.boss != null:
+					cinemachine.GetComponent<CinemachineVirtualCamera>().LookAt = BossManager.instance.boss.transform;
+					break;
+				case bool _ when GameManager.instance.input.look.sqrMagnitude >= _threshold:
+					_cinemachineTargetYaw += GameManager.instance.input.look.x * Time.deltaTime * DataManager.instance.sensitivity;
+					_cinemachineTargetPitch += GameManager.instance.input.look.y * Time.deltaTime * DataManager.instance.sensitivity;
+					break;
+			}
 
-            // clamp our rotations so our values are limited 360 degrees
-            _cinemachineTargetYaw = ClampAngle(_cinemachineTargetYaw, float.MinValue, float.MaxValue);
+			// clamp our rotations so our values are limited 360 degrees
+			_cinemachineTargetYaw = ClampAngle(_cinemachineTargetYaw, float.MinValue, float.MaxValue);
 			_cinemachineTargetPitch = ClampAngle(_cinemachineTargetPitch, BottomClamp, TopClamp);
 
 			// Cinemachine will follow this target
-			CinemachineCameraTarget.transform.rotation = Quaternion.Euler(_cinemachineTargetPitch + CameraAngleOverride, _cinemachineTargetYaw -90.0f, 0.0f);
+			CinemachineCameraTarget.transform.rotation = Quaternion.Euler(_cinemachineTargetPitch + CameraAngleOverride, _cinemachineTargetYaw - 90.0f, 0.0f);
 		}
 
 		private void Move()

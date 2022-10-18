@@ -916,6 +916,7 @@ MonoBehaviour:
   shoot: 0
   dodge: 0
   activeItem: 0
+  buyItem: 0
   analogMovement: 0
   cursorLocked: 1
   cursorInputForLook: 1
@@ -1599,10 +1600,7 @@ MonoBehaviour:
     m_SceneAsset: {fileID: 102900000, guid: 317afe1f4eeb4404b8b32f9347d79e5a, type: 3}
     m_IsDirty: 0
     m_ScenePath: Assets/Scenes/Unique/Ending.unity
-  testScenes:
-  - m_SceneAsset: {fileID: 102900000, guid: 8a95e54c012075c4eadac20fc68e2a93, type: 3}
-    m_IsDirty: 0
-    m_ScenePath: Assets/Scenes/Unique/Shopkeeper.unity
+  testScenes: []
 --- !u!1 &2049736186
 GameObject:
   m_ObjectHideFlags: 0

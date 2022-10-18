@@ -241,7 +241,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1117790935
+--- !u!1 &1169521664
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -249,7 +249,8 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 1117790937}
+  - component: {fileID: 1169521666}
+  - component: {fileID: 1169521665}
   m_Layer: 0
   m_Name: WwiseGlobal
   m_TagString: Untagged
@@ -257,44 +258,38 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &1117790937
+--- !u!114 &1169521665
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1169521664}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 309de00d26c535341b6e8d3b274f02f6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  InitializationSettings: {fileID: 11400000, guid: 8942d5a96b4d7c344a22860415c96074, type: 2}
+  basePath: 
+  language: 
+  defaultPoolSize: 0
+  lowerPoolSize: 0
+  streamingPoolSize: 0
+  memoryCutoffThreshold: 0
+  monitorPoolSize: 0
+  monitorQueuePoolSize: 0
+  callbackManagerBufferSize: 0
+  spatialAudioPoolSize: 0
+  maxSoundPropagationDepth: 0
+  engineLogging: 0
+--- !u!4 &1169521666
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1117790935}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 4
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1807400258
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1807400260}
-  m_Layer: 0
-  m_Name: WwiseGlobal
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1807400260
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1807400258}
+  m_GameObject: {fileID: 1169521664}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
@@ -350,7 +345,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.7782819, y: 1}
+    m_SensorSize: {x: 1.7776846, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -1049,6 +1044,10 @@ PrefabInstance:
     - target: {fileID: 4246193514816548868, guid: 118aa6fa841507a41abd8e079e760746, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4246193514816548925, guid: 118aa6fa841507a41abd8e079e760746, type: 3}
+      propertyPath: BottomClamp
+      value: -75
       objectReference: {fileID: 0}
     - target: {fileID: 4246193514816548925, guid: 118aa6fa841507a41abd8e079e760746, type: 3}
       propertyPath: cinemachine

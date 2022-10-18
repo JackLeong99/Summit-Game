@@ -27,6 +27,7 @@ public class EntityPathState : AbilityState
         {
             case bool x when Vector3.Distance(boss.agent.destination, boss.transform.position) < stoppingDist && animationActive == AnimationState.Ignore:
                 animationActive = AnimationState.Done;
+                Callback();
                 break;
         }
     }
@@ -35,6 +36,7 @@ public class EntityPathState : AbilityState
     {
         base.Exit();
 
+        animationActive = AnimationState.Accepted;
         boss.agent.isStopped = true;
         boss.agent.destination = GameManager.instance.player.transform.position;
     }
