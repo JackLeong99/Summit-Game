@@ -27,15 +27,7 @@ public class EntityPathState : AbilityState
         {
             case bool x when Vector3.Distance(boss.agent.destination, boss.transform.position) < stoppingDist && animationActive == AnimationState.Ignore:
                 animationActive = AnimationState.Done;
-                break;
-        }
-
-        switch (animationActive)
-        {
-            case AnimationState.Done:
-                animationActive = AnimationState.Accepted;
-                Debug.Log("After: " + animationActive);
-                boss.StartCoroutine(SwapState(nextState != null ? nextState : boss.baseState, delay));
+                Callback();
                 break;
         }
     }
