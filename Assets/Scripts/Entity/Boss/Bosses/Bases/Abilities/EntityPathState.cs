@@ -29,12 +29,22 @@ public class EntityPathState : AbilityState
                 animationActive = AnimationState.Done;
                 break;
         }
+
+        switch (animationActive)
+        {
+            case AnimationState.Done:
+                animationActive = AnimationState.Accepted;
+                Debug.Log("After: " + animationActive);
+                boss.StartCoroutine(SwapState(nextState != null ? nextState : boss.baseState, delay));
+                break;
+        }
     }
 
     public override void Exit()
     {
         base.Exit();
 
+        animationActive = AnimationState.Accepted;
         boss.agent.isStopped = true;
         boss.agent.destination = GameManager.instance.player.transform.position;
     }
