@@ -17,6 +17,7 @@ namespace StarterAssets
 		public bool shoot;
 		public bool dodge;
 		public bool activeItem;
+		public int buyItem;
 
 		[Header("Movement Settings")]
 		public bool analogMovement;
@@ -70,12 +71,20 @@ namespace StarterAssets
 		{
 			ActiveItemInput(value.isPressed);
 		}
+        public void OnBuyItem(InputValue value)
+        {
+            BuyItemInput(value.isPressed);
+        }
+        public void OnBuyItem2(InputValue value)
+        {
+            BuyItem2Input(value.isPressed);
+        }
 #else
 	// old input sys if we do decide to have it (most likely wont)...
 #endif
 
 
-		public void MoveInput(Vector2 newMoveDirection)
+        public void MoveInput(Vector2 newMoveDirection)
 		{
 			move = newMoveDirection;
 		} 
@@ -114,12 +123,20 @@ namespace StarterAssets
 		{
 			activeItem = newActiveItemState;
 		}
-		
+        public void BuyItemInput(bool newBuyItemState)
+        {
+            buyItem++;
+        }
+        public void BuyItem2Input(bool newBuyItemState)
+        {
+            buyItem=0;
+        }
+
 
 
 #if !UNITY_IOS || !UNITY_ANDROID
 
-		private void OnApplicationFocus(bool hasFocus)
+        private void OnApplicationFocus(bool hasFocus)
 		{
 			SetCursorState(cursorLocked);
 		}
