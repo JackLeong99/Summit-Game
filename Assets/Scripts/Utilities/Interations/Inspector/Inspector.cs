@@ -6,7 +6,6 @@ public class Inspector : MonoBehaviour
 {
     [Header("Values")]
     public float interactRange;
-
     public void Update()
     {
         Inspection();
@@ -27,8 +26,9 @@ public class Inspector : MonoBehaviour
 
                     interact.Display();
 
-                    if (Input.GetKeyDown(KeyCode.X))
+                    if (GameManager.instance.input.buyItem==1)
                     {
+                        GameManager.instance.input.buyItem++;
                         interact.Invoke();
                     }
                     break;
