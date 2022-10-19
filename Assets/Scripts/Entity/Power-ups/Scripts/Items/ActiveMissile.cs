@@ -25,7 +25,7 @@ public class ActiveMissile : ActiveAbility
 
         for (int i = 0; i < missileCount; i++) 
         {
-            projectileList.Add(Instantiate(projectile, GameManager.instance.player.transform.position + new Vector3(0, 3, 0), Quaternion.identity) as GameObject);
+            projectileList.Add(Instantiate(projectile, GameManager.instance.player.transform.position + new Vector3(0, 3, 0), Quaternion.Euler(-90,0,0)) as GameObject);
         }
 
         float missileNo = delay;
@@ -34,8 +34,9 @@ public class ActiveMissile : ActiveAbility
 
         foreach (var p in projectileList) 
         {
+            p.GetComponent<MeshRenderer>().enabled = true;
             p.GetComponent<Missile>().setTracking(tracking, missileNo, FindClosestEnemy());
-            p.GetComponent<Rigidbody>().velocity = (Vector3.up + new Vector3(Random.Range(-0.1f, 0.1f), 0, Random.Range(-0.1f, 0.1f))).normalized * projectileSpeed;
+            p.GetComponent<Rigidbody>().velocity = (Vector3.up + new Vector3(Random.Range(-0.1f, 0.1f), 3, Random.Range(-0.1f, 0.1f))).normalized * projectileSpeed;
             p.GetComponent<Missile>().SetDamage((damage + bonusDMG) * dPercentMod);
             yield return new WaitForSeconds(bufferTime);
             missileNo += bufferTime;

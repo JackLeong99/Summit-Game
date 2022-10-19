@@ -51,7 +51,8 @@ public class Inventory : MonoBehaviour
         percentDamageMod,
         bonusProjectileVelocity,
         knockbackReduction,
-        cooldownReduction
+        cooldownReduction,
+        gold
     }
 
     //[HideInInspector]
@@ -150,6 +151,9 @@ public class Inventory : MonoBehaviour
             case StatType.cooldownReduction:
                 cooldownReduction += val;
                 abilities.addCDR(val);
+                break;
+            case StatType.gold:
+                gold += Mathf.RoundToInt(val);
                 break;
         }
         //Debug.Log("Updated: " + type + ", by: " + val);
