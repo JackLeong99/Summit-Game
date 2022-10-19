@@ -28,7 +28,7 @@ public class Inventory : MonoBehaviour
     [HideInInspector]
     public List<ActiveAbility> base_ActiveAbilities = new List<ActiveAbility>();
 
-    [HideInInspector]
+    //[HideInInspector]
     public float
         walkSpeed,
         sprintSpeed,
@@ -149,6 +149,7 @@ public class Inventory : MonoBehaviour
                 abilities.addCDR(val);
                 break;
         }
+        Debug.Log("Updated: " + type + ", by: " + val);
     }
 
     public bool CanPurchase(int cost)
