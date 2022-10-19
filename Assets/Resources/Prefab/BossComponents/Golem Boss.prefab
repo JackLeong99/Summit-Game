@@ -8946,6 +8946,9 @@ MonoBehaviour:
     startSpeed: 0
     rage: 0
     stunState: 0
+  callback:
+    m_PersistentCalls:
+      m_Calls: []
   leftHand: {fileID: 7645809463054952026}
   rightHand: {fileID: 7645809463958109348}
   currentAbility: {fileID: 0}
