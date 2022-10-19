@@ -60,7 +60,7 @@ public class BasicShoot : ActiveAbility
         }
         var projectileObj = Instantiate(projectile, FirePoint.position, Quaternion.identity) as GameObject;
         projectileObj.GetComponent<ProjectileBase>().SetOnHitEffect(inventory.abilityOnHitEffects);
-        projectileObj.GetComponent<ProjectileBase>().SetDamage(damage + Inventory.instance.abilityDamage);
+        projectileObj.GetComponent<ProjectileBase>().SetDamage((damage + Inventory.instance.abilityDamage) * Inventory.instance.percentDamageMod);
         projectileObj.GetComponent<Rigidbody>().velocity = (destination - FirePoint.position).normalized * projectileVelocity;
         //if (useGrav)
         //{

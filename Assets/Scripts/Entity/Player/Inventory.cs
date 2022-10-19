@@ -36,6 +36,7 @@ public class Inventory : MonoBehaviour
         defense,
         physicalDamage,
         abilityDamage,
+        percentDamageMod,
         bonusProjectileVelocity,
         knockbackReduction,
         cooldownReduction;
@@ -48,6 +49,7 @@ public class Inventory : MonoBehaviour
         defense,
         physicalDamage,
         abilityDamage,
+        percentDamageMod,
         bonusProjectileVelocity,
         knockbackReduction,
         cooldownReduction
@@ -82,6 +84,7 @@ public class Inventory : MonoBehaviour
         base_Health = playerHealth.maxHealth;
         base_Defense = playerHealth.defence;
         base_ActiveAbilities = abilities.AbilitySlot;
+        percentDamageMod = 1.0f;
     }
 
     public void resetStats() 
@@ -93,6 +96,7 @@ public class Inventory : MonoBehaviour
 
         physicalDamage = 0;
         abilityDamage = 0;
+        percentDamageMod = 1.0f;
         bonusProjectileVelocity = 0;
         knockbackReduction = 0;
         cooldownReduction = 0;
@@ -125,7 +129,7 @@ public class Inventory : MonoBehaviour
                 break;
             case StatType.health:
                 health += val;
-                playerHealth.maxHealth = base_Health + health;
+                playerHealth.maxHealth = Mathf.Clamp(base_Health + health, 1.0f, Mathf.Infinity);
                 break;
             case StatType.defense:
                 defense += val;
@@ -136,6 +140,9 @@ public class Inventory : MonoBehaviour
                 break;
             case StatType.abilityDamage:
                 abilityDamage += val;
+                break;
+            case StatType.percentDamageMod:
+                percentDamageMod += val;
                 break;
             case StatType.bonusProjectileVelocity:
                 bonusProjectileVelocity += val;
@@ -149,7 +156,7 @@ public class Inventory : MonoBehaviour
                 abilities.addCDR(val);
                 break;
         }
-        Debug.Log("Updated: " + type + ", by: " + val);
+        //Debug.Log("Updated: " + type + ", by: " + val);
     }
 
     public bool CanPurchase(int cost)

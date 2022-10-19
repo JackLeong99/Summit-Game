@@ -15,15 +15,14 @@ public class BurnDoT : OnHitEffect
     public CrudeOil item;
 
     private float[] damageStack;
-    private Inventory player;
 
     public override void ApplyOnHitEffects(GameObject target)
     {
         damageStack = new float[numberOfTicks];
-        player = GameManager.instance.player.GetComponent<Inventory>();
+        float damagePerTick = damage + (damage * Inventory.instance.GetStacks(item));
         for (int i = 0; i < numberOfTicks; i++) 
         {
-            damageStack[i] = damage + (damage * player.GetStacks(item));
+            damageStack[i] = damagePerTick;
         }
         target.GetComponent<EnemyDamageReceiver>().PassDamage(damageStack, rate, target.transform.position);
     }

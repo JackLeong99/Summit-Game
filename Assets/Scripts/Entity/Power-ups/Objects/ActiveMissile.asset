@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: ActiveMissile
   m_EditorClassIdentifier: 
   itemName: Missile Pod
-  description: This is an item
+  description: Fire a volley of tracking missiles
   cost: 5
   icon: {fileID: 21300000, guid: 0049f78ccfaabf24d964680fb88e12cb, type: 3}
   slot: 3
@@ -22,7 +22,7 @@ MonoBehaviour:
   projectile: {fileID: 8434380028405312774, guid: d014fd6b5bc54704fa0d2ac160e76965, type: 3}
   missileCount: 6
   projectileSpeed: 20
-  tracking: 1
+  tracking: 1.3
   damage: 10
   bufferTime: 0.2
   delay: 0.3

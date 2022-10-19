@@ -30,12 +30,13 @@ public class ActiveMissile : ActiveAbility
 
         float missileNo = delay;
         float bonusDMG = Inventory.instance.abilityDamage;
+        float dPercentMod = Inventory.instance.percentDamageMod;
 
         foreach (var p in projectileList) 
         {
             p.GetComponent<Missile>().setTracking(tracking, missileNo, FindClosestEnemy());
             p.GetComponent<Rigidbody>().velocity = (Vector3.up + new Vector3(Random.Range(-0.1f, 0.1f), 0, Random.Range(-0.1f, 0.1f))).normalized * projectileSpeed;
-            p.GetComponent<Missile>().SetDamage(damage + bonusDMG);
+            p.GetComponent<Missile>().SetDamage((damage + bonusDMG) * dPercentMod);
             yield return new WaitForSeconds(bufferTime);
             missileNo += bufferTime;
         }
