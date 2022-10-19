@@ -2,9 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(menuName = "OnHitEffects/Test DoT for Boss")]
+[CreateAssetMenu(menuName = "OnHitEffects/Burn (applied to enemies)")]
 
-public class BossDoT : OnHitEffect
+public class BurnDoT : OnHitEffect
 {
     [Tooltip("Number of seconds between damage ticks")]
     public float rate;
@@ -12,7 +12,7 @@ public class BossDoT : OnHitEffect
     public float damage;
     public int numberOfTicks;
     [Tooltip("Corresponding powerup")]
-    public UtilGun item;
+    public CrudeOil item;
 
     private float[] damageStack;
     private Inventory player;

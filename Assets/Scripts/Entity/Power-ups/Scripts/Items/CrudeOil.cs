@@ -2,8 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(menuName = "Powerups/testDotOnHit")]
-public class UtilGun : PassiveItem
+[CreateAssetMenu(menuName = "Powerups/Crude Oil")]
+public class CrudeOil : PassiveItem
 {
     public OnHitEffect hitEffect;
     public override void acquire()
