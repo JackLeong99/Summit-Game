@@ -42,7 +42,12 @@ public class AbilityState : BaseState
         boss.anim.SetTrigger(animation);
 
         //Debug.Log(this.name + " Loaded");
-        AkSoundEngine.PostEvent(soundEvent, boss.gameObject);
+        switch (true)
+        {
+            case bool _ when soundEvent.Length != 0:
+                AkSoundEngine.PostEvent(soundEvent, boss.gameObject);
+                break;
+        }
     }
 
     public void Callback()
