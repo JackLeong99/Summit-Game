@@ -2,8 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(menuName = "Powerups/testDotOnHit")]
-public class UtilGun : PassiveItem
+[CreateAssetMenu(menuName = "Powerups/Flesh siphon")]
+
+public class FleshSiphon : PassiveItem
 {
     public OnHitEffect hitEffect;
     public override void acquire()
@@ -13,7 +14,7 @@ public class UtilGun : PassiveItem
 
     public override void effect()
     {
-        Inventory inv = GameManager.instance.player.GetComponent<Inventory>();
-        inv.abilityOnHitEffects.Add(hitEffect);
+        if (Inventory.instance.GetStacks(this) == 0)
+            Inventory.instance.abilityOnHitEffects.Add(hitEffect);
     }
 }

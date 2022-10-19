@@ -9,11 +9,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a400fa39fd4fa1f4bb4d28d41075f175, type: 3}
-  m_Name: Util Gun
+  m_Script: {fileID: 11500000, guid: 8452e1f1ab4a73d49a6da19d50608e44, type: 3}
+  m_Name: Boots of Swiftness
   m_EditorClassIdentifier: 
-  itemName: Burning Bullets
-  description: This is an item
+  itemName: Boots of Swiftness
+  description: Move faster
   cost: 5
   icon: {fileID: 21300000, guid: 0049f78ccfaabf24d964680fb88e12cb, type: 3}
-  hitEffect: {fileID: 11400000, guid: f58d4fbde17288c4d9da1a067e7fa6ed, type: 2}
+  type: 0
+  val: 2

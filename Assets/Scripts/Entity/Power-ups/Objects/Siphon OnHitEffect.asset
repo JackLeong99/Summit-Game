@@ -9,9 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1161f1a0bc3f44b4190920f7ba649bb1, type: 3}
-  m_Name: ArcherRangedState
+  m_Script: {fileID: 11500000, guid: 536e130ad1c81b74c8a80108b4320ff8, type: 3}
+  m_Name: Siphon OnHitEffect
   m_EditorClassIdentifier: 
-  abilities:
-  - {fileID: 11400000, guid: 51068a73d698ec741802173976db6aa4, type: 2}
-  - {fileID: 11400000, guid: 850bd8bd4dd47d142b327c6c4341d662, type: 2}
+  gain: 1
+  item: {fileID: 11400000, guid: 344d9eca2c3971148bb13dc9327e4388, type: 2}

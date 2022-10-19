@@ -6,6 +6,8 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "Boss/Ability/DeathState")]
 public class DeathState : BossState
 {
+    public GameObject deathEffect;
+
     public override void Invoke(BossStateMachine boss)
     {
         base.Invoke(boss);
@@ -27,7 +29,16 @@ public class DeathState : BossState
     {
         boss.anim.SetTrigger("Death");
         AkSoundEngine.PostEvent("Enemy_Death", boss.gameObject);
-        yield return new WaitForSeconds(8.2f);
+        yield return new WaitForSeconds(4f);
+
+        switch (true)
+        {
+            case bool _ when deathEffect != null:
+                Instantiate(deathEffect, boss.transform);
+                break;
+        }
+
+        yield return new WaitForSeconds(4.2f);
         BossManager.instance.OnDeath(boss.attributes.position);
     }
 }

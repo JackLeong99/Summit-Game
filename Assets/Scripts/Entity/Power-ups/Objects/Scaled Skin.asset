@@ -9,9 +9,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1161f1a0bc3f44b4190920f7ba649bb1, type: 3}
-  m_Name: ArcherRangedState
+  m_Script: {fileID: 11500000, guid: 8452e1f1ab4a73d49a6da19d50608e44, type: 3}
+  m_Name: Scaled Skin
   m_EditorClassIdentifier: 
-  abilities:
-  - {fileID: 11400000, guid: 51068a73d698ec741802173976db6aa4, type: 2}
-  - {fileID: 11400000, guid: 850bd8bd4dd47d142b327c6c4341d662, type: 2}
+  itemName: Scaled Skin
+  description: Become tougher
+  cost: 5
+  icon: {fileID: 21300000, guid: 0049f78ccfaabf24d964680fb88e12cb, type: 3}
+  type: 3
+  val: 2
