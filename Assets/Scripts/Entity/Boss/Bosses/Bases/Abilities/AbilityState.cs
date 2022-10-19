@@ -47,6 +47,7 @@ public class AbilityState : BaseState
 
     public void Callback()
     {
+        Debug.Log("CALLBACK!");
         boss.StartCoroutine(SwapState(nextState != null ? nextState : boss.baseState, delay));
     }
 
