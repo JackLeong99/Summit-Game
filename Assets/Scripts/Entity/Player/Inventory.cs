@@ -43,8 +43,7 @@ public class Inventory : MonoBehaviour
 
     public enum StatType 
     {
-        walkSpeed,
-        sprintSpeed,
+        speed,
         health,
         defense,
         physicalDamage,
@@ -119,13 +118,10 @@ public class Inventory : MonoBehaviour
     {
         switch (type) 
         {
-            case StatType.walkSpeed:
+            case StatType.speed:
                 walkSpeed += val;
-                controller.MoveSpeed = base_WalkSpeed + walkSpeed;
-                break;
-            case StatType.sprintSpeed:
-                sprintSpeed += val;
-                controller.SprintSpeed = base_SprintSpeed + sprintSpeed;
+                controller.MoveSpeed = Mathf.Clamp(base_WalkSpeed + walkSpeed, 1.0f, Mathf.Infinity);
+                controller.SprintSpeed = Mathf.Clamp(base_SprintSpeed + sprintSpeed, 1.0f, Mathf.Infinity);
                 break;
             case StatType.health:
                 health += val;

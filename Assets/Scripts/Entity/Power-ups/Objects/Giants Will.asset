@@ -9,12 +9,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8452e1f1ab4a73d49a6da19d50608e44, type: 3}
-  m_Name: Boots of Swiftness
+  m_Script: {fileID: 11500000, guid: d4ce5e35db0f69e4eb7ae92b720fab8f, type: 3}
+  m_Name: Giants Will
   m_EditorClassIdentifier: 
-  itemName: Boots of Swiftness
-  description: Move faster
-  cost: 5
+  itemName: Giants Will
+  description: Gain a boost to total life at the cost of speed and damage
+  cost: 10
   icon: {fileID: 21300000, guid: 0049f78ccfaabf24d964680fb88e12cb, type: 3}
-  type: 0
-  val: 2
+  healthVal: 30
+  damageVal: 5
+  speedVal: 5

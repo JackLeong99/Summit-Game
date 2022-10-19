@@ -9,12 +9,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8452e1f1ab4a73d49a6da19d50608e44, type: 3}
-  m_Name: Boots of Swiftness
+  m_Script: {fileID: 11500000, guid: 0737efa57011eb94c9459071f65bcb75, type: 3}
+  m_Name: Fury Of The Fallen
   m_EditorClassIdentifier: 
-  itemName: Boots of Swiftness
-  description: Move faster
-  cost: 5
+  itemName: Fury of the fallen
+  description: Deal bonus damage at critical health
+  cost: 10
   icon: {fileID: 21300000, guid: 0049f78ccfaabf24d964680fb88e12cb, type: 3}
-  type: 0
-  val: 2
+  breakPointPercent: 25
+  bonusDamage: 10
+  BreakpointState: 1
