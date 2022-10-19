@@ -61,7 +61,13 @@ public class SpawnAbilityState : AbilityState
 
         var spawnable = Instantiate(spawnableObject, target, Quaternion.identity, boss.transform);
         spawnable.transform.parent = null;
-        AkSoundEngine.PostEvent(spawnSoundEvent, spawnable);
+
+        switch (true)
+        {
+            case bool _ when spawnSoundEvent.Length != 0:
+                AkSoundEngine.PostEvent(spawnSoundEvent, boss.gameObject);
+                break;
+        }
 
         yield return null;
     }
