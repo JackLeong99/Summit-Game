@@ -31,7 +31,9 @@ public class DecisionState : BaseState
             }
             else
             {
-                SetPrevious(abilities[selected]);
+                if (abilityLimit != 0)
+                    SetPrevious(abilities[selected]);
+
                 boss.ChangeState(abilities[selected]);
             }
         }
