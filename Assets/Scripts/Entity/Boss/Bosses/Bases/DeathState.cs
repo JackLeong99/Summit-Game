@@ -30,9 +30,6 @@ public class DeathState : BossState
     {
         boss.anim.SetTrigger("Death");
         AkSoundEngine.PostEvent("Enemy_Death", boss.gameObject);
-        Inventory.instance.updateStat(Inventory.StatType.gold, goldDrop);
-        UIItemDisplay.instance.UpdateGold();
-
 
         yield return new WaitForSeconds(4f);
 
