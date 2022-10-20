@@ -105,6 +105,7 @@ public class UIItemDisplay : MonoBehaviour
         itemNamesList.Clear();
         passiveItems.Clear();
         inventory.items.Clear();
+        inventory.resetStats();
         nextPassive = -40;
         activeItem.text = "";
         UpdateGold();
