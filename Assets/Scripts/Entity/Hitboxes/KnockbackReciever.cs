@@ -7,8 +7,7 @@ public class KnockbackReciever : MonoBehaviour
     private CharacterController player;
     private Inventory inventory;
     [SerializeField] float mass;
-    
-    [HideInInspector]
+   
     public Vector3 impact;
     [HideInInspector]
     public bool invulnerable;
@@ -22,6 +21,7 @@ public class KnockbackReciever : MonoBehaviour
     public void AddImpactH(Vector3 dir, float force)
     {
         dir.y = 0;
+        Debug.Log("knockback direction x: " + dir);
         impact += dir.normalized * force * 10 / (mass * (1 + inventory.knockbackReduction));
     }
 
@@ -29,12 +29,14 @@ public class KnockbackReciever : MonoBehaviour
     {
         dir.x = 0;
         dir.z = 0;
+        Debug.Log("knockback direction y: " + dir);
         if(dir.y < 0)
         {
             dir.y = -dir.y;
         }
         impact += dir.normalized * force * 10 / (mass * (1 + inventory.knockbackReduction));
     }
+
     void Update()
     {
         if(impact.magnitude > 5 && !invulnerable)
