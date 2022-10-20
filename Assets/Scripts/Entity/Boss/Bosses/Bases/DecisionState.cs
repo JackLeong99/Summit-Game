@@ -24,7 +24,16 @@ public class DecisionState : BaseState
         if (abilities.Count == 0 || abilities[0] != null)
         {
             var selected = DetermineAbility();
-            Debug.LogWarning("previousabilitieis.count = " + previousAbilities.Count + ". abilityLimit = " + abilityLimit);
+            if (previousAbilities == null) 
+            {
+                if (abilityLimit != 0)
+                    SetPrevious(abilities[selected]);
+
+                boss.ChangeState(abilities[selected]);
+                return;
+            }
+            Debug.LogWarning("previousabilitieis.count = " + previousAbilities.Count);
+            Debug.LogWarning(". abilityLimit = " + abilityLimit);
             if (previousAbilities.Count(x => x == abilities[selected]) == previousAbilities.Count && abilityLimit != 0 && previousAbilities.Count != 0)
             {
                 return;
