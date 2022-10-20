@@ -42,6 +42,7 @@ public class BossStateMachine : MonoBehaviour
     public BossAttributes attributes;
     public BossContext components;
     public UnityEvent callback;
+    public UnityEvent callbackEvent;
 
     [Header("Ability Keypoints")]
     public MeleeHitbox leftHand;
@@ -121,6 +122,11 @@ public class BossStateMachine : MonoBehaviour
     public void AnimationInvoke()
     {
         callback.Invoke();
+    }
+
+    public void AnimationEvent()
+    {
+        callbackEvent.Invoke();
     }
 
     public void TakeDamage(float dmg, Vector3 position)

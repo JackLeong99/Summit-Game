@@ -9,7 +9,6 @@ public class SpawnAbilityState : AbilityState
     public string spawnSoundEvent;
 
     [Header("Values")]
-    public float spawnLength;
     public LayerMask layerMask = 6;
     public SpawnPosition spawnPos = SpawnPosition.Ground;
     public enum SpawnPosition { Ground, Target, Random }
@@ -38,12 +37,16 @@ public class SpawnAbilityState : AbilityState
     {
         base.Setup();
 
+        boss.callbackEvent.AddListener(CallbackEvent);
+    }
+
+    public void CallbackEvent()
+    {
         boss.StartCoroutine(SpawnObject());
     }
 
     public IEnumerator SpawnObject()
     {
-        yield return new WaitForSeconds(boss.anim.GetCurrentAnimatorStateInfo(0).length * spawnLength);
 
         Vector3 target = GameManager.instance.player.transform.position;
 
@@ -69,6 +72,6 @@ public class SpawnAbilityState : AbilityState
                 break;
         }
 
-        yield return null;
+        yield return new WaitForEndOfFrame();
     }
 }
