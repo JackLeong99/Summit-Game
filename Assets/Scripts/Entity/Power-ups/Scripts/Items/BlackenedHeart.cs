@@ -18,7 +18,9 @@ public class BlackenedHeart : PassiveItem
 
     public override void effect()
     {
-        Inventory.instance.updateStat(Inventory.StatType.health, -healthVal);
+        PlayerHealth hp = GameManager.instance.player.GetComponent<PlayerHealth>();
+
+        Inventory.instance.updateStat(Inventory.StatType.health, -(healthVal * hp.maxHealth));
         Inventory.instance.updateStat(Inventory.StatType.percentDamageMod, damageVal);
     }
 }

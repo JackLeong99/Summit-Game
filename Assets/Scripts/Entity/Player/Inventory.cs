@@ -127,6 +127,7 @@ public class Inventory : MonoBehaviour
             case StatType.health:
                 health += val;
                 playerHealth.maxHealth = Mathf.Clamp(base_Health + health, 1.0f, Mathf.Infinity);
+                playerHealth.healDamage(0);
                 break;
             case StatType.defense:
                 defense += val;
