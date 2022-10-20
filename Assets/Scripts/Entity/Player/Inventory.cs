@@ -127,6 +127,7 @@ public class Inventory : MonoBehaviour
             case StatType.health:
                 health += val;
                 playerHealth.maxHealth = Mathf.Clamp(base_Health + health, 1.0f, Mathf.Infinity);
+                playerHealth.healDamage(0);
                 break;
             case StatType.defense:
                 defense += val;
@@ -154,6 +155,7 @@ public class Inventory : MonoBehaviour
                 break;
             case StatType.gold:
                 gold += Mathf.RoundToInt(val);
+                UIItemDisplay.instance.UpdateGold();
                 break;
         }
         //Debug.Log("Updated: " + type + ", by: " + val);

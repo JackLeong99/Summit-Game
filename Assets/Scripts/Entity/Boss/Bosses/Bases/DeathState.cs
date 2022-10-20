@@ -7,6 +7,7 @@ using UnityEngine;
 public class DeathState : BossState
 {
     public GameObject deathEffect;
+    public float goldDrop;
 
     public override void Invoke(BossStateMachine boss)
     {
@@ -29,6 +30,7 @@ public class DeathState : BossState
     {
         boss.anim.SetTrigger("Death");
         AkSoundEngine.PostEvent("Enemy_Death", boss.gameObject);
+
         yield return new WaitForSeconds(4f);
 
         switch (true)
