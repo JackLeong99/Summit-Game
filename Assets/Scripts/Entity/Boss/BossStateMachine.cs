@@ -99,7 +99,7 @@ public class BossStateMachine : MonoBehaviour
                 currentAbility.Update();
                 break;
             default:
-                Debug.LogWarning("CurrentAbility is: " + currentAbility);
+                //Debug.LogWarning("CurrentAbility is: " + currentAbility);
                 break;
         }
     }

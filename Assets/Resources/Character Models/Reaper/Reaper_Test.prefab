@@ -1444,6 +1444,66 @@ Transform:
   m_Father: {fileID: 7655601216004076718}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &2638521884186495974
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5893132892399137482}
+  - component: {fileID: 3431559737464786959}
+  - component: {fileID: 682369079856090173}
+  m_Layer: 0
+  m_Name: MeleeHitbox2
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5893132892399137482
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2638521884186495974}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.00012, y: -0.00905, z: 0.00212}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 6303178353206992657}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &3431559737464786959
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2638521884186495974}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.01, y: 0.01, z: 0.01}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &682369079856090173
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2638521884186495974}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4309036dd87b64402a0f2c171852a4e7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 20
+  force: {x: 0, y: 0}
 --- !u!1 &2694340329660163866
 GameObject:
   m_ObjectHideFlags: 0
@@ -1859,8 +1919,8 @@ MonoBehaviour:
   callback:
     m_PersistentCalls:
       m_Calls: []
-  leftHand: {fileID: 0}
-  rightHand: {fileID: 0}
+  leftHand: {fileID: 58643368910120554}
+  rightHand: {fileID: 682369079856090173}
   currentAbility: {fileID: 0}
   baseState: {fileID: 11400000, guid: 00ba742a00cac3f468c8c1a5bf8a6f85, type: 2}
   idleState: {fileID: 11400000, guid: 8c9ee647ad92b24429af379d72f96ea1, type: 2}
@@ -2077,8 +2137,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 439.51318, y: 182.58173, z: 72.072556}
-  m_Center: {x: 20.172483, y: 38.635937, z: -15.843574}
+  m_Size: {x: 895.1545, y: 182.58173, z: 95.46448}
+  m_Center: {x: 37.17606, y: 38.635937, z: -4.1469145}
 --- !u!114 &58643368910120554
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2510,6 +2570,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 7612722821177475422}
+  - {fileID: 5893132892399137482}
   m_Father: {fileID: 8563953534659120814}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2524,8 +2585,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.0057654963, y: 0.014707952, z: 0.0033800572}
-  m_Center: {x: -0.000040000028, y: -0.0023539646, z: -0.00057635724}
+  m_Size: {x: 0.008184146, y: 0.015890878, z: 0.006012105}
+  m_Center: {x: -0.00012533835, y: -0.0029454152, z: -0.00088002987}
 --- !u!114 &3186395801172205793
 MonoBehaviour:
   m_ObjectHideFlags: 0
