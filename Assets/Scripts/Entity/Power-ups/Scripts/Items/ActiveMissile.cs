@@ -7,7 +7,7 @@ using UnityEngine;
 public class ActiveMissile : ActiveAbility
 {
     public GameObject projectile;
-
+    public string seekTag;
     public float missileCount;
     public float projectileSpeed;
     public float tracking;
@@ -46,7 +46,7 @@ public class ActiveMissile : ActiveAbility
     public GameObject FindClosestEnemy()
     {
         GameObject[] gos;
-        gos = GameObject.FindGameObjectsWithTag("enemyHitbox");
+        gos = GameObject.FindGameObjectsWithTag(seekTag);
         GameObject closest = null;
         float distance = Mathf.Infinity;
         Vector3 position = GameManager.instance.player.transform.position;
