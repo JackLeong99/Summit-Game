@@ -7,7 +7,6 @@ using UnityEngine;
 public class RockThrowState : AbilityState
 {
     [Header("Values")]
-    public float spawnLength;
     public SpawnPosition spawnPos;
     public enum SpawnPosition { Left, Right }
 
@@ -42,13 +41,16 @@ public class RockThrowState : AbilityState
         rock.transform.parent = boss.rightHand.transform;
         rock.transform.localPosition = Vector3.zero;
 
+        boss.callbackEvent.AddListener(CallbackEvent);
+    }
+
+    public void CallbackEvent()
+    {
         boss.StartCoroutine(SpawnProjectile(rock));
     }
 
     public IEnumerator SpawnProjectile(GameObject rock)
     {
-        yield return new WaitForSeconds(boss.anim.GetCurrentAnimatorStateInfo(0).length * spawnLength);
-        Debug.Log("Rock Throw Active");
         Vector3 target = GameManager.instance.player.transform.position;
         Vector3 pos = spawnPos == SpawnPosition.Left ? boss.leftHand.transform.position : boss.rightHand.transform.position;
 
