@@ -158,7 +158,7 @@ public class Inventory : MonoBehaviour
                 UIItemDisplay.instance.UpdateGold();
                 break;
         }
-        //Debug.Log("Updated: " + type + ", by: " + val);
+        Debug.Log("Updated: " + type + ", by: " + val);
     }
 
     public bool CanPurchase(int cost)

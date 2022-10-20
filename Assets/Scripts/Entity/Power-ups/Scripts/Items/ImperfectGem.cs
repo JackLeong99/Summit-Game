@@ -24,10 +24,12 @@ public class ImperfectGem : EventItem
                 Inventory.instance.updateStat(Inventory.StatType.speed, bonusSpeed);
                 Inventory.instance.updateStat(Inventory.StatType.percentDamageMod, bonusDamage);
                 BreakpointState = Breakpoint.inBreakPoint;
+                Debug.Log("Breakpoint State " + BreakpointState);
                 break;
             default:
                 Inventory.instance.updateStat(Inventory.StatType.cooldownReduction, cooldownReduction);
                 BreakpointState = Breakpoint.outBreakPoint;
+                Debug.Log("Breakpoint State " + BreakpointState);
                 break;
         }
     }
@@ -51,12 +53,14 @@ public class ImperfectGem : EventItem
                 Inventory.instance.updateStat(Inventory.StatType.speed, bonusSpeed);
                 Inventory.instance.updateStat(Inventory.StatType.percentDamageMod, bonusDamage);
                 BreakpointState = Breakpoint.inBreakPoint;
+                Debug.Log("Breakpoint State " + BreakpointState);
                 break;
             default:
                 Inventory.instance.updateStat(Inventory.StatType.cooldownReduction, cooldownReduction);
                 Inventory.instance.updateStat(Inventory.StatType.speed, -bonusSpeed);
                 Inventory.instance.updateStat(Inventory.StatType.percentDamageMod, -bonusDamage);
                 BreakpointState = Breakpoint.outBreakPoint;
+                Debug.Log("Breakpoint State " + BreakpointState);
                 break;
         }
     }
