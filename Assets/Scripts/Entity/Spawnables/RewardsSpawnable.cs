@@ -18,8 +18,8 @@ public class RewardsSpawnable : MonoBehaviour
     void Start()
     {
         goldReward = Random.Range(minimumGoldReward, maximumGoldReward);
-        int randItemIndex = Random.Range(0, itemPool.Count);
-        randItem = itemPool[randItemIndex];
+        //int randItemIndex = Random.Range(0, itemPool.Count);
+        //randItem = itemPool[randItemIndex];
         StartCoroutine(drop());
     }
 
@@ -27,10 +27,11 @@ public class RewardsSpawnable : MonoBehaviour
     {
         GameObject dropA = Instantiate(itemDropPrefab, gameObject.transform.position, Quaternion.identity) as GameObject;
         dropA.GetComponent<ItemDrop>().SetItem(guaranteedItem);
-
+        dropA.GetComponent<Rigidbody>().velocity = ((Vector3.up + new Vector3(Random.Range(-0.3f, 0.3f), 1, Random.Range(-0.3f, 0.3f))).normalized) * 15;
 
         for (int i = 0; i < goldReward; i++)
         {
+            Debug.Log("gave 1 gold");
             Inventory.instance.updateStat(Inventory.StatType.gold, 1);
             yield return new WaitForSeconds(goldRate);
         }

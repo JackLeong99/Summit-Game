@@ -24,7 +24,6 @@ public class DecisionState : BaseState
         if (abilities.Count == 0 || abilities[0] != null)
         {
             var selected = DetermineAbility();
-
             if (previousAbilities.Count(x => x == abilities[selected]) == previousAbilities.Count && abilityLimit != 0 && previousAbilities.Count != 0)
             {
                 return;

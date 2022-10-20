@@ -10,6 +10,11 @@ public class ItemDrop : MonoBehaviour
 
     public SpriteRenderer icon;
 
+    public void Start()
+    {
+        Physics.IgnoreLayerCollision(13, 15);
+    }
+
     public void Update()
     {
         transform.Rotate(rotationSpeed * Time.deltaTime);
@@ -27,7 +32,7 @@ public class ItemDrop : MonoBehaviour
     public void SetItem(ItemBase i) 
     {
         item = i;
-        icon.sprite = item.icon;
+        //icon.sprite = item.icon;
     }
 
     public void DisplayItem()
