@@ -7,7 +7,7 @@ using System.Linq;
 public class DecisionState : BaseState
 {
     public List<BossState> abilities = new List<BossState>();
-    private List<BossState> previousAbilities;
+    private List<BossState> previousAbilities = new List<BossState>();
 
     [Header("Values")]
     public int abilityLimit;
