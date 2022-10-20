@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class MeleeHitbox : MonoBehaviour
 {
+    public bool dontUseRoot;
+    public float hitLockout;
     public float damage;
     public Vector2 force;
 
@@ -12,7 +14,15 @@ public class MeleeHitbox : MonoBehaviour
 
     public void Awake()
     {
-        source = transform.root;
+        switch (dontUseRoot) 
+        {
+            case true:
+                source = gameObject.transform;
+                break;
+            default:
+                source = transform.root;
+                break;
+        }
     }
 
     public void OnTriggerEnter(Collider other)
@@ -27,13 +37,26 @@ public class MeleeHitbox : MonoBehaviour
                     health.takeDamage(damage);
                 }
 
-                if (force.x > 0 || force.y > 0)
+                if (hitLockout > 0) 
                 {
-                    Vector3 dir = other.transform.position - source.transform.position;
+                    StartCoroutine(lockout(hitLockout));
+                }
+
+                if (force.x + force.y > 0)
+                {
+                    Vector3 dir = (other.transform.position - source.transform.position);
+                    Debug.Log("dir: " + dir);
                     Knockback(other.gameObject.GetComponent<KnockbackReciever>(), dir);
                 }
                 break;
         }
+    }
+
+    public IEnumerator lockout(float f) 
+    {
+        gameObject.GetComponent<Collider>().enabled = false;
+        yield return new WaitForSeconds(f);
+        gameObject.GetComponent<Collider>().enabled = true;
     }
 
     public void Knockback(KnockbackReciever reciever, Vector3 dir)

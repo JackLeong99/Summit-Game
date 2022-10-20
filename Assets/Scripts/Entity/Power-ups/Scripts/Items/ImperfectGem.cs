@@ -18,18 +18,16 @@ public class ImperfectGem : EventItem
     {
         base.acquire();
         PlayerHealth hp = GameManager.instance.player.GetComponent<PlayerHealth>();
-        switch (hp.currentHealth / hp.maxHealth * 100 <= breakPointPercent) 
+        switch (hp.currentHealth / hp.maxHealth * 100 < breakPointPercent) 
         {
             case true:
                 Inventory.instance.updateStat(Inventory.StatType.speed, bonusSpeed);
                 Inventory.instance.updateStat(Inventory.StatType.percentDamageMod, bonusDamage);
                 BreakpointState = Breakpoint.inBreakPoint;
-                Debug.Log("Breakpoint State " + BreakpointState);
                 break;
             default:
                 Inventory.instance.updateStat(Inventory.StatType.cooldownReduction, cooldownReduction);
                 BreakpointState = Breakpoint.outBreakPoint;
-                Debug.Log("Breakpoint State " + BreakpointState);
                 break;
         }
     }
@@ -46,21 +44,23 @@ public class ImperfectGem : EventItem
 
     public void effect(float f)
     {
-        switch (f <= breakPointPercent && BreakpointState == Breakpoint.outBreakPoint) 
+        switch (BreakpointState) 
         {
-            case true:
+            case Breakpoint.outBreakPoint:
+                if (f >= breakPointPercent)
+                    break;
                 Inventory.instance.updateStat(Inventory.StatType.cooldownReduction, -cooldownReduction);
                 Inventory.instance.updateStat(Inventory.StatType.speed, bonusSpeed);
                 Inventory.instance.updateStat(Inventory.StatType.percentDamageMod, bonusDamage);
                 BreakpointState = Breakpoint.inBreakPoint;
-                Debug.Log("Breakpoint State " + BreakpointState);
                 break;
-            default:
+            case Breakpoint.inBreakPoint:
+                if (f < breakPointPercent)
+                    break;
                 Inventory.instance.updateStat(Inventory.StatType.cooldownReduction, cooldownReduction);
                 Inventory.instance.updateStat(Inventory.StatType.speed, -bonusSpeed);
                 Inventory.instance.updateStat(Inventory.StatType.percentDamageMod, -bonusDamage);
                 BreakpointState = Breakpoint.outBreakPoint;
-                Debug.Log("Breakpoint State " + BreakpointState);
                 break;
         }
     }
