@@ -33,6 +33,8 @@ public class AbilityState : BaseState
         base.Exit();
 
         boss.callback.RemoveAllListeners();
+        boss.callbackEvent.RemoveAllListeners();
+
         nextState = null;
         boss.previousAbility = this;
     }
