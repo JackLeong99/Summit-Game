@@ -4823,7 +4823,7 @@ GameObject:
   - component: {fileID: 4781077900204368565}
   - component: {fileID: 4868997853302078398}
   m_Layer: 0
-  m_Name: Rewards
+  m_Name: RewardsGolem
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4859,7 +4859,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   decayTime: 20
   itemDropPrefab: {fileID: 3280223339191225174, guid: e089aba5540a3f946bc748b42d877f77, type: 3}
-  guaranteedItem: {fileID: 0}
+  guaranteedItem: {fileID: 11400000, guid: e1857f66a7175604f8245220a5b3a089, type: 2}
   itemPool:
   - {fileID: 11400000, guid: 5af2238b5b9b1d3458bdbf009d47a2f2, type: 2}
   - {fileID: 11400000, guid: 363a7d11307ef89409a2dd6e401eb62f, type: 2}
@@ -4874,4 +4874,4 @@ MonoBehaviour:
   itemSpawnDelay: 0.5
   minimumGoldReward: 15
   maximumGoldReward: 29
-  goldRate: 0.1
+  goldRate: 0.2

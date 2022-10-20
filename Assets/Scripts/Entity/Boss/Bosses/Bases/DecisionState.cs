@@ -26,9 +26,6 @@ public class DecisionState : BaseState
             var selected = DetermineAbility();
             if (previousAbilities == null) 
             {
-                if (abilityLimit != 0)
-                    SetPrevious(abilities[selected]);
-
                 boss.ChangeState(abilities[selected]);
                 return;
             }

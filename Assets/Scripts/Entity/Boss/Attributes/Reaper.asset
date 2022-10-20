@@ -13,14 +13,14 @@ MonoBehaviour:
   m_Name: Reaper
   m_EditorClassIdentifier: 
   bossName: 'Memoriae: Warden of the Damned'
-  minPlayerDist: 20
+  minPlayerDist: 22
   maxPlayerDist: 40
   turnSpeed: 60
   turnFor: 1
   attackCooldown: 1.2
   rangedCooldown: 3
   patience: 0.3
-  maxHealth: 200
+  maxHealth: 1000
   iFrameTime: 0.1
   rageSpeed: 15
   rageMultiplier: 1.2
