@@ -7,7 +7,6 @@ using UnityEngine;
 public class DeathState : BossState
 {
     public GameObject deathEffect;
-    public float goldDrop;
 
     public override void Invoke(BossStateMachine boss)
     {
