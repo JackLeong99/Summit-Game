@@ -13,7 +13,7 @@ public class CrudeOil : PassiveItem
 
     public override void effect()
     {
-        if(Inventory.instance.GetStacks(this) == 0)
+        if(Inventory.instance.GetStacks(this) <= 1)
             Inventory.instance.abilityOnHitEffects.Add(hitEffect);
     }
 }
