@@ -9,9 +9,6 @@ public class ReplenishState : AbilityState
     public int rocksToSpawn;
     public float spawnRadius;
 
-    [Header("Values")]
-    public float spawnLength;
-
     [Header("References")]
     public GameObject rockPrefab;
 
@@ -36,13 +33,16 @@ public class ReplenishState : AbilityState
     {
         base.Setup();
 
+        boss.callbackEvent.AddListener(CallbackEvent);
+    }
+
+    public void CallbackEvent()
+    {
         boss.StartCoroutine(Replenish());
     }
 
     public IEnumerator Replenish()
     {
-        yield return new WaitForSeconds(boss.anim.GetCurrentAnimatorStateInfo(0).length * spawnLength);
-
         for (int i = 0; i < rocksToSpawn; i++)
         {
             GameObject rock = Instantiate(rockPrefab);
