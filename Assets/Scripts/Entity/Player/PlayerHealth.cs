@@ -74,7 +74,6 @@ public class PlayerHealth : MonoBehaviour
 
         HealthbarManager.instance.ClearBoss();
         GameManager.instance.LoadDelegate(GameManager.instance.OnDeath()); //to be moved to whatever is handling health
-       //IItemDisplay.instance.ClearListOfItems(); //same in gamemanager. Delete one that is not needed
     }
 
     public float GetPlayerHealth()

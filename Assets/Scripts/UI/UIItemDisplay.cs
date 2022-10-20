@@ -104,12 +104,11 @@ public class UIItemDisplay : MonoBehaviour
         }
         itemNamesList.Clear();
         passiveItems.Clear();
-        inventory.items.Clear();
-        inventory.resetStats();
         nextPassive = -40;
         activeItem.text = "";
+        inventory = GameManager.instance.player.GetComponent<Inventory>();
+        abilities = GameManager.instance.player.GetComponent<PlayerAbilities>();
         UpdateGold();
-        
 
     }
 }
