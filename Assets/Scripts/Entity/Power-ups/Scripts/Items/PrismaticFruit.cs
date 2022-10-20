@@ -19,7 +19,7 @@ public class PrismaticFruit : PassiveItem
 
     public override void effect()
     {
-        if (Inventory.instance.GetStacks(this) == 0)
+        if (Inventory.instance.GetStacks(this) <= 1)
         {
             chp = GameManager.instance.player.GetComponent<PlayerHealth>();
             chp.StartCoroutine(regen());
