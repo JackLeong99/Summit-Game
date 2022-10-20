@@ -155,6 +155,7 @@ public class Inventory : MonoBehaviour
                 break;
             case StatType.gold:
                 gold += Mathf.RoundToInt(val);
+                UIItemDisplay.instance.UpdateGold();
                 break;
         }
         //Debug.Log("Updated: " + type + ", by: " + val);
