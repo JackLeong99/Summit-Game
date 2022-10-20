@@ -199,6 +199,7 @@ public class GameManager : MonoBehaviour
         List<AsyncOperation> scenesLoading = SceneHandler.ReloadScene(gameScenes[0]);
         scenesLoading = scenesLoading.Concat(SceneHandler.SwapScenes(deathScene, exclusionScenes)).ToList();
         yield return StartCoroutine(LoadProgression(scenesLoading, deathScene));
+        UIItemDisplay.instance.ClearListOfItems(); //same in player health. Delete one that is not needed
     }
 
     public void LoadDelegate(IEnumerator coroutine)

@@ -20,7 +20,13 @@ public class PlayerHealth : MonoBehaviour
     {
         currentHealth = maxHealth;
     }
-
+    public void Update()
+    {
+        if (Input.GetKey(KeyCode.K))
+        {
+            takeDamage(100);
+        }
+    }
     public void takeDamage(float damage)
     {
         if (invulnerable) { return; }
@@ -68,6 +74,7 @@ public class PlayerHealth : MonoBehaviour
 
         HealthbarManager.instance.ClearBoss();
         GameManager.instance.LoadDelegate(GameManager.instance.OnDeath()); //to be moved to whatever is handling health
+       //IItemDisplay.instance.ClearListOfItems(); //same in gamemanager. Delete one that is not needed
     }
 
     public float GetPlayerHealth()

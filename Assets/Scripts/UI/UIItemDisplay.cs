@@ -15,8 +15,8 @@ public class UIItemDisplay : MonoBehaviour
     public TMP_Text activeItem;
     private string passiveItemFormat = "{0}: {1}";
     //public TMP_Text passiveItem1;
-
-    private List<String> itemNamesList = new List<String>();
+    
+    public List<String> itemNamesList = new List<String>();
     public List<TMP_Text> passiveItems= new List<TMP_Text>();
 
     public GameObject panelObject;
@@ -93,5 +93,22 @@ public class UIItemDisplay : MonoBehaviour
     public void UpdateGold()
     {
         gold.text = string.Format(goldFormat, inventory.gold);
+    }
+
+    public void ClearListOfItems()
+    {        
+        GameObject[] allItems = GameObject.FindGameObjectsWithTag("UIItems");
+        for (int i = 0; i< allItems.Length; i++)
+        {
+            Destroy(allItems[i]);
+        }
+        itemNamesList.Clear();
+        passiveItems.Clear();
+        inventory.items.Clear();
+        nextPassive = -40;
+        activeItem.text = "";
+        UpdateGold();
+        
+
     }
 }
