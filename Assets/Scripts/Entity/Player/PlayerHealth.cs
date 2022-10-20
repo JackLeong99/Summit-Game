@@ -53,6 +53,7 @@ public class PlayerHealth : MonoBehaviour
     {
         currentHealth += healing;
         currentHealth = Mathf.Clamp(currentHealth, 0f, maxHealth);
+        EventManager.instance.OnHealthChange?.Invoke((currentHealth / maxHealth) * 100);
     }
     
     public IEnumerator Death()

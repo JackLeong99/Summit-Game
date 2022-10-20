@@ -9,16 +9,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ea5ace4bfdf4cd04ba37e089188f3846, type: 3}
-  m_Name: New Emergency Health
+  m_Script: {fileID: 11500000, guid: 0737efa57011eb94c9459071f65bcb75, type: 3}
+  m_Name: Fury Of The Fallen
   m_EditorClassIdentifier: 
-  itemName: Emergency Life Support Kit
-  description: This is an item
-  cost: 5
+  itemName: Fury of the fallen
+  description: Deal bonus damage at critical health
+  cost: 10
   icon: {fileID: 21300000, guid: 0049f78ccfaabf24d964680fb88e12cb, type: 3}
-  baseHeal: 2
-  healPerStack: 1
-  numberOfTicks: 5
-  tickRate: 0.5
-  cooldown: 15
-  procPercent: 40
+  breakPointPercent: 25
+  bonusDamage: 10
+  BreakpointState: 1

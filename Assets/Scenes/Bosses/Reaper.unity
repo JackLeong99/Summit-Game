@@ -2568,6 +2568,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1292171509883928916, guid: 9d51cb7d9b26aff4abd088ec9c7f861e, type: 3}
+      propertyPath: m_TagString
+      value: enemyHitbox
+      objectReference: {fileID: 0}
+    - target: {fileID: 1419594323889141048, guid: 9d51cb7d9b26aff4abd088ec9c7f861e, type: 3}
+      propertyPath: m_TagString
+      value: enemyHitbox
+      objectReference: {fileID: 0}
+    - target: {fileID: 3364123635192132885, guid: 9d51cb7d9b26aff4abd088ec9c7f861e, type: 3}
+      propertyPath: m_TagString
+      value: enemyHitbox
+      objectReference: {fileID: 0}
     - target: {fileID: 3516662455679876090, guid: 9d51cb7d9b26aff4abd088ec9c7f861e, type: 3}
       propertyPath: m_Name
       value: Reaper_Test
@@ -2632,6 +2644,18 @@ PrefabInstance:
       propertyPath: rightHand
       value: 
       objectReference: {fileID: 9162981624309246516}
+    - target: {fileID: 5761436140315855071, guid: 9d51cb7d9b26aff4abd088ec9c7f861e, type: 3}
+      propertyPath: m_TagString
+      value: enemyHitbox
+      objectReference: {fileID: 0}
+    - target: {fileID: 7404880421734038670, guid: 9d51cb7d9b26aff4abd088ec9c7f861e, type: 3}
+      propertyPath: m_TagString
+      value: enemyHitbox
+      objectReference: {fileID: 0}
+    - target: {fileID: 7982376174658139454, guid: 9d51cb7d9b26aff4abd088ec9c7f861e, type: 3}
+      propertyPath: m_TagString
+      value: enemyHitbox
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9d51cb7d9b26aff4abd088ec9c7f861e, type: 3}
 --- !u!114 &9162981624309246516 stripped

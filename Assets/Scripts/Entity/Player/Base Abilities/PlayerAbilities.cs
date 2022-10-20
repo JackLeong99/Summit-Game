@@ -75,8 +75,9 @@ public class PlayerAbilities : MonoBehaviour
 
     public void addCDR(float c) 
     {
-        cooldownReduction = Mathf.Clamp(cooldownReduction += c, 0f, maxCDR);
-        cdrMod = ((100 - cooldownReduction) / 100);
+        cooldownReduction = Mathf.Clamp(cooldownReduction += c, 0f, Mathf.Infinity);
+        float clampedCDR = Mathf.Clamp(cooldownReduction, 0f, maxCDR);
+        cdrMod = ((100 - clampedCDR) / 100);
     }
 
     public void resetCDR() 

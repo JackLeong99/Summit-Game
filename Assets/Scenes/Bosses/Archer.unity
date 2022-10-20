@@ -5947,6 +5947,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6928734449127746093}
   - component: {fileID: 2813809844441125693}
+  - component: {fileID: 6928734449127746094}
   m_Layer: 0
   m_Name: Cube
   m_TagString: Untagged
@@ -6063,6 +6064,7 @@ GameObject:
   - component: {fileID: 6853838149786282996}
   - component: {fileID: 6853838149786282995}
   - component: {fileID: 6853838149786282997}
+  - component: {fileID: 6853838149786282999}
   m_Layer: 0
   m_Name: ArcherIdle
   m_TagString: Untagged
@@ -6169,6 +6171,19 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 126
   m_CollisionDetection: 0
+--- !u!114 &6853838149786282999
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6853838149786282994}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 473fe51031d643e4f90d96408d0802b3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bowAnim: {fileID: 9029183877438744106}
 --- !u!4 &6858724933774843801
 Transform:
   m_ObjectHideFlags: 0
@@ -6232,6 +6247,26 @@ Transform:
   m_Father: {fileID: 6077161121213083976}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!95 &6928734449127746094
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6363783249458046151}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 0}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!4 &6953883904098044951
 Transform:
   m_ObjectHideFlags: 0
@@ -7622,6 +7657,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4098270551621874569}
+  - component: {fileID: 9029183877438744106}
   m_Layer: 0
   m_Name: Bow
   m_TagString: Untagged
@@ -7629,6 +7665,26 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!95 &9029183877438744106
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9029183877438744105}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 4da71d6423f59e2428816722e1f735a8, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &9029730088202911698
 GameObject:
   m_ObjectHideFlags: 0
