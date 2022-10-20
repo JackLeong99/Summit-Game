@@ -20,13 +20,7 @@ public class PlayerHealth : MonoBehaviour
     {
         currentHealth = maxHealth;
     }
-    public void Update()
-    {
-        if (Input.GetKey(KeyCode.K))
-        {
-            takeDamage(100);
-        }
-    }
+
     public void takeDamage(float damage)
     {
         if (invulnerable) { return; }

@@ -16,8 +16,8 @@ public class UIItemDisplay : MonoBehaviour
     private string passiveItemFormat = "{0}: {1}";
     //public TMP_Text passiveItem1;
     
-    public List<String> itemNamesList = new List<String>();
-    public List<TMP_Text> passiveItems= new List<TMP_Text>();
+    private List<String> itemNamesList = new List<String>();
+    private List<TMP_Text> passiveItems= new List<TMP_Text>();
 
     public GameObject panelObject;
     public TMP_Text PassivePrefab;
