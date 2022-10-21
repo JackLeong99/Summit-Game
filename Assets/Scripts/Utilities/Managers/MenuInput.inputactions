@@ -1,5 +1,5 @@
 {
-    "name": "Menu",
+    "name": "MenuInput",
     "maps": [
         {
             "name": "UI",
@@ -35,6 +35,34 @@
                     "processors": "",
                     "groups": "",
                     "action": "Pause",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        },
+        {
+            "name": "Interactions",
+            "id": "4134a091-3455-4812-a179-9b245542c4a1",
+            "actions": [
+                {
+                    "name": "Interact",
+                    "type": "Button",
+                    "id": "f3e5fe43-badc-42b9-841e-25655f45a51c",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "1471a72c-5689-4036-aea5-c8d52e766933",
+                    "path": "<Keyboard>/x",
+                    "interactions": "Press",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Interact",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

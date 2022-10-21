@@ -37,13 +37,16 @@ public class ProjectileAbilityState : AbilityState
     {
         base.Setup();
 
+        boss.callbackEvent.AddListener(CallbackEvent);
+    }
+
+    public void CallbackEvent()
+    {
         boss.StartCoroutine(SpawnProjectile());
     }
 
     public IEnumerator SpawnProjectile()
     {
-        yield return new WaitForSeconds(boss.anim.GetCurrentAnimatorStateInfo(0).length * spawnLength);
-
         Vector3 target = GameManager.instance.player.transform.position;
 
         Vector3 pos = spawnPos == SpawnPosition.Left ? boss.leftHand.transform.position : boss.rightHand.transform.position;
