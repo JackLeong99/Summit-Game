@@ -4,7 +4,7 @@ using UnityEngine;
 using System.Linq;
 using DevLocker.Utils;
 using StarterAssets;
-using UnityEngine.Events;
+using UnityEngine.InputSystem.UI;
 
 public class GameManager : MonoBehaviour
 {
