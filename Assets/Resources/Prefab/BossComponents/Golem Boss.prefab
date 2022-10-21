@@ -415,6 +415,7 @@ MonoBehaviour:
   onHitParticles: {fileID: 8382442116021813945, guid: 39f09805de074e7498d7800b3036c85b, type: 3}
   weakSpot: 0
   stunLockoutTime: 0
+  mat: {fileID: 0}
 --- !u!1 &376072306671561867
 GameObject:
   m_ObjectHideFlags: 0
@@ -2555,8 +2556,8 @@ GameObject:
   m_Component:
   - component: {fileID: 4867450236839103713}
   - component: {fileID: 643145999}
-  - component: {fileID: 643145997}
-  - component: {fileID: 643145998}
+  - component: {fileID: 9101863623173170649}
+  - component: {fileID: 4932838710719566334}
   m_Layer: 13
   m_Name: metarig
   m_TagString: Untagged
@@ -2596,7 +2597,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!65 &643145997
+--- !u!65 &9101863623173170649
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2607,9 +2608,9 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.03, y: 0.04, z: 0.04}
-  m_Center: {x: 0, y: 0, z: 0.02}
---- !u!114 &643145998
+  m_Size: {x: 0.022122547, y: 0.039752096, z: 0.04395952}
+  m_Center: {x: 0.00606126, y: 0.0003715981, z: 0.021895265}
+--- !u!114 &4932838710719566334
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2625,6 +2626,7 @@ MonoBehaviour:
   onHitParticles: {fileID: 8382442116021813945, guid: 39f09805de074e7498d7800b3036c85b, type: 3}
   weakSpot: 0
   stunLockoutTime: 0
+  mat: {fileID: 0}
 --- !u!1 &2052868700331042502
 GameObject:
   m_ObjectHideFlags: 0
@@ -3039,6 +3041,7 @@ MonoBehaviour:
   onHitParticles: {fileID: 8382442116021813945, guid: 39f09805de074e7498d7800b3036c85b, type: 3}
   weakSpot: 0
   stunLockoutTime: 0
+  mat: {fileID: 0}
 --- !u!1 &2280339979082314149
 GameObject:
   m_ObjectHideFlags: 0
@@ -4160,6 +4163,7 @@ MonoBehaviour:
   onHitParticles: {fileID: 8382442116021813945, guid: 39f09805de074e7498d7800b3036c85b, type: 3}
   weakSpot: 0
   stunLockoutTime: 0
+  mat: {fileID: 0}
 --- !u!1 &3212050794327048260
 GameObject:
   m_ObjectHideFlags: 0
@@ -5319,6 +5323,7 @@ MonoBehaviour:
   onHitParticles: {fileID: 8382442116021813945, guid: 39f09805de074e7498d7800b3036c85b, type: 3}
   weakSpot: 0
   stunLockoutTime: 0
+  mat: {fileID: 0}
 --- !u!1 &3880641654600599954
 GameObject:
   m_ObjectHideFlags: 0
@@ -5511,6 +5516,7 @@ MonoBehaviour:
   onHitParticles: {fileID: 8382442116021813945, guid: 39f09805de074e7498d7800b3036c85b, type: 3}
   weakSpot: 0
   stunLockoutTime: 0
+  mat: {fileID: 0}
 --- !u!1 &3920246439808673251
 GameObject:
   m_ObjectHideFlags: 0
@@ -7921,6 +7927,7 @@ MonoBehaviour:
   onHitParticles: {fileID: 8382442116021813945, guid: 39f09805de074e7498d7800b3036c85b, type: 3}
   weakSpot: 0
   stunLockoutTime: 0
+  mat: {fileID: 0}
 --- !u!1 &5458641998235249409
 GameObject:
   m_ObjectHideFlags: 0
@@ -8049,6 +8056,7 @@ MonoBehaviour:
   onHitParticles: {fileID: 8382442116021813945, guid: 39f09805de074e7498d7800b3036c85b, type: 3}
   weakSpot: 0
   stunLockoutTime: 0
+  mat: {fileID: 0}
 --- !u!1 &5468555899532472796
 GameObject:
   m_ObjectHideFlags: 0
@@ -8707,6 +8715,7 @@ MonoBehaviour:
   onHitParticles: {fileID: 8382442116021813945, guid: 39f09805de074e7498d7800b3036c85b, type: 3}
   weakSpot: 0
   stunLockoutTime: 0
+  mat: {fileID: 0}
 --- !u!1 &5830876524191766380
 GameObject:
   m_ObjectHideFlags: 0
@@ -10345,6 +10354,7 @@ MonoBehaviour:
   onHitParticles: {fileID: 8382442116021813945, guid: 39f09805de074e7498d7800b3036c85b, type: 3}
   weakSpot: 0
   stunLockoutTime: 0
+  mat: {fileID: 0}
 --- !u!1 &7199952406079290453
 GameObject:
   m_ObjectHideFlags: 0
@@ -10493,6 +10503,7 @@ MonoBehaviour:
   onHitParticles: {fileID: 8382442116021813945, guid: 39f09805de074e7498d7800b3036c85b, type: 3}
   weakSpot: 0
   stunLockoutTime: 0
+  mat: {fileID: 0}
 --- !u!1 &7302608971631339786
 GameObject:
   m_ObjectHideFlags: 0
@@ -12317,6 +12328,7 @@ MonoBehaviour:
   onHitParticles: {fileID: 8382442116021813945, guid: 39f09805de074e7498d7800b3036c85b, type: 3}
   weakSpot: 0
   stunLockoutTime: 0
+  mat: {fileID: 0}
 --- !u!1 &8621287059554418163
 GameObject:
   m_ObjectHideFlags: 0
