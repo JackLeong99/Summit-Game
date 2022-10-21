@@ -11,11 +11,21 @@ public class EnemyDamageReceiver : MonoBehaviour
     public bool weakSpot;
     public float stunLockoutTime;
     private bool stunLockout;
+    public Material mat;
     
     void Start() 
     {
         boss = GetComponentInParent<BossStateMachine>();
         gameObject.tag = "enemyHitbox";
+        switch (true) 
+        {
+            case bool _ when GetComponent<MeshRenderer>():
+                mat = GetComponent<MeshRenderer>().material;
+                break;
+            case bool _ when GetComponent<SkinnedMeshRenderer>():
+                mat = GetComponent<SkinnedMeshRenderer>().material;
+                break;
+        }
     }
     public void PassDamage(float dmg, Vector3 position)
     {
@@ -38,10 +48,10 @@ public class EnemyDamageReceiver : MonoBehaviour
         if (!stunLockout && boss.components.stunState != StunState.Stunned) 
         {
             boss.components.stunState = StunState.Stunned;
-            GetComponent<MeshRenderer>().material.DisableKeyword("_EMISSION");
+            mat.DisableKeyword("_EMISSION");
             stunLockout = true;
             yield return new WaitForSeconds(stunLockoutTime);
-            GetComponent<MeshRenderer>().material.EnableKeyword("_EMISSION");
+            mat.EnableKeyword("_EMISSION");
             stunLockout = false;
         }
         yield return null;
