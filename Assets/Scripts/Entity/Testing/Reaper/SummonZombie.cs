@@ -5,69 +5,41 @@ using UnityEngine;
 public class SummonZombie : MonoBehaviour
 {
     public GameObject zombie;
-    public GameObject[] zombieArray;
+    public List<GameObject> zombieArray;
     public int maxZombies;
-    public int numToSpawn;
-    public int currentZombies;
-    private Vector3 defaultSpawnPos;
-    private Vector3 currentSpawnPos;
-    private Vector3 spawnDirection;
-    private Quaternion spawnRotation;
-    public float spawnDistance;
-    public int spawnsPerRow;
-    private int numInCurrentRow;
-    private int currentRow;
+    public int numberPerSpawn;
+    public float spawnRadius;
+    public float spawnBuffer;
 
-    public GameObject scuffedPositionSetBoss;
+    public GameObject Boss;
 
     // Start is called before the first frame update
     void Start()
     {
-        zombieArray = new GameObject[maxZombies];
-        scuffedPositionSetBoss = GameObject.FindGameObjectWithTag("Boss");
-        transform.position = scuffedPositionSetBoss.transform.position;
-        transform.forward = scuffedPositionSetBoss.transform.forward;
-        transform.rotation = scuffedPositionSetBoss.transform.rotation;
-        Summon();
+        zombieArray = new List<GameObject>();
+        Boss = GameObject.FindGameObjectWithTag("Boss");
+        transform.position = Boss.transform.position;
+        transform.forward = Boss.transform.forward;
+        transform.rotation = Boss.transform.rotation;
+        StartCoroutine(Summon());
     }
 
-    public void Summon()
+    public IEnumerator Summon()
     {
-        int count = 0;
-        for(int i = 0; i < zombieArray.Length; i++)
-        {
-            if(zombieArray[i] != null)
-            {
-                count += 1;
-            }
-        }
-        currentZombies = count;
+        int toSpawn = (getAliveZombies() + numberPerSpawn) > maxZombies ? (maxZombies - getAliveZombies()) : numberPerSpawn;
 
-        defaultSpawnPos = transform.position;
-        spawnDirection = transform.forward;
-        spawnRotation = transform.rotation;
-        
-        Vector3 spawnPos = defaultSpawnPos + spawnDirection * spawnDistance;
-
-        for(int i = 0; i < maxZombies; i++)
+        for(int i = 0; i < toSpawn; i++)
         {
-            if(zombieArray[i] == null && currentZombies < maxZombies)
-            {
-                if(numInCurrentRow < spawnsPerRow)
-                {
-                    zombieArray[i] = Instantiate(zombie, spawnPos, spawnRotation);
-                    spawnPos = spawnPos * spawnDistance;
-                }
-                else
-                {
-                    currentRow += 1;
-                    numInCurrentRow = 0;
-                    spawnPos = defaultSpawnPos + spawnDirection * (spawnDistance * currentRow);
-                    zombieArray[i] = Instantiate(zombie, spawnPos, spawnRotation);
-                }
-                currentZombies += 1;   
-            }
+            Vector3 randomFactor = (Random.insideUnitCircle * spawnRadius);
+            Vector3 spawnPos = transform.position + randomFactor;
+            zombieArray.Add(Instantiate(zombie, spawnPos, transform.rotation));
+            yield return new WaitForSeconds(spawnBuffer);
         }
         Destroy(gameObject);
+    }
+
+    public int getAliveZombies() 
+    {
+        return GameObject.FindGameObjectsWithTag("hordeEnemy").Length;
     }
 }

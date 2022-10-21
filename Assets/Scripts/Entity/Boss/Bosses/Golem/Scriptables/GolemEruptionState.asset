@@ -14,13 +14,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animation: Eruption
   soundEvent: Enemy_Eruption_Cast
-  animationActive: 0
   delay: 0
   nextState: {fileID: 0}
   spawnSoundEvent: Enemy_Eruption_Lava
-  spawnLength: 0.45
   layerMask:
     serializedVersion: 2
     m_Bits: 64
   spawnPos: 0
-  spawnableObject: {fileID: 3956136142030373530, guid: a3a74d7123a960445aec88dfc77139dd, type: 3}
+  spawnableObject: {fileID: 3956136142030373530, guid: 3f4a70079962ff74e9face67960a7070, type: 3}

@@ -11,6 +11,7 @@ public class PlayerHealth : MonoBehaviour
     public float maxHealth;
     public float currentHealth;
     public float defence;
+    private float defenceAsPercentage;
     public float shakeScale;
     [HideInInspector]
     public bool invulnerable = false;
@@ -21,6 +22,11 @@ public class PlayerHealth : MonoBehaviour
         currentHealth = maxHealth;
     }
 
+    public void Update()
+    {
+        defenceAsPercentage = (100 / (100 + defence));
+    }
+
     public void takeDamage(float damage)
     {
         if (invulnerable) { return; }
@@ -29,7 +35,7 @@ public class PlayerHealth : MonoBehaviour
         CameraListener.instance.CameraShake(damage * shakeScale, 0.25f);
         UIDamageIn.instance.DamageVis();
 
-        damage -= defence;
+        damage *= (100/(100 + defence));
         damage = Mathf.Clamp(damage, 0f, Mathf.Infinity);
         currentHealth -= damage;
 

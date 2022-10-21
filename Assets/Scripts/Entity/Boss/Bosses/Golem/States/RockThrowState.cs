@@ -12,6 +12,7 @@ public class RockThrowState : AbilityState
 
     [Header("References")]
     public GameObject projectileObject;
+    public float projectileSpeed;
     private GameObject rock;
 
     public override void Invoke(BossStateMachine boss)
@@ -58,7 +59,7 @@ public class RockThrowState : AbilityState
 
         var spawnable = Instantiate(projectileObject, pos, Quaternion.identity, boss.transform);
         spawnable.transform.parent = null;
-        spawnable.GetComponent<Rigidbody>().velocity = (target - pos).normalized * 150;
+        spawnable.GetComponent<Rigidbody>().velocity = (target - pos).normalized * projectileSpeed;
 
         yield return null;
     }
