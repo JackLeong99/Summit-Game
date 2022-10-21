@@ -44,11 +44,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 78dc732fb1cd7f247a88a68733a632d8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  zombie: {fileID: 4383987443438721420, guid: 2d6ab35d25210f64a8b4cdceec880bbc, type: 3}
+  zombie: {fileID: 5167736717375038012, guid: 8105d5ee9db36a34288e12bc7a1b811c, type: 3}
   zombieArray: []
   maxZombies: 10
-  numToSpawn: 5
-  currentZombies: 0
-  spawnDistance: 1
-  spawnsPerRow: 3
-  scuffedPositionSetBoss: {fileID: 6118956715112586494, guid: 15cb9288e8231f9419be19f0ae9ecad5, type: 3}
+  numberPerSpawn: 5
+  spawnRadius: 10
+  spawnBuffer: 0.2
+  Boss: {fileID: 0}
