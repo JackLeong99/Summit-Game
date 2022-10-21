@@ -34,7 +34,6 @@ public class Inspector : MonoBehaviour
                     targetAlpha = 1;
 
                     interact.Display();
-
                     if (GameManager.instance.menuInput.Interactions.Interact.WasPressedThisFrame())
                     {
                         interact.Invoke();
