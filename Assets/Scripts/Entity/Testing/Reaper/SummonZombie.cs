@@ -40,6 +40,14 @@ public class SummonZombie : MonoBehaviour
 
     public int getAliveZombies() 
     {
-        return GameObject.FindGameObjectsWithTag("hordeEnemy").Length;
+        try
+        {
+            GameObject.FindGameObjectWithTag("hordeEnemy");
+            return GameObject.FindGameObjectsWithTag("hordeEnemy").Length;
+        }
+        catch
+        {
+            return 0;
+        }
     }
 }
