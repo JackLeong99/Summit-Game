@@ -42,7 +42,7 @@ public class GameManager : MonoBehaviour
         GetInstances();
         StartCoroutine(LoadStarting());
         menuInput = new MenuInput();
-        menuInput.UI.Enable();
+        menuInput.Enable();
     }
 
     public void GetInstances()
