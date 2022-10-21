@@ -13,7 +13,7 @@ public class PlayerStun : OnHitEffect
         var player = target.GetComponent<ThirdPersonController>();
         if (player) 
         {
-            player.runStun(stunTime);
+            player.stunned = ThirdPersonController.stunState.Stunned;
         }
     }
 }

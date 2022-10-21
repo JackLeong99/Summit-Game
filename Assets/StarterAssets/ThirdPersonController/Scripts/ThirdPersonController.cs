@@ -102,21 +102,15 @@ namespace StarterAssets
 		//[HideInInspector]
 		public bool _Inactionable;
 
-		public bool stunned;
+		public enum stunState { Actionable, Stunned }
 
-		private float swingTimer;
-
-		private KnockbackReciever reciever;
+		public stunState stunned;
 
 		private bool isAirborn;
 
 		private float startLock = 120;
 
 		public GameObject cinemachine;
-
-		private float pauseTimer=0;
-
-		private bool isPaused=false;
 
 		[SerializeField]
 		private ParticleSystem chargeSystem;
@@ -149,7 +143,6 @@ namespace StarterAssets
 		{
 			_hasAnimator = TryGetComponent(out _animator);
 			_controller = GetComponent<CharacterController>();
-			reciever = GetComponent<KnockbackReciever>();
 
 			AssignAnimationIDs();
 
@@ -171,6 +164,8 @@ namespace StarterAssets
 					LockCameraPosition = false;
 				}
 			}
+
+			_Inactionable = stunned == stunState.Stunned ? true : false;
 
 			if (Input.GetKeyDown("m"))
 			{
@@ -197,36 +192,7 @@ namespace StarterAssets
 			
 			GroundedCheck();
 			JumpAndGravity();
-
-			if(!_Inactionable){
-				Move();
-			}
-
-			//for pause although currently it is a bit buggy
-			/*if (GameManager.instance.input.pause && pauseTimer<=0)
-			{
-				pauseTimer=0.5f;
-				GameObject pauseObject = GameObject.FindWithTag("Pause");
-				Pause pausing = pauseObject.GetComponent<Pause>();
-				pausing.DoPause();
-			}*/
-			/*if (GameManager.instance.input.pause && isPaused ==false)
-			{
-				GameObject pauseObject = GameObject.FindWithTag("Pause");
-				Pause pausing = pauseObject.GetComponent<Pause>();
-				pausing.DoPause();
-				isPaused=true;
-			}*/
-			/*if (GameManager.instance.input.pause)
-			{
-				GameObject pauseObject = GameObject.FindWithTag("Pause");
-				Pause pausing = pauseObject.GetComponent<Pause>();
-				pausing.DoPause();
-			}*/
-			/*if(pauseTimer>0)
-			{
-				pauseTimer-=Time.deltaTime;
-			}*/
+			Move();
 		}
 
 		private void LateUpdate()
@@ -282,6 +248,8 @@ namespace StarterAssets
 		{
 			// set target speed based on move speed, sprint speed and if sprint is pressed
 			float targetSpeed = GameManager.instance.input.sprint ? SprintSpeed : MoveSpeed;
+
+			if (_Inactionable) targetSpeed = 0.0f;
 
 			// a simplistic acceleration and deceleration designed to be easy to remove, replace, or iterate upon
 
@@ -454,27 +422,6 @@ namespace StarterAssets
       		//m_MouseLook.XSensitivity = X;
       		//m_MouseLook.YSensitivity = Y; //attempt 1
   		}
-
-		public void runStun(float t) 
-		{
-			if(!stunned)
-			StartCoroutine(stun(t));
-		}
-
-		public IEnumerator stun(float t) 
-		{
-			stunned = true;
-			_Inactionable = true;
-			yield return new WaitForSeconds(t);
-			stunned = false;
-			_Inactionable = false;
-			yield return null;
-		}
-
-		public void ChangePause()
-		{
-			isPaused=false;
-		}
 
 		public void setChargeParticles(int state) 
 		{
