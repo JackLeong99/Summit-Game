@@ -5,6 +5,7 @@ using UnityEngine;
 public class ShopHandler : MonoBehaviour
 {
     public ItemBase item;
+    public bool purchased = false;
 
     [Header("Components")]
     public SpriteRenderer icon;
@@ -14,13 +15,22 @@ public class ShopHandler : MonoBehaviour
         switch (Inventory.instance.CanPurchase(item.cost)) 
         {
             case true:
-                item.acquire();
+                Purchase();
                 break;
         }
     }
 
+    public void Purchase()
+    {
+        item.acquire();
+        purchased = true;
+        icon.sprite = ShopManager.instance.purchaseIcon;
+        ShopManager.instance.EnableDisplay(false);
+    }
+
     public void DisplayItem()
     {
+        if (purchased) { return; }
         ShopManager.instance.DisplayItem(item);
     }
 

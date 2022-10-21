@@ -13,6 +13,7 @@ public class ShopManager : MonoBehaviour
     public TextMeshProUGUI displayName;
     public TextMeshProUGUI displayCost;
     public TextMeshProUGUI displayDescription;
+    public Sprite purchaseIcon;
 
     [Header("Shop Stand Prefab")]
     public GameObject shopPrefab;
@@ -56,7 +57,6 @@ public class ShopManager : MonoBehaviour
 
     public void DisplayItem(ItemBase selected)
     {
-
         displayName.text = selected.itemName;
         displayDescription.text = selected.description;
         displayCost.text = selected.cost.ToString();
