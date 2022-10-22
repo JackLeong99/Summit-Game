@@ -8,6 +8,10 @@ public class BossManager : MonoBehaviour
     public static BossManager instance;
     public BossStateMachine boss;
     public DamageTextPool damageTextPool;
+    public int killCount;
+    public float bossHealthModifier;
+
+
 
     [Header("Reference")]
     public GameObject portalPrefab;
@@ -25,6 +29,11 @@ public class BossManager : MonoBehaviour
                 HealthbarManager.instance.SetBoss();
                 break;
         }
+    }
+
+    public float SetBossHealth()
+    {
+        return boss.attributes.maxHealth * ( 1 + (bossHealthModifier * killCount));
     }
 
     public void OnDeath(Vector3 portalPos)
