@@ -13,8 +13,7 @@ public class UIItemDisplay : MonoBehaviour
     public TMP_Text gold;
     private string activeItemFormat = "Active Item: {0}";
     public TMP_Text activeItem;
-    private string passiveItemFormat = "{0}: {1}";
-    //public TMP_Text passiveItem1;
+    private string passiveItemFormat = "{0}: {1}"; //old set up if we want to use it
     
     private List<String> itemNamesList = new List<String>();
     private List<TMP_Text> passiveItems= new List<TMP_Text>();
@@ -60,26 +59,24 @@ public class UIItemDisplay : MonoBehaviour
             activeItem.text = string.Format(activeItemFormat, abilities.AbilitySlot[3].itemName);
         }
     }
-
+    //updated version of old system
     public void GetNewItem(ItemBase item)
     {
-        //active item check
-        if(HaveItemBefore(item.itemName))
+        if (HaveItemBefore(item.itemName))
         {
             itemNamesList.Add(item.itemName);
+            TMP_Text newPassiveText = Instantiate(PassivePrefab, PassivePrefab.transform.position, transform.rotation) as TMP_Text;
+            newPassiveText.transform.SetParent(panelObject.transform, false);
+            newPassiveText.GetComponent<RectTransform>().anchoredPosition = new Vector2(-50, nextPassive);
+            nextPassive -= 40;
+            passiveItems.Add(newPassiveText);
+            passiveItems[itemNamesList.Count-1].text = string.Format(passiveItemFormat, item.itemName, inventory.GetStacks(item));
         }
-        for(int i=0; i< itemNamesList.Count; i++)
+        for (int i = 0; i < itemNamesList.Count; i++)
         {
-            if(item.itemName== itemNamesList[i])
+            if (item.itemName == itemNamesList[i])
             {
-                //passiveItems[i].text = string.Format(passiveItemFormat, item.itemName, inventory.GetStacks(item));
-                TMP_Text newPassiveText = Instantiate(PassivePrefab, PassivePrefab.transform.position, transform.rotation) as TMP_Text;
-                newPassiveText.transform.SetParent(panelObject.transform, false);
-                newPassiveText.GetComponent<RectTransform>().anchoredPosition = new Vector2(-50, nextPassive);
-                nextPassive -= 40;
-                passiveItems.Add(newPassiveText);
                 passiveItems[i].text = string.Format(passiveItemFormat, item.itemName, inventory.GetStacks(item));
-
             }
         }
     }
