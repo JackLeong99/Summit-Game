@@ -8,6 +8,7 @@ public class RockProjectile : ProjectileBase
     private GameObject rockPrefab;
     [SerializeField]
     private ParticleSystem rockParticle;
+    public float groundPosY = -702.226f;
 
     public override void Update()
     {
@@ -51,7 +52,7 @@ public class RockProjectile : ProjectileBase
 
     public void spawnRock()
     {
-        GameObject breakablerock = Instantiate(rockPrefab, new Vector3(transform.position.x, -0.5f, transform.position.z), Quaternion.identity);
+        GameObject breakablerock = Instantiate(rockPrefab, new Vector3(transform.position.x, groundPosY, transform.position.z), Quaternion.identity);
         ParticleSystem rockParticles = Instantiate(rockParticle, transform.position, Quaternion.identity);
         Destroy(gameObject);
     }

@@ -88,7 +88,7 @@ public class BossStateMachine : MonoBehaviour
 
     public void SetContext()
     {
-        components.curHealth = components.apMaxHealth = BossManager.instance.CalculateDamage();
+        components.curHealth = components.apMaxHealth = BossManager.instance.CalculateHealth();
         BossManager.instance.SetBoss();
     }
 
