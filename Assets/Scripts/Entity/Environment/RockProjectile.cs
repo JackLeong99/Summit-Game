@@ -35,7 +35,7 @@ public class RockProjectile : ProjectileBase
         switch (other.tag) 
         {
             case "Player":
-                other.GetComponent<PlayerHealth>().takeDamage(damage * BossManager.instance.SetBossDamage());
+                other.GetComponent<PlayerHealth>().takeDamage(BossManager.instance.boss.DamageCalculation(damage));
                 foreach (var OnHit in OnHitEffects)
                 {
                     OnHit.ApplyOnHitEffects(other.gameObject);
