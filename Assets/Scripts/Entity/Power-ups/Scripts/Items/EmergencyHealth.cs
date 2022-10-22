@@ -8,6 +8,7 @@ public class EmergencyHealth : EventItem
 {
     public float baseHeal;
     public float healPerStack;
+    public float healPerStackRatio;
     public int numberOfTicks;
     public float tickRate;
     public float cooldown;
@@ -39,7 +40,7 @@ public class EmergencyHealth : EventItem
     {
         available = false;
         int currentStacks = Inventory.instance.GetStacks(this);
-        float heal = baseHeal + (healPerStack * currentStacks);
+        float heal = baseHeal + (healPerStack * (1 - (healPerStackRatio / (healPerStackRatio + currentStacks))));
         PlayerHealth hp = GameManager.instance.player.GetComponent<PlayerHealth>();
         for (int i = 0; i < numberOfTicks; i++) 
         {

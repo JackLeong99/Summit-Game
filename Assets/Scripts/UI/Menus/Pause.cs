@@ -80,6 +80,7 @@ public class Pause : MonoBehaviour
                 Time.timeScale = 1f;
                 Cursor.lockState = CursorLockMode.Locked;
                 AkSoundEngine.PostEvent("UI_Menu_Off", GameManager.instance.mainCamera);
+                SettingsMenu.instance.ExitSettings();
                 break;
         }
 

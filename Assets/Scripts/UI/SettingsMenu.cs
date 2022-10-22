@@ -74,4 +74,8 @@ public class SettingsMenu : MonoBehaviour
             MainMenu.Instance.MainTrue();
         }
     }
+    public void ExitSettings()
+    {
+        settingsMenu.SetActive(false);
+    }
 }

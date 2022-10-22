@@ -91,32 +91,25 @@ namespace StarterAssets
 
 		private CharacterController _controller;
 
+		private PlayerAbilities _abilities;
+
 		private GameObject _mainCamera;
 
 		private const float _threshold = 0.01f;
 
 		private bool _hasAnimator;
 
-		//Start custom code
+		public enum stunState { Actionable, Stunned }
 
-		//[HideInInspector]
-		public bool _Inactionable;
-
-		public bool stunned;
-
-		private float swingTimer;
-
-		private KnockbackReciever reciever;
+		public stunState stunned;
 
 		private bool isAirborn;
+
+		private bool jumpSFXLockout;
 
 		private float startLock = 120;
 
 		public GameObject cinemachine;
-
-		private float pauseTimer=0;
-
-		private bool isPaused=false;
 
 		[SerializeField]
 		private ParticleSystem chargeSystem;
@@ -149,7 +142,7 @@ namespace StarterAssets
 		{
 			_hasAnimator = TryGetComponent(out _animator);
 			_controller = GetComponent<CharacterController>();
-			reciever = GetComponent<KnockbackReciever>();
+			_abilities = GetComponent<PlayerAbilities>();
 
 			AssignAnimationIDs();
 
@@ -182,51 +175,13 @@ namespace StarterAssets
 			if (!Grounded)
 			{
 				if (!isAirborn) isAirborn = !isAirborn;
-				// stuff
-			}
-			else
-			{
-				if (isAirborn)
-				{
-					AkSoundEngine.PostEvent("Player_Land", gameObject);
-					isAirborn = false;
-				}
 			}
 
 			_hasAnimator = TryGetComponent(out _animator);
-			
+
 			GroundedCheck();
 			JumpAndGravity();
-
-			if(!_Inactionable){
-				Move();
-			}
-
-			//for pause although currently it is a bit buggy
-			/*if (GameManager.instance.input.pause && pauseTimer<=0)
-			{
-				pauseTimer=0.5f;
-				GameObject pauseObject = GameObject.FindWithTag("Pause");
-				Pause pausing = pauseObject.GetComponent<Pause>();
-				pausing.DoPause();
-			}*/
-			/*if (GameManager.instance.input.pause && isPaused ==false)
-			{
-				GameObject pauseObject = GameObject.FindWithTag("Pause");
-				Pause pausing = pauseObject.GetComponent<Pause>();
-				pausing.DoPause();
-				isPaused=true;
-			}*/
-			/*if (GameManager.instance.input.pause)
-			{
-				GameObject pauseObject = GameObject.FindWithTag("Pause");
-				Pause pausing = pauseObject.GetComponent<Pause>();
-				pausing.DoPause();
-			}*/
-			/*if(pauseTimer>0)
-			{
-				pauseTimer-=Time.deltaTime;
-			}*/
+			Move();
 		}
 
 		private void LateUpdate()
@@ -283,6 +238,8 @@ namespace StarterAssets
 			// set target speed based on move speed, sprint speed and if sprint is pressed
 			float targetSpeed = GameManager.instance.input.sprint ? SprintSpeed : MoveSpeed;
 
+			if (Grounded && stunned == stunState.Stunned) targetSpeed = 0.0f;
+
 			// a simplistic acceleration and deceleration designed to be easy to remove, replace, or iterate upon
 
 			// note: Vector2's == operator uses approximation so is not floating point error prone, and is cheaper than magnitude
@@ -316,7 +273,7 @@ namespace StarterAssets
 
 			// note: Vector2's != operator uses approximation so is not floating point error prone, and is cheaper than magnitude
 			// if there is a move input rotate player when the player is moving
-			if (GameManager.instance.input.move != Vector2.zero)
+			if (GameManager.instance.input.move != Vector2.zero && stunned == stunState.Actionable)
 			{
 				_targetRotation = Mathf.Atan2(inputDirection.x, inputDirection.z) * Mathf.Rad2Deg + _mainCamera.transform.eulerAngles.y;
 				float rotation = Mathf.SmoothDampAngle(transform.eulerAngles.y, _targetRotation, ref _rotationVelocity, RotationSmoothTime);
@@ -346,6 +303,14 @@ namespace StarterAssets
 				// reset the fall timeout timer
 				_fallTimeoutDelta = FallTimeout;
 
+				if (isAirborn)
+				{
+					if (_fallTimeoutDelta <= 0)
+						AkSoundEngine.PostEvent("Player_Land", gameObject);
+					jumpSFXLockout = false;
+					isAirborn = false;
+				}
+
 				// update animator if using character
 				if (_hasAnimator)
 				{
@@ -360,11 +325,16 @@ namespace StarterAssets
 				}
 
 				// Jump
-				if (GameManager.instance.input.jump && _jumpTimeoutDelta <= 0.0f && !_Inactionable)
+				if (GameManager.instance.input.jump && _jumpTimeoutDelta <= 0.0f && stunned == stunState.Actionable)
 				{
 					// the square root of H * -2 * G = how much velocity needed to reach desired height
 					_verticalVelocity = Mathf.Sqrt(JumpHeight * -2f * Gravity);
-					AkSoundEngine.PostEvent("Player_Jump", gameObject);
+					
+					if (!jumpSFXLockout)
+					{
+						AkSoundEngine.PostEvent("Player_Jump", gameObject);
+						jumpSFXLockout = true;
+					}
 
 					// update animator if using character
 					if (_hasAnimator)
@@ -454,27 +424,6 @@ namespace StarterAssets
       		//m_MouseLook.XSensitivity = X;
       		//m_MouseLook.YSensitivity = Y; //attempt 1
   		}
-
-		public void runStun(float t) 
-		{
-			if(!stunned)
-			StartCoroutine(stun(t));
-		}
-
-		public IEnumerator stun(float t) 
-		{
-			stunned = true;
-			_Inactionable = true;
-			yield return new WaitForSeconds(t);
-			stunned = false;
-			_Inactionable = false;
-			yield return null;
-		}
-
-		public void ChangePause()
-		{
-			isPaused=false;
-		}
 
 		public void setChargeParticles(int state) 
 		{
