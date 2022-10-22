@@ -10,6 +10,7 @@ public class BossManager : MonoBehaviour
     public DamageTextPool damageTextPool;
     public int killCount;
     public float bossHealthModifier;
+    public float bossDamageModifier;
 
 
 
@@ -34,6 +35,11 @@ public class BossManager : MonoBehaviour
     public float SetBossHealth()
     {
         return boss.attributes.maxHealth * ( 1 + (bossHealthModifier * killCount));
+    }
+
+    public float SetBossDamage()
+    {
+        return 1 + (bossDamageModifier * killCount);
     }
 
     public void OnDeath(Vector3 portalPos)
