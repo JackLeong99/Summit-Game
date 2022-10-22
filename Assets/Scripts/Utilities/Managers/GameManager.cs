@@ -16,6 +16,7 @@ public class GameManager : MonoBehaviour
     public FadeController fade;
     public bool inLoading = false;
     public bool finalReady = false;
+    public int killCount;
 
     [Header("Input References")]
     public StarterAssetsInputs input;
@@ -195,6 +196,9 @@ public class GameManager : MonoBehaviour
     public IEnumerator OnDeath()
     {
         yield return StartCoroutine(StartLoad());
+
+        finalReady = false;
+        killCount = 0;
 
         List<AsyncOperation> scenesLoading = SceneHandler.ReloadScene(gameScenes[0]);
         scenesLoading = scenesLoading.Concat(SceneHandler.SwapScenes(deathScene, exclusionScenes)).ToList();
