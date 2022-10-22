@@ -7,15 +7,15 @@ public abstract class ItemBase : ScriptableObject
     [Header("Information")]
     public string itemName = "Default Item Name";
     public string description = "This is an item";
+
+    public Rarity rarity = Rarity.Common;
+    public enum Rarity { Common = 5, Rare = 10, Mythic = 20, Corrupt = 15}
     public int cost;
-    public enum rarity 
+
+    public void OnValidate()
     {
-        Common,
-        Rare,
-        Mythic,
-        Corrupted
+        cost = (int)rarity;
     }
-    public rarity tier;
 
     [Header("Values")]
     public Sprite icon;

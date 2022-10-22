@@ -56,7 +56,7 @@ public class Inspector : MonoBehaviour
 
         switch (true)
         {
-            case bool x when ShopManager.instance != null && ShopManager.instance.displayParent.activeInHierarchy == true:
+            case bool _ when ShopManager.instance != null && ShopManager.instance.displayParent.activeInHierarchy == true:
                 ShopManager.instance.EnableDisplay(false);
                 break;
         }

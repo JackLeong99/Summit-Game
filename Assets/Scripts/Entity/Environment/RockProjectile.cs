@@ -8,6 +8,7 @@ public class RockProjectile : ProjectileBase
     private GameObject rockPrefab;
     [SerializeField]
     private ParticleSystem rockParticle;
+    public float groundPosY = -702.226f;
 
     public override void Update()
     {
@@ -35,7 +36,7 @@ public class RockProjectile : ProjectileBase
         switch (other.tag) 
         {
             case "Player":
-                other.GetComponent<PlayerHealth>().takeDamage(damage);
+                other.GetComponent<PlayerHealth>().takeDamage(BossManager.instance.boss.DamageCalculation(damage));
                 foreach (var OnHit in OnHitEffects)
                 {
                     OnHit.ApplyOnHitEffects(other.gameObject);
