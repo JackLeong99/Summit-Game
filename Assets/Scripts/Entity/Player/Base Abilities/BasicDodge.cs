@@ -10,6 +10,7 @@ public class BasicDodge : ActiveAbility
     private GameObject player;
     private ThirdPersonController controller;
     private Animator animator;
+    private PlayerAbilities abilities;
     [SerializeField]
     private AnimationCurve dodgeCurve;
     [SerializeField]
@@ -22,9 +23,10 @@ public class BasicDodge : ActiveAbility
     public override void effect()
     {
         player = GameManager.instance.player;
-        controller = GameManager.instance.player.GetComponent<ThirdPersonController>();
-        animator = GameManager.instance.player.GetComponent<Animator>();
-        GameManager.instance.player.GetComponent<PlayerAbilities>().StartCoroutine(doEffect());
+        controller = player.GetComponent<ThirdPersonController>();
+        animator = player.GetComponent<Animator>();
+        abilities = player.GetComponent<PlayerAbilities>();
+        abilities.StartCoroutine(doEffect());
     }
 
     public override IEnumerator doEffect()
@@ -33,7 +35,7 @@ public class BasicDodge : ActiveAbility
         float dodgeTimer = distance / totalSpeed;
         this.castTime = dodgeTimer;
         AkSoundEngine.PostEvent("Player_Dodge", player);
-        controller._Inactionable = true;
+        abilities.abilityLockout = PlayerAbilities.Lockout.Locked;
         player.GetComponent<PlayerHealth>().invulnerable = true;
         player.GetComponent<KnockbackReciever>().invulnerable = true;
         animator.SetTrigger("Dodge");
@@ -51,7 +53,7 @@ public class BasicDodge : ActiveAbility
             timer += Time.deltaTime;
             yield return null;
         }
-        controller._Inactionable = false;
+        abilities.abilityLockout = PlayerAbilities.Lockout.Unlocked;
         animator.speed = 1;
     }
 }

@@ -66,7 +66,7 @@ public class PlayerHealth : MonoBehaviour
     {
         invulnerable = true;
 
-        controller._Inactionable = true;
+        controller.stunned = ThirdPersonController.stunState.Stunned;
         controller._animator.SetTrigger("Death");
 
         yield return new WaitForSeconds(controller._animator.GetCurrentAnimatorStateInfo(0).length * 0.5f);

@@ -50,7 +50,7 @@ public class BasicAttack : ActiveAbility
                 attackState = AttackStates.stage1;
                 break;
         }
-        controller._Inactionable = true;
+        controller.stunned = ThirdPersonController.stunState.Stunned;
         yield return new WaitForSeconds(0.2f);
         var hitbox = Instantiate(attackBox, player.transform.position + new Vector3(0, 1.3f, 0), player.transform.rotation, player.transform);
         hitbox.transform.localPosition += new Vector3(0, 0, 1.5f);
@@ -60,7 +60,7 @@ public class BasicAttack : ActiveAbility
         {
             Destroy(hitbox);
         }
-        controller._Inactionable = false;
+        controller.stunned = ThirdPersonController.stunState.Actionable;
         //animator.speed = 1;
     }
 

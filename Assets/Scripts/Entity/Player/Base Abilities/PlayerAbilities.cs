@@ -23,16 +23,16 @@ public class PlayerAbilities : MonoBehaviour
     public float maxCDR;
     [Header("Define the default slot filler (ie an empty ability)")]
     public ActiveAbility defaultAbility;
+    public ThirdPersonController controller;
 
-    private ThirdPersonController playerController;
-    private KnockbackReciever knockbackReciever;
+    public enum Lockout { Unlocked, Locked }
+    public Lockout abilityLockout;
 
     private void Start()
     {
+        controller = GetComponent<ThirdPersonController>();
         AbilitySlot = new List<ActiveAbility> { slot1, slot2, slot3, slot4 };
         internalCooldown = new List<float> { 0, 0, 0, 0 };
-        playerController = GameManager.instance.player.GetComponent<ThirdPersonController>();
-        knockbackReciever = GameManager.instance.player.GetComponent<KnockbackReciever>();
         addCDR(cooldownReduction);
     }
 
@@ -44,7 +44,7 @@ public class PlayerAbilities : MonoBehaviour
             internalCooldown[i] = Mathf.Clamp(internalCooldown[i], 0f, Mathf.Infinity);
         }
 
-        if (playerController._Inactionable || knockbackReciever.impact.magnitude > 5) return;
+        if (abilityLockout == Lockout.Locked || controller.stunned == ThirdPersonController.stunState.Stunned) return;
 
         if (GameManager.instance.input.meleeAttack && internalCooldown[0] <= 0)
         {
