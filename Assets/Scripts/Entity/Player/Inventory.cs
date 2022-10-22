@@ -166,12 +166,16 @@ public class Inventory : MonoBehaviour
     {
         bool temp = gold >= cost;
 
-        if (temp)
+        switch (temp)
         {
-            gold -= cost;
+            case true:
+                gold -= cost;
+                UIItemDisplay.instance.UpdateGold();
+                break;
+            case false:
+                UIItemDisplay.instance.InvalidGold();
+                break;
         }
-
-        UIItemDisplay.instance.UpdateGold();
 
         return temp;
     }
