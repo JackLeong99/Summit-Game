@@ -28,9 +28,10 @@ public class BasicShoot : ActiveAbility
     public override void effect()
     {
         player = GameManager.instance.player;
-        controller = GameManager.instance.player.GetComponent<ThirdPersonController>();
-        animator = GameManager.instance.player.GetComponent<Animator>();
-        inventory = GameManager.instance.player.GetComponent<Inventory>();
+        controller = player.GetComponent<ThirdPersonController>();
+        animator = player.GetComponent<Animator>();
+        inventory = player.GetComponent<Inventory>();
+
         FirePoint = GameObject.FindGameObjectWithTag("FirePoint").transform;
         GameManager.instance.player.GetComponent<PlayerAbilities>().StartCoroutine(doEffect());
     }
@@ -40,7 +41,7 @@ public class BasicShoot : ActiveAbility
         this.castTime = chargeTime + shootTime;
         player.transform.rotation = GameManager.instance.mainCamera.transform.rotation;
         controller.LockCameraPosition = true;
-        controller._Inactionable = true;
+        controller.stunned = ThirdPersonController.stunState.Stunned;
         animator.SetTrigger("Charge");
         AkSoundEngine.PostEvent("Player_Shoot_Charge", player);
         yield return new WaitForSeconds(chargeTime);
@@ -68,6 +69,6 @@ public class BasicShoot : ActiveAbility
         //}
         yield return new WaitForSeconds(shootTime);
         controller.LockCameraPosition = false;
-        controller._Inactionable = false;
+        controller.stunned = ThirdPersonController.stunState.Actionable;
     }
 }

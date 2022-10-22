@@ -91,22 +91,21 @@ namespace StarterAssets
 
 		private CharacterController _controller;
 
+		private PlayerAbilities _abilities;
+
 		private GameObject _mainCamera;
 
 		private const float _threshold = 0.01f;
 
 		private bool _hasAnimator;
 
-		//Start custom code
-
-		//[HideInInspector]
-		public bool _Inactionable;
-
 		public enum stunState { Actionable, Stunned }
 
 		public stunState stunned;
 
 		private bool isAirborn;
+
+		private bool jumpSFXLockout;
 
 		private float startLock = 120;
 
@@ -143,6 +142,7 @@ namespace StarterAssets
 		{
 			_hasAnimator = TryGetComponent(out _animator);
 			_controller = GetComponent<CharacterController>();
+			_abilities = GetComponent<PlayerAbilities>();
 
 			AssignAnimationIDs();
 
@@ -165,8 +165,6 @@ namespace StarterAssets
 				}
 			}
 
-			_Inactionable = stunned == stunState.Stunned ? true : false;
-
 			if (Input.GetKeyDown("m"))
 			{
 				AkSoundEngine.PostEvent("VO_Morbin_Time", gameObject);
@@ -177,19 +175,10 @@ namespace StarterAssets
 			if (!Grounded)
 			{
 				if (!isAirborn) isAirborn = !isAirborn;
-				// stuff
-			}
-			else
-			{
-				if (isAirborn)
-				{
-					AkSoundEngine.PostEvent("Player_Land", gameObject);
-					isAirborn = false;
-				}
 			}
 
 			_hasAnimator = TryGetComponent(out _animator);
-			
+
 			GroundedCheck();
 			JumpAndGravity();
 			Move();
@@ -249,7 +238,7 @@ namespace StarterAssets
 			// set target speed based on move speed, sprint speed and if sprint is pressed
 			float targetSpeed = GameManager.instance.input.sprint ? SprintSpeed : MoveSpeed;
 
-			if (_Inactionable) targetSpeed = 0.0f;
+			if (Grounded && stunned == stunState.Stunned) targetSpeed = 0.0f;
 
 			// a simplistic acceleration and deceleration designed to be easy to remove, replace, or iterate upon
 
@@ -284,7 +273,7 @@ namespace StarterAssets
 
 			// note: Vector2's != operator uses approximation so is not floating point error prone, and is cheaper than magnitude
 			// if there is a move input rotate player when the player is moving
-			if (GameManager.instance.input.move != Vector2.zero)
+			if (GameManager.instance.input.move != Vector2.zero && stunned == stunState.Actionable)
 			{
 				_targetRotation = Mathf.Atan2(inputDirection.x, inputDirection.z) * Mathf.Rad2Deg + _mainCamera.transform.eulerAngles.y;
 				float rotation = Mathf.SmoothDampAngle(transform.eulerAngles.y, _targetRotation, ref _rotationVelocity, RotationSmoothTime);
@@ -314,6 +303,14 @@ namespace StarterAssets
 				// reset the fall timeout timer
 				_fallTimeoutDelta = FallTimeout;
 
+				if (isAirborn)
+				{
+					if (_fallTimeoutDelta <= 0)
+						AkSoundEngine.PostEvent("Player_Land", gameObject);
+					jumpSFXLockout = false;
+					isAirborn = false;
+				}
+
 				// update animator if using character
 				if (_hasAnimator)
 				{
@@ -328,11 +325,16 @@ namespace StarterAssets
 				}
 
 				// Jump
-				if (GameManager.instance.input.jump && _jumpTimeoutDelta <= 0.0f && !_Inactionable)
+				if (GameManager.instance.input.jump && _jumpTimeoutDelta <= 0.0f && stunned == stunState.Actionable)
 				{
 					// the square root of H * -2 * G = how much velocity needed to reach desired height
 					_verticalVelocity = Mathf.Sqrt(JumpHeight * -2f * Gravity);
-					AkSoundEngine.PostEvent("Player_Jump", gameObject);
+					
+					if (!jumpSFXLockout)
+					{
+						AkSoundEngine.PostEvent("Player_Jump", gameObject);
+						jumpSFXLockout = true;
+					}
 
 					// update animator if using character
 					if (_hasAnimator)
