@@ -97,7 +97,7 @@ public class zombieExplosion : MonoBehaviour
 
                     //position is placeholder
                     float[] effectPasser = new float[1];
-                    effectPasser[0] = Mathf.Round(damage * effect);
+                    effectPasser[0] = Mathf.Round((damage * effect) * BossManager.instance.SetBossDamage());
                     receiver.PassDamage(effectPasser, 1, transform.position);
                 }
                 else
@@ -109,7 +109,7 @@ public class zombieExplosion : MonoBehaviour
                         float proximity = (location - health.transform.position).magnitude;
                         float effect = Mathf.Clamp(1 - (proximity / radius), 1, explosionDamage);
 
-                        health.takeDamage(damage * effect);
+                        health.takeDamage((damage * effect) * BossManager.instance.SetBossDamage());
                     }
                 }
             }
