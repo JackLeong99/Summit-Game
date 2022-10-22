@@ -3,9 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-
-//Some of this (such as the attack stuff) could be coming back so commented for now.
-
 public class hordePathing : MonoBehaviour
 {
     public float lifespan;
@@ -13,77 +10,53 @@ public class hordePathing : MonoBehaviour
     public float explosionDetection;
     public GameObject explosionHitbox;
     public float maxHP;
+    public float explosionDelay;
     private float currentHP;
 
-    //Determine the object the boss will path to
-
-
-
-    //Determine the position object the enemy will path to
     private Transform targetPos;
     [HideInInspector]
     public NavMeshAgent agent;
-
-    //private noCollideWithFren frenCollision;
-    //private BossManager Attacking;
-
-    //private Transform backupTargetPos;
+    [HideInInspector]
+    public Animator anim;
 
     private void Awake()
     {
         agent = GetComponent<NavMeshAgent>();
+        anim = GetComponent<Animator>();
         targetPos = GameManager.instance.player.transform;
         currentHP = maxHP;
     }
 
     void Update()
     {
-        //agent.destination = targetPos.position;
-        // Attacking = this.GetComponent<BossManager>();
-        // bool isAttacking = Attacking.inAttack;
-        // bool isException = Attacking.attackException;
-        // bool isStunned = Attacking.stunned;
-        //bool isRockThrow = Attacking.inRockThrow;
-        // if(isStunned || (isAttacking && !isException)){
-        //     agent.isStopped = true;
-        // }
-        // else{
-        //     agent.isStopped = false;
-        // }
-        
-        // frenCollision = this.GetComponent<noCollideWithFren>();
-        // bool isTooClose = frenCollision.tooClose;
-        
-        // if(isTooClose)
-        // {
-        //     agent.isStopped = true;
-        // }
-        // else
-        // {
-        //     agent.isStopped = false;
-        //     Pathing();
-        // }
+        Pathing();
         float distance = Vector3.Distance(transform.position, GameManager.instance.player.transform.position);
         if(currentHP <= 0 || distance <= explosionDetection || lifespanCounter >= lifespan)
         {
-            explode();
+            StartCoroutine(explode());
         }
-        
-        Pathing();
-        lifespanCounter += (Time.deltaTime + .1f);
+        lifespanCounter += (Time.deltaTime);
     }
 
     public void Pathing()
     {
         agent.destination = targetPos.position;
+        anim.SetFloat("Speed", agent.velocity.magnitude);
+    }
+
+    public void setSpeed(float f) 
+    {
+        agent.speed = f;
     }
 
     public void takeDamage(float dmg)
     {
         currentHP = currentHP - dmg;
     }
-    public void explode()
+    public IEnumerator explode()
     {
+        anim.SetTrigger("explosion");
+        yield return new WaitForSeconds(explosionDelay);
         Instantiate(explosionHitbox, transform.position, transform.rotation);
         Destroy(gameObject);
     }
@@ -92,7 +65,7 @@ public class hordePathing : MonoBehaviour
     {
         if (other.tag == "PlayerBullet")
         {
-            explode();
+            StartCoroutine(explode());
         }
     }
 }

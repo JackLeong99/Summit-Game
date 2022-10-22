@@ -24,6 +24,8 @@ public class MainMenu : MonoBehaviour
 
     public GameObject mainMenu;
 
+    public GameObject mainMenuCanvas;
+
     void Awake()
     {
         if (instance != null)
@@ -47,14 +49,14 @@ public class MainMenu : MonoBehaviour
         EventSystem.current.SetSelectedGameObject(null);
         //set mew selected object
         EventSystem.current.SetSelectedGameObject(mainFirstButton);
-        Cursor.lockState = CursorLockMode.None;
-        Cursor.visible = true;
+        mainMenuCanvas.GetComponent<Canvas>().worldCamera = _mainCamera.GetComponent<Camera>();
     }
 
     // Update is called once per frame
     void Update()
     {
-
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
     }
 
 

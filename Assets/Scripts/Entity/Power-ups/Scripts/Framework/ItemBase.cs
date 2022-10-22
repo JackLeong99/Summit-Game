@@ -8,6 +8,14 @@ public abstract class ItemBase : ScriptableObject
     public string itemName = "Default Item Name";
     public string description = "This is an item";
     public int cost;
+    public enum rarity 
+    {
+        Common,
+        Rare,
+        Mythic,
+        Corrupted
+    }
+    public rarity tier;
 
     [Header("Values")]
     public Sprite icon;

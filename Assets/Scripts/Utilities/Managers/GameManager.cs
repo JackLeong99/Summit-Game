@@ -4,7 +4,7 @@ using UnityEngine;
 using System.Linq;
 using DevLocker.Utils;
 using StarterAssets;
-using UnityEngine.Events;
+using UnityEngine.InputSystem.UI;
 
 public class GameManager : MonoBehaviour
 {
@@ -42,7 +42,7 @@ public class GameManager : MonoBehaviour
         GetInstances();
         StartCoroutine(LoadStarting());
         menuInput = new MenuInput();
-        menuInput.UI.Enable();
+        menuInput.Enable();
     }
 
     public void GetInstances()

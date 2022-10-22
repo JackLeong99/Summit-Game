@@ -10,6 +10,7 @@ public class ActiveMissile : ActiveAbility
     public string seekTag;
     public float missileCount;
     public float projectileSpeed;
+    public float projectileVelocity;
     public float tracking;
     public float damage;
     public float bufferTime;
@@ -35,8 +36,8 @@ public class ActiveMissile : ActiveAbility
         foreach (var p in projectileList) 
         {
             p.GetComponent<MeshRenderer>().enabled = true;
-            p.GetComponent<Missile>().setTracking(tracking, missileNo, FindClosestEnemy());
-            p.GetComponent<Rigidbody>().velocity = (Vector3.up + new Vector3(Random.Range(-0.1f, 0.1f), 3, Random.Range(-0.1f, 0.1f))).normalized * projectileSpeed;
+            p.GetComponent<Rigidbody>().velocity = (Vector3.up + new Vector3(Random.Range(-0.2f, 0.2f), 0, Random.Range(-0.2f, 0.2f))).normalized * projectileSpeed;
+            p.GetComponent<Missile>().setTracking(tracking, missileNo, projectileVelocity, FindClosestEnemy());
             p.GetComponent<Missile>().SetDamage((damage + bonusDMG) * dPercentMod);
             yield return new WaitForSeconds(bufferTime);
             missileNo += bufferTime;

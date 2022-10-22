@@ -4,10 +4,9 @@ using UnityEngine;
 
 public class Missile : ProjectileBase
 {
-    public float maxVelocity;
+    public float vel;
     public float tracking;
     public GameObject target;
-    private bool canTrack = false;
     private Rigidbody rb;
 
     public void Start()
@@ -19,10 +18,17 @@ public class Missile : ProjectileBase
     public override void Update()
     {
         base.Update();
-        if (target != null && canTrack == true)
+        if (target != null)
         {
-            rb.velocity += (target.transform.position - gameObject.transform.position).normalized * tracking;
-            transform.rotation = Quaternion.LookRotation(rb.velocity, Vector3.up);
+            transform.rotation = Quaternion.LookRotation
+            (
+                Vector3.RotateTowards
+                (
+                    transform.forward,
+                    (target.transform.position - transform.position).normalized, tracking * Mathf.Deg2Rad * Time.deltaTime, 1f
+                )
+            );
+            rb.velocity = transform.forward * vel;
         }
     }
 
@@ -41,18 +47,17 @@ public class Missile : ProjectileBase
         base.OnTriggerEnter(other);
     }
 
-    public void setTracking(float tr, float de, GameObject ta) 
+    public void setTracking(float tr, float de, float ve, GameObject ta) 
     {
-        tracking = tr;
+        tracking = 0;
         target = ta;
-        StartCoroutine(trackDelay(de));
+        vel = ve;
+        StartCoroutine(track(de, tr));
     }
 
-    private IEnumerator trackDelay(float d) 
+    private IEnumerator track(float d, float t) 
     {
         yield return new WaitForSeconds(d);
-        var v = gameObject.GetComponent<Rigidbody>().velocity;
-        gameObject.GetComponent<Rigidbody>().velocity = v / 4;
-        canTrack = true;
+        tracking = t;
     }
 }

@@ -127,7 +127,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -2813467912831258332, guid: 797134c78e5fc1d43948aafa84cd6b52, type: 3}
+  - {fileID: 2100000, guid: bb3903b8c4e587f46883781ef2df2bb9, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -760,6 +760,8 @@ MonoBehaviour:
   boss: {fileID: 0}
   onHitParticles: {fileID: 8382442116021813945, guid: 39f09805de074e7498d7800b3036c85b, type: 3}
   weakSpot: 0
+  stunLockoutTime: 0
+  mat: {fileID: 0}
 --- !u!1 &1355180609133238889
 GameObject:
   m_ObjectHideFlags: 0
@@ -801,8 +803,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6116428397702101893}
-  - component: {fileID: 7457611603456080261}
-  - component: {fileID: 3770477853442037043}
   m_Layer: 0
   m_Name: spine.006
   m_TagString: enemyHitbox
@@ -826,34 +826,6 @@ Transform:
   m_Father: {fileID: 3341621735879810624}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!65 &7457611603456080261
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1419594323889141048}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.004808395, y: 0.0046555195, z: 0.005345395}
-  m_Center: {x: 0.00017240924, y: 0.0013091558, z: 0.00013934588}
---- !u!114 &3770477853442037043
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1419594323889141048}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: de93a072459f40445a5a9248fd0944e7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  boss: {fileID: 0}
-  onHitParticles: {fileID: 8382442116021813945, guid: 39f09805de074e7498d7800b3036c85b, type: 3}
-  weakSpot: 1
 --- !u!1 &1454440159514396782
 GameObject:
   m_ObjectHideFlags: 0
@@ -1187,6 +1159,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1115099299369835287}
   - component: {fileID: 6445328083151189119}
+  - component: {fileID: 3715552860219503997}
+  - component: {fileID: 8124342133748791439}
   m_Layer: 0
   m_Name: Skull
   m_TagString: Untagged
@@ -1229,7 +1203,7 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -6478536213147159724, guid: 9b426f4c971dada4c9b87bc4913ab14d, type: 3}
+  - {fileID: 2100000, guid: 59016f3595b71b94c9795ad7461ce068, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1348,6 +1322,36 @@ SkinnedMeshRenderer:
     m_Center: {x: 0.000025463349, y: 0.008030772, z: -0.0017156231}
     m_Extent: {x: 0.0010701751, y: 0.001814923, z: 0.0016156111}
   m_DirtyAABB: 0
+--- !u!114 &3715552860219503997
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2330930814180723131}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: de93a072459f40445a5a9248fd0944e7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  boss: {fileID: 0}
+  onHitParticles: {fileID: 8382442116021813945, guid: 39f09805de074e7498d7800b3036c85b, type: 3}
+  weakSpot: 1
+  stunLockoutTime: 20
+  mat: {fileID: 0}
+--- !u!135 &8124342133748791439
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2330930814180723131}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.025
+  m_Center: {x: 0.026617724, y: -0.028648902, z: -0.010123305}
 --- !u!1 &2346295565532603412
 GameObject:
   m_ObjectHideFlags: 0
@@ -1762,6 +1766,8 @@ MonoBehaviour:
   boss: {fileID: 0}
   onHitParticles: {fileID: 8382442116021813945, guid: 39f09805de074e7498d7800b3036c85b, type: 3}
   weakSpot: 0
+  stunLockoutTime: 0
+  mat: {fileID: 0}
 --- !u!1 &3501840330093047704
 GameObject:
   m_ObjectHideFlags: 0
@@ -1919,6 +1925,9 @@ MonoBehaviour:
     rage: 0
     stunState: 0
   callback:
+    m_PersistentCalls:
+      m_Calls: []
+  callbackEvent:
     m_PersistentCalls:
       m_Calls: []
   leftHand: {fileID: 58643368910120554}
@@ -2122,7 +2131,7 @@ Transform:
   m_GameObject: {fileID: 3939178405592415639}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.001, y: 0.001, z: 0.001}
+  m_LocalScale: {x: 0.0020767276, y: 0.0013358002, z: 0.0011312}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 590617656107206208}
@@ -2606,6 +2615,8 @@ MonoBehaviour:
   boss: {fileID: 0}
   onHitParticles: {fileID: 8382442116021813945, guid: 39f09805de074e7498d7800b3036c85b, type: 3}
   weakSpot: 0
+  stunLockoutTime: 0
+  mat: {fileID: 0}
 --- !u!1 &5813677810357362685
 GameObject:
   m_ObjectHideFlags: 0
@@ -3210,6 +3221,8 @@ MonoBehaviour:
   boss: {fileID: 0}
   onHitParticles: {fileID: 8382442116021813945, guid: 39f09805de074e7498d7800b3036c85b, type: 3}
   weakSpot: 0
+  stunLockoutTime: 0
+  mat: {fileID: 0}
 --- !u!1 &7514125437300460492
 GameObject:
   m_ObjectHideFlags: 0
@@ -3571,6 +3584,8 @@ MonoBehaviour:
   boss: {fileID: 0}
   onHitParticles: {fileID: 8382442116021813945, guid: 39f09805de074e7498d7800b3036c85b, type: 3}
   weakSpot: 0
+  stunLockoutTime: 0
+  mat: {fileID: 0}
 --- !u!1 &7993713965040487265
 GameObject:
   m_ObjectHideFlags: 0

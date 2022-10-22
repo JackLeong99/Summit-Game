@@ -7,7 +7,9 @@ public class zombieExplosion : MonoBehaviour
     public float lifespan;
     public float lifespanCounter;
     public float explosionDamage;
+    public float explosionRadius;
     private Vector3 temp;
+    
 
     //public float explosionSize;
 
@@ -15,7 +17,7 @@ public class zombieExplosion : MonoBehaviour
     void Awake()
     {
         //radius is placeholder for now
-        DamageFallOff(transform.position, 2.5f, explosionDamage);
+        DamageFallOff(transform.position, explosionRadius, explosionDamage);
         
     }
 

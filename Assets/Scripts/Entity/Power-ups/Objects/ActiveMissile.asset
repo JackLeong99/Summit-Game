@@ -15,15 +15,17 @@ MonoBehaviour:
   itemName: Missile Pod
   description: Fire a volley of tracking missiles
   cost: 5
+  tier: 1
   icon: {fileID: 21300000, guid: 0049f78ccfaabf24d964680fb88e12cb, type: 3}
   slot: 3
   cooldown: 5
   castTime: 0
   projectile: {fileID: 8434380028405312774, guid: d014fd6b5bc54704fa0d2ac160e76965, type: 3}
   seekTag: enemyHitbox
-  missileCount: 6
-  projectileSpeed: 20
-  tracking: 1.2
-  damage: 10
-  bufferTime: 0.2
-  delay: 0.3
+  missileCount: 12
+  projectileSpeed: 5
+  projectileVelocity: 75
+  tracking: 225
+  damage: 5
+  bufferTime: 0.1
+  delay: 0.1
