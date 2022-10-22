@@ -761,6 +761,7 @@ MonoBehaviour:
   onHitParticles: {fileID: 8382442116021813945, guid: 39f09805de074e7498d7800b3036c85b, type: 3}
   weakSpot: 0
   stunLockoutTime: 0
+  weakSpotGO: {fileID: 0}
   mat: {fileID: 0}
 --- !u!1 &1355180609133238889
 GameObject:
@@ -803,6 +804,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6116428397702101893}
+  - component: {fileID: 5044140867038287986}
+  - component: {fileID: 4159192368917866929}
   m_Layer: 0
   m_Name: spine.006
   m_TagString: enemyHitbox
@@ -826,6 +829,37 @@ Transform:
   m_Father: {fileID: 3341621735879810624}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5044140867038287986
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1419594323889141048}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: de93a072459f40445a5a9248fd0944e7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  boss: {fileID: 0}
+  onHitParticles: {fileID: 8382442116021813945, guid: 39f09805de074e7498d7800b3036c85b, type: 3}
+  weakSpot: 1
+  stunLockoutTime: 20
+  weakSpotGO: {fileID: 2330930814180723131}
+  mat: {fileID: 0}
+--- !u!135 &4159192368917866929
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1419594323889141048}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.0028398135
+  m_Center: {x: -2.2717882e-12, y: 0.0008253918, z: -0.00048276372}
 --- !u!1 &1454440159514396782
 GameObject:
   m_ObjectHideFlags: 0
@@ -1159,8 +1193,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1115099299369835287}
   - component: {fileID: 6445328083151189119}
-  - component: {fileID: 3715552860219503997}
-  - component: {fileID: 8124342133748791439}
   m_Layer: 0
   m_Name: Skull
   m_TagString: Untagged
@@ -1322,36 +1354,6 @@ SkinnedMeshRenderer:
     m_Center: {x: 0.000025463349, y: 0.008030772, z: -0.0017156231}
     m_Extent: {x: 0.0010701751, y: 0.001814923, z: 0.0016156111}
   m_DirtyAABB: 0
---- !u!114 &3715552860219503997
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2330930814180723131}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: de93a072459f40445a5a9248fd0944e7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  boss: {fileID: 0}
-  onHitParticles: {fileID: 8382442116021813945, guid: 39f09805de074e7498d7800b3036c85b, type: 3}
-  weakSpot: 1
-  stunLockoutTime: 20
-  mat: {fileID: 0}
---- !u!135 &8124342133748791439
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2330930814180723131}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.025
-  m_Center: {x: 0.026617724, y: -0.028648902, z: -0.010123305}
 --- !u!1 &2346295565532603412
 GameObject:
   m_ObjectHideFlags: 0
@@ -1465,7 +1467,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &5893132892399137482
 Transform:
   m_ObjectHideFlags: 0
@@ -1767,6 +1769,7 @@ MonoBehaviour:
   onHitParticles: {fileID: 8382442116021813945, guid: 39f09805de074e7498d7800b3036c85b, type: 3}
   weakSpot: 0
   stunLockoutTime: 0
+  weakSpotGO: {fileID: 0}
   mat: {fileID: 0}
 --- !u!1 &3501840330093047704
 GameObject:
@@ -2121,7 +2124,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &146807310031616765
 Transform:
   m_ObjectHideFlags: 0
@@ -2616,6 +2619,7 @@ MonoBehaviour:
   onHitParticles: {fileID: 8382442116021813945, guid: 39f09805de074e7498d7800b3036c85b, type: 3}
   weakSpot: 0
   stunLockoutTime: 0
+  weakSpotGO: {fileID: 0}
   mat: {fileID: 0}
 --- !u!1 &5813677810357362685
 GameObject:
@@ -3222,6 +3226,7 @@ MonoBehaviour:
   onHitParticles: {fileID: 8382442116021813945, guid: 39f09805de074e7498d7800b3036c85b, type: 3}
   weakSpot: 0
   stunLockoutTime: 0
+  weakSpotGO: {fileID: 0}
   mat: {fileID: 0}
 --- !u!1 &7514125437300460492
 GameObject:
@@ -3585,6 +3590,7 @@ MonoBehaviour:
   onHitParticles: {fileID: 8382442116021813945, guid: 39f09805de074e7498d7800b3036c85b, type: 3}
   weakSpot: 0
   stunLockoutTime: 0
+  weakSpotGO: {fileID: 0}
   mat: {fileID: 0}
 --- !u!1 &7993713965040487265
 GameObject:

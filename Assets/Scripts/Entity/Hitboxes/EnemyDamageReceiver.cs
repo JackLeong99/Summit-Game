@@ -11,19 +11,21 @@ public class EnemyDamageReceiver : MonoBehaviour
     public bool weakSpot;
     public float stunLockoutTime;
     private bool stunLockout;
+    public GameObject weakSpotGO;
     public Material mat;
     
     void Start() 
     {
         boss = GetComponentInParent<BossStateMachine>();
         gameObject.tag = "enemyHitbox";
+        if (!weakSpotGO) weakSpotGO = gameObject;
         switch (true) 
         {
-            case bool _ when GetComponent<MeshRenderer>():
-                mat = GetComponent<MeshRenderer>().material;
+            case bool _ when weakSpotGO.GetComponent<MeshRenderer>():
+                mat = weakSpotGO.GetComponent<MeshRenderer>().material;
                 break;
-            case bool _ when GetComponent<SkinnedMeshRenderer>():
-                mat = GetComponent<SkinnedMeshRenderer>().material;
+            case bool _ when weakSpotGO.GetComponent<SkinnedMeshRenderer>():
+                mat = weakSpotGO.GetComponent<SkinnedMeshRenderer>().material;
                 break;
         }
     }
