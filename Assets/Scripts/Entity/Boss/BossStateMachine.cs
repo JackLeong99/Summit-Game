@@ -80,7 +80,7 @@ public class BossStateMachine : MonoBehaviour
     {
         while (GameManager.instance.inLoading) { yield return null; }
 
-        components.curHealth = attributes.maxHealth;
+        components.curHealth = BossManager.instance.SetBossHealth();
         yield return AnnouncementHandler.instance.Announcement(attributes.bossName, 2);
         BossManager.instance.SetBoss();
         Initialize(baseState);

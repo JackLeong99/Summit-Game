@@ -29,7 +29,7 @@ public class DeathState : BossState
     {
         boss.anim.SetTrigger("Death");
         AkSoundEngine.PostEvent("Enemy_Death", boss.gameObject);
-        GameManager.instance.killCount++;
+        BossManager.instance.killCount++;
 
         yield return new WaitForSeconds(4f);
 
