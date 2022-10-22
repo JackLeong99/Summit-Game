@@ -12,7 +12,7 @@ public class ShopHandler : MonoBehaviour
 
     public void BuyItem()
     {
-        switch (Inventory.instance.CanPurchase(item.cost)) 
+        switch (!purchased && Inventory.instance.CanPurchase(item.cost)) 
         {
             case true:
                 Purchase();

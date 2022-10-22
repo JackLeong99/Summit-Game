@@ -23,6 +23,11 @@ public class UIItemDisplay : MonoBehaviour
     public TMP_Text PassivePrefab;
     private float nextPassive = -40f;
 
+    [Header("Camera Shake")]
+    public float shakeDuration;
+    public float shakeIntensity;
+    public int flashes;
+    public float flashDuration;
 
     private Inventory inventory;
     private PlayerAbilities abilities;
@@ -93,6 +98,26 @@ public class UIItemDisplay : MonoBehaviour
     public void UpdateGold()
     {
         gold.text = string.Format(goldFormat, inventory.gold);
+    }
+
+    public void InvalidGold()
+    {
+        StartCoroutine(FlashRed());
+    }
+
+    public IEnumerator FlashRed()
+    {
+        CameraListener.instance.CameraShake(shakeIntensity, shakeDuration);
+
+        for (int i = 0; i < flashes; i++)
+        {
+            gold.color = Color.red;
+            yield return new WaitForSeconds(flashDuration);
+            gold.color = Color.white;
+            yield return new WaitForSeconds(flashDuration);
+        }
+
+        yield return new WaitForEndOfFrame();
     }
 
     public void ClearListOfItems()
