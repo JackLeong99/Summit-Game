@@ -51,7 +51,7 @@ public class RockProjectile : ProjectileBase
 
     public void spawnRock()
     {
-        GameObject breakablerock = Instantiate(rockPrefab, new Vector3(transform.position.x, -0.5f, transform.position.z), Quaternion.identity);
+        GameObject breakablerock = Instantiate(rockPrefab, transform.position, Quaternion.identity);
         ParticleSystem rockParticles = Instantiate(rockParticle, transform.position, Quaternion.identity);
         Destroy(gameObject);
     }

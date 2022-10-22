@@ -15,7 +15,7 @@ public class ResonantBlade : ActiveAbility
         Vector2 dir = Random.insideUnitCircle;
         Vector3 randomPos = (new Vector3(dir.x, 0, dir.y)) * Random.Range(minDistance, maxDistance);
         randomPos.y = spawnHeight;
-        Instantiate(bladeObject, GameManager.instance.player.transform.position + randomPos, Quaternion.identity);
+        Instantiate(bladeObject, GameManager.instance.player.transform.position + randomPos, bladeObject.transform.rotation);
     }
 
     public override IEnumerator doEffect()
