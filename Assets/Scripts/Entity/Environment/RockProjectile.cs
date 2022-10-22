@@ -8,6 +8,7 @@ public class RockProjectile : ProjectileBase
     private GameObject rockPrefab;
     [SerializeField]
     private ParticleSystem rockParticle;
+    public float groundPosY = -702.226f;
 
     public override void Update()
     {
@@ -35,7 +36,7 @@ public class RockProjectile : ProjectileBase
         switch (other.tag) 
         {
             case "Player":
-                other.GetComponent<PlayerHealth>().takeDamage(damage * BossManager.instance.SetBossDamage());
+                other.GetComponent<PlayerHealth>().takeDamage(BossManager.instance.boss.DamageCalculation(damage));
                 foreach (var OnHit in OnHitEffects)
                 {
                     OnHit.ApplyOnHitEffects(other.gameObject);
@@ -51,7 +52,7 @@ public class RockProjectile : ProjectileBase
 
     public void spawnRock()
     {
-        GameObject breakablerock = Instantiate(rockPrefab, new Vector3(transform.position.x, -0.5f, transform.position.z), Quaternion.identity);
+        GameObject breakablerock = Instantiate(rockPrefab, new Vector3(transform.position.x, groundPosY, transform.position.z), Quaternion.identity);
         ParticleSystem rockParticles = Instantiate(rockParticle, transform.position, Quaternion.identity);
         Destroy(gameObject);
     }

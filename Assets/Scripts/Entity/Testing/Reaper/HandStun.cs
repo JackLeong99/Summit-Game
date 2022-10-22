@@ -33,7 +33,7 @@ public class HandStun : MonoBehaviour
             if (tickCounter >= tickRate)
             {
                 tickCounter = 0;
-                targetHealth.takeDamage(damagePerTick * BossManager.instance.SetBossDamage());
+                targetHealth.takeDamage(BossManager.instance.boss.DamageCalculation(damagePerTick));
             }
         }
     }

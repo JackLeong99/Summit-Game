@@ -23,7 +23,7 @@ public class BossHealthBar : MonoBehaviour
         }
 
         bossText.text = BossManager.instance.boss.attributes.bossName;
-        healthbar.maxValue = BossManager.instance.boss.attributes.maxHealth;
+        healthbar.maxValue = BossManager.instance.boss.components.apMaxHealth;
     }
 
     public IEnumerator ClearParameters()

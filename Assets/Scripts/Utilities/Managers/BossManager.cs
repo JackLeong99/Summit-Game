@@ -32,12 +32,12 @@ public class BossManager : MonoBehaviour
         }
     }
 
-    public float SetBossHealth()
+    public float CalculateHealth()
     {
         return boss.attributes.maxHealth * ( 1 + (bossHealthModifier * killCount));
     }
 
-    public float SetBossDamage()
+    public float CalculateDamage()
     {
         return 1 + (bossDamageModifier * killCount);
     }

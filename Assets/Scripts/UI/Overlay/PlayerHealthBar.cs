@@ -18,7 +18,11 @@ public class PlayerHealthBar : MonoBehaviour
         switch (true)
         {
             case bool x when GameManager.instance.player != null:
-                healthbar.value = GameManager.instance.player.GetComponent<PlayerHealth>().currentHealth;
+
+                var health = GameManager.instance.player.GetComponent<PlayerHealth>();
+                if (healthbar.maxValue != health.maxHealth) { healthbar.maxValue = health.maxHealth; }
+
+                healthbar.value = health.currentHealth;
                 break;
         }
     }
