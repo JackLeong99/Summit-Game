@@ -208,7 +208,7 @@ public class BossStateMachine : MonoBehaviour
 
     public float DamageCalculation(float baseDamage)
     {
-        return components.rage ? baseDamage * attributes.rageMultiplier : baseDamage;
+        return components.rage ? (baseDamage * attributes.rageMultiplier) * BossManager.instance.SetBossDamage() : baseDamage * BossManager.instance.SetBossDamage();
     }
 
     public void onStep()
