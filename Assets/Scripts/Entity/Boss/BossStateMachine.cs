@@ -18,6 +18,7 @@ using UnityEngine.Events;
     public float moveRepeated;
 
     [Header("Health")]
+    public float apMaxHealth;
     public float curHealth;
     public IState iFrame = IState.Inactive;
 
@@ -69,7 +70,7 @@ public class BossStateMachine : MonoBehaviour
         StartCoroutine(SetParameters());
     }
 
-    public void GetInstances()  
+    public void GetInstances()
     {
         BossManager.instance.boss = this;
         anim = GetComponent<Animator>();
@@ -80,10 +81,15 @@ public class BossStateMachine : MonoBehaviour
     {
         while (GameManager.instance.inLoading) { yield return null; }
 
-        components.curHealth = attributes.maxHealth;
         yield return AnnouncementHandler.instance.Announcement(attributes.bossName, 2);
-        BossManager.instance.SetBoss();
+        SetContext();
         Initialize(baseState);
+    }
+
+    public void SetContext()
+    {
+        components.curHealth = components.apMaxHealth = BossManager.instance.CalculateHealth();
+        BossManager.instance.SetBoss();
     }
 
     public void Initialize(BossState startingState)
@@ -100,7 +106,7 @@ public class BossStateMachine : MonoBehaviour
                 currentAbility.Update();
                 break;
             default:
-                //Debug.LogWarning("CurrentAbility is: " + currentAbility);
+                Debug.LogWarning("CurrentAbility is: " + currentAbility);
                 break;
         }
     }
@@ -175,7 +181,7 @@ public class BossStateMachine : MonoBehaviour
         AkSoundEngine.PostEvent("Enemy_Damage", gameObject);
         AkSoundEngine.PostEvent("UI_Hit_Indicator", GameManager.instance.mainCamera);
 
-        BossManager.instance.damageTextPool.Spawn(position, dmg.ToString(), Color.white, dmg > 15f ? 12f : 4f);
+        BossManager.instance.damageTextPool.Spawn(position, Mathf.Round(dmg).ToString(), Color.white, dmg > 15f ? 12f : 4f);
 
         if (!Alive())
         {
@@ -208,7 +214,7 @@ public class BossStateMachine : MonoBehaviour
 
     public float DamageCalculation(float baseDamage)
     {
-        return components.rage ? baseDamage * attributes.rageMultiplier : baseDamage;
+        return components.rage ? (baseDamage * attributes.rageMultiplier) * BossManager.instance.CalculateDamage() : baseDamage * BossManager.instance.CalculateDamage();
     }
 
     public void onStep()

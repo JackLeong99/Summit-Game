@@ -1972,7 +1972,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lifespan: 90
-  explosionDetection: 1.5
+  explosionDetection: 5
   explosionHitbox: {fileID: 6432593354579476119, guid: c8547fe7933dfe84ab2ad7f768f2ef72, type: 3}
   maxHP: 1
   explosionDelay: 0.1
@@ -1988,7 +1988,7 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.5
-  m_Speed: 3.5
+  m_Speed: 7
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 120

@@ -154,9 +154,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gold: {fileID: 250660179}
   activeItem: {fileID: 1923408094}
-  passiveItems: []
   panelObject: {fileID: 1397960747}
   PassivePrefab: {fileID: 2874582580355765995, guid: 084e268ea8539624c8c9903296cd48ca, type: 3}
+  shakeDuration: 0.2
+  shakeIntensity: 3
+  flashes: 3
+  flashDuration: 0.2
 --- !u!4 &106017277
 Transform:
   m_ObjectHideFlags: 0

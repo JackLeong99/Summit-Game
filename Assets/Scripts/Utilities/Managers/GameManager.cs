@@ -196,6 +196,9 @@ public class GameManager : MonoBehaviour
     {
         yield return StartCoroutine(StartLoad());
 
+        finalReady = false;
+        BossManager.instance.killCount = 0;
+
         List<AsyncOperation> scenesLoading = SceneHandler.ReloadScene(gameScenes[0]);
         scenesLoading = scenesLoading.Concat(SceneHandler.SwapScenes(deathScene, exclusionScenes)).ToList();
         yield return StartCoroutine(LoadProgression(scenesLoading, deathScene));

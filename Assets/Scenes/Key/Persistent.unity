@@ -201,6 +201,9 @@ MonoBehaviour:
   OnHealthChange:
     m_PersistentCalls:
       m_Calls: []
+  OnTakeDamage:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &119712482
 GameObject:
   m_ObjectHideFlags: 0
@@ -619,7 +622,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sensitivity: 1
-  volume: 9.1
+  volume: 100
 --- !u!1 &607801088
 GameObject:
   m_ObjectHideFlags: 0
@@ -1528,6 +1531,7 @@ MonoBehaviour:
   fade: {fileID: 0}
   inLoading: 0
   finalReady: 0
+  killCount: 0
   input: {fileID: 0}
   startingScenes:
   - m_SceneAsset: {fileID: 102900000, guid: 2a0f80f82a270df45849983b20840b97, type: 3}
@@ -1589,7 +1593,10 @@ MonoBehaviour:
     m_SceneAsset: {fileID: 102900000, guid: 317afe1f4eeb4404b8b32f9347d79e5a, type: 3}
     m_IsDirty: 0
     m_ScenePath: Assets/Scenes/Unique/Ending.unity
-  testScenes: []
+  testScenes:
+  - m_SceneAsset: {fileID: 102900000, guid: 9b84110c173e7ef46b35851632f9fdbf, type: 3}
+    m_IsDirty: 0
+    m_ScenePath: Assets/Scenes/Bosses/Golem.unity
 --- !u!1 &2049736186
 GameObject:
   m_ObjectHideFlags: 0
@@ -1836,6 +1843,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   boss: {fileID: 0}
   damageTextPool: {fileID: 0}
+  killCount: 5
+  bossHealthModifier: 0.2
+  bossDamageModifier: 0.1
   portalPrefab: {fileID: 2649803870162256538, guid: 56799dd9a5164d14eb506ce7b87c17e5, type: 3}
 --- !u!1 &2140333230
 GameObject:
