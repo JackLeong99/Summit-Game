@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 534b8e99f30c8a940ab086bed71e8572, type: 3}
+  m_Name: Resonant Blade
+  m_EditorClassIdentifier: 
+  itemName: Resonant Blade
+  description: Deploy a blade that refunds a portion of damage taken after a duration
+  cost: 0
+  tier: 1
+  icon: {fileID: 21300000, guid: 0049f78ccfaabf24d964680fb88e12cb, type: 3}
+  slot: 3
+  cooldown: 1
+  castTime: 0
+  bladeObject: {fileID: 2360480053451804274, guid: be87d19191ec8c340ac2b485abd38884, type: 3}
+  minDistance: 7
+  maxDistance: 8
+  spawnHeight: 1.5

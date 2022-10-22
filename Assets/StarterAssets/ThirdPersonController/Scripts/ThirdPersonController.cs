@@ -170,14 +170,14 @@ namespace StarterAssets
 				AkSoundEngine.PostEvent("VO_Morbin_Time", gameObject);
 			}
 
-			//https://forum.unity.com/threads/checking-if-character-landed-after-jumping-tutorial.605275/
-			//The people on the internet have big brain
-			if (!Grounded)
-			{
-				if (!isAirborn) isAirborn = !isAirborn;
-			}
+            //https://forum.unity.com/threads/checking-if-character-landed-after-jumping-tutorial.605275/
+            //The people on the internet have big brain
+            if (!Grounded)
+            {
+                if (!isAirborn) isAirborn = !isAirborn;
+            }
 
-			_hasAnimator = TryGetComponent(out _animator);
+            _hasAnimator = TryGetComponent(out _animator);
 
 			GroundedCheck();
 			JumpAndGravity();
@@ -300,19 +300,17 @@ namespace StarterAssets
 		{
 			if (Grounded)
 			{
-				// reset the fall timeout timer
-				_fallTimeoutDelta = FallTimeout;
-
 				if (isAirborn)
 				{
-					if (_fallTimeoutDelta <= 0)
-						AkSoundEngine.PostEvent("Player_Land", gameObject);
+					if (_fallTimeoutDelta <= 0) AkSoundEngine.PostEvent("Player_Land", gameObject);
 					jumpSFXLockout = false;
 					isAirborn = false;
 				}
+				// reset the fall timeout timer
+				_fallTimeoutDelta = FallTimeout;
 
-				// update animator if using character
-				if (_hasAnimator)
+                // update animator if using character
+                if (_hasAnimator)
 				{
 					_animator.SetBool(_animIDJump, false);
 					_animator.SetBool(_animIDFreeFall, false);
@@ -397,18 +395,6 @@ namespace StarterAssets
 			// when selected, draw a gizmo in the position of, and matching radius of, the grounded collider
 			Gizmos.DrawSphere(new Vector3(transform.position.x, transform.position.y - GroundedOffset, transform.position.z), GroundedRadius);
 		}
-
-		public void IncreaseSpeed()
-		{
-			MoveSpeed*=2;
-			SprintSpeed*=2;
-
-		}
-		public void DecreaseSpeed()
-		{
-			MoveSpeed/=2;
-			SprintSpeed/=2;
-        }
 
         public void OnFootstep (int footIndex)
         {
