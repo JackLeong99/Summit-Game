@@ -14,6 +14,7 @@ public class EventManager : MonoBehaviour
     //list of events
     //!!! make sure to add .RemoveAllListeners() to any newly added events
     public FloatEvent OnHealthChange;
+    public FloatEvent OnTakeDamage;
 
 
     #endregion
@@ -26,10 +27,12 @@ public class EventManager : MonoBehaviour
     private void OnDisable()
     {
         OnHealthChange.RemoveAllListeners();
+        OnTakeDamage.RemoveAllListeners();
     }
 
     private void OnDestroy()
     {
         OnHealthChange.RemoveAllListeners();
+        OnTakeDamage.RemoveAllListeners();
     }
 }

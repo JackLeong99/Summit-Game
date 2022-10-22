@@ -46,6 +46,7 @@ public class PlayerHealth : MonoBehaviour
                 break;
             case true:
                 EventManager.instance.OnHealthChange?.Invoke((currentHealth/maxHealth) * 100);
+                EventManager.instance.OnTakeDamage?.Invoke(damage);
                 break;
         }
     }

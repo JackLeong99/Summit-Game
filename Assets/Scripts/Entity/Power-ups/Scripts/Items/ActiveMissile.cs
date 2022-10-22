@@ -26,7 +26,7 @@ public class ActiveMissile : ActiveAbility
 
         for (int i = 0; i < missileCount; i++) 
         {
-            projectileList.Add(Instantiate(projectile, GameManager.instance.player.transform.position + new Vector3(0, 3, 0), Quaternion.Euler(-90,0,0)) as GameObject);
+            projectileList.Add(Instantiate(projectile, GameManager.instance.player.transform.position + new Vector3(0, 3, 0), Quaternion.Euler(-90,0,0)));
         }
 
         float missileNo = delay;

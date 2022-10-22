@@ -181,7 +181,7 @@ public class BossStateMachine : MonoBehaviour
         AkSoundEngine.PostEvent("Enemy_Damage", gameObject);
         AkSoundEngine.PostEvent("UI_Hit_Indicator", GameManager.instance.mainCamera);
 
-        BossManager.instance.damageTextPool.Spawn(position, dmg.ToString(), Color.white, dmg > 15f ? 12f : 4f);
+        BossManager.instance.damageTextPool.Spawn(position, Mathf.Round(dmg).ToString(), Color.white, dmg > 15f ? 12f : 4f);
 
         if (!Alive())
         {
