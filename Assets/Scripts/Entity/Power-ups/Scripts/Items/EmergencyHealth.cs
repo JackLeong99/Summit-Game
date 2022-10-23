@@ -6,7 +6,7 @@ using UnityEngine;
 
 public class EmergencyHealth : EventItem
 {
-    public float baseHeal;
+    public float baseHealPercent;
     public float healPerStack;
     public float healPerStackRatio;
     public int numberOfTicks;
@@ -39,12 +39,11 @@ public class EmergencyHealth : EventItem
     public IEnumerator proc() 
     {
         available = false;
-        int currentStacks = Inventory.instance.GetStacks(this);
-        float heal = baseHeal + (healPerStack * (1 - (healPerStackRatio / (healPerStackRatio + currentStacks))));
         PlayerHealth hp = GameManager.instance.player.GetComponent<PlayerHealth>();
+        float heal = (baseHealPercent / hp.maxHealth) + (healPerStack * Inventory.instance.GetStacks(this));
         for (int i = 0; i < numberOfTicks; i++) 
         {
-            hp.healDamage(heal);
+            hp.healDamage(heal / numberOfTicks);
             yield return new WaitForSeconds(tickRate);
         }
         yield return new WaitForSeconds(cooldown);
