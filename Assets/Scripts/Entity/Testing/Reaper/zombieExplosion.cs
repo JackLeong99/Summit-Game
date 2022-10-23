@@ -7,6 +7,8 @@ public class zombieExplosion : MonoBehaviour
     public float lifespan;
     public float lifespanCounter;
     public float explosionDamage;
+    public float bossExplosionDamage;
+
     public float explosionRadius;
     private Vector3 temp;
     
@@ -97,7 +99,7 @@ public class zombieExplosion : MonoBehaviour
 
                     //position is placeholder
                     float[] effectPasser = new float[1];
-                    effectPasser[0] = Mathf.Round(BossManager.instance.boss.DamageCalculation(damage * effect));
+                    effectPasser[0] = Mathf.Round(BossManager.instance.boss.DamageCalculation(bossExplosionDamage * effect));
                     receiver.PassDamage(effectPasser, 1, transform.position);
                 }
                 else
