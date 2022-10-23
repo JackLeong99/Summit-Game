@@ -196,6 +196,7 @@ public class UIItemDisplay : MonoBehaviour
         inventory = GameManager.instance.player.GetComponent<Inventory>();
         abilities = GameManager.instance.player.GetComponent<PlayerAbilities>();
         UpdateGold();
-
+        sliderBackground.color = new Color(0f, 0f, 0f, 0f);
+        activeItemImage.color = new Color(0f, 0f, 0f, 0f);
     }
 }
