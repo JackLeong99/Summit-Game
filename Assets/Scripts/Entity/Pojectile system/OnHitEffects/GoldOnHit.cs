@@ -11,6 +11,6 @@ public class GoldOnHit : OnHitEffect
     public ThiefingRodent item;
     public override void ApplyOnHitEffects(GameObject target)
     {
-        Inventory.instance.updateStat(Inventory.StatType.gold, gain * (Inventory.instance.GetStacks(item)/ratio));
+        Inventory.instance.updateStat(Inventory.StatType.gold, 1 + (gain * (Inventory.instance.GetStacks(item)/ratio)));
     }
 }
