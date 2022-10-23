@@ -8,6 +8,7 @@ public class FuryOfTheFallen : EventItem
 {
     public float breakPointPercent;
     public float bonusDamage;
+    private Inventory inv;
 
     public enum Breakpoint { inBreakPoint, outBreakPoint }
 
@@ -17,9 +18,10 @@ public class FuryOfTheFallen : EventItem
         base.acquire();
         BreakpointState = Breakpoint.outBreakPoint;
         PlayerHealth hp = GameManager.instance.player.GetComponent<PlayerHealth>();
+        inv = GameManager.instance.player.GetComponent<Inventory>();
         if (hp.currentHealth / hp.maxHealth * 100 <= breakPointPercent)
         {
-            Inventory.instance.updateStat(Inventory.StatType.percentDamageMod, bonusDamage);
+            inv.updateStat(Inventory.StatType.percentDamageMod, bonusDamage * inv.GetStacks(this));
             BreakpointState = Breakpoint.inBreakPoint;
         }
     }
@@ -36,14 +38,18 @@ public class FuryOfTheFallen : EventItem
 
     public void effect(float f)
     {
-        switch (f <= breakPointPercent && BreakpointState == Breakpoint.outBreakPoint)
+        switch (BreakpointState)
         {
-            case true:
-                Inventory.instance.updateStat(Inventory.StatType.percentDamageMod, bonusDamage);
+            case Breakpoint.outBreakPoint:
+                if (f >= breakPointPercent)
+                    break;
+                Inventory.instance.updateStat(Inventory.StatType.percentDamageMod, bonusDamage * inv.GetStacks(this));
                 BreakpointState = Breakpoint.inBreakPoint;
                 break;
-            default:
-                Inventory.instance.updateStat(Inventory.StatType.percentDamageMod, -bonusDamage);
+            case Breakpoint.inBreakPoint:
+                if (f < breakPointPercent)
+                    break;
+                Inventory.instance.updateStat(Inventory.StatType.percentDamageMod, -bonusDamage * inv.GetStacks(this));
                 BreakpointState = Breakpoint.outBreakPoint;
                 break;
         }

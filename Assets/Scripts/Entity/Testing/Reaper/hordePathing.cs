@@ -55,7 +55,7 @@ public class hordePathing : MonoBehaviour
     }
     public IEnumerator explode()
     {
-        anim.SetTrigger("explosion");
+        anim.SetTrigger("Explode");
         yield return new WaitForSeconds(explosionDelay);
         Instantiate(explosionHitbox, transform.position, transform.rotation);
         Destroy(gameObject);

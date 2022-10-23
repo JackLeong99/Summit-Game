@@ -122,8 +122,8 @@ public class Inventory : MonoBehaviour
             case StatType.speed:
                 walkSpeed += val;
                 sprintSpeed += val;
-                controller.MoveSpeed = Mathf.Clamp(base_WalkSpeed + walkSpeed, 1.0f, Mathf.Infinity);
-                controller.SprintSpeed = Mathf.Clamp(base_SprintSpeed + sprintSpeed, 1.0f, Mathf.Infinity);
+                controller.MoveSpeed = Mathf.Clamp(base_WalkSpeed + (base_WalkSpeed * walkSpeed), 1.0f, Mathf.Infinity);
+                controller.SprintSpeed = Mathf.Clamp(base_SprintSpeed + (base_SprintSpeed * sprintSpeed), 1.0f, Mathf.Infinity);
                 break;
             case StatType.health:
                 health += val;
