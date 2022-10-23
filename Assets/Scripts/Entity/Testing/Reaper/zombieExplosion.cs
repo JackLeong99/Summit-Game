@@ -7,6 +7,7 @@ public class zombieExplosion : MonoBehaviour
     public float lifespan;
     public float lifespanCounter;
     public float explosionDamage;
+    public float bossExplosionDamage;
     public float explosionRadius;
     
     void Start()
