@@ -1592,7 +1592,10 @@ MonoBehaviour:
     m_SceneAsset: {fileID: 102900000, guid: 317afe1f4eeb4404b8b32f9347d79e5a, type: 3}
     m_IsDirty: 0
     m_ScenePath: Assets/Scenes/Unique/Ending.unity
-  testScenes: []
+  testScenes:
+  - m_SceneAsset: {fileID: 102900000, guid: 8a95e54c012075c4eadac20fc68e2a93, type: 3}
+    m_IsDirty: 0
+    m_ScenePath: Assets/Scenes/Unique/Shopkeeper.unity
 --- !u!1 &2049736186
 GameObject:
   m_ObjectHideFlags: 0
@@ -1839,7 +1842,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   boss: {fileID: 0}
   damageTextPool: {fileID: 0}
-  killCount: 5
+  killCount: 0
   bossHealthModifier: 0.2
   bossDamageModifier: 0.1
   portalPrefab: {fileID: 2649803870162256538, guid: 56799dd9a5164d14eb506ce7b87c17e5, type: 3}
