@@ -68,7 +68,7 @@ public class SpawnAbilityState : AbilityState
         switch (true)
         {
             case bool _ when spawnSoundEvent.Length != 0:
-                AkSoundEngine.PostEvent(spawnSoundEvent, boss.gameObject);
+                AkSoundEngine.PostEvent(spawnSoundEvent, spawnable.gameObject);
                 break;
         }
 

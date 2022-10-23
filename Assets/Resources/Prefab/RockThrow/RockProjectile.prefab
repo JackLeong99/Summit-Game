@@ -99,7 +99,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1.5, y: 1.5, z: 1.5}
+  m_Size: {x: 2, y: 2, z: 2}
   m_Center: {x: 0, y: -0.00008889934, z: 0}
 --- !u!135 &-2248026111634641959
 SphereCollider:
@@ -161,7 +161,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4309036dd87b64402a0f2c171852a4e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dontUseRoot: 0
+  dontUseRoot: 1
   hitLockout: 0
   damage: 0
-  force: {x: 5, y: 2}
+  force: {x: 7, y: 3}

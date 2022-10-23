@@ -201,6 +201,9 @@ MonoBehaviour:
   OnHealthChange:
     m_PersistentCalls:
       m_Calls: []
+  OnTakeDamage:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &119712482
 GameObject:
   m_ObjectHideFlags: 0
@@ -619,7 +622,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sensitivity: 1
-  volume: 9.1
+  volume: 100
 --- !u!1 &607801088
 GameObject:
   m_ObjectHideFlags: 0
@@ -1590,9 +1593,9 @@ MonoBehaviour:
     m_IsDirty: 0
     m_ScenePath: Assets/Scenes/Unique/Ending.unity
   testScenes:
-  - m_SceneAsset: {fileID: 102900000, guid: 9b84110c173e7ef46b35851632f9fdbf, type: 3}
+  - m_SceneAsset: {fileID: 102900000, guid: 8a95e54c012075c4eadac20fc68e2a93, type: 3}
     m_IsDirty: 0
-    m_ScenePath: Assets/Scenes/Bosses/Golem.unity
+    m_ScenePath: Assets/Scenes/Unique/Shopkeeper.unity
 --- !u!1 &2049736186
 GameObject:
   m_ObjectHideFlags: 0
@@ -1839,7 +1842,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   boss: {fileID: 0}
   damageTextPool: {fileID: 0}
-  killCount: 5
+  killCount: 0
   bossHealthModifier: 0.2
   bossDamageModifier: 0.1
   portalPrefab: {fileID: 2649803870162256538, guid: 56799dd9a5164d14eb506ce7b87c17e5, type: 3}

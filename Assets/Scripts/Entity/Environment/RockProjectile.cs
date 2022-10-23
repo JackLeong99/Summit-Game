@@ -8,7 +8,13 @@ public class RockProjectile : ProjectileBase
     private GameObject rockPrefab;
     [SerializeField]
     private ParticleSystem rockParticle;
+    private Rigidbody rb;
     public float groundPosY = -702.226f;
+
+    public void Start()
+    {
+        rb = GetComponent<Rigidbody>();
+    }
 
     public override void Update()
     {
@@ -27,6 +33,10 @@ public class RockProjectile : ProjectileBase
             case "Arena":
                 AkSoundEngine.PostEvent("Enemy_Boulder_Impact", gameObject);
                 spawnRock();
+                break;
+            case "Barrier":
+                rb.useGravity = true;
+                rb.velocity *= 0.2f;
                 break;
         }
     }
