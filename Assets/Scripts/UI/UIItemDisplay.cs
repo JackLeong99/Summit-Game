@@ -5,6 +5,7 @@ using TMPro;
 using System.Linq;
 using System;
 using UnityEngine.UI;
+using static UnityEditor.Progress;
 
 public class UIItemDisplay : MonoBehaviour
 {
@@ -22,12 +23,16 @@ public class UIItemDisplay : MonoBehaviour
     public GameObject panelObject;
     public TMP_Text PassivePrefab; 
     private float nextPassive = -40f;
-    public Image PassiveItemImage; //this will not be used in the actual system as items will need to give the prefab to this
     private float nextPassiveImageX = -40;
     private float nextPassiveImageY = -40;
     public TMP_Text numberOfStacks;
     private float nextPassiveNumberX = -25;
     private float nextPassiveNumberY = -57;
+
+    public Image activeItemImage;
+    public Slider cooldownTimer;
+    public Image sliderBackground;
+    public bool onCooldown=false;
 
 
     [Header("Camera Shake")]
@@ -56,6 +61,16 @@ public class UIItemDisplay : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(onCooldown)
+        {
+            cooldownTimer.value+=Time.deltaTime;
+            if(cooldownTimer.value== cooldownTimer.maxValue)
+            {
+                //cooldownTimer.value=abilities.internalCooldown[3];
+                onCooldown = false;
+            }
+            //slider value equal to timer so -time delta time
+        }
         //icon cooldown
     }
 
@@ -64,8 +79,12 @@ public class UIItemDisplay : MonoBehaviour
         gold.text = string.Format(goldFormat, inventory.gold);
         if(abilities.AbilitySlot[3].itemName != "Empty Ability")
         {
-            //change here to new icon system
-            activeItem.text = string.Format(activeItemFormat, abilities.AbilitySlot[3].itemName);
+            activeItemImage.color = Color.white;
+            sliderBackground.color = new Color(163f, 171f, 159f, 0.3f);
+            activeItemImage.sprite = abilities.AbilitySlot[3].icon;
+            cooldownTimer.maxValue = abilities.AbilitySlot[3].cooldown;
+            cooldownTimer.value = cooldownTimer.maxValue;
+            //sactiveItem.text = string.Format(activeItemFormat, abilities.AbilitySlot[3].itemName);
         }
     }
     //updated version of old system
