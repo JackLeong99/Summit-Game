@@ -38,6 +38,7 @@ public class FuryOfTheFallen : EventItem
 
     public void effect(float f)
     {
+        inv = GameManager.instance.player.GetComponent<Inventory>();
         switch (BreakpointState)
         {
             case Breakpoint.outBreakPoint:
