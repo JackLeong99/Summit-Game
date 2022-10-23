@@ -8,110 +8,45 @@ public class zombieExplosion : MonoBehaviour
     public float lifespanCounter;
     public float explosionDamage;
     public float explosionRadius;
-    private Vector3 temp;
     
-
-    //public float explosionSize;
-
-    // Start is called before the first frame update
-    void Awake()
+    void Start()
     {
-        //radius is placeholder for now
         DamageFallOff(transform.position, explosionRadius, explosionDamage);
-        
     }
 
-    // Update is called once per frame
     void Update()
     {
         if(lifespanCounter >= lifespan)
         {
             Destroy(gameObject);
         }
-        lifespanCounter += (Time.deltaTime + .1f);
+        lifespanCounter += (Time.deltaTime);
     }
-
-    // public void OnTriggerEnter(Collider other)
-    // {
-    //     if (other.tag == "enemyHitbox")
-    //     {
-    //         EnemyDamageReceiver receiver = other.GetComponent<EnemyDamageReceiver>();
-    //         if (receiver)
-    //         {
-    //             receiver.PassDamage(explosionDamage, transform.position);
-    //         }
-    //     }
-        
-    //     if (other.tag == "hordeEnemy")
-    //     {
-    //         hordePathing dmgFren = other.GetComponent<hordePathing>();
-    //         if(dmgFren)
-    //         {
-    //             dmgFren.takeDamage(explosionDamage);
-    //         }
-    //     }
-
-    //     // if (other.tag == "Player")
-    //     // {
-    //     //     HPTesting testDamage = other.GetComponent<HPTesting>();
-    //     //     if(testDamage)
-    //     //     {
-    //     //         testDamage.takeDamage(explosionDamage);
-    //     //     }
-    //     // }
-    // }
 
     private void DamageFallOff(Vector3 location,float radius,float damage)
     {
         Collider[] objectsInRange = Physics.OverlapSphere(location, radius);
         foreach (Collider col in objectsInRange)
         {
-            hordePathing dmgFren = col.GetComponent<hordePathing>();
-            if (dmgFren != null)
+            Debug.Log("zombie explosion hit: " + col);
+            if (col.CompareTag("hordeEnemy")) 
             {
-                // linear falloff of effect
-                float proximity = (location - dmgFren.transform.position).magnitude;
-                float effect = Mathf.Clamp(1 - (proximity / radius), 1, explosionDamage);
-
-                dmgFren.takeDamage(damage * effect);
+                col.GetComponent<hordePathing>().takeDamage(damage);
+                continue;
             }
-            else
+            if (col.CompareTag("enemyHitbox"))
             {
-                EnemyDamageReceiver receiver = col.GetComponent<EnemyDamageReceiver>();
-                if (receiver != null)
-                {
-                    // linear falloff of effect
-                    float proximity = (location - receiver.transform.position).magnitude;
-                    //gives magnitude / radius - percentage ratio.
-
-                    //This method gives = explosion damage every time.
-                    //float effect = Mathf.Clamp(1 - (proximity / radius), 1, explosionDamage);
-                    
-                    
-                    //This method works but causes a lag spike.
-                    float effect = 1 - (proximity / radius);
-                    if(effect < 0)
-                    {
-                        effect *= -1;
-                    }
-
-                    //position is placeholder
-                    float[] effectPasser = new float[1];
-                    effectPasser[0] = Mathf.Round(BossManager.instance.boss.DamageCalculation(damage * effect));
-                    receiver.PassDamage(effectPasser, 1, transform.position);
-                }
-                else
-                {
-                    PlayerHealth health = col.GetComponent<PlayerHealth>();
-
-                    if(health != null)
-                    {
-                        float proximity = (location - health.transform.position).magnitude;
-                        float effect = Mathf.Clamp(1 - (proximity / radius), 1, explosionDamage);
-
-                        health.takeDamage(BossManager.instance.boss.DamageCalculation(damage * effect));
-                    }
-                }
+                //float[] effectPasser = { damage * (((location - col.transform.position).magnitude / radius) - 1) };
+                float[] effectPasser = { damage };
+                col.GetComponent<EnemyDamageReceiver>().PassDamage(effectPasser, 1, transform.position);
+                continue;
+            }
+            if (col.CompareTag("Player"))
+            {
+                //Debug.Log("magnitude" + (location - col.transform.position).magnitude);
+                //Debug.Log("dealt: " + (damage * (1 - (location - col.transform.position).magnitude / radius)));
+                col.GetComponent<PlayerHealth>().takeDamage(BossManager.instance.boss.DamageCalculation(damage));
+                continue;
             }
         }
     }
