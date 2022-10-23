@@ -19,7 +19,7 @@ public class ImperfectGem : EventItem
     {
         base.acquire();
         PlayerHealth hp = GameManager.instance.player.GetComponent<PlayerHealth>();
-        inv = GameManager.instance.player.GetComponent<Inventory>();
+        inv = Inventory.instance.GetComponent<Inventory>();
         int s = inv.GetStacks(this);
         switch (hp.currentHealth / hp.maxHealth * 100 < breakPointPercent) 
         {
@@ -47,7 +47,7 @@ public class ImperfectGem : EventItem
 
     public void effect(float f)
     {
-        int s = inv.GetStacks(this);
+        int s = Inventory.instance.GetStacks(this);
         switch (BreakpointState) 
         {
             case Breakpoint.outBreakPoint:
