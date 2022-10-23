@@ -236,7 +236,7 @@ namespace StarterAssets
 		private void Move()
 		{
 			// set target speed based on move speed, sprint speed and if sprint is pressed
-			float targetSpeed = GameManager.instance.input.sprint ? SprintSpeed : MoveSpeed;
+			float targetSpeed = GameManager.instance.input.sprint ? MoveSpeed : SprintSpeed;
 
 			if (Grounded && stunned == stunState.Stunned) targetSpeed = 0.0f;
 
