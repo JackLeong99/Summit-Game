@@ -97,12 +97,20 @@ public class UIItemDisplay : MonoBehaviour
             newPassiveImage.transform.SetParent(panelObject.transform, false);
             newPassiveImage.GetComponent<RectTransform>().anchoredPosition = new Vector2(nextPassiveImageX, nextPassiveImageY);
             nextPassiveImageX -= 60;
+
             TMP_Text newPassiveText = Instantiate(numberOfStacks, numberOfStacks.transform.position, transform.rotation) as TMP_Text;
             newPassiveText.transform.SetParent(panelObject.transform, false);
             newPassiveText.GetComponent<RectTransform>().anchoredPosition = new Vector2(nextPassiveNumberX, nextPassiveNumberY);
             nextPassiveNumberX -= 62;
             passiveItems.Add(newPassiveText);
-            passiveItems[itemNamesList.Count - 1].text = string.Format(passiveItemStack, inventory.GetStacks(item));
+            passiveItems[itemNamesList.Count - 1].text = string.Format(passiveItemStack, inventory.GetStacks(item));            
+            if(itemNamesList.Count%8==0)
+            {
+                nextPassiveImageX = -40;
+                nextPassiveImageY -= 55;
+                nextPassiveNumberX = -25;
+                nextPassiveNumberY -= 55;
+            }
  
         }
         for (int i = 0; i < itemNamesList.Count; i++)
@@ -159,7 +167,11 @@ public class UIItemDisplay : MonoBehaviour
         }
         itemNamesList.Clear();
         passiveItems.Clear();
-        nextPassive = -40;
+        //nextPassive = -40; //from old text display items
+        nextPassiveImageX = -40;
+        nextPassiveImageY = -40;
+        nextPassiveNumberX = -25;
+        nextPassiveNumberY = -57;
         activeItem.text = "";
         inventory = GameManager.instance.player.GetComponent<Inventory>();
         abilities = GameManager.instance.player.GetComponent<PlayerAbilities>();
