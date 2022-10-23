@@ -56,7 +56,7 @@ public class UIItemDisplay : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
- 
+        //icon cooldown
     }
 
     public void ActiveItemSet()
@@ -64,6 +64,7 @@ public class UIItemDisplay : MonoBehaviour
         gold.text = string.Format(goldFormat, inventory.gold);
         if(abilities.AbilitySlot[3].itemName != "Empty Ability")
         {
+            //change here to new icon system
             activeItem.text = string.Format(activeItemFormat, abilities.AbilitySlot[3].itemName);
         }
     }
