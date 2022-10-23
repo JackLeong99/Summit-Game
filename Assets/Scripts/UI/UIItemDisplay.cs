@@ -93,8 +93,7 @@ public class UIItemDisplay : MonoBehaviour
         if (HaveItemBefore(item.itemName))
         {
             itemNamesList.Add(item.itemName);           
-            Image newPassiveImage = Instantiate(PassiveItemImage, PassiveItemImage.transform.position, transform.rotation) as Image; 
-            //PassiveItemImage will need to be changed to an image provided by ItemBase. Not a hard change ie something like item.itemImage
+            Image newPassiveImage = Instantiate(item.imageIcon, item.imageIcon.transform.position, transform.rotation) as Image; 
             newPassiveImage.transform.SetParent(panelObject.transform, false);
             newPassiveImage.GetComponent<RectTransform>().anchoredPosition = new Vector2(nextPassiveImageX, nextPassiveImageY);
             nextPassiveImageX -= 60;

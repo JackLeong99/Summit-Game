@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public abstract class ItemBase : ScriptableObject
 {
@@ -19,6 +20,7 @@ public abstract class ItemBase : ScriptableObject
 
     [Header("Values")]
     public Sprite icon;
+    public Image imageIcon;
 
     public abstract void effect();
     public abstract void acquire();
