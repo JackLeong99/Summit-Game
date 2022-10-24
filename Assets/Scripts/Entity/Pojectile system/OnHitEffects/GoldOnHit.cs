@@ -7,10 +7,13 @@ using UnityEngine;
 public class GoldOnHit : OnHitEffect
 {
     public float gain;
-    public float ratio;
+    public float luck;
     public ThiefingRodent item;
     public override void ApplyOnHitEffects(GameObject target)
     {
-        Inventory.instance.updateStat(Inventory.StatType.gold, 1 + (gain * (Inventory.instance.GetStacks(item)/ratio)));
+        Inventory inv = Inventory.instance;
+        float r = Random.Range(0.0f, 100.0f);
+        if (r > (100/(100 + (luck * inv.GetStacks(item)))))
+        inv.updateStat(Inventory.StatType.gold, gain);
     }
 }

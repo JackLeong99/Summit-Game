@@ -14,11 +14,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemName: Emergency First Aid Kit
   description: Regain health when critically wounded
-  rarity: 5
-  cost: 5
+  rarity: 10
+  cost: 10
   icon: {fileID: 21300000, guid: 0049f78ccfaabf24d964680fb88e12cb, type: 3}
-  baseHealPercent: 15
-  healPerStack: 3.5
+  imageIcon: {fileID: 0}
+  baseHealPercent: 10
+  healPerStack: 5
   healPerStackRatio: 1
   numberOfTicks: 5
   tickRate: 0.5
