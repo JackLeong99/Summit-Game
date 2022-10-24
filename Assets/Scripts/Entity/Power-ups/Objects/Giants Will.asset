@@ -14,10 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemName: Giants Will
   description: Gain a boost to total life at the cost of speed and damage
-  rarity: 5
-  cost: 5
-  icon: {fileID: 21300000, guid: 0049f78ccfaabf24d964680fb88e12cb, type: 3}
+  rarity: 15
+  cost: 15
+  icon: {fileID: 21300000, guid: 1a9863dddcfa1c546be6cdc4851cbbb8, type: 3}
   imageIcon: {fileID: 8145884720992577450, guid: e40b927beb30257478ca4c80acf7ab50, type: 3}
-  healthVal: 30
-  damageVal: 0.1
-  speedVal: 0.1
+  healthVal: 50
+  damageVal: 0.05
+  speedVal: 0.2

@@ -18,7 +18,7 @@ public class GiantsWill : PassiveItem
     public override void effect()
     {
         Inventory.instance.updateStat(Inventory.StatType.health, healthVal);
-        Inventory.instance.updateStat(Inventory.StatType.percentDamageMod, -damageVal);
+        Inventory.instance.updateStat(Inventory.StatType.percentDamageMod, damageVal);
         Inventory.instance.updateStat(Inventory.StatType.speed, -speedVal);
     }
 }

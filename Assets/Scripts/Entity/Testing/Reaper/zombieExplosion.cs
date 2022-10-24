@@ -38,7 +38,7 @@ public class zombieExplosion : MonoBehaviour
             if (col.CompareTag("enemyHitbox"))
             {
                 //float[] effectPasser = { damage * (((location - col.transform.position).magnitude / radius) - 1) };
-                float[] effectPasser = { damage };
+                float[] effectPasser = { bossExplosionDamage };
                 col.GetComponent<EnemyDamageReceiver>().PassDamage(effectPasser, 1, transform.position);
                 continue;
             }
