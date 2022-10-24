@@ -91,4 +91,13 @@ public class ShopManager : MonoBehaviour
                 break;
         }
     }
+
+    public void DisplayRefresh()
+    {
+        displayName.text = "Refresh";
+        displayDescription.text = "";
+        displayCost.text = "Cost: " + cost;
+
+        EnableDisplay(true);
+    }
 }
