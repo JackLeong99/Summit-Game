@@ -13,7 +13,10 @@ public class EnemyDamageReceiver : MonoBehaviour
     private bool stunLockout;
     public GameObject weakSpotGO;
     public Material mat;
-    
+    public float lerpDuration;
+    public Color defaultColor;
+    public Color offColor;
+
     void Start() 
     {
         boss = GetComponentInParent<BossStateMachine>();
@@ -50,11 +53,22 @@ public class EnemyDamageReceiver : MonoBehaviour
         if (!stunLockout && boss.components.stunState != StunState.Stunned) 
         {
             boss.components.stunState = StunState.Stunned;
-            mat.DisableKeyword("_EMISSION");
+            mat.SetColor("_EmissionColor", offColor);
             stunLockout = true;
             yield return new WaitForSeconds(stunLockoutTime);
-            mat.EnableKeyword("_EMISSION");
+            StartCoroutine(lerpColor(lerpDuration, mat));
             stunLockout = false;
+        }
+        yield return null;
+    }
+
+    public IEnumerator lerpColor(float d, Material m)
+    {
+        float t = 0;
+        while (t < d)
+        {
+            m.SetColor("_EmissionColor", Color.Lerp(offColor, defaultColor, t));
+            yield return t += Time.deltaTime;
         }
         yield return null;
     }

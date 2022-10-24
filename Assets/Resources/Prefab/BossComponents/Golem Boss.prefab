@@ -260,6 +260,9 @@ MonoBehaviour:
   stunLockoutTime: 45
   weakSpotGO: {fileID: 0}
   mat: {fileID: 0}
+  lerpDuration: 2
+  defaultColor: {r: 0.98039216, g: 0.40552822, b: 0.011764729, a: 1}
+  offColor: {r: 0, g: 0, b: 0, a: 0}
 --- !u!1 &128407544119393852
 GameObject:
   m_ObjectHideFlags: 0
@@ -550,6 +553,9 @@ MonoBehaviour:
   stunLockoutTime: 0
   weakSpotGO: {fileID: 0}
   mat: {fileID: 0}
+  lerpDuration: 0
+  defaultColor: {r: 0, g: 0, b: 0, a: 0}
+  offColor: {r: 0, g: 0, b: 0, a: 0}
 --- !u!1 &376072306671561867
 GameObject:
   m_ObjectHideFlags: 0
@@ -2762,6 +2768,9 @@ MonoBehaviour:
   stunLockoutTime: 0
   weakSpotGO: {fileID: 0}
   mat: {fileID: 0}
+  lerpDuration: 0
+  defaultColor: {r: 0, g: 0, b: 0, a: 0}
+  offColor: {r: 0, g: 0, b: 0, a: 0}
 --- !u!1 &2052868700331042502
 GameObject:
   m_ObjectHideFlags: 0
@@ -3178,6 +3187,9 @@ MonoBehaviour:
   stunLockoutTime: 0
   weakSpotGO: {fileID: 0}
   mat: {fileID: 0}
+  lerpDuration: 0
+  defaultColor: {r: 0, g: 0, b: 0, a: 0}
+  offColor: {r: 0, g: 0, b: 0, a: 0}
 --- !u!1 &2280339979082314149
 GameObject:
   m_ObjectHideFlags: 0
@@ -4301,6 +4313,9 @@ MonoBehaviour:
   stunLockoutTime: 0
   weakSpotGO: {fileID: 0}
   mat: {fileID: 0}
+  lerpDuration: 0
+  defaultColor: {r: 0, g: 0, b: 0, a: 0}
+  offColor: {r: 0, g: 0, b: 0, a: 0}
 --- !u!1 &3212050794327048260
 GameObject:
   m_ObjectHideFlags: 0
@@ -5461,6 +5476,9 @@ MonoBehaviour:
   stunLockoutTime: 0
   weakSpotGO: {fileID: 0}
   mat: {fileID: 0}
+  lerpDuration: 0
+  defaultColor: {r: 0, g: 0, b: 0, a: 0}
+  offColor: {r: 0, g: 0, b: 0, a: 0}
 --- !u!1 &3880641654600599954
 GameObject:
   m_ObjectHideFlags: 0
@@ -5655,6 +5673,9 @@ MonoBehaviour:
   stunLockoutTime: 0
   weakSpotGO: {fileID: 0}
   mat: {fileID: 0}
+  lerpDuration: 0
+  defaultColor: {r: 0, g: 0, b: 0, a: 0}
+  offColor: {r: 0, g: 0, b: 0, a: 0}
 --- !u!1 &3920246439808673251
 GameObject:
   m_ObjectHideFlags: 0
@@ -8067,6 +8088,9 @@ MonoBehaviour:
   stunLockoutTime: 0
   weakSpotGO: {fileID: 0}
   mat: {fileID: 0}
+  lerpDuration: 0
+  defaultColor: {r: 0, g: 0, b: 0, a: 0}
+  offColor: {r: 0, g: 0, b: 0, a: 0}
 --- !u!1 &5458641998235249409
 GameObject:
   m_ObjectHideFlags: 0
@@ -8197,6 +8221,9 @@ MonoBehaviour:
   stunLockoutTime: 0
   weakSpotGO: {fileID: 0}
   mat: {fileID: 0}
+  lerpDuration: 0
+  defaultColor: {r: 0, g: 0, b: 0, a: 0}
+  offColor: {r: 0, g: 0, b: 0, a: 0}
 --- !u!1 &5468555899532472796
 GameObject:
   m_ObjectHideFlags: 0
@@ -8372,6 +8399,9 @@ MonoBehaviour:
   stunLockoutTime: 45
   weakSpotGO: {fileID: 0}
   mat: {fileID: 0}
+  lerpDuration: 2
+  defaultColor: {r: 0.98039216, g: 0.40552822, b: 0.011764729, a: 1}
+  offColor: {r: 0, g: 0, b: 0, a: 0}
 --- !u!1 &5484238768411741337
 GameObject:
   m_ObjectHideFlags: 0
@@ -8990,6 +9020,9 @@ MonoBehaviour:
   stunLockoutTime: 0
   weakSpotGO: {fileID: 0}
   mat: {fileID: 0}
+  lerpDuration: 0
+  defaultColor: {r: 0, g: 0, b: 0, a: 0}
+  offColor: {r: 0, g: 0, b: 0, a: 0}
 --- !u!1 &5830876524191766380
 GameObject:
   m_ObjectHideFlags: 0
@@ -10632,6 +10665,9 @@ MonoBehaviour:
   stunLockoutTime: 0
   weakSpotGO: {fileID: 0}
   mat: {fileID: 0}
+  lerpDuration: 0
+  defaultColor: {r: 0, g: 0, b: 0, a: 0}
+  offColor: {r: 0, g: 0, b: 0, a: 0}
 --- !u!1 &7199952406079290453
 GameObject:
   m_ObjectHideFlags: 0
@@ -10782,6 +10818,9 @@ MonoBehaviour:
   stunLockoutTime: 0
   weakSpotGO: {fileID: 0}
   mat: {fileID: 0}
+  lerpDuration: 0
+  defaultColor: {r: 0, g: 0, b: 0, a: 0}
+  offColor: {r: 0, g: 0, b: 0, a: 0}
 --- !u!1 &7302608971631339786
 GameObject:
   m_ObjectHideFlags: 0
@@ -10947,6 +10986,9 @@ MonoBehaviour:
   stunLockoutTime: 45
   weakSpotGO: {fileID: 0}
   mat: {fileID: 0}
+  lerpDuration: 2
+  defaultColor: {r: 0.98039216, g: 0.40552822, b: 0.011764729, a: 1}
+  offColor: {r: 0, g: 0, b: 0, a: 0}
 --- !u!1 &7358248036307849376
 GameObject:
   m_ObjectHideFlags: 0
@@ -12007,6 +12049,9 @@ MonoBehaviour:
   stunLockoutTime: 45
   weakSpotGO: {fileID: 0}
   mat: {fileID: 0}
+  lerpDuration: 2
+  defaultColor: {r: 0.98039216, g: 0.40552822, b: 0.011764729, a: 1}
+  offColor: {r: 0, g: 0, b: 0, a: 0}
 --- !u!1 &7967644765934307803
 GameObject:
   m_ObjectHideFlags: 0
@@ -12874,6 +12919,9 @@ MonoBehaviour:
   stunLockoutTime: 0
   weakSpotGO: {fileID: 0}
   mat: {fileID: 0}
+  lerpDuration: 0
+  defaultColor: {r: 0, g: 0, b: 0, a: 0}
+  offColor: {r: 0, g: 0, b: 0, a: 0}
 --- !u!1 &8621287059554418163
 GameObject:
   m_ObjectHideFlags: 0

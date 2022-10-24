@@ -763,6 +763,9 @@ MonoBehaviour:
   stunLockoutTime: 0
   weakSpotGO: {fileID: 0}
   mat: {fileID: 0}
+  lerpDuration: 0
+  defaultColor: {r: 0, g: 0, b: 0, a: 0}
+  offColor: {r: 0, g: 0, b: 0, a: 0}
 --- !u!1 &1355180609133238889
 GameObject:
   m_ObjectHideFlags: 0
@@ -847,6 +850,9 @@ MonoBehaviour:
   stunLockoutTime: 20
   weakSpotGO: {fileID: 2330930814180723131}
   mat: {fileID: 0}
+  lerpDuration: 2
+  defaultColor: {r: 0.754717, g: 0, b: 0.11573935, a: 1}
+  offColor: {r: 0, g: 0, b: 0, a: 0}
 --- !u!135 &4159192368917866929
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -1771,6 +1777,9 @@ MonoBehaviour:
   stunLockoutTime: 0
   weakSpotGO: {fileID: 0}
   mat: {fileID: 0}
+  lerpDuration: 0
+  defaultColor: {r: 0, g: 0, b: 0, a: 0}
+  offColor: {r: 0, g: 0, b: 0, a: 0}
 --- !u!1 &3501840330093047704
 GameObject:
   m_ObjectHideFlags: 0
@@ -2622,6 +2631,9 @@ MonoBehaviour:
   stunLockoutTime: 0
   weakSpotGO: {fileID: 0}
   mat: {fileID: 0}
+  lerpDuration: 0
+  defaultColor: {r: 0, g: 0, b: 0, a: 0}
+  offColor: {r: 0, g: 0, b: 0, a: 0}
 --- !u!1 &5813677810357362685
 GameObject:
   m_ObjectHideFlags: 0
@@ -3229,6 +3241,9 @@ MonoBehaviour:
   stunLockoutTime: 0
   weakSpotGO: {fileID: 0}
   mat: {fileID: 0}
+  lerpDuration: 0
+  defaultColor: {r: 0, g: 0, b: 0, a: 0}
+  offColor: {r: 0, g: 0, b: 0, a: 0}
 --- !u!1 &7514125437300460492
 GameObject:
   m_ObjectHideFlags: 0
@@ -3593,6 +3608,9 @@ MonoBehaviour:
   stunLockoutTime: 0
   weakSpotGO: {fileID: 0}
   mat: {fileID: 0}
+  lerpDuration: 0
+  defaultColor: {r: 0, g: 0, b: 0, a: 0}
+  offColor: {r: 0, g: 0, b: 0, a: 0}
 --- !u!1 &7993713965040487265
 GameObject:
   m_ObjectHideFlags: 0
