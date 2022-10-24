@@ -28,6 +28,7 @@ public class UIItemDisplay : MonoBehaviour
     public TMP_Text numberOfStacks;
     private float nextPassiveNumberX = -25;
     private float nextPassiveNumberY = -57;
+    public Image passiveItem; 
 
     public Image activeItemImage;
     public Slider cooldownTimer;
@@ -112,8 +113,10 @@ public class UIItemDisplay : MonoBehaviour
     {
         if (HaveItemBefore(item.itemName))
         {
-            itemNamesList.Add(item.itemName);           
-            Image newPassiveImage = Instantiate(item.imageIcon, item.imageIcon.transform.position, transform.rotation) as Image; 
+            itemNamesList.Add(item.itemName);
+            //Image newPassiveImage = Instantiate(item.imageIcon, item.imageIcon.transform.position, transform.rotation) as Image;
+            Image newPassiveImage = Instantiate(passiveItem, passiveItem.transform.position, transform.rotation) as Image;
+            newPassiveImage.sprite = item.icon; //if works might change to use this instead
             newPassiveImage.transform.SetParent(panelObject.transform, false);
             newPassiveImage.GetComponent<RectTransform>().anchoredPosition = new Vector2(nextPassiveImageX, nextPassiveImageY);
             nextPassiveImageX -= 60;
