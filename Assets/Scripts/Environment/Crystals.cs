@@ -22,8 +22,8 @@ public class Crystals : MonoBehaviour
 
     public IEnumerator toggleOff()
     {
-        foreach(GameObject go in GO)
-            go.GetComponent<MeshRenderer>().material.SetColor("_EmissionColor", offColor);
+        foreach (GameObject go in GO)
+            go.GetComponent<MeshRenderer>().material.SetColor("_EmissionColor", this.offColor);
         Lockout = true;
         yield return new WaitForSeconds(LockoutTime);
         foreach (GameObject go in GO)
@@ -36,7 +36,7 @@ public class Crystals : MonoBehaviour
         float t = 0;
         while (t < d) 
         {
-            m.SetColor("_EmissionColor", Color.Lerp(offColor, defaultColor, t));
+            m.SetColor("_EmissionColor", Color.Lerp(this.offColor, this.defaultColor, t));
             yield return t += Time.deltaTime;
         }
         yield return null;

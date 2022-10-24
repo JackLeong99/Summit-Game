@@ -12,7 +12,7 @@ public class GoldOnHit : OnHitEffect
     public override void ApplyOnHitEffects(GameObject target)
     {
         Inventory inv = Inventory.instance;
-        float r = Random.Range(0.0f, 100.0f);
+        float r = Random.Range(0.0f, 1.0f);
         if (r > (100/(100 + (luck * inv.GetStacks(item)))))
         inv.updateStat(Inventory.StatType.gold, gain);
     }
