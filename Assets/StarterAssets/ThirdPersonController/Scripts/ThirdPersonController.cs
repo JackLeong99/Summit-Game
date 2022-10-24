@@ -165,11 +165,6 @@ namespace StarterAssets
 				}
 			}
 
-			if (Input.GetKeyDown("m"))
-			{
-				AkSoundEngine.PostEvent("VO_Morbin_Time", gameObject);
-			}
-
             //https://forum.unity.com/threads/checking-if-character-landed-after-jumping-tutorial.605275/
             //The people on the internet have big brain
             if (!Grounded)
