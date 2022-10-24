@@ -40,7 +40,7 @@ public class EmergencyHealth : EventItem
     {
         available = false;
         PlayerHealth hp = GameManager.instance.player.GetComponent<PlayerHealth>();
-        float heal = (baseHealPercent / hp.maxHealth) + (healPerStack * Inventory.instance.GetStacks(this));
+        float heal = ((baseHealPercent/100) * hp.maxHealth) + (healPerStack * Inventory.instance.GetStacks(this));
         for (int i = 0; i < numberOfTicks; i++) 
         {
             hp.healDamage(heal / numberOfTicks);
