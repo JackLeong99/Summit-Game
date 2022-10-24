@@ -49,6 +49,7 @@ public class BossManager : MonoBehaviour
 
     public void ClearBoss(Vector3 portalPos)
     {
+        Destroy(boss.gameObject);
         boss = null;
         HealthbarManager.instance.ClearBoss();
 
