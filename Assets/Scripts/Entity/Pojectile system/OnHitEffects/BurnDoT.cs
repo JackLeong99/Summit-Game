@@ -19,7 +19,7 @@ public class BurnDoT : OnHitEffect
     public override void ApplyOnHitEffects(GameObject target)
     {
         damageStack = new float[numberOfTicks];
-        float damagePerTick = damage + (damage * Inventory.instance.GetStacks(item));
+        float damagePerTick = (damage + (damage * Inventory.instance.GetStacks(item))) * Inventory.instance.percentDamageMod;
         for (int i = 0; i < numberOfTicks; i++) 
         {
             damageStack[i] = damagePerTick;

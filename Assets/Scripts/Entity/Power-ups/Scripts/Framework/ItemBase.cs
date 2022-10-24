@@ -20,7 +20,6 @@ public abstract class ItemBase : ScriptableObject
 
     [Header("Values")]
     public Sprite icon;
-    public Image imageIcon;
 
     public abstract void effect();
     public abstract void acquire();

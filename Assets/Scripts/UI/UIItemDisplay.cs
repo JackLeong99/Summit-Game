@@ -28,6 +28,7 @@ public class UIItemDisplay : MonoBehaviour
     public TMP_Text numberOfStacks;
     private float nextPassiveNumberX = -25;
     private float nextPassiveNumberY = -57;
+    public Image passiveItem; 
 
     public Image activeItemImage;
     public Slider cooldownTimer;
@@ -44,9 +45,6 @@ public class UIItemDisplay : MonoBehaviour
     private Inventory inventory;
     private PlayerAbilities abilities;
 
-    //make a list of acquired items which can then be read
-    // Start is called before the first frame update
-
     private void Awake()
     {
         instance = this;
@@ -58,7 +56,6 @@ public class UIItemDisplay : MonoBehaviour
         UpdateGold();
     }
 
-    // Update is called once per frame
     void Update()
     {
         if(onCooldown)
@@ -66,12 +63,9 @@ public class UIItemDisplay : MonoBehaviour
             cooldownTimer.value+=Time.deltaTime;
             if(cooldownTimer.value== cooldownTimer.maxValue)
             {
-                //cooldownTimer.value=abilities.internalCooldown[3];
                 onCooldown = false;
             }
-            //slider value equal to timer so -time delta time
         }
-        //icon cooldown
     }
 
     public void ActiveItemSet()
@@ -112,8 +106,9 @@ public class UIItemDisplay : MonoBehaviour
     {
         if (HaveItemBefore(item.itemName))
         {
-            itemNamesList.Add(item.itemName);           
-            Image newPassiveImage = Instantiate(item.imageIcon, item.imageIcon.transform.position, transform.rotation) as Image; 
+            itemNamesList.Add(item.itemName);
+            Image newPassiveImage = Instantiate(passiveItem, passiveItem.transform.position, transform.rotation) as Image;
+            newPassiveImage.sprite = item.icon;
             newPassiveImage.transform.SetParent(panelObject.transform, false);
             newPassiveImage.GetComponent<RectTransform>().anchoredPosition = new Vector2(nextPassiveImageX, nextPassiveImageY);
             nextPassiveImageX -= 60;
@@ -121,7 +116,8 @@ public class UIItemDisplay : MonoBehaviour
             TMP_Text newPassiveText = Instantiate(numberOfStacks, numberOfStacks.transform.position, transform.rotation) as TMP_Text;
             newPassiveText.transform.SetParent(panelObject.transform, false);
             newPassiveText.GetComponent<RectTransform>().anchoredPosition = new Vector2(nextPassiveNumberX, nextPassiveNumberY);
-            nextPassiveNumberX -= 62;
+            nextPassiveNumberX -= 60;
+
             passiveItems.Add(newPassiveText);
             passiveItems[itemNamesList.Count - 1].text = string.Format(passiveItemStack, inventory.GetStacks(item));            
             if(itemNamesList.Count%8==0)
@@ -196,6 +192,7 @@ public class UIItemDisplay : MonoBehaviour
         inventory = GameManager.instance.player.GetComponent<Inventory>();
         abilities = GameManager.instance.player.GetComponent<PlayerAbilities>();
         UpdateGold();
-
+        sliderBackground.color = new Color(0f, 0f, 0f, 0f);
+        activeItemImage.color = new Color(0f, 0f, 0f, 0f);
     }
 }
