@@ -43,7 +43,7 @@ public class BasicDodge : ActiveAbility
         float timer = 0;
         while (timer < dodgeTimer)
         {
-            if (timer >= (dodgeTimer / percentInvulnerable))
+            if (timer <= (dodgeTimer * percentInvulnerable))
             {
                 player.GetComponent<PlayerHealth>().invulnerable = false;
                 player.GetComponent<KnockbackReciever>().invulnerable = false;
