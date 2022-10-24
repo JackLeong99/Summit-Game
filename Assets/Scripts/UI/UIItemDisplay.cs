@@ -5,7 +5,6 @@ using TMPro;
 using System.Linq;
 using System;
 using UnityEngine.UI;
-using static UnityEditor.Progress;
 
 public class UIItemDisplay : MonoBehaviour
 {
