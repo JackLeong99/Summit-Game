@@ -124,7 +124,8 @@ public class UIItemDisplay : MonoBehaviour
             TMP_Text newPassiveText = Instantiate(numberOfStacks, numberOfStacks.transform.position, transform.rotation) as TMP_Text;
             newPassiveText.transform.SetParent(panelObject.transform, false);
             newPassiveText.GetComponent<RectTransform>().anchoredPosition = new Vector2(nextPassiveNumberX, nextPassiveNumberY);
-            nextPassiveNumberX -= 62;
+            nextPassiveNumberX -= 60;
+
             passiveItems.Add(newPassiveText);
             passiveItems[itemNamesList.Count - 1].text = string.Format(passiveItemStack, inventory.GetStacks(item));            
             if(itemNamesList.Count%8==0)
