@@ -45,9 +45,6 @@ public class UIItemDisplay : MonoBehaviour
     private Inventory inventory;
     private PlayerAbilities abilities;
 
-    //make a list of acquired items which can then be read
-    // Start is called before the first frame update
-
     private void Awake()
     {
         instance = this;
@@ -59,7 +56,6 @@ public class UIItemDisplay : MonoBehaviour
         UpdateGold();
     }
 
-    // Update is called once per frame
     void Update()
     {
         if(onCooldown)
@@ -67,12 +63,9 @@ public class UIItemDisplay : MonoBehaviour
             cooldownTimer.value+=Time.deltaTime;
             if(cooldownTimer.value== cooldownTimer.maxValue)
             {
-                //cooldownTimer.value=abilities.internalCooldown[3];
                 onCooldown = false;
             }
-            //slider value equal to timer so -time delta time
         }
-        //icon cooldown
     }
 
     public void ActiveItemSet()
@@ -114,9 +107,8 @@ public class UIItemDisplay : MonoBehaviour
         if (HaveItemBefore(item.itemName))
         {
             itemNamesList.Add(item.itemName);
-            //Image newPassiveImage = Instantiate(item.imageIcon, item.imageIcon.transform.position, transform.rotation) as Image;
             Image newPassiveImage = Instantiate(passiveItem, passiveItem.transform.position, transform.rotation) as Image;
-            newPassiveImage.sprite = item.icon; //if works might change to use this instead
+            newPassiveImage.sprite = item.icon;
             newPassiveImage.transform.SetParent(panelObject.transform, false);
             newPassiveImage.GetComponent<RectTransform>().anchoredPosition = new Vector2(nextPassiveImageX, nextPassiveImageY);
             nextPassiveImageX -= 60;
