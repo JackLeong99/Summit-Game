@@ -4920,8 +4920,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lifespan: 1.5
   lifespanCounter: 0
-  explosionDamage: 25
-  explosionRadius: 5
+  explosionDamage: 10
+  bossExplosionDamage: 25
+  explosionRadius: 7.5
 --- !u!135 &6180213351984729507
 SphereCollider:
   m_ObjectHideFlags: 0
