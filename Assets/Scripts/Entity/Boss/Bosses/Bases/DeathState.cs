@@ -40,7 +40,8 @@ public class DeathState : BossState
                 break;
         }
 
-        yield return new WaitForSeconds(4.2f);
+        yield return new WaitForSeconds(3f);
+        yield return new WaitForSeconds(1.2f);
         BossManager.instance.OnDeath(boss.attributes.position);
     }
 }

@@ -59,7 +59,7 @@ public class ShopManager : MonoBehaviour
     {
         displayName.text = selected.itemName;
         displayDescription.text = selected.description;
-        displayCost.text = selected.cost.ToString();
+        displayCost.text = "Cost: " + selected.cost.ToString();
 
         EnableDisplay(true);
     }
