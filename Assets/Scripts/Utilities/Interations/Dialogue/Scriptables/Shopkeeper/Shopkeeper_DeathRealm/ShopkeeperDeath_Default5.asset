@@ -10,12 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 05a14dac5ec7fbd43924a10f2c3fe4f7, type: 3}
-  m_Name: ShopkeeperDeath_Default1
+  m_Name: ShopkeeperDeath_Default5
   m_EditorClassIdentifier: 
   announcement:
-  - text: Another failure.
+  - text: You don't remember why you're here?
+    duration: 4
+    delay: 0.5
+  - text: Don't worry...
+    duration: 1.5
+    delay: 1
+  - text: You will soon.
     duration: 2
-    delay: 0.1
-  - text: Go again.
-    duration: 2
-    delay: 0
+    delay: 0.2

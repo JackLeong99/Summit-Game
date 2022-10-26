@@ -37,4 +37,5 @@ public class DataManager : MonoBehaviour
     }
 
     public bool firsTime = true;
+    public bool firstDeath = true;
 }
