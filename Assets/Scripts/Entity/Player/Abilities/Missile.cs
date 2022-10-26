@@ -12,6 +12,8 @@ public class Missile : ProjectileBase
     public void Start()
     {
         Physics.IgnoreLayerCollision(9, 9);
+        Physics.IgnoreLayerCollision(0, 9);
+
         rb = gameObject.GetComponent<Rigidbody>();
         //Physics.IgnoreLayerCollision(3, 9);
     }
