@@ -1843,8 +1843,32 @@ MonoBehaviour:
   boss: {fileID: 0}
   damageTextPool: {fileID: 0}
   killCount: 0
-  bossHealthModifier: 0.2
+  bossHealthModifier: 0.1
   bossDamageModifier: 0.1
+  scalingCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 2
+      outSlope: 2
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
   portalPrefab: {fileID: 2649803870162256538, guid: 56799dd9a5164d14eb506ce7b87c17e5, type: 3}
 --- !u!1 &2140333230
 GameObject:
