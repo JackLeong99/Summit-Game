@@ -90,6 +90,8 @@ public class GameManager : MonoBehaviour
     {
         yield return StartCoroutine(StartLoad());
 
+        ResetValues();
+
         foreach (var scene in gameScenes)
         {
             exclusionScenes.Remove(scene);
@@ -196,13 +198,18 @@ public class GameManager : MonoBehaviour
     {
         yield return StartCoroutine(StartLoad());
 
-        finalReady = false;
-        BossManager.instance.killCount = 0;
+        ResetValues();
 
         List<AsyncOperation> scenesLoading = SceneHandler.ReloadScene(gameScenes[0]);
         scenesLoading = scenesLoading.Concat(SceneHandler.SwapScenes(deathScene, exclusionScenes)).ToList();
         yield return StartCoroutine(LoadProgression(scenesLoading, deathScene));
         UIItemDisplay.instance.ClearListOfItems();
+    }
+
+    public void ResetValues()
+    {
+        finalReady = false;
+        BossManager.instance.killCount = 0;
     }
 
     public void LoadDelegate(IEnumerator coroutine)

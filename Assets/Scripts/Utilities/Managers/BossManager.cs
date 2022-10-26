@@ -11,8 +11,7 @@ public class BossManager : MonoBehaviour
     public int killCount;
     public float bossHealthModifier;
     public float bossDamageModifier;
-
-
+    public AnimationCurve scalingCurve;
 
     [Header("Reference")]
     public GameObject portalPrefab;
@@ -34,7 +33,12 @@ public class BossManager : MonoBehaviour
 
     public float CalculateHealth()
     {
-        return boss.attributes.maxHealth * ( 1 + (bossHealthModifier * killCount));
+        for (int i = 0; i < 20; i++)
+        {
+            Debug.Log(boss.attributes.maxHealth * Mathf.Pow(1 + bossHealthModifier, i));
+        }
+
+        return boss.attributes.maxHealth * Mathf.Pow(1 + bossHealthModifier, killCount);
     }
 
     public float CalculateDamage()

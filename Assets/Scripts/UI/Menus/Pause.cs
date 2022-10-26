@@ -95,6 +95,7 @@ public class Pause : MonoBehaviour
     IEnumerator ChangeToMain()
     {
         Time.timeScale = 1f;
+        AkSoundEngine.PostEvent("UI_Menu_Off", GameManager.instance.mainCamera);
         GameManager.instance.LoadDelegate(GameManager.instance.QuitGame());
         yield return null;
     }

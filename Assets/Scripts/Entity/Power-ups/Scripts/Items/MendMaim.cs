@@ -8,10 +8,14 @@ public class MendMaim : EventItem
 {
     public float baseDamage;
     public float damagePercent;
+    public float cooldown;
+    private bool Valid;
 
     public override void acquire()
     {
         base.acquire();
+
+        Valid = true;
     }
 
     public override void subscribe()
@@ -26,10 +30,21 @@ public class MendMaim : EventItem
 
     public void effect(float f)
     {
+        if (!Valid) { return; }
+        Valid = false;
+
         // original formula: float[] damage = {baseDamage + (f * (1 - (100/(100 + (damagePercent * Inventory.instance.GetStacks(this))))))};
         float[] damage = {(baseDamage + (f * (damagePercent * Inventory.instance.GetStacks(this)))) * Inventory.instance.percentDamageMod};
         GameObject[] gos = GameObject.FindGameObjectsWithTag("enemyHitbox");
         int i = Random.Range(0, gos.Length);
         gos[i].GetComponent<EnemyDamageReceiver>().PassDamage(damage, 1, gos[i].transform.position);
+
+        GameManager.instance.player.GetComponent<Inventory>().StartCoroutine(Cooldown());
+    }
+
+    public IEnumerator Cooldown()
+    {
+        yield return new WaitForSeconds(cooldown);
+        Valid = true;
     }
 }

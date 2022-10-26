@@ -199,7 +199,7 @@ public class BossStateMachine : MonoBehaviour
 
     public void CheckRage()
     {
-        if (components.rage == false && (components.curHealth <= (attributes.maxHealth / 2)))
+        if (components.rage == false && (components.curHealth <= (components.apMaxHealth / 2)))
         {
             StartCoroutine(triggerRage());
         }
