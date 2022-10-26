@@ -13,12 +13,12 @@ MonoBehaviour:
   m_Name: ShopkeeperDeath_FirstTime
   m_EditorClassIdentifier: 
   announcement:
-  - text: A prisoner.
-    duration: 1
+  - text: So you died...
+    duration: 1.5
     delay: 0.1
-  - text: "That\u2019s what you are."
+  - text: Not that I expected any less.
     duration: 2
-    delay: 0.1
-  - text: 'Break those shackles. '
-    duration: 2
+    delay: 2
+  - text: 'I wonder how many times you''ll fail to succeed '
+    duration: 4
     delay: 0

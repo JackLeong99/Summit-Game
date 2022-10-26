@@ -9,7 +9,6 @@ public class LookAt : MonoBehaviour
 
     public void Update()
     {
-        Debug.Log(look.rotation.eulerAngles.magnitude);
         Transform target = GameManager.instance.player.transform;
         Vector3 targetDirection = target.position - look.position;
         float rotation = speed * Time.deltaTime;
