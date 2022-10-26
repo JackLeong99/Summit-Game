@@ -1,13 +1,11 @@
-using UnityEditor;
+/*using UnityEditor;
 using UnityEngine;
 
-public class NamingEditorWindow : PopupWindowContent
+public class DropdownEditorWindow : PopupWindowContent
 {
-    protected string newName = "Please enter a new name";
-    protected Object selectedObject;
     protected Rect button;
 
-    public NamingEditorWindow(Object selected, Rect origin)
+    public DropdownEditorWindow(Object selected, Rect origin)
     {
         selectedObject = selected;
         button = origin;
@@ -44,3 +42,4 @@ public class NamingEditorWindow : PopupWindowContent
         return new Vector2(button.width, 125);
     }
 }
+*/

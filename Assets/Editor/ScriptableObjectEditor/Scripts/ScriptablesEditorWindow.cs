@@ -27,24 +27,25 @@ public class ScriptablesEditorWindow : EditorWindow
     protected string typeName = "Scriptable Types";
 
     protected string sortSearch = "";
+    protected int stringMax = 27;
 
     protected Rect renameButton;
 
     [MenuItem("Tools/Scriptable Object Editor")]
     protected static void ShowWindow()
     {
-        GetWindow<ScriptablesEditorWindow>("Scriptables Editor");
+        var window = GetWindow<ScriptablesEditorWindow>("Scriptables Editor");
+        window.UpdateObjets();
     }
 
     private void OnEnable()
     {
         skin = (GUISkin)Resources.Load("ScriptableEditorGUI");
+        UpdateObjets();
     }
 
     private void OnGUI()
     {
-        activeObjects = GetAllInstancesOfType(activePath, activeType);
-
         if (activeObjects.Length > 0)
             serializedObject = new SerializedObject(activeObjects[0]);
 
@@ -97,6 +98,7 @@ public class ScriptablesEditorWindow : EditorWindow
             else
             {
                 activePath = basePath;
+                UpdateObjets();
             }
         }
         EditorGUILayout.LabelField(activePath);
@@ -113,14 +115,14 @@ public class ScriptablesEditorWindow : EditorWindow
         {
             GenericMenu menu = new GenericMenu();
 
-            var function = new GenericMenu.MenuFunction2((type) => { activeType = (System.Type)type; typeName = type.ToString(); if (activeType == typeof(ScriptableObject)) typeName = "All"; });
+            var function = new GenericMenu.MenuFunction2((type) => { activeType = (System.Type)type; typeName = type.ToString(); if (activeType == typeof(ScriptableObject)) typeName = "All"; UpdateObjets(); });
 
-            menu.AddItem(new GUIContent("All"), false, function, typeof(ScriptableObject));
+            menu.AddItem(new GUIContent("All"), OfType(typeof(ScriptableObject)), function, typeof(ScriptableObject));
             menu.AddSeparator("");
 
             foreach (var item in AssemblyTypes.GetAllTypes())
             {
-                menu.AddItem(new GUIContent(item.ToString()), false, function, item);
+                menu.AddItem(new GUIContent(item.ToString()), OfType(item), function, item);
             }
             menu.ShowAsContext();
         }
@@ -164,9 +166,9 @@ public class ScriptablesEditorWindow : EditorWindow
         EditorGUILayout.EndVertical();
     }
 
-    public void CreateNew()
+    protected bool OfType(System.Type type)
     {
-
+        return activeType == type;
     }
     #endregion
     #endregion
@@ -192,7 +194,7 @@ public class ScriptablesEditorWindow : EditorWindow
                 EditorGUILayout.BeginHorizontal();
                 if (GUILayout.Button("Rename"))
                 {
-                    PopupWindow.Show(renameButton, new NamingEditorWindow(selectedObject));
+                    PopupWindow.Show(renameButton, new NamingEditorWindow(selectedObject, renameButton));
                 }
                 if (Event.current.type == EventType.Repaint) renameButton = GUILayoutUtility.GetLastRect();
 
@@ -208,6 +210,7 @@ public class ScriptablesEditorWindow : EditorWindow
                             AssetDatabase.DeleteAsset(path);
                             serializedObject = null;
                             selectedObject = null;
+                            UpdateObjets();
                             break;
                     }
                 }
@@ -222,6 +225,11 @@ public class ScriptablesEditorWindow : EditorWindow
         EditorGUILayout.EndVertical();
     }
     #endregion
+
+    protected void UpdateObjets()
+    {
+        activeObjects = GetAllInstancesOfType(activePath, activeType);
+    }
 
     public static ScriptableObject[] GetAllInstancesOfType(string activePath, System.Type activeType)
     {
@@ -258,9 +266,9 @@ public class ScriptablesEditorWindow : EditorWindow
     {
         foreach (ScriptableObject item in objects)
         {
-            if (item.name.IndexOf(sortSearch, System.StringComparison.OrdinalIgnoreCase) >= 0)
+            if (item != null && item.name.IndexOf(sortSearch, System.StringComparison.OrdinalIgnoreCase) >= 0)
             {
-                if (GUILayout.Button(item.name, skin.button))
+                if (GUILayout.Button(ShortenString(item.name), skin.button, GUILayout.ExpandWidth(true)))
                 {
                     selectedPropertyPach = item.name;
 
@@ -269,6 +277,8 @@ public class ScriptablesEditorWindow : EditorWindow
                         selectedProperty = selectedPropertyPach;
                         selectedObject = FindObject(activeObjects);
                     }
+
+                    UpdateObjets();
                 }
             }
         }
@@ -281,6 +291,17 @@ public class ScriptablesEditorWindow : EditorWindow
         }
     }
 
+    protected string ShortenString(string item)
+    {
+        switch (true)
+        {
+            case bool _ when item.Length >= stringMax:
+                return item.Substring(0, stringMax) + "...";
+            default:
+                return item;
+        }
+    }
+
     protected ScriptableObject FindObject(ScriptableObject[] objects)
     {
         return objects.Where(x => x.name == selectedProperty).First();
@@ -288,7 +309,6 @@ public class ScriptablesEditorWindow : EditorWindow
 
     protected void Apply()
     {
-        Debug.Log("Applied: " + serializedObject.ApplyModifiedProperties());
         serializedObject.ApplyModifiedProperties();
     }
 }
