@@ -17,7 +17,8 @@ public class DomeShield : ActiveAbility
 
     public override IEnumerator doEffect()
     {
-        GameObject dome = Instantiate(shield, GameManager.instance.player.transform.position, Quaternion.identity) as GameObject;
+        GameObject dome = Instantiate(shield, GameManager.instance.player.transform.position, Quaternion.identity, GameObject.FindWithTag("Environment").transform);
+        dome.transform.parent = null;
         yield return new WaitForSeconds(duration);
         Destroy(dome);
     }
