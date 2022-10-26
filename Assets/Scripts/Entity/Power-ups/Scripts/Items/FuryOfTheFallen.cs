@@ -16,19 +16,19 @@ public class FuryOfTheFallen : EventItem
     public override void acquire()
     {
         base.acquire();
-    }
-
-    public override void subscribe()
-    {
-        EventManager.instance.OnHealthChange.AddListener(effect);
         BreakpointState = Breakpoint.outBreakPoint;
         PlayerHealth hp = GameManager.instance.player.GetComponent<PlayerHealth>();
         inv = GameManager.instance.player.GetComponent<Inventory>();
         if (hp.currentHealth / hp.maxHealth * 100 <= breakPointPercent)
         {
-            inv.updateStat(Inventory.StatType.percentDamageMod, bonusDamage * inv.GetStacks(this));
+            inv.updateStat(Inventory.StatType.percentDamageMod, bonusDamage);
             BreakpointState = Breakpoint.inBreakPoint;
         }
+    }
+
+    public override void subscribe()
+    {
+        EventManager.instance.OnHealthChange.AddListener(effect);
     }
 
     public override void effect()

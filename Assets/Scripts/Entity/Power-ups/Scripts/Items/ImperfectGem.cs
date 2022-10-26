@@ -18,26 +18,25 @@ public class ImperfectGem : EventItem
     public override void acquire()
     {
         base.acquire();
+        PlayerHealth hp = GameManager.instance.player.GetComponent<PlayerHealth>();
+        inv = Inventory.instance.GetComponent<Inventory>();
+        switch (hp.currentHealth / hp.maxHealth * 100 < breakPointPercent)
+        {
+            case true:
+                Inventory.instance.updateStat(Inventory.StatType.speed, bonusSpeed);
+                Inventory.instance.updateStat(Inventory.StatType.percentDamageMod, bonusDamage);
+                BreakpointState = Breakpoint.inBreakPoint;
+                break;
+            default:
+                Inventory.instance.updateStat(Inventory.StatType.cooldownReduction, cooldownReduction);
+                BreakpointState = Breakpoint.outBreakPoint;
+                break;
+        }
     }
 
     public override void subscribe()
     {
         EventManager.instance.OnHealthChange.AddListener(effect);
-        PlayerHealth hp = GameManager.instance.player.GetComponent<PlayerHealth>();
-        inv = Inventory.instance.GetComponent<Inventory>();
-        int s = inv.GetStacks(this);
-        switch (hp.currentHealth / hp.maxHealth * 100 < breakPointPercent)
-        {
-            case true:
-                Inventory.instance.updateStat(Inventory.StatType.speed, bonusSpeed * s);
-                Inventory.instance.updateStat(Inventory.StatType.percentDamageMod, bonusDamage * s);
-                BreakpointState = Breakpoint.inBreakPoint;
-                break;
-            default:
-                Inventory.instance.updateStat(Inventory.StatType.cooldownReduction, cooldownReduction * s);
-                BreakpointState = Breakpoint.outBreakPoint;
-                break;
-        }
     }
 
     public override void effect()
