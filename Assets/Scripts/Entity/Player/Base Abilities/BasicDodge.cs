@@ -55,5 +55,7 @@ public class BasicDodge : ActiveAbility
         }
         abilities.abilityLockout = PlayerAbilities.Lockout.Unlocked;
         animator.speed = 1;
+        player.GetComponent<PlayerHealth>().invulnerable = false;
+        player.GetComponent<KnockbackReciever>().invulnerable = false;
     }
 }
