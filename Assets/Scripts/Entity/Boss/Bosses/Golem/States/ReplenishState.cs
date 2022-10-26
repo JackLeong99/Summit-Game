@@ -43,11 +43,14 @@ public class ReplenishState : AbilityState
 
     public IEnumerator Replenish()
     {
+        Transform environment = GameObject.FindWithTag("Environment").transform;
+
         for (int i = 0; i < rocksToSpawn; i++)
         {
-            GameObject rock = Instantiate(rockPrefab);
+            GameObject rock = Instantiate(rockPrefab, Vector3.zero, Quaternion.identity, environment);
             Vector2 spawnPos = Random.insideUnitCircle * spawnRadius;
-            rock.transform.position = new Vector3(spawnPos.x, 0, spawnPos.y);
+            rock.transform.position = new Vector3(environment.position.x - spawnPos.x, environment.position.y, environment.position.z - spawnPos.y);
+            rock.transform.parent = null;
         }
 
         yield return null;

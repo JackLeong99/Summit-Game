@@ -35,4 +35,6 @@ public class DataManager : MonoBehaviour
         instance = this;
 
     }
+
+    public bool firsTime = true;
 }
