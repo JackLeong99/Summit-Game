@@ -8,6 +8,7 @@ public class MendMaim : EventItem
 {
     public float baseDamage;
     public float damagePercent;
+    public float activationRange;
     public float cooldown;
     private bool Valid;
 
@@ -31,6 +32,7 @@ public class MendMaim : EventItem
     public void effect(float f)
     {
         if (!Valid) { return; }
+        if (Vector3.Distance(GameManager.instance.player.transform.position, BossManager.instance.transform.position) >= activationRange) { return; }
         Valid = false;
 
         // original formula: float[] damage = {baseDamage + (f * (1 - (100/(100 + (damagePercent * Inventory.instance.GetStacks(this))))))};
