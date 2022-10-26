@@ -70,6 +70,7 @@ public class PlayerAbilities : MonoBehaviour
             AbilitySlot[3].effect();
             internalCooldown[3] = Mathf.Clamp((AbilitySlot[3].cooldown * cdrMod) + AbilitySlot[3].castTime, minCD, AbilitySlot[3].cooldown + AbilitySlot[3].castTime);
             UIItemDisplay.instance.onCooldown = true;
+            UIItemDisplay.instance.cooldownTimer.maxValue = internalCooldown[3];
             UIItemDisplay.instance.cooldownTimer.value = 0;
             return;
         }
