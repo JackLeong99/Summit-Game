@@ -41,7 +41,7 @@ public class ShopManager : MonoBehaviour
     {
         for (int i = 0; i < standCount; i++)
         {
-            shopStands.Add(Instantiate(shopPrefab, gameObject.transform.position + (spacing * i), Quaternion.identity, gameObject.transform));
+            shopStands.Add(Instantiate(shopPrefab, gameObject.transform.position - (spacing * i), Quaternion.identity, gameObject.transform));
             shopStands[i].GetComponent<ShopHandler>().item = itemList[Random.Range(0, itemList.Length)];
             shopStands[i].GetComponent<ShopHandler>().SetIcon();
         }
