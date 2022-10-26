@@ -252,7 +252,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 845075122}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &434840153
 GameObject:
@@ -567,8 +567,8 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 3798437542219645454}
-  - {fileID: 1928540573}
   - {fileID: 385818365}
+  - {fileID: 1928540573}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1881,7 +1881,7 @@ SkinnedMeshRenderer:
   m_RendererPriority: 0
   m_Materials:
   - {fileID: 2100000, guid: 7723fc0dfe38ce74e84ad4cbfebe6093, type: 2}
-  - {fileID: 2100000, guid: 4bb2d308fd03ce040a932de88429cb72, type: 2}
+  - {fileID: 2100000, guid: b6e95d963a57dea429d0405e39e72490, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
