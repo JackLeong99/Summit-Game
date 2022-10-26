@@ -46,13 +46,13 @@ public class ShopManager : MonoBehaviour
             shopStands[i].GetComponent<ShopHandler>().SetIcon();
         }
 
-        switch (GameManager.instance.finalReady)
+        /*switch (GameManager.instance.finalReady)
         {
             case true:
                 shopStands[0].GetComponent<ShopHandler>().item = storyItem;
                 shopStands[0].GetComponent<ShopHandler>().SetIcon();
                 break;
-        }
+        }*/
     }
 
     public void DisplayItem(ItemBase selected)
