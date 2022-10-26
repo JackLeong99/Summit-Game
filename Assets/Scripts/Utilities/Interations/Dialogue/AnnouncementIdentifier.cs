@@ -10,6 +10,6 @@ public class AnnouncementIdentifier : MonoBehaviour
 
     public void OnTriggerEnter(Collider other)
     {
-        switch (other)
+        //switch (other)
     }
 }
