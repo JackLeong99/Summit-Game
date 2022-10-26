@@ -32,8 +32,7 @@ public class MendMaim : EventItem
     public void effect(float f)
     {
         if (!Valid) { return; }
-        if (Vector3.Distance(GameManager.instance.player.transform.position, BossManager.instance.transform.position) >= activationRange) { return; }
-        Valid = false;
+        if (Vector3.Distance(GameManager.instance.player.transform.position, BossManager.instance.boss.transform.position) >= activationRange) { Debug.Log("Whoop");  return; }
 
         // original formula: float[] damage = {baseDamage + (f * (1 - (100/(100 + (damagePercent * Inventory.instance.GetStacks(this))))))};
         float[] damage = {(baseDamage + (f * (damagePercent * Inventory.instance.GetStacks(this)))) * Inventory.instance.percentDamageMod};
@@ -46,6 +45,7 @@ public class MendMaim : EventItem
 
     public IEnumerator Cooldown()
     {
+        Valid = false;
         yield return new WaitForSeconds(cooldown);
         Valid = true;
     }
