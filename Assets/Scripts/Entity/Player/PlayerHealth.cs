@@ -29,7 +29,8 @@ public class PlayerHealth : MonoBehaviour
 
     public void takeDamage(float damage)
     {
-        if (invulnerable) { return; }
+        Debug.Log(invulnerable);
+        if (invulnerable) { Debug.Log("Damage Taken"); return; }
 
         AkSoundEngine.PostEvent("Player_Damage", gameObject);
         CameraListener.instance.CameraShake(damage * shakeScale, 0.25f);
