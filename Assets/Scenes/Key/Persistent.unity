@@ -1599,10 +1599,7 @@ MonoBehaviour:
     m_SceneAsset: {fileID: 102900000, guid: 317afe1f4eeb4404b8b32f9347d79e5a, type: 3}
     m_IsDirty: 0
     m_ScenePath: Assets/Scenes/Unique/Ending.unity
-  testScenes:
-  - m_SceneAsset: {fileID: 102900000, guid: 1bb9722980abec4408af068bac279356, type: 3}
-    m_IsDirty: 0
-    m_ScenePath: Assets/Scenes/Unique/Death.unity
+  testScenes: []
 --- !u!1 &2049736186
 GameObject:
   m_ObjectHideFlags: 0
@@ -1933,7 +1930,7 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  portalPrefab: {fileID: 2649803870162256538, guid: 56799dd9a5164d14eb506ce7b87c17e5, type: 3}
+  portalPrefab: {fileID: 2649803870162256538, guid: f71f78274d0b2b14991eeb726cfc88b4, type: 3}
 --- !u!1 &2140333230
 GameObject:
   m_ObjectHideFlags: 0
