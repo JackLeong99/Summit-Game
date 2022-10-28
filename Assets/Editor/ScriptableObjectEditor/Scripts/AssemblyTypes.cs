@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using System.Linq;
-using System.Reflection;
 using UnityEngine;
+using UnityEditor;
 
 public static class AssemblyTypes
 {
@@ -19,10 +19,19 @@ public static class AssemblyTypes
             }
         }
 
-
         return types.ToArray();
-        //Debug.Log(Assembly.GetExecutingAssembly().CodeBase);
-        //return Assembly.GetExecutingAssembly().GetTypes();
+    }
+
+    public static ScriptableObject[] GetAllInstancesOfType(string activePath, System.Type activeType)
+    {
+        string[] guids = AssetDatabase.FindAssets("t:" + activeType.Name, new[] { activePath });
+        ScriptableObject[] a = new ScriptableObject[guids.Length];
+        for (int i = 0; i < guids.Length; i++)
+        {
+            string path = AssetDatabase.GUIDToAssetPath(guids[i]);
+            a[i] = (ScriptableObject)AssetDatabase.LoadAssetAtPath(path, activeType);
+        }
+        return a;
     }
 
     public static System.Type[] GetAllTypes()
@@ -31,5 +40,25 @@ public static class AssemblyTypes
         System.Type[] possible = (from System.Type type in types where type.IsSubclassOf(typeof(ScriptableObject)) select type).ToArray();
 
         return possible;
+    }
+
+    public static ScriptableObject FindObject(ScriptableObject[] objects, string property)
+    {
+        return objects.Where(x => x.name == property).First();
+    }
+
+    public static Object CreateObject(System.Type type)
+    {
+        return ScriptableObject.CreateInstance(type);
+    }
+
+    public static Rect CenterOnOriginWindow(Rect window, Rect origin)
+    {
+        var pos = window;
+        float w = (origin.width - pos.width) * 0.5f;
+        float h = (origin.height - pos.height) * 0.5f;
+        pos.x = origin.x + w;
+        pos.y = origin.y + h;
+        return pos;
     }
 }

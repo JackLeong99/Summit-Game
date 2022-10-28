@@ -7,34 +7,29 @@ public class DropdownEditorWindow : PopupWindowContent
 
     public DropdownEditorWindow(Object selected, Rect origin)
     {
-        selectedObject = selected;
+        //selectedObject = selected;
         button = origin;
     }
 
     public override void OnGUI(Rect rect)
     {
-        EditorGUILayout.Space(10);
-        var style = new GUIStyle(GUI.skin.label);
-        style.fontSize = 12;
-        style.alignment = TextAnchor.MiddleCenter;
-        EditorGUILayout.LabelField("Rename " + selectedObject.name, style);
-        EditorGUILayout.Space(10);
+        GenericMenu menu = new GenericMenu();
 
-        newName = EditorGUILayout.TextField(newName);
+        var function = new GenericMenu.MenuFunction2((type) => { ScriptablesEditorWindow.activeType = (System.Type)type; ScriptablesEditorWindow.typeName = type.ToString();});
 
-        if (GUILayout.Button("Rename"))
+        menu.AddItem(new GUIContent("All"), OfType(typeof(ScriptableObject)), function, typeof(ScriptableObject));
+        menu.AddSeparator("");
+
+        foreach (var item in AssemblyTypes.GetAllTypes())
         {
-            var path = AssetDatabase.GetAssetPath(selectedObject);
-            AssetDatabase.RenameAsset(path, newName);
-            editorWindow.Close();
+            menu.AddItem(new GUIContent(item.ToString()), OfType(item), function, item);
         }
+        menu.ShowAsContext();
+    }
 
-        if (GUILayout.Button("Cancel"))
-        {
-            editorWindow.Close();
-        }
-
-        GUILayout.FlexibleSpace();
+    protected bool OfType(System.Type type)
+    {
+        return ScriptablesEditorWindow.activeType == type;
     }
 
     public override Vector2 GetWindowSize()
