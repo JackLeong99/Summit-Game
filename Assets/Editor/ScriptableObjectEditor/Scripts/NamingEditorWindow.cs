@@ -5,16 +5,20 @@ public class NamingEditorWindow : PopupWindowContent
 {
     protected string newName = "Please enter a new name";
     protected Object selectedObject;
-    protected Rect button;
+    protected Rect position;
+
+    protected Vector2 dimensions = new Vector2(300, 125);
 
     public NamingEditorWindow(Object selected, Rect origin)
     {
         selectedObject = selected;
-        button = origin;
+        position = origin;
     }
 
     public override void OnGUI(Rect rect)
     {
+        editorWindow.position = AssemblyTypes.CenterOnOriginWindow(editorWindow.position, position);
+
         EditorGUILayout.Space(10);
         var style = new GUIStyle(GUI.skin.label);
         style.fontSize = 12;
@@ -41,6 +45,6 @@ public class NamingEditorWindow : PopupWindowContent
 
     public override Vector2 GetWindowSize()
     {
-        return new Vector2(button.width, 125);
+        return dimensions;
     }
 }
