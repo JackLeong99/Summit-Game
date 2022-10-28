@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEditor;
 using System.Linq;
+using System.IO;
 
 public class CreationEditorWindow : EditorWindow
 {
@@ -12,7 +13,12 @@ public class CreationEditorWindow : EditorWindow
     protected string typeName = "New Type";
     protected Rect typeButton = new Rect();
 
-    private string templatePath = "/Editor/Resources/TemplateScriptable";
+    private string createdPath = "";
+
+    private void OnEnable()
+    {
+        ShowPopup();
+    }
 
     private void OnGUI()
     {
@@ -58,6 +64,8 @@ public class CreationEditorWindow : EditorWindow
         EditorGUILayout.BeginHorizontal();
         if (GUILayout.Button("Create"))
         {
+            createdPath = Application.dataPath + "/" + selectedPath.Replace("Assets/", "") + "/" + scriptableName + ".cs";
+
             switch (true)
             {
                 case bool _ when scriptableName.Length <= 0:
@@ -67,7 +75,15 @@ public class CreationEditorWindow : EditorWindow
                     EditorUtility.DisplayDialog("Error: File Name Required", "The " + selectedType + " file name can not contain invalid characters.", "Ok");
                     break;
                 case bool _ when selectedType == typeof(ScriptableObject):
-                    FileUtil.CopyFileOrDirectory(Application.dataPath + templatePath, Application.dataPath + selectedPath.Substring(selectedPath.LastIndexOf("/")) + "/" + scriptableName);
+                    var template = Resources.Load<TextAsset>("TemplateScriptable");
+                    string contents = template.text;
+                    contents = contents.Replace("DefaultName", scriptableName);
+
+                    StreamWriter sw = new StreamWriter(createdPath);
+                    sw.Write(contents);
+                    sw.Close();
+                    AssetDatabase.Refresh();
+                    Created(true);
                     break;
                 default:
                     var type = selectedType;
@@ -75,13 +91,41 @@ public class CreationEditorWindow : EditorWindow
                     AssetDatabase.CreateAsset(newScriptable, selectedPath + "/" + scriptableName + ".asset");
                     AssetDatabase.SaveAssets();
                     AssetDatabase.Refresh();
-                    Close();
+                    Created(false);
                     break;
             }
         }
 
         if (GUILayout.Button("Close")) { Close(); }
         EditorGUILayout.EndHorizontal();
+    }
+
+    public void Created(bool newType)
+    {
+        switch (newType)
+        {
+            case true:
+                switch (EditorUtility.DisplayDialog(typeName + " Created! ", typeName + " '" + scriptableName + "' has been successfully created! Would you like to open and modify it's contents?", "Yes", "No"))
+                {
+                    case true:
+                        Application.OpenURL(createdPath);
+                        Close();
+                        break;
+                    case false:
+                        Close();
+                        break;
+                }
+                break;
+            case false:
+                switch (EditorUtility.DisplayDialog(typeName + " Created! ", typeName + " '" + scriptableName + "' has been successfully created!", "Ok"))
+                {
+                    case true:
+                        Close();
+                        break;
+                }
+                break;
+        }
+
     }
 
     protected bool OfType(System.Type type)

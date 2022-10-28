@@ -47,9 +47,6 @@ public class ScriptablesEditorWindow : EditorWindow
 
     private void OnGUI()
     {
-        if (activeObjects.Length > 0)
-            serializedObject = new SerializedObject(activeObjects[0]);
-
         EditorGUILayout.BeginVertical("box");
 
         HeaderTitle();
