@@ -142,7 +142,7 @@ public class ScriptablesEditorWindow : EditorWindow
         EditorGUILayout.EndScrollView();
 
         EditorGUILayout.BeginHorizontal();
-        if (GUILayout.Button(new GUIContent("+", "Open the ScriptableObject creation menu."), GUILayout.Width(30)))
+        if (GUILayout.Button(new GUIContent("+", "Open the ScriptableObject creation menu."), GUILayout.Width(25)))
         {
             CreationEditorWindow window = GetWindow<CreationEditorWindow>();
             window.position = AssemblyTypes.CenterOnOriginWindow(window.position, position);
