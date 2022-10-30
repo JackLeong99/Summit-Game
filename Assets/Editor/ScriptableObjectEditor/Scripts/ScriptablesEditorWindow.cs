@@ -80,7 +80,7 @@ public class ScriptablesEditorWindow : EditorWindow
     {
         EditorGUILayout.BeginHorizontal(GUILayout.ExpandWidth(true));
 
-        if (GUILayout.Button("Folder", GUILayout.MaxWidth(150)))
+        if (GUILayout.Button(new GUIContent("Folder", "Allows you to mask the search directory."), GUILayout.MaxWidth(150)))
         {
             string basePath = EditorUtility.OpenFolderPanel("Select folder to mask path.", activePath, "");
 
@@ -98,7 +98,9 @@ public class ScriptablesEditorWindow : EditorWindow
                 activePath = basePath;
                 UpdateObjets();
             }
+            
         }
+
         EditorGUILayout.LabelField(activePath);
         EditorGUILayout.EndHorizontal();
     }
@@ -109,18 +111,18 @@ public class ScriptablesEditorWindow : EditorWindow
     {
         EditorGUILayout.BeginVertical("box", GUILayout.MaxWidth(sidebarWidth), GUILayout.ExpandHeight(true));
 
-        if (EditorGUILayout.DropdownButton(new GUIContent(typeName), FocusType.Keyboard))
+        if (EditorGUILayout.DropdownButton(new GUIContent(typeName, "Used to mask the type of ScriptableObject being searched for."), FocusType.Keyboard))
         {
             GenericMenu menu = new GenericMenu();
 
             var function = new GenericMenu.MenuFunction2((type) => { activeType = (System.Type)type; typeName = type.ToString(); if (activeType == typeof(ScriptableObject)) typeName = "All"; UpdateObjets(); });
 
-            menu.AddItem(new GUIContent("All"), OfType(typeof(ScriptableObject)), function, typeof(ScriptableObject));
+            menu.AddItem(new GUIContent("All", "Display every type of ScriptableObject within the project."), AssemblyTypes.OfType(typeof(ScriptableObject), activeType), function, typeof(ScriptableObject));
             menu.AddSeparator("");
 
             foreach (var item in AssemblyTypes.GetAllTypes())
             {
-                menu.AddItem(new GUIContent(item.ToString()), OfType(item), function, item);
+                menu.AddItem(new GUIContent(item.ToString()), AssemblyTypes.OfType(item, activeType), function, item);
             }
             menu.DropDown(typeButton);
         }
@@ -140,7 +142,7 @@ public class ScriptablesEditorWindow : EditorWindow
         EditorGUILayout.EndScrollView();
 
         EditorGUILayout.BeginHorizontal();
-        if (GUILayout.Button("+", GUILayout.Width(30)))
+        if (GUILayout.Button(new GUIContent("+", "Open the ScriptableObject creation menu."), GUILayout.Width(25)))
         {
             CreationEditorWindow window = GetWindow<CreationEditorWindow>();
             window.position = AssemblyTypes.CenterOnOriginWindow(window.position, position);
@@ -148,11 +150,6 @@ public class ScriptablesEditorWindow : EditorWindow
         EditorGUILayout.EndHorizontal();
 
         EditorGUILayout.EndVertical();
-    }
-
-    protected bool OfType(System.Type type)
-    {
-        return activeType == type;
     }
     #endregion
     #endregion
@@ -176,7 +173,7 @@ public class ScriptablesEditorWindow : EditorWindow
                 GUILayout.Space(15);
 
                 EditorGUILayout.BeginHorizontal();
-                if (GUILayout.Button("Rename"))
+                if (GUILayout.Button(new GUIContent("Rename", "Use to rename the selected ScriptableObject.")))
                 {
                     RenamePopup(selectedObject);
                 }
@@ -184,7 +181,7 @@ public class ScriptablesEditorWindow : EditorWindow
                 var style = new GUIStyle(GUI.skin.button);
                 style.normal.textColor = Color.red;
 
-                if (GUILayout.Button("Delete", style))
+                if (GUILayout.Button(new GUIContent("Delete", "Use to delete the selected ScriptableObject."), style))
                 {
                     switch (EditorUtility.DisplayDialog("Delete " + selectedObject.name + "?", "Are you sure you want to delete '" + selectedObject.name + "'?", "Yes", "No"))
                     {
