@@ -61,4 +61,9 @@ public static class AssemblyTypes
         pos.y = origin.y + h;
         return pos;
     }
+
+    public static bool OfType(System.Type type, System.Type compareType)
+    {
+        return compareType == type;
+    }
 }

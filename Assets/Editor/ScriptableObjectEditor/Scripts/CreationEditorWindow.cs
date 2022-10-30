@@ -18,12 +18,13 @@ public class CreationEditorWindow : EditorWindow
     private void OnEnable()
     {
         ShowPopup();
+        position = new Rect(position.x, position.y, position.width, 150);
     }
 
     private void OnGUI()
     {
-        EditorGUILayout.BeginHorizontal(GUILayout.ExpandWidth(true));
-        if (GUILayout.Button("Folder", GUILayout.MaxWidth(150)))
+        EditorGUILayout.BeginHorizontal("Box", GUILayout.ExpandWidth(true));
+        if (GUILayout.Button(new GUIContent("Folder", "Used to select the folder where the new ScriptableObject will reside."), GUILayout.MaxWidth(150)))
         {
             string basePath = EditorUtility.OpenFolderPanel("Select folder to mask path.", selectedPath, "");
 
@@ -41,28 +42,32 @@ public class CreationEditorWindow : EditorWindow
         EditorGUILayout.LabelField(selectedPath);
         EditorGUILayout.EndHorizontal();
 
-        if (EditorGUILayout.DropdownButton(new GUIContent(typeName), FocusType.Keyboard))
+        if (EditorGUILayout.DropdownButton(new GUIContent(typeName, "The type that the new ScriptableObject will be based off."), FocusType.Keyboard))
         {
             GenericMenu menu = new GenericMenu();
 
             var function = new GenericMenu.MenuFunction2((type) => { selectedType = (System.Type)type; typeName = type.ToString(); if (selectedType == typeof(ScriptableObject)) typeName = "New Type"; });
 
-            menu.AddItem(new GUIContent("New Type"), OfType(typeof(ScriptableObject)), function, typeof(ScriptableObject));
+            menu.AddItem(new GUIContent("New Type"), AssemblyTypes.OfType(typeof(ScriptableObject), selectedType), function, typeof(ScriptableObject));
             menu.AddSeparator("");
 
             foreach (var item in AssemblyTypes.GetAllTypes())
             {
-                menu.AddItem(new GUIContent(item.ToString()), OfType(item), function, item);
+                menu.AddItem(new GUIContent(item.ToString()), AssemblyTypes.OfType(item, selectedType), function, item);
             }
             menu.DropDown(typeButton);
         }
         if (Event.current.type == EventType.Repaint) typeButton = GUILayoutUtility.GetLastRect();
 
+        GUILayout.Space(10);
+        EditorGUILayout.BeginHorizontal();
+        EditorGUILayout.LabelField(new GUIContent("Name", "The name that the new ScriptableObject or Type will be called."), GUILayout.Width(40));
         scriptableName = EditorGUILayout.TextField(scriptableName);
+        EditorGUILayout.EndHorizontal();
         GUILayout.Space(30);
 
-        EditorGUILayout.BeginHorizontal();
-        if (GUILayout.Button("Create"))
+        EditorGUILayout.BeginHorizontal("Box");
+        if (GUILayout.Button(new GUIContent("Create", "Create the new ScriptableObject with the selected folder, Type, & name.")))
         {
             createdPath = Application.dataPath + "/" + selectedPath.Replace("Assets/", "") + "/" + scriptableName + ".cs";
 
@@ -96,7 +101,7 @@ public class CreationEditorWindow : EditorWindow
             }
         }
 
-        if (GUILayout.Button("Close")) { Close(); }
+        if (GUILayout.Button(new GUIContent("Close", "Exit the creation menu."))) { Close(); }
         EditorGUILayout.EndHorizontal();
     }
 
@@ -126,10 +131,5 @@ public class CreationEditorWindow : EditorWindow
                 break;
         }
 
-    }
-
-    protected bool OfType(System.Type type)
-    {
-        return selectedType == type;
     }
 }
