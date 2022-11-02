@@ -5,6 +5,8 @@ using System.Collections.Generic;
 
 public class ScriptablesEditorWindow : EditorWindow
 {
+    public static ScriptablesEditorWindow window;
+
     protected GUISkin skin;
 
     protected SerializedObject serializedObject;
@@ -23,18 +25,17 @@ public class ScriptablesEditorWindow : EditorWindow
     protected string activePath = "Assets";
     protected System.Type activeType = typeof(ScriptableObject);
 
-    protected string scriptableName = "";
     protected string typeName = "Scriptable Types";
 
     protected string sortSearch = "";
     protected int stringMax = 27;
 
-    protected Rect renameButton;
+    protected Rect typeButton;
 
     [MenuItem("Tools/Scriptable Object Editor")]
     protected static void ShowWindow()
     {
-        var window = GetWindow<ScriptablesEditorWindow>("Scriptables Editor");
+        window = GetWindow<ScriptablesEditorWindow>("Scriptables Editor");
         window.UpdateObjets();
     }
 
@@ -46,9 +47,6 @@ public class ScriptablesEditorWindow : EditorWindow
 
     private void OnGUI()
     {
-        if (activeObjects.Length > 0)
-            serializedObject = new SerializedObject(activeObjects[0]);
-
         EditorGUILayout.BeginVertical("box");
 
         HeaderTitle();
@@ -82,7 +80,7 @@ public class ScriptablesEditorWindow : EditorWindow
     {
         EditorGUILayout.BeginHorizontal(GUILayout.ExpandWidth(true));
 
-        if (GUILayout.Button("Folder", GUILayout.MaxWidth(150)))
+        if (GUILayout.Button(new GUIContent("Folder", "Allows you to mask the search directory."), GUILayout.MaxWidth(150)))
         {
             string basePath = EditorUtility.OpenFolderPanel("Select folder to mask path.", activePath, "");
 
@@ -100,7 +98,9 @@ public class ScriptablesEditorWindow : EditorWindow
                 activePath = basePath;
                 UpdateObjets();
             }
+            
         }
+
         EditorGUILayout.LabelField(activePath);
         EditorGUILayout.EndHorizontal();
     }
@@ -111,21 +111,22 @@ public class ScriptablesEditorWindow : EditorWindow
     {
         EditorGUILayout.BeginVertical("box", GUILayout.MaxWidth(sidebarWidth), GUILayout.ExpandHeight(true));
 
-        if (EditorGUILayout.DropdownButton(new GUIContent(typeName), FocusType.Keyboard))
+        if (EditorGUILayout.DropdownButton(new GUIContent(typeName, "Used to mask the type of ScriptableObject being searched for."), FocusType.Keyboard))
         {
             GenericMenu menu = new GenericMenu();
 
             var function = new GenericMenu.MenuFunction2((type) => { activeType = (System.Type)type; typeName = type.ToString(); if (activeType == typeof(ScriptableObject)) typeName = "All"; UpdateObjets(); });
 
-            menu.AddItem(new GUIContent("All"), OfType(typeof(ScriptableObject)), function, typeof(ScriptableObject));
+            menu.AddItem(new GUIContent("All", "Display every type of ScriptableObject within the project."), AssemblyTypes.OfType(typeof(ScriptableObject), activeType), function, typeof(ScriptableObject));
             menu.AddSeparator("");
 
             foreach (var item in AssemblyTypes.GetAllTypes())
             {
-                menu.AddItem(new GUIContent(item.ToString()), OfType(item), function, item);
+                menu.AddItem(new GUIContent(item.ToString()), AssemblyTypes.OfType(item, activeType), function, item);
             }
-            menu.ShowAsContext();
+            menu.DropDown(typeButton);
         }
+        if (Event.current.type == EventType.Repaint) typeButton = GUILayoutUtility.GetLastRect();
 
         EditorGUILayout.BeginHorizontal();
         GUILayout.FlexibleSpace();
@@ -141,34 +142,14 @@ public class ScriptablesEditorWindow : EditorWindow
         EditorGUILayout.EndScrollView();
 
         EditorGUILayout.BeginHorizontal();
-        scriptableName = EditorGUILayout.TextField(scriptableName);
-        if (GUILayout.Button("+", GUILayout.Width(30)))
+        if (GUILayout.Button(new GUIContent("+", "Open the ScriptableObject creation menu."), GUILayout.Width(25)))
         {
-            if (scriptableName.Length <= 0)
-            {
-                EditorUtility.DisplayDialog("Error: File Name Required", "The " + activeObjects[0].GetType() + " file name can not be left empty.", "Ok");
-            }
-            else if (!scriptableName.All(char.IsLetterOrDigit))
-            {
-                EditorUtility.DisplayDialog("Error: File Name Required", "The " + activeObjects[0].GetType() + " file name can not contain invalid characters.", "Ok");
-            }
-            else
-            {
-                var type = activeObjects[0].GetType();
-                Object newScriptable = CreateObject(type);
-                AssetDatabase.CreateAsset(newScriptable, activePath + "/" + scriptableName + ".asset");
-                AssetDatabase.SaveAssets();
-                AssetDatabase.Refresh();
-            }
+            CreationEditorWindow window = GetWindow<CreationEditorWindow>();
+            window.position = AssemblyTypes.CenterOnOriginWindow(window.position, position);
         }
         EditorGUILayout.EndHorizontal();
 
         EditorGUILayout.EndVertical();
-    }
-
-    protected bool OfType(System.Type type)
-    {
-        return activeType == type;
     }
     #endregion
     #endregion
@@ -192,16 +173,15 @@ public class ScriptablesEditorWindow : EditorWindow
                 GUILayout.Space(15);
 
                 EditorGUILayout.BeginHorizontal();
-                if (GUILayout.Button("Rename"))
+                if (GUILayout.Button(new GUIContent("Rename", "Use to rename the selected ScriptableObject.")))
                 {
-                    PopupWindow.Show(renameButton, new NamingEditorWindow(selectedObject, renameButton));
+                    RenamePopup(selectedObject);
                 }
-                if (Event.current.type == EventType.Repaint) renameButton = GUILayoutUtility.GetLastRect();
 
                 var style = new GUIStyle(GUI.skin.button);
                 style.normal.textColor = Color.red;
 
-                if (GUILayout.Button("Delete", style))
+                if (GUILayout.Button(new GUIContent("Delete", "Use to delete the selected ScriptableObject."), style))
                 {
                     switch (EditorUtility.DisplayDialog("Delete " + selectedObject.name + "?", "Are you sure you want to delete '" + selectedObject.name + "'?", "Yes", "No"))
                     {
@@ -224,28 +204,16 @@ public class ScriptablesEditorWindow : EditorWindow
         EditorGUILayout.EndScrollView();
         EditorGUILayout.EndVertical();
     }
+
+    protected void RenamePopup(Object selected)
+    {
+        PopupWindow.Show(new Rect(), new NamingEditorWindow(selected, position));
+    }
     #endregion
 
     protected void UpdateObjets()
     {
-        activeObjects = GetAllInstancesOfType(activePath, activeType);
-    }
-
-    public static ScriptableObject[] GetAllInstancesOfType(string activePath, System.Type activeType)
-    {
-        string[] guids = AssetDatabase.FindAssets("t:" + activeType.Name, new[] { activePath });
-        ScriptableObject[] a = new ScriptableObject[guids.Length];
-        for (int i = 0; i < guids.Length; i++)
-        {
-            string path = AssetDatabase.GUIDToAssetPath(guids[i]);
-            a[i] = (ScriptableObject)AssetDatabase.LoadAssetAtPath(path, activeType);
-        }
-        return a;
-    }
-
-    public static Object CreateObject(System.Type type)
-    {
-        return CreateInstance(type);
+        activeObjects = AssemblyTypes.GetAllInstancesOfType(activePath, activeType);
     }
 
     protected void DrawProperties(SerializedProperty property)
@@ -270,15 +238,27 @@ public class ScriptablesEditorWindow : EditorWindow
             {
                 if (GUILayout.Button(ShortenString(item.name), skin.button, GUILayout.ExpandWidth(true)))
                 {
-                    selectedPropertyPach = item.name;
-
-                    if (!string.IsNullOrEmpty(selectedPropertyPach))
+                    if (Event.current.button == 1)
                     {
-                        selectedProperty = selectedPropertyPach;
-                        selectedObject = FindObject(activeObjects);
-                    }
+                        GenericMenu menu = new GenericMenu();
 
-                    UpdateObjets();
+                        var function = new GenericMenu.MenuFunction2((name) => RenamePopup(AssemblyTypes.FindObject(activeObjects, item.name)));
+
+                        menu.AddItem(new GUIContent("Rename"), false, function, item.name);
+                        menu.ShowAsContext();
+                    }
+                    else
+                    {
+                        selectedPropertyPach = item.name;
+
+                        if (!string.IsNullOrEmpty(selectedPropertyPach))
+                        {
+                            selectedProperty = selectedPropertyPach;
+                            selectedObject = AssemblyTypes.FindObject(activeObjects, selectedProperty);
+                        }
+
+                        UpdateObjets();
+                    }
                 }
             }
         }
@@ -300,11 +280,6 @@ public class ScriptablesEditorWindow : EditorWindow
             default:
                 return item;
         }
-    }
-
-    protected ScriptableObject FindObject(ScriptableObject[] objects)
-    {
-        return objects.Where(x => x.name == selectedProperty).First();
     }
 
     protected void Apply()

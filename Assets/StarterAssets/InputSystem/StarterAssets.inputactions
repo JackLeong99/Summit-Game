@@ -347,7 +347,7 @@
                     "path": "<Gamepad>/buttonEast",
                     "interactions": "Press(behavior=2)",
                     "processors": "",
-                    "groups": "",
+                    "groups": "Gamepad",
                     "action": "Dodge",
                     "isComposite": false,
                     "isPartOfComposite": false
@@ -356,7 +356,7 @@
                     "name": "",
                     "id": "5a6a2fa6-7ae9-44ab-8018-9354a6931fb4",
                     "path": "<Gamepad>/leftShoulder",
-                    "interactions": "",
+                    "interactions": "Press(behavior=2)",
                     "processors": "",
                     "groups": "Gamepad",
                     "action": "Dodge",

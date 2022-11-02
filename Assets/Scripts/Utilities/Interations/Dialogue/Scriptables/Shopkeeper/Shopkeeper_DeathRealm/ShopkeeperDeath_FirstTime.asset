@@ -13,12 +13,15 @@ MonoBehaviour:
   m_Name: ShopkeeperDeath_FirstTime
   m_EditorClassIdentifier: 
   announcement:
-  - text: So you died...
+  - text: You died...
     duration: 1.5
-    delay: 0.1
-  - text: Not that I expected any less.
+    delay: 0.5
+  - text: But it was expected.
     duration: 2
     delay: 2
+  - text: You will pass many times on your path.
+    duration: 2
+    delay: 1.5
   - text: 'I wonder how many times you''ll fail to succeed '
     duration: 4
     delay: 0
