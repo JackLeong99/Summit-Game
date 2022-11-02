@@ -471,6 +471,7 @@ MonoBehaviour:
   creditsButton: {fileID: 231060367}
   mainMenu: {fileID: 440889509}
   mainMenuCanvas: {fileID: 579559036}
+  panHandler: {fileID: 1045528772}
 --- !u!4 &344666374
 Transform:
   m_ObjectHideFlags: 0
@@ -1346,13 +1347,13 @@ MonoBehaviour:
   selectedIndex: 3
   anchors:
   - anchor: {fileID: 1722573332}
-    speed: 4
+    speed: 2
   - anchor: {fileID: 1447880334}
-    speed: 4
+    speed: 2
   - anchor: {fileID: 801286105}
-    speed: 4
+    speed: 2
   - anchor: {fileID: 489127292}
-    speed: 4
+    speed: 2
 --- !u!4 &1045528773
 Transform:
   m_ObjectHideFlags: 0

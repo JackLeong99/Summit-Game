@@ -26,6 +26,8 @@ public class MainMenu : MonoBehaviour
 
     public GameObject mainMenuCanvas;
 
+    public PanHandler panHandler;
+
     void Awake()
     {
         if (instance != null)
@@ -49,6 +51,7 @@ public class MainMenu : MonoBehaviour
         EventSystem.current.SetSelectedGameObject(null);
         //set mew selected object
         EventSystem.current.SetSelectedGameObject(mainFirstButton);
+        panHandler.selectedIndex = 3;
         mainMenuCanvas.GetComponent<Canvas>().worldCamera = _mainCamera.GetComponent<Camera>();
     }
 

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class HoverEvent : MonoBehaviour, IPointerEnterHandler
+public class HoverEvent : MonoBehaviour, IPointerEnterHandler, ISelectHandler
 {
     [Header("Values")]
     public int panIndex;
@@ -18,6 +18,11 @@ public class HoverEvent : MonoBehaviour, IPointerEnterHandler
     public void OnPointerEnter(PointerEventData eventData)
     {
         EventSystem.current.SetSelectedGameObject(gameObject);
+        reference.SwapFocus(panIndex);
+    }
+
+    public void OnSelect(BaseEventData eventData)
+    {
         reference.SwapFocus(panIndex);
     }
 }
