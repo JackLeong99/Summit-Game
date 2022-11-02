@@ -35,7 +35,7 @@ public abstract class ProjectileBase : MonoBehaviour
         if (other.CompareTag("enemyHitbox"))
         {
             Hit();
-            other.GetComponent<EnemyDamageReceiver>().PassDamage(damage, transform.position);
+            other.GetComponent<EnemyDamageReceiver>().PassDamage(damage, transform.position, true);
             foreach (var OnHit in OnHitEffects)
             {
                 Debug.Log("Applied OnHitEffect to: " + other.gameObject);

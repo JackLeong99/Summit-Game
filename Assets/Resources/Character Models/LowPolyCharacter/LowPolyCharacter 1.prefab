@@ -7991,6 +7991,7 @@ Transform:
   - {fileID: 8801550904317219111}
   - {fileID: 863666762464038198}
   - {fileID: 6289049540081393840}
+  - {fileID: 816867332362767840}
   m_Father: {fileID: 7133366118029336428}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 51.38, y: -6.576, z: 55.507}
@@ -8281,6 +8282,65 @@ Transform:
   m_Father: {fileID: 1015896067440487309}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &7129576902603461402
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 816867332362767840}
+  - component: {fileID: 603842244498948900}
+  - component: {fileID: 4473260645634958063}
+  m_Layer: 0
+  m_Name: hitbox
+  m_TagString: sword
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!4 &816867332362767840
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7129576902603461402}
+  m_LocalRotation: {x: 0.20376094, y: -0.00077961356, z: -0.0023769168, w: 0.9790175}
+  m_LocalPosition: {x: 0.0001, y: 0.01038, z: 0.00484}
+  m_LocalScale: {x: 0.0019968, y: 0.023498354, z: 0.0034496}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 5905675214526232588}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 23.514, y: -0.156, z: -0.311}
+--- !u!65 &603842244498948900
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7129576902603461402}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1.0000005}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &4473260645634958063
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7129576902603461402}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f42e86ff5cbfc34696e838d227c40e2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 20
 --- !u!1 &7234618356132651399
 GameObject:
   m_ObjectHideFlags: 0

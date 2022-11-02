@@ -851,7 +851,7 @@ MonoBehaviour:
   weakSpotGO: {fileID: 2330930814180723131}
   mat: {fileID: 0}
   lerpDuration: 2
-  defaultColor: {r: 0.754717, g: 0, b: 0.11573935, a: 1}
+  defaultColor: {r: 0.7490196, g: 0, b: 0.03529412, a: 1}
   offColor: {r: 0, g: 0, b: 0, a: 0}
 --- !u!135 &4159192368917866929
 SphereCollider:
@@ -864,8 +864,8 @@ SphereCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.0028398135
-  m_Center: {x: -2.2717882e-12, y: 0.0008253918, z: -0.00048276372}
+  m_Radius: 0.003984239
+  m_Center: {x: -1.3034646e-10, y: 0.0005498666, z: -0.00048276916}
 --- !u!1 &1454440159514396782
 GameObject:
   m_ObjectHideFlags: 0
@@ -2611,8 +2611,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.008184149, y: 0.0175855, z: 0.006012105}
-  m_Center: {x: -0.00012533813, y: -0.003792718, z: -0.00088002905}
+  m_Size: {x: 0.008184149, y: 0.019865036, z: 0.006012105}
+  m_Center: {x: -0.00012533853, y: -0.004932496, z: -0.00088002783}
 --- !u!114 &3186395801172205793
 MonoBehaviour:
   m_ObjectHideFlags: 0

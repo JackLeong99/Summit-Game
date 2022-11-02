@@ -12,5 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 536e130ad1c81b74c8a80108b4320ff8, type: 3}
   m_Name: Siphon OnHitEffect
   m_EditorClassIdentifier: 
-  gain: 0.5
+  gain: 1
   item: {fileID: 11400000, guid: 344d9eca2c3971148bb13dc9327e4388, type: 2}
+  perFightCap: 10

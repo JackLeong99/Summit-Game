@@ -9,7 +9,7 @@ public class BasicDamageOnHit : OnHitEffect
     public float damage;
     public override void ApplyOnHitEffects(GameObject target)
     {
-        target.GetComponent<EnemyDamageReceiver>().PassDamage(damage, target.transform.position);
+        target.GetComponent<EnemyDamageReceiver>().PassDamage(damage, target.transform.position, false);
         if (target.GetComponent<EnemyDamageReceiver>()) 
         {
             Debug.Log("They have a damage reciever!");
