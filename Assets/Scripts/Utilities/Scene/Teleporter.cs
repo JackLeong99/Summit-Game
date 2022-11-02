@@ -16,6 +16,7 @@ public class Teleporter : MonoBehaviour
                 {
                     case TeleportState.Boss:
                         GameManager.instance.LoadDelegate(GameManager.instance.LoadBoss());
+                        Destroy(gameObject);
                         break;
                     case TeleportState.Shop:
                         GameManager.instance.LoadDelegate(GameManager.instance.LoadShop(false));
@@ -23,9 +24,11 @@ public class Teleporter : MonoBehaviour
                         break;
                     case TeleportState.Final:
                         GameManager.instance.LoadDelegate(GameManager.instance.LoadFinal());
+                        Destroy(gameObject);
                         break;
                     case TeleportState.Outro:
                         GameManager.instance.LoadDelegate(GameManager.instance.LoadOutro());
+                        Destroy(gameObject);
                         break;
                 }
                 break;
