@@ -46,7 +46,16 @@ public class Missile : ProjectileBase
 
     public override void OnTriggerEnter(Collider other)
     {
-        base.OnTriggerEnter(other);
+        if (other.CompareTag("enemyHitbox"))
+        {
+            Hit();
+            other.GetComponent<EnemyDamageReceiver>().PassDamage(damage, transform.position, false);
+            foreach (var OnHit in OnHitEffects)
+            {
+                Debug.Log("Applied OnHitEffect to: " + other.gameObject);
+                OnHit.ApplyOnHitEffects(other.gameObject);
+            }
+        }
     }
 
     public void setTracking(float tr, float de, float ve, GameObject ta) 

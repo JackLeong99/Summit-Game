@@ -14,13 +14,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemName: Basic Attack
   description: This is an item
-  cost: 0
+  rarity: 5
+  cost: 5
   icon: {fileID: 21300000, guid: 0049f78ccfaabf24d964680fb88e12cb, type: 3}
   slot: 0
-  cooldown: 0.05
+  cooldown: 0.1
   castTime: 0.458
-  damage: 20
-  chainWindow: 0.3
-  attackBox: {fileID: 1548620108195507319, guid: 1ffb75d4023a5164495d05dcfb564217, type: 3}
+  chainWindow: 0.5
   animationTime: 0.46
   attackState: 0

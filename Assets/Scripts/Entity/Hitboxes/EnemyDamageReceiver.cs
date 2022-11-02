@@ -32,10 +32,10 @@ public class EnemyDamageReceiver : MonoBehaviour
                 break;
         }
     }
-    public void PassDamage(float dmg, Vector3 position)
+    public void PassDamage(float dmg, Vector3 position, bool canStun)
     {
         if (!boss.Alive()) return;
-        if (weakSpot) StartCoroutine(tryStun());
+        if (weakSpot && canStun) StartCoroutine(tryStun());
         boss.TakeDamage(dmg, position);
         DamageHandler();
     }

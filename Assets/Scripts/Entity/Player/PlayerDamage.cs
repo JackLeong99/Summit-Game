@@ -4,11 +4,12 @@ using UnityEngine;
 
 public class PlayerDamage : MonoBehaviour
 {
-    private float damage;
+    public float damage;
+    private Inventory inv;
 
-    public void setDamage(float dmg) 
+    public void Start()
     {
-        damage = dmg;
+        inv = Inventory.instance;
     }
 
     public void OnTriggerEnter(Collider other)
@@ -16,11 +17,7 @@ public class PlayerDamage : MonoBehaviour
         if (other.tag == "enemyHitbox") 
         {
             EnemyDamageReceiver receiver = other.GetComponent<EnemyDamageReceiver>();
-            if (receiver)
-            {
-                receiver.PassDamage(damage, transform.position);
-                Destroy(gameObject);
-            }
+            receiver.PassDamage((damage + inv.physicalDamage) * inv.percentDamageMod, transform.position, false);
         }
     }
 }
