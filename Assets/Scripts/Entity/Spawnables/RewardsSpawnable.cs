@@ -28,6 +28,7 @@ public class RewardsSpawnable : MonoBehaviour
         GameObject dropA = Instantiate(itemDropPrefab, gameObject.transform.position, Quaternion.identity) as GameObject;
         dropA.GetComponent<ItemDrop>().SetItem(guaranteedItem);
         dropA.GetComponent<Rigidbody>().velocity = ((Vector3.up + new Vector3(Random.Range(-0.3f, 0.3f), 1, Random.Range(-0.3f, 0.3f))).normalized) * 15;
+        dropA.GetComponent<SpriteRenderer>().sprite = guaranteedItem.icon;
 
         for (int i = 0; i < goldReward; i++)
         {
